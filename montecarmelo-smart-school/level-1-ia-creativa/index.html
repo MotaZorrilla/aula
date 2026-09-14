@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 (1° Año): Avatares, Lore &amp; IA Creativa 🤖🎨 · Colegio Monte Carmelo</title>
+
+    <meta name="title" content="Level 1 (1° Año): Avatares, Lore &amp; IA Creativa · Colegio Monte Carmelo">
+    <meta name="description" content="¡Crea tu héroe digital, diseña el escudo de tu gremio y domina los prompts de Inteligencia Artificial! Nivel 1 para 1° Año por el Ing. Héctor Mota.">
+    <meta name="keywords" content="Level 1, Monte Carmelo, IA Creativa, Prompts, Avatares, Gremios, 1er año bachillerato, Héctor Mota">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="theme-color" content="#0b0f17">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b0f17;
+            --surface: #111827;
+            --surface-card: #151b2d;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(56, 189, 248, 0.45);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --purple: #a855f7;
+            --purple-light: #c084fc;
+            --amber: #fbbf24;
+            --emerald: #10b981;
+            --pink: #f43f5e;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            padding: 30px 20px 80px; 
+            line-height: 1.65; 
+            background-image: radial-gradient(at 85% 15%, rgba(56, 189, 248, 0.18) 0px, transparent 50%),
+                              radial-gradient(at 15% 80%, rgba(168, 85, 247, 0.16) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; }
+
+        /* NAV */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+        .back-link:hover {
+            color: #fff;
+            border-color: var(--primary);
+            transform: translateX(-3px);
+            background: rgba(56, 189, 248, 0.15);
+        }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .brand-logo-link:hover {
+            transform: translateY(-2px scale(1.02));
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+        }
+        .brand-full-logo {
+            height: 28px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* HEADER */
+        .page-header {
+            background: linear-gradient(145deg, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 22px;
+            padding: 38px 36px;
+            margin-bottom: 36px;
+            box-shadow: 0 20px 45px -15px rgba(56, 189, 248, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .page-title {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 16px;
+            color: #cbd5e1;
+            max-width: 940px;
+            line-height: 1.68;
+        }
+
+        /* INTERACTIVE CARD MAKER */
+        .maker-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        @media (min-width: 992px) {
+            .maker-grid { grid-template-columns: 5.5fr 6.5fr; }
+        }
+        .maker-form {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .form-group label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            background: #0b0f17;
+            color: #fff;
+        }
+
+        /* COLLECTIBLE CARD PREVIEW */
+        .card-preview-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .game-card {
+            width: 100%;
+            max-width: 320px;
+            background: linear-gradient(145deg, #1e1b4b, #0f172a);
+            border: 2px solid var(--primary);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .card-avatar-circle {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.15);
+            border: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+        .card-name { font-size: 20px; font-weight: 900; color: #fff; }
+        .card-class { font-size: 12px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 6px 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11.5px;
+        }
+        .stat-label { color: var(--text-muted); font-weight: 700; }
+        .stat-val { color: var(--amber); font-family: var(--font-mono); font-weight: 800; }
+
+        .prompt-output-box {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: #7dd3fc;
+            text-align: left;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+
+        .btn-copy {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-copy:hover { background: var(--primary); color: #0b0f17; }
+
+        /* CONTENT CARD */
+        .content-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 34px;
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 21px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* FOOTER CTA */
+        .page-footer-action {
+            text-align: center;
+            padding: 42px 24px;
+            background: linear-gradient(180deg, rgba(56, 189, 248, 0.12), transparent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 22px;
+            margin-top: 40px;
+        }
+        .btn-action-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            background: #25D366;
+            color: #0b0f17;
+            font-weight: 900;
+            font-size: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+        }
+        .btn-action-green:hover {
+            background: #20ba59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/montecarmelo-smart-school/" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Volver a Monte Carmelo Hub
+            </a>
+            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+            </a>
+        </div>
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="badge-row">
+                <span class="badge">Level 1 · 1° Año (12 a 13 Años)</span>
+                <span class="badge" style="background:rgba(168,85,247,0.2); color:#c084fc; border-color:rgba(168,85,247,0.4);">Iniciación Creativa &amp; Lore 🎨</span>
+            </div>
+            <h1 class="page-title">
+                El Despertar Creativo: Avatares, Concept Art &amp; IA 🤖✨
+            </h1>
+            <p class="page-subtitle">
+                ¡Deja de ser un espectador en YouTube o TikTok y conviértete en un director de arte! Aprende las fórmulas mágicas de Prompt Engineering para diseñar personajes inolvidables, escudos de gremio y narrativas interactivas.
+            </p>
+        </div>
+
+        <!-- CARD MAKER INTERACTIVE TOOL -->
+        <div class="maker-grid">
+            <div class="maker-form">
+                <h3 style="font-size:18px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px;">
+                    <span>🛡️</span> Creador de Cartas de Gremio &amp; Prompts IA
+                </h3>
+
+                <div class="form-group">
+                    <label for="heroName">Nombre de tu Héroe / Creador:</label>
+                    <input type="text" id="heroName" value="Kaelen Neonblade" oninput="updateCard()">
+                </div>
+
+                <div class="form-group">
+                    <label for="heroClass">Clase de Personaje:</label>
+                    <select id="heroClass" onchange="updateCard()">
+                        <option value="Cyber Paladín">Cyber Paladín (Especialista en Escudos &amp; Luz)</option>
+                        <option value="Mago Tecno">Mago Tecno (Programador de Hechizos &amp; Portales)</option>
+                        <option value="Pícaro Hacker" selected>Pícaro Hacker (Infiltración &amp; Criptografía)</option>
+                        <option value="Piloto Mecha">Piloto Mecha (Blindaje &amp; Artillería Pesada)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="heroElement">Afinidad Elemental Neón:</label>
+                    <select id="heroElement" onchange="updateCard()">
+                        <option value="Fuego Plasma">Fuego Plasma (Rojo / Ámbar)</option>
+                        <option value="Rayo Cuántico" selected>Rayo Cuántico (Cian Neón)</option>
+                        <option value="Materia Oscura">Materia Oscura (Violeta Synthwave)</option>
+                        <option value="Bio-Energía">Bio-Energía (Verde Matrix)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="artStyle">Estilo Visual del Prompt:</label>
+                    <select id="artStyle" onchange="updateCard()">
+                        <option value="Anime Shonen Dinámico" selected>Anime Shonen Dinámico (Studio Trigger style)</option>
+                        <option value="Pixar 3D Cinematic">Pixar 3D Cinematic (Subsurface scattering, 4K)</option>
+                        <option value="Cyberpunk Synthwave">Cyberpunk Synthwave (Dark moody neon, Octane Render)</option>
+                        <option value="Pixel Art 16-bit">Pixel Art Retro 16-bit (Arcade classic)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PREVIEW -->
+            <div class="card-preview-wrapper">
+                <div class="game-card" id="gameCardBox">
+                    <div class="card-avatar-circle" id="cardIcon">⚡</div>
+                    <div class="card-name" id="cardHeroName">Kaelen Neonblade</div>
+                    <div class="card-class" id="cardHeroClass">Pícaro Hacker · Rayo Cuántico</div>
+
+                    <div class="stats-grid">
+                        <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-val" id="statAtk">88</span></div>
+                        <div class="stat-item"><span class="stat-label">DEF</span><span class="stat-val" id="statDef">65</span></div>
+                        <div class="stat-item"><span class="stat-label">INT</span><span class="stat-val" id="statInt">94</span></div>
+                        <div class="stat-item"><span class="stat-label">SPD</span><span class="stat-val" id="statSpd">98</span></div>
+                    </div>
+
+                    <div style="font-size:11px; color:#cbd5e1; font-weight:700;">Prompt Estructurado Listo para IA:</div>
+                    <div class="prompt-output-box" id="promptBox">
+                        <!-- Filled by JS -->
+                    </div>
+                    <button class="btn-copy" onclick="copyPrompt()">📋 Copiar Prompt IA</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- THEORY: PROMPT ANATOMY -->
+        <div class="content-card">
+            <h2 class="section-title">
+                <span>📐</span> La Anatomía de un Prompt Ganador en IA
+            </h2>
+            <p style="font-size:14.5px; color:#cbd5e1; line-height:1.7;">
+                Escribir un buen prompt no es tirar palabras al azar. En el Colegio Monte Carmelo enseñamos a los estudiantes a pensar como directores cinematográficos usando la <strong>Fórmula 5-Star Prompt</strong>:
+            </p>
+            <ul style="padding-left:24px; font-size:14px; color:var(--text-muted); line-height:1.8; margin-top:10px;">
+                <li><strong>1. El Sujeto:</strong> Quién es tu personaje, edad, postura, expresión y vestimenta distintiva.</li>
+                <li><strong>2. El Entorno:</strong> Dónde se encuentra (ruinas ancestrales, ciudad flotante futurista, laboratorio secreto).</li>
+                <li><strong>3. La Iluminación:</strong> Luz volumétrica, destellos neón, hora dorada o sombras de alto contraste claroscuro.</li>
+                <li><strong>4. El Estilo Artístico:</strong> Anime, render hiperrealista, ilustración editorial, arte conceptual de videojuegos.</li>
+                <li><strong>5. Parámetros Técnicos:</strong> Aspect ratio (`--ar 16:9`), nivel de detalle (`8k, highly detailed, octane render`).</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER CTA -->
+        <div class="page-footer-action">
+            <h3 style="font-size:22px; font-weight:800; color:#fff; margin-bottom:8px;">
+                ¿Listo para fundar el Gremio de Creadores Digitales de 1° Año? 🚀
+            </h3>
+            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+                Escríbele al profesor Ing. Héctor Mota para conocer la planificación de clases y actividades escolares.
+            </p>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Level%201%20(1%C2%B0%20A%C3%B1o)%20de%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-action-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contactar al Facilitador vía WhatsApp (0414-8873615)
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function updateCard() {
+            const name = document.getElementById('heroName').value || "Héroe Digital";
+            const hClass = document.getElementById('heroClass').value;
+            const element = document.getElementById('heroElement').value;
+            const style = document.getElementById('artStyle').value;
+
+            document.getElementById('cardHeroName').innerText = name;
+            document.getElementById('cardHeroClass').innerText = `${hClass} · ${element}`;
+
+            const iconMap = {
+                "Cyber Paladín": "🛡️",
+                "Mago Tecno": "🔮",
+                "Pícaro Hacker": "⚡",
+                "Piloto Mecha": "🤖"
+            };
+            document.getElementById('cardIcon').innerText = iconMap[hClass] || "✨";
+
+            const prompt = `/imagine prompt: Epic portrait of ${name}, a legendary ${hClass} wielding ${element} power, sci-fi futuristic attire with glowing circuits, dramatic rim lighting, in the style of ${style}, cinematic composition, 8k, Unreal Engine 5 render, trending on ArtStation --ar 16:9 --v 6.0`;
+            document.getElementById('promptBox').innerText = prompt;
+        }
+
+        function copyPrompt() {
+            const prompt = document.getElementById('promptBox').innerText;
+            navigator.clipboard.writeText(prompt).then(() => {
+                alert("¡Prompt copiado al portapapeles! Listo para pegar en tu IA favorita.");
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCard();
+        });
+    </script>
+</body>
+</html>

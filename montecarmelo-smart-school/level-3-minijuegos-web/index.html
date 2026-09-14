@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 (3° Año): Minijuegos Web Arcade &amp; Código 💻🕹️ · Colegio Monte Carmelo</title>
+
+    <meta name="title" content="Level 3 (3° Año): Minijuegos Web Arcade &amp; Código · Colegio Monte Carmelo">
+    <meta name="description" content="¡Aprende a programar videojuegos en HTML5 y JavaScript! Código lúdico, estética gamer neón y arcade interactivo por el Ing. Héctor Mota.">
+    <meta name="keywords" content="Level 3, Monte Carmelo, Videojuegos Web, JavaScript, HTML5 Canvas, Arcade, Héctor Mota">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="theme-color" content="#0b0f17">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b0f17;
+            --surface: #111827;
+            --surface-card: #151b2d;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(16, 185, 129, 0.45);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --emerald: #10b981;
+            --emerald-light: #34d399;
+            --primary: #38bdf8;
+            --amber: #fbbf24;
+            --purple: #a855f7;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            padding: 30px 20px 80px; 
+            line-height: 1.65; 
+            background-image: radial-gradient(at 85% 15%, rgba(16, 185, 129, 0.18) 0px, transparent 50%),
+                              radial-gradient(at 15% 85%, rgba(56, 189, 248, 0.16) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; }
+
+        /* NAV */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--emerald-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+        .back-link:hover {
+            color: #fff;
+            border-color: var(--emerald-light);
+            transform: translateX(-3px);
+            background: rgba(16, 185, 129, 0.15);
+        }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .brand-logo-link:hover {
+            transform: translateY(-2px scale(1.02));
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+        }
+        .brand-full-logo {
+            height: 28px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* HEADER */
+        .page-header {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.16), rgba(15, 23, 42, 0.95));
+            border: 1px solid var(--border-highlight);
+            border-radius: 22px;
+            padding: 38px 36px;
+            margin-bottom: 36px;
+            box-shadow: 0 20px 45px -15px rgba(16, 185, 129, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--emerald-light);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .page-title {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 16px;
+            color: #cbd5e1;
+            max-width: 940px;
+            line-height: 1.68;
+        }
+
+        /* GAME CONTAINER */
+        .arcade-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 36px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .arcade-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .score-pill {
+            font-family: var(--font-mono);
+            font-size: 15px;
+            font-weight: 800;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald-light);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 6px 14px;
+            border-radius: 8px;
+        }
+
+        .game-arena {
+            width: 100%;
+            max-width: 600px;
+            height: 320px;
+            background: radial-gradient(circle, #1e293b 0%, #0b0f17 100%);
+            border: 2px dashed rgba(16, 185, 129, 0.4);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gem-target {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #34d399, #059669);
+            box-shadow: 0 0 25px #34d399, 0 0 50px rgba(16, 185, 129, 0.5);
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            user-select: none;
+            transition: transform 0.1s ease;
+        }
+        .gem-target:hover { transform: scale(1.1); }
+        .gem-target:active { transform: scale(0.9); }
+
+        .game-controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-game {
+            padding: 11px 24px;
+            background: var(--emerald);
+            color: #0b0f17;
+            font-weight: 800;
+            font-size: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-game:hover { background: var(--emerald-light); transform: translateY(-2px); }
+
+        /* CONTENT CARD */
+        .content-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 34px;
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 21px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CODE BLOCK */
+        .code-snippet {
+            background: #06090e;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: #38bdf8;
+            overflow-x: auto;
+            margin-top: 14px;
+        }
+
+        /* FOOTER CTA */
+        .page-footer-action {
+            text-align: center;
+            padding: 42px 24px;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.12), transparent);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 22px;
+            margin-top: 40px;
+        }
+        .btn-action-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            background: #25D366;
+            color: #0b0f17;
+            font-weight: 900;
+            font-size: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+        }
+        .btn-action-green:hover {
+            background: #20ba59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/montecarmelo-smart-school/" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Volver a Monte Carmelo Hub
+            </a>
+            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+            </a>
+        </div>
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="badge-row">
+                <span class="badge">Level 3 · 3° Año (14 a 15 Años)</span>
+                <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border-color:rgba(56,189,248,0.4);">HTML5, CSS3 &amp; JS Arcade 💻</span>
+            </div>
+            <h1 class="page-title">
+                Web Gamers: Código Creativo &amp; Minijuegos Arcade 🕹️✨
+            </h1>
+            <p class="page-subtitle">
+                Aprender a programar no tiene por qué ser aburrido. Los chicos construyen minijuegos interactivos reales en el navegador combinando la estructura de HTML5, los efectos neón de CSS3 y la lógica de eventos en JavaScript.
+            </p>
+        </div>
+
+        <!-- PLAYABLE ARCADE GAME -->
+        <div class="arcade-container">
+            <div class="arcade-header">
+                <span style="font-size:17px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px;">
+                    <span>🎮</span> Minijuego Interactivo: Gem Clicker Quest
+                </span>
+                <div style="display:flex; gap:10px;">
+                    <div class="score-pill">Puntos: <span id="scoreVal">0</span></div>
+                    <div class="score-pill" style="color:var(--amber); border-color:rgba(251,191,36,0.4);">Tiempo: <span id="timerVal">20s</span></div>
+                    <div class="score-pill" style="color:var(--primary); border-color:rgba(56,189,248,0.4);">Récord: <span id="highScoreVal">0</span></div>
+                </div>
+            </div>
+
+            <div class="game-arena" id="gameArena">
+                <div class="gem-target" id="gemTarget" onclick="hitGem()">💎</div>
+            </div>
+
+            <div class="game-controls">
+                <button class="btn-game" onclick="startGame()">▶ Iniciar Partida (20s)</button>
+                <button class="btn-game" style="background:rgba(255,255,255,0.1); color:#fff;" onclick="resetGame()">🔄 Reiniciar</button>
+            </div>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="content-card">
+            <h2 class="section-title">
+                <span>🧠</span> La Lógica de un Videojuego en JavaScript
+            </h2>
+            <p style="font-size:14.5px; color:#cbd5e1; line-height:1.7;">
+                Cada videojuego comparte tres pilares fundamentales que enseñamos paso a paso sin frustraciones:
+            </p>
+            <ul style="padding-left:24px; font-size:14px; color:var(--text-muted); line-height:1.8; margin-top:10px;">
+                <li><strong>1. El Estado del Juego (Variables):</strong> Dónde guardamos la puntuación, el tiempo restante y si la partida está activa.</li>
+                <li><strong>2. El Detector de Eventos (addEventListener):</strong> Cómo la computadora escucha cuando el jugador hace clic sobre un enemigo o gema.</li>
+                <li><strong>3. El Bucle de Actualización (Game Loop):</strong> Cómo se mueven los objetos y se actualizan los efectos en pantalla.</li>
+            </ul>
+
+            <div class="code-snippet">
+<pre><code>// El corazón de un minijuego en JavaScript
+function hitGem() {
+    score += 10;
+    document.getElementById('scoreVal').innerText = score;
+    playCoinSound(); // Efecto de sonido con Web Audio API
+    teleportGem();   // Nueva posición aleatoria en la pantalla
+}
+</code></pre>
+            </div>
+        </div>
+
+        <!-- FOOTER CTA -->
+        <div class="page-footer-action">
+            <h3 style="font-size:22px; font-weight:800; color:#fff; margin-bottom:8px;">
+                ¿Listo para programar tus propios minijuegos web? 💻👾
+            </h3>
+            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+                Escríbele al profesor Ing. Héctor Mota para conocer las fechas de inicio del Level 3 en Monte Carmelo.
+            </p>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20m%C3%A1s%20detalles%20sobre%20Level%203%20(3%C2%B0%20A%C3%B1o)%20Minijuegos%20Web%20de%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-action-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contactar al Facilitador vía WhatsApp (0414-8873615)
+            </a>
+        </div>
+
+    </div>
+
+    <!-- GAME LOGIC SCRIPT WITH WEB AUDIO SYNTH -->
+    <script>
+        let score = 0;
+        let highScore = 0;
+        let timeLeft = 20;
+        let timerInterval = null;
+        let gameActive = false;
+
+        // Web Audio API Synth Sound
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playRetroSound(freq, type, duration) {
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function startGame() {
+            if (gameActive) return;
+            gameActive = true;
+            score = 0;
+            timeLeft = 20;
+            document.getElementById('scoreVal').innerText = score;
+            document.getElementById('timerVal').innerText = timeLeft + 's';
+            teleportGem();
+
+            playRetroSound(440, 'sine', 0.2);
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timerVal').innerText = timeLeft + 's';
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function hitGem() {
+            if (!gameActive) return;
+            score += 10;
+            document.getElementById('scoreVal').innerText = score;
+            playRetroSound(880 + Math.random() * 200, 'triangle', 0.15);
+            teleportGem();
+        }
+
+        function teleportGem() {
+            const arena = document.getElementById('gameArena');
+            const gem = document.getElementById('gemTarget');
+            const maxX = arena.clientWidth - 75;
+            const maxY = arena.clientHeight - 75;
+            const randX = Math.max(10, Math.floor(Math.random() * maxX));
+            const randY = Math.max(10, Math.floor(Math.random() * maxY));
+            gem.style.left = randX + 'px';
+            gem.style.top = randY + 'px';
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(timerInterval);
+            playRetroSound(220, 'sawtooth', 0.4);
+            if (score > highScore) {
+                highScore = score;
+                document.getElementById('highScoreVal').innerText = highScore;
+                alert(`¡Nuevo Récord Escolar! Lograste ${score} puntos 🎉`);
+            } else {
+                alert(`¡Tiempo terminado! Tu puntuación fue de ${score} puntos.`);
+            }
+        }
+
+        function resetGame() {
+            gameActive = false;
+            clearInterval(timerInterval);
+            score = 0;
+            timeLeft = 20;
+            document.getElementById('scoreVal').innerText = score;
+            document.getElementById('timerVal').innerText = timeLeft + 's';
+            teleportGem();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            teleportGem();
+        });
+    </script>
+</body>
+</html>
