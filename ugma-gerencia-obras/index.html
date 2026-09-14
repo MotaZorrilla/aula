@@ -6,10 +6,10 @@
     <title>Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras · Postgrado UGMA</title>
 
     <meta name="title" content="Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras · Postgrado UGMA">
-    <meta name="description" content="Diplomado en Gerencia de Obras UGMA. Masterclass BIM, ConTech, ISO 19650, Clash Detection 3D, Simulación 4D/5D, IA y Eficiencia Solar por el Ing. Héctor Mota.">
+    <meta name="description" content="Diplomado en Gerencia de Obras UGMA. ConTech, Metodología BIM, ISO 19650, Clash Detection 3D, Simulación 4D/5D, IA y Eficiencia Solar por el Ing. Héctor Mota.">
     <meta name="keywords" content="UGMA, Gerencia de Obras, ConTech, Metodologia BIM, ISO 19650, Curva MacLeamy, Navisworks, Three.js, IFC, IA Construcción, Sostenibilidad, Héctor Mota">
     <meta name="author" content="Héctor Mota Zorrilla">
-    <meta name="theme-color" content="#0b0f17">
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://aula.motazorrilla.com/ugma-gerencia-obras/">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -25,39 +25,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg: #0b0f17;
-            --surface: #111827;
-            --surface-card: #162032;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(16, 185, 129, 0.35);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --emerald: #10b981;
-            --emerald-light: #34d399;
-            --primary: #38bdf8;
-            --amber: #f59e0b;
-            --purple: #a855f7;
-            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-subtle: #f1f5f9;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            
+            --navy-primary: #0f2942;
+            --navy-dark: #0a192f;
+            --blue-accent: #0284c7;
+            --blue-light: #e0f2fe;
+            
+            --emerald: #047857;
+            --emerald-light: #d1fae5;
+            --amber: #b45309;
+            --amber-light: #fef3c7;
+            --purple: #6d28d9;
+            --purple-light: #ede9fe;
+
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
         }
 
         * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
         body { 
             background: var(--bg); 
-            color: var(--text); 
+            color: var(--text-main); 
             min-height: 100vh; 
-            padding: 30px 20px 60px; 
+            padding: 30px 20px 70px; 
             line-height: 1.6; 
-            background-image: radial-gradient(at 10% 10%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
-                              radial-gradient(at 90% 90%, rgba(56, 189, 248, 0.08) 0px, transparent 50%);
-            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1120px; margin: 0 auto; }
+        .container { max-width: 1140px; margin: 0 auto; }
 
-        /* NAV */
+        /* TOP NAVIGATION */
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -70,15 +82,22 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--primary);
+            color: var(--navy-primary);
             text-decoration: none;
             font-size: 14px;
-            font-weight: 600;
-            transition: transform 0.2s, color 0.2s;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
         }
         .back-link:hover {
-            color: #fff;
+            color: var(--blue-accent);
+            border-color: var(--blue-accent);
             transform: translateX(-3px);
+            box-shadow: var(--shadow-md);
         }
         .brand-logo-link {
             display: inline-flex;
@@ -87,14 +106,15 @@
             padding: 6px 18px;
             border-radius: 9999px;
             background: #ffffff;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2), 0 4px 12px rgba(0,0,0,0.35);
+            border: 1px solid rgba(15, 41, 66, 0.15);
+            box-shadow: var(--shadow-sm);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
         }
         .brand-logo-link:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 0 28px rgba(56, 189, 248, 0.4), 0 6px 18px rgba(0,0,0,0.45);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(15, 41, 66, 0.35);
         }
         .brand-full-logo {
             height: 28px;
@@ -104,44 +124,63 @@
             display: block;
         }
 
-        /* HERO */
+        /* ACADEMIC HERO */
         .module-hero {
-            background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(17, 24, 39, 0.9));
-            border: 1px solid var(--border-highlight);
+            background: #ffffff;
+            border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 40px;
+            padding: 44px 40px;
             margin-bottom: 36px;
             position: relative;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+            box-shadow: var(--shadow-md);
+            background-image: linear-gradient(135deg, rgba(241, 245, 249, 0.6) 0%, rgba(255, 255, 255, 1) 100%);
         }
-        .module-badge {
+        .module-badge-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .inst-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(16, 185, 129, 0.16);
-            color: var(--emerald-light);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            font-size: 12px;
+            background: var(--navy-primary);
+            color: #ffffff;
+            font-size: 11.5px;
             font-weight: 700;
-            padding: 4px 14px;
+            padding: 5px 14px;
             border-radius: 9999px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 16px;
+        }
+        .accreditation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--emerald-light);
+            color: var(--emerald);
+            border: 1px solid rgba(4, 120, 87, 0.25);
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
         }
         .module-title {
-            font-size: clamp(26px, 4.5vw, 38px);
+            font-size: clamp(26px, 4vw, 38px);
             font-weight: 800;
             line-height: 1.25;
             margin-bottom: 14px;
-            color: #ffffff;
+            color: var(--navy-primary);
+            letter-spacing: -0.02em;
         }
         .module-sub {
-            font-size: 15.5px;
+            font-size: 16px;
             color: var(--text-muted);
-            max-width: 900px;
-            margin-bottom: 24px;
-            line-height: 1.65;
+            max-width: 960px;
+            margin-bottom: 26px;
+            line-height: 1.7;
         }
 
         .meta-chips {
@@ -150,44 +189,50 @@
             gap: 12px;
         }
         .chip {
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
             border: 1px solid var(--border);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 13.5px;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #cbd5e1;
+            color: var(--text-muted);
+            box-shadow: var(--shadow-sm);
         }
-        .chip strong { color: #fff; }
+        .chip strong { color: var(--navy-primary); font-weight: 700; }
 
-        /* FEATURED MASTERCLASS CARD */
-        .masterclass-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.95));
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.12);
+        /* FEATURED MASTERCLASS BANNER */
+        .masterclass-banner {
+            background: #ffffff;
+            border: 2px solid #bae6fd;
+            box-shadow: var(--shadow-md);
             border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 40px;
+            padding: 34px 36px;
+            margin-bottom: 44px;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
-        .masterclass-card::before {
+        .masterclass-banner:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--blue-accent);
+        }
+        .masterclass-banner::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
+            width: 6px;
             height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--emerald));
+            background: linear-gradient(180deg, var(--navy-primary), var(--blue-accent));
         }
         .mc-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
             gap: 10px;
         }
@@ -195,29 +240,29 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(56, 189, 248, 0.15);
-            color: var(--primary);
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            font-size: 11px;
+            background: var(--blue-light);
+            color: #0369a1;
+            border: 1px solid #7dd3fc;
+            font-size: 12px;
             font-weight: 700;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 6px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
         .mc-title {
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 800;
-            color: #fff;
-            margin-bottom: 8px;
+            color: var(--navy-primary);
+            margin-bottom: 10px;
             line-height: 1.3;
         }
         .mc-desc {
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            max-width: 900px;
+            margin-bottom: 22px;
+            line-height: 1.65;
+            max-width: 960px;
         }
         .mc-topics {
             display: grid;
@@ -226,151 +271,186 @@
             margin-bottom: 24px;
         }
         .mc-topic-item {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--surface-subtle);
             border: 1px solid var(--border);
             padding: 10px 14px;
             border-radius: 10px;
             font-size: 13px;
-            color: #cbd5e1;
+            color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
-        .mc-topic-item span.icon { color: var(--emerald-light); font-weight: bold; }
+        .mc-topic-item span.icon { color: var(--emerald); font-weight: bold; }
         .mc-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
             align-items: center;
         }
         .btn-mc-primary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #0284c7, #38bdf8);
-            color: #0b0f17;
-            font-weight: 800;
+            padding: 12px 26px;
+            background: var(--navy-primary);
+            color: #ffffff;
+            font-weight: 700;
             font-size: 14px;
-            border-radius: 12px;
+            border-radius: 10px;
             text-decoration: none;
-            transition: all 0.25s;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(15, 41, 66, 0.2);
         }
         .btn-mc-primary:hover {
+            background: #1e3a8a;
             transform: translateY(-2px);
-            box-shadow: 0 6px 22px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 6px 18px rgba(15, 41, 66, 0.3);
         }
 
-        /* GRID SECTIONS */
-        .section-heading {
-            font-size: 22px;
+        /* SYLLABUS SECTION */
+        .section-header-academic {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .section-header-academic h2 {
+            font-size: 24px;
             font-weight: 800;
-            color: #fff;
-            margin-bottom: 20px;
+            color: var(--navy-primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        .section-subtext {
+            font-size: 13.5px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
 
         .syllabus-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 22px;
-            margin-bottom: 45px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
         }
         .session-card {
-            background: var(--surface);
+            background: #ffffff;
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
+            border-radius: 16px;
+            padding: 26px;
             display: flex;
             flex-direction: column;
             transition: all 0.25s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
         }
         .session-card:hover {
-            border-color: var(--border-highlight);
-            transform: translateY(-2px);
+            border-color: #94a3b8;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .session-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
         }
         .session-num {
             font-family: var(--font-mono);
             font-size: 11.5px;
             font-weight: 700;
-            color: var(--emerald-light);
+            color: var(--emerald);
+            background: var(--emerald-light);
+            padding: 3px 10px;
+            border-radius: 6px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+        }
+        .session-type {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-light);
         }
         .session-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--navy-primary);
             margin-bottom: 12px;
             line-height: 1.35;
         }
         .session-desc {
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--text-muted);
-            margin-bottom: 16px;
-            line-height: 1.55;
+            margin-bottom: 18px;
+            line-height: 1.6;
             flex-grow: 1;
         }
         .tech-pills {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .tech-pill {
             font-size: 11px;
             font-family: var(--font-mono);
-            background: rgba(255, 255, 255, 0.04);
+            background: var(--surface-subtle);
             border: 1px solid var(--border);
             padding: 3px 8px;
-            border-radius: 5px;
-            color: #94a3b8;
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-weight: 500;
         }
-        .btn-card-lab {
+        .btn-card-dedicated {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 9px 14px;
-            border-radius: 8px;
-            font-size: 12.5px;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 700;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--surface-subtle);
             border: 1px solid var(--border);
-            color: #cbd5e1;
-            transition: all 0.2s;
+            color: var(--navy-primary);
+            transition: all 0.2s ease;
             margin-top: auto;
         }
-        .btn-card-lab:hover {
-            background: rgba(16, 185, 129, 0.15);
-            border-color: var(--emerald);
-            color: #fff;
+        .btn-card-dedicated:hover {
+            background: var(--navy-primary);
+            border-color: var(--navy-primary);
+            color: #ffffff;
             transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(15, 41, 66, 0.15);
         }
-        .btn-card-lab.featured {
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(56, 189, 248, 0.25));
-            border-color: rgba(56, 189, 248, 0.4);
-            color: #fff;
+        .btn-card-dedicated.featured-highlight {
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+            color: var(--emerald);
         }
-        .btn-card-lab.featured:hover {
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(56, 189, 248, 0.4));
-            border-color: var(--primary);
+        .btn-card-dedicated.featured-highlight:hover {
+            background: var(--emerald);
+            border-color: var(--emerald);
+            color: #ffffff;
         }
 
         /* INSTRUCTOR CARD */
         .instructor-card {
-            background: var(--surface);
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 18px;
-            padding: 30px;
+            padding: 34px;
             margin-bottom: 40px;
             display: flex;
             flex-direction: column;
             gap: 24px;
+            box-shadow: var(--shadow-sm);
         }
         @media (min-width: 768px) {
             .instructor-card {
@@ -379,68 +459,73 @@
             }
         }
         .instructor-img {
-            width: 105px;
-            height: 105px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--emerald);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--emerald), var(--shadow-md);
             flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
         }
         .instructor-bio h3 {
-            font-size: 20px;
+            font-size: 21px;
             font-weight: 800;
-            color: #fff;
-            margin-bottom: 6px;
+            color: var(--navy-primary);
+            margin-bottom: 4px;
         }
         .instructor-bio .role {
             font-size: 13px;
-            color: var(--emerald-light);
-            font-weight: 600;
+            color: var(--emerald);
+            font-weight: 700;
             margin-bottom: 12px;
             display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         .instructor-bio p {
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
-        /* ACTION BOX */
+        /* ACADEMIC ACTION BOX */
         .action-box {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(180deg, rgba(16, 185, 129, 0.05), transparent);
+            padding: 44px 24px;
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 18px;
+            box-shadow: var(--shadow-sm);
         }
         .action-box h4 {
             font-size: 22px;
             font-weight: 800;
             margin-bottom: 10px;
-            color: #fff;
+            color: var(--navy-primary);
         }
         .action-box p {
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 680px;
             margin: 0 auto 24px;
+            line-height: 1.6;
         }
         .btn-action {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
+            gap: 10px;
+            padding: 14px 30px;
             background: #25D366;
-            color: #0b0f17;
+            color: #ffffff;
             font-weight: 700;
             font-size: 15px;
             border-radius: 12px;
             text-decoration: none;
             transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
         }
         .btn-action:hover {
+            background: #20ba59;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
         }
@@ -462,29 +547,32 @@
 
         <!-- HERO -->
         <div class="module-hero">
-            <span class="module-badge">Postgrado UGMA · Diplomado en Gerencia de Obras</span>
+            <div class="module-badge-row">
+                <span class="inst-badge">Universidad Nororiental Gran Mariscal de Ayacucho · UGMA</span>
+                <span class="accreditation-badge">Diplomado en Gerencia de Obras · Postgrado</span>
+            </div>
             <h1 class="module-title">Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras</h1>
             <p class="module-sub">
-                Programa de especialización técnica enfocado en la adopción de tecnologías de construcción (ConTech), coordinación BIM bajo estándar ISO 19650, gestión de colisiones espaciales en 3D, planificación dinámica 4D/5D e integración de Inteligencia Artificial y energía solar para obras de alta eficiencia.
+                Programa integral de posgrado enfocado en la adopción estratégica de Construction Technology (ConTech), modelado paramétrico bajo el estándar internacional openBIM (ISO 19650), auditoría espacial 3D, control dinámico de cronograma y costo (4D/5D EVM) e integración de Inteligencia Artificial y energías renovables en la construcción.
             </p>
 
             <div class="meta-chips">
                 <div class="chip">⏱️ <strong>30 Horas Académicas</strong></div>
-                <div class="chip">🏛️ <strong>Universidad Nororiental Gran Mariscal de Ayacucho</strong></div>
-                <div class="chip">📍 <strong>Puerto Ordaz / Modalidad Híbrida</strong></div>
-                <div class="chip">📊 <strong>Conferencia Magistral + 6 Ejes ConTech</strong></div>
+                <div class="chip">🏛️ <strong>Escuela de Ingeniería UGMA</strong></div>
+                <div class="chip">📍 <strong>Puerto Ordaz / Modalidad Presencial e Híbrida</strong></div>
+                <div class="chip">📊 <strong>7 Portales Web Especializados e Interactivos</strong></div>
             </div>
         </div>
 
-        <!-- FEATURED MASTERCLASS CARD -->
-        <div class="masterclass-card">
+        <!-- FEATURED MASTERCLASS CARD (CARD 0) -->
+        <div class="masterclass-banner">
             <div class="mc-header">
                 <span class="mc-badge">🏛️ Conferencia Magistral Inaugural · 5 Horas</span>
-                <span style="font-family:var(--font-mono); font-size:12px; color:var(--emerald-light); font-weight:600;">UGMA · UCAB · CIV</span>
+                <span style="font-family:var(--font-mono); font-size:12.5px; color:var(--emerald); font-weight:700;">Acreditación Académica UGMA · UCAB</span>
             </div>
             <h2 class="mc-title">Introducción a la Metodología BIM: De la Maqueta Digital al Gemelo Digital</h2>
             <p class="mc-desc">
-                Conferencia marco impartida por el Ing. Héctor Mota en la Escuela de Ingeniería UGMA y las VII Jornadas de Ingeniería Civil UCAB. Analiza la disrupción de los modelos paramétricos frente al CAD tradicional, el impacto cuantitativo de la Curva de MacLeamy (Civitillo, 2021), las 7 Dimensiones BIM y el tránsito del BIM al CIM (City Information Modeling) con Gemelos Digitales.
+                Conferencia marco impartida por el Ing. Héctor Mota en la UGMA y las VII Jornadas de Ingeniería Civil UCAB. Fundamentación científica de la transformación digital: el salto del dibujo vectorial CAD a modelos de información paramétrica, el análisis cuantitativo del impacto en costos de la <strong>Curva de MacLeamy (Civitillo, 2021)</strong>, las 7 Dimensiones BIM y la transición hacia Gemelos Digitales (CIM &amp; GIS).
             </p>
 
             <div class="mc-topics">
@@ -494,141 +582,168 @@
                 </div>
                 <div class="mc-topic-item">
                     <span class="icon">▶</span>
-                    <span><strong>7 Dimensiones BIM:</strong> Del 3D geométrico al 7D Facility Management.</span>
+                    <span><strong>7 Dimensiones BIM:</strong> Del 3D espacial al 7D Facility Management y Operación.</span>
                 </div>
                 <div class="mc-topic-item">
                     <span class="icon">▶</span>
-                    <span><strong>Niveles LOD 100-500:</strong> Madurez de información paramétrica en cada fase.</span>
+                    <span><strong>Niveles LOD 100-500:</strong> Madurez geométrica y de atributos paramétricos.</span>
                 </div>
                 <div class="mc-topic-item">
                     <span class="icon">▶</span>
-                    <span><strong>Del BIM al CIM &amp; GIS:</strong> Gemelos Digitales para ciudades inteligentes y obras.</span>
+                    <span><strong>BIM hacia CIM &amp; GIS:</strong> Gemelos Digitales para infraestructura urbana.</span>
                 </div>
             </div>
 
             <div class="mc-actions">
                 <a href="/ugma-gerencia-obras/masterclass-bim/" class="btn-mc-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    Abrir Simulador MacLeamy &amp; Calculador de ROI
+                    Ingresar al Portal Dedicado: Masterclass BIM &amp; Curva MacLeamy
                 </a>
-                <span style="font-size:12px; color:var(--text-muted); font-family:var(--font-mono);">
-                    Incluye gráficas interactivas y snippets de código Python/Three.js
+                <span style="font-size:13px; color:var(--text-light); font-family:var(--font-mono);">
+                    Simulador Chart.js en tiempo real, Calculador de ROI y snippets Python
                 </span>
             </div>
         </div>
 
-        <!-- SYLLABUS -->
-        <h2 class="section-heading">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-light)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            Los 6 Ejes Temáticos Especializados
-        </h2>
+        <!-- 6 DEDICATED THEMATIC AXES -->
+        <div class="section-header-academic">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Los 6 Ejes Temáticos Especializados (Páginas Dedicadas)
+            </h2>
+            <span class="section-subtext">Cada tarjeta contiene teoría profunda, normativa internacional, laboratorio interactivo y código</span>
+        </div>
 
         <div class="syllabus-grid">
-            <!-- SESIÓN 1 -->
+            <!-- EJE 01: CDE & ISO 19650 -->
             <div class="session-card">
-                <span class="session-num">Eje Temático 01 · 5 Horas</span>
+                <div class="session-top">
+                    <span class="session-num">Eje Temático 01 · 5h</span>
+                    <span class="session-type">openBIM &amp; Gobernanza</span>
+                </div>
                 <h3 class="session-title">Entorno Común de Datos (CDE) e Interoperabilidad (ISO 19650)</h3>
                 <p class="session-desc">
-                    Arquitectura de información para proyectos colaborativos. Estructuración de carpetas WIP, Shared, Published y Archived. Flujos openBIM mediante formatos neutros IFC4 y reportes de incidencia BCF 2.1.
+                    Estructuración de información para proyectos colaborativos federados. Ciclo de estados documentales WIP, Shared, Published y Archived. Nomenclatura normalizada de archivos de obra, esquemas neutros IFC4 de buildingSMART y formato BCF.
                 </p>
                 <div class="tech-pills">
-                    <span class="tech-pill">ISO 19650</span>
+                    <span class="tech-pill">ISO 19650-1/2</span>
                     <span class="tech-pill">openBIM / IFC4</span>
-                    <span class="tech-pill">BCF 2.1</span>
-                    <span class="tech-pill">CDE Cloud</span>
+                    <span class="tech-pill">BCF 2.1 XML/JSON</span>
+                    <span class="tech-pill">IfcOpenShell</span>
                 </div>
-                <a href="/ugma-gerencia-obras/masterclass-bim/#codeSnippetPython" class="btn-card-lab">
-                    <span>📁</span> Validador de Metadatos &amp; IfcOpenShell
+                <a href="/ugma-gerencia-obras/cde-iso19650/" class="btn-card-dedicated">
+                    <span>📁</span> Portal Dedicado: CDE &amp; Validador ISO 19650
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
 
-            <!-- SESIÓN 2 -->
+            <!-- EJE 02: CLASH DETECTION 3D -->
             <div class="session-card">
-                <span class="session-num">Eje Temático 02 · 5 Horas</span>
+                <div class="session-top">
+                    <span class="session-num">Eje Temático 02 · 5h</span>
+                    <span class="session-type">Auditoría Espacial 3D</span>
+                </div>
                 <h3 class="session-title">Detección de Interferencias (Clash Detection) &amp; Auditoría 3D</h3>
                 <p class="session-desc">
-                    Validación automatizada de modelos federados. Identificación proactiva de cruces entre estructuras de concreto, conductos HVAC y tuberías hidrosanitarias previo al inicio de construcción.
+                    Validación automatizada de modelos federados de arquitectura, estructuras y redes MEP. Tipología de colisiones (Hard, Soft y Clearance), cálculo de tolerancias geométricas y exportación de incidencias en formato BCF.
                 </p>
                 <div class="tech-pills">
+                    <span class="tech-pill">Three.js WebGL</span>
                     <span class="tech-pill">Navisworks Manage</span>
-                    <span class="tech-pill">Three.js 3D</span>
                     <span class="tech-pill">Tolerancias MEP</span>
-                    <span class="tech-pill">BCF 2.1 JSON</span>
+                    <span class="tech-pill">Exportador BCF</span>
                 </div>
-                <a href="/ugma-gerencia-obras/clash-detection/" class="btn-card-lab featured">
-                    <span>⚡</span> Abrir Laboratorio 3D Clash Detection
+                <a href="/ugma-gerencia-obras/clash-detection/" class="btn-card-dedicated featured-highlight">
+                    <span>⚡</span> Portal Dedicado: Laboratorio 3D Clash Detection
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
 
-            <!-- SESIÓN 3 -->
+            <!-- EJE 03: 4D/5D & CURVA S EVM -->
             <div class="session-card">
-                <span class="session-num">Eje Temático 03 · 5 Horas</span>
-                <h3 class="session-title">Planificación Cuatridimensional (4D) y Control Presupuestario (5D)</h3>
+                <div class="session-top">
+                    <span class="session-num">Eje Temático 03 · 5h</span>
+                    <span class="session-type">Control de Gestión</span>
+                </div>
+                <h3 class="session-title">Planificación Cuatridimensional (4D) y Control de Costos (5D)</h3>
                 <p class="session-desc">
-                    Vinculación entre el modelo 3D paramétrico, la EDT/WBS y el cronograma de Gantt. Generación de simulaciones de secuencia constructiva, análisis de holguras y curvas de flujo de caja S (EVM).
+                    Vinculación entre el modelo 3D paramétrico, la EDT/WBS y el cronograma Gantt. Metodología de Valor Ganado (EVM): cálculo analítico de Valor Planificado (PV), Valor Ganado (EV), Costo Real (AC), índices CPI, SPI y Curvas S.
                 </p>
                 <div class="tech-pills">
-                    <span class="tech-pill">Synchro Pro</span>
-                    <span class="tech-pill">BIM 4D/5D</span>
+                    <span class="tech-pill">BIM 4D / 5D</span>
+                    <span class="tech-pill">EVM (Earned Value)</span>
+                    <span class="tech-pill">Curva S Chart.js</span>
                     <span class="tech-pill">Líneas de Balance</span>
-                    <span class="tech-pill">Curvas S (EVM)</span>
                 </div>
-                <a href="/ugma-gerencia-obras/masterclass-bim/" class="btn-card-lab">
-                    <span>⏱️</span> Simulador de Curva S &amp; EVM
+                <a href="/ugma-gerencia-obras/planificacion-4d-5d/" class="btn-card-dedicated">
+                    <span>⏱️</span> Portal Dedicado: Simulador Curva S &amp; EVM
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
 
-            <!-- SESIÓN 4 -->
+            <!-- EJE 04: IA & AUTOMATIZACIÓN EN OBRA -->
             <div class="session-card">
-                <span class="session-num">Eje Temático 04 · 5 Horas</span>
+                <div class="session-top">
+                    <span class="session-num">Eje Temático 04 · 5h</span>
+                    <span class="session-type">ConTech &amp; IA Aplicada</span>
+                </div>
                 <h3 class="session-title">Inteligencia Artificial y Automatización en el Control de Obra</h3>
                 <p class="session-desc">
-                    Aplicación de visión artificial y fotogrametría con drones para la reconciliación As-Planned vs As-Built. Generación automatizada de minutas técnicas, reportes diarios y predicción de retrasos.
+                    Aplicación de visión artificial y fotogrametría con drones para la reconciliación As-Planned vs As-Built. Procesamiento de lenguaje natural (LLMs) para la redacción de minutas de campo técnicas y clasificación de riesgos de obra.
                 </p>
                 <div class="tech-pills">
                     <span class="tech-pill">Computer Vision</span>
-                    <span class="tech-pill">Drones / Photogrammetry</span>
-                    <span class="tech-pill">LLMs Especializados</span>
-                    <span class="tech-pill">Bots de Minuta</span>
+                    <span class="tech-pill">Drones &amp; LiDAR</span>
+                    <span class="tech-pill">Sintetizador Minutas</span>
+                    <span class="tech-pill">Prompts ConTech</span>
                 </div>
-                <a href="/ugma-gerencia-obras/masterclass-bim/" class="btn-card-lab">
-                    <span>🤖</span> Asistente IA de Minutas Técnicas
+                <a href="/ugma-gerencia-obras/ia-control-obra/" class="btn-card-dedicated">
+                    <span>🤖</span> Portal Dedicado: Asistente IA &amp; Bitácoras de Obra
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
 
-            <!-- SESIÓN 5 -->
+            <!-- EJE 05: EFICIENCIA SOLAR & SOSTENIBILIDAD -->
             <div class="session-card">
-                <span class="session-num">Eje Temático 05 · 5 Horas</span>
+                <div class="session-top">
+                    <span class="session-num">Eje Temático 05 · 5h</span>
+                    <span class="session-type">Sostenibilidad &amp; Energía</span>
+                </div>
                 <h3 class="session-title">Eficiencia Energética, Huella de Carbono y Sistemas Solares</h3>
                 <p class="session-desc">
-                    Criterios bioclimáticos adaptados a Guayana. Dimensionamiento de instalaciones solares fotovoltaicas en cubiertas, análisis de sombras dinámicas y certificaciones ambientales (EDGE / LEED).
+                    Criterios bioclimáticos para la región Guayana. Dimensionamiento paramétrico de sistemas fotovoltaicos en azoteas de edificaciones, cálculo de Horas Solar Pico (HSP), mitigación de CO2 y certificaciones internacionales EDGE / LEED.
                 </p>
                 <div class="tech-pills">
-                    <span class="tech-pill">Sistemas Solares</span>
-                    <span class="tech-pill">Asoleamiento Guayana</span>
-                    <span class="tech-pill">Eficiencia Térmica</span>
-                    <span class="tech-pill">EDGE / LEED</span>
+                    <span class="tech-pill">Radiación Guayana</span>
+                    <span class="tech-pill">Dimensionador Solar</span>
+                    <span class="tech-pill">Huella de Carbono</span>
+                    <span class="tech-pill">Norma ASHRAE 90.1</span>
                 </div>
-                <a href="/ugma-gerencia-obras/masterclass-bim/" class="btn-card-lab">
-                    <span>☀️</span> Calculador de Generación Solar
+                <a href="/ugma-gerencia-obras/energia-solar-sostenibilidad/" class="btn-card-dedicated">
+                    <span>☀️</span> Portal Dedicado: Calculador Solar Fotovoltaico
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
 
-            <!-- SESIÓN 6 -->
+            <!-- EJE 06: TALLER INTEGRADOR & CASO PRÁCTICO -->
             <div class="session-card">
-                <span class="session-num">Eje Temático 06 · 5 Horas</span>
+                <div class="session-top">
+                    <span class="session-num">Eje Temático 06 · 5h</span>
+                    <span class="session-type">Evaluación de Grado</span>
+                </div>
                 <h3 class="session-title">Taller Integrador: Defensa de Caso Práctico Real ConTech</h3>
                 <p class="session-desc">
-                    Presentación final por equipos: auditoría técnica de un proyecto real federado, informe de resolución de colisiones, simulación de constructabilidad y propuesta de optimización energética.
+                    Caso de estudio de un Edificio Corporativo de 12 niveles en Puerto Ordaz. Presentación en War Room de modelos federados openBIM, resolución de colisiones en BCF, simulación de constructabilidad y sustentabilidad energética.
                 </p>
                 <div class="tech-pills">
-                    <span class="tech-pill">Auditoría BIM</span>
-                    <span class="tech-pill">Defensa Colegiada</span>
-                    <span class="tech-pill">War Room</span>
-                    <span class="tech-pill">Evaluación CDE</span>
+                    <span class="tech-pill">War Room Colegiado</span>
+                    <span class="tech-pill">Rúbrica sobre 20 pts</span>
+                    <span class="tech-pill">Edificio Guayana 12P</span>
+                    <span class="tech-pill">Entrega openBIM</span>
                 </div>
-                <a href="/ugma-gerencia-obras/masterclass-bim/" class="btn-card-lab">
-                    <span>🏛️</span> Rúbrica Digital &amp; War Room
+                <a href="/ugma-gerencia-obras/taller-integrador/" class="btn-card-dedicated">
+                    <span>🏛️</span> Portal Dedicado: Rúbrica &amp; War Room Integrador
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
         </div>
@@ -640,19 +755,19 @@
                 <h3>Ing. Héctor Mota Zorrilla</h3>
                 <span class="role">Facilitador Académico · Consultor ConTech &amp; BIM Manager</span>
                 <p>
-                    Ingeniero Electricista (UCV) con amplia trayectoria en gerencia de proyectos de edificación, desarrollo de software aplicado a la construcción (full-stack web y motores 3D), implementación de flujos openBIM bajo ISO 19650 e integración de energías renovables e inteligencia artificial. Ha sido ponente sobre Metodología BIM en la Escuela de Ingeniería de la UGMA, las VII Jornadas de Ingeniería Civil de la UCAB Guayana y el Colegio de Ingenieros de Venezuela.
+                    Ingeniero Electricista egresado de la Universidad Central de Venezuela (UCV) con amplia experiencia en gerencia de proyectos de edificación, desarrollo de software técnico enfocado a la industria de la construcción (full-stack web y motores gráficos 3D), implementación de flujos openBIM bajo el estándar internacional ISO 19650 e integración de sistemas fotovoltaicos e inteligencia artificial. Ha sido ponente sobre Metodología BIM en la Escuela de Ingeniería de la UGMA, las VII Jornadas de Ingeniería Civil de la UCAB Guayana y el Colegio de Ingenieros de Venezuela.
                 </p>
             </div>
         </div>
 
         <!-- ACTION BOX -->
         <div class="action-box">
-            <h4>¿Deseas inscribirte o solicitar información académica?</h4>
+            <h4>¿Deseas inscribirte o solicitar información académica sobre el Diplomado?</h4>
             <p>
-                Comunícate con la coordinación del diplomado o contacta al facilitador para resolver dudas sobre el contenido programático, software requerido y fechas de inicio.
+                Comunícate directamente con el facilitador para consultar detalles sobre el contenido programático, software requerido (Navisworks, Synchro, Blender, IfcOpenShell), calendario de clases y acreditación de postgrado.
             </p>
-            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20informaci%C3%B3n%20sobre%20el%20M%C3%B3dulo%20V%20del%20Diplomado%20en%20Gerencia%20de%20Obras%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20informaci%C3%B3n%20acad%C3%A9mica%20sobre%20el%20M%C3%B3dulo%20V%20del%20Diplomado%20en%20Gerencia%20de%20Obras%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 Contactar al Facilitador vía WhatsApp (0414-8873615)
             </a>
         </div>
