@@ -9,7 +9,7 @@
     <meta name="description" content="¡Aprende modelado 3D en Blender, IA creativa, minijuegos web y vive la Realidad Virtual con Meta Quest 3 en tu colegio! Programa escolar de 1° a 4° año por el Ing. Héctor Mota.">
     <meta name="keywords" content="Colegio Monte Carmelo, Meta Quest 3, Realidad Virtual, Blender 3D, Videojuegos Web, Inteligencia Artificial, 1ro a 4to año, Gamificación, Héctor Mota, Puerto Ordaz">
     <meta name="author" content="Héctor Mota Zorrilla">
-    <meta name="theme-color" content="#0b0f17">
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://aula.motazorrilla.com/montecarmelo-smart-school/">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -27,20 +27,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0b0f17;
-            --surface: #111827;
-            --surface-card: #151b2d;
-            --border: rgba(255, 255, 255, 0.1);
-            --border-highlight: rgba(168, 85, 247, 0.45);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --purple: #a855f7;
-            --purple-light: #c084fc;
-            --amber: #fbbf24;
-            --primary: #38bdf8;
-            --emerald: #10b981;
-            --emerald-light: #34d399;
-            --pink: #f43f5e;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-card: #ffffff;
+            --border: #e2e8f0;
+            --border-highlight: rgba(124, 58, 237, 0.35);
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --purple: #7c3aed;
+            --purple-light: #9333ea;
+            --amber: #d97706;
+            --primary: #0284c7;
+            --emerald: #059669;
+            --emerald-light: #10b981;
+            --pink: #e11d48;
             --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -52,9 +52,9 @@
             min-height: 100vh; 
             padding: 30px 20px 60px; 
             line-height: 1.6; 
-            background-image: radial-gradient(at 85% 12%, rgba(168, 85, 247, 0.16) 0px, transparent 50%),
-                              radial-gradient(at 15% 85%, rgba(56, 189, 248, 0.14) 0px, transparent 50%),
-                              radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0px, transparent 60%);
+            background-image: radial-gradient(at 85% 12%, rgba(124, 58, 237, 0.07) 0px, transparent 50%),
+                              radial-gradient(at 15% 85%, rgba(2, 132, 199, 0.06) 0px, transparent 50%),
+                              radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.03) 0px, transparent 60%);
             background-attachment: fixed;
         }
 
@@ -80,7 +80,7 @@
             transition: transform 0.2s, color 0.2s;
         }
         .back-link:hover {
-            color: #fff;
+            color: #0f172a;
             transform: translateX(-3px);
         }
         .brand-logo-link {
@@ -109,13 +109,13 @@
 
         /* HERO VIBRANTE Y ALEGRE */
         .module-hero {
-            background: linear-gradient(145deg, rgba(168, 85, 247, 0.16), rgba(15, 23, 42, 0.92));
-            border: 1px solid var(--border-highlight);
+            background: linear-gradient(145deg, #ffffff, #faf5ff);
+            border: 1px solid #ddd6fe;
             border-radius: 24px;
             padding: 42px;
             margin-bottom: 36px;
             position: relative;
-            box-shadow: 0 20px 50px -15px rgba(168, 85, 247, 0.25);
+            box-shadow: 0 10px 35px -10px rgba(124, 58, 237, 0.12);
             overflow: hidden;
         }
         .module-hero::before {
@@ -132,9 +132,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(90deg, rgba(168, 85, 247, 0.25), rgba(56, 189, 248, 0.2));
-            color: #f1f5f9;
-            border: 1px solid rgba(168, 85, 247, 0.4);
+            background: #f5f3ff;
+            color: #6d28d9;
+            border: 1px solid #ddd6fe;
             font-size: 12.5px;
             font-weight: 800;
             padding: 5px 16px;
@@ -142,24 +142,24 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 16px;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 12px rgba(124, 58, 237, 0.1);
         }
         .module-title {
             font-size: clamp(26px, 4.5vw, 38px);
             font-weight: 900;
             line-height: 1.25;
             margin-bottom: 14px;
-            color: #ffffff;
+            color: #0f172a;
             letter-spacing: -0.02em;
         }
         .module-title span.highlight-vr {
-            background: linear-gradient(90deg, #38bdf8, #c084fc, #fbbf24);
+            background: linear-gradient(90deg, #0284c7, #7c3aed, #d97706);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .module-sub {
             font-size: 15.5px;
-            color: #cbd5e1;
+            color: #334155;
             max-width: 920px;
             margin-bottom: 24px;
             line-height: 1.68;
@@ -171,7 +171,7 @@
             gap: 10px;
         }
         .chip {
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
             border: 1px solid var(--border);
             padding: 7px 14px;
             border-radius: 10px;
@@ -180,25 +180,26 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #e2e8f0;
+            color: #1e293b;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
             transition: all 0.2s ease;
         }
         .chip:hover {
-            border-color: rgba(255, 255, 255, 0.25);
+            border-color: #cbd5e1;
             transform: translateY(-2px);
         }
-        .chip strong { color: #fff; }
+        .chip strong { color: #0f172a; }
         .chip.vr-glow {
-            background: rgba(56, 189, 248, 0.12);
-            border-color: rgba(56, 189, 248, 0.4);
-            color: #7dd3fc;
+            background: #e0f2fe;
+            border-color: #bae6fd;
+            color: #0369a1;
         }
 
         /* BANNER DESTACADO META QUEST 3 VR */
         .vr-showcase-box {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.16));
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.3), 0 0 25px rgba(168, 85, 247, 0.15);
+            background: linear-gradient(135deg, #f0fdf4, #f8fafc);
+            border: 1px solid #bbf7d0;
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.1);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 40px;
@@ -212,15 +213,15 @@
             left: 0;
             width: 6px;
             height: 100%;
-            background: linear-gradient(180deg, #38bdf8, #a855f7, #fbbf24);
+            background: linear-gradient(180deg, #0284c7, #7c3aed, #d97706);
         }
         .vr-badge-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(56, 189, 248, 0.2);
-            color: var(--primary);
-            border: 1px solid rgba(56, 189, 248, 0.35);
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
             font-size: 11.5px;
             font-weight: 800;
             padding: 4px 12px;
@@ -232,7 +233,7 @@
         .vr-title {
             font-size: 22px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -241,7 +242,7 @@
         }
         .vr-desc {
             font-size: 14px;
-            color: #cbd5e1;
+            color: #334155;
             line-height: 1.65;
             margin-bottom: 20px;
             max-width: 950px;
@@ -253,18 +254,19 @@
             margin-bottom: 22px;
         }
         .vr-card {
-            background: rgba(0, 0, 0, 0.3);
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 16px;
             display: flex;
             flex-direction: column;
             gap: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
         .vr-card-title {
             font-size: 14px;
             font-weight: 700;
-            color: #fff;
+            color: #0f172a;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -303,7 +305,7 @@
         .section-heading {
             font-size: 22px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -333,6 +335,7 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
         }
         .mod-card::before {
             content: '';
@@ -348,9 +351,9 @@
         .mod-card.m4::before { background: linear-gradient(90deg, #a855f7, #3b82f6); }
 
         .mod-card:hover {
-            border-color: var(--border-highlight);
+            border-color: #cbd5e1;
             transform: translateY(-4px);
-            box-shadow: 0 16px 36px -10px rgba(0,0,0,0.55);
+            box-shadow: 0 16px 36px -8px rgba(0,0,0,0.08);
         }
 
         .mod-tag {
@@ -370,13 +373,13 @@
         .mod-title {
             font-size: 18px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             margin-bottom: 12px;
             line-height: 1.35;
         }
         .mod-desc {
-            font-size: 13px;
-            color: var(--text-muted);
+            font-size: 13.5px;
+            color: #475569;
             line-height: 1.6;
             margin-bottom: 18px;
             flex-grow: 1;
@@ -388,14 +391,14 @@
             flex-direction: column;
             gap: 8px;
             margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.025);
+            background: #f8fafc;
             padding: 14px;
             border-radius: 12px;
             border: 1px solid var(--border);
         }
         .challenges-list li {
             font-size: 12.5px;
-            color: #cbd5e1;
+            color: #1e293b;
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -414,11 +417,11 @@
         .tech-pill {
             font-size: 11px;
             font-family: var(--font-mono);
-            background: rgba(255, 255, 255, 0.04);
+            background: #f1f5f9;
             border: 1px solid var(--border);
             padding: 3px 8px;
             border-radius: 6px;
-            color: #94a3b8;
+            color: #334155;
         }
 
         .btn-card-launch {
@@ -464,6 +467,7 @@
             border-radius: 20px;
             padding: 32px;
             margin-bottom: 45px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
         .method-grid {
             display: grid;
@@ -472,7 +476,7 @@
             margin-top: 24px;
         }
         .method-step {
-            background: rgba(255, 255, 255, 0.03);
+            background: #f8fafc;
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 22px;
@@ -491,18 +495,18 @@
         .method-title {
             font-size: 16px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
         }
         .method-text {
             font-size: 13px;
-            color: var(--text-muted);
+            color: #475569;
             line-height: 1.55;
         }
 
         /* GAMIFICATION BADGES */
         .gamification-box {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5), rgba(17, 24, 39, 0.9));
-            border: 1px solid var(--border-highlight);
+            background: linear-gradient(145deg, #fdf4ff, #f8fafc);
+            border: 1px solid #f0abfc;
             border-radius: 20px;
             padding: 32px;
             margin-bottom: 45px;
@@ -514,7 +518,7 @@
             margin-top: 20px;
         }
         .badge-card {
-            background: rgba(255, 255, 255, 0.04);
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 18px;
@@ -523,6 +527,7 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             transition: transform 0.2s, border-color 0.2s;
         }
         .badge-card:hover {
@@ -544,7 +549,7 @@
         .badge-name {
             font-size: 13.5px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
         }
         .badge-req {
             font-size: 11px;
@@ -555,6 +560,7 @@
         /* INSTRUCTOR PROFILE */
         .instructor-card {
             background: var(--surface);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 32px;
@@ -581,7 +587,7 @@
         .instructor-bio h3 {
             font-size: 21px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             margin-bottom: 6px;
         }
         .instructor-bio .role {
@@ -593,7 +599,7 @@
         }
         .instructor-bio p {
             font-size: 14px;
-            color: var(--text-muted);
+            color: #475569;
             line-height: 1.65;
         }
 
@@ -601,20 +607,20 @@
         .action-box {
             text-align: center;
             padding: 42px 24px;
-            background: linear-gradient(180deg, rgba(168, 85, 247, 0.12), transparent);
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            background: linear-gradient(180deg, #faf5ff, #ffffff);
+            border: 1px solid #ddd6fe;
             border-radius: 22px;
-            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.1);
         }
         .action-box h4 {
             font-size: 23px;
             font-weight: 900;
             margin-bottom: 10px;
-            color: #fff;
+            color: #0f172a;
         }
         .action-box p {
             font-size: 14.5px;
-            color: var(--text-muted);
+            color: #475569;
             max-width: 680px;
             margin: 0 auto 24px;
             line-height: 1.6;

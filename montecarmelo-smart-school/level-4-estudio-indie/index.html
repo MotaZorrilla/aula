@@ -9,7 +9,7 @@
     <meta name="description" content="El nivel supremo de 4° año: funda tu estudio indie de videojuegos, incrusta modelos 3D con Three.js, crea tu video pitch con IA y presenta tu demo en Meta Quest 3.">
     <meta name="keywords" content="Level 4, Game Studio, Three.js, Blender 3D, Meta Quest 3, Video Pitch IA, Portafolio Web, Monte Carmelo, Héctor Mota">
     <meta name="author" content="Héctor Mota Zorrilla">
-    <meta name="theme-color" content="#0b0f17">
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://aula.motazorrilla.com/montecarmelo-smart-school/level-4-estudio-indie/">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -31,20 +31,20 @@
 
     <style>
         :root {
-            --bg: #0b0f17;
-            --surface: #111827;
-            --surface-card: #151d30;
-            --surface-hover: #1c263e;
-            --border: rgba(255, 255, 255, 0.1);
-            --border-highlight: rgba(168, 85, 247, 0.5);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --purple: #a855f7;
-            --purple-light: #c084fc;
-            --amber: #fbbf24;
-            --primary: #38bdf8;
-            --emerald: #10b981;
-            --pink: #f43f5e;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-card: #ffffff;
+            --surface-hover: #f1f5f9;
+            --border: #e2e8f0;
+            --border-highlight: rgba(124, 58, 237, 0.35);
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --purple: #7c3aed;
+            --purple-light: #9333ea;
+            --amber: #d97706;
+            --primary: #0284c7;
+            --emerald: #059669;
+            --pink: #e11d48;
             --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -56,9 +56,9 @@
             min-height: 100vh;
             padding: 30px 20px 70px;
             line-height: 1.6;
-            background-image: radial-gradient(at 80% 10%, rgba(168, 85, 247, 0.18) 0px, transparent 55%),
-                              radial-gradient(at 15% 75%, rgba(56, 189, 248, 0.16) 0px, transparent 55%),
-                              radial-gradient(at 50% 50%, rgba(245, 158, 11, 0.06) 0px, transparent 65%);
+            background-image: radial-gradient(at 80% 10%, rgba(124, 58, 237, 0.06) 0px, transparent 55%),
+                              radial-gradient(at 15% 75%, rgba(2, 132, 199, 0.05) 0px, transparent 55%),
+                              radial-gradient(at 50% 50%, rgba(217, 119, 6, 0.03) 0px, transparent 65%);
             background-attachment: fixed;
         }
 
@@ -129,13 +129,13 @@
 
         /* HERO */
         .hero {
-            background: linear-gradient(145deg, rgba(168, 85, 247, 0.22), rgba(17, 24, 39, 0.95));
-            border: 1px solid var(--border-highlight);
+            background: linear-gradient(145deg, #ffffff, #faf5ff);
+            border: 1px solid #ddd6fe;
             border-radius: 24px;
             padding: 44px;
             margin-bottom: 40px;
             position: relative;
-            box-shadow: 0 20px 50px -15px rgba(168, 85, 247, 0.35);
+            box-shadow: 0 10px 35px -10px rgba(124, 58, 237, 0.1);
             overflow: hidden;
         }
         .hero::before {
@@ -169,7 +169,7 @@
             font-weight: 900;
             line-height: 1.25;
             margin-bottom: 16px;
-            color: #ffffff;
+            color: #0f172a;
         }
         .hero-title span {
             background: linear-gradient(135deg, #c084fc, #38bdf8, #fbbf24);
@@ -178,7 +178,7 @@
         }
         .hero-sub {
             font-size: 16px;
-            color: #cbd5e1;
+            color: #334155;
             max-width: 820px;
             line-height: 1.7;
             margin-bottom: 24px;
@@ -218,7 +218,7 @@
         .section-title {
             font-size: 22px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -245,6 +245,7 @@
         /* FORM PANEL */
         .panel {
             background: var(--surface);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 28px;
@@ -257,16 +258,16 @@
             display: block;
             font-size: 13px;
             font-weight: 700;
-            color: #e2e8f0;
+            color: #0f172a;
             margin-bottom: 8px;
         }
         .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
             border-radius: 12px;
-            color: #fff;
+            color: #0f172a;
             font-size: 14px;
             outline: none;
             transition: all 0.2s;
@@ -282,8 +283,8 @@
             margin-top: 6px;
         }
         .emblem-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
             border-radius: 10px;
             padding: 8px 12px;
             font-size: 20px;
@@ -339,17 +340,17 @@
 
         /* LIVE STUDIO LANDING PREVIEW */
         .landing-card {
-            background: linear-gradient(160deg, #131b2e, #0e1424);
+            background: #ffffff;
             border: 2px solid var(--purple);
             border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.06);
             transition: all 0.3s;
             position: relative;
         }
         .landing-header {
             padding: 30px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(56, 189, 248, 0.15));
+            background: linear-gradient(135deg, #f5f3ff, #e0f2fe);
             border-bottom: 1px solid var(--border);
             text-align: center;
             position: relative;
@@ -368,7 +369,7 @@
         .landing-studio-name {
             font-size: 26px;
             font-weight: 900;
-            color: #fff;
+            color: #0f172a;
             letter-spacing: -0.02em;
             margin-bottom: 6px;
         }
@@ -426,7 +427,7 @@
         .landing-game-title {
             font-size: 18px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             margin-bottom: 4px;
             display: flex;
             align-items: center;
@@ -440,8 +441,8 @@
             letter-spacing: 0.05em;
         }
         .pitch-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed rgba(168, 85, 247, 0.4);
+            background: #f8fafc;
+            border: 1px dashed #7c3aed;
             border-radius: 12px;
             padding: 16px;
             margin: 16px 0;
@@ -450,7 +451,7 @@
             line-height: 1.6;
         }
         .pitch-box strong {
-            color: #fff;
+            color: #0f172a;
         }
 
         /* QR CODE & PITCH CTA */
@@ -516,6 +517,7 @@
         }
         .mile-card {
             background: var(--surface);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 24px;
@@ -539,14 +541,14 @@
         .mile-title {
             font-size: 16px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .mile-desc {
             font-size: 13px;
-            color: var(--text-muted);
+            color: #475569;
             line-height: 1.55;
             flex-grow: 1;
         }
@@ -554,17 +556,17 @@
             align-self: flex-start;
             font-size: 11px;
             font-family: var(--font-mono);
-            background: rgba(255, 255, 255, 0.04);
+            background: #f1f5f9;
             border: 1px solid var(--border);
             padding: 3px 8px;
             border-radius: 6px;
-            color: #cbd5e1;
+            color: #334155;
         }
 
         /* BOSS BATTLE 4 RUBRIC INTERACTIVA */
         .boss-box {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5), rgba(17, 24, 39, 0.95));
-            border: 1px solid var(--border-highlight);
+            background: linear-gradient(145deg, #ffffff, #faf5ff);
+            border: 1px solid #ddd6fe;
             border-radius: 22px;
             padding: 36px;
             margin-bottom: 48px;
@@ -576,7 +578,7 @@
             margin: 24px 0;
         }
         .rubric-card {
-            background: rgba(0, 0, 0, 0.35);
+            background: #f8fafc;
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 18px;
@@ -584,13 +586,13 @@
             transition: all 0.2s;
         }
         .rubric-card.active {
-            border-color: var(--emerald);
-            background: rgba(16, 185, 129, 0.12);
+            border-color: #059669;
+            background: #ecfdf5;
         }
         .rubric-title {
             font-size: 14px;
             font-weight: 800;
-            color: #fff;
+            color: #0f172a;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -604,12 +606,12 @@
         }
         .rubric-text {
             font-size: 12px;
-            color: var(--text-muted);
+            color: #475569;
             line-height: 1.45;
         }
 
         .score-bar {
-            background: rgba(0, 0, 0, 0.4);
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 18px 24px;
@@ -622,7 +624,7 @@
         .score-display {
             font-size: 24px;
             font-weight: 900;
-            color: #fff;
+            color: #0f172a;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -642,8 +644,8 @@
 
         /* WHATSAPP CTA */
         .cta-banner {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(16, 185, 129, 0.15));
-            border: 1px solid rgba(168, 85, 247, 0.4);
+            background: linear-gradient(135deg, #f5f3ff, #ecfdf5);
+            border: 1px solid #ddd6fe;
             border-radius: 22px;
             padding: 38px;
             text-align: center;
@@ -652,12 +654,12 @@
         .cta-banner h3 {
             font-size: 24px;
             font-weight: 900;
-            color: #fff;
+            color: #0f172a;
             margin-bottom: 10px;
         }
         .cta-banner p {
             font-size: 15px;
-            color: #cbd5e1;
+            color: #475569;
             max-width: 700px;
             margin: 0 auto 24px;
             line-height: 1.6;
@@ -667,7 +669,7 @@
             align-items: center;
             gap: 10px;
             background: #25D366;
-            color: #0b0f17;
+            color: #ffffff;
             font-weight: 800;
             font-size: 15.5px;
             padding: 14px 30px;
