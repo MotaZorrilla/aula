@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual & Plataforma de Innovación Educativa · MotaZorrilla</title>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Aula Virtual & Plataforma de Innovación Educativa · MotaZorrilla">
+    <meta name="description" content="Entorno académico y experimental de Héctor Mota Zorrilla: Formación de Postgrado en ConTech, BIM e Inteligencia Artificial (UGMA) y Living Labs Escolares (Colegio Monte Carmelo).">
+    <meta name="keywords" content="Aula Virtual, MotaZorrilla, Héctor Mota, UGMA, Gerencia de Obras, ConTech, BIM, ISO 19650, Monte Carmelo, Guayana Smart School, Living Lab, IoT, ESP32, Sostenibilidad">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b0f17">
+    <link rel="canonical" href="https://aula.motazorrilla.com/">
+
+    <!-- Favicons & Touch Icons (MotaZorrilla Signature) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/jpeg" href="/assets/img/profile-img.jpeg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/profile-img.jpeg">
+
+    <!-- Open Graph / WhatsApp Preview Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aula.motazorrilla.com/">
+    <meta property="og:site_name" content="MotaZorrilla · Aula Virtual & Innovación Educativa">
+    <meta property="og:title" content="Aula Virtual & Plataforma de Innovación Educativa · MotaZorrilla">
+    <meta property="og:description" content="Entorno académico de formación de postgrado en ConTech y BIM (UGMA) y Living Labs de Ciudad Inteligente (Colegio Monte Carmelo). Facilitador: Ing. Héctor Mota.">
+    <meta property="og:image" content="https://aula.motazorrilla.com/assets/img/profile-img.jpeg">
+    <meta property="og:image:secure_url" content="https://aula.motazorrilla.com/assets/img/profile-img.jpeg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="MotaZorrilla Aula Virtual & Innovación Educativa">
+    <meta property="og:locale" content="es_LA">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://aula.motazorrilla.com/">
+    <meta name="twitter:title" content="Aula Virtual & Plataforma de Innovación Educativa · MotaZorrilla">
+    <meta name="twitter:description" content="Entorno académico de formación de postgrado en ConTech y BIM (UGMA) y Living Labs de Ciudad Inteligente (Colegio Monte Carmelo).">
+    <meta name="twitter:image" content="https://aula.motazorrilla.com/assets/img/profile-img.jpeg">
+    <meta name="twitter:site" content="@motazorrilla">
+    <meta name="twitter:creator" content="@motazorrilla">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f17;
+            --surface: #111827;
+            --surface-hover: #1e293b;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.2);
+            --emerald: #10b981;
+            --emerald-glow: rgba(16, 185, 129, 0.2);
+            --amber: #f59e0b;
+            --amber-glow: rgba(245, 158, 11, 0.2);
+            --purple: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.2);
+            --blue: #3b82f6;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            padding: 40px 20px; 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* HEADER */
+        .lab-header { margin-bottom: 40px; text-align: center; }
+
+        /* Brand Capsule Header */
+        .brand-capsule-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            margin-bottom: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .brand-capsule-link:hover {
+            transform: translateY(-2px);
+        }
+        .brand-capsule {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 20px 8px 10px;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 9999px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.15);
+            transition: all 0.3s ease;
+        }
+        .brand-capsule-link:hover .brand-capsule {
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.3);
+            background: rgba(30, 41, 59, 0.9);
+        }
+        .brand-capsule-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+        .brand-capsule-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.2;
+        }
+        .brand-capsule-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .brand-capsule-tag {
+            font-size: 11px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            letter-spacing: 0.04em;
+        }
+
+        .lab-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        .pulse-dot { 
+            width: 8px; 
+            height: 8px; 
+            border-radius: 50%; 
+            background: var(--emerald); 
+            box-shadow: 0 0 10px var(--emerald); 
+            animation: pulse 2s infinite; 
+        }
+        @keyframes pulse { 
+            0%, 100% { opacity: 1; transform: scale(1); } 
+            50% { opacity: 0.4; transform: scale(0.85); } 
+        }
+
+        .lab-title { 
+            font-size: clamp(32px, 5vw, 46px); 
+            font-weight: 800; 
+            letter-spacing: -0.03em; 
+            margin-bottom: 12px; 
+            background: linear-gradient(135deg, #fff 30%, #38bdf8 70%, #94a3b8); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .lab-subtitle { 
+            font-size: 16px; 
+            color: var(--text-muted); 
+            max-width: 780px; 
+            margin: 0 auto; 
+            font-weight: 400;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .stat-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .stat-info { display: flex; flex-direction: column; }
+        .stat-val { font-size: 20px; font-weight: 800; color: #fff; font-family: var(--font-mono); }
+        .stat-lbl { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+        /* SECTION HEADER */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 14px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* MAIN ACADEMIC CARDS GRID (2 CARDS) */
+        .academic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 640px) {
+            .academic-grid { grid-template-columns: 1fr; }
+        }
+
+        .program-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transition: opacity 0.3s;
+        }
+        .program-card.ugma::before {
+            background: linear-gradient(90deg, #10b981, #38bdf8);
+        }
+        .program-card.montecarmelo::before {
+            background: linear-gradient(90deg, #f59e0b, #a855f7);
+        }
+        .program-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+        .program-card.ugma:hover {
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.15);
+        }
+        .program-card.montecarmelo:hover {
+            box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.15);
+        }
+
+        .card-body {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .program-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .program-badge.ugma-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .program-badge.mc-badge {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .status-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-family: var(--font-mono);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .status-badge.live {
+            color: #34d399;
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .program-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .program-inst {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .program-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* THEMATIC TAGS */
+        .thematic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .tag-pill {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: #cbd5e1;
+        }
+
+        /* HIGHLIGHTS CHECKLIST */
+        .checklist {
+            list-style: none;
+            margin-bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .checklist li {
+            font-size: 13px;
+            color: #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.45;
+        }
+        .checklist li svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ACTIONS */
+        .card-actions {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .btn-enter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .btn-enter.ugma-btn {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        .btn-enter.ugma-btn:hover {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+            transform: translateY(-1px);
+        }
+        .btn-enter.mc-btn {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+        }
+        .btn-enter.mc-btn:hover {
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .meta-footer {
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* PROTOTYPE / CTA CARD */
+        .cta-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.08);
+            border-radius: 20px;
+            padding: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--purple));
+        }
+        .cta-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media (min-width: 860px) {
+            .cta-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        .cta-text h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cta-text p {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 680px;
+            line-height: 1.6;
+        }
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: #0b0f17;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+        }
+        .btn-wa:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header class="lab-header">
+            <!-- Brand Capsule -->
+            <a href="https://motazorrilla.com" target="_blank" rel="noopener noreferrer" class="brand-capsule-link" title="Visitar MotaZorrilla Hub Principal">
+                <div class="brand-capsule">
+                    <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo" class="brand-capsule-img">
+                    <div class="brand-capsule-text">
+                        <span class="brand-capsule-title">&lt; MZ &gt; MotaZorrilla &lt;/ &gt;</span>
+                        <span class="brand-capsule-tag">AULA VIRTUAL &amp; I+D+i</span>
+                    </div>
+                </div>
+            </a>
+
+            <div>
+                <div class="lab-badge">
+                    <span class="pulse-dot"></span>
+                    PLATAFORMA ACADÉMICA &amp; LIVING LABS
+                </div>
+            </div>
+            <h1 class="lab-title">MotaZorrilla Aula Virtual</h1>
+            <p class="lab-subtitle">
+                Ecosistema de investigación, docencia y experimentación aplicada de Héctor Mota Zorrilla. Integración de ingeniería digital (ConTech/BIM) para formación de postgrado y metodologías activas STEM+A para instituciones educativas.
+            </p>
+        </header>
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-info">
+                    <span class="stat-val">02</span>
+                    <span class="stat-lbl">Programas Académicos</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-info">
+                    <span class="stat-val">30 Horas</span>
+                    <span class="stat-lbl">Diplomado Gerencia UGMA</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📡</div>
+                <div class="stat-info">
+                    <span class="stat-val">K-12</span>
+                    <span class="stat-lbl">Living Lab Monte Carmelo</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-info">
+                    <span class="stat-val">IoT + IA</span>
+                    <span class="stat-lbl">Tecnología de Impacto</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary)">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Programas Académicos &amp; Proyectos Institucionales
+                </h2>
+                <span class="section-desc">Selecciona un entorno para acceder al contenido curricular, recursos y telemetría</span>
+            </div>
+        </div>
+
+        <!-- ACADEMIC PROJECTS CARDS (2 CARDS) -->
+        <div class="academic-grid">
+
+            <!-- CARD 1: DIPLOMADO UGMA -->
+            <div class="program-card ugma">
+                <div class="card-body">
+                    <div class="card-top">
+                        <span class="program-badge ugma-badge">
+                            🏛️ Postgrado UGMA · ConTech
+                        </span>
+                        <span class="status-badge live">
+                            ● Convocatoria Activa
+                        </span>
+                    </div>
+
+                    <h3 class="program-title">Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras</h3>
+                    <div class="program-inst">
+                        <span>Universidad Nororiental Gran Mariscal de Ayacucho (UGMA) · Diplomado en Gerencia de Obras</span>
+                    </div>
+
+                    <p class="program-desc">
+                        Programa avanzado de 30 horas académicas diseñado para ingenieros civiles, arquitectos y directores de proyectos. Aborda la transformación digital del sector construcción mediante estándares internacionales openBIM (ISO 19650), automatización con IA y sustentabilidad energética.
+                    </p>
+
+                    <div class="thematic-tags">
+                        <span class="tag-pill">ISO 19650 CDE</span>
+                        <span class="tag-pill">Clash Detection MEP</span>
+                        <span class="tag-pill">Simulación 4D/5D</span>
+                        <span class="tag-pill">IA &amp; Bots de Obra</span>
+                        <span class="tag-pill">Eficiencia Solar</span>
+                    </div>
+
+                    <ul class="checklist">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Common Data Environment (CDE):</strong> Flujos de trabajo colaborativos y gestión de modelos IFC/BCF.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Detección de Interferencias:</strong> Coordinación espacial automatizada entre arquitectura, estructuras e instalaciones.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Planificación Dinámica 4D/5D:</strong> Vinculación del cronograma de obra y curvas de costo sobre el gemelo digital.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Inteligencia Artificial en Construcción:</strong> Visión computacional para avance de obra y reportes automatizados.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Eficiencia Energética:</strong> Diseño bioclimático y dimensionamiento de sistemas fotovoltaicos en edificaciones.</span>
+                        </li>
+                    </ul>
+
+                    <div class="card-actions">
+                        <a href="/ugma-gerencia-obras/" class="btn-enter ugma-btn">
+                            Ingresar al Entorno UGMA
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <div class="meta-footer">
+                            <span>Facilitador: Ing. Héctor Mota Zorrilla</span>
+                            <span>Modalidad: Presencial / Híbrida</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2: COLEGIO MONTE CARMELO -->
+            <div class="program-card montecarmelo">
+                <div class="card-body">
+                    <div class="card-top">
+                        <span class="program-badge mc-badge">
+                            🏫 Monte Carmelo · Living Lab
+                        </span>
+                        <span class="status-badge live">
+                            ● Fase Diseño &amp; Piloto
+                        </span>
+                    </div>
+
+                    <h3 class="program-title">Programa Transversal: "Guayana Smart School"</h3>
+                    <div class="program-inst">
+                        <span>Colegio Monte Carmelo · Innovación Educativa &amp; Sostenibilidad (Puerto Ordaz)</span>
+                    </div>
+
+                    <p class="program-desc">
+                        Iniciativa pedagógica integral que convierte el campus escolar en un laboratorio vivo (Living Lab) de urbanismo regenerativo, tecnología IoT y ecología activa. Desde Educación Inicial hasta Media General, los estudiantes investigan y resuelven desafíos reales de su entorno.
+                    </p>
+
+                    <div class="thematic-tags">
+                        <span class="tag-pill">Red IoT (ESP32)</span>
+                        <span class="tag-pill">Huertos Automatizados</span>
+                        <span class="tag-pill">Robótica &amp; STEM+A</span>
+                        <span class="tag-pill">Urbanismo Guayana 2050</span>
+                        <span class="tag-pill">Feria Científica</span>
+                    </div>
+
+                    <ul class="checklist">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Red Escolar de Sensores IoT:</strong> Monitoreo en tiempo real de CO2, microclima, temperatura y ruido ambiental con ESP32.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Huerto Inteligente &amp; Riego Automatizado:</strong> Sensores de humedad de suelo, compostaje escolar y soberanía alimentaria.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Robótica y Programación Creativa:</strong> Prototipado rápido con microcontroladores Arduino/ESP32 y pensamiento computacional.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Maqueta Interactiva "Guayana 2050":</strong> Representación a escala de movilidad sustentable, energía solar y áreas verdes.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Feria Científica "Smart School":</strong> Exposición de soluciones y dashboards ecológicos desarrollados por los estudiantes.</span>
+                        </li>
+                    </ul>
+
+                    <div class="card-actions">
+                        <a href="/montecarmelo-smart-school/" class="btn-enter mc-btn">
+                            Explorar Proyecto Monte Carmelo
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <div class="meta-footer">
+                            <span>Metodología: ABP (Aprendizaje Basado en Proyectos)</span>
+                            <span>Alcance: Transversal K-12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COLLABORATION / CALL TO ACTION CARD -->
+        <div class="cta-card">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#25D366">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                        Alianzas Académicas, Asesorías &amp; Living Labs
+                    </h3>
+                    <p>
+                        ¿Tienes una propuesta académica, proyecto de investigación o deseas implementar un Living Lab tecnológico en tu universidad o colegio? Habla directamente con el Ing. Héctor Mota Zorrilla para coordinar conferencias, talleres o programas a la medida.
+                    </p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/584148572412?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20me%20comunico%20desde%20Aula%20Virtual%20MotaZorrilla%20(aula.motazorrilla.com)..." target="_blank" rel="noopener noreferrer" class="btn-wa">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        Contactar vía WhatsApp
+                    </a>
+                    <a href="https://lab.motazorrilla.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                        🧪 Laboratorio de Prototipos
+                    </a>
+                    <a href="https://motazorrilla.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                        🌐 Portafolio MotaZorrilla
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://motazorrilla.com">MotaZorrilla</a>
+                <span>·</span>
+                <a href="https://lab.motazorrilla.com">Laboratorio</a>
+                <span>·</span>
+                <a href="/ugma-gerencia-obras/">UGMA Gerencia de Obras</a>
+                <span>·</span>
+                <a href="/montecarmelo-smart-school/">Monte Carmelo Smart School</a>
+            </div>
+            <div>
+                &copy; 2026 MotaZorrilla · Desarrollado por Ing. Héctor Mota Zorrilla · Puerto Ordaz, Venezuela.
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
