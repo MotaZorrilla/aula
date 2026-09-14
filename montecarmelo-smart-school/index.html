@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guayana Smart School · Living Lab Colegio Monte Carmelo</title>
+    <title>Academia de Creadores Digitales &amp; Game Tech (1° a 4° Año) · Colegio Monte Carmelo</title>
 
-    <meta name="title" content="Guayana Smart School · Living Lab Colegio Monte Carmelo">
-    <meta name="description" content="Programa transversal de innovación educativa STEM+A, telemetría IoT con ESP32, huertos inteligentes y urbanismo sostenible para el Colegio Monte Carmelo en Puerto Ordaz.">
-    <meta name="keywords" content="Colegio Monte Carmelo, Guayana Smart School, Living Lab, STEM, Robótica Escolar, ESP32, IoT, Huerto Inteligente, Sostenibilidad, Héctor Mota">
+    <meta name="title" content="Academia de Creadores Digitales &amp; Game Tech (1° a 4° Año) · Colegio Monte Carmelo">
+    <meta name="description" content="Programa escolar gamificado de 4 niveles para adolescentes (12 a 16 años): IA creativa, modelado 3D en Blender, minijuegos web y portafolios digitales con gremios y XP. Docente: Ing. Héctor Mota.">
+    <meta name="keywords" content="Colegio Monte Carmelo, Gamificación, Blender 3D, Videojuegos Web, JavaScript, Inteligencia Artificial, 1ro a 4to año, Low-Poly, Three.js, Héctor Mota, Puerto Ordaz">
     <meta name="author" content="Héctor Mota Zorrilla">
     <meta name="theme-color" content="#0b0f17">
     <link rel="canonical" href="https://aula.motazorrilla.com/montecarmelo-smart-school/">
@@ -18,13 +18,13 @@
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://aula.motazorrilla.com/montecarmelo-smart-school/">
-    <meta property="og:title" content="Guayana Smart School · Living Lab Colegio Monte Carmelo">
-    <meta property="og:description" content="Ecosistema de aprendizaje activo: Red IoT escolar, huertos automatizados y maquetas de ciudad sustentable.">
+    <meta property="og:title" content="Academia de Creadores Digitales &amp; Game Tech (1° a 4° Año) · Colegio Monte Carmelo">
+    <meta property="og:description" content="Modelado 3D en Blender, IA creativa, minijuegos en la web y portafolios digitales con dinámicas de videojuego (Gremios, XP y Boss Battles) para jóvenes de 12 a 16 años.">
     <meta property="og:image" content="https://aula.motazorrilla.com/assets/img/profile-img.jpeg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0b0f17;
@@ -38,6 +38,7 @@
             --purple-light: #c084fc;
             --amber: #f59e0b;
             --primary: #38bdf8;
+            --emerald: #10b981;
             --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -49,7 +50,8 @@
             min-height: 100vh; 
             padding: 30px 20px 60px; 
             line-height: 1.6; 
-            background-image: radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.09) 0px, transparent 50%);
+            background-image: radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+                              radial-gradient(at 10% 90%, rgba(56, 189, 248, 0.08) 0px, transparent 50%);
             background-attachment: fixed;
         }
 
@@ -104,7 +106,7 @@
 
         /* HERO */
         .module-hero {
-            background: linear-gradient(145deg, rgba(168, 85, 247, 0.08), rgba(17, 24, 39, 0.8));
+            background: linear-gradient(145deg, rgba(168, 85, 247, 0.12), rgba(17, 24, 39, 0.9));
             border: 1px solid var(--border-highlight);
             border-radius: 20px;
             padding: 40px;
@@ -116,9 +118,9 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(168, 85, 247, 0.15);
+            background: rgba(168, 85, 247, 0.18);
             color: var(--purple-light);
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            border: 1px solid rgba(168, 85, 247, 0.35);
             font-size: 12px;
             font-weight: 700;
             padding: 4px 14px;
@@ -128,17 +130,18 @@
             margin-bottom: 16px;
         }
         .module-title {
-            font-size: clamp(26px, 4.5vw, 38px);
+            font-size: clamp(26px, 4.5vw, 36px);
             font-weight: 800;
             line-height: 1.25;
             margin-bottom: 14px;
             color: #ffffff;
         }
         .module-sub {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
-            max-width: 850px;
+            max-width: 900px;
             margin-bottom: 24px;
+            line-height: 1.65;
         }
 
         .meta-chips {
@@ -160,58 +163,112 @@
         }
         .chip strong { color: #fff; }
 
-        /* GRID SECTIONS */
+        /* SECTION HEADING */
         .section-heading {
             font-size: 22px;
             font-weight: 800;
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        .section-intro {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 26px;
+            max-width: 880px;
+        }
 
-        .action-grid {
+        /* 4 MODULES GRID */
+        .modules-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 22px;
+            margin-bottom: 45px;
         }
-        .action-card {
+        .mod-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 18px;
+            padding: 26px;
             display: flex;
             flex-direction: column;
-            transition: all 0.25s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .action-card:hover {
+        .mod-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .mod-card.m1::before { background: linear-gradient(90deg, #38bdf8, #818cf8); }
+        .mod-card.m2::before { background: linear-gradient(90deg, #f59e0b, #ec4899); }
+        .mod-card.m3::before { background: linear-gradient(90deg, #10b981, #06b6d4); }
+        .mod-card.m4::before { background: linear-gradient(90deg, #a855f7, #3b82f6); }
+
+        .mod-card:hover {
             border-color: var(--border-highlight);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.5);
         }
-        .card-category {
+
+        .mod-tag {
             font-family: var(--font-mono);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--purple-light);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            display: inline-block;
         }
-        .card-title {
-            font-size: 17px;
-            font-weight: 700;
+        .mod-card.m1 .mod-tag { color: #38bdf8; }
+        .mod-card.m2 .mod-tag { color: #f59e0b; }
+        .mod-card.m3 .mod-tag { color: #34d399; }
+        .mod-card.m4 .mod-tag { color: #c084fc; }
+
+        .mod-title {
+            font-size: 18px;
+            font-weight: 800;
             color: #fff;
             margin-bottom: 12px;
             line-height: 1.35;
         }
-        .card-desc {
+        .mod-desc {
             font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 16px;
-            line-height: 1.55;
+            line-height: 1.6;
+            margin-bottom: 18px;
             flex-grow: 1;
         }
+
+        .challenges-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .challenges-list li {
+            font-size: 12px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .challenges-list li span.bullet {
+            color: var(--purple-light);
+            font-weight: bold;
+        }
+
         .tech-pills {
             display: flex;
             flex-wrap: wrap;
@@ -227,56 +284,179 @@
             color: #94a3b8;
         }
 
-        /* PROGRESSION BY LEVEL */
-        .levels-container {
+        /* METHODOLOGY SECTION: RAIDS DE 90 MIN */
+        .methodology-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 45px;
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .method-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .method-time {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--amber);
+            text-transform: uppercase;
+        }
+        .method-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .method-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* GAMIFICATION BADGES */
+        .gamification-box {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5), rgba(17, 24, 39, 0.85));
+            border: 1px solid var(--border-highlight);
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 45px;
+        }
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .badge-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .badge-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--purple-light);
+        }
+        .badge-icon {
+            font-size: 26px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(168, 85, 247, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        .badge-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .badge-req {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* REQUIREMENTS BOX: ZERO HARDWARE COST */
+        .req-box {
+            background: rgba(16, 185, 129, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 45px;
+        }
+        .req-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #34d399;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .req-item {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+        .req-item strong { color: #fff; }
+
+        /* INSTRUCTOR PROFILE */
+        .instructor-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 30px;
             margin-bottom: 40px;
-        }
-        .levels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .level-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        .level-header {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 24px;
         }
-        .level-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 6px;
-            background: rgba(168, 85, 247, 0.2);
-            color: var(--purple-light);
+        @media (min-width: 768px) {
+            .instructor-card {
+                flex-direction: row;
+                align-items: center;
+            }
         }
-        .level-title {
-            font-size: 15px;
-            font-weight: 700;
+        .instructor-img {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--purple);
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+        }
+        .instructor-bio h3 {
+            font-size: 20px;
+            font-weight: 800;
             color: #fff;
+            margin-bottom: 6px;
         }
-        .level-desc {
+        .instructor-bio .role {
             font-size: 13px;
+            color: var(--purple-light);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .instructor-bio p {
+            font-size: 14px;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* ACTION BOX */
         .action-box {
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(180deg, rgba(168, 85, 247, 0.06), transparent);
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.08), transparent);
             border: 1px solid var(--border);
             border-radius: 18px;
         }
@@ -284,11 +464,12 @@
             font-size: 22px;
             font-weight: 800;
             margin-bottom: 10px;
+            color: #fff;
         }
         .action-box p {
             font-size: 14px;
             color: var(--text-muted);
-            max-width: 620px;
+            max-width: 650px;
             margin: 0 auto 24px;
         }
         .btn-action {
@@ -327,154 +508,238 @@
 
         <!-- HERO -->
         <div class="module-hero">
-            <span class="module-badge">Colegio Monte Carmelo · Living Lab Educativo</span>
-            <h1 class="module-title">Guayana Smart School: Laboratorio Vivo de Ciudad &amp; Sostenibilidad</h1>
+            <span class="module-badge">Colegio Monte Carmelo · Academia Game Tech &amp; 3D</span>
+            <h1 class="module-title">Academia de Creadores Digitales &amp; Game Tech (1° a 4° Año)</h1>
             <p class="module-sub">
-                Ecosistema pedagógico transversal para transformar el campus escolar en un laboratorio interactivo de telemetría ambiental, robótica educativa, agricultura urbana automatizada y maquetas interactivas de ciudad inteligente.
+                Programa de formación gamificado en 4 niveles para estudiantes de Educación Media General (12 a 16 años). Diseñado e impartido por el Ing. Héctor Mota con dinámica de videojuego (Gremios, Puntos XP y Boss Battles): Inteligencia Artificial Creativa, Modelado 3D en Blender, Código Web Lúdico y Producción de Videojuegos y Portafolios Interactivos.
             </p>
 
             <div class="meta-chips">
-                <div class="chip">🏫 <strong>Colegio Monte Carmelo</strong></div>
-                <div class="chip">🌱 <strong>Metodología ABP &amp; STEM+A</strong></div>
-                <div class="chip">📍 <strong>Puerto Ordaz, Estado Bolívar</strong></div>
-                <div class="chip">🛰️ <strong>Red IoT con Microcontroladores ESP32</strong></div>
+                <div class="chip">🎒 <strong>1° a 4° Año Media General (12-16 años)</strong></div>
+                <div class="chip">🧊 <strong>Modelado 3D con Blender &amp; WebGL</strong></div>
+                <div class="chip">👾 <strong>Código Lúdico &amp; Minijuegos Web (JS)</strong></div>
+                <div class="chip">🎨 <strong>IA Creativa, Avatares &amp; Concept Art</strong></div>
+                <div class="chip">📍 <strong>Puerto Ordaz, Venezuela</strong></div>
             </div>
         </div>
 
-        <!-- FIVE PILLARS -->
+        <!-- THE 4 PROGRESSIVE LEVELS -->
         <h2 class="section-heading">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-            Los 5 Ejes de Acción del Living Lab
+            Los 4 Niveles de Juego (1° a 4° Año)
         </h2>
+        <p class="section-intro">
+            Cada año escolar representa un nivel en su carrera como creador digital, con misiones prácticas y retos finales para exhibir en pantalla y celulares:
+        </p>
 
-        <div class="action-grid">
-            <!-- EJE 1 -->
-            <div class="action-card">
-                <span class="card-category">Eje 01 · Telemetría IoT</span>
-                <h3 class="card-title">Red de Estaciones de Calidad Ambiental Escolar</h3>
-                <p class="card-desc">
-                    Despliegue de nodos IoT basados en ESP32 para medir niveles de CO2, temperatura, humedad relativa y decibelios en salones y patios. Los datos se transmiten a una pantalla pública en el colegio para concienciación y confort térmico.
+        <div class="modules-grid">
+            <!-- LEVEL 1: 1° AÑO -->
+            <div class="mod-card m1">
+                <span class="mod-tag">Level 1 · 1° Año (12 a 13 Años)</span>
+                <h3 class="mod-title">El Despertar Creativo: Avatares, Concept Art &amp; IA</h3>
+                <p class="mod-desc">
+                    Pasar de consumidores pasivos de redes a directores de arte. Creación de avatares, identidad visual de su gremio y guiones de mundos fantásticos con Inteligencia Artificial.
                 </p>
+                <ul class="challenges-list">
+                    <li><span class="bullet">▶</span> <span><strong>Prompt Engineering:</strong> Anatomía de prompts visuales (estilos, luces, cámaras) para crear héroes digitales.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Fundación del Gremio:</strong> Escudo, bandera, lema e identidad visual única para su escuadrón.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Lore &amp; Guión:</strong> Narrativa interactiva del videojuego y tarjetas coleccionables de personajes.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Boss Battle 1:</strong> Presentación del "Artbook Digital" y póster cinematográfico oficial.</span></li>
+                </ul>
                 <div class="tech-pills">
-                    <span class="tech-pill">ESP32 Wi-Fi</span>
-                    <span class="tech-pill">Sensor MQ-135 / DHT22</span>
-                    <span class="tech-pill">Sonometría</span>
-                    <span class="tech-pill">Dashboard Escolar</span>
+                    <span class="tech-pill">Prompts IA</span>
+                    <span class="tech-pill">Avatares &amp; Lore</span>
+                    <span class="tech-pill">Concept Art</span>
+                    <span class="tech-pill">Escudos de Gremio</span>
+                    <span class="tech-pill">Artbook Digital</span>
                 </div>
             </div>
 
-            <!-- EJE 2 -->
-            <div class="action-card">
-                <span class="card-category">Eje 02 · Agro-Tecnología</span>
-                <h3 class="card-title">Huerto Inteligente &amp; Riego de Precisión Automatizado</h3>
-                <p class="card-desc">
-                    Diseño de biohuertos asistidos por electroválvulas y sensores capacitivos de humedad en suelo. Los alumnos cultivan hortalizas orgánicas mientras monitorean el consumo hídrico, compostaje de residuos orgánicos y energía solar.
+            <!-- LEVEL 2: 2° AÑO -->
+            <div class="mod-card m2">
+                <span class="mod-tag">Level 2 · 2° Año (13 a 14 Años)</span>
+                <h3 class="mod-title">La Forja 3D: De Fan de Minecraft a Modelador en Blender</h3>
+                <p class="mod-desc">
+                    Canalizar la pasión gamer hacia el modelado 3D profesional con Blender. Creación de activos para videojuegos, iluminación neón y visualización 3D en el celular.
                 </p>
+                <ul class="challenges-list">
+                    <li><span class="bullet">▶</span> <span><strong>Espacio 3D &amp; Atajos:</strong> Navegación ágil y modelado low-poly de espadas, pociones, cofres y naves.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Materiales &amp; Luces Neón:</strong> Shaders luminiscentes (emissive), colores metálicos y render en Eevee para wallpapers.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Habitación Gamer 3D:</strong> Modelado completo de un diorama con pantalla curva y tiras LED.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Boss Battle 2:</strong> Exportación a formato GLB y visualización 3D interactiva en sus teléfonos móviles.</span></li>
+                </ul>
                 <div class="tech-pills">
-                    <span class="tech-pill">Riego por Goteo</span>
-                    <span class="tech-pill">Humedad Capacitiva</span>
-                    <span class="tech-pill">Compostaje Escolar</span>
-                    <span class="tech-pill">Alimentación Solar 10W</span>
+                    <span class="tech-pill">Blender 4.x</span>
+                    <span class="tech-pill">Low-Poly 3D</span>
+                    <span class="tech-pill">Neón Emissive</span>
+                    <span class="tech-pill">Render Eevee</span>
+                    <span class="tech-pill">Visor Móvil GLB</span>
                 </div>
             </div>
 
-            <!-- EJE 3 -->
-            <div class="action-card">
-                <span class="card-category">Eje 03 · Robótica &amp; STEM+A</span>
-                <h3 class="card-title">Semillero de Programación Creativa y Prototipado</h3>
-                <p class="card-desc">
-                    Talleres prácticos que integran programación por bloques y código en C++/MicroPython. Los estudiantes construyen vehículos robóticos con detección de obstáculos, brazos mecánicos y sistemas domóticos a pequeña escala.
+            <!-- LEVEL 3: 3° AÑO -->
+            <div class="mod-card m3">
+                <span class="mod-tag">Level 3 · 3° Año (14 a 15 Años)</span>
+                <h3 class="mod-title">Web Hacker: Código Creativo &amp; Minijuegos Interactivos</h3>
+                <p class="mod-desc">
+                    Aprender frontend moderno (HTML5, CSS3 y JavaScript) de forma completamente visual e interactiva, programando minijuegos jugables desde el navegador.
                 </p>
+                <ul class="challenges-list">
+                    <li><span class="bullet">▶</span> <span><strong>Base Secreta en HTML5:</strong> Estructura web personal con inventario gamer y perfiles de personaje.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Estilo Visual Gamer en CSS3:</strong> Resplandores neón (glow), animaciones y tarjetas con giro 3D (flip cards).</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Lógica Dinámica en JS:</strong> Desarrollo de un "Clicker Game" con gemas, multiplicadores y efectos de sonido.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Boss Battle 3:</strong> Torneo Arcade Web con récord de puntuaciones compartible con sus compañeros.</span></li>
+                </ul>
                 <div class="tech-pills">
-                    <span class="tech-pill">Arduino IDE</span>
-                    <span class="tech-pill">MicroPython</span>
-                    <span class="tech-pill">Servomotores</span>
-                    <span class="tech-pill">Sensores Ultrasonido</span>
+                    <span class="tech-pill">HTML5 &amp; CSS3</span>
+                    <span class="tech-pill">Glow FX Neón</span>
+                    <span class="tech-pill">JavaScript DOM</span>
+                    <span class="tech-pill">Clicker Game</span>
+                    <span class="tech-pill">Arcade Tournament</span>
                 </div>
             </div>
 
-            <!-- EJE 4 -->
-            <div class="action-card">
-                <span class="card-category">Eje 04 · Urbanismo</span>
-                <h3 class="card-title">Maqueta Interactiva "Guayana Ciudad Inteligente 2050"</h3>
-                <p class="card-desc">
-                    Construcción colectiva de una maqueta modular interactiva que recrea a Ciudad Guayana incorporando ciclovías inteligentes, corredores ecológicos, alumbrado público sensorizado y transporte multimodal alimentado por energía limpia.
+            <!-- LEVEL 4: 4° AÑO -->
+            <div class="mod-card m4">
+                <span class="mod-tag">Level 4 · 4° Año (15 a 16 Años)</span>
+                <h3 class="mod-title">Game Studio Indie: 3D en la Web &amp; Portafolio Digital</h3>
+                <p class="mod-desc">
+                    Consolidar todas las habilidades: incrustar modelos 3D interactivos en la web, producir un video pitch con IA y publicar su landing page personal de graduación.
                 </p>
+                <ul class="challenges-list">
+                    <li><span class="bullet">▶</span> <span><strong>Visor 3D Web (Three.js):</strong> Incrustar sus modelos 3D en la web para rotarlos 360° con los dedos en el móvil.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Producción Audiovisual con IA:</strong> Guión, voces generativas, música libre y video pitch del proyecto.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Landing Page de Portafolio:</strong> Sitio web personal publicado en internet exhibiendo sus creaciones y bio.</span></li>
+                    <li><span class="bullet">▶</span> <span><strong>Boss Battle 4:</strong> Pitch Day Monte Carmelo con código QR para padres, profesores e invitados.</span></li>
+                </ul>
                 <div class="tech-pills">
-                    <span class="tech-pill">Modelado a Escala</span>
-                    <span class="tech-pill">LEDs Programables</span>
-                    <span class="tech-pill">Energía Renovable</span>
-                    <span class="tech-pill">Urbanismo Sostenible</span>
-                </div>
-            </div>
-
-            <!-- EJE 5 -->
-            <div class="action-card">
-                <span class="card-category">Eje 05 · Difusión</span>
-                <h3 class="card-title">Feria Científica y Comunitaria "Smart School"</h3>
-                <p class="card-desc">
-                    Jornada anual abierta a familias y a la comunidad donde los propios estudiantes defienden sus proyectos, presentan prototipos funcionales y explican los descubrimientos derivados de los datos recogidos por la red de sensores.
-                </p>
-                <div class="tech-pills">
-                    <span class="tech-pill">Oratoria y Liderazgo</span>
-                    <span class="tech-pill">Pósters Científicos</span>
-                    <span class="tech-pill">Demostración en Vivo</span>
-                    <span class="tech-pill">Comunidad Activa</span>
+                    <span class="tech-pill">Three.js WebGL</span>
+                    <span class="tech-pill">3D en la Web</span>
+                    <span class="tech-pill">Video Pitch con IA</span>
+                    <span class="tech-pill">Landing Portafolio</span>
+                    <span class="tech-pill">Pitch Day QR</span>
                 </div>
             </div>
         </div>
 
-        <!-- PROGRESSION BY STAGES -->
-        <div class="levels-container">
-            <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px;">
-                Progresión Curricular Transversal por Niveles (K-12)
+        <!-- METHODOLOGY: RAIDS DE 90 MIN -->
+        <div class="methodology-box">
+            <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px;">
+                🎯 La Dinámica de Clase: Las "Raids" de 90 Minutos
             </h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-                El programa se articula de acuerdo al desarrollo cognitivo de cada etapa escolar:
+            <p style="font-size: 14px; color: var(--text-muted);">
+                Estructurada como una partida cooperativa para mantener el foco, la emoción y la satisfacción de logro en cada sesión:
             </p>
 
-            <div class="levels-grid">
-                <div class="level-box">
-                    <div class="level-header">
-                        <span class="level-badge">Preescolar</span>
-                        <h4 class="level-title">Educación Inicial</h4>
-                    </div>
-                    <p class="level-desc">
-                        Exploración sensorial con la naturaleza, siembra guiada en el biohuerto, clasificación de hojas y semillas, e introducción lúdica al pensamiento lógico con secuencias y patrones.
+            <div class="method-grid">
+                <div class="method-step">
+                    <span class="method-time">Primeros 15 Minutos</span>
+                    <h4 class="method-title">Briefing &amp; Hook Cinemático</h4>
+                    <p class="method-text">
+                        Héctor proyecta la misión en pantalla grande y muestra el resultado funcionando: <em>"Hoy vamos a forjar esta espada 3D con luz de neón"</em>. Se explican los 2 atajos clave. Cero teoría aburrida.
                     </p>
                 </div>
+                <div class="method-step">
+                    <span class="method-time">Siguientes 65 Minutos</span>
+                    <h4 class="method-title">Modo Cooperativo (Hands-on)</h4>
+                    <p class="method-text">
+                        Los gremios trabajan en sus puestos. Héctor actúa como el <strong>Game Master</strong>, circulando, premiando soluciones creativas con bonus de XP y guiando a los estudiantes paso a paso.
+                    </p>
+                </div>
+                <div class="method-step">
+                    <span class="method-time">Últimos 10 Minutos</span>
+                    <h4 class="method-title">Showcase &amp; Loot Drop</h4>
+                    <p class="method-text">
+                        Se proyecta en pantalla grande el mejor trabajo de la sesión, se guardan los avances en el servidor del aula y se suman los puntos de experiencia (XP) al cuadro de honor del salón.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                <div class="level-box">
-                    <div class="level-header">
-                        <span class="level-badge">1° a 6° Grado</span>
-                        <h4 class="level-title">Educación Primaria</h4>
-                    </div>
-                    <p class="level-desc">
-                        Registro diario de temperatura y lluvia, primeros montajes con sensores lumínicos y zumbadores, programación gráfica con bloques, cuidado del huerto y elaboración de compost.
-                    </p>
-                </div>
+        <!-- GAMIFICATION & BADGES -->
+        <div class="gamification-box">
+            <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px;">
+                🏆 Sistema de Gremios e Insignias Coleccionables
+            </h3>
+            <p style="font-size: 14px; color: var(--text-muted);">
+                Los estudiantes forman gremios colaborativos y desbloquean medallas digitales verificables en la plataforma de <a href="/" style="color:var(--primary); text-decoration:none;">aula.motazorrilla.com</a>:
+            </p>
 
-                <div class="level-box">
-                    <div class="level-header">
-                        <span class="level-badge">1° a 5° Año</span>
-                        <h4 class="level-title">Educación Media General</h4>
-                    </div>
-                    <p class="level-desc">
-                        Calibración y programación de placas ESP32, comunicación MQTT, dashboards web, electrónica aplicada, diseño bioclimático para maquetas urbanas y liderazgo de proyectos comunitarios.
-                    </p>
+            <div class="badges-grid">
+                <div class="badge-card">
+                    <div class="badge-icon">🎨</div>
+                    <span class="badge-name">Prompt Master</span>
+                    <span class="badge-req">Creación exitosa de personaje y lore con IA generativa.</span>
                 </div>
+                <div class="badge-card">
+                    <div class="badge-icon">⚔️</div>
+                    <span class="badge-name">3D Blacksmith</span>
+                    <span class="badge-req">Primer modelo low-poly completado y optimizado en Blender.</span>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon">⚡</div>
+                    <span class="badge-name">Neon Master</span>
+                    <span class="badge-req">Escenario 3D con shaders luminiscentes y render Eevee.</span>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon">💻</div>
+                    <span class="badge-name">JavaScript Wizard</span>
+                    <span class="badge-req">Minijuego web programado con lógica de clics y puntos.</span>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon">👑</div>
+                    <span class="badge-name">Master Creator</span>
+                    <span class="badge-req">Portafolio web interactivo con visor 3D para el Pitch Day.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- REQUIREMENTS BOX: ZERO HARDWARE COST -->
+        <div class="req-box">
+            <div class="req-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Ventaja Institucional: 100% Digital · Cero Gasto en Hardware Adicional
+            </div>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">
+                A diferencia de los cursos de robótica tradicional que demandan costosas compras periódicas de placas electrónicas, cables y sensores frágiles, este programa aprovecha <strong>exclusivamente software libre y gratuito</strong> sobre la infraestructura existente del colegio:
+            </p>
+            <div class="req-grid">
+                <div class="req-item">
+                    💻 <strong>Laboratorio Existente:</strong> Funciona en las computadoras escolares con Windows/Linux y conexión a internet.
+                </div>
+                <div class="req-item">
+                    🧊 <strong>Blender 4.x (Open Source):</strong> La herramienta estándar mundial en 3D, completamente gratuita y sin costos de licencia.
+                </div>
+                <div class="req-item">
+                    🌐 <strong>Navegadores &amp; VS Code:</strong> Entornos de programación web modernos, gratuitos y con soporte para aceleración WebGL.
+                </div>
+                <div class="req-item">
+                    📱 <strong>Dispositivos Móviles:</strong> Los estudiantes pueden interactuar con sus modelos 3D y juegos desde sus propios teléfonos.
+                </div>
+            </div>
+        </div>
+
+        <!-- INSTRUCTOR PROFILE -->
+        <div class="instructor-card">
+            <img src="/assets/img/profile.jpg" alt="Ing. Héctor Mota" class="instructor-img">
+            <div class="instructor-bio">
+                <h3>Ing. Héctor Mota Zorrilla</h3>
+                <span class="role">Facilitador &amp; Diseñador Curricular · Ingeniero Electricista (UCV) &amp; Desarrollador 3D/Web</span>
+                <p>
+                    Ingeniero con amplia experiencia en desarrollo de software web, modelado 3D en Blender, integración de inteligencia artificial y producción de contenido digital interactivo. Su enfoque pedagógico canaliza la pasión natural de los adolescentes por los videojuegos hacia habilidades digitales reales, creativas y de alta demanda tecnológica.
+                </p>
             </div>
         </div>
 
         <!-- ACTION BOX -->
         <div class="action-box">
-            <h4>¿Interesado en coordinar o apoyar esta iniciativa educativa?</h4>
+            <h4>¿Deseas coordinar o agendar este programa para tu institución?</h4>
             <p>
-                Contacta directamente al Ing. Héctor Mota Zorrilla para agendar mesas de trabajo con directivos, docentes o comités de padres y representantes.
+                Conversa directamente con el Ing. Héctor Mota Zorrilla para presentar la propuesta formal a directivos, comités pedagógicos o sociedades de padres del Colegio Monte Carmelo.
             </p>
-            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20conversar%20sobre%20el%20Living%20Lab%20Smart%20School%20del%20Colegio%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-action">
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20conversar%20sobre%20el%20Programa%20de%20Creadores%20Digitales%20y%20Game%20Tech%20(1ro%20a%204to%20a%C3%B1o)%20para%20el%20Colegio%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-action">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                Conversar con el Coordinador vía WhatsApp
+                Conversar con Héctor Mota vía WhatsApp (0414-8873615)
             </a>
         </div>
     </div>
