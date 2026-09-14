@@ -123,6 +123,42 @@
             object-fit: contain;
             display: block;
         }
+        .nav-lab-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0369a1;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            padding: 7px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .nav-lab-link:hover {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        .live-pill {
+            background: #10b981;
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+        }
+        .nav-lab-link:hover .live-pill {
+            background: #ffffff;
+            color: #0284c7;
+        }
 
         /* ACADEMIC HERO */
         .module-hero {
@@ -306,6 +342,162 @@
             background: #1e3a8a;
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(15, 41, 66, 0.3);
+        }
+        .btn-mc-lab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: #f0f9ff;
+            color: #0369a1;
+            border: 1.5px solid #7dd3fc;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .btn-mc-lab:hover {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+        }
+
+        /* LABORATORY BIM SHOWCASE CARD */
+        .lab-bim-card {
+            background: #ffffff;
+            border: 1.5px solid #bae6fd;
+            border-radius: 20px;
+            padding: 34px 36px;
+            margin-bottom: 44px;
+            box-shadow: var(--shadow-md);
+            background-image: linear-gradient(135deg, rgba(240, 249, 255, 0.7) 0%, rgba(255, 255, 255, 1) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .lab-bim-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: #0284c7;
+        }
+        .lab-bim-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #0284c7, #0ea5e9);
+        }
+        .lab-bim-badge-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .lab-badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0284c7;
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .lab-badge-iso {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--emerald-light);
+            color: var(--emerald);
+            border: 1px solid rgba(4, 120, 87, 0.25);
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+        }
+        .lab-bim-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .lab-bim-desc {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            line-height: 1.65;
+            max-width: 960px;
+        }
+        .lab-bim-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+        .lab-feature-item {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+        .lab-feature-item span.feat-icon {
+            font-size: 18px;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .lab-bim-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        .btn-lab-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 26px;
+            background: #0284c7;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+        .btn-lab-primary:hover {
+            background: #0369a1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+        }
+        .lab-bim-direct-link {
+            font-size: 13px;
+            color: var(--text-light);
+            font-family: var(--font-mono);
+        }
+        .lab-bim-direct-link code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            color: #0369a1;
+            font-weight: 600;
         }
 
         /* SYLLABUS SECTION */
@@ -540,9 +732,16 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 Volver a Aula Virtual
             </a>
-            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
-                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
-            </a>
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="nav-lab-link" title="Abrir Visor BIM 3D & CDE en vivo en el Laboratorio ConTech">
+                    <span style="font-size:15px;">📐</span>
+                    <span>Visor BIM 3D (Lab)</span>
+                    <span class="live-pill">LIVE</span>
+                </a>
+                <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                    <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+                </a>
+            </div>
         </div>
 
         <!-- HERO -->
@@ -599,9 +798,63 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     Ingresar al Portal Dedicado: Masterclass BIM &amp; Curva MacLeamy
                 </a>
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="btn-mc-lab" title="Probar el Visor 3D y Entorno Común de Datos en el Laboratorio ConTech">
+                    <span style="font-size:16px;">📐</span>
+                    Probar Visor BIM 3D &amp; CDE en Vivo (Lab) &rarr;
+                </a>
                 <span style="font-size:13px; color:var(--text-light); font-family:var(--font-mono);">
-                    Simulador Chart.js en tiempo real, Calculador de ROI y snippets Python
+                    Simulador Chart.js en tiempo real, Calculador de ROI y Visor IFC WebGL
                 </span>
+            </div>
+        </div>
+
+        <!-- LABORATORY BIM SHOWCASE CARD -->
+        <div class="lab-bim-card">
+            <div class="lab-bim-badge-row">
+                <span class="lab-badge-live">⚡ Laboratorio ConTech en Vivo</span>
+                <span class="lab-badge-iso">Estándar ISO 19650 &amp; openBIM IFC4.3</span>
+            </div>
+            <div class="lab-bim-content">
+                <h3 class="lab-bim-title">Visor 3D IFC &amp; Entorno Común de Datos en Tiempo Real</h3>
+                <p class="lab-bim-desc">
+                    Experimenta directamente con la plataforma ConTech del laboratorio en <strong>lab.motazorrilla.com/bim</strong>. Desarrollada para la visualización e inspección interactiva de modelos IFC federados en 3D (arquitectura, estructuras y MEP), auditoría de jerarquías y parámetros técnicos, gobernanza documental ISO 19650 (WIP &rarr; Shared &rarr; Published &rarr; Archived) y gestión activa de incidencias con tickets BCF 2.1.
+                </p>
+
+                <div class="lab-bim-features">
+                    <div class="lab-feature-item">
+                        <span class="feat-icon">🧊</span>
+                        <div>
+                            <strong>Visor 3D Three.js:</strong> Navegación orbital completa, corte por disciplinas y filtrado de elementos en tiempo real.
+                        </div>
+                    </div>
+                    <div class="lab-feature-item">
+                        <span class="feat-icon">📁</span>
+                        <div>
+                            <strong>Flujo CDE ISO 19650:</strong> Tablero de transición de estados documentales y registro de entregables de obra.
+                        </div>
+                    </div>
+                    <div class="lab-feature-item">
+                        <span class="feat-icon">⚠️</span>
+                        <div>
+                            <strong>Gestor BCF 2.1:</strong> Registro de colisiones, prioridades y trazabilidad completa de coordinación espacial.
+                        </div>
+                    </div>
+                    <div class="lab-feature-item">
+                        <span class="feat-icon">📂</span>
+                        <div>
+                            <strong>Carga de Modelos:</strong> Soporte para cargar tus propios archivos IFC, GLB o GLTF directamente en el navegador.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lab-bim-actions">
+                    <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="btn-lab-primary">
+                        <span style="font-size:16px;">📐</span>
+                        Abrir Visor BIM 3D &amp; CDE en el Lab
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                    <span class="lab-bim-direct-link">URL oficial: <code>https://lab.motazorrilla.com/bim/</code></span>
+                </div>
             </div>
         </div>
 

@@ -115,6 +115,42 @@
             object-fit: contain;
             display: block;
         }
+        .nav-lab-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0369a1;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            padding: 7px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .nav-lab-link:hover {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        .live-pill {
+            background: #10b981;
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+        }
+        .nav-lab-link:hover .live-pill {
+            background: #ffffff;
+            color: #0284c7;
+        }
 
         /* HEADER */
         .page-header {
@@ -381,9 +417,16 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 Volver al Hub Académico UGMA
             </a>
-            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
-                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
-            </a>
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="nav-lab-link" title="Abrir Visor BIM 3D & CDE en vivo en el Laboratorio ConTech">
+                    <span style="font-size:15px;">📐</span>
+                    <span>Visor BIM 3D (Lab)</span>
+                    <span class="live-pill">LIVE</span>
+                </a>
+                <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                    <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+                </a>
+            </div>
         </div>
 
         <!-- HEADER -->
@@ -444,6 +487,20 @@
                     <h4 class="state-title">Archived (Archivado)</h4>
                     <p class="state-desc">Registro histórico de todas las versiones publicadas para auditorías, peritajes técnicos y fase de Gemelo Digital As-Built.</p>
                 </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 20px 24px; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <div style="max-width: 680px;">
+                    <h4 style="font-size: 16px; font-weight: 800; color: #0369a1; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+                        <span>📁</span> Gestor CDE Interactivo en Vivo en el Laboratorio ConTech
+                    </h4>
+                    <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                        Experimenta este flujo real de transición documental (WIP &rarr; Shared &rarr; Published &rarr; Archived) y gestiona entregables en el <strong>BIM Hub</strong> oficial en <strong>lab.motazorrilla.com/bim</strong> (Pestaña "Gestor CDE").
+                    </p>
+                </div>
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #0284c7; color: #ffffff; font-size: 13.5px; font-weight: 700; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25); transition: all 0.2s;">
+                    Abrir Gestor CDE en el Lab &rarr;
+                </a>
             </div>
         </div>
 
