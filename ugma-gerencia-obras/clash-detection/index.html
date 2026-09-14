@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 3D: Detección de Interferencias &amp; Auditoría BCF · Postgrado UGMA</title>
+
+    <meta name="title" content="Laboratorio 3D: Detección de Interferencias &amp; Auditoría BCF · Postgrado UGMA">
+    <meta name="description" content="Simulador 3D en tiempo real de coordinación espacial Estructuras vs MEP con Three.js, cálculo de tolerancias y generación de incidencias BCF 2.1 por el Ing. Héctor Mota.">
+    <meta name="keywords" content="BIM, Clash Detection, Navisworks, Three.js, BCF, openBIM, UGMA, Héctor Mota">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="theme-color" content="#0b0f17">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js and OrbitControls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <style>
+        :root {
+            --bg: #0b0f17;
+            --surface: #111827;
+            --surface-card: #162032;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(16, 185, 129, 0.35);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --emerald: #10b981;
+            --emerald-light: #34d399;
+            --primary: #38bdf8;
+            --amber: #f59e0b;
+            --rose: #ef4444;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            padding: 30px 20px 60px; 
+            line-height: 1.6; 
+            background-image: radial-gradient(at 80% 10%, rgba(56, 189, 248, 0.09) 0px, transparent 50%),
+                              radial-gradient(at 10% 90%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1160px; margin: 0 auto; }
+
+        /* NAV */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .back-link:hover {
+            color: #fff;
+            transform: translateX(-3px);
+        }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2), 0 4px 12px rgba(0,0,0,0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+        .brand-logo-link:hover {
+            transform: translateY(-2px scale(1.03));
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.4), 0 6px 18px rgba(0,0,0,0.45);
+        }
+        .brand-full-logo {
+            height: 28px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* HERO */
+        .module-hero {
+            background: linear-gradient(145deg, rgba(56, 189, 248, 0.1), rgba(17, 24, 39, 0.9));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 20px;
+            padding: 38px;
+            margin-bottom: 36px;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .module-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+        }
+        .module-title {
+            font-size: clamp(24px, 4vw, 34px);
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        .module-sub {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 920px;
+            margin-bottom: 22px;
+            line-height: 1.65;
+        }
+
+        /* 3D WORKSPACE GRID */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        @media (min-width: 960px) {
+            .workspace-grid {
+                grid-template-columns: 1.7fr 1fr;
+            }
+        }
+
+        .viewport-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .viewport-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.25);
+        }
+        .viewport-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .viewport-container {
+            width: 100%;
+            height: 480px;
+            position: relative;
+            background: #06090e;
+        }
+        #webglCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .viewport-overlay-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 14px;
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+            pointer-events: none;
+            font-family: var(--font-mono);
+        }
+
+        /* CONTROL PANEL */
+        .controls-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .panel-heading {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .clash-status-box {
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            transition: all 0.3s;
+        }
+        .clash-status-box.ok {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+        .status-badge-live {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 4px;
+            color: var(--rose);
+        }
+        .clash-status-box.ok .status-badge-live { color: var(--emerald-light); }
+        .status-msg {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
+
+        .slider-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .slider-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .custom-range {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .details-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .details-table td:last-child {
+            text-align: right;
+            font-family: var(--font-mono);
+            color: #cbd5e1;
+        }
+
+        .btn-bcf {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            border: none;
+            border-radius: 10px;
+            color: #0b0f17;
+            font-weight: 800;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-bcf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* BCF PAYLOAD MODAL / BOX */
+        .bcf-box {
+            background: #06090e;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 36px;
+        }
+        .bcf-pre {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: #cbd5e1;
+            overflow-x: auto;
+            line-height: 1.55;
+        }
+
+        /* ACTION BOX */
+        .action-box {
+            text-align: center;
+            padding: 36px 20px;
+            background: linear-gradient(180deg, rgba(56, 189, 248, 0.08), transparent);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 26px;
+            background: #25D366;
+            color: #0b0f17;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/ugma-gerencia-obras/" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Volver al Hub UGMA
+            </a>
+            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+            </a>
+        </div>
+
+        <!-- HERO -->
+        <div class="module-hero">
+            <span class="module-badge">Postgrado UGMA · Eje Temático 02</span>
+            <h1 class="module-title">Laboratorio 3D: Detección de Interferencias (Clash Detection)</h1>
+            <p class="module-sub">
+                Simulador tridimensional interactivo para el control y resolución de colisiones geométricas entre estructuras de concreto armado y redes mecánicas (HVAC / Ductos / Sanitarias). Desarrollado por el <strong>Ing. Héctor Mota</strong> para el Diplomado en Gerencia de Obras.
+            </p>
+        </div>
+
+        <!-- 3D WORKSPACE -->
+        <div class="workspace-grid">
+            
+            <!-- LEFT: 3D CANVAS VIEWPORT -->
+            <div class="viewport-card">
+                <div class="viewport-header">
+                    <span class="viewport-title">
+                        <span>🧊</span> Viewport Federado: Viga Estructural vs. Ducto HVAC
+                    </span>
+                    <div style="display:flex; gap:8px;">
+                        <button id="btnToggleDuct" style="font-size:11px; padding:4px 10px; border-radius:6px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:#cbd5e1; cursor:pointer;">👁️ Ducto</button>
+                        <button id="btnResetCamera" style="font-size:11px; padding:4px 10px; border-radius:6px; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:#cbd5e1; cursor:pointer;">🎯 Reset</button>
+                    </div>
+                </div>
+                <div class="viewport-container">
+                    <div id="webglCanvas"></div>
+                    <div class="viewport-overlay-hint">
+                        <span>🖱️ Click Izquierdo: Rotar · Rueda: Zoom · Click Derecho: Desplazar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: CONTROLS & CLASH METRICS -->
+            <div class="controls-card">
+                <div class="panel-heading">
+                    <span>Matriz de Colisión en Tiempo Real</span>
+                    <span style="font-family:var(--font-mono); font-size:11px; color:var(--primary);">IFC4 MEP+STR</span>
+                </div>
+
+                <!-- DYNAMIC STATUS BOX -->
+                <div id="clashStatusBox" class="clash-status-box">
+                    <span id="clashBadge" class="status-badge-live">🔴 Hard Clash Detectado</span>
+                    <div id="clashMessage" class="status-msg">
+                        Interferencia geométrica: Ducto HVAC atraviesa la sección portante de la Viga V-101.
+                    </div>
+                </div>
+
+                <!-- SLIDER ELEVACIÓN DEL DUCTO -->
+                <div class="slider-block">
+                    <div class="slider-top">
+                        <span>Elevación Relativa del Ducto (Z):</span>
+                        <span id="ductZVal" style="font-family:var(--font-mono); color:var(--primary);">+0.00 m (Choque)</span>
+                    </div>
+                    <input type="range" min="-30" max="40" value="0" step="1" id="ductZSlider" class="custom-range">
+                    <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted); font-family:var(--font-mono);">
+                        <span>-30 cm (Bajo losa)</span>
+                        <span>0 cm (Centro viga)</span>
+                        <span>+40 cm (Sobre viga)</span>
+                    </div>
+                </div>
+
+                <!-- TOLERANCE SLIDER -->
+                <div class="slider-block">
+                    <div class="slider-top">
+                        <span>Tolerancia de Aislamiento Térmico:</span>
+                        <span id="tolVal" style="font-family:var(--font-mono); color:var(--amber);">25 mm</span>
+                    </div>
+                    <input type="range" min="0" max="80" value="25" step="5" id="tolSlider" class="custom-range" style="accent-color:var(--amber);">
+                </div>
+
+                <!-- AUDIT DETAILS -->
+                <table class="details-table">
+                    <tr>
+                        <td>Elemento Estructural A:</td>
+                        <td>Viga V-101 (30x50cm Concreto)</td>
+                    </tr>
+                    <tr>
+                        <td>Elemento Mecánico B:</td>
+                        <td>Ducto HVAC (60x35cm Lámina Galv.)</td>
+                    </tr>
+                    <tr>
+                        <td>Costo Estimado Resolución en Obra:</td>
+                        <td id="costSiteVal" style="color:var(--rose); font-weight:700;">$2,450 USD</td>
+                    </tr>
+                    <tr>
+                        <td>Costo Resolución en Modelo (BIM):</td>
+                        <td style="color:var(--emerald-light); font-weight:700;">$0 USD (15 min)</td>
+                    </tr>
+                </table>
+
+                <button class="btn-bcf" onclick="generateBCF()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                    Exportar Reporte BCF 2.1 (JSON)
+                </button>
+            </div>
+        </div>
+
+        <!-- BCF PREVIEW BOX -->
+        <div id="bcfContainer" class="bcf-box" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span style="font-size:13px; font-weight:700; color:var(--primary);">📄 Payload Oficial buildingSMART BCF 2.1 Generado:</span>
+                <button onclick="document.getElementById('bcfContainer').style.display='none'" style="background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:12px;">✕ Cerrar</button>
+            </div>
+            <pre id="bcfOutput" class="bcf-pre"></pre>
+        </div>
+
+        <!-- ACTION BOX -->
+        <div class="action-box">
+            <h3 style="font-size:20px; font-weight:800; color:#fff; margin-bottom:8px;">
+                ¿Deseas coordinar una sesión de auditoría con tus propios modelos IFC?
+            </h3>
+            <p style="font-size:13.5px; color:var(--text-muted); max-width:600px; margin:0 auto 20px;">
+                Los participantes del Diplomado UGMA aprenden a configurar reglas automáticas de detección de cruces en Navisworks Manage y Solibri con el Ing. Héctor Mota.
+            </p>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20informaci%C3%B3n%20sobre%20el%20m%C3%B3dulo%20de%20Clash%20Detection%20del%20Diplomado%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contactar al Facilitador vía WhatsApp (0414-8873615)
+            </a>
+        </div>
+    </div>
+
+    <!-- THREE.JS & CLASH LOGIC -->
+    <script>
+        const container = document.getElementById('webglCanvas');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x06090e);
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+        camera.position.set(5, 4, 6);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+
+        // LIGHTS
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(10, 15, 10);
+        dirLight.castShadow = true;
+        scene.add(dirLight);
+
+        const gridHelper = new THREE.GridHelper(10, 20, 0x1e293b, 0x0f172a);
+        gridHelper.position.y = -1.5;
+        scene.add(gridHelper);
+
+        // 1. BEAM (VIGA DE CONCRETO)
+        const beamGeo = new THREE.BoxGeometry(6, 0.8, 0.5);
+        const beamMat = new THREE.MeshStandardMaterial({ 
+            color: 0x94a3b8, 
+            roughness: 0.7, 
+            metalness: 0.1 
+        });
+        const beam = new THREE.Mesh(beamGeo, beamMat);
+        beam.position.set(0, 0, 0);
+        beam.castShadow = true;
+        beam.receiveShadow = true;
+        scene.add(beam);
+
+        // Add column supports
+        const colGeo = new THREE.BoxGeometry(0.5, 3, 0.5);
+        const colMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.8 });
+        const col1 = new THREE.Mesh(colGeo, colMat);
+        col1.position.set(-2.75, -1.5, 0);
+        scene.add(col1);
+        const col2 = new THREE.Mesh(colGeo, colMat);
+        col2.position.set(2.75, -1.5, 0);
+        scene.add(col2);
+
+        // 2. HVAC DUCT (DUCTO CLIMATIZACIÓN)
+        const ductGeo = new THREE.BoxGeometry(0.8, 0.5, 4);
+        const ductMat = new THREE.MeshStandardMaterial({ 
+            color: 0x38bdf8, 
+            roughness: 0.3, 
+            metalness: 0.8 
+        });
+        const duct = new THREE.Mesh(ductGeo, ductMat);
+        duct.position.set(0, 0, 0); // starts intersecting
+        scene.add(duct);
+
+        // 3. SANITARY PIPE (TUBERÍA DE PVC)
+        const pipeGeo = new THREE.CylinderGeometry(0.1, 0.1, 4, 16);
+        const pipeMat = new THREE.MeshStandardMaterial({ color: 0xf97316, roughness: 0.4 });
+        const pipe = new THREE.Mesh(pipeGeo, pipeMat);
+        pipe.rotation.x = Math.PI / 2;
+        pipe.rotation.z = 0.05; // slight slope
+        pipe.position.set(1.2, -0.6, 0);
+        scene.add(pipe);
+
+        // CLASH DETECTION FUNCTION
+        function checkClash() {
+            const zOffset = parseFloat(document.getElementById('ductZSlider').value) / 100;
+            duct.position.y = zOffset;
+
+            const tol = parseFloat(document.getElementById('tolSlider').value) / 1000;
+
+            const boxBeam = new THREE.Box3().setFromObject(beam);
+            const boxDuct = new THREE.Box3().setFromObject(duct);
+            
+            boxDuct.expandByScalar(tol);
+
+            const isClash = boxBeam.intersectsBox(boxDuct);
+            const boxStatus = document.getElementById('clashStatusBox');
+            const badge = document.getElementById('clashBadge');
+            const msg = document.getElementById('clashMessage');
+            const cost = document.getElementById('costSiteVal');
+
+            if (isClash) {
+                duct.material.color.setHex(0xef4444); // RED
+                duct.material.emissive.setHex(0x550000);
+                boxStatus.className = 'clash-status-box';
+                badge.textContent = '🔴 Hard Clash Detectado (Colisión Directa)';
+                msg.textContent = 'Interferencia crítica: Ducto HVAC colisiona con el alma de concreto de la Viga V-101.';
+                cost.textContent = '$2,450 USD (Picado + Refuerzo)';
+                cost.style.color = 'var(--rose)';
+            } else {
+                duct.material.color.setHex(0x10b981); // GREEN
+                duct.material.emissive.setHex(0x002200);
+                boxStatus.className = 'clash-status-box ok';
+                badge.textContent = '🟢 Despeje Conforme a Norma (Clear)';
+                msg.textContent = 'Coordinación limpia: El ducto cuenta con espacio libre suficiente respetando la tolerancia de aislamiento.';
+                cost.textContent = '$0 USD (Coordinado)';
+                cost.style.color = 'var(--emerald-light)';
+            }
+        }
+
+        // SLIDER EVENTS
+        document.getElementById('ductZSlider').addEventListener('input', (e) => {
+            const val = (parseFloat(e.target.value) / 100).toFixed(2);
+            document.getElementById('ductZVal').textContent = (val >= 0 ? '+' : '') + val + ' m';
+            checkClash();
+        });
+
+        document.getElementById('tolSlider').addEventListener('input', (e) => {
+            document.getElementById('tolVal').textContent = e.target.value + ' mm';
+            checkClash();
+        });
+
+        document.getElementById('btnResetCamera').addEventListener('click', () => {
+            camera.position.set(5, 4, 6);
+            controls.target.set(0, 0, 0);
+        });
+
+        let ductVisible = true;
+        document.getElementById('btnToggleDuct').addEventListener('click', () => {
+            ductVisible = !ductVisible;
+            duct.visible = ductVisible;
+        });
+
+        // BCF GENERATOR
+        function generateBCF() {
+            const zVal = (parseFloat(document.getElementById('ductZSlider').value) / 100).toFixed(2);
+            const isClash = duct.material.color.getHex() === 0xef4444;
+            
+            const bcfPayload = {
+                "bcf_version": "2.1",
+                "project_id": "UGMA-DIP-CONTECH-2026",
+                "topic": {
+                    "guid": "c56e29b1-0a42-4f81-8933-7a91b2c4e3f8",
+                    "topic_type": isClash ? "Clash_Detection" : "Clearance_Verified",
+                    "topic_status": isClash ? "Open" : "Resolved",
+                    "title": isClash ? "Interferencia Viga V-101 vs Ducto HVAC N2" : "Pase Verificado V-101",
+                    "priority": isClash ? "Major" : "Low",
+                    "assigned_to": "coordinador_mep@ugma-obras.edu.ve",
+                    "creation_author": "ing.hectormota@motazorrilla.com",
+                    "description": isClash 
+                        ? `Colisión geométrica con elevación Z=${zVal}m. Requiere desvío de ducto hacia cielo raso suspendido.`
+                        : `Despeje verificado satisfactoriamente con Z=${zVal}m conforme a norma ISO 19650.`,
+                    "components": [
+                        { "ifc_guid": "2O2$U$point$34v98e", "name": "Viga V-101", "discipline": "Estructura" },
+                        { "ifc_guid": "3B8#K$duct$78x22a", "name": "Ducto Suministro AA", "discipline": "MEP" }
+                    ]
+                }
+            };
+
+            document.getElementById('bcfOutput').textContent = JSON.stringify(bcfPayload, null, 2);
+            document.getElementById('bcfContainer').style.display = 'block';
+            document.getElementById('bcfContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ANIMATION LOOP
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+        checkClash();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+</body>
+</html>
