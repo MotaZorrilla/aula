@@ -139,6 +139,31 @@ assert_test("Día 1 sincronizado al 100% entre ugma-gerencia-obras, Blade y publ
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
+assert_test("Día 2 (Clash Detection 3D) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Día 2 (Clash Detection 3D) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Día 2 (Clash Detection 3D) incorpora simuladores (runMatrixRuleEvaluation, init3DLab, renderBcfCode, calculateReworkCost)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
+    return stripos($content, 'runMatrixRuleEvaluation') !== false 
+        && stripos($content, 'init3DLab') !== false
+        && stripos($content, 'renderBcfCode') !== false
+        && stripos($content, 'calculateReworkCost') !== false;
+});
+
+assert_test("Día 2 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/clash-detection.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/clash-detection/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
     if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
         return false;
@@ -230,6 +255,26 @@ assert_test("Unit: Cálculo de Generación Solar Fotovoltaica Guayana (HSP = 5.0
     $potenciaPicoKw = $consumoDiarioKwh / ($hsp * $pr);
     // 120 / 3.85 = 31.1688 kWp
     if (round($potenciaPicoKw, 2) !== 31.17) return false;
+    return true;
+});
+
+assert_test("Unit: Cálculo de Rework Cost MacLeamy (Demolición $1,200 + 3 días cuadrilla $650/día vs Oficina $87.50)", function() {
+    $demolition = 1200.0;
+    $days = 3;
+    $crew = 650.0;
+    $totalField = $demolition + ($days * $crew); // 1200 + 1950 = 3150
+    $bimHours = 3.5;
+    $bimRate = 25.0;
+    $totalBim = $bimHours * $bimRate; // 87.50
+    $netSavings = $totalField - $totalBim; // 3062.50
+    $multiplier = round($totalField / $totalBim, 1); // 36.0
+    $roi = round(($netSavings / $totalBim) * 100); // 3500%
+
+    if ($totalField !== 3150.0) return false;
+    if ($totalBim !== 87.50) return false;
+    if ($netSavings !== 3062.50) return false;
+    if ($multiplier !== 36.0) return false;
+    if ($roi !== 3500.0) return false;
     return true;
 });
 
