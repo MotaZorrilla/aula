@@ -1,0 +1,11 @@
+schema_version: "1.0"
+project_name: "Ecosistema Aula & Lab MotaZorrilla"
+description: "Especificaciones vivas de ingeniería para aula.motazorrilla.com (UGMA & Club T.I.A.) y lab.motazorrilla.com (BIM 3D & ConTech) bajo Protocolos 2, 3 y 4."
+version: "2.0.0"
+standards:
+  protocol: "Protocolos Oficiales Antigravity (P1 a P4)"
+  normative: "RFC 2119"
+  bdd: "GIVEN-WHEN-THEN"
+  architecture: "Clean Architecture & Single Responsibility Principle (SRP)"
+  testing_trophy: "Feature Tests First + Deterministic SQLite"
+  craft_floor: "Protocolo 4 Impeccable (WCAG AA 4.5:1, Fluid Typography, Spatial Tokens)"
