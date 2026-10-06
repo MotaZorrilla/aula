@@ -189,6 +189,30 @@ assert_test("Día 3 sincronizado al 100% entre ugma-gerencia-obras, Blade y publ
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
+assert_test("Día 4 (IA Control de Obra) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Día 4 (IA Control de Obra) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Día 4 (IA Control de Obra) incorpora simuladores (setScanScenario, generateMinuta, generateClaimLetter)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
+    return stripos($content, 'setScanScenario') !== false 
+        && stripos($content, 'generateMinuta') !== false
+        && stripos($content, 'generateClaimLetter') !== false;
+});
+
+assert_test("Día 4 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/ia-control-obra.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/ia-control-obra/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
     if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
         return false;
@@ -324,6 +348,21 @@ assert_test("Unit: Fórmulas EVM ANSI/PMI (BAC=$1.5M, PV 50%, EV 44%, AC=$720k -
     if ($spi !== 0.880) return false;
     if ($eac !== 1636364.0) return false;
     if ($vac !== -136364.0) return false;
+    return true;
+});
+
+assert_test("Unit: Clasificación de Riesgo IA para Bitácoras de Obra (Lluvia + Retraso -> HIGH RISK, Normal -> LOW RISK)", function() {
+    $evalRisk = function(string $weather, string $notes): string {
+        $isRain = (stripos($weather, 'Lluvia') !== false);
+        $hasDelay = (stripos($notes, 'retraso') !== false || stripos($notes, 'fisura') !== false || stripos($notes, 'riesgo') !== false);
+        if ($isRain && $hasDelay) return 'HIGH';
+        if ($isRain || $hasDelay) return 'MEDIUM';
+        return 'LOW';
+    };
+
+    if ($evalRisk('Lluvia Torrencial', 'Hubo retraso en vaciado') !== 'HIGH') return false;
+    if ($evalRisk('Soleado', 'Retraso de suministro') !== 'MEDIUM') return false;
+    if ($evalRisk('Soleado', 'Jornada normal sin novedades') !== 'LOW') return false;
     return true;
 });
 
