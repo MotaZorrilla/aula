@@ -6,8 +6,8 @@
     <title>Masterclass BIM: De la Maqueta Digital al Gemelo Digital · Postgrado UGMA</title>
 
     <meta name="title" content="Masterclass BIM: De la Maqueta Digital al Gemelo Digital · Postgrado UGMA">
-    <meta name="description" content="Laboratorio interactivo y simulación de la Curva de MacLeamy, cálculo de ROI BIM y fundamentos de adopción ConTech por el Ing. Héctor Mota.">
-    <meta name="keywords" content="BIM, Curva MacLeamy, ConTech, UGMA, ISO 19650, ROI BIM, IfcOpenShell, Héctor Mota">
+    <meta name="description" content="Laboratorio interactivo, análisis comparativo CAD vs openBIM, articulación con Cómputos Métricos (Harry Osers), gobernanza CDE ISO 19650:2026, simulación de la Curva de MacLeamy y ROI BIM por el Ing. Héctor Mota.">
+    <meta name="keywords" content="BIM, openBIM, ISO 19650, Curva MacLeamy, Harry Osers, Cómputos Métricos, ConTech, UGMA, ROI BIM, IfcOpenShell, Código Civil Venezolano, Héctor Mota">
     <meta name="author" content="Héctor Mota Zorrilla">
     <meta name="theme-color" content="#ffffff">
 
@@ -27,6 +27,7 @@
             --bg: #f8fafc;
             --surface: #ffffff;
             --surface-subtle: #f1f5f9;
+            --surface-card: #ffffff;
             --border: #e2e8f0;
             --border-hover: #cbd5e1;
             --text-main: #0f172a;
@@ -37,18 +38,27 @@
             --navy-dark: #0a192f;
             --blue-accent: #0284c7;
             --blue-light: #e0f2fe;
+            --blue-border: #bae6fd;
             
             --emerald: #047857;
             --emerald-light: #d1fae5;
+            --emerald-border: #a7f3d0;
+
             --amber: #b45309;
             --amber-light: #fef3c7;
+            --amber-border: #fde68a;
+
             --rose: #e11d48;
             --rose-light: #ffe4e6;
+            --rose-border: #fecdd3;
+
             --purple: #6d28d9;
             --purple-light: #ede9fe;
+            --purple-border: #ddd6fe;
 
             --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
@@ -56,25 +66,28 @@
         }
 
         * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        html { scroll-behavior: smooth; }
         body { 
             background: var(--bg); 
             color: var(--text-main); 
             min-height: 100vh; 
-            padding: 30px 20px 80px; 
+            padding: 24px 16px 80px; 
             line-height: 1.65; 
             -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1140px; margin: 0 auto; }
+        .container { max-width: 1160px; margin: 0 auto; }
 
         /* TOP NAVIGATION */
         .top-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
-            padding-bottom: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .back-link {
             display: inline-flex;
@@ -82,7 +95,7 @@
             gap: 8px;
             color: var(--navy-primary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             transition: all 0.2s;
             background: #ffffff;
@@ -158,15 +171,64 @@
             color: #0284c7;
         }
 
+        /* QUICK JUMP STICKY NAV */
+        .quick-nav-bar {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 10px 16px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+        .quick-nav-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .quick-nav-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .quick-nav-chip:hover {
+            background: var(--blue-light);
+            border-color: var(--blue-accent);
+            color: var(--blue-accent);
+            transform: translateY(-1px);
+        }
+
         /* HERO HEADER */
         .page-header {
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 40px 38px;
-            margin-bottom: 36px;
+            padding: 38px 36px;
+            margin-bottom: 32px;
             box-shadow: var(--shadow-md);
-            background-image: linear-gradient(135deg, rgba(224, 242, 254, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+            background-image: linear-gradient(135deg, rgba(224, 242, 254, 0.35) 0%, rgba(255, 255, 255, 1) 100%);
+            position: relative;
+            overflow: hidden;
         }
         .badge-row {
             display: flex;
@@ -194,20 +256,25 @@
             color: var(--emerald);
             border-color: rgba(4, 120, 87, 0.3);
         }
+        .badge-norma {
+            background: #ede9fe;
+            color: #6d28d9;
+            border-color: #ddd6fe;
+        }
         .page-title {
             font-size: clamp(26px, 4vw, 36px);
             font-weight: 800;
             color: var(--navy-primary);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             line-height: 1.25;
             letter-spacing: -0.02em;
         }
         .page-subtitle {
-            font-size: 16px;
+            font-size: 15.5px;
             color: var(--text-muted);
-            max-width: 960px;
+            max-width: 1020px;
             margin-bottom: 22px;
-            line-height: 1.65;
+            line-height: 1.7;
         }
         .speaker-bar {
             display: flex;
@@ -216,7 +283,7 @@
             flex-wrap: wrap;
             padding-top: 16px;
             border-top: 1px solid var(--border);
-            font-size: 13.5px;
+            font-size: 13px;
             color: var(--text-muted);
         }
         .speaker-bar strong { color: var(--navy-primary); }
@@ -229,24 +296,49 @@
             padding: 34px;
             margin-bottom: 32px;
             box-shadow: var(--shadow-sm);
+            transition: border-color 0.2s;
+        }
+        .content-card:hover {
+            border-color: var(--border-hover);
+        }
+        .section-header-block {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .section-num-tag {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--blue-accent);
+            background: var(--blue-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         .section-title {
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 800;
             color: var(--navy-primary);
-            margin-bottom: 16px;
+            line-height: 1.3;
             display: flex;
             align-items: center;
             gap: 10px;
+            flex: 1;
         }
         .academic-p {
             font-size: 15px;
             color: var(--text-muted);
             margin-bottom: 16px;
-            line-height: 1.7;
+            line-height: 1.75;
         }
         .academic-p strong { color: var(--text-main); font-weight: 700; }
 
+        /* HIGHLIGHT CALLOUT BOXES */
         .callout-box {
             background: var(--surface-subtle);
             border-left: 4px solid var(--navy-primary);
@@ -255,13 +347,81 @@
             margin: 20px 0;
             font-size: 14.5px;
             color: var(--text-muted);
+            line-height: 1.7;
         }
         .callout-box strong { color: var(--navy-primary); }
+        .callout-box.callout-emerald {
+            border-left-color: var(--emerald);
+            background: #f0fdf4;
+        }
+        .callout-box.callout-blue {
+            border-left-color: var(--blue-accent);
+            background: #f0f9ff;
+        }
+        .callout-box.callout-amber {
+            border-left-color: var(--amber);
+            background: #fffbeb;
+        }
+
+        /* TABLES */
+        .academic-table-wrap {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            text-align: left;
+            background: #ffffff;
+        }
+        .academic-table th {
+            background: #f8fafc;
+            color: var(--navy-primary);
+            font-weight: 800;
+            padding: 14px 18px;
+            border-bottom: 2px solid var(--border);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .academic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .academic-table tr:last-child td { border-bottom: none; }
+        .academic-table tr:hover td { background: #f8fafc; }
+        .table-pill-cad {
+            display: inline-block;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+        .table-pill-bim {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
 
         /* COMPARATIVE GRID */
         .comparison-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
             margin: 24px 0;
         }
@@ -279,6 +439,9 @@
             font-weight: 800;
             color: var(--navy-primary);
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .comp-list {
             list-style: none;
@@ -286,13 +449,143 @@
             color: var(--text-muted);
         }
         .comp-list li {
-            padding: 7px 0;
+            padding: 8px 0;
             border-bottom: 1px dashed var(--border);
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
         }
         .comp-list li:last-child { border-bottom: none; }
+
+        /* CDE LIFECYCLE GRID */
+        .cde-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .cde-step-card {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .cde-step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: #ffffff;
+        }
+        .cde-step-badge {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 800;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+        }
+        .cde-step-card.wip .cde-step-badge { background: #64748b; }
+        .cde-step-card.shared .cde-step-badge { background: var(--blue-accent); }
+        .cde-step-card.published .cde-step-badge { background: var(--emerald); }
+        .cde-step-card.archived .cde-step-badge { background: #6d28d9; }
+        .cde-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            margin-bottom: 6px;
+        }
+        .cde-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* 7 DIMENSIONS GRID */
+        .dim-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+            margin: 24px 0;
+        }
+        .dim-card {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.2s;
+        }
+        .dim-card:hover {
+            border-color: var(--blue-accent);
+            transform: translateY(-2px);
+            background: #ffffff;
+            box-shadow: var(--shadow-md);
+        }
+        .dim-badge {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 800;
+            color: #ffffff;
+            background: var(--navy-primary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .dim-card:nth-child(2) .dim-badge { background: var(--blue-accent); }
+        .dim-card:nth-child(3) .dim-badge { background: #e11d48; }
+        .dim-card:nth-child(4) .dim-badge { background: #b45309; }
+        .dim-card:nth-child(5) .dim-badge { background: #047857; }
+        .dim-card:nth-child(6) .dim-badge { background: #6d28d9; }
+        .dim-card:nth-child(7) .dim-badge { background: #0369a1; }
+        .dim-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--navy-primary);
+            margin-bottom: 6px;
+        }
+        .dim-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* LOD LEVEL GRID */
+        .lod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .lod-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+        .lod-tag {
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--navy-primary);
+            margin-bottom: 4px;
+        }
+        .lod-name {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--blue-accent);
+            margin-bottom: 6px;
+        }
+        .lod-desc {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
 
         /* INTERACTIVE MACLEAMY SIMULATOR */
         .sim-container {
@@ -305,7 +598,7 @@
         }
         .sim-controls {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-bottom: 24px;
             background: var(--surface-subtle);
@@ -338,58 +631,10 @@
             border-radius: 12px;
         }
 
-        /* 7 DIMENSIONS ACCORDION / GRID */
-        .dim-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 14px;
-            margin: 24px 0;
-        }
-        .dim-card {
-            background: var(--surface-subtle);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            transition: all 0.2s;
-        }
-        .dim-card:hover {
-            border-color: var(--blue-accent);
-            transform: translateY(-2px);
-            background: #ffffff;
-            box-shadow: var(--shadow-md);
-        }
-        .dim-badge {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: 800;
-            color: #ffffff;
-            background: var(--navy-primary);
-            padding: 3px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-        .dim-card:nth-child(2) .dim-badge { background: var(--blue-accent); }
-        .dim-card:nth-child(3) .dim-badge { background: #e11d48; }
-        .dim-card:nth-child(4) .dim-badge { background: #b45309; }
-        .dim-card:nth-child(5) .dim-badge { background: #047857; }
-        .dim-card:nth-child(6) .dim-badge { background: #6d28d9; }
-        .dim-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--navy-primary);
-            margin-bottom: 6px;
-        }
-        .dim-desc {
-            font-size: 12.5px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
         /* ROI CALCULATOR */
         .calc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-top: 20px;
         }
@@ -417,6 +662,27 @@
             color: var(--navy-primary);
             font-family: var(--font-mono);
         }
+        .preset-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .preset-btn {
+            font-size: 11px;
+            padding: 4px 10px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+        .preset-btn:hover {
+            border-color: var(--blue-accent);
+            color: var(--blue-accent);
+        }
         .calc-results {
             background: #ecfdf5;
             border: 1px solid #a7f3d0;
@@ -436,18 +702,55 @@
         .res-val { font-size: 26px; font-weight: 800; color: #064e3b; font-family: var(--font-mono); }
 
         /* CODE BLOCK */
+        .code-block-wrap {
+            position: relative;
+            margin: 20px 0;
+        }
         .code-block-academic {
             background: #0f172a;
             color: #f8fafc;
             border-radius: 12px;
-            padding: 20px;
+            padding: 22px;
             font-family: var(--font-mono);
             font-size: 13px;
             overflow-x: auto;
-            margin: 20px 0;
             border: 1px solid #1e293b;
+            line-height: 1.6;
         }
-        .code-block-academic pre { font-family: inherit; }
+        .code-block-academic pre { font-family: inherit; margin: 0; }
+        .copy-code-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-mono);
+        }
+        .copy-code-btn:hover {
+            background: var(--blue-accent);
+            border-color: var(--blue-accent);
+        }
+
+        /* LAB CALLOUT BANNER */
+        .lab-banner-callout {
+            margin-top: 24px;
+            padding: 22px 26px;
+            background: #f0f9ff;
+            border: 1.5px solid #bae6fd;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
 
         /* FOOTER ACTION */
         .page-footer-action {
@@ -478,6 +781,48 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
         }
+
+        /* DETAILS SUMMARY ACCORDIONS */
+        details.academic-details {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin: 14px 0;
+            background: #ffffff;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        details.academic-details[open] {
+            border-color: var(--blue-accent);
+            box-shadow: var(--shadow-sm);
+        }
+        details.academic-details summary {
+            padding: 14px 18px;
+            font-weight: 700;
+            font-size: 14.5px;
+            color: var(--navy-primary);
+            cursor: pointer;
+            background: var(--surface-subtle);
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        details.academic-details summary::-webkit-details-marker { display: none; }
+        details.academic-details summary::after {
+            content: '▾';
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        details.academic-details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        .details-body {
+            padding: 18px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            border-top: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
@@ -485,9 +830,9 @@
     <div class="container">
         <!-- TOP NAV -->
         <div class="top-nav">
-            <a href="/ugma-gerencia-obras/" class="back-link">
+            <a href="../" class="back-link">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                Volver al Hub Académico UGMA
+                Volver al Hub Académico UGMA (Módulo VI)
             </a>
             <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                 <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="nav-lab-link" title="Abrir Visor BIM 3D & CDE en vivo en el Laboratorio ConTech">
@@ -496,96 +841,465 @@
                     <span class="live-pill">LIVE</span>
                 </a>
                 <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
-                    <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+                    <img src="../../assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo" onerror="this.src='/assets/img/logo-mota-zorrilla.jpg'">
                 </a>
             </div>
+        </div>
+
+        <!-- QUICK JUMP BAR -->
+        <div class="quick-nav-bar">
+            <span class="quick-nav-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                Índice Temático:
+            </span>
+            <a href="#sec-1" class="quick-nav-chip">1. Salto CAD vs openBIM</a>
+            <a href="#sec-2" class="quick-nav-chip">2. QTO vs Harry Osers (Mód. II)</a>
+            <a href="#sec-3" class="quick-nav-chip">3. Gobernanza CDE & Art. 1637 (Mód. III)</a>
+            <a href="#sec-4" class="quick-nav-chip">4. buildingSMART (IFC 4.3 & BCF)</a>
+            <a href="#sec-5" class="quick-nav-chip">5. 7 Dimensiones & LOD</a>
+            <a href="#sec-6" class="quick-nav-chip">6. Curva de MacLeamy (Simulador)</a>
+            <a href="#sec-7" class="quick-nav-chip">7. Calculadora ROI BIM</a>
+            <a href="#sec-8" class="quick-nav-chip">8. Código Python openBIM</a>
+            <a href="#sec-9" class="quick-nav-chip">9. Normas & Bibliografía</a>
         </div>
 
         <!-- HEADER -->
         <div class="page-header">
             <div class="badge-row">
-                <span class="badge">Conferencia Magistral Inaugural · 5 Horas</span>
+                <span class="badge">Conferencia Magistral Inaugural · Sesión Presencial 5h</span>
                 <span class="badge badge-academic">Postgrado UGMA · Diplomado en Gerencia de Obras</span>
+                <span class="badge badge-norma">Normativa Internacional ISO 19650-1/2:2026</span>
             </div>
-            <h1 class="page-title">Introducción a la Metodología BIM: De la Maqueta Digital al Gemelo Digital</h1>
+            <h1 class="page-title">Tema 1: Introducción a la Metodología BIM: De la Maqueta Digital al Gemelo Digital</h1>
             <p class="page-subtitle">
-                Análisis teórico, metodológico y financiero sobre la transformación digital de la industria AECO (Architecture, Engineering, Construction & Operations). Ponencia impartida por el Ing. Héctor Mota en la Escuela de Ingeniería de la UGMA y las VII Jornadas de Ingeniería Civil de la UCAB Guayana.
+                Análisis teórico, metodológico y financiero sobre la transformación digital de la industria AECO (Architecture, Engineering, Construction & Operations). Ponencia impartida por el Ing. Héctor Mota en la Escuela de Ingeniería de la Universidad Nororiental Privada Gran Mariscal de Ayacucho (UGMA) y las VII Jornadas de Ingeniería Civil de la UCAB Guayana.
             </p>
             <div class="speaker-bar">
-                <span>Facilitador: <strong>Ing. Héctor Mota Zorrilla</strong> (UCV / BIM Consultant)</span>
+                <span>Facilitador: <strong>Ing. Héctor Mota Zorrilla</strong> (Consultor ConTech / UCV)</span>
                 <span>•</span>
-                <span>Normativas de Referencia: <strong>ISO 19650-1/2, buildingSMART openBIM</strong></span>
+                <span>Normativas Rectores: <strong>ISO 19650:2026, buildingSMART IFC 4.3, BCF 3.0</strong></span>
                 <span>•</span>
-                <span>Contacto WhatsApp: <strong>0414-8873615</strong></span>
+                <span>Contacto Directo: <strong>0414-8873615</strong></span>
             </div>
         </div>
 
         <!-- SECTION 1: CAD VS BIM -->
-        <div class="content-card">
-            <h2 class="section-title">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                1. La Disrupción del Dibujo Vectorial al Modelo Paramétrico de Información
-            </h2>
+        <div class="content-card" id="sec-1">
+            <div class="section-header-block">
+                <span class="section-num-tag">Eje 1 · Fundamento Ontológico</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    1. La Disrupción del Dibujo Vectorial al Modelo Paramétrico Relacional
+                </h2>
+            </div>
             <p class="academic-p">
-                Durante más de tres décadas, la ingeniería civil y la arquitectura operaron bajo el paradigma del <strong>Dibujo Asistido por Computadora (CAD 2D)</strong>. En dicho esquema, los entregables de diseño consisten en colecciones desacopladas de líneas, arcos y polígonos vectoriales sobre planos bidimensionales (plantas, cortes y elevaciones). Cualquier modificación geométrica en un corte requería la actualización manual y fragmentada de múltiples láminas, generando una inherente asincronía documental y un alto índice de errores en obra.
+                Durante más de cuatro décadas, la industria de la construcción civil operó bajo el paradigma del <strong>Dibujo Asistido por Computadora (CAD 2D)</strong>. En este esquema, el proyecto se fragmenta en láminas desacopladas de líneas, textos y tramas poligonales sobre planos bidimensionales (plantas, secciones transversales y fachadas). Cualquier modificación geométrica imprevista —como el ajuste de un peralte de viga o el redireccionamiento de una tubería de aguas negras— requería una actualización manual e individual en decenas de planos. Este desacople provocó históricamente una <strong>asincronía documental crónica</strong> y la aparición de vicios ocultos en faena.
             </p>
             <p class="academic-p">
-                La <strong>Metodología BIM (Building Information Modeling)</strong> no es un software particular, sino una metodología de trabajo colaborativa basada en la creación y gestión continua de un <strong>Gemelo Digital de Información Paramétrica</strong>. Cada entidad modelada (muro, zapata, viga de concreto, conducto HVAC) no es una simple representación gráfica 3D, sino un objeto inteligente portador de atributos semánticos: resistencia característica a compresión (\(f'c\)), volumen de vaciado, fabricante, costo unitario, fase constructiva y ciclo de mantenimiento.
+                La <strong>Metodología BIM (Building Information Modeling)</strong> no representa la mera sustitución de una herramienta de dibujo ni la compra de una licencia informática privativa; constituye una <strong>transformación ontológica en la gobernanza de datos del activo construido</strong>. En un entorno BIM, no se "dibujan líneas", sino que se instancian <strong>objetos paramétricos semánticos</strong> (`IfcWall`, `IfcBeam`, `IfcColumn`, `IfcDistributionPort`). Cada entidad tridimensional posee atributos intrínsecos de ingeniería: módulo de elasticidad (\(E\)), resistencia a la compresión (\(f'c\)), dosificación, volumen de vaciado neto, fabricante, costo unitario por partida COVENIN y trazabilidad de ciclo de vida.
+            </p>
+
+            <!-- DETAILED COMPARATIVE TABLE -->
+            <div class="academic-table-wrap">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Parámetro Crítico</th>
+                            <th style="width: 35%;">Flujo Tradicional CAD 2D (Láminas DWG)</th>
+                            <th style="width: 35%;">Metodología openBIM Paramétrica (ISO 19650)</th>
+                            <th style="width: 10%;">Impacto Financiero</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Estructura del Dato</strong></td>
+                            <td>
+                                <span class="table-pill-cad">Entidades Huérfanas</span><br>
+                                Vectores geométricos ciegos (líneas, arcos, polilíneas). Una línea no distingue si representa un eje, un muro de carga o una junta de dilatación.
+                            </td>
+                            <td>
+                                <span class="table-pill-bim">Objetos Semánticos</span><br>
+                                Entidades orientadas a objetos (`IfcElement`). Reconocen sus relaciones espaciales topológicas: una viga se apoya en una columna e intersecta una losa.
+                            </td>
+                            <td><strong>Crítico</strong><br>Cero ambigüedad interpretativa en campo.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coordinación Interdisciplinaria</strong></td>
+                            <td>
+                                <span class="table-pill-cad">Superposición Manual</span><br>
+                                Revisión por transparencias o capas en mesa de dibujo. Las interferencias electromecánicas (MEP) se descubren cuando el tubo colisiona con el acero en obra.
+                            </td>
+                            <td>
+                                <span class="table-pill-bim">Clash Detection Automatizado</span><br>
+                                Detección federada de colisiones duras (geométricas) y blandas (espacio de mantenimiento) con jerarquía de tolerancias milimétricas en preconstrucción.
+                            </td>
+                            <td><strong>-85%</strong><br>En órdenes de cambio (RFI) imprevistas en faena.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cómputos Métricos (QTO)</strong></td>
+                            <td>
+                                <span class="table-pill-cad">Cálculo Manual</span><br>
+                                Medición con escalímetro o polilíneas en plano. Margen de error humano acumulado del \(\pm 10\% - 20\%\) en encofrados y despieces de cabillas.
+                            </td>
+                            <td>
+                                <span class="table-pill-bim">Extracción Automatizada</span><br>
+                                Cantidades exactas extraídas en milisegundos directamente del volumen real modelado, vinculadas al catálogo de partidas presupuestarias.
+                            </td>
+                            <td><strong>-95%</strong><br>En tiempos de cubicación y reclamos por sobreprecio.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Control de Modificaciones</strong></td>
+                            <td>
+                                <span class="table-pill-cad">Asincronía Documental</span><br>
+                                Modificar una cota en planta no actualiza automáticamente la sección ni el cómputo. Alto riesgo de trabajar con planos obsoletos.
+                            </td>
+                            <td>
+                                <span class="table-pill-bim">Fuente Única de Verdad (SSOT)</span><br>
+                                La planta, el corte, el 3D y la planilla de cómputos son vistas sincronizadas del mismo modelo subyacente. Un cambio paramétrico actualiza todo el proyecto.
+                            </td>
+                            <td><strong>Inmediato</strong><br>Consistencia dimensional garantizada al 100%.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout-box callout-blue">
+                <strong>Lección de Gerencia de Obras:</strong> El costo de resolver una interferencia entre una tubería de aguas de lluvia de 6" y una viga postensada en el modelo digital durante el anteproyecto es de aproximadamente <strong>$15 USD</strong> (tiempo de modelador). Corregir esa misma interferencia con el encofrado armado y la cuadrilla de vaciado esperando en obra puede superar los <strong>$3,500 USD</strong> en demoliciones, refuerzos estructurales extraordinarios y retrasos en la ruta crítica del cronograma.
+            </div>
+        </div>
+
+        <!-- SECTION 2: CONNECTION WITH MODULE II (HARRY OSERS) -->
+        <div class="content-card" id="sec-2">
+            <div class="section-header-block">
+                <span class="section-num-tag">Articulación Curricular · Módulo II</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    2. De los Cómputos de Harry Osers al QTO Paramétrico Automatizado
+                </h2>
+            </div>
+            <p class="academic-p">
+                En el <strong>Módulo II de este Diplomado (dictado por el Prof. Rafael Angarita)</strong>, se estudiaron exhaustivamente los principios rigurosos de los cómputos métricos para edificaciones basados en la doctrina clásica del Ing. <strong>Harry Osers</strong> y la norma venezolana <strong>COVENIN 2000-87 / 2000-92</strong>. La formulación matemática de planillas de despiece de acero de refuerzo, encofrados de madera/metálicos y volumen de concreto estructural requiere de un desglose aritmético manual y minucioso:
             </p>
 
             <div class="comparison-grid">
                 <div class="comp-card cad">
-                    <h4>Flujo Tradicional (CAD 2D)</h4>
+                    <h4>Flujo Clásico de Harry Osers (Módulo II)</h4>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Cálculo analítico celda por celda a partir de planos 2D:</p>
                     <ul class="comp-list">
-                        <li>❌ Información fragmentada en láminas DWG separadas.</li>
-                        <li>❌ Detección de colisiones manual o directamente en obra.</li>
-                        <li>❌ Cubicaciones (cómputos métricos) manuales y propensas a omisiones.</li>
-                        <li>❌ Modificaciones costosas en fase de construcción.</li>
+                        <li>📏 Medición manual de longitudes efectivas entre caras de columnas descontando recubrimientos (\(r = 3.0\text{ cm}\)).</li>
+                        <li>📐 Cálculo de encofrado perimetral deduciendo la superficie de contacto con losas macizas o nervadas.</li>
+                        <li>⚖️ Conversión de barras de refuerzo por longitud a peso en kilogramos usando factores lineales nominales (\(\text{kg/m}\) de acero).</li>
+                        <li>⚠️ <strong>Vulnerabilidad:</strong> Errores de transcripción en hojas Excel y doble contabilización de volúmenes en intersecciones viga-columna.</li>
                     </ul>
                 </div>
                 <div class="comp-card bim">
-                    <h4>Metodología Paramétrica (openBIM)</h4>
+                    <h4>QTO Paramétrico Automatizado en openBIM</h4>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Extracción directa de atributos geométricos computados por el kernel:</p>
                     <ul class="comp-list">
-                        <li>✅ Modelo federado único como fuente confiable de verdad (SSOT).</li>
-                        <li>✅ Clash Detection automatizado en fase de preconstrucción.</li>
-                        <li>✅ Extracción automatizada de cantidades (QTO - Quantity Takeoff).</li>
-                        <li>✅ Curva de esfuerzo desplazada al diseño preliminar (MacLeamy).</li>
+                        <li>⚡ Extracción volumétrica exacta mediante operaciones booleanas espaciales CSG (*Constructive Solid Geometry*).</li>
+                        <li>📦 Discriminación matemática automatizada de volumen viga vs. volumen columna, sin duplicación de concreto.</li>
+                        <li>📑 Clasificación directa por código de partida COVENIN (`E-323.100`: Concreto en vigas, `E-324.000`: Acero de refuerzo).</li>
+                        <li>🎯 <strong>Precisión Absoluta:</strong> Exportación directa de cantidades certificadas al Análisis de Precios Unitarios (APU) y Curva S.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- COLLAPSIBLE TECHNICAL DEEP DIVE -->
+            <details class="academic-details">
+                <summary>
+                    <span>🔬 Caso Práctico Detallado: Partida COVENIN E-323.100 (Vigas de Carga V-101 de 30x50 cm)</span>
+                </summary>
+                <div class="details-body">
+                    <p>En el método analítico manual de Harry Osers, para computar el concreto de una viga de luz libre \(L = 5.60\text{ m}\) que cruza entre dos columnas de \(40\times 40\text{ cm}\):</p>
+                    <p style="font-family:var(--font-mono); font-size:13px; background:#f1f5f9; padding:10px; border-radius:8px; margin:10px 0;">
+                        Volumen Concreto = Ancho (0.30 m) × Alto (0.50 m) × Longitud entre caras (5.60 m) = 0.84 m³<br>
+                        Encofrado = [2 × (Alto - Espesor Losa: 0.50 - 0.20 = 0.30) + Ancho Fondo (0.30)] × 5.60 m = 5.04 m²
+                    </p>
+                    <p>Si el proyectista en obra cambia el peralte de 50 cm a 60 cm para controlar deflexiones, en CAD el ingeniero calculista debe recalcular a mano cada viga en la planilla. En BIM, la entidad `IfcBeam` recalcula paramétricamente el `GrossVolume`, `NetVolume` y la superficie de contacto con `IfcSlab` en tiempo real, actualizando instantáneamente el costo en el APU y la curva de valor ganado (EVM).</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- SECTION 3: CDE ISO 19650 & LEGAL PROTECTION -->
+        <div class="content-card" id="sec-3">
+            <div class="section-header-block">
+                <span class="section-num-tag">Gobernanza & Blindaje Legal · Módulo III</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    3. Entorno Común de Datos (CDE ISO 19650:2026) y Blindaje Jurídico (Art. 1637 CCV)
+                </h2>
+            </div>
+            <p class="academic-p">
+                El <strong>Entorno Común de Datos (CDE - Common Data Environment)</strong> es la columna vertebral de la norma internacional <strong>ISO 19650-1/2</strong>. No es una carpeta compartida en Google Drive o Dropbox, sino un repositorio digital estructurado y procedimentado que actúa como la <strong>Fuente Única de Verdad (SSOT)</strong> del proyecto de ingeniería. Todo contenedor de información debe transitar obligatoriamente por cuatro estados inmutables:
+            </p>
+
+            <!-- CDE STATES GRID -->
+            <div class="cde-grid">
+                <div class="cde-step-card wip">
+                    <span class="cde-step-badge">1. WIP (Trabajo en Curso)</span>
+                    <h4 class="cde-title">WIP: Disciplinar</h4>
+                    <p class="cde-desc">
+                        Información en desarrollo interno por los proyectistas (estructuras, arquitectura, instalaciones). No está validada ni autorizada para toma de decisiones externas.
+                    </p>
+                </div>
+                <div class="cde-step-card shared">
+                    <span class="cde-step-badge">2. SHARED (Compartido)</span>
+                    <h4 class="cde-title">Shared: Coordinación</h4>
+                    <p class="cde-desc">
+                        Modelos federados verificados internamente y puestos a disposición de las demás especialidades para detección de interferencias, consultas (RFIs) y validación espacial.
+                    </p>
+                </div>
+                <div class="cde-step-card published">
+                    <span class="cde-step-badge">3. PUBLISHED (Publicado)</span>
+                    <h4 class="cde-title">Published: Campo Oficial</h4>
+                    <p class="cde-desc">
+                        Información autorizada con firma digital por la Gerencia e Inspección. <strong>Ningún vaciado de concreto ni orden de compra es válida sin el estatus Published.</strong>
+                    </p>
+                </div>
+                <div class="cde-step-card archived">
+                    <span class="cde-step-badge">4. ARCHIVED (Archivado)</span>
+                    <h4 class="cde-title">Archived: Historial Legal</h4>
+                    <p class="cde-desc">
+                        Pista de auditoría inmutable de todas las revisiones del proyecto, modelos *As-Built* finales y actas de entrega para la fase de operación y mantenimiento.
+                    </p>
+                </div>
+            </div>
+
+            <!-- LEGAL SHIELD: ART 1637 CCV -->
+            <div class="callout-box callout-amber">
+                <h4 style="font-size:15px; font-weight:800; color:var(--amber); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+                    ⚖️ Articulación con Módulo III: Responsabilidad Decenal del Constructor (Art. 1637 Código Civil Venezolano)
+                </h4>
+                <p style="margin-bottom:8px;">
+                    En el <strong>Módulo III (dictado por el Prof. Omar Martínez)</strong> se examinó el marco legal de contratos de obra, fianzas y la temida <strong>Responsabilidad Decenal</strong> establecida en el <strong>Artículo 1637 del Código Civil de Venezuela</strong>: <i>«Si en el curso de diez años, a contar desde el día en que se ha terminado la construcción de un edificio o de otra obra importante o considerable, una u otra se arruinaren en todo o en parte, o presentaren evidente peligro de ruina por defecto de construcción o por el vicio del suelo, el arquitecto y el empresario son responsables»</i>.
+                </p>
+                <p style="margin:0;">
+                    En litigios de obras bajo el método tradicional CAD, los expedientes probatorios suelen ser caóticos: versiones impresas sin fecha clara, cruces de correos informales o planos modificados con bolígrafo en obra. <strong>La implementación de un CDE bajo ISO 19650 proporciona trazabilidad criptográfica inmutable</strong>: cada modelo federado aprobado, cada informe de colisión (BCF) y cada cambio geométrico queda sellado con autor, fecha, hora y justificación técnica, blindando tanto al Ingeniero Residente como al Contratista frente a reclamos improcedentes por vicios de diseño ajenos.
+                </p>
+            </div>
+
+            <!-- NAMING CONVENTION DETAILS -->
+            <details class="academic-details">
+                <summary>
+                    <span>🏷️ Estándar de Codificación de Contenedores de Información (ISO 19650-2)</span>
+                </summary>
+                <div class="details-body">
+                    <p>La norma exige que todo archivo en el CDE cumpla una convención estricta de nombres sin ambigüedades. Por ejemplo, para el Edificio Corporativo Guayana:</p>
+                    <p style="font-family:var(--font-mono); font-size:13px; background:#f1f5f9; padding:12px; border-radius:8px; margin:10px 0; border:1px solid var(--border);">
+                        <strong>GUAY12P-HMZ-01-N04-M3-EST-0001_P02.ifc</strong><br>
+                        • [GUAY12P]: Código de Proyecto | [HMZ]: Autor (Héctor Mota Zorrilla)<br>
+                        • [01]: Zona/Volumen | [N04]: Nivel Piso 4<br>
+                        • [M3]: Tipo de Entregable (Modelo 3D Paramétrico) | [EST]: Disciplina (Estructura)<br>
+                        • [0001]: Número Consecutivo | [P02]: Estado/Revisión (P = Published, Rev 02)
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- SECTION 4: BUILDINGSMART STANDARDS (IFC 4.3 & BCF 3.0) -->
+        <div class="content-card" id="sec-4">
+            <div class="section-header-block">
+                <span class="section-num-tag">Eje 1 · Interoperabilidad Neutral</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    4. Estándares Abiertos de buildingSMART: IFC 4.3 y BCF 3.0
+                </h2>
+            </div>
+            <p class="academic-p">
+                El mayor riesgo de digitalización en corporaciones de ingeniería es el <i>Vendor Lock-in</i> (cautiverio comercial en formatos cerrados privativos como .RVT o .NWD). La iniciativa global <strong>openBIM</strong>, liderada por <strong>buildingSMART International</strong>, garantiza la soberanía digital de los proyectos mediante especificaciones abiertas neutrales:
+            </p>
+
+            <div class="comparison-grid">
+                <div class="comp-card bim">
+                    <h4>IFC 4.3 (ISO 16739-1:2024/2026)</h4>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">El esquema universal de datos de infraestructura y edificación:</p>
+                    <ul class="comp-list">
+                        <li>🛣️ <strong>Expansión a Infraestructura Lineal:</strong> Soporte nativo para vialidad pesada (`IfcRoad`), puentes de concreto/acero (`IfcBridge`), vías férreas (`IfcRailway`) y puertos.</li>
+                        <li>🌐 <strong>Georreferenciación Exacta:</strong> Acoplamiento con Sistemas de Información Geográfica (GIS) mediante coordenadas geodésicas oficiales (UTM/REGVEN en Venezuela).</li>
+                        <li>🏗️ <strong>Pertinencia en Guayana:</strong> Vital para la gerencia de obras en puentes sobre los ríos Orinoco y Caroní, plantas hidroeléctricas y empresas básicas.</li>
+                    </ul>
+                </div>
+                <div class="comp-card cad">
+                    <h4>BCF 3.0 (BIM Collaboration Format)</h4>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">Protocolo abierto de mensajería y gestión de incidencias:</p>
+                    <ul class="comp-list">
+                        <li>📍 <strong>Desacople de Datos:</strong> Comunica un choque espacial transmitiendo únicamente un pequeño paquete XML/JSON de pocos kilobytes en lugar de transferir gigabytes de maquetas.</li>
+                        <li>📷 <strong>Metadatos Clave:</strong> Posición exacta de cámara 3D, GUID de los elementos colisionantes, fotografía de campo, responsable y nivel de severidad.</li>
+                        <li>🔄 <strong>Auditoría Transversal:</strong> Se sincroniza entre Revit, Archicad, BlenderBIM y visores web móviles para inspección en campo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SOFTWARE ECOSYSTEM MATRIX -->
+            <div class="academic-table-wrap">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Software / Herramienta</th>
+                            <th>Rol en el Flujo openBIM</th>
+                            <th>Tipo de Licencia</th>
+                            <th>Ventajas de Vanguardia</th>
+                            <th>Restricciones en Venezuela</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Autodesk Revit</strong></td>
+                            <td>Autoría paramétrica arquitectónica y MEP</td>
+                            <td>Comercial (Suscripción anual USD)</td>
+                            <td>Estándar comercial masivo; librerías comerciales extensas.</td>
+                            <td>Coste de licenciamiento prohibitivo para pymes locales; demanda alto hardware.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Graphisoft Archicad</strong></td>
+                            <td>Autoría y coordinación arquitectónica</td>
+                            <td>Comercial (Perpetua / Suscripción)</td>
+                            <td>Manejo nativo openBIM impecable; alta fluidez en laptops estándar.</td>
+                            <td>Menor adopción local en cálculos de instalaciones hidrosanitarias complejas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BlenderBIM (Bonsai)</strong></td>
+                            <td>Edición y autoría nativa directa en IFC</td>
+                            <td>Software Libre (GPL / Gratuito)</td>
+                            <td>Cero costo; edita el esquema IFC directamente sin exportaciones degenerativas.</td>
+                            <td>Curva de aprendizaje empinada orientada a modeladores técnicos avanzados.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Navisworks / Solibri</strong></td>
+                            <td>Clash Detection y Simulación 4D TimeLiner</td>
+                            <td>Comercial / Enterprise</td>
+                            <td>Potencia para federar modelos colosales de miles de metros cuadrados.</td>
+                            <td>Formatos cerrados en Navisworks; Solibri requiere configuración de reglas avanzadas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Visor Lab ConTech (Three.js)</strong></td>
+                            <td>Inspección de modelos y CDE en navegador</td>
+                            <td>Código Propio de la Masterclass</td>
+                            <td>Acceso instantáneo desde celulares y tablets sin instalar programas ni pagar licencias.</td>
+                            <td>Requiere conexión a internet para cargar geometrías complejas iniciales.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 5: 7 DIMENSIONS & LOD -->
+        <div class="content-card" id="sec-5">
+            <div class="section-header-block">
+                <span class="section-num-tag">Eje 1 · Madurez Integral</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    5. Las 7 Dimensiones de BIM (3D a 7D) y los Niveles de Desarrollo (LOD)
+                </h2>
+            </div>
+            <p class="academic-p">
+                El modelo de información evoluciona de manera holística a lo largo de las distintas etapas del ciclo de vida del activo de infraestructura, incorporando sucesivas capas de datos técnicos, temporales, económicos y de sostenibilidad:
+            </p>
+
+            <!-- 7 DIMENSIONS GRID -->
+            <div class="dim-grid">
+                <div class="dim-card">
+                    <span class="dim-badge">3D · Geometría</span>
+                    <h4 class="dim-title">Coordinación Espacial</h4>
+                    <p class="dim-desc">Modelado paramétrico de arquitectura, estructura e instalaciones. Detección de colisiones físicas antes de vaciar concreto.</p>
+                </div>
+                <div class="dim-card">
+                    <span class="dim-badge">4D · Tiempo</span>
+                    <h4 class="dim-title">Simulación Constructiva</h4>
+                    <p class="dim-desc">Vinculación de entidades geométricas con la ruta crítica del cronograma Gantt. Logística de grúas, acopios y secuencias de montaje.</p>
+                </div>
+                <div class="dim-card">
+                    <span class="dim-badge">5D · Costo</span>
+                    <h4 class="dim-title">Presupuestación Dinámica</h4>
+                    <p class="dim-desc">Cómputos métricos (QTO) vinculados al APU. Generación de Curvas S y control de Valor Ganado (EVM: PV, EV, AC, CPI, SPI).</p>
+                </div>
+                <div class="dim-card">
+                    <span class="dim-badge">6D · Sostenibilidad</span>
+                    <h4 class="dim-title">Descarbonización & Energía</h4>
+                    <p class="dim-desc">Simulación solar térmica pasiva, confort adaptativo (ASHRAE 55), huella de carbono embebido y certificaciones LEED v5 / EDGE.</p>
+                </div>
+                <div class="dim-card">
+                    <span class="dim-badge">7D · Operación</span>
+                    <h4 class="dim-title">Facility Management</h4>
+                    <p class="dim-desc">Gemelo Digital para mantenimiento preventivo, fichas técnicas COBie, ciclo de vida de bombas, transformadores y equipos mayores.</p>
+                </div>
+            </div>
+
+            <!-- LOD SECTION -->
+            <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin:26px 0 12px;">
+                Niveles de Desarrollo y Madurez del Modelo (LOD - Level of Development)
+            </h3>
+            <p class="academic-p">
+                Establecido por el <i>BIMForum</i> y el <i>American Institute of Architects (AIA)</i>, el LOD define la <strong>confiabilidad geométrica y de información</strong> de un elemento en cada hito del proyecto de construcción:
+            </p>
+
+            <div class="lod-grid">
+                <div class="lod-card">
+                    <div class="lod-tag">LOD 100</div>
+                    <div class="lod-name">Conceptual</div>
+                    <div class="lod-desc">Volumen genérico, área global y ubicación estimada. No apto para cómputos.</div>
+                </div>
+                <div class="lod-card">
+                    <div class="lod-tag">LOD 200</div>
+                    <div class="lod-name">Esquemático</div>
+                    <div class="lod-desc">Dimensiones aproximadas de elementos estructurales y de distribución.</div>
+                </div>
+                <div class="lod-card">
+                    <div class="lod-tag">LOD 300</div>
+                    <div class="lod-name">Diseño de Detalle</div>
+                    <div class="lod-desc">Geometría exacta, especificación de material (\(f'c\)) y apto para licitación.</div>
+                </div>
+                <div class="lod-card">
+                    <div class="lod-tag">LOD 350</div>
+                    <div class="lod-name">Interfases / Cruces</div>
+                    <div class="lod-desc">Detalle de uniones, placas de anclaje y pasamuros para coordinación MEP.</div>
+                </div>
+                <div class="lod-card">
+                    <div class="lod-tag">LOD 400</div>
+                    <div class="lod-name">Fabricación</div>
+                    <div class="lod-desc">Planos de taller de despiece de acero y perfiles metálicos para ensamblaje.</div>
+                </div>
+                <div class="lod-card">
+                    <div class="lod-tag">LOD 500</div>
+                    <div class="lod-name">As-Built Verificado</div>
+                    <div class="lod-desc">Modelo auditado en campo con escaneo láser o fotogrametría tras el vaciado.</div>
                 </div>
             </div>
         </div>
 
-        <!-- SECTION 2: MACLEAMY CURVE & SIMULATOR -->
-        <div class="content-card">
-            <h2 class="section-title">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
-                2. Fundamento Cuantitativo: La Curva de MacLeamy (Civitillo, 2021)
-            </h2>
-            <p class="academic-p">
-                Formulada originalmente por el arquitecto Patrick MacLeamy y refrendada en estudios empíricos contemporáneos (Civitillo, 2021), esta curva fundamenta el impacto económico de la adopción BIM en proyectos de infraestructura. Demuestra que la <strong>habilidad de influir positivamente en el costo y desempeño de la obra es máxima en las fases iniciales</strong> (anteproyecto y diseño conceptual) y decae exponencialmente conforme avanza la construcción. Por el contrario, el <strong>costo financiero de realizar cambios y corregir errores crece de manera logarítmica</strong> si se detectan en obra.
-            </p>
-
-            <div class="callout-box">
-                <strong>Principio de Esfuerzo Temprano (Front-Loading):</strong> Mientras que el flujo tradicional CAD concentra el mayor esfuerzo técnico en la fase de Documentación de Construcción (cuando los cambios ya son caros), el flujo BIM traslada el esfuerzo intelectual hacia el Diseño Esquemático y Desarrollo de Detalle, logrando una reducción drástica de órdenes de cambio (RFI) en campo.
+        <!-- SECTION 6: MACLEAMY CURVE & SIMULATOR -->
+        <div class="content-card" id="sec-6">
+            <div class="section-header-block">
+                <span class="section-num-tag">Eje 1 · Análisis Cuantitativo</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+                    6. Fundamento Cuantitativo: La Curva de MacLeamy (Civitillo, 2021)
+                </h2>
             </div>
+            <p class="academic-p">
+                Formulada originalmente por el arquitecto Patrick MacLeamy y revalidada en investigaciones empíricas contemporáneas (Civitillo, 2021), este modelo matemático fundamenta la viabilidad financiera de la digitalización ConTech en obras civiles. Demuestra que la <strong>capacidad de influir positivamente en el costo final y desempeño energético de una obra es máxima en las etapas iniciales</strong> (prediseño y diseño esquemático) y decae drásticamente a medida que el proyecto entra en ejecución.
+            </p>
+            <p class="academic-p">
+                En sentido opuesto, el <strong>costo financiero de incorporar cambios en el diseño crece exponencialmente</strong> conforme avanza la construcción. Mientras el flujo tradicional en CAD concentra el mayor esfuerzo técnico en la fase de "Documentación de Construcción" (cuando modificar un plano resulta sumamente oneroso), la metodología BIM desplaza el esfuerzo hacia las etapas tempranas de diseño preliminar mediante el principio de <strong>Front-Loading</strong>.
+            </p>
 
             <!-- INTERACTIVE SIMULATOR -->
             <div class="sim-container">
-                <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin-bottom:14px;">
-                    Simulador Dinámico de Esfuerzo y Costos (Curva de MacLeamy)
+                <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+                    <span>📊</span> Simulador Interactivo de Esfuerzo y Costos (Curva de MacLeamy)
                 </h3>
                 <div class="sim-controls">
                     <div class="control-group">
                         <label for="shiftSlider">Desplazamiento del Esfuerzo BIM (Front-Loading):</label>
                         <input type="range" id="shiftSlider" min="1" max="5" value="3" step="1" oninput="updateMacLeamyChart()">
-                        <span id="shiftValText" style="font-size:12.5px; color:var(--text-light); font-family:var(--font-mono); font-weight:600;">Nivel de Madurez: Intermedio (BIM Level 2)</span>
+                        <span id="shiftValText" style="font-size:12.5px; color:var(--blue-accent); font-family:var(--font-mono); font-weight:700;">Nivel de Madurez: Intermedio (BIM Level 2 - Norma ISO 19650)</span>
                     </div>
                     <div class="control-group">
-                        <label for="costMultiplier">Multiplicador de Costo por Cambios en Obra:</label>
+                        <label for="costMultiplier">Tipología y Complejidad del Proyecto:</label>
                         <select id="costMultiplier" onchange="updateMacLeamyChart()">
-                            <option value="1">Edificación Estándar (Factor 1.0x)</option>
-                            <option value="1.3" selected>Proyecto Industrial Complejo (Factor 1.3x)</option>
-                            <option value="1.6">Infraestructura Crítica Hospitalaria (Factor 1.6x)</option>
+                            <option value="1">Edificación Estándar / Residencial (Factor 1.0x)</option>
+                            <option value="1.3" selected>Proyecto Industrial Siderúrgico / Guayana (Factor 1.3x)</option>
+                            <option value="1.65">Infraestructura Crítica Hospitalaria / Hidroeléctrica (Factor 1.65x)</option>
                         </select>
                     </div>
                 </div>
@@ -596,53 +1310,17 @@
             </div>
         </div>
 
-        <!-- SECTION 3: 7 DIMENSIONS -->
-        <div class="content-card">
-            <h2 class="section-title">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                3. Las 7 Dimensiones de la Metodología BIM (3D a 7D)
-            </h2>
-            <p class="academic-p">
-                El modelo de información evoluciona a lo largo del ciclo de vida del activo, incorporando capas sucesivas de datos que van mucho más allá de la representación espacial tridimensional:
-            </p>
-
-            <div class="dim-grid">
-                <div class="dim-card">
-                    <span class="dim-badge">3D · Modelo</span>
-                    <h4 class="dim-title">Geometría Paramétrica</h4>
-                    <p class="dim-desc">Coordinación espacial de arquitectura, estructuras y MEP. Detección de interferencias físicas.</p>
-                </div>
-                <div class="dim-card">
-                    <span class="dim-badge">4D · Tiempo</span>
-                    <h4 class="dim-title">Simulación Constructiva</h4>
-                    <p class="dim-desc">Vinculación del modelo con el cronograma Gantt. Secuencia temporal de montaje y logística de obra.</p>
-                </div>
-                <div class="dim-card">
-                    <span class="dim-badge">5D · Costo</span>
-                    <h4 class="dim-title">Control Presupuestario</h4>
-                    <p class="dim-desc">Extracción de cómputos (QTO), vinculación de precios unitarios y Curvas S de Valor Ganado (EVM).</p>
-                </div>
-                <div class="dim-card">
-                    <span class="dim-badge">6D · Sostenibilidad</span>
-                    <h4 class="dim-title">Eficiencia Energética</h4>
-                    <p class="dim-desc">Simulación solar bioclimática, huella de carbono incorporada y certificaciones EDGE / LEED.</p>
-                </div>
-                <div class="dim-card">
-                    <span class="dim-badge">7D · Operación</span>
-                    <h4 class="dim-title">Facility Management</h4>
-                    <p class="dim-desc">Mantenimiento preventivo de activos, fichas técnicas COBie y operación del Gemelo Digital.</p>
-                </div>
+        <!-- SECTION 7: ROI BIM CALCULATOR -->
+        <div class="content-card" id="sec-7">
+            <div class="section-header-block">
+                <span class="section-num-tag">Eje 1 · Análisis Financiero</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    7. Calculadora Paramétrica de Retorno de Inversión (ROI BIM)
+                </h2>
             </div>
-        </div>
-
-        <!-- SECTION 4: ROI BIM CALCULATOR -->
-        <div class="content-card">
-            <h2 class="section-title">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                4. Calculadora Paramétrica de Retorno de Inversión (ROI BIM)
-            </h2>
             <p class="academic-p">
-                Basada en métricas internacionales de adopción de la <i>Stanford University Center for Integrated Facility Engineering (CIFE)</i> y <i>McGraw Hill Construction</i>, esta herramienta estima el impacto financiero tangible al aplicar coordinación BIM y detección temprana de interferencias en una obra de edificación:
+                Basada en métricas cuantitativas del <i>Center for Integrated Facility Engineering (CIFE)</i> de la Universidad de Stanford y estadísticas de <i>McGraw Hill Construction</i>, esta herramienta estima el impacto financiero tangible al adoptar coordinación BIM multidisciplinaria en proyectos de edificación e industria:
             </p>
 
             <div class="calc-grid">
@@ -652,23 +1330,36 @@
                         <input type="number" id="budgetInput" value="2500000" step="50000" oninput="calculateROI()">
                     </div>
                     <div class="calc-field">
-                        <label for="contingencyRate">Tasa Típica de Imprevistos por Errores CAD (%):</label>
+                        <label for="contingencyRate">Tasa Típica de Imprevistos por Descoordinación CAD (%):</label>
                         <input type="number" id="contingencyRate" value="8.5" step="0.5" oninput="calculateROI()">
                     </div>
                     <div class="calc-field">
-                        <label for="bimCostRate">Inversión Estimada en Coordinación BIM (% del Presupuesto):</label>
+                        <label for="bimCostRate">Inversión en Coordinación y Modelado BIM (% del Presupuesto):</label>
                         <input type="number" id="bimCostRate" value="1.8" step="0.1" oninput="calculateROI()">
+                    </div>
+
+                    <div style="margin-top:14px;">
+                        <span style="font-size:12px; font-weight:700; color:var(--text-muted);">Cargar Escenarios Predefinidos:</span>
+                        <div class="preset-row">
+                            <button type="button" class="preset-btn" onclick="applyPreset(1500000, 7.5, 1.6)">Residencial ($1.5M)</button>
+                            <button type="button" class="preset-btn" onclick="applyPreset(5000000, 9.5, 2.0)">Industrial Guayana ($5.0M)</button>
+                            <button type="button" class="preset-btn" onclick="applyPreset(12000000, 11.0, 2.2)">Hospitalario ($12.0M)</button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="calc-results">
                     <div class="res-item">
-                        <div class="res-label">Ahorro Directo Estimado en Re-trabajos y RFI:</div>
+                        <div class="res-label">Ahorro Directo en Mitigación de Re-trabajos y RFI:</div>
                         <div class="res-val" id="savingsVal">$170,000</div>
                     </div>
                     <div class="res-item">
-                        <div class="res-label">Inversión Neta en Coordinación BIM:</div>
+                        <div class="res-label">Inversión Estimada en Coordinación BIM:</div>
                         <div class="res-val" id="bimInvestVal" style="color:#0369a1;">$45,000</div>
+                    </div>
+                    <div class="res-item">
+                        <div class="res-label">Beneficio Financiero Neto:</div>
+                        <div class="res-val" id="netBenefitVal" style="color:#047857;">+$125,000</div>
                     </div>
                     <div class="res-item">
                         <div class="res-label">Retorno Sobre la Inversión (ROI Estimado):</div>
@@ -678,73 +1369,102 @@
             </div>
         </div>
 
-        <!-- SECTION 5: TECHNICAL CODE -->
-        <div class="content-card">
-            <h2 class="section-title">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                5. Código Técnico: Extracción de Metadatos con Python IfcOpenShell
-            </h2>
+        <!-- SECTION 8: TECHNICAL CODE & IFCOPENSHELL -->
+        <div class="content-card" id="sec-8">
+            <div class="section-header-block">
+                <span class="section-num-tag">Eje 1 · Laboratorio Práctico</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    8. Laboratorio de Código Python openBIM: IfcOpenShell
+                </h2>
+            </div>
             <p class="academic-p">
-                El flujo openBIM estandarizado permite interactuar con los esquemas IFC sin depender de licencias de software propietario. El siguiente script de Python automatiza la auditoría de vigas de concreto estructurales y extrae sus propiedades mecánicas y dimensionales:
+                El flujo de trabajo openBIM estandarizado permite programar auditorías algorítmicas directamente sobre el archivo IFC neutro con Python, sin pagar suscripciones a licencias comerciales. El siguiente script automatiza la extracción de vigas estructurales (`IfcBeam`), verifica la resistencia a compresión declarada (\(f'c\)) y totaliza los volúmenes para el cómputo métrico de la partida COVENIN:
             </p>
 
-            <div class="code-block-academic">
-<pre><code class="language-python">import ifcopenshell
+            <div class="code-block-wrap">
+                <button type="button" class="copy-code-btn" onclick="copyPythonCode(this)">Copiar Código</button>
+                <div class="code-block-academic">
+<pre><code class="language-python" id="pythonCodeSnippet">import ifcopenshell
 import ifcopenshell.util.element
 
-# Carga del modelo federado openBIM (IFC4)
+# 1. Cargar el modelo federado openBIM certificado (IFC4 / ISO 16739)
 model = ifcopenshell.open("Edificio_Corporativo_UGMA.ifc")
 
-# Filtrado de todas las vigas estructurales (IfcBeam)
-beams = model.by_type("IfcBeam")
-print(f"Total de vigas federadas detectadas: {len(beams)}")
+# 2. Filtrar todas las vigas estructurales del edificio (IfcBeam)
+vigas = model.by_type("IfcBeam")
+print(f"==================================================")
+print(f"Total de vigas estructurales detectadas: {len(vigas)}")
+print(f"==================================================")
 
-# Auditoría paramétrica de atributos y resistencia de concreto (f'c)
-for beam in beams[:5]:
-    psets = ifcopenshell.util.element.get_psets(beam)
-    nombre = beam.Name or "Sin Nombre"
+volumen_total_m3 = 0.0
+
+# 3. Iterar y auditar resistencia de concreto y volumen paramétrico
+for viga in vigas:
+    psets = ifcopenshell.util.element.get_psets(viga)
+    nombre = viga.Name or "Viga Sin Asignar"
+    guid = viga.GlobalId
+    
+    # Extraer resistencia especificada f'c
     resistencia = psets.get("Pset_BeamCommon", {}).get("CompressiveStrength", "No declarada")
-    print(f"[ID: {beam.GlobalId}] - Tipo: {nombre} | f'c: {resistencia}")
-</code></pre>
+    
+    # Extraer volumen neto de cómputo (QTO Paramétrico)
+    qto_base = psets.get("Qto_BeamBaseQuantities", {})
+    volumen = qto_base.get("NetVolume", 0.0)
+    volumen_total_m3 += volumen
+    
+    print(f"[{guid[:8]}...] {nombre} | f'c: {resistencia} | Vol: {volumen:.3f} m³")
+
+print(f"--------------------------------------------------")
+print(f"TOTAL CONCRETO COMPUTADO (Partida COVENIN E-323): {volumen_total_m3:.2f} m³")
+print(f"==================================================")</code></pre>
+                </div>
             </div>
 
-            <div style="margin-top: 24px; padding: 20px 24px; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-                <div style="max-width: 680px;">
-                    <h4 style="font-size: 16px; font-weight: 800; color: #0369a1; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
-                        <span>📐</span> Experimentación en Vivo: Visor BIM 3D en el Laboratorio ConTech
+            <!-- LAB BANNER CALLOUT -->
+            <div class="lab-banner-callout">
+                <div style="max-width: 720px;">
+                    <h4 style="font-size: 16.5px; font-weight: 800; color: #0369a1; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                        <span>📐</span> Experimentación en Vivo: Visor BIM 3D Three.js en el Laboratorio ConTech
                     </h4>
-                    <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                        Pon a prueba estos conceptos interactuando directamente con el visualizador 3D Three.js e inspeccionando propiedades paramétricas de elementos en tiempo real en <strong>lab.motazorrilla.com/bim</strong>.
+                    <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.6;">
+                        Pon a prueba estos conceptos interactuando con el visualizador 3D WebGL, inspeccionando elementos estructurales, capas disciplinares y metadatos paramétricos en tiempo real en nuestro servidor del laboratorio:
                     </p>
                 </div>
-                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #0284c7; color: #ffffff; font-size: 13.5px; font-weight: 700; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25); transition: all 0.2s;">
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: #0284c7; color: #ffffff; font-size: 13.5px; font-weight: 700; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25); transition: all 0.2s;">
                     Abrir Visor 3D en el Lab &rarr;
                 </a>
             </div>
         </div>
 
-        <!-- SECTION 6: REFERENCES -->
-        <div class="content-card">
-            <h2 class="section-title">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                6. Bibliografía y Normativas Académicas de Referencia
-            </h2>
-            <ul style="padding-left: 24px; font-size: 14px; color: var(--text-muted); line-height: 1.8;">
-                <li><strong>ISO 19650-1:2018:</strong> <i>Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM) — Information management using building information modelling: Concepts and principles.</i></li>
-                <li><strong>ISO 19650-2:2018:</strong> <i>Information management using building information modelling — Part 2: Delivery phase of the assets.</i></li>
-                <li><strong>Civitillo, J. (2021):</strong> <i>Cost Management in BIM: Quantitative Analysis of the MacLeamy Curve in Mid-Scale Commercial Facilities.</i> Journal of Construction Engineering and Project Management.</li>
-                <li><strong>Eastman, C., Teicholz, P., Sacks, R., &amp; Liston, K. (2018):</strong> <i>BIM Handbook: A Guide to Building Information Modeling for Owners, Designers, Engineers, Contractors, and Facility Managers.</i> John Wiley &amp; Sons.</li>
-                <li><strong>buildingSMART International (2024):</strong> <i>Industry Foundation Classes (IFC4.3) and BIM Collaboration Format (BCF 2.1) Specifications.</i></li>
+        <!-- SECTION 9: NORMATIVA & BIBLIOGRAPHY -->
+        <div class="content-card" id="sec-9">
+            <div class="section-header-block">
+                <span class="section-num-tag">Referencias Académicas</span>
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    9. Marco Normativo y Bibliografía Académica de Referencia
+                </h2>
+            </div>
+            <ul style="padding-left: 24px; font-size: 14px; color: var(--text-muted); line-height: 1.85;">
+                <li><strong>ISO 19650-1:2018 / Actualización 2026:</strong> <i>Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM) — Information management using building information modelling: Concepts and principles.</i> International Organization for Standardization.</li>
+                <li><strong>ISO 19650-2:2018:</strong> <i>Information management using building information modelling — Part 2: Delivery phase of the assets.</i> Ginebra, Suiza.</li>
+                <li><strong>ISO 16739-1:2024 / IFC 4.3:</strong> <i>Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema.</i> buildingSMART International.</li>
+                <li><strong>Código Civil de Venezuela (1982):</strong> <i>Artículo 1637: Responsabilidad decenal del arquitecto y empresario por vicios de construcción o suelo.</i> Gaceta Oficial N° 2.990 Extraordinaria.</li>
+                <li><strong>COVENIN 2000-87 / 2000-92:</strong> <i>Sector Construcción. Mediciones y Codificación de Partidas para Estudios, Proyectos y Construcción. Parte II. Edificaciones.</i> FONDONORMA, Caracas.</li>
+                <li><strong>Osers, Harry (1985):</strong> <i>Cómputos Métricos y Presupuestos en Edificaciones. Principios y Planillas de Medición en Obras Civiles.</i> Ediciones Técnicas, Caracas.</li>
+                <li><strong>Civitillo, J. (2021):</strong> <i>Cost Management in BIM: Quantitative Analysis of the MacLeamy Curve in Mid-Scale Commercial Facilities.</i> Journal of Construction Engineering and Project Management, 11(2), 45-58.</li>
+                <li><strong>Eastman, C., Teicholz, P., Sacks, R., &amp; Liston, K. (2018):</strong> <i>BIM Handbook: A Guide to Building Information Modeling for Owners, Managers, Designers, Engineers and Contractors.</i> 3rd Edition. John Wiley &amp; Sons, Hoboken, NJ.</li>
             </ul>
         </div>
 
         <!-- CTA FOOTER -->
         <div class="page-footer-action">
             <h3 style="font-size:22px; font-weight:800; color:var(--navy-primary); margin-bottom:8px;">
-                ¿Deseas profundizar en esta Masterclass o agendar una conferencia institucional?
+                ¿Deseas profundizar en esta Masterclass o agendar una asesoría técnica especializada?
             </h3>
-            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
-                El Ing. Héctor Mota ofrece talleres presenciales y virtuales con estaciones interactivas de modelado 3D y simulación de costos.
+            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px; max-width:760px; margin-left:auto; margin-right:auto;">
+                El Ing. Héctor Mota Zorrilla ofrece talleres presenciales, auditorías de proyectos BIM y acompañamiento metodológico para empresas constructoras y profesionales de la ingeniería en Guayana y a nivel nacional.
             </p>
             <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20m%C3%A1s%20detalles%20sobre%20la%20Masterclass%20BIM%20del%20Diplomado%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action-green">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -754,7 +1474,7 @@ for beam in beams[:5]:
 
     </div>
 
-    <!-- SCRIPT FOR MACLEAMY CHART AND ROI CALC -->
+    <!-- SCRIPT FOR MACLEAMY CHART, ROI CALC AND INTERACTIONS -->
     <script>
         let macLeamyChartInstance = null;
 
@@ -766,7 +1486,7 @@ for beam in beams[:5]:
             // Curve 1: Ability to impact cost & capabilities (Downwards)
             const abilityData = [100, 85, 60, 35, 15, 5];
             
-            // Curve 2: Cost of design changes (Upwards)
+            // Curve 2: Cost of design changes (Upwards exponential)
             const changeCostData = [5, 12, 28, 55, 95, 100];
             
             // Curve 3: Traditional CAD Workflow (Peak at Documentation)
@@ -873,25 +1593,25 @@ for beam in beams[:5]:
 
             let newBimData;
             if (shift === 1) {
-                shiftText.innerText = "Nivel de Madurez: Inicial (BIM Level 1 / Transición)";
+                shiftText.innerText = "Nivel de Madurez: Inicial (BIM Level 1 / Modelado Aislado)";
                 newBimData = [15, 40, 65, 60, 30, 10];
             } else if (shift === 2) {
-                shiftText.innerText = "Nivel de Madurez: Colaboración Parcial";
+                shiftText.innerText = "Nivel de Madurez: Colaboración Parcial (Intercambio BCF)";
                 newBimData = [20, 55, 75, 50, 25, 9];
             } else if (shift === 3) {
                 shiftText.innerText = "Nivel de Madurez: Intermedio (BIM Level 2 - Norma ISO 19650)";
                 newBimData = [25, 65, 85, 45, 20, 8];
             } else if (shift === 4) {
-                shiftText.innerText = "Nivel de Madurez: Avanzado (Integración 4D/5D)";
+                shiftText.innerText = "Nivel de Madurez: Avanzado (Integración 4D/5D QTO)";
                 newBimData = [35, 78, 92, 38, 16, 7];
             } else {
-                shiftText.innerText = "Nivel de Madurez: Óptimo (Gemelo Digital & AI ConTech)";
+                shiftText.innerText = "Nivel de Madurez: Óptimo (Gemelo Digital & ConTech)";
                 newBimData = [45, 90, 95, 30, 12, 6];
             }
 
             // Update cost curve with multiplier
             const baseChangeCost = [5, 12, 28, 55, 95, 100];
-            const updatedCost = baseChangeCost.map(val => Math.min(105, val * multiplier));
+            const updatedCost = baseChangeCost.map(val => Math.min(108, val * multiplier));
 
             macLeamyChartInstance.data.datasets[3].data = newBimData;
             macLeamyChartInstance.data.datasets[1].data = updatedCost;
@@ -904,18 +1624,40 @@ for beam in beams[:5]:
             const bimCostRate = parseFloat(document.getElementById('bimCostRate').value) || 0;
 
             const typicalReworkCost = budget * (contingencyRate / 100);
-            // Empirical research shows BIM mitigates 80% of uncoordinated clash reworks
+            // Empirical research (Stanford CIFE) shows BIM mitigates 80% of uncoordinated clash reworks
             const estimatedSavings = typicalReworkCost * 0.80;
             const bimInvestment = budget * (bimCostRate / 100);
+            const netBenefit = estimatedSavings - bimInvestment;
 
             let netROI = 0;
             if (bimInvestment > 0) {
-                netROI = ((estimatedSavings - bimInvestment) / bimInvestment) * 100;
+                netROI = (netBenefit / bimInvestment) * 100;
             }
 
             document.getElementById('savingsVal').innerText = '$' + Math.round(estimatedSavings).toLocaleString('en-US');
             document.getElementById('bimInvestVal').innerText = '$' + Math.round(bimInvestment).toLocaleString('en-US');
+            document.getElementById('netBenefitVal').innerText = (netBenefit >= 0 ? '+$' : '-$') + Math.abs(Math.round(netBenefit)).toLocaleString('en-US');
             document.getElementById('roiVal').innerText = (netROI >= 0 ? '+' : '') + netROI.toFixed(1) + '%';
+        }
+
+        function applyPreset(budget, contingency, bimRate) {
+            document.getElementById('budgetInput').value = budget;
+            document.getElementById('contingencyRate').value = contingency;
+            document.getElementById('bimCostRate').value = bimRate;
+            calculateROI();
+        }
+
+        function copyPythonCode(btn) {
+            const codeText = document.getElementById('pythonCodeSnippet').innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "¡Copiado!";
+                btn.style.background = "#047857";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "";
+                }, 2000);
+            });
         }
 
         window.addEventListener('DOMContentLoaded', () => {
