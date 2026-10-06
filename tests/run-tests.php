@@ -237,6 +237,30 @@ assert_test("Día 5 sincronizado al 100% entre ugma-gerencia-obras, Blade y publ
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
+assert_test("Día 6 (Taller Integrador) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Día 6 (Taller Integrador) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Día 6 (Taller Integrador) incorpora simuladores (calculateRubric, generateWarRoomActa, triggerCrisisScenario)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
+    return stripos($content, 'calculateRubric') !== false 
+        && stripos($content, 'generateWarRoomActa') !== false
+        && stripos($content, 'triggerCrisisScenario') !== false;
+});
+
+assert_test("Día 6 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/taller-integrador.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/taller-integrador/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
     if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
         return false;
@@ -398,6 +422,28 @@ assert_test("Unhappy Path: Calculadora de ROI maneja presupuestos de cero o inve
     // Evitar división por cero
     $roi = ($bimInvestment > 0) ? (($estimatedSavings - $bimInvestment) / $bimInvestment) * 100 : 0.0;
     return $roi === 0.0;
+});
+
+assert_test("Unit: Algoritmo de Rúbrica de Grado vigesimal (0-20 pts) y veredicto colegiado", function() {
+    $evalRubric = function($c1, $c2, $c3, $c4) {
+        $total = ($c1 * 0.25) + ($c2 * 0.25) + ($c3 * 0.25) + ($c4 * 0.25);
+        if ($total >= 19.0) $verdict = "SOBRESALIENTE CON MENCIÓN HONORÍFICA";
+        else if ($total >= 16.0) $verdict = "APROBADO DISTINGUIDO";
+        else if ($total >= 10.0) $verdict = "APROBADO REGULAR";
+        else $verdict = "NO CONFORME / RECHAZADO";
+        return ['score' => round($total, 2), 'verdict' => $verdict];
+    };
+    
+    $res1 = $evalRubric(19.5, 19.0, 19.2, 19.0);
+    if ($res1['score'] < 19.0 || $res1['verdict'] !== "SOBRESALIENTE CON MENCIÓN HONORÍFICA") return false;
+    
+    $res2 = $evalRubric(16.0, 17.0, 16.5, 16.0);
+    if ($res2['score'] < 16.0 || $res2['verdict'] !== "APROBADO DISTINGUIDO") return false;
+
+    $res3 = $evalRubric(8.0, 9.0, 9.5, 9.0);
+    if ($res3['score'] >= 10.0 || $res3['verdict'] !== "NO CONFORME / RECHAZADO") return false;
+    
+    return true;
 });
 
 // ==========================================
