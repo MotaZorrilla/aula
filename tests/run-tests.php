@@ -164,6 +164,31 @@ assert_test("Día 2 sincronizado al 100% entre ugma-gerencia-obras, Blade y publ
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
+assert_test("Día 3 (Planificación 4D/5D) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Día 3 (Planificación 4D/5D) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Día 3 (Planificación 4D/5D) incorpora simuladores (initEVMChart, updateEVM, toggleTimelinePlay, updateTimelineDisplay)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+    return stripos($content, 'initEVMChart') !== false 
+        && stripos($content, 'updateEVM') !== false
+        && stripos($content, 'toggleTimelinePlay') !== false
+        && stripos($content, 'updateTimelineDisplay') !== false;
+});
+
+assert_test("Día 3 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/planificacion-4d-5d.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
     if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
         return false;
@@ -275,6 +300,30 @@ assert_test("Unit: Cálculo de Rework Cost MacLeamy (Demolición $1,200 + 3 día
     if ($netSavings !== 3062.50) return false;
     if ($multiplier !== 36.0) return false;
     if ($roi !== 3500.0) return false;
+    return true;
+});
+
+assert_test("Unit: Fórmulas EVM ANSI/PMI (BAC=$1.5M, PV 50%, EV 44%, AC=$720k -> CPI 0.917, SPI 0.88, EAC $1,636,364)", function() {
+    $bac = 1500000.0;
+    $pv = $bac * (50.0 / 100.0); // 750000.0
+    $ev = $bac * (44.0 / 100.0); // 660000.0
+    $ac = 720000.0;
+    
+    $cv = $ev - $ac; // -60000.0
+    $sv = $ev - $pv; // -90000.0
+    $cpi = round($ev / $ac, 3); // 0.917
+    $spi = round($ev / $pv, 3); // 0.880
+    $eac = round($bac / ($ev / $ac)); // 1636364
+    $vac = $bac - $eac; // -136364
+
+    if ($pv !== 750000.0) return false;
+    if ($ev !== 660000.0) return false;
+    if ($cv !== -60000.0) return false;
+    if ($sv !== -90000.0) return false;
+    if ($cpi !== 0.917) return false;
+    if ($spi !== 0.880) return false;
+    if ($eac !== 1636364.0) return false;
+    if ($vac !== -136364.0) return false;
     return true;
 });
 
