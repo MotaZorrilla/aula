@@ -127,6 +127,36 @@ assert_test("Hub UGMA enlaza al Visor BIM 3D del Laboratorio ConTech (lab.motazo
     return stripos($content, 'https://lab.motazorrilla.com/bim/') !== false;
 });
 
+assert_test("Hub UGMA implementa Clases de Repaso interactivas para Módulos I al IV (#repasoModal y openRepasoModal)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    return stripos($content, 'id="repasoModal"') !== false 
+        && stripos($content, 'openRepasoModal') !== false
+        && stripos($content, 'btn-retro-open') !== false;
+});
+
+assert_test("Hub UGMA integra material real de Classroom (Harry Osers, Caso Matanzas, Lean Construction, RACI)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    return stripos($content, 'Harry Osers') !== false 
+        && stripos($content, 'Expansión Industrial Matanzas') !== false
+        && stripos($content, 'Last Planner System') !== false
+        && stripos($content, 'Matriz RACI') !== false;
+});
+
+assert_test("Hub UGMA incorpora simuladores interactivos (calcApuSim, calcLpsSim, evalLegalCase, updateRaciSim)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    return stripos($content, 'function calcApuSim') !== false 
+        && stripos($content, 'function calcLpsSim') !== false
+        && stripos($content, 'function evalLegalCase') !== false
+        && stripos($content, 'function updateRaciSim') !== false;
+});
+
+assert_test("Blade template ugma/index.blade.php y public/ugma-gerencia-obras/index.html sincronizados al 100%", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/index.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Especificaciones OpenSpec v2.0 existen y cumplen sintaxis RFC 2119", function() use ($baseDir) {
     $specPath = $baseDir . '/openspec/specs/ugma-diplomado-portal/spec.md';
     if (!file_exists($specPath)) {

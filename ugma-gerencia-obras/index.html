@@ -339,6 +339,134 @@
         }
         .retro-bridge strong { color: var(--emerald); font-weight: 700; }
 
+        .btn-retro-open {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 14px;
+            padding: 9px 14px;
+            background: var(--blue-light);
+            border: 1px solid var(--blue-border);
+            color: #0369a1;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            width: 100%;
+        }
+        .btn-retro-open:hover {
+            background: var(--blue-accent);
+            color: #ffffff;
+            border-color: var(--blue-accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+        }
+
+        /* MODAL DE CLASE DE REPASO INTERACTIVA (MÓDULOS I AL IV) */
+        .repaso-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .repaso-modal-content {
+            background: #ffffff;
+            border-radius: 20px;
+            max-width: 860px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 36px 32px;
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--border);
+        }
+        .repaso-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--surface-subtle);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .repaso-modal-close:hover {
+            background: #fee2e2;
+            color: #dc2626;
+            transform: rotate(90deg);
+        }
+        .repaso-academic-p {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            text-indent: 2.2em;
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+        .repaso-academic-p strong {
+            color: var(--navy-primary);
+            font-weight: 700;
+        }
+        .repaso-files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+            margin: 18px 0 24px;
+        }
+        .repaso-file-item {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 12.5px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .repaso-interactive-box {
+            background: #f0fdf4;
+            border: 1.5px solid #a7f3d0;
+            border-radius: 14px;
+            padding: 22px;
+            margin: 24px 0;
+        }
+        .repaso-interactive-box.box-blue {
+            background: #f0f9ff;
+            border-color: #bae6fd;
+        }
+        .repaso-interactive-box.box-amber {
+            background: #fffbeb;
+            border-color: #fde68a;
+        }
+        .repaso-interactive-box.box-purple {
+            background: #faf5ff;
+            border-color: #e9d5ff;
+        }
+        .repaso-bridge-box {
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-top: 24px;
+        }
+
         /* EXECUTIVE WAR ROOM / LIVE DECISION SIMULATOR (CLUB TIA INSPIRATION) */
         .decision-room-card {
             background: #ffffff;
@@ -865,7 +993,7 @@
 
         <div class="retro-grid">
             <!-- MÓDULO I -->
-            <div class="retro-card">
+            <div class="retro-card" onclick="openRepasoModal(1)">
                 <span class="retro-tag tag-m1">Módulo I · 20 Horas</span>
                 <div class="retro-prof">Prof. Ing. José Ignacio Pérez</div>
                 <h3 class="retro-title">Estructura Organizativa de una Obra</h3>
@@ -875,10 +1003,13 @@
                 <div class="retro-bridge">
                     <strong>Salto Tecnológico Módulo VI:</strong> Transición a roles digitales colaborativos: <em>BIM Manager</em>, Coordinador openBIM y modeladores interdisciplinarios conectados en tiempo real.
                 </div>
+                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(1);">
+                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
+                </button>
             </div>
 
             <!-- MÓDULO II -->
-            <div class="retro-card">
+            <div class="retro-card" onclick="openRepasoModal(2)">
                 <span class="retro-tag tag-m2">Módulo II · 20 Horas</span>
                 <div class="retro-prof">Prof. Ing. Rafael Angarita</div>
                 <h3 class="retro-title">Planificación y Análisis Estratégico</h3>
@@ -888,10 +1019,13 @@
                 <div class="retro-bridge">
                     <strong>Salto Tecnológico Módulo VI:</strong> Extracción paramétrica automática de cómputos (QTO) en modelos IFC y Curva S dinámica 4D/5D certificada mediante Visión Artificial con drones.
                 </div>
+                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(2);">
+                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
+                </button>
             </div>
 
             <!-- MÓDULO III -->
-            <div class="retro-card">
+            <div class="retro-card" onclick="openRepasoModal(3)">
                 <span class="retro-tag tag-m3">Módulo III · 30 Horas</span>
                 <div class="retro-prof">Prof. Abg. Omar Enrique Martínez</div>
                 <h3 class="retro-title">Normas y Responsabilidades Legales</h3>
@@ -901,10 +1035,13 @@
                 <div class="retro-bridge">
                     <strong>Salto Tecnológico Módulo VI:</strong> Entorno CDE ISO 19650 con estados <em>Published</em> como prueba judicial inmutable y Agentes de IA para detección temprana de reclamos (<em>claims</em>).
                 </div>
+                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(3);">
+                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
+                </button>
             </div>
 
             <!-- MÓDULO IV -->
-            <div class="retro-card">
+            <div class="retro-card" onclick="openRepasoModal(4)">
                 <span class="retro-tag tag-m4">Módulo IV · 20 Horas</span>
                 <div class="retro-prof">Prof. Esp. Ing. Diego Zambrano</div>
                 <h3 class="retro-title">Control de Procesos e Informes</h3>
@@ -914,6 +1051,9 @@
                 <div class="retro-bridge">
                     <strong>Salto Tecnológico Módulo VI:</strong> Digitalización de bitácoras con voz (<em>Speech-to-Report</em>), sensores IoT de maduración de concreto y gemelos digitales de obra.
                 </div>
+                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(4);">
+                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
+                </button>
             </div>
         </div>
 
@@ -1363,6 +1503,16 @@
         </div>
     </div>
 
+    <!-- MODAL DE CLASE DE REPASO INTERACTIVA (MÓDULOS I AL IV) -->
+    <div class="repaso-modal-overlay" id="repasoModal" onclick="closeRepasoModal(event)">
+        <div class="repaso-modal-content" onclick="event.stopPropagation()">
+            <button type="button" class="repaso-modal-close" onclick="closeRepasoModal()">✕</button>
+            <div id="repasoModalBody">
+                <!-- Se llena dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPT SIMULADOR DE DECISIÓN GERENCIAL (INSPIRACIÓN CLUB TIA) -->
     <script>
         let selectedOption = null;
@@ -1428,6 +1578,429 @@
             }
             document.getElementById('decisionResult').classList.remove('active');
             document.getElementById('voteFeedback').textContent = '';
+        }
+
+        // MOTOR DE CLASES DE REPASO INTERACTIVAS (MÓDULOS I AL IV)
+        const repasoData = {
+            1: {
+                badge: "MÓDULO I · 20 HORAS ACADÉMICAS",
+                tagClass: "tag-m1",
+                prof: "Prof. Ing. José Ignacio Pérez",
+                title: "Estructura Organizativa de una Obra Civil",
+                intro: `
+                    <p class="repaso-academic-p">
+                        La organización formal de una obra de construcción constituye el andamiaje operativo y legal que determina el éxito en la materialización física del proyecto. En la práctica profesional venezolana, los conflictos en faena no suelen originarse por desconocimiento técnico de las resistencias de materiales, sino por la <strong>indefinición de jerarquías de toma de decisiones</strong>, solapamiento de funciones y la ausencia de protocolos claros entre el Comitente (Dueño de la Obra), la Inspección Técnica y la Empresa Contratista ejecutante.
+                    </p>
+                    <p class="repaso-academic-p">
+                        El Inspector de Obras —amparado por la Ley de Ejercicio de la Ingeniería, Arquitectura y Profesiones Afines— actúa como los ojos y la garantía técnica del propietario. Sin embargo, su facultad resolutiva está estrictamente delimitada: cualquier modificación que altere la geometría sismorresistente, las especificaciones del concreto o el monto contractual exige la anuencia formal del Proyectista Estructural y la tramitación de adendas formales para evitar contingencias legales.
+                    </p>
+                `,
+                files: [
+                    { icon: "📄", title: "Manual de Inspección de Obras (CIV)", desc: "Guía deontológica y facultades legales del ingeniero inspector en Venezuela." },
+                    { icon: "📑", title: "Modelos de Actas de Inicio, Paralización y Prórroga", desc: "Formatos oficiales para asentar hitos contractuales y eventos de fuerza mayor." },
+                    { icon: "🏛️", title: "Organigramas de Faena Tipo (Edificación & Vialidad)", desc: "Estructuras matriciales y jerarquías de cuadrillas según tipología de obra." }
+                ],
+                interactiveTitle: "Simulador de Gobernanza de Faena & Matriz RACI",
+                interactiveDesc: "Selecciona una contingencia crítica en obra para visualizar la distribución de responsabilidades formales y compararla con el flujo colaborativo openBIM:",
+                interactiveHtml: `
+                    <div style="margin-bottom:14px;">
+                        <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:6px;">Seleccionar Contingencia de Faena:</label>
+                        <select id="raciSelect" onchange="updateRaciSim()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); font-size:13px; font-weight:600; color:var(--navy-primary);">
+                            <option value="acero">1. Modificación imprevista del acero de refuerzo en viga de carga</option>
+                            <option value="lluvia">2. Paralización por evento hidro-meteorológico extremo (Lluvias en Guayana)</option>
+                            <option value="valuacion">3. Aprobación y firma de Valuación de Avance Mensual</option>
+                            <option value="colision">4. Detección de interferencia entre ducto de climatización y losa maciza</option>
+                        </select>
+                    </div>
+                    <div id="raciDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:16px; font-size:12.5px; line-height:1.7;">
+                    </div>
+                `,
+                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeDesc: `
+                    En el esquema analógico tradicional, estas 4 decisiones se dilatan entre 3 y 14 días a través de libros de órdenes físicos y reuniones dispersas. En el <strong>Módulo VI</strong>, sustituimos este flujo burocrático por un <strong>Entorno Común de Datos (CDE ISO 19650)</strong> donde los roles evolucionan a <em>BIM Manager</em>, <em>Coordinador Interdisciplinar</em> y <em>CDE Information Manager</em>. Cada cambio técnico se resuelve en un ticket <strong>BCF 3.0 federado</strong> en menos de 24 horas, respaldado por una firma digital inmutable que blinda jurídicamente a la inspección.
+                `
+            },
+            2: {
+                badge: "MÓDULO II · 20 HORAS ACADÉMICAS",
+                tagClass: "tag-m2",
+                prof: "Prof. Ing. Rafael Angarita",
+                title: "Planificación y Análisis Estratégico · Cómputos, APU & EVM",
+                intro: `
+                    <p class="repaso-academic-p">
+                        El Módulo II constituye el pilar cuantitativo y financiero de la gerencia de obras. Basado en la doctrina canónica del Ing. <strong>Harry Osers</strong> y la rigurosa norma venezolana <strong>COVENIN 2000-87 / 2000-92</strong>, los participantes dominaron la formulación analítica celda por celda de planillas de cómputos métricos, deduciendo con precisión milimétrica recubrimientos en zapatas, solapes de cabillas y áreas efectivas de encofrado sin duplicidad de concreto.
+                    </p>
+                    <p class="repaso-academic-p">
+                        Asimismo, se profundizó en la estructura del <strong>Análisis de Precios Unitarios (APU)</strong> y el cálculo dinámico del <strong>Factor de Costos Asociados al Salario (FCAS)</strong>, elemento de altísima sensibilidad en la economía venezolana para preservar el equilibrio financiero del contratista frente a beneficios laborales e inflación. Este instrumental culmina en el modelo matemático de la <strong>Curva S sigmoidal</strong> y el control por <strong>Valor Ganado (EVM: PV, EV, AC, CPI, SPI)</strong>.
+                    </p>
+                `,
+                files: [
+                    { icon: "📘", title: "195681_CasaQuintaHarryOsers174pdf.pdf", desc: "Tratado maestro de cómputos métricos con planos estructurales E-1 a E-12." },
+                    { icon: "📊", title: "EJEMPLO METODO DEL VALOR GANADO EN EXCEL.xlsx", desc: "Modelo financiero dinámico de Curva S con fórmulas automáticas de CPI y SPI." },
+                    { icon: "📐", title: "1 PLANILLAS DE COMPUTOS.xlsx & FORMATO APU.xlsx", desc: "Formatos oficiales de cubicación de concreto, acero y matrices de APU." },
+                    { icon: "🎥", title: "7 Clases Magistrales en Video Grabadas (MP4 - 6.2 GB)", desc: "Elaboración de presupuestos, APU, EVM y contrataciones públicas en Venezuela." }
+                ],
+                interactiveTitle: "Calculadora Paramétrica de APU y Factor FCAS (Doctrina Angarita)",
+                interactiveDesc: "Ajusta las variables de la partida de concreto estructural para observar cómo el FCAS y el rendimiento de la cuadrilla definen el precio unitario y la Curva S:",
+                interactiveHtml: `
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:14px;">
+                        <div>
+                            <label style="font-size:11px; font-weight:700; color:var(--navy-primary); display:block; margin-bottom:3px;">Materiales ($/m³):</label>
+                            <input type="number" id="apuMat" value="85" step="5" oninput="calcApuSim()" style="width:100%; padding:6px; border-radius:6px; border:1px solid var(--border); font-family:var(--font-mono); font-size:12.5px;">
+                        </div>
+                        <div>
+                            <label style="font-size:11px; font-weight:700; color:var(--navy-primary); display:block; margin-bottom:3px;">Equipos ($/m³):</label>
+                            <input type="number" id="apuEq" value="18" step="2" oninput="calcApuSim()" style="width:100%; padding:6px; border-radius:6px; border:1px solid var(--border); font-family:var(--font-mono); font-size:12.5px;">
+                        </div>
+                        <div>
+                            <label style="font-size:11px; font-weight:700; color:var(--navy-primary); display:block; margin-bottom:3px;">Cuadrilla MO ($/día):</label>
+                            <input type="number" id="apuMo" value="65" step="5" oninput="calcApuSim()" style="width:100%; padding:6px; border-radius:6px; border:1px solid var(--border); font-family:var(--font-mono); font-size:12.5px;">
+                        </div>
+                        <div>
+                            <label style="font-size:11px; font-weight:700; color:var(--navy-primary); display:block; margin-bottom:3px;">Rendimiento (m³/día):</label>
+                            <input type="number" id="apuRend" value="4.5" step="0.5" oninput="calcApuSim()" style="width:100%; padding:6px; border-radius:6px; border:1px solid var(--border); font-family:var(--font-mono); font-size:12.5px;">
+                        </div>
+                        <div>
+                            <label style="font-size:11px; font-weight:700; color:var(--navy-primary); display:block; margin-bottom:3px;">FCAS (% Salarial):</label>
+                            <input type="number" id="apuFcas" value="450" step="50" oninput="calcApuSim()" style="width:100%; padding:6px; border-radius:6px; border:1px solid var(--border); font-family:var(--font-mono); font-size:12.5px;">
+                        </div>
+                    </div>
+                    <div id="apuDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:14px; font-size:12.5px; line-height:1.65;">
+                    </div>
+                `,
+                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeDesc: `
+                    En el Módulo II, cubicamos la Casa Quinta Harry Osers invirtiendo decenas de horas de cálculo manual celda por celda. En el <strong>Módulo VI</strong>, importamos el modelo paramétrico <strong>IFC 4.3</strong> y extraemos el <strong>QTO exacto en milisegundos</strong> mediante operaciones booleanas CSG sin margen de error humano. Conectamos ese metadato al APU para alimentar automáticamente el <strong>BIM 5D y la Curva S certificada por telemetría con drones</strong>.
+                `
+            },
+            3: {
+                badge: "MÓDULO III · 30 HORAS ACADÉMICAS",
+                tagClass: "tag-m3",
+                prof: "Prof. Abg. Omar Enrique Martínez",
+                title: "Normas y Responsabilidades Legales · Contratos & Art. 1637 CCV",
+                intro: `
+                    <p class="repaso-academic-p">
+                        El Módulo III brinda la armadura de seguridad jurídica indispensable para el ejercicio ético y preventivo de la gerencia de obras. Los participantes examinaron la tipología contractual venezolana (Contratos a Precios Unitarios, Llave en Mano EPC y Suma Alzada), el régimen de licitaciones públicas, la Ley de Ejercicio de la Ingeniería (Decreto 444) y los causales de reclamo económico (<em>claims</em>) por variaciones extraordinarias de obra.
+                    </p>
+                    <p class="repaso-academic-p">
+                        El núcleo neurálgico del módulo reside en la <strong>Responsabilidad Decenal consagrada en el Artículo 1637 del Código Civil Venezolano</strong>: durante diez años, el arquitecto y el constructor responden civil y penalmente si la edificación se arruina en todo o en parte, o presenta peligro inminente de ruina por defecto de construcción o vicio del suelo. A través del análisis del <em>Caso Práctico Proyecto Expansión Industrial Matanzas</em> en Puerto Ordaz, se estudió cómo documentar adecuadamente las órdenes de servicio para evitar la ruina financiera y judicial del profesional.
+                    </p>
+                `,
+                files: [
+                    { icon: "⚖️", title: "Normas de Construcción en Venezuela.pdf (23 págs)", desc: "Compendio exhaustivo de marco legal, contratos de construcción y COVENIN." },
+                    { icon: "🏭", title: "CASO PRÁCTICO Proyecto Expansión Industrial Matanzas", desc: "Evaluación pericial aplicada de contingencias, penalizaciones y responsabilidades en Guayana." },
+                    { icon: "📜", title: "El_Plano Estructural Legal.pdf (15 págs)", desc: "Tratamiento de riesgos contractuales, vicios ocultos y alcances del Art. 1637 CCV." },
+                    { icon: "🎥", title: "Videos de Casos Legales en la Construcción (MP4)", desc: "El campo minado legal de las obras en Venezuela y responsabilidades penales del residente." }
+                ],
+                interactiveTitle: "Auditor Pericial de Responsabilidad Decenal (Art. 1637 CCV vs Caso Matanzas)",
+                interactiveDesc: "Selecciona una patología o litigio estructural para emitir el dictamen pericial sobre quién asume la responsabilidad civil y cómo blindarse:",
+                interactiveHtml: `
+                    <div style="margin-bottom:14px;">
+                        <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:6px;">Seleccionar Patología o Litigio de Obra:</label>
+                        <select id="legalSelect" onchange="evalLegalCase()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); font-size:13px; font-weight:600; color:var(--navy-primary);">
+                            <option value="suelo">Caso 1: Asentamiento diferencial severo por licuación de suelo tras 3 años</option>
+                            <option value="concreto">Caso 2: Fisuración por cortante en viga de transferencia por fraguado deficiente a los 5 años</option>
+                            <option value="planos">Caso 3: Omisión de tubería sanitaria en planos que obligó a demoler losa en faena</option>
+                        </select>
+                    </div>
+                    <div id="legalDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:16px; font-size:12.5px; line-height:1.7;">
+                    </div>
+                `,
+                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeDesc: `
+                    En juicios de obras bajo el método tradicional CAD, los expedientes probatorios suelen consistir en planos arrugados, versiones sin fecha y testimonios contradictorios. En el <strong>Módulo VI</strong>, la implementación del <strong>Entorno Común de Datos (CDE ISO 19650)</strong> confiere <strong>plena fuerza probatoria inmutable</strong>: cada modelo federado, cada pase de tubería y cada orden de vaciado queda sellado con autor, fecha, hora y hash criptográfico en estado <em>Published</em>, blindando pericialmente al ingeniero ante cualquier reclamo decenal improcedente.
+                `
+            },
+            4: {
+                badge: "MÓDULO IV · 20 HORAS ACADÉMICAS",
+                tagClass: "tag-m4",
+                prof: "Prof. Esp. Ing. Diego Zambrano",
+                title: "Control de Procesos e Informes · Lean Construction & LPS",
+                intro: `
+                    <p class="repaso-academic-p">
+                        El Módulo IV traslada la ingeniería de producción industrial a la faena viva de la construcción mediante la filosofía <strong>Lean Construction</strong> (Compendio mayor de 100 páginas). Los participantes rompieron con la tradicional improvisación en campo mediante el sistema <strong>Last Planner System (LPS)</strong>, estableciendo una secuencia rigurosa entre la Planificación Maestra (hitos globales), la Planificación Intermedia (<em>Lookahead Planning</em> a 4-6 semanas para remover restricciones antes de que lleguen a la cuadrilla) y el Plan Semanal de Trabajo.
+                    </p>
+                    <p class="repaso-academic-p">
+                        Asimismo, se abordó el indicador por excelencia de confiabilidad operativa: el <strong>Porcentaje de Asignaciones Cumplidas (PPC / PAC)</strong> y el análisis sistemático de causa raíz para erradicar las 8 pérdidas del Lean (<em>Muda</em>). El módulo integró los protocolos formales de control de calidad de concreto (rotura de probetas según normas ASTM/COVENIN, ensayo de cono de Abrams Slump) y la gestión preventiva de seguridad bajo el marco <strong>LOPCYMAT y COVENIN 2270</strong>.
+                    </p>
+                `,
+                files: [
+                    { icon: "📕", title: "Lean Construction y la planificación operativa.pdf (100 págs)", desc: "Tratado exhaustivo de producción sin desperdicio, LPS y flujos de trabajo en faena." },
+                    { icon: "📋", title: "Formatos de Lookahead Planning y Plan Semanal LPS", desc: "Matrices prácticas de identificación y liberación de restricciones operativas a 6 semanas." },
+                    { icon: "🧪", title: "Protocolos de Control de Concreto y Ensayos de Rotura (COVENIN 338)", desc: "Hojas de muestreo, curvas de resistencia a compresión (7, 14 y 28 días) y tolerancias de Slump." },
+                    { icon: "🦺", title: "Manual de Seguridad en Faena y Matrices de Riesgo LOPCYMAT", desc: "Planes de contingencia, comités de seguridad y cumplimiento normativo COVENIN 2270." }
+                ],
+                interactiveTitle: "Simulador Last Planner System (LPS) y Cálculo en Vivo de PPC/PAC",
+                interactiveDesc: "Marca el estatus de las 6 actividades programadas para la semana 04 del Edificio Guayana y evalúa el diagnóstico de confiabilidad Lean:",
+                interactiveHtml: `
+                    <div style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:14px; margin-bottom:14px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid var(--border);">
+                            <span style="font-size:12px; font-weight:800; color:var(--navy-primary);">Actividad Programada (Semana 04):</span>
+                            <span style="font-size:11px; font-weight:700; color:var(--text-light);">Estatus de Compromiso</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:8px;" id="lpsTasksList">
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:12.5px; cursor:pointer;">
+                                <span>1. Armado de acero longitudinal en vigas V-101 a V-104</span>
+                                <input type="checkbox" id="lps1" checked onchange="calcLpsSim()">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:12.5px; cursor:pointer;">
+                                <span>2. Colocación de pases sanitarios de 4" en encofrado</span>
+                                <input type="checkbox" id="lps2" checked onchange="calcLpsSim()">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:12.5px; cursor:pointer;">
+                                <span>3. Vaciado masivo de 45 m³ de concreto f'c = 280 kg/cm²</span>
+                                <input type="checkbox" id="lps3" checked onchange="calcLpsSim()">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:12.5px; cursor:pointer;">
+                                <span>4. Toma de 6 probetas de concreto y ensayo de cono Slump</span>
+                                <input type="checkbox" id="lps4" checked onchange="calcLpsSim()">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:12.5px; cursor:pointer;">
+                                <span>5. Desencofrado lateral de columnas y aplicación de membrana curadora</span>
+                                <input type="checkbox" id="lps5" onchange="calcLpsSim()">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:12.5px; cursor:pointer;">
+                                <span>6. Levantamiento topográfico con estación total de ejes nivel 4</span>
+                                <input type="checkbox" id="lps6" onchange="calcLpsSim()">
+                            </label>
+                        </div>
+                    </div>
+                    <div id="lpsDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:14px; font-size:12.5px; line-height:1.65;">
+                    </div>
+                `,
+                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeDesc: `
+                    En el Módulo IV, el Last Planner System se gestiona mediante notas adhesivas (Post-its) y planillas de cálculo que se desactualizan al finalizar el turno. En el <strong>Módulo VI</strong>, fusionamos el LPS con <strong>BIM 4D (Navisworks TimeLiner / Synchro)</strong>: vinculamos las tareas semanales directamente a los objetos 3D, generamos reportes de bitácora mediante transcripción de voz con IA (<em>Speech-to-Report</em>) y auditamos el avance real diario mediante nubes de puntos de drones y visión artificial.
+                `
+            }
+        };
+
+        function openRepasoModal(id) {
+            const data = repasoData[id];
+            if (!data) return;
+
+            let filesHtml = '';
+            data.files.forEach(f => {
+                filesHtml += `
+                    <div class="repaso-file-item">
+                        <span class="repaso-file-icon">${f.icon}</span>
+                        <div>
+                            <div style="font-weight:700; color:var(--navy-primary); font-size:12px; margin-bottom:2px;">${f.title}</div>
+                            <div style="color:var(--text-muted); font-size:11.5px; line-height:1.4;">${f.desc}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const bodyHtml = `
+                <div style="margin-bottom:14px;">
+                    <span class="retro-tag ${data.tagClass}" style="margin-bottom:6px;">${data.badge}</span>
+                    <div style="font-size:13px; color:var(--text-light); font-weight:700;">${data.prof}</div>
+                    <h2 style="font-size:24px; font-weight:800; color:var(--navy-primary); line-height:1.3; margin:6px 0 16px;">${data.title}</h2>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    ${data.intro}
+                </div>
+
+                <div style="margin:24px 0 16px;">
+                    <div style="font-size:13px; font-weight:800; color:var(--navy-primary); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+                        <span>📦</span> Catálogo de Documentos de Classroom (Bóveda D:\\UGMA)
+                    </div>
+                    <div class="repaso-files-grid">
+                        ${filesHtml}
+                    </div>
+                </div>
+
+                <div class="repaso-interactive-box ${id === 1 ? 'box-blue' : (id === 2 ? '' : (id === 3 ? 'box-amber' : 'box-purple'))}">
+                    <div style="font-size:15px; font-weight:800; color:var(--navy-primary); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+                        <span>🔬</span> ${data.interactiveTitle}
+                    </div>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">${data.interactiveDesc}</p>
+                    ${data.interactiveHtml}
+                </div>
+
+                <div class="repaso-bridge-box">
+                    <div style="font-size:14.5px; font-weight:800; color:#38bdf8; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                        <span>🚀</span> ${data.bridgeTitle}
+                    </div>
+                    <p style="font-size:13px; color:#cbd5e1; line-height:1.7; margin:0;">${data.bridgeDesc}</p>
+                </div>
+            `;
+
+            document.getElementById('repasoModalBody').innerHTML = bodyHtml;
+            document.getElementById('repasoModal').style.display = 'flex';
+
+            // Inicializar el simulador del módulo correspondiente
+            if (id === 1) updateRaciSim();
+            if (id === 2) calcApuSim();
+            if (id === 3) evalLegalCase();
+            if (id === 4) calcLpsSim();
+        }
+
+        function closeRepasoModal(e) {
+            document.getElementById('repasoModal').style.display = 'none';
+        }
+
+        // SIMULADOR 1: MATRIZ RACI (MÓDULO I)
+        function updateRaciSim() {
+            const val = document.getElementById('raciSelect').value;
+            const disp = document.getElementById('raciDisplay');
+            if (val === 'acero') {
+                disp.innerHTML = `
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:10px;">
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>R (Ejecuta):</strong><br>Ing. Residente</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>A (Aprueba):</strong><br>Proyectista Estructural</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>C (Consulta):</strong><br>Ing. Inspector CIV</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>I (Informa):</strong><br>Comitente / Dueño</div>
+                    </div>
+                    <div style="color:var(--navy-primary);"><strong>Criterio Normativo:</strong> Ningún residente puede reducir el área de acero calculada (\(A_s\)). El Inspector debe exigir memorando firmado por el calculista antes de permitir el vaciado. En openBIM, este cambio se valida en el modelo federado mediante un ticket BCF 3.0.</div>
+                `;
+            } else if (val === 'lluvia') {
+                disp.innerHTML = `
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:10px;">
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>R (Ejecuta):</strong><br>Ing. Inspector CIV</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>A (Aprueba):</strong><br>Inspector & Residente</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>C (Consulta):</strong><br>Estación INAMEH</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>I (Informa):</strong><br>Comitente / Fianza</div>
+                    </div>
+                    <div style="color:var(--navy-primary);"><strong>Criterio Normativo:</strong> Se redacta de inmediato un <em>Acta de Paralización por Fuerza Mayor</em> debidamente foliada en bitácora para congelar el cómputo de días hábiles y evitar cobro indebido de multas contractuales.</div>
+                `;
+            } else if (val === 'valuacion') {
+                disp.innerHTML = `
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:10px;">
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>R (Ejecuta):</strong><br>Ing. Residente</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>A (Aprueba):</strong><br>Ing. Inspector CIV</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>C (Consulta):</strong><br>Dpto. Presupuestos</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>I (Informa):</strong><br>Administración / Banco</div>
+                    </div>
+                    <div style="color:var(--navy-primary);"><strong>Criterio Normativo:</strong> El Inspector verifica en sitio la medición de cómputos conforme a la norma COVENIN 2000. Una vez firmada, adquiere fuerza jurídica de título de cobro.</div>
+                `;
+            } else {
+                disp.innerHTML = `
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:10px;">
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>R (Ejecuta):</strong><br>Coordinador openBIM</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>A (Aprueba):</strong><br>Calculista + Sanitario</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>C (Consulta):</strong><br>Inspector de Obra</div>
+                        <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>I (Informa):</strong><br>Cuadrilla Encofrado</div>
+                    </div>
+                    <div style="color:var(--navy-primary);"><strong>Criterio Normativo:</strong> En el flujo tradicional CAD esta colisión se resolvía picando la losa en obra. En el Módulo VI se resuelve antes de vaciar emitiendo una incidencia BCF 3.0 en el modelo federado.</div>
+                `;
+            }
+        }
+
+        // SIMULADOR 2: APU Y FCAS (MÓDULO II)
+        function calcApuSim() {
+            const mat = parseFloat(document.getElementById('apuMat').value) || 0;
+            const eq = parseFloat(document.getElementById('apuEq').value) || 0;
+            const mo = parseFloat(document.getElementById('apuMo').value) || 0;
+            const rend = parseFloat(document.getElementById('apuRend').value) || 1;
+            const fcas = parseFloat(document.getElementById('apuFcas').value) || 0;
+
+            const moUnit = mo / rend;
+            const fcasAmount = moUnit * (fcas / 100);
+            const totalMo = moUnit + fcasAmount;
+            const costoDirecto = mat + eq + totalMo;
+            const indirectos = costoDirecto * 0.15;
+            const subtotal = costoDirecto + indirectos;
+            const utilidad = subtotal * 0.10;
+            const precioUnitario = subtotal + utilidad;
+
+            document.getElementById('apuDisplay').innerHTML = `
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px;">
+                    <div>
+                        • Mano de Obra Básica: <strong>$${moUnit.toFixed(2)}/m³</strong><br>
+                        • Carga Social FCAS (${fcas}%): <strong>$${fcasAmount.toFixed(2)}/m³</strong><br>
+                        • Total Mano de Obra: <strong style="color:var(--navy-primary);">$${totalMo.toFixed(2)}/m³</strong>
+                    </div>
+                    <div>
+                        • Costo Directo Total: <strong>$${costoDirecto.toFixed(2)}/m³</strong><br>
+                        • Gastos Generales (15%): <strong>$${indirectos.toFixed(2)}/m³</strong><br>
+                        • Utilidad Contratista (10%): <strong>$${utilidad.toFixed(2)}/m³</strong>
+                    </div>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-weight:800; color:#065f46; font-size:13.5px;">PRECIO UNITARIO FINAL (COVENIN E-323):</span>
+                    <span style="font-family:var(--font-mono); font-weight:800; font-size:18px; color:#047857;">$${precioUnitario.toFixed(2)} / m³</span>
+                </div>
+                <div style="font-size:11.5px; color:var(--text-light); margin-top:8px;">
+                    *Sensibilidad EVM: El FCAS representa el ${(fcasAmount / costoDirecto * 100).toFixed(1)}% del costo directo de la partida. Si el rendimiento cae de ${rend} a ${(rend * 0.7).toFixed(1)} m³/día, el costo se incrementa en $${((mo / (rend * 0.7) * (1 + fcas/100)) - totalMo).toFixed(2)}/m³, deteriorando el CPI por debajo de 0.85.
+                </div>
+            `;
+        }
+
+        // SIMULADOR 3: RESPONSABILIDAD DECENAL (MÓDULO III)
+        function evalLegalCase() {
+            const val = document.getElementById('legalSelect').value;
+            const disp = document.getElementById('legalDisplay');
+            if (val === 'suelo') {
+                disp.innerHTML = `
+                    <div style="background:#fee2e2; border:1px solid #fecaca; color:#991b1b; padding:10px; border-radius:8px; margin-bottom:10px; font-weight:700;">
+                        ⚖️ Dictamen Jurídico: Vicio del Suelo (Art. 1637 Código Civil de Venezuela)
+                    </div>
+                    <p style="margin-bottom:8px;"><strong>Sujeto Responsable:</strong> El Ingeniero Geotécnico que suscribió el estudio de suelos y el Constructor si este último inició faena sin exigir ensayos de penetración estándar (SPT) o si desatendió las recomendaciones de fundación profunda.</p>
+                    <p style="margin-bottom:8px;"><strong>Plazo de Garantía Decenal:</strong> La ruina ocurrió al año 3 (dentro del lapso de 10 años). El propietario dispone de <strong>dos (2) años continuos</strong> a partir del asentamiento para incoar la demanda indemnizatoria ante tribunales civiles ordinarios.</p>
+                    <div style="background:#f1f5f9; padding:8px; border-radius:6px; font-size:12px; color:var(--navy-primary);">
+                        <strong>🛡️ Blindaje CDE ISO 19650:</strong> El Acta de Aceptación del Estudio de Suelo firmada en estado <em>Published</em> y el ensayo de densímetro nuclear As-Built liberan al Ingeniero Residente de culpa pericial.
+                    </div>
+                `;
+            } else if (val === 'concreto') {
+                disp.innerHTML = `
+                    <div style="background:#fee2e2; border:1px solid #fecaca; color:#991b1b; padding:10px; border-radius:8px; margin-bottom:10px; font-weight:700;">
+                        ⚖️ Dictamen Jurídico: Defecto de Construcción y Vicio de Materiales (Art. 1637 CCV)
+                    </div>
+                    <p style="margin-bottom:8px;"><strong>Sujeto Responsable:</strong> El Contratista y el Ingeniero Residente. Si el Inspector técnico aprobó el vaciado con probetas de concreto que no alcanzaron el f'c de diseño (f'c < 280 kg/cm² a los 28 días) sin exigir ensayos de esclerometría o núcleos diamantados, incurre en <strong>responsabilidad solidaria civil y disciplinaria ante el Tribunal Disciplinario del CIV</strong>.</p>
+                    <p style="margin-bottom:8px;"><strong>Criterio de Ruina:</strong> La fisuración severa por cortante califica como <em>peligro evidente de ruina</em>, activando la reparación integral de la estructura a costo del constructor.</p>
+                    <div style="background:#f1f5f9; padding:8px; border-radius:6px; font-size:12px; color:var(--navy-primary);">
+                        <strong>🛡️ Blindaje CDE ISO 19650:</strong> Las actas digitales de rotura de cilindros con firma electrónica del laboratorio certificado son la única prueba admisible para deslindar culpas.
+                    </div>
+                `;
+            } else {
+                disp.innerHTML = `
+                    <div style="background:#fef3c7; border:1px solid #fde68a; color:#92400e; padding:10px; border-radius:8px; margin-bottom:10px; font-weight:700;">
+                        ⚖️ Dictamen Jurídico: Vicio de Proyecto vs. Negligencia de Inspección (Módulo III)
+                    </div>
+                    <p style="margin-bottom:8px;"><strong>Sujeto Responsable:</strong> El Proyectista Sanitario responde frente al Comitente por error u omisión de diseño. Sin embargo, si el Constructor demolió la losa sin notificar ni obtener orden de cambio del Inspector, el costo del re-trabajo lo asume el Contratista.</p>
+                    <p style="margin-bottom:8px;"><strong>Reclamo Económico (Claim):</strong> Se tramita como <em>Obra Extraordinaria no Prevista</em> con recalculo de APU según las cláusulas de la Ley de Contrataciones Públicas.</p>
+                    <div style="background:#f1f5f9; padding:8px; border-radius:6px; font-size:12px; color:var(--navy-primary);">
+                        <strong>🛡️ Salto al Módulo VI:</strong> En el modelo openBIM federado, este cruce es detectado automáticamente en preconstrucción mediante Clash Detection, con costo de corrección de $15 en oficina vs $3,500 en faena.
+                    </div>
+                `;
+            }
+        }
+
+        // SIMULADOR 4: LAST PLANNER SYSTEM & PPC/PAC (MÓDULO IV)
+        function calcLpsSim() {
+            let completed = 0;
+            for (let i = 1; i <= 6; i++) {
+                if (document.getElementById('lps' + i).checked) {
+                    completed++;
+                }
+            }
+            const ppc = (completed / 6) * 100;
+            const disp = document.getElementById('lpsDisplay');
+
+            let badgeHtml = '';
+            let diagText = '';
+            if (ppc >= 80) {
+                badgeHtml = '<span style="background:#dcfce7; color:#166534; font-weight:800; padding:4px 10px; border-radius:6px;">🟢 PPC: ' + ppc.toFixed(1) + '% · Óptimo Lean (Flujo Continuo)</span>';
+                diagText = 'La faena mantiene un ritmo de producción altamente predecible. La cuadrilla avanza sin cuellos de botella y la ruta crítica del cronograma está protegida.';
+            } else if (ppc >= 60) {
+                badgeHtml = '<span style="background:#fef3c7; color:#92400e; font-weight:800; padding:4px 10px; border-radius:6px;">🟡 PPC: ' + ppc.toFixed(1) + '% · Alerta Media (Variabilidad Detectada)</span>';
+                diagText = 'Existen restricciones no liberadas a tiempo en el Lookahead Planning (probablemente falta de materiales o retraso en inspección). Se requiere aplicar los 5 Porqués en la reunión semanal de compromiso.';
+            } else {
+                badgeHtml = '<span style="background:#fee2e2; color:#991b1b; font-weight:800; padding:4px 10px; border-radius:6px;">🔴 PPC: ' + ppc.toFixed(1) + '% · Falla Crítica (Riesgo de Atraso en Ruta Crítica)</span>';
+                diagText = 'Menos del 60% de las promesas de trabajo se cumplieron. El efecto cascada generará demoras de fraguado y penalizaciones financieras. Se debe reprogramar el frente de trabajo inmediatamente.';
+            }
+
+            disp.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                    <div>Asignaciones Logradas: <strong>${completed} de 6 tareas</strong></div>
+                    <div>${badgeHtml}</div>
+                </div>
+                <div style="font-size:12.5px; color:var(--navy-primary); line-height:1.6;">
+                    <strong>Diagnóstico Operativo:</strong> ${diagText}
+                </div>
+            `;
         }
     </script>
 </body>
