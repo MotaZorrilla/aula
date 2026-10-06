@@ -15,6 +15,6 @@ echo "🔄 [PASO 3/3] Sincronizando con Homelab Ubuntu..."
 HOMELAB_IP="100.116.133.39"
 USER="motazorrilla"
 
-ssh -o ConnectTimeout=8 "$USER@$HOMELAB_IP" "cd ~/apps/aula && git fetch origin master && git pull origin master && docker restart aula-gateway || true"
+ssh -o ConnectTimeout=8 "$USER@$HOMELAB_IP" "cd ~/apps/aula && git fetch origin master && git reset --hard origin/master && docker restart aula-gateway || true"
 
 echo "✅ Despliegue completado con éxito."
