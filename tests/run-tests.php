@@ -157,6 +157,13 @@ assert_test("Blade template ugma/index.blade.php y public/ugma-gerencia-obras/in
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
+assert_test("Nginx Gateway enruta Club TIA a bridge Docker (172.17.0.1:8093) y contiene aliases (/clubtia, /tia)", function() use ($baseDir) {
+    $nginxConf = file_get_contents($baseDir . '/nginx.conf');
+    return stripos($nginxConf, '172.17.0.1:8093') !== false
+        && stripos($nginxConf, 'location = /clubtia') !== false
+        && stripos($nginxConf, 'location = /tia') !== false;
+});
+
 assert_test("Especificaciones OpenSpec v2.0 existen y cumplen sintaxis RFC 2119", function() use ($baseDir) {
     $specPath = $baseDir . '/openspec/specs/ugma-diplomado-portal/spec.md';
     if (!file_exists($specPath)) {
