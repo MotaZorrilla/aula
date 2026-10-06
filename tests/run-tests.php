@@ -114,6 +114,31 @@ assert_test("Masterclass BIM contiene enlaces oficiales a ISO, buildingSMART y T
         && stripos($content, 'tsj.gob.ve') !== false;
 });
 
+assert_test("Día 1 (CDE ISO 19650) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Día 1 (CDE ISO 19650) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Día 1 (CDE ISO 19650) incorpora simuladores (cdeApprovalSim, isoConstructor, eirMatrix, ifcTree)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
+    return stripos($content, 'runCdeTransition') !== false 
+        && stripos($content, 'updateIsoBuilder') !== false
+        && stripos($content, 'updateEirMatrix') !== false
+        && stripos($content, 'inspectIfcNode') !== false;
+});
+
+assert_test("Día 1 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/cde-iso19650.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/cde-iso19650/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
     if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
         return false;
