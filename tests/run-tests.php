@@ -213,6 +213,30 @@ assert_test("Día 4 sincronizado al 100% entre ugma-gerencia-obras, Blade y publ
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
+assert_test("Día 5 (Energía Solar y Sostenibilidad) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Día 5 (Energía Solar y Sostenibilidad) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Día 5 (Energía Solar y Sostenibilidad) incorpora simuladores (calculateSolar, calculateEmbodiedCarbon, calculateEnvelopeAudit)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+    return stripos($content, 'calculateSolar') !== false 
+        && stripos($content, 'calculateEmbodiedCarbon') !== false
+        && stripos($content, 'calculateEnvelopeAudit') !== false;
+});
+
+assert_test("Día 5 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/energia-solar-sostenibilidad.blade.php');
+    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
 assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
     if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
         return false;
