@@ -92,6 +92,36 @@ assert_test("Masterclass BIM contiene estándares buildingSMART IFC 4.3 y BCF 3.
     return stripos($content, 'IFC 4.3') !== false && stripos($content, 'BCF 3.0') !== false;
 });
 
+assert_test("Masterclass BIM implementa Sangría Académica en párrafos (.academic-p text-indent)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+    return stripos($content, 'text-indent') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test("Masterclass BIM implementa Paginador / Stepper secuencial de 9 Módulos", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test("Masterclass BIM implementa Modal de 8 Dimensiones (1D a 8D+)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+    return stripos($content, 'dimModal') !== false && stripos($content, 'openDimModal') !== false;
+});
+
+assert_test("Masterclass BIM contiene enlaces oficiales a ISO, buildingSMART y TSJ", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+    return stripos($content, 'https://www.iso.org/') !== false 
+        && stripos($content, 'https://technical.buildingsmart.org/') !== false
+        && stripos($content, 'tsj.gob.ve') !== false;
+});
+
+assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
+    if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
+        return false;
+    }
+    $bladePath = $baseDir . '/resources/views/ugma/masterclass-bim.blade.php';
+    return file_exists($bladePath);
+});
+
 assert_test("Hub UGMA enlaza al Visor BIM 3D del Laboratorio ConTech (lab.motazorrilla.com/bim)", function() use ($baseDir) {
     $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
     return stripos($content, 'https://lab.motazorrilla.com/bim/') !== false;

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /usuarios/
+
+Sitemap: https://aula.motazorrilla.com/club-tia/sitemap.xml
+Sitemap: http://localhost:8000/sitemap.xml

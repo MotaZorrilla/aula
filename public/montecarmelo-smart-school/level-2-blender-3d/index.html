@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 (2° Año): La Forja 3D en Blender ⚔️🧊 · Colegio Monte Carmelo</title>
+
+    <meta name="title" content="Level 2 (2° Año): La Forja 3D en Blender · Colegio Monte Carmelo">
+    <meta name="description" content="¡De fan de Minecraft a modelador 3D en Blender! Aprende geometría poligonal, shaders neón y visores 3D para celulares y Meta Quest 3 por el Ing. Héctor Mota.">
+    <meta name="keywords" content="Level 2, Monte Carmelo, Blender 3D, Modelado Low-Poly, Three.js, Shaders Neón, Héctor Mota">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js & OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-card: #ffffff;
+            --border: #e2e8f0;
+            --border-highlight: rgba(217, 119, 6, 0.35);
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --amber: #d97706;
+            --primary: #0284c7;
+            --purple: #7c3aed;
+            --emerald: #059669;
+            --pink: #e11d48;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            padding: 30px 20px 80px; 
+            line-height: 1.65; 
+            background-image: radial-gradient(at 85% 15%, rgba(217, 119, 6, 0.06) 0px, transparent 50%),
+                              radial-gradient(at 15% 85%, rgba(124, 58, 237, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; }
+
+        /* NAV */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--amber);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+        .back-link:hover {
+            color: #fff;
+            border-color: var(--amber);
+            transform: translateX(-3px);
+            background: rgba(251, 191, 36, 0.15);
+        }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .brand-logo-link:hover {
+            transform: translateY(-2px scale(1.02));
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+        }
+        .brand-full-logo {
+            height: 28px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* HEADER */
+        .page-header {
+            background: linear-gradient(145deg, #ffffff, #fffbeb);
+            border: 1px solid #fde68a;
+            border-radius: 22px;
+            padding: 38px 36px;
+            margin-bottom: 36px;
+            box-shadow: 0 10px 35px -10px rgba(245, 158, 11, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--amber);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .page-title {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 16px;
+            color: #334155;
+            max-width: 940px;
+            line-height: 1.68;
+        }
+
+        /* 3D VIEWER GRID */
+        .viewer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        @media (min-width: 992px) {
+            .viewer-grid { grid-template-columns: 7fr 5fr; }
+        }
+        .canvas-card {
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .canvas-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .canvas-container {
+            width: 100%;
+            height: 440px;
+            background: #07090e;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        #swordCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .canvas-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #94a3b8;
+            font-size: 11.5px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .controls-card {
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .ctrl-group label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+        .color-presets {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .color-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .color-btn:hover { transform: scale(1.15); box-shadow: 0 0 12px currentColor; }
+
+        .btn-ctrl {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-ctrl:hover { background: rgba(251, 191, 36, 0.15); border-color: var(--amber); }
+
+        /* SHORTCUTS GRID */
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .sc-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+        .sc-key {
+            font-family: var(--font-mono);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--amber);
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.15);
+            padding: 2px 10px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+        }
+        .sc-desc { font-size: 12px; color: #cbd5e1; }
+
+        /* FOOTER CTA */
+        .page-footer-action {
+            text-align: center;
+            padding: 42px 24px;
+            background: linear-gradient(180deg, rgba(251, 191, 36, 0.12), transparent);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 22px;
+            margin-top: 40px;
+        }
+        .btn-action-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            background: #25D366;
+            color: #0b0f17;
+            font-weight: 900;
+            font-size: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+        }
+        .btn-action-green:hover {
+            background: #20ba59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/montecarmelo-smart-school/" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Volver a Monte Carmelo Hub
+            </a>
+            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+            </a>
+        </div>
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="badge-row">
+                <span class="badge">Level 2 · 2° Año (13 a 14 Años)</span>
+                <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border-color:rgba(56,189,248,0.4);">Blender 4.x &amp; 3D Low-Poly 🧊</span>
+            </div>
+            <h1 class="page-title">
+                La Forja 3D: De Fan de Minecraft a Modelador Blender ⚔️✨
+            </h1>
+            <p class="page-subtitle">
+                Aprende las herramientas de los diseñadores profesionales de videojuegos: navegación tridimensional, atajos rápidos de teclado, materiales con luz neón propia y exportación para visualización en teléfonos móviles y lentes Meta Quest 3.
+            </p>
+        </div>
+
+        <!-- 3D SWORD VIEWER -->
+        <div class="viewer-grid">
+            <div class="canvas-card">
+                <div class="canvas-top">
+                    <span style="font-size:16px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px;">
+                        <span>⚔️</span> Visor 3D: Espada Gamer Neón en Tiempo Real
+                    </span>
+                    <span style="font-size:12px; color:var(--amber); font-family:var(--font-mono);">WebGL Three.js</span>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="swordCanvas"></canvas>
+                    <div class="canvas-hint">🖱️ Arrastrar para rotar · Rueda para zoom · Táctil en celulares</div>
+                </div>
+            </div>
+
+            <!-- CONTROLS & SHORTCUTS -->
+            <div class="controls-card">
+                <h3 style="font-size:18px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px;">
+                    <span>💡</span> Personalización del Filo Neón
+                </h3>
+
+                <div class="ctrl-group">
+                    <label>Color del Núcleo de Energía:</label>
+                    <div class="color-presets">
+                        <div class="color-btn" style="background:#fbbf24;" onclick="changeBladeColor(0xfbbf24)" title="Ámbar Solar"></div>
+                        <div class="color-btn" style="background:#38bdf8;" onclick="changeBladeColor(0x38bdf8)" title="Cian Plasma"></div>
+                        <div class="color-btn" style="background:#f43f5e;" onclick="changeBladeColor(0xf43f5e)" title="Rojo Carmesí"></div>
+                        <div class="color-btn" style="background:#34d399;" onclick="changeBladeColor(0x34d399)" title="Verde Esmeralda"></div>
+                        <div class="color-btn" style="background:#c084fc;" onclick="changeBladeColor(0xc084fc)" title="Violeta Cósmico"></div>
+                    </div>
+                </div>
+
+                <div class="ctrl-group">
+                    <button class="btn-ctrl" onclick="toggleWireframe()">
+                        📐 <span id="wfText">Activar Modo Malla (Wireframe)</span>
+                    </button>
+                </div>
+
+                <div>
+                    <label style="font-size:13px; font-weight:700; color:#e2e8f0; display:block; margin-bottom:6px;">
+                        ⚡ Los 6 Atajos Legendarios de Blender:
+                    </label>
+                    <div class="shortcuts-grid">
+                        <div class="sc-card"><span class="sc-key">G</span><div class="sc-desc">Grab (Mover)</div></div>
+                        <div class="sc-card"><span class="sc-key">R</span><div class="sc-desc">Rotate (Girar)</div></div>
+                        <div class="sc-card"><span class="sc-key">S</span><div class="sc-desc">Scale (Escalar)</div></div>
+                        <div class="sc-card"><span class="sc-key">E</span><div class="sc-desc">Extrude (Extruir)</div></div>
+                        <div class="sc-card"><span class="sc-key">I</span><div class="sc-desc">Inset (Contorno)</div></div>
+                        <div class="sc-card"><span class="sc-key">Ctrl+B</span><div class="sc-desc">Bevel (Biselar)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER CTA -->
+        <div class="page-footer-action">
+            <h3 style="font-size:22px; font-weight:800; color:#fff; margin-bottom:8px;">
+                ¿Quieres forjar tus propios modelos 3D en Blender? ⚔️🚀
+            </h3>
+            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+                Escríbele al Ing. Héctor Mota para conocer el programa de 2° Año del Colegio Monte Carmelo.
+            </p>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20m%C3%A1s%20detalles%20sobre%20Level%202%20(2%C2%B0%20A%C3%B1o)%20Blender%203D%20de%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-action-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contactar al Facilitador vía WhatsApp (0414-8873615)
+            </a>
+        </div>
+
+    </div>
+
+    <!-- THREE.JS SWORD SCRIPT -->
+    <script>
+        let scene, camera, renderer, controls;
+        let bladeMesh, bladeGlow, hiltMesh, guardMesh;
+        let isWireframe = false;
+
+        function initSwordScene() {
+            const container = document.getElementById('swordCanvas');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x07090e);
+
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            camera.position.set(0, 1.2, 3.5);
+
+            renderer = new THREE.WebGLRenderer({ canvas: container, antialias: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.target.set(0, 0, 0);
+
+            // Lights
+            const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+            scene.add(ambient);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight.position.set(3, 5, 4);
+            scene.add(dirLight);
+
+            // Sword Group
+            const swordGroup = new THREE.Group();
+
+            // Blade (Low-poly diamond prism)
+            const bladeGeo = new THREE.CylinderGeometry(0.04, 0.12, 1.8, 4);
+            bladeGeo.scale(0.3, 1, 1);
+            const bladeMat = new THREE.MeshStandardMaterial({
+                color: 0xf8fafc,
+                metalness: 0.9,
+                roughness: 0.2
+            });
+            bladeMesh = new THREE.Mesh(bladeGeo, bladeMat);
+            bladeMesh.position.y = 0.6;
+            swordGroup.add(bladeMesh);
+
+            // Blade Neon Core (Glow)
+            const glowGeo = new THREE.CylinderGeometry(0.02, 0.08, 1.6, 4);
+            glowGeo.scale(0.35, 1, 0.5);
+            const glowMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24 });
+            bladeGlow = new THREE.Mesh(glowGeo, glowMat);
+            bladeGlow.position.y = 0.6;
+            swordGroup.add(bladeGlow);
+
+            // Guard (Crossbar)
+            const guardGeo = new THREE.BoxGeometry(0.6, 0.08, 0.14);
+            const guardMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.8, roughness: 0.3 });
+            guardMesh = new THREE.Mesh(guardGeo, guardMat);
+            guardMesh.position.y = -0.3;
+            swordGroup.add(guardMesh);
+
+            // Hilt (Handle)
+            const hiltGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.45, 8);
+            const hiltMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.8 });
+            hiltMesh = new THREE.Mesh(hiltGeo, hiltMat);
+            hiltMesh.position.y = -0.55;
+            swordGroup.add(hiltMesh);
+
+            // Pommel (End gem)
+            const pommelGeo = new THREE.OctahedronGeometry(0.08);
+            const pommelMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24 });
+            const pommel = new THREE.Mesh(pommelGeo, pommelMat);
+            pommel.position.y = -0.8;
+            swordGroup.add(pommel);
+
+            scene.add(swordGroup);
+
+            // Rotation animation
+            function animate() {
+                requestAnimationFrame(animate);
+                swordGroup.rotation.y += 0.01;
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                const c = document.getElementById('swordCanvas');
+                camera.aspect = c.clientWidth / c.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(c.clientWidth, c.clientHeight);
+            });
+        }
+
+        function changeBladeColor(hex) {
+            if (bladeGlow) bladeGlow.material.color.setHex(hex);
+        }
+
+        function toggleWireframe() {
+            isWireframe = !isWireframe;
+            bladeMesh.material.wireframe = isWireframe;
+            guardMesh.material.wireframe = isWireframe;
+            hiltMesh.material.wireframe = isWireframe;
+            document.getElementById('wfText').innerText = isWireframe ? "Desactivar Modo Malla" : "Activar Modo Malla (Wireframe)";
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initSwordScene();
+        });
+    </script>
+</body>
+</html>

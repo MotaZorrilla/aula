@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia VR Meta Quest 3 · Colegio Monte Carmelo 🥽✨</title>
+
+    <meta name="title" content="Experiencia VR Meta Quest 3 · Colegio Monte Carmelo 🥽✨">
+    <meta name="description" content="Demostración presencial en vivo con visores Meta Quest 3 en el aula. Del modelado en Blender a caminar dentro de tu creación 3D por el Ing. Héctor Mota.">
+    <meta name="keywords" content="Meta Quest 3, Realidad Virtual, Colegio Monte Carmelo, Blender 3D, WebXR, Three.js, Héctor Mota, Puerto Ordaz">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js & OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-card: #ffffff;
+            --border: #e2e8f0;
+            --border-highlight: rgba(124, 58, 237, 0.35);
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --primary: #0284c7;
+            --purple: #7c3aed;
+            --purple-light: #9333ea;
+            --amber: #d97706;
+            --emerald: #059669;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            padding: 30px 20px 80px; 
+            line-height: 1.65; 
+            background-image: radial-gradient(at 80% 10%, rgba(2, 132, 199, 0.06) 0px, transparent 50%),
+                              radial-gradient(at 20% 80%, rgba(124, 58, 237, 0.06) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; }
+
+        /* TOP NAVIGATION */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+        .back-link:hover {
+            color: #fff;
+            border-color: var(--primary);
+            transform: translateX(-3px);
+            background: rgba(56, 189, 248, 0.15);
+        }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .brand-logo-link:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+        }
+        .brand-full-logo {
+            height: 28px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* HERO HEADER */
+        .page-header {
+            background: linear-gradient(145deg, #ffffff, #f0fdf4);
+            border: 1px solid #bbf7d0;
+            border-radius: 22px;
+            padding: 38px 36px;
+            margin-bottom: 36px;
+            box-shadow: 0 10px 35px -10px rgba(16, 185, 129, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::after {
+            content: '🥽';
+            position: absolute;
+            right: 20px;
+            top: -15px;
+            font-size: 140px;
+            opacity: 0.08;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-school {
+            background: #f5f3ff;
+            color: #6d28d9;
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+        .page-title {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 16px;
+            color: #334155;
+            max-width: 940px;
+            line-height: 1.68;
+        }
+
+        /* 3D SIMULATOR WORKSPACE */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        @media (min-width: 992px) {
+            .workspace-grid { grid-template-columns: 7fr 5fr; }
+        }
+        .canvas-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .canvas-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .canvas-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .canvas-container {
+            width: 100%;
+            height: 440px;
+            background: #06090e;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        #vrCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .canvas-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #94a3b8;
+            font-size: 11.5px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* CONTROL PANEL */
+        .controls-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .panel-heading {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ctrl-group label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+        .color-presets {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .color-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .color-btn:hover { transform: scale(1.15); box-shadow: 0 0 12px currentColor; }
+        .color-cyan { background: #38bdf8; }
+        .color-purple { background: #c084fc; }
+        .color-amber { background: #fbbf24; }
+        .color-emerald { background: #34d399; }
+
+        .btn-toggle-rot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-toggle-rot:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--primary);
+        }
+
+        .btn-booking {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #0b0f17;
+            font-weight: 900;
+            font-size: 14.5px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s;
+            box-shadow: 0 4px 18px rgba(56, 189, 248, 0.4);
+            margin-top: auto;
+        }
+        .btn-booking:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.6);
+        }
+
+        /* PIPELINE EXPLANATION */
+        .content-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 34px;
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 21px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pipeline-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .pipe-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.25s;
+        }
+        .pipe-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-3px);
+            background: rgba(56, 189, 248, 0.05);
+        }
+        .pipe-num {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+        .pipe-title { font-size: 16px; font-weight: 800; color: #fff; }
+        .pipe-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+        /* FOOTER CTA */
+        .page-footer-action {
+            text-align: center;
+            padding: 42px 24px;
+            background: linear-gradient(180deg, rgba(56, 189, 248, 0.12), transparent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 22px;
+            margin-top: 40px;
+        }
+        .btn-action-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            background: #25D366;
+            color: #0b0f17;
+            font-weight: 900;
+            font-size: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+        }
+        .btn-action-green:hover {
+            background: #20ba59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/montecarmelo-smart-school/" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Volver a Monte Carmelo Hub
+            </a>
+            <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+            </a>
+        </div>
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="badge-row">
+                <span class="badge">🥽 Realidad Virtual &amp; Mixta</span>
+                <span class="badge badge-school">Colegio Monte Carmelo · Demostración en Sitio</span>
+            </div>
+            <h1 class="page-title">
+                ¡Caminar Dentro de tu Creación con los Lentes Meta Quest 3! 🎮✨
+            </h1>
+            <p class="page-subtitle">
+                Los estudiantes dejan de ver sus proyectos como figuras planas en una pantalla de computadora: se colocan el visor Meta Quest 3 y caminan físicamente dentro de su propia habitación gamer, nave espacial o fortaleza 3D modelada en Blender.
+            </p>
+        </div>
+
+        <!-- 3D SIMULATOR -->
+        <div class="workspace-grid">
+            <div class="canvas-card">
+                <div class="canvas-top">
+                    <span class="canvas-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        Simulador 3D: Habitación Gamer &amp; Visor Meta Quest 3
+                    </span>
+                    <span style="font-size:12px; color:var(--primary); font-family:var(--font-mono);">Three.js WebGL</span>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="vrCanvas"></canvas>
+                    <div class="canvas-hint">🖱️ Arrastrar para rotar 360° · Rueda para zoom · Táctil en smartphone</div>
+                </div>
+            </div>
+
+            <!-- CONTROLS -->
+            <div class="controls-card">
+                <h3 class="panel-heading">
+                    <span>🕹️</span> Control de Atmósfera &amp; Neón VR
+                </h3>
+
+                <div class="ctrl-group">
+                    <label>Tiras LED Neón de la Habitación:</label>
+                    <div class="color-presets">
+                        <div class="color-btn color-cyan" title="Cian Eléctrico" onclick="changeNeonColor(0x38bdf8)"></div>
+                        <div class="color-btn color-purple" title="Violeta Synthwave" onclick="changeNeonColor(0xc084fc)"></div>
+                        <div class="color-btn color-amber" title="Ámbar Cyberpunk" onclick="changeNeonColor(0xfbbf24)"></div>
+                        <div class="color-btn color-emerald" title="Verde Matrix" onclick="changeNeonColor(0x34d399)"></div>
+                    </div>
+                </div>
+
+                <div class="ctrl-group">
+                    <label>Modo de Cámara:</label>
+                    <button class="btn-toggle-rot" onclick="toggleAutoRotate()">
+                        🔄 <span id="rotText">Pausar Rotación Automática</span>
+                    </button>
+                </div>
+
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:16px;">
+                    <div style="font-size:13.5px; font-weight:700; color:#fff; margin-bottom:4px;">
+                        🥽 Especificaciones del Meta Quest 3:
+                    </div>
+                    <div style="font-size:12px; color:var(--text-muted); line-height:1.45;">
+                        • Lentes Pancake 4K+ Infinite Display<br>
+                        • Tracking 6DoF sin cables externos<br>
+                        • Audio espacial 3D inmersivo de 360°
+                    </div>
+                </div>
+
+                <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20agendar%20la%20demostraci%C3%B3n%20en%20sitio%20con%20Meta%20Quest%203%20para%20el%20Colegio%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-booking">
+                    🚀 Agendar Demostración VR en el Colegio
+                </a>
+            </div>
+        </div>
+
+        <!-- PIPELINE BLENDER TO META QUEST 3 -->
+        <div class="content-card">
+            <h2 class="section-title">
+                <span>⚡</span> El Pipeline: Del Modelado en Blender a los Lentes Meta Quest 3
+            </h2>
+            <p style="font-size:14.5px; color:#cbd5e1; margin-bottom:16px;">
+                Los chicos aprenden el mismo flujo de trabajo utilizado por los estudios de desarrollo de videojuegos y Realidad Virtual a nivel mundial:
+            </p>
+
+            <div class="pipeline-steps">
+                <div class="pipe-card">
+                    <span class="pipe-num">Paso 01 🎨</span>
+                    <h4 class="pipe-title">Modelado en Blender</h4>
+                    <p class="pipe-desc">Creación de la escena poligonal low-poly: mesa gamer, pantalla curva, estantes y espada luminosa.</p>
+                </div>
+                <div class="pipe-card">
+                    <span class="pipe-num">Paso 02 💡</span>
+                    <h4 class="pipe-title">Materiales Emisivos</h4>
+                    <p class="pipe-desc">Configuración de materiales shader que emiten luz propia (tiras LED neón y pantallas holográficas).</p>
+                </div>
+                <div class="pipe-card">
+                    <span class="pipe-num">Paso 03 📦</span>
+                    <h4 class="pipe-title">Exportación GLB</h4>
+                    <p class="pipe-desc">Generación de archivos `.glb` optimizados y ultraligeros compatibles con navegadores y cascos VR.</p>
+                </div>
+                <div class="pipe-card">
+                    <span class="pipe-num">Paso 04 🥽</span>
+                    <h4 class="pipe-title">Inmersión en Vivo</h4>
+                    <p class="pipe-desc">El estudiante se pone las Meta Quest 3 en el colegio, toma los mandos y camina dentro de su propio mundo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER CTA -->
+        <div class="page-footer-action">
+            <h3 style="font-size:22px; font-weight:800; color:#fff; margin-bottom:8px;">
+                ¿Quieres que tus estudiantes vivan esta experiencia inmersiva? 🥽✨
+            </h3>
+            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+                El Ing. Héctor Mota lleva los visores Meta Quest 3 al Colegio Monte Carmelo para demostraciones prácticas.
+            </p>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20quiero%20coordinar%20la%20demostraci%C3%B3n%20con%20los%20lentes%20Meta%20Quest%203%20en%20Monte%20Carmelo..." target="_blank" rel="noopener noreferrer" class="btn-action-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Coordinar Demostración VR vía WhatsApp (0414-8873615)
+            </a>
+        </div>
+
+    </div>
+
+    <!-- THREE.JS GAMER ROOM INTERACTION -->
+    <script>
+        let scene, camera, renderer, controls;
+        let neonStrip, screenMesh, questMesh;
+        let autoRotate = true;
+
+        function initVRScene() {
+            const container = document.getElementById('vrCanvas');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x070b12);
+
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+            camera.position.set(3.2, 2.5, 3.8);
+
+            renderer = new THREE.WebGLRenderer({ canvas: container, antialias: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.target.set(0, 1.2, 0);
+
+            // Lights
+            const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambient);
+
+            const pointLight = new THREE.PointLight(0x38bdf8, 1.5, 10);
+            pointLight.position.set(0, 2, 0);
+            scene.add(pointLight);
+
+            // Floor & Walls (Low-poly diorama)
+            const floorGeo = new THREE.BoxGeometry(3, 0.1, 3);
+            const floorMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.8 });
+            const floor = new THREE.Mesh(floorGeo, floorMat);
+            floor.position.y = -0.05;
+            scene.add(floor);
+
+            const wallMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.9 });
+            const backWall = new THREE.Mesh(new THREE.BoxGeometry(3, 2.5, 0.1), wallMat);
+            backWall.position.set(0, 1.2, -1.45);
+            scene.add(backWall);
+
+            const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.1, 2.5, 3), wallMat);
+            leftWall.position.set(-1.45, 1.2, 0);
+            scene.add(leftWall);
+
+            // Desk
+            const deskMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.5 });
+            const desk = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.08, 0.8), deskMat);
+            desk.position.set(0, 0.8, -0.8);
+            scene.add(desk);
+
+            const legGeo = new THREE.BoxGeometry(0.06, 0.8, 0.06);
+            const leg1 = new THREE.Mesh(legGeo, deskMat); leg1.position.set(-0.7, 0.4, -1.1); scene.add(leg1);
+            const leg2 = new THREE.Mesh(legGeo, deskMat); leg2.position.set(0.7, 0.4, -1.1); scene.add(leg2);
+            const leg3 = new THREE.Mesh(legGeo, deskMat); leg3.position.set(-0.7, 0.4, -0.5); scene.add(leg3);
+            const leg4 = new THREE.Mesh(legGeo, deskMat); leg4.position.set(0.7, 0.4, -0.5); scene.add(leg4);
+
+            // Curved Monitor with glowing screen
+            const screenGeo = new THREE.BoxGeometry(1.1, 0.45, 0.04);
+            const screenMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+            screenMesh = new THREE.Mesh(screenGeo, screenMat);
+            screenMesh.position.set(0, 1.15, -1.0);
+            scene.add(screenMesh);
+
+            // Neon LED Strip under desk
+            const stripGeo = new THREE.BoxGeometry(1.6, 0.03, 0.03);
+            const stripMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+            neonStrip = new THREE.Mesh(stripGeo, stripMat);
+            neonStrip.position.set(0, 0.77, -0.4);
+            scene.add(neonStrip);
+
+            // Floating Meta Quest 3 Headset Representation
+            const questGeo = new THREE.BoxGeometry(0.35, 0.22, 0.25);
+            const questMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.2 });
+            questMesh = new THREE.Mesh(questGeo, questMat);
+            questMesh.position.set(0, 1.35, 0.2);
+            scene.add(questMesh);
+
+            // Visor strap & lenses
+            const visorGlass = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.15, 0.03), new THREE.MeshBasicMaterial({ color: 0x0f172a }));
+            visorGlass.position.set(0, 1.35, 0.33);
+            scene.add(visorGlass);
+
+            window.addEventListener('resize', onResize);
+            animate();
+        }
+
+        function onResize() {
+            const container = document.getElementById('vrCanvas');
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (autoRotate && controls) {
+                scene.rotation.y += 0.005;
+            }
+            if (questMesh) {
+                questMesh.rotation.y += 0.01;
+                questMesh.position.y = 1.35 + Math.sin(Date.now() * 0.003) * 0.04;
+            }
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        function changeNeonColor(hex) {
+            if (neonStrip) neonStrip.material.color.setHex(hex);
+            if (screenMesh) screenMesh.material.color.setHex(hex);
+        }
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            document.getElementById('rotText').innerText = autoRotate ? "Pausar Rotación Automática" : "Activar Rotación 360°";
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initVRScene();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entorno Común de Datos (CDE) e Interoperabilidad (ISO 19650) · Postgrado UGMA</title>
+
+    <meta name="title" content="Entorno Común de Datos (CDE) e Interoperabilidad (ISO 19650) · Postgrado UGMA">
+    <meta name="description" content="Gobernanza de información, estados WIP/Shared/Published/Archived, nomenclatura ISO 19650 y esquemas openBIM IFC4 por el Ing. Héctor Mota.">
+    <meta name="keywords" content="ISO 19650, CDE, Common Data Environment, openBIM, IFC4, IfcOpenShell, UGMA, Héctor Mota">
+    <meta name="author" content="Héctor Mota Zorrilla">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-subtle: #f1f5f9;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            
+            --navy-primary: #0f2942;
+            --navy-dark: #0a192f;
+            --blue-accent: #0284c7;
+            --blue-light: #e0f2fe;
+            
+            --emerald: #047857;
+            --emerald-light: #d1fae5;
+            --amber: #b45309;
+            --amber-light: #fef3c7;
+            --purple: #6d28d9;
+            --purple-light: #ede9fe;
+
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: var(--font-sans); }
+        body { 
+            background: var(--bg); 
+            color: var(--text-main); 
+            min-height: 100vh; 
+            padding: 30px 20px 80px; 
+            line-height: 1.65; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; }
+
+        /* TOP NAVIGATION */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--navy-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            background: #ffffff;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .back-link:hover {
+            color: var(--blue-accent);
+            border-color: var(--blue-accent);
+            transform: translateX(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 1px solid rgba(15, 41, 66, 0.15);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+        .brand-logo-link:hover {
+            transform: translateY(-2px scale(1.02));
+            box-shadow: var(--shadow-md);
+            border-color: rgba(15, 41, 66, 0.35);
+        }
+        .brand-full-logo {
+            height: 28px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-lab-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0369a1;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            padding: 7px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .nav-lab-link:hover {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        .live-pill {
+            background: #10b981;
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+        }
+        .nav-lab-link:hover .live-pill {
+            background: #ffffff;
+            color: #0284c7;
+        }
+
+        /* HEADER */
+        .page-header {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 38px 36px;
+            margin-bottom: 36px;
+            box-shadow: var(--shadow-md);
+            background-image: linear-gradient(135deg, rgba(241, 245, 249, 0.6) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--blue-light);
+            color: #0369a1;
+            border: 1px solid #7dd3fc;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-academic {
+            background: var(--emerald-light);
+            color: var(--emerald);
+            border-color: rgba(4, 120, 87, 0.3);
+        }
+        .page-title {
+            font-size: clamp(25px, 3.8vw, 35px);
+            font-weight: 800;
+            color: var(--navy-primary);
+            margin-bottom: 12px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 15.5px;
+            color: var(--text-muted);
+            max-width: 960px;
+            line-height: 1.65;
+        }
+
+        /* CONTENT CARDS */
+        .content-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 34px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        .section-title {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .academic-p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .academic-p strong { color: var(--text-main); font-weight: 700; }
+
+        /* CDE STATES PIPELINE */
+        .cde-pipeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 26px 0;
+            position: relative;
+        }
+        .cde-state-card {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .cde-state-card.wip { border-top: 4px solid #f59e0b; }
+        .cde-state-card.shared { border-top: 4px solid var(--blue-accent); }
+        .cde-state-card.published { border-top: 4px solid var(--emerald); }
+        .cde-state-card.archived { border-top: 4px solid #64748b; }
+        .cde-state-card:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            box-shadow: var(--shadow-md);
+        }
+        .state-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .state-badge {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+        .wip .state-badge { background: var(--amber-light); color: var(--amber); }
+        .shared .state-badge { background: var(--blue-light); color: #0284c7; }
+        .published .state-badge { background: var(--emerald-light); color: var(--emerald); }
+        .archived .state-badge { background: #e2e8f0; color: #475569; }
+        .state-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            margin-bottom: 6px;
+        }
+        .state-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* INTERACTIVE VALIDATOR */
+        .validator-box {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+            margin: 24px 0;
+        }
+        .input-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .input-row input {
+            flex: 1;
+            min-width: 280px;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--navy-primary);
+            background: #ffffff;
+        }
+        .btn-validate {
+            padding: 12px 24px;
+            background: var(--navy-primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-validate:hover {
+            background: #1e3a8a;
+            transform: translateY(-1px);
+        }
+        .quick-presets {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 12.5px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .preset-btn {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            cursor: pointer;
+            color: var(--navy-primary);
+        }
+        .preset-btn:hover { border-color: var(--blue-accent); color: var(--blue-accent); }
+
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .breakdown-item {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+        .bd-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; font-weight: 700; }
+        .bd-val { font-size: 14px; font-family: var(--font-mono); font-weight: 800; color: var(--navy-primary); margin-top: 4px; }
+        .bd-desc { font-size: 11px; color: var(--emerald); margin-top: 2px; }
+
+        /* CODE BLOCK */
+        .code-block-academic {
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #1e293b;
+        }
+        .code-block-academic pre { font-family: inherit; }
+
+        /* FOOTER */
+        .page-footer-action {
+            text-align: center;
+            padding: 40px 20px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-action-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: #25D366;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+        }
+        .btn-action-green:hover {
+            background: #20ba59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/ugma-gerencia-obras/" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Volver al Hub Académico UGMA
+            </a>
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="nav-lab-link" title="Abrir Visor BIM 3D & CDE en vivo en el Laboratorio ConTech">
+                    <span style="font-size:15px;">📐</span>
+                    <span>Visor BIM 3D (Lab)</span>
+                    <span class="live-pill">LIVE</span>
+                </a>
+                <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
+                    <img src="/assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo">
+                </a>
+            </div>
+        </div>
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="badge-row">
+                <span class="badge">Eje Temático 01 · 5 Horas</span>
+                <span class="badge badge-academic">openBIM &amp; Gobernanza · Postgrado UGMA</span>
+            </div>
+            <h1 class="page-title">Entorno Común de Datos (CDE) e Interoperabilidad (ISO 19650)</h1>
+            <p class="page-subtitle">
+                Arquitectura de información para la gestión colaborativa de proyectos. Ciclo de vida de estados documentales (WIP, Shared, Published, Archived), estandarización de contenedores según la norma internacional ISO 19650 y esquemas neutros IFC4 de buildingSMART.
+            </p>
+        </div>
+
+        <!-- THEORY: CDE & ISO 19650 LIFECYCLE -->
+        <div class="content-card">
+            <h2 class="section-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                1. El Entorno Común de Datos (CDE) como Fuente Única de Verdad (SSOT)
+            </h2>
+            <p class="academic-p">
+                Bajo la norma <strong>ISO 19650-1</strong>, el <i>Common Data Environment (CDE)</i> no es un repositorio pasivo en la nube (como un simple Google Drive o Dropbox), sino un <strong>procedimiento estructurado y gobernado</strong> para recopilar, gestionar y diseminar información no gráfica, modelos geométricos y documentación de obra. Evita la duplicidad de versiones y garantiza la trazabilidad jurídica de cada decisión técnica.
+            </p>
+
+            <div class="cde-pipeline">
+                <div class="cde-state-card wip">
+                    <div class="state-header">
+                        <span class="state-badge">Estado 01</span>
+                        <span>🔒 Privado</span>
+                    </div>
+                    <h4 class="state-title">WIP (Trabajo en Progreso)</h4>
+                    <p class="state-desc">Información generada por una disciplina específica (ej. Estructuras). Solo es visible para el equipo de diseño interno antes de validación.</p>
+                </div>
+
+                <div class="cde-state-card shared">
+                    <div class="state-header">
+                        <span class="state-badge">Estado 02</span>
+                        <span>🤝 Coordinación</span>
+                    </div>
+                    <h4 class="state-title">Shared (Compartido)</h4>
+                    <p class="state-desc">Modelos aprobados internamente que se comparten con otras disciplinas para federación, clash detection y coordinación espacial.</p>
+                </div>
+
+                <div class="cde-state-card published">
+                    <div class="state-header">
+                        <span class="state-badge">Estado 03</span>
+                        <span>📋 Contractual</span>
+                    </div>
+                    <h4 class="state-title">Published (Publicado)</h4>
+                    <p class="state-desc">Entregables firmados y autorizados por el Gerente de Proyecto para licitación, permisología municipal o construcción en campo.</p>
+                </div>
+
+                <div class="cde-state-card archived">
+                    <div class="state-header">
+                        <span class="state-badge">Estado 04</span>
+                        <span>🏛️ Histórico</span>
+                    </div>
+                    <h4 class="state-title">Archived (Archivado)</h4>
+                    <p class="state-desc">Registro histórico de todas las versiones publicadas para auditorías, peritajes técnicos y fase de Gemelo Digital As-Built.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 20px 24px; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <div style="max-width: 680px;">
+                    <h4 style="font-size: 16px; font-weight: 800; color: #0369a1; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+                        <span>📁</span> Gestor CDE Interactivo en Vivo en el Laboratorio ConTech
+                    </h4>
+                    <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                        Experimenta este flujo real de transición documental (WIP &rarr; Shared &rarr; Published &rarr; Archived) y gestiona entregables en el <strong>BIM Hub</strong> oficial en <strong>lab.motazorrilla.com/bim</strong> (Pestaña "Gestor CDE").
+                    </p>
+                </div>
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #0284c7; color: #ffffff; font-size: 13.5px; font-weight: 700; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25); transition: all 0.2s;">
+                    Abrir Gestor CDE en el Lab &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE ISO 19650 VALIDATOR -->
+        <div class="content-card">
+            <h2 class="section-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                2. Validador &amp; Desglosador de Contenedores de Información (ISO 19650)
+            </h2>
+            <p class="academic-p">
+                La norma ISO 19650-2 establece una sintaxis obligatoria para el nombramiento de archivos de obra. Prueba introduciendo un código o selecciona uno de los ejemplos predeterminados:
+            </p>
+
+            <div class="validator-box">
+                <div class="quick-presets">
+                    <span>Ejemplos de Proyecto:</span>
+                    <button class="preset-btn" onclick="setPreset('UGMA-MZ-EST-ZZ-M3-S-0001')">Estructura Nivel Completo</button>
+                    <button class="preset-btn" onclick="setPreset('CORP-HVAC-P01-M3-M-0104')">MEP Climatización Piso 1</button>
+                    <button class="preset-btn" onclick="setPreset('HOSP-ARQ-ZZ-DR-A-9002')">Plano Arquitectura General</button>
+                </div>
+
+                <div class="input-row">
+                    <input type="text" id="isoCodeInput" value="UGMA-MZ-EST-ZZ-M3-S-0001" placeholder="PROYECTO-AUTOR-VOLUMEN-NIVEL-TIPO-ROL-NUMERO">
+                    <button class="btn-validate" onclick="validateISOCode()">Validar Conformidad</button>
+                </div>
+
+                <div id="validationResultBox" style="background:#ffffff; border:1px solid #a7f3d0; border-radius:10px; padding:16px; margin-top:14px;">
+                    <div style="display:flex; align-items:center; gap:8px; color:#065f46; font-weight:700; margin-bottom:8px;">
+                        <span>✅</span> Código Sintácticamente Conforme con ISO 19650
+                    </div>
+                    <div style="font-size:13.5px; color:#475569;" id="complianceDetails">
+                        El contenedor cumple los 7 campos obligatorios del Anexo Nacional de Nomenclatura.
+                    </div>
+
+                    <div class="breakdown-grid" id="breakdownContainer">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CODE SECTION: IFCOPENSHELL -->
+        <div class="content-card">
+            <h2 class="section-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                3. Automatización con IfcOpenShell: Auditoría de Jerarquía Espacial IFC4
+            </h2>
+            <p class="academic-p">
+                El siguiente script en Python utiliza la biblioteca de código abierto `IfcOpenShell` para auditar que un archivo IFC cumpla con la jerarquía espacial normalizada de buildingSMART:
+            </p>
+
+            <div class="code-block-academic">
+<pre><code class="language-python">import ifcopenshell
+import ifcopenshell.util.placement
+
+# Apertura del modelo openBIM bajo esquema IFC4
+ifc_file = ifcopenshell.open("Edificio_Guayana_CDE.ifc")
+
+# Auditoría del proyecto y jerarquía espacial
+project = ifc_file.by_type("IfcProject")[0]
+print(f"Proyecto openBIM: {project.Name} [Unidades: {project.UnitsInContext.is_a()}]")
+
+# Recorrido de niveles de edificación (IfcBuildingStorey)
+storeys = ifc_file.by_type("IfcBuildingStorey")
+print(f"\nNiveles construidos detectados ({len(storeys)} pisos):")
+for storey in storeys:
+    elevation = storey.Elevation or 0.0
+    elements = storey.ContainsElements
+    total_elements = sum(len(rel.RelatedElements) for rel in elements)
+    print(f" • Piso: {storey.Name:15} | Elevación: {elevation:6.2f}m | Entidades: {total_elements}")
+</code></pre>
+            </div>
+        </div>
+
+        <!-- CTA FOOTER -->
+        <div class="page-footer-action">
+            <h3 style="font-size:22px; font-weight:800; color:var(--navy-primary); margin-bottom:8px;">
+                ¿Consultas sobre la implementación de CDE o auditoría openBIM?
+            </h3>
+            <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+                Contacta directamente al Ing. Héctor Mota para consultoría técnica sobre estándares ISO 19650 en empresas constructoras.
+            </p>
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20m%C3%A1s%20detalles%20sobre%20CDE%20e%20ISO%2019650%20del%20Diplomado%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contactar al Facilitador vía WhatsApp (0414-8873615)
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function setPreset(code) {
+            document.getElementById('isoCodeInput').value = code;
+            validateISOCode();
+        }
+
+        function validateISOCode() {
+            const raw = document.getElementById('isoCodeInput').value.trim();
+            const parts = raw.split('-');
+            const container = document.getElementById('breakdownContainer');
+            const resultBox = document.getElementById('validationResultBox');
+            const details = document.getElementById('complianceDetails');
+
+            container.innerHTML = '';
+
+            if (parts.length < 6) {
+                resultBox.style.borderColor = '#fca5a5';
+                resultBox.style.background = '#fef2f2';
+                resultBox.innerHTML = `
+                    <div style="color:#b91c1c; font-weight:700; margin-bottom:6px;">❌ Error de Conformidad ISO 19650</div>
+                    <div style="font-size:13.5px; color:#7f1d1d;">El código ingresado posee ${parts.length} campos. Se requieren al menos 6 campos delimitados por guiones (-) según la norma (Proyecto-Autor-Volumen-Nivel-Tipo-Rol-Número).</div>
+                `;
+                return;
+            }
+
+            resultBox.style.borderColor = '#a7f3d0';
+            resultBox.style.background = '#ffffff';
+
+            const fields = [
+                { label: "1. Proyecto", val: parts[0] || "N/A", desc: "Código de Obra" },
+                { label: "2. Autor", val: parts[1] || "N/A", desc: "Empresa Emisora" },
+                { label: "3. Disciplina/Vol.", val: parts[2] || "N/A", desc: parts[2] === 'EST' ? 'Estructuras' : (parts[2] === 'ARQ' ? 'Arquitectura' : 'Mecánico') },
+                { label: "4. Nivel", val: parts[3] || "N/A", desc: parts[3] === 'ZZ' ? 'Multi-nivel' : parts[3] },
+                { label: "5. Tipo", val: parts[4] || "N/A", desc: parts[4] === 'M3' ? 'Modelo 3D' : (parts[4] === 'DR' ? 'Plano 2D' : 'Documento') },
+                { label: "6. Rol/Número", val: parts.slice(5).join('-') || "0001", desc: "Secuencial Consecutivo" }
+            ];
+
+            let html = `
+                <div style="display:flex; align-items:center; gap:8px; color:#065f46; font-weight:700; margin-bottom:8px;">
+                    <span>✅</span> Código Sintácticamente Conforme con ISO 19650
+                </div>
+                <div style="font-size:13.5px; color:#475569;">Estructura de metadatos desglosada con éxito para registro en el CDE:</div>
+                <div class="breakdown-grid">
+            `;
+
+            fields.forEach(f => {
+                html += `
+                    <div class="breakdown-item">
+                        <div class="bd-label">${f.label}</div>
+                        <div class="bd-val">${f.val}</div>
+                        <div class="bd-desc">${f.desc}</div>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+
+            resultBox.innerHTML = html;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            validateISOCode();
+        });
+    </script>
+</body>
+</html>

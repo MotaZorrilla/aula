@@ -45,7 +45,7 @@ $user = "motazorrilla"
 
 Write-Host "[PASO 3/3] Sincronizando con Homelab Ubuntu ($homelabIp)..." -ForegroundColor Yellow
 
-$remoteCmd = 'cd ~/apps/aula && git fetch origin master && git checkout origin/master -- ugma-gerencia-obras openspec assets scripts tests && docker restart aula-gateway > /dev/null 2>&1 || true'
+$remoteCmd = 'cd ~/apps/aula && git fetch origin master && git pull origin master && docker restart aula-gateway > /dev/null 2>&1 || true'
 
 $target = $user + "@" + $homelabIp
 ssh -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new $target $remoteCmd
