@@ -1281,26 +1281,29 @@
                 <div class="chip">🎯 <strong>Evaluación Holística 100% sobre 20 pts</strong></div>
             </div>
 
-            <!-- GATEWAY DE ACCESO / BIENVENIDA ALUMNO -->
-            <div id="heroAuthBanner" class="hero-gateway-banner">
-                <div style="flex:1; min-width:260px;">
-                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                        <span style="font-size:18px;">🏛️</span>
-                        <strong id="heroAuthTitle" style="color:var(--navy-primary); font-size:15px;">Portal Protegido · Área Exclusiva de Participantes UGMA</strong>
+            <!-- PORTAL PROMINENTE DE ACCESO AL AULA VIRTUAL Y BÓVEDA -->
+            <div id="heroAuthBanner" class="hero-gateway-banner" style="border: 2px solid #0284c7; background: #f0f9ff; padding: 24px; border-radius: 18px; margin: 24px 0;">
+                <div style="flex:1; min-width:280px;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                        <span style="font-size:24px;">🏛️</span>
+                        <div>
+                            <strong id="heroAuthTitle" style="color:var(--navy-primary); font-size:17px; display:block;">Control de Acceso · Diplomado en Gerencia de Obras</strong>
+                            <span style="font-size:12px; color:#0369a1; font-weight:700;">ÁREA EXCLUSIVA DE ESTUDIANTES Y PARTICIPANTES INSCRITOS</span>
+                        </div>
                     </div>
-                    <p id="heroAuthDesc" style="font-size:13px; color:var(--text-muted); margin:0; line-height:1.5;">
-                        Regístrate como participante del Diplomado o inicia sesión para habilitar el acceso a las 6 Sesiones de Trabajo y descargar todos los expedientes de la Bóveda Centralizada.
+                    <p id="heroAuthDesc" style="font-size:13.5px; color:var(--text-muted); margin:8px 0 0; line-height:1.6;">
+                        Para acceder a los módulos de descarga de la Bóveda (Módulos I al V), ver las clases interactivas y usar los laboratorios 3D, ingresa con tu cuenta de alumno o utiliza el botón de <strong>Acceso Rápido Demo</strong>.
                     </p>
                 </div>
                 <div id="heroAuthButtons" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                    <button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal('login')">
+                    <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:12px 20px; font-size:14px; background:#047857; color:#ffffff; border:none; box-shadow:0 4px 10px rgba(4,120,87,0.25);" onclick="handleDemoLogin()">
+                        <span>⚡</span> Entrar como Alumno (Demo 1-Click)
+                    </button>
+                    <button type="button" class="btn-auth-action btn-auth-login" style="padding:11px 18px; font-size:13.5px;" onclick="openAuthModal('login')">
                         <span>🔑</span> Iniciar Sesión
                     </button>
-                    <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
+                    <button type="button" class="btn-auth-action btn-auth-register" style="padding:11px 18px; font-size:13.5px; background:#ffffff;" onclick="openAuthModal('register')">
                         <span>📝</span> Registrarse
-                    </button>
-                    <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:7px 14px;" onclick="handleDemoLogin()">
-                        <span>⚡</span> Acceso Rápido Demo
                     </button>
                 </div>
             </div>
@@ -1425,15 +1428,15 @@
                     <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
                         Organigramas matriciales, asignación de responsabilidades con Matriz RACI y gestión de las 6 fases del ciclo constructivo.
                     </p>
-                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf" download class="boveda-resumen-btn auth-protected-download">
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf" download class="boveda-resumen-btn auth-protected-download">
                         <span>📥</span> Descargar Resumen Oficial (PDF)
                     </a>
                     <div class="boveda-files-list">
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Caso_Expansion_Industrial_Matanzas.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Caso_Expansion_Industrial_Matanzas.pdf" download class="boveda-file-link auth-protected-download">
                             <span>📄 Caso Práctico Matanzas</span>
                             <span class="boveda-file-ext">PDF · 67 KB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Fases_Proceso_Constructivo.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Fases_Proceso_Constructivo.pdf" download class="boveda-file-link auth-protected-download">
                             <span>📑 Las 6 Fases Constructivas</span>
                             <span class="boveda-file-ext">PDF · 858 KB</span>
                         </a>
@@ -1452,23 +1455,23 @@
                     <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
                         Cómputos métricos Harry Osers, modelo matemático analítico de Curva S y gestión financiera de Valor Ganado (EVM).
                     </p>
-                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf" download class="boveda-resumen-btn auth-protected-download">
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf" download class="boveda-resumen-btn auth-protected-download">
                         <span>📥</span> Descargar Resumen Oficial (PDF)
                     </a>
                     <div class="boveda-files-list">
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" download class="boveda-file-link auth-protected-download">
                             <span>📐 Cómputos Harry Osers</span>
                             <span class="boveda-file-ext">XLSX · 18 KB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" download class="boveda-file-link auth-protected-download">
                             <span>📈 Curva S Matemática Sigmoidal</span>
                             <span class="boveda-file-ext">PDF · 2.1 MB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" download class="boveda-file-link auth-protected-download">
                             <span>💵 Plantilla EVM Dinámica</span>
                             <span class="boveda-file-ext">XLSX · 185 KB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" download class="boveda-file-link auth-protected-download">
                             <span>💻 Guía Softwares (MaPreX, LuloWin)</span>
                             <span class="boveda-file-ext">PDF · 186 KB</span>
                         </a>
@@ -1487,19 +1490,19 @@
                     <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
                         Ley de Contrataciones Públicas, contratos de obras, régimen de garantías y responsabilidad decenal por ruina estructural.
                     </p>
-                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf" download class="boveda-resumen-btn auth-protected-download">
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf" download class="boveda-resumen-btn auth-protected-download">
                         <span>📥</span> Descargar Resumen Oficial (PDF)
                     </a>
                     <div class="boveda-files-list">
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Contrataciones_y_Licitaciones.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Contrataciones_y_Licitaciones.pdf" download class="boveda-file-link auth-protected-download">
                             <span>📜 Contrataciones y Licitaciones</span>
                             <span class="boveda-file-ext">PDF · 17.8 MB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Marco_Legal_Ingenieria_Venezuela.png" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Marco_Legal_Ingenieria_Venezuela.png" download class="boveda-file-link auth-protected-download">
                             <span>🗺️ Mapa Legal en Venezuela</span>
                             <span class="boveda-file-ext">PNG · 4.5 MB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Modulo_3_Marco_Legal_Classroom.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Modulo_3_Marco_Legal_Classroom.pdf" download class="boveda-file-link auth-protected-download">
                             <span>⚖️ Cátedra de Marco Legal</span>
                             <span class="boveda-file-ext">PDF · 4.3 MB</span>
                         </a>
@@ -1518,19 +1521,19 @@
                     <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
                         Last Planner System (LPS), Caso Residencial Los Olivos (18 tareas, ruta crítica 63 días), peritaje Edificio San Antonio y manual SIGECOF.
                     </p>
-                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf" download class="boveda-resumen-btn auth-protected-download">
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf" download class="boveda-resumen-btn auth-protected-download">
                         <span>📥</span> Descargar Resumen Oficial (PDF)
                     </a>
                     <div class="boveda-files-list">
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" download class="boveda-file-link auth-protected-download">
                             <span>🏡 Caso Los Olivos (Ruta Crítica)</span>
                             <span class="boveda-file-ext">PDF · 123 KB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" download class="boveda-file-link auth-protected-download">
                             <span>🔍 Peritaje Edificio San Antonio</span>
                             <span class="boveda-file-ext">PDF · 2.4 MB</span>
                         </a>
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" download class="boveda-file-link auth-protected-download">
                             <span>📑 Manual SIGECOF (168 págs)</span>
                             <span class="boveda-file-ext">PDF · 1.8 MB</span>
                         </a>
@@ -1549,11 +1552,11 @@
                     <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
                         openBIM ISO 19650, Clash Detection 3D, Simulación 4D/5D EVM, IA predictiva y eficiencia solar fotovoltaica en Guayana.
                     </p>
-                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/CONTENIDO_PROGRAMATICO_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-resumen-btn auth-protected-download" style="background:#0284c7;">
+                    <a href="./descargas/modulos-previos/CONTENIDO_PROGRAMATICO_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-resumen-btn auth-protected-download" style="background:#0284c7;">
                         <span>📥</span> Contenido Programático Oficial (PDF)
                     </a>
                     <div class="boveda-files-list">
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/FORMATO_PLANIFICACION_DOCENTE_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-file-link auth-protected-download">
+                        <a href="./descargas/modulos-previos/FORMATO_PLANIFICACION_DOCENTE_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-file-link auth-protected-download">
                             <span>🏛️ Planificación Docente Oficial UGMA</span>
                             <span class="boveda-file-ext">PDF · 128 KB</span>
                         </a>
@@ -2144,11 +2147,11 @@
                 `,
                 resumenPdf: "Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf",
                 files: [
-                    { icon: "📘", title: "195681_CasaQuintaHarryOsers174pdf.pdf", desc: "Tratado maestro de cómputos métricos con planos estructurales E-1 a E-12.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" },
-                    { icon: "📊", title: "EJEMPLO METODO DEL VALOR GANADO EN EXCEL.xlsx", desc: "Modelo financiero dinámico de Curva S con fórmulas automáticas de CPI y SPI.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" },
-                    { icon: "📈", title: "Modelo Matemático de la Curva S Sigmoidal P(t)=3t²-2t³", desc: "Formalización analítica del avance físico acumulado y calibración matemática.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" },
-                    { icon: "💻", title: "Guía Técnica de Softwares (MaPreX, LuloWin NG, MS Project, Primavera P6, Procore)", desc: "Comparativa técnica de herramientas venezolanas e internacionales de costos y control.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" },
-                    { icon: "📐", title: "Planillas de Cómputos Harry Osers y Matrices APU COVENIN", desc: "Formatos oficiales de cubicación de concreto, acero y matrices de APU.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" }
+                    { icon: "📘", title: "195681_CasaQuintaHarryOsers174pdf.pdf", desc: "Tratado maestro de cómputos métricos con planos estructurales E-1 a E-12.", url: "./descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" },
+                    { icon: "📊", title: "EJEMPLO METODO DEL VALOR GANADO EN EXCEL.xlsx", desc: "Modelo financiero dinámico de Curva S con fórmulas automáticas de CPI y SPI.", url: "./descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" },
+                    { icon: "📈", title: "Modelo Matemático de la Curva S Sigmoidal P(t)=3t²-2t³", desc: "Formalización analítica del avance físico acumulado y calibración matemática.", url: "./descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" },
+                    { icon: "💻", title: "Guía Técnica de Softwares (MaPreX, LuloWin NG, MS Project, Primavera P6, Procore)", desc: "Comparativa técnica de herramientas venezolanas e internacionales de costos y control.", url: "./descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" },
+                    { icon: "📐", title: "Planillas de Cómputos Harry Osers y Matrices APU COVENIN", desc: "Formatos oficiales de cubicación de concreto, acero y matrices de APU.", url: "./descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" }
                 ],
                 interactiveTitle: "Calculadora Paramétrica de APU y Factor FCAS (Doctrina Angarita)",
                 interactiveDesc: "Ajusta las variables de la partida de concreto estructural para observar cómo el FCAS y el rendimiento de la cuadrilla definen el precio unitario y la Curva S:",
@@ -2236,11 +2239,11 @@
                 `,
                 resumenPdf: "Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf",
                 files: [
-                    { icon: "🏡", title: "Caso Práctico: Vivienda Residencial Los Olivos (18 Tareas)", desc: "Diagramación PDM y determinación analítica de la Ruta Crítica de 63 días hábiles.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" },
-                    { icon: "🔍", title: "Peritaje Patológico: Losa de Techo Edificio San Antonio (Paseo Caroní)", desc: "Informe forense sobre deflexión y fisuración severa con implicaciones del Art. 1637 CCV.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" },
-                    { icon: "📑", title: "Manual SIGECOF de Formatos de Obra (168 páginas)", desc: "Manual oficial exhaustivo con libros de órdenes, actas de medición y control de valuaciones.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" },
-                    { icon: "📕", title: "Lean Construction y la planificación operativa.pdf (100 págs)", desc: "Tratado exhaustivo de producción sin desperdicio, LPS y flujos de trabajo en faena.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Lean_Construction_Planificacion_Operativa.pdf" },
-                    { icon: "📋", title: "Informe de Inspección Estructural Apostadero-Amarilis", desc: "Auditoría pericial de control de procesos constructivos y protocolos de calidad.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Informe_Inspeccion_Apostadero_Amarilis.pdf" }
+                    { icon: "🏡", title: "Caso Práctico: Vivienda Residencial Los Olivos (18 Tareas)", desc: "Diagramación PDM y determinación analítica de la Ruta Crítica de 63 días hábiles.", url: "./descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" },
+                    { icon: "🔍", title: "Peritaje Patológico: Losa de Techo Edificio San Antonio (Paseo Caroní)", desc: "Informe forense sobre deflexión y fisuración severa con implicaciones del Art. 1637 CCV.", url: "./descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" },
+                    { icon: "📑", title: "Manual SIGECOF de Formatos de Obra (168 páginas)", desc: "Manual oficial exhaustivo con libros de órdenes, actas de medición y control de valuaciones.", url: "./descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" },
+                    { icon: "📕", title: "Lean Construction y la planificación operativa.pdf (100 págs)", desc: "Tratado exhaustivo de producción sin desperdicio, LPS y flujos de trabajo en faena.", url: "./descargas/modulos-previos/Lean_Construction_Planificacion_Operativa.pdf" },
+                    { icon: "📋", title: "Informe de Inspección Estructural Apostadero-Amarilis", desc: "Auditoría pericial de control de procesos constructivos y protocolos de calidad.", url: "./descargas/modulos-previos/Informe_Inspeccion_Apostadero_Amarilis.pdf" }
                 ],
                 interactiveTitle: "Simulador Last Planner System (LPS) y Cálculo en Vivo de PPC/PAC",
                 interactiveDesc: "Marca el estatus de las 6 actividades programadas para la semana 04 del Edificio Guayana y evalúa el diagnóstico de confiabilidad Lean:",
@@ -2295,7 +2298,7 @@
             if (data.resumenPdf) {
                 filesHtml += `
                     <div style="grid-column: 1 / -1; margin-bottom: 6px;">
-                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/${data.resumenPdf}" download class="boveda-resumen-btn auth-protected-download" style="margin:0;">
+                        <a href="./descargas/modulos-previos/${data.resumenPdf}" download class="boveda-resumen-btn auth-protected-download" style="margin:0;">
                             <span>📥</span> Descargar Resumen Ejecutivo Oficial en PDF (Cátedra UGMA)
                         </a>
                     </div>
@@ -2653,11 +2656,13 @@
                 }
                 if (heroBanner) {
                     heroBanner.classList.add('authenticated');
+                    heroBanner.style.background = '#f0fdf4';
+                    heroBanner.style.borderColor = '#86efac';
                     heroTitle.innerHTML = `¡Bienvenido al Aula Virtual, ${user.name}!`;
-                    heroDesc.innerHTML = `Tu matrícula de alumno está activa. Tienes acceso irrestricto a los 7 laboratorios de clase y a la descarga de todos los expedientes de la Bóveda Centralizada.`;
+                    heroDesc.innerHTML = `Tu matrícula de participante está verificada. Tienes acceso irrestricto a todas las clases interactivas y a la Bóveda Centralizada de Descargas.`;
                     heroBtns.innerHTML = `
-                        <a href="#boveda-descargas" class="btn-auth-action btn-auth-login" style="background:var(--emerald); border-color:var(--emerald);">
-                            <span>📂</span> Ir a la Bóveda de Descargas
+                        <a href="./boveda.html" class="btn-auth-action btn-auth-login" style="background:#047857; border-color:#047857; padding:12px 22px; font-size:14px; text-decoration:none;">
+                            <span>🚀</span> ENTRAR A LA BÓVEDA Y AULA VIRTUAL ➜
                         </a>
                     `;
                 }
@@ -2698,12 +2703,13 @@
             }
         }
 
-        // Interceptar descargas protegidas si no está autenticado
+        // Verificación de descargas: si el usuario no ha iniciado sesión, ofrece registrarse
         document.addEventListener('click', function(e) {
             const target = e.target.closest('.auth-protected-download');
             if (target && !getAuthUser()) {
+                // Si hace clic en un archivo protegido sin estar autenticado, abre el modal pero NO bloquea si el usuario ya está autenticado
                 e.preventDefault();
-                openAuthModal('login', 'Debes iniciar sesión como alumno para descargar expedientes oficiales de la Bóveda.');
+                openAuthModal('login', 'Por favor ingresa o pulsa "Acceso Rápido Alumno Demo" para habilitar las descargas.');
             }
         });
 

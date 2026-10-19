@@ -43,6 +43,7 @@ echo "\033[33m--- [1/3] FEATURE TESTS: INTEGRIDAD DE RUTAS Y DOM HTML5 ---\033[0
 $routes = [
     'Hub Principal Aula' => '/index.html',
     'Hub UGMA Gerencia de Obras' => '/ugma-gerencia-obras/index.html',
+    'Bóveda y Aula de Alumnos' => '/ugma-gerencia-obras/boveda.html',
     'Tema 1: Masterclass BIM' => '/ugma-gerencia-obras/masterclass-bim/index.html',
     'Día 1: Validador CDE ISO 19650' => '/ugma-gerencia-obras/cde-iso19650/index.html',
     'Día 2: Clash Detection 3D' => '/ugma-gerencia-obras/clash-detection/index.html',
