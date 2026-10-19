@@ -320,6 +320,51 @@ assert_test("Especificaciones OpenSpec v2.0 existen y cumplen sintaxis RFC 2119"
     return stripos($content, 'SHALL') !== false && stripos($content, 'GIVEN') !== false && stripos($content, 'THEN') !== false;
 });
 
+assert_test("Hub UGMA implementa el Sistema de Autenticación de Alumnos (#authModal, openAuthModal, renderAuthState)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    return stripos($content, 'id="authModal"') !== false
+        && stripos($content, 'function openAuthModal') !== false
+        && stripos($content, 'function renderAuthState') !== false
+        && stripos($content, 'ugma_student_session') !== false;
+});
+
+assert_test("Hub UGMA implementa la Bóveda Centralizada de Descargas (#boveda-descargas, #bovedaLockCurtain)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    return stripos($content, 'id="boveda-descargas"') !== false
+        && stripos($content, 'id="bovedaLockCurtain"') !== false
+        && stripos($content, 'boveda-resumen-btn') !== false;
+});
+
+assert_test("Hub UGMA estandarizado estrictamente a 'Módulo V: Tecnología y Sostenibilidad' (0 menciones de Módulo VI)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+    return (stripos($content, 'Módulo VI') === false)
+        && (stripos($content, 'Modulo VI') === false)
+        && (stripos($content, 'Módulo V: Tecnología y Sostenibilidad') !== false);
+});
+
+assert_test("Bóveda de Descargas contiene los 4 Resúmenes Ejecutivos en PDF y expedientes de trabajo (Módulos I al V)", function() use ($baseDir) {
+    $bovedaDir = $baseDir . '/public/ugma-gerencia-obras/descargas/modulos-previos/';
+    $requiredFiles = [
+        'Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf',
+        'Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf',
+        'Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf',
+        'Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf',
+        'CONTENIDO_PROGRAMATICO_MODULO_V_HECTOR_MOTA.pdf',
+        'FORMATO_PLANIFICACION_DOCENTE_MODULO_V_HECTOR_MOTA.pdf',
+        'Caso_Practico_Residencial_Los_Olivos.pdf',
+        'Peritaje_Patologia_Edificio_San_Antonio.pdf',
+        'Planilla_Computos_Harry_Osers.xlsx',
+        'Modelo_Matematico_Curva_S.pdf',
+        'Guia_Softwares_Costos_Planificacion.pdf'
+    ];
+    foreach ($requiredFiles as $file) {
+        if (!file_exists($bovedaDir . $file)) {
+            throw new Exception("Archivo faltante en Bóveda: {$file}");
+        }
+    }
+    return true;
+});
+
 // ==========================================
 // 3. UNIT TESTS & UNHAPPY PATHS: CÁLCULOS MATEMÁTICOS
 // ==========================================

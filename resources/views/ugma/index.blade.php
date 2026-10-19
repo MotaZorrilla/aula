@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo VI: Tecnología y Sostenibilidad en Gerencia de Obras · Postgrado UGMA</title>
+    <title>Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras · Postgrado UGMA</title>
 
-    <meta name="title" content="Módulo VI: Tecnología y Sostenibilidad en Gerencia de Obras · Postgrado UGMA">
+    <meta name="title" content="Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras · Postgrado UGMA">
     <meta name="description" content="Diplomado en Planificación y Gerencia de Obras UGMA. ConTech, openBIM ISO 19650, Clash Detection 3D, Simulación 4D/5D EVM, IA Agéntica, Sostenibilidad Solar y RCD por el Ing. Héctor Mota.">
     <meta name="keywords" content="UGMA, Gerencia de Obras, ConTech, Metodologia BIM, ISO 19650, Curva MacLeamy, Navisworks, Three.js, IFC 4.3, IA Construcción, Sostenibilidad, RCD, Héctor Mota">
     <meta name="author" content="Héctor Mota Zorrilla">
@@ -18,7 +18,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://aula.motazorrilla.com/ugma-gerencia-obras/">
-    <meta property="og:title" content="Módulo VI: Tecnología y Sostenibilidad en Gerencia de Obras · UGMA">
+    <meta property="og:title" content="Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras · UGMA">
     <meta property="og:description" content="30 Horas Académicas en ConTech, Masterclass BIM, Simulación 4D/5D, IA y Eficiencia Solar. Facilitador: Ing. Héctor Mota.">
     <meta property="og:image" content="https://aula.motazorrilla.com/assets/img/profile.jpg">
 
@@ -939,6 +939,306 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
         }
+    
+        /* === AUTHENTICATION & BOVEDA STYLES (FASE 2) === */
+        .auth-nav-cluster {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-auth-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 15px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-auth-login {
+            background: var(--navy-primary);
+            color: #ffffff;
+            border: 1px solid var(--navy-primary);
+        }
+        .btn-auth-login:hover {
+            background: var(--navy-surface);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-auth-register {
+            background: #f0f9ff;
+            color: var(--blue-accent);
+            border: 1px solid #bae6fd;
+        }
+        .btn-auth-register:hover {
+            background: var(--blue-accent);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+        .user-profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px;
+            border-radius: 9999px;
+            background: #ecfdf5;
+            border: 1.5px solid #a7f3d0;
+            color: var(--emerald);
+            font-size: 12.5px;
+            font-weight: 700;
+        }
+        .btn-auth-logout {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-auth-logout:hover {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        /* HERO AUTH GATEWAY BANNER */
+        .hero-gateway-banner {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 26px;
+            margin: 22px 0 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .hero-gateway-banner.authenticated {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+
+        /* BÓVEDA CENTRALIZADA DE DESCARGAS */
+        .boveda-container {
+            position: relative;
+            margin: 36px 0 54px;
+        }
+        .boveda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 20px;
+        }
+        .boveda-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .boveda-card:hover {
+            border-color: var(--blue-accent);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .boveda-card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .boveda-resumen-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 11px 16px;
+            background: var(--navy-primary);
+            color: #ffffff;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 12px 0 16px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .boveda-resumen-btn:hover {
+            background: var(--blue-accent);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .boveda-files-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .boveda-file-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 12px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 12px;
+            text-decoration: none;
+            color: var(--navy-primary);
+            transition: all 0.15s ease;
+        }
+        .boveda-file-link:hover {
+            background: #f0f9ff;
+            border-color: #bae6fd;
+            color: var(--blue-accent);
+        }
+        .boveda-file-ext {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            color: #475569;
+            font-family: var(--font-mono);
+        }
+
+        /* OVERLAY PROTECTOR DE LA BÓVEDA */
+        .boveda-lock-curtain {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(7px);
+            border-radius: 20px;
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            text-align: center;
+            color: #ffffff;
+            transition: all 0.35s ease;
+        }
+        .boveda-lock-curtain.unlocked {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        /* MODAL DE AUTENTICACIÓN Y REGISTRO */
+        .auth-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .auth-modal-overlay.active { display: flex; }
+        .auth-modal-box {
+            background: #ffffff;
+            border-radius: 20px;
+            max-width: 520px;
+            width: 100%;
+            padding: 34px 30px;
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--border);
+            animation: modalFade 0.25s ease-out;
+        }
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(14px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .auth-tabs-row {
+            display: flex;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 22px;
+            gap: 10px;
+        }
+        .auth-tab-btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .auth-tab-btn.active {
+            color: var(--navy-primary);
+            border-bottom-color: var(--navy-primary);
+        }
+        .auth-field-input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 13.5px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .auth-field-input:focus {
+            border-color: var(--blue-accent);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+        .btn-auth-submit {
+            width: 100%;
+            padding: 12px;
+            background: var(--navy-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-auth-submit:hover {
+            background: var(--navy-surface);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-auth-demo {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #ecfdf5;
+            color: var(--emerald);
+            border: 1px solid #a7f3d0;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-auth-demo:hover {
+            background: #d1fae5;
+        }
+    
     </style>
 </head>
 <body>
@@ -968,7 +1268,7 @@
                 <span class="inst-badge">Universidad Nororiental Gran Mariscal de Ayacucho · UGMA</span>
                 <span class="accreditation-badge">Diplomado en Planificación y Gerencia de Obras · Postgrado</span>
             </div>
-            <h1 class="module-title">Módulo VI: Tecnología y Sostenibilidad en Gerencia de Obras</h1>
+            <h1 class="module-title">Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras</h1>
             <p class="module-sub">
                 Programa ejecutivo de posgrado (30 horas académicas) enfocado en la adopción estratégica de <strong>Construction Technology (ConTech)</strong>, modelado paramétrico bajo el estándar internacional <strong>openBIM (ISO 19650:2026)</strong>, auditoría espacial 3D, control dinámico de cronograma y costo (<strong>4D/5D EVM con Visión Artificial</strong>), automatización agéntica de bitácoras y eficiencia energética solar fotovoltaica.
             </p>
@@ -979,6 +1279,30 @@
                 <div class="chip">📍 <strong>Puerto Ordaz / Formato Híbrido Presencial</strong></div>
                 <div class="chip">📊 <strong>7 Portales Web Especializados en Vivo</strong></div>
                 <div class="chip">🎯 <strong>Evaluación Holística 100% sobre 20 pts</strong></div>
+            </div>
+
+            <!-- GATEWAY DE ACCESO / BIENVENIDA ALUMNO -->
+            <div id="heroAuthBanner" class="hero-gateway-banner">
+                <div style="flex:1; min-width:260px;">
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                        <span style="font-size:18px;">🏛️</span>
+                        <strong id="heroAuthTitle" style="color:var(--navy-primary); font-size:15px;">Portal Protegido · Área Exclusiva de Participantes UGMA</strong>
+                    </div>
+                    <p id="heroAuthDesc" style="font-size:13px; color:var(--text-muted); margin:0; line-height:1.5;">
+                        Regístrate como participante del Diplomado o inicia sesión para habilitar el acceso a las 6 Sesiones de Trabajo y descargar todos los expedientes de la Bóveda Centralizada.
+                    </p>
+                </div>
+                <div id="heroAuthButtons" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                    <button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal('login')">
+                        <span>🔑</span> Iniciar Sesión
+                    </button>
+                    <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
+                        <span>📝</span> Registrarse
+                    </button>
+                    <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:7px 14px;" onclick="handleDemoLogin()">
+                        <span>⚡</span> Acceso Rápido Demo
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -1001,7 +1325,7 @@
                     Definición de organigramas tradicionales de faena, jerarquías de toma de decisiones entre inspectores, residentes y contratistas, y distribución de responsabilidades en obra civil.
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo VI:</strong> Transición a roles digitales colaborativos: <em>BIM Manager</em>, Coordinador openBIM y modeladores interdisciplinarios conectados en tiempo real.
+                    <strong>Salto Tecnológico Módulo V:</strong> Transición a roles digitales colaborativos: <em>BIM Manager</em>, Coordinador openBIM y modeladores interdisciplinarios conectados en tiempo real.
                 </div>
                 <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(1);">
                     <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
@@ -1017,7 +1341,7 @@
                     Cómputos métricos de Harry Osers, Análisis de Precios Unitarios (APU), Factor de Costos Asociados al Salario (FCAS), formulación de la Curva S y Valor Ganado (EVM) en hojas de cálculo.
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo VI:</strong> Extracción paramétrica automática de cómputos (QTO) en modelos IFC y Curva S dinámica 4D/5D certificada mediante Visión Artificial con drones.
+                    <strong>Salto Tecnológico Módulo V:</strong> Extracción paramétrica automática de cómputos (QTO) en modelos IFC y Curva S dinámica 4D/5D certificada mediante Visión Artificial con drones.
                 </div>
                 <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(2);">
                     <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
@@ -1033,7 +1357,7 @@
                     Seguridad jurídica, contratos de construcción, licitaciones públicas, ordenanzas municipales y responsabilidad civil y penal decenal (Art. 1637 Código Civil Venezolano).
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo VI:</strong> Entorno CDE ISO 19650 con estados <em>Published</em> como prueba judicial inmutable y Agentes de IA para detección temprana de reclamos (<em>claims</em>).
+                    <strong>Salto Tecnológico Módulo V:</strong> Entorno CDE ISO 19650 con estados <em>Published</em> como prueba judicial inmutable y Agentes de IA para detección temprana de reclamos (<em>claims</em>).
                 </div>
                 <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(3);">
                     <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
@@ -1049,7 +1373,7 @@
                     Filosofía <em>Lean Construction</em>, sistema <em>Last Planner (LPS)</em>, planificación colaborativa semanal (PPC/PAC), control de calidad de concreto y reportes técnicos de bitácora.
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo VI:</strong> Digitalización de bitácoras con voz (<em>Speech-to-Report</em>), sensores IoT de maduración de concreto y gemelos digitales de obra.
+                    <strong>Salto Tecnológico Módulo V:</strong> Digitalización de bitácoras con voz (<em>Speech-to-Report</em>), sensores IoT de maduración de concreto y gemelos digitales de obra.
                 </div>
                 <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(4);">
                     <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
@@ -1057,6 +1381,191 @@
             </div>
         </div>
 
+        <!-- BÓVEDA CENTRALIZADA DE DESCARGAS (MÓDULOS I AL V) -->
+        <div class="section-header-academic" id="boveda-descargas">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                Bóveda Centralizada de Descargas: Expedientes del Diplomado
+            </h2>
+            <span class="section-subtext">Resúmenes ejecutivos oficiales y materiales auténticos de cátedra organizados por módulo</span>
+        </div>
+
+        <div class="boveda-container">
+            <!-- TELÓN DE BLOQUEO PARA INVITADOS -->
+            <div id="bovedaLockCurtain" class="boveda-lock-curtain">
+                <div style="font-size:42px; margin-bottom:12px;">🔒</div>
+                <h3 style="font-size:22px; font-weight:800; margin-bottom:10px; color:#ffffff;">Bóveda Protegida · Acceso Alumnos Inscritos</h3>
+                <p style="font-size:14px; max-width:620px; line-height:1.6; color:#e2e8f0; margin-bottom:24px;">
+                    Esta bóveda reúne los 4 Resúmenes Ejecutivos Oficiales en PDF, hojas de cálculo de EVM y cómputos de Harry Osers, manuales SIGECOF, y los expedientes del Módulo V. Para desbloquear las descargas, identifícate como alumno del Diplomado.
+                </p>
+                <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+                    <button type="button" class="btn-auth-action btn-auth-login" style="padding:10px 22px; font-size:14px;" onclick="openAuthModal('login')">
+                        <span>🔑</span> Iniciar Sesión para Descargar
+                    </button>
+                    <button type="button" class="btn-auth-action btn-auth-register" style="padding:10px 22px; font-size:14px; background:#ffffff; color:var(--navy-primary);" onclick="openAuthModal('register')">
+                        <span>📝</span> Registrarse en 30 Segundos
+                    </button>
+                    <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:10px 18px; font-size:14px;" onclick="handleDemoLogin()">
+                        <span>⚡</span> Ingresar con Acceso Rápido
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTENIDO DE LA BÓVEDA (5 TARJETAS) -->
+            <div class="boveda-grid">
+                <!-- MÓDULO I -->
+                <div class="boveda-card">
+                    <div class="boveda-card-head">
+                        <div>
+                            <span class="boveda-module-badge tag-m1">Módulo I · Pérez</span>
+                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Estructura Organizativa</h4>
+                        </div>
+                        <span style="font-size:20px;">🏛️</span>
+                    </div>
+                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
+                        Organigramas matriciales, asignación de responsabilidades con Matriz RACI y gestión de las 6 fases del ciclo constructivo.
+                    </p>
+                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf" download class="boveda-resumen-btn auth-protected-download">
+                        <span>📥</span> Descargar Resumen Oficial (PDF)
+                    </a>
+                    <div class="boveda-files-list">
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Caso_Expansion_Industrial_Matanzas.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>📄 Caso Práctico Matanzas</span>
+                            <span class="boveda-file-ext">PDF · 67 KB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Fases_Proceso_Constructivo.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>📑 Las 6 Fases Constructivas</span>
+                            <span class="boveda-file-ext">PDF · 858 KB</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MÓDULO II -->
+                <div class="boveda-card">
+                    <div class="boveda-card-head">
+                        <div>
+                            <span class="boveda-module-badge tag-m2">Módulo II · Angarita</span>
+                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Costos, APU &amp; EVM</h4>
+                        </div>
+                        <span style="font-size:20px;">📊</span>
+                    </div>
+                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
+                        Cómputos métricos Harry Osers, modelo matemático analítico de Curva S y gestión financiera de Valor Ganado (EVM).
+                    </p>
+                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf" download class="boveda-resumen-btn auth-protected-download">
+                        <span>📥</span> Descargar Resumen Oficial (PDF)
+                    </a>
+                    <div class="boveda-files-list">
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" download class="boveda-file-link auth-protected-download">
+                            <span>📐 Cómputos Harry Osers</span>
+                            <span class="boveda-file-ext">XLSX · 18 KB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>📈 Curva S Matemática Sigmoidal</span>
+                            <span class="boveda-file-ext">PDF · 2.1 MB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" download class="boveda-file-link auth-protected-download">
+                            <span>💵 Plantilla EVM Dinámica</span>
+                            <span class="boveda-file-ext">XLSX · 185 KB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>💻 Guía Softwares (MaPreX, LuloWin)</span>
+                            <span class="boveda-file-ext">PDF · 186 KB</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MÓDULO III -->
+                <div class="boveda-card">
+                    <div class="boveda-card-head">
+                        <div>
+                            <span class="boveda-module-badge tag-m3">Módulo III · Martínez</span>
+                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Marco Legal &amp; Art. 1637</h4>
+                        </div>
+                        <span style="font-size:20px;">⚖️</span>
+                    </div>
+                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
+                        Ley de Contrataciones Públicas, contratos de obras, régimen de garantías y responsabilidad decenal por ruina estructural.
+                    </p>
+                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf" download class="boveda-resumen-btn auth-protected-download">
+                        <span>📥</span> Descargar Resumen Oficial (PDF)
+                    </a>
+                    <div class="boveda-files-list">
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Contrataciones_y_Licitaciones.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>📜 Contrataciones y Licitaciones</span>
+                            <span class="boveda-file-ext">PDF · 17.8 MB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Marco_Legal_Ingenieria_Venezuela.png" download class="boveda-file-link auth-protected-download">
+                            <span>🗺️ Mapa Legal en Venezuela</span>
+                            <span class="boveda-file-ext">PNG · 4.5 MB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Modulo_3_Marco_Legal_Classroom.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>⚖️ Cátedra de Marco Legal</span>
+                            <span class="boveda-file-ext">PDF · 4.3 MB</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MÓDULO IV -->
+                <div class="boveda-card">
+                    <div class="boveda-card-head">
+                        <div>
+                            <span class="boveda-module-badge tag-m4">Módulo IV · Zambrano</span>
+                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Lean, Calidad &amp; Casos</h4>
+                        </div>
+                        <span style="font-size:20px;">📋</span>
+                    </div>
+                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
+                        Last Planner System (LPS), Caso Residencial Los Olivos (18 tareas, ruta crítica 63 días), peritaje Edificio San Antonio y manual SIGECOF.
+                    </p>
+                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf" download class="boveda-resumen-btn auth-protected-download">
+                        <span>📥</span> Descargar Resumen Oficial (PDF)
+                    </a>
+                    <div class="boveda-files-list">
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>🏡 Caso Los Olivos (Ruta Crítica)</span>
+                            <span class="boveda-file-ext">PDF · 123 KB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>🔍 Peritaje Edificio San Antonio</span>
+                            <span class="boveda-file-ext">PDF · 2.4 MB</span>
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>📑 Manual SIGECOF (168 págs)</span>
+                            <span class="boveda-file-ext">PDF · 1.8 MB</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MÓDULO V -->
+                <div class="boveda-card" style="border-color:#38bdf8; background:#f0f9ff;">
+                    <div class="boveda-card-head">
+                        <div>
+                            <span class="boveda-module-badge" style="background:#0284c7; color:#ffffff;">Módulo V · Mota Zorrilla</span>
+                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Tecnología y Sostenibilidad</h4>
+                        </div>
+                        <span style="font-size:20px;">🚀</span>
+                    </div>
+                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
+                        openBIM ISO 19650, Clash Detection 3D, Simulación 4D/5D EVM, IA predictiva y eficiencia solar fotovoltaica en Guayana.
+                    </p>
+                    <a href="/ugma-gerencia-obras/descargas/modulos-previos/CONTENIDO_PROGRAMATICO_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-resumen-btn auth-protected-download" style="background:#0284c7;">
+                        <span>📥</span> Contenido Programático Oficial (PDF)
+                    </a>
+                    <div class="boveda-files-list">
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/FORMATO_PLANIFICACION_DOCENTE_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-file-link auth-protected-download">
+                            <span>🏛️ Planificación Docente Oficial UGMA</span>
+                            <span class="boveda-file-ext">PDF · 128 KB</span>
+                        </a>
+                        <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener" class="boveda-file-link">
+                            <span>🌐 Visor BIM 3D WebGL (Laboratorio)</span>
+                            <span class="boveda-file-ext">WEB · Three.js</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
         <!-- EXECUTIVE WAR ROOM / LIVE DECISION SIMULATOR (CLUB TIA ADAPTADO) -->
         <div class="decision-room-card" id="executive-decision-room">
             <div class="dec-header">
@@ -1473,7 +1982,7 @@
                 <div class="dossier-meta">
                     <h4>Compendio Maestro Integrador</h4>
                     <p>Documento rector que consolida los 5 ejes y articula la sinergia con los módulos de presupuestos, legal y Lean.</p>
-                    <span class="dossier-tag" style="color:var(--emerald);">D:\UGMA\COMPENDIO_MAESTRO_MODULO_VI_TECNOLOGIA.md</span>
+                    <span class="dossier-tag" style="color:var(--emerald);">D:\UGMA\COMPENDIO_MAESTRO_MODULO_V_TECNOLOGIA.md</span>
                 </div>
             </div>
         </div>
@@ -1615,9 +2124,9 @@
                     <div id="raciDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:16px; font-size:12.5px; line-height:1.7;">
                     </div>
                 `,
-                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeTitle: "Salto Cuántico hacia el Módulo V (ConTech & BIM - Ing. Héctor Mota)",
                 bridgeDesc: `
-                    En el esquema analógico tradicional, estas 4 decisiones se dilatan entre 3 y 14 días a través de libros de órdenes físicos y reuniones dispersas. En el <strong>Módulo VI</strong>, sustituimos este flujo burocrático por un <strong>Entorno Común de Datos (CDE ISO 19650)</strong> donde los roles evolucionan a <em>BIM Manager</em>, <em>Coordinador Interdisciplinar</em> y <em>CDE Information Manager</em>. Cada cambio técnico se resuelve en un ticket <strong>BCF 3.0 federado</strong> en menos de 24 horas, respaldado por una firma digital inmutable que blinda jurídicamente a la inspección.
+                    En el esquema analógico tradicional, estas 4 decisiones se dilatan entre 3 y 14 días a través de libros de órdenes físicos y reuniones dispersas. En el <strong>Módulo V</strong>, sustituimos este flujo burocrático por un <strong>Entorno Común de Datos (CDE ISO 19650)</strong> donde los roles evolucionan a <em>BIM Manager</em>, <em>Coordinador Interdisciplinar</em> y <em>CDE Information Manager</em>. Cada cambio técnico se resuelve en un ticket <strong>BCF 3.0 federado</strong> en menos de 24 horas, respaldado por una firma digital inmutable que blinda jurídicamente a la inspección.
                 `
             },
             2: {
@@ -1633,11 +2142,13 @@
                         Asimismo, se profundizó en la estructura del <strong>Análisis de Precios Unitarios (APU)</strong> y el cálculo dinámico del <strong>Factor de Costos Asociados al Salario (FCAS)</strong>, elemento de altísima sensibilidad en la economía venezolana para preservar el equilibrio financiero del contratista frente a beneficios laborales e inflación. Este instrumental culmina en el modelo matemático de la <strong>Curva S sigmoidal</strong> y el control por <strong>Valor Ganado (EVM: PV, EV, AC, CPI, SPI)</strong>.
                     </p>
                 `,
+                resumenPdf: "Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf",
                 files: [
-                    { icon: "📘", title: "195681_CasaQuintaHarryOsers174pdf.pdf", desc: "Tratado maestro de cómputos métricos con planos estructurales E-1 a E-12." },
-                    { icon: "📊", title: "EJEMPLO METODO DEL VALOR GANADO EN EXCEL.xlsx", desc: "Modelo financiero dinámico de Curva S con fórmulas automáticas de CPI y SPI." },
-                    { icon: "📐", title: "1 PLANILLAS DE COMPUTOS.xlsx & FORMATO APU.xlsx", desc: "Formatos oficiales de cubicación de concreto, acero y matrices de APU." },
-                    { icon: "🎥", title: "7 Clases Magistrales en Video Grabadas (MP4 - 6.2 GB)", desc: "Elaboración de presupuestos, APU, EVM y contrataciones públicas en Venezuela." }
+                    { icon: "📘", title: "195681_CasaQuintaHarryOsers174pdf.pdf", desc: "Tratado maestro de cómputos métricos con planos estructurales E-1 a E-12.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" },
+                    { icon: "📊", title: "EJEMPLO METODO DEL VALOR GANADO EN EXCEL.xlsx", desc: "Modelo financiero dinámico de Curva S con fórmulas automáticas de CPI y SPI.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" },
+                    { icon: "📈", title: "Modelo Matemático de la Curva S Sigmoidal P(t)=3t²-2t³", desc: "Formalización analítica del avance físico acumulado y calibración matemática.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" },
+                    { icon: "💻", title: "Guía Técnica de Softwares (MaPreX, LuloWin NG, MS Project, Primavera P6, Procore)", desc: "Comparativa técnica de herramientas venezolanas e internacionales de costos y control.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" },
+                    { icon: "📐", title: "Planillas de Cómputos Harry Osers y Matrices APU COVENIN", desc: "Formatos oficiales de cubicación de concreto, acero y matrices de APU.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" }
                 ],
                 interactiveTitle: "Calculadora Paramétrica de APU y Factor FCAS (Doctrina Angarita)",
                 interactiveDesc: "Ajusta las variables de la partida de concreto estructural para observar cómo el FCAS y el rendimiento de la cuadrilla definen el precio unitario y la Curva S:",
@@ -1667,9 +2178,9 @@
                     <div id="apuDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:14px; font-size:12.5px; line-height:1.65;">
                     </div>
                 `,
-                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeTitle: "Salto Cuántico hacia el Módulo V (ConTech & BIM - Ing. Héctor Mota)",
                 bridgeDesc: `
-                    En el Módulo II, cubicamos la Casa Quinta Harry Osers invirtiendo decenas de horas de cálculo manual celda por celda. En el <strong>Módulo VI</strong>, importamos el modelo paramétrico <strong>IFC 4.3</strong> y extraemos el <strong>QTO exacto en milisegundos</strong> mediante operaciones booleanas CSG sin margen de error humano. Conectamos ese metadato al APU para alimentar automáticamente el <strong>BIM 5D y la Curva S certificada por telemetría con drones</strong>.
+                    En el Módulo II, cubicamos la Casa Quinta Harry Osers invirtiendo decenas de horas de cálculo manual celda por celda. En el <strong>Módulo V</strong>, importamos el modelo paramétrico <strong>IFC 4.3</strong> y extraemos el <strong>QTO exacto en milisegundos</strong> mediante operaciones booleanas CSG sin margen de error humano. Conectamos ese metadato al APU para alimentar automáticamente el <strong>BIM 5D y la Curva S certificada por telemetría con drones</strong>.
                 `
             },
             3: {
@@ -1705,9 +2216,9 @@
                     <div id="legalDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:16px; font-size:12.5px; line-height:1.7;">
                     </div>
                 `,
-                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeTitle: "Salto Cuántico hacia el Módulo V (ConTech & BIM - Ing. Héctor Mota)",
                 bridgeDesc: `
-                    En juicios de obras bajo el método tradicional CAD, los expedientes probatorios suelen consistir en planos arrugados, versiones sin fecha y testimonios contradictorios. En el <strong>Módulo VI</strong>, la implementación del <strong>Entorno Común de Datos (CDE ISO 19650)</strong> confiere <strong>plena fuerza probatoria inmutable</strong>: cada modelo federado, cada pase de tubería y cada orden de vaciado queda sellado con autor, fecha, hora y hash criptográfico en estado <em>Published</em>, blindando pericialmente al ingeniero ante cualquier reclamo decenal improcedente.
+                    En juicios de obras bajo el método tradicional CAD, los expedientes probatorios suelen consistir en planos arrugados, versiones sin fecha y testimonios contradictorios. En el <strong>Módulo V</strong>, la implementación del <strong>Entorno Común de Datos (CDE ISO 19650)</strong> confiere <strong>plena fuerza probatoria inmutable</strong>: cada modelo federado, cada pase de tubería y cada orden de vaciado queda sellado con autor, fecha, hora y hash criptográfico en estado <em>Published</em>, blindando pericialmente al ingeniero ante cualquier reclamo decenal improcedente.
                 `
             },
             4: {
@@ -1723,11 +2234,13 @@
                         Asimismo, se abordó el indicador por excelencia de confiabilidad operativa: el <strong>Porcentaje de Asignaciones Cumplidas (PPC / PAC)</strong> y el análisis sistemático de causa raíz para erradicar las 8 pérdidas del Lean (<em>Muda</em>). El módulo integró los protocolos formales de control de calidad de concreto (rotura de probetas según normas ASTM/COVENIN, ensayo de cono de Abrams Slump) y la gestión preventiva de seguridad bajo el marco <strong>LOPCYMAT y COVENIN 2270</strong>.
                     </p>
                 `,
+                resumenPdf: "Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf",
                 files: [
-                    { icon: "📕", title: "Lean Construction y la planificación operativa.pdf (100 págs)", desc: "Tratado exhaustivo de producción sin desperdicio, LPS y flujos de trabajo en faena." },
-                    { icon: "📋", title: "Formatos de Lookahead Planning y Plan Semanal LPS", desc: "Matrices prácticas de identificación y liberación de restricciones operativas a 6 semanas." },
-                    { icon: "🧪", title: "Protocolos de Control de Concreto y Ensayos de Rotura (COVENIN 338)", desc: "Hojas de muestreo, curvas de resistencia a compresión (7, 14 y 28 días) y tolerancias de Slump." },
-                    { icon: "🦺", title: "Manual de Seguridad en Faena y Matrices de Riesgo LOPCYMAT", desc: "Planes de contingencia, comités de seguridad y cumplimiento normativo COVENIN 2270." }
+                    { icon: "🏡", title: "Caso Práctico: Vivienda Residencial Los Olivos (18 Tareas)", desc: "Diagramación PDM y determinación analítica de la Ruta Crítica de 63 días hábiles.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" },
+                    { icon: "🔍", title: "Peritaje Patológico: Losa de Techo Edificio San Antonio (Paseo Caroní)", desc: "Informe forense sobre deflexión y fisuración severa con implicaciones del Art. 1637 CCV.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" },
+                    { icon: "📑", title: "Manual SIGECOF de Formatos de Obra (168 páginas)", desc: "Manual oficial exhaustivo con libros de órdenes, actas de medición y control de valuaciones.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" },
+                    { icon: "📕", title: "Lean Construction y la planificación operativa.pdf (100 págs)", desc: "Tratado exhaustivo de producción sin desperdicio, LPS y flujos de trabajo en faena.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Lean_Construction_Planificacion_Operativa.pdf" },
+                    { icon: "📋", title: "Informe de Inspección Estructural Apostadero-Amarilis", desc: "Auditoría pericial de control de procesos constructivos y protocolos de calidad.", url: "/ugma-gerencia-obras/descargas/modulos-previos/Informe_Inspeccion_Apostadero_Amarilis.pdf" }
                 ],
                 interactiveTitle: "Simulador Last Planner System (LPS) y Cálculo en Vivo de PPC/PAC",
                 interactiveDesc: "Marca el estatus de las 6 actividades programadas para la semana 04 del Edificio Guayana y evalúa el diagnóstico de confiabilidad Lean:",
@@ -1767,9 +2280,9 @@
                     <div id="lpsDisplay" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:14px; font-size:12.5px; line-height:1.65;">
                     </div>
                 `,
-                bridgeTitle: "Salto Cuántico hacia el Módulo VI (ConTech & BIM - Ing. Héctor Mota)",
+                bridgeTitle: "Salto Cuántico hacia el Módulo V (ConTech & BIM - Ing. Héctor Mota)",
                 bridgeDesc: `
-                    En el Módulo IV, el Last Planner System se gestiona mediante notas adhesivas (Post-its) y planillas de cálculo que se desactualizan al finalizar el turno. En el <strong>Módulo VI</strong>, fusionamos el LPS con <strong>BIM 4D (Navisworks TimeLiner / Synchro)</strong>: vinculamos las tareas semanales directamente a los objetos 3D, generamos reportes de bitácora mediante transcripción de voz con IA (<em>Speech-to-Report</em>) y auditamos el avance real diario mediante nubes de puntos de drones y visión artificial.
+                    En el Módulo IV, el Last Planner System se gestiona mediante notas adhesivas (Post-its) y planillas de cálculo que se desactualizan al finalizar el turno. En el <strong>Módulo V</strong>, fusionamos el LPS con <strong>BIM 4D (Navisworks TimeLiner / Synchro)</strong>: vinculamos las tareas semanales directamente a los objetos 3D, generamos reportes de bitácora mediante transcripción de voz con IA (<em>Speech-to-Report</em>) y auditamos el avance real diario mediante nubes de puntos de drones y visión artificial.
                 `
             }
         };
@@ -1779,13 +2292,24 @@
             if (!data) return;
 
             let filesHtml = '';
+            if (data.resumenPdf) {
+                filesHtml += `
+                    <div style="grid-column: 1 / -1; margin-bottom: 6px;">
+                        <a href="/ugma-gerencia-obras/descargas/modulos-previos/${data.resumenPdf}" download class="boveda-resumen-btn auth-protected-download" style="margin:0;">
+                            <span>📥</span> Descargar Resumen Ejecutivo Oficial en PDF (Cátedra UGMA)
+                        </a>
+                    </div>
+                `;
+            }
             data.files.forEach(f => {
+                const downloadBtn = f.url ? `<a href="${f.url}" download class="auth-protected-download" style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700; color:var(--blue-accent); text-decoration:none; margin-top:4px;"><span>📥</span> Descargar recurso</a>` : '';
                 filesHtml += `
                     <div class="repaso-file-item">
                         <span class="repaso-file-icon">${f.icon}</span>
-                        <div>
+                        <div style="flex:1;">
                             <div style="font-weight:700; color:var(--navy-primary); font-size:12px; margin-bottom:2px;">${f.title}</div>
                             <div style="color:var(--text-muted); font-size:11.5px; line-height:1.4;">${f.desc}</div>
+                            ${downloadBtn}
                         </div>
                     </div>
                 `;
@@ -1883,7 +2407,7 @@
                         <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>C (Consulta):</strong><br>Inspector de Obra</div>
                         <div style="background:#f1f5f9; padding:8px; border-radius:6px;"><strong>I (Informa):</strong><br>Cuadrilla Encofrado</div>
                     </div>
-                    <div style="color:var(--navy-primary);"><strong>Criterio Normativo:</strong> En el flujo tradicional CAD esta colisión se resolvía picando la losa en obra. En el Módulo VI se resuelve antes de vaciar emitiendo una incidencia BCF 3.0 en el modelo federado.</div>
+                    <div style="color:var(--navy-primary);"><strong>Criterio Normativo:</strong> En el flujo tradicional CAD esta colisión se resolvía picando la losa en obra. En el Módulo V se resuelve antes de vaciar emitiendo una incidencia BCF 3.0 en el modelo federado.</div>
                 `;
             }
         }
@@ -1962,7 +2486,7 @@
                     <p style="margin-bottom:8px;"><strong>Sujeto Responsable:</strong> El Proyectista Sanitario responde frente al Comitente por error u omisión de diseño. Sin embargo, si el Constructor demolió la losa sin notificar ni obtener orden de cambio del Inspector, el costo del re-trabajo lo asume el Contratista.</p>
                     <p style="margin-bottom:8px;"><strong>Reclamo Económico (Claim):</strong> Se tramita como <em>Obra Extraordinaria no Prevista</em> con recalculo de APU según las cláusulas de la Ley de Contrataciones Públicas.</p>
                     <div style="background:#f1f5f9; padding:8px; border-radius:6px; font-size:12px; color:var(--navy-primary);">
-                        <strong>🛡️ Salto al Módulo VI:</strong> En el modelo openBIM federado, este cruce es detectado automáticamente en preconstrucción mediante Clash Detection, con costo de corrección de $15 en oficina vs $3,500 en faena.
+                        <strong>🛡️ Salto al Módulo V:</strong> En el modelo openBIM federado, este cruce es detectado automáticamente en preconstrucción mediante Clash Detection, con costo de corrección de $15 en oficina vs $3,500 en faena.
                     </div>
                 `;
             }
@@ -2002,6 +2526,260 @@
                 </div>
             `;
         }
+    
+        // ==========================================
+        // SISTEMA DE AUTENTICACIÓN Y CONTROL DE ACCESO (FASE 2)
+        // ==========================================
+        const AUTH_KEY = 'ugma_student_session';
+
+        function getAuthUser() {
+            try {
+                const data = localStorage.getItem(AUTH_KEY);
+                return data ? JSON.parse(data) : null;
+            } catch(e) {
+                return null;
+            }
+        }
+
+        function setAuthUser(user) {
+            localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+            renderAuthState();
+        }
+
+        function logoutUser() {
+            localStorage.removeItem(AUTH_KEY);
+            renderAuthState();
+        }
+
+        function openAuthModal(tab = 'login', msg = '') {
+            const modal = document.getElementById('authModal');
+            const msgBox = document.getElementById('authContextMsg');
+            if (msg) {
+                msgBox.innerHTML = `<span>ℹ️</span> <strong>Aviso:</strong> ${msg}`;
+                msgBox.style.display = 'block';
+            } else {
+                msgBox.style.display = 'none';
+            }
+            switchAuthTab(tab);
+            modal.classList.add('active');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function switchAuthTab(tab) {
+            const tabLogin = document.getElementById('tabLoginBtn');
+            const tabReg = document.getElementById('tabRegisterBtn');
+            const formLogin = document.getElementById('formLogin');
+            const formReg = document.getElementById('formRegister');
+
+            if (tab === 'login') {
+                tabLogin.classList.add('active');
+                tabReg.classList.remove('active');
+                formLogin.style.display = 'block';
+                formReg.style.display = 'none';
+            } else {
+                tabLogin.classList.remove('active');
+                tabReg.classList.add('active');
+                formLogin.style.display = 'none';
+                formReg.style.display = 'block';
+            }
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const name = email.split('@')[0].replace('.', ' ').toUpperCase();
+            const user = {
+                name: `Ing. ${name}`,
+                email: email,
+                role: 'Alumno UGMA',
+                ci: 'V-Oficial'
+            };
+            setAuthUser(user);
+            closeAuthModal();
+        }
+
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const ci = document.getElementById('regCi').value.trim();
+            const prof = document.getElementById('regProf').value.trim();
+
+            const user = {
+                name: name.startsWith('Ing.') || name.startsWith('Arq.') ? name : `Ing. ${name}`,
+                email: email,
+                ci: ci,
+                role: `${prof} · Alumno UGMA`
+            };
+            setAuthUser(user);
+            closeAuthModal();
+        }
+
+        function handleDemoLogin() {
+            const demoUser = {
+                name: 'Ing. Carlos Mendoza',
+                email: 'carlos.mendoza@alumnos.ugma.edu.ve',
+                ci: 'V-20.123.456 (CIV 214.502)',
+                role: 'Participante Oficial · Diplomado Gerencia'
+            };
+            setAuthUser(demoUser);
+            closeAuthModal();
+        }
+
+        function renderAuthState() {
+            const user = getAuthUser();
+            const navAuth = document.getElementById('navAuthArea');
+            const heroBanner = document.getElementById('heroAuthBanner');
+            const heroTitle = document.getElementById('heroAuthTitle');
+            const heroDesc = document.getElementById('heroAuthDesc');
+            const heroBtns = document.getElementById('heroAuthButtons');
+            const bovedaCurtain = document.getElementById('bovedaLockCurtain');
+
+            if (user) {
+                // Estado Autenticado
+                if (navAuth) {
+                    navAuth.innerHTML = `
+                        <div class="user-profile-badge">
+                            <span>🟢</span>
+                            <span>${user.name}</span>
+                        </div>
+                        <button type="button" class="btn-auth-logout" onclick="logoutUser()" title="Cerrar sesión">
+                            Cerrar Sesión
+                        </button>
+                    `;
+                }
+                if (heroBanner) {
+                    heroBanner.classList.add('authenticated');
+                    heroTitle.innerHTML = `¡Bienvenido al Aula Virtual, ${user.name}!`;
+                    heroDesc.innerHTML = `Tu matrícula de alumno está activa. Tienes acceso irrestricto a los 7 laboratorios de clase y a la descarga de todos los expedientes de la Bóveda Centralizada.`;
+                    heroBtns.innerHTML = `
+                        <a href="#boveda-descargas" class="btn-auth-action btn-auth-login" style="background:var(--emerald); border-color:var(--emerald);">
+                            <span>📂</span> Ir a la Bóveda de Descargas
+                        </a>
+                    `;
+                }
+                if (bovedaCurtain) {
+                    bovedaCurtain.classList.add('unlocked');
+                }
+            } else {
+                // Estado Invitado / No autenticado
+                if (navAuth) {
+                    navAuth.innerHTML = `
+                        <button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal('login')">
+                            <span>🔐</span> Ingreso Alumnos
+                        </button>
+                        <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
+                            <span>📝</span> Registro
+                        </button>
+                    `;
+                }
+                if (heroBanner) {
+                    heroBanner.classList.remove('authenticated');
+                    heroTitle.innerHTML = `Portal Protegido · Área Exclusiva de Participantes UGMA`;
+                    heroDesc.innerHTML = `Regístrate como participante del Diplomado o inicia sesión para habilitar el acceso a las 6 Sesiones de Trabajo y descargar todos los expedientes de la Bóveda Centralizada.`;
+                    heroBtns.innerHTML = `
+                        <button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal('login')">
+                            <span>🔑</span> Iniciar Sesión
+                        </button>
+                        <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
+                            <span>📝</span> Registrarse
+                        </button>
+                        <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:7px 14px;" onclick="handleDemoLogin()">
+                            <span>⚡</span> Acceso Rápido Demo
+                        </button>
+                    `;
+                }
+                if (bovedaCurtain) {
+                    bovedaCurtain.classList.remove('unlocked');
+                }
+            }
+        }
+
+        // Interceptar descargas protegidas si no está autenticado
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('.auth-protected-download');
+            if (target && !getAuthUser()) {
+                e.preventDefault();
+                openAuthModal('login', 'Debes iniciar sesión como alumno para descargar expedientes oficiales de la Bóveda.');
+            }
+        });
+
+        // Inicializar estado de autenticación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            renderAuthState();
+        });
+    
     </script>
+
+    <!-- MODAL DE AUTENTICACIÓN Y REGISTRO DE ALUMNOS UGMA -->
+    <div id="authModal" class="auth-modal-overlay">
+        <div class="auth-modal-box">
+            <button type="button" class="repaso-modal-close" onclick="closeAuthModal()">✕</button>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <span style="font-size:26px;">🏛️</span>
+                <div>
+                    <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin:0;">Diplomado en Gerencia de Obras</h3>
+                    <span style="font-size:12px; color:var(--text-light); font-weight:600;">Postgrado UGMA · Control de Acceso Académico</span>
+                </div>
+            </div>
+
+            <div id="authContextMsg" style="display:none; background:#f0f9ff; border:1px solid #bae6fd; padding:10px 12px; border-radius:8px; font-size:12px; color:#0369a1; margin-bottom:16px;">
+            </div>
+
+            <div class="auth-tabs-row">
+                <button type="button" id="tabLoginBtn" class="auth-tab-btn active" onclick="switchAuthTab('login')">Iniciar Sesión</button>
+                <button type="button" id="tabRegisterBtn" class="auth-tab-btn" onclick="switchAuthTab('register')">Registrarse como Alumno</button>
+            </div>
+
+            <!-- FORMULARIO DE INICIO DE SESIÓN -->
+            <form id="formLogin" onsubmit="handleLoginSubmit(event)">
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Correo Institucional o Personal:</label>
+                <input type="email" id="loginEmail" required class="auth-field-input" placeholder="ejemplo: ingeniero@ugma.edu.ve">
+
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Contraseña de Acceso:</label>
+                <input type="password" id="loginPass" required class="auth-field-input" placeholder="••••••••">
+
+                <button type="submit" class="btn-auth-submit">
+                    <span>🔑</span> Entrar al Aula Virtual
+                </button>
+
+                <button type="button" class="btn-auth-demo" onclick="handleDemoLogin()">
+                    <span>⚡</span> Acceso Inmediato Alumno Demo (1-Click)
+                </button>
+            </form>
+
+            <!-- FORMULARIO DE REGISTRO DE ALUMNO -->
+            <form id="formRegister" style="display:none;" onsubmit="handleRegisterSubmit(event)">
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Nombres y Apellidos:</label>
+                <input type="text" id="regName" required class="auth-field-input" placeholder="ej: Ing. Carlos Mendoza">
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">C.I. / N° CIV:</label>
+                        <input type="text" id="regCi" required class="auth-field-input" placeholder="V-18.450.210">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Especialidad:</label>
+                        <input type="text" id="regProf" required class="auth-field-input" placeholder="Ingeniería Civil / Arq.">
+                    </div>
+                </div>
+
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Correo Electrónico:</label>
+                <input type="email" id="regEmail" required class="auth-field-input" placeholder="alumno@ugma.edu.ve">
+
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Crear Contraseña:</label>
+                <input type="password" id="regPass" required class="auth-field-input" placeholder="Mínimo 6 caracteres">
+
+                <button type="submit" class="btn-auth-submit" style="background:#0284c7;">
+                    <span>📝</span> Completar Registro e Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
+    
 </body>
 </html>
