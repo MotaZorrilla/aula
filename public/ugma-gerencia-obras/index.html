@@ -1239,6 +1239,82 @@
             background: #d1fae5;
         }
     
+    
+        /* HAMBURGER & MOBILE DRAWER STYLES */
+        .hamburger-btn {
+            display: none;
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 22px;
+            line-height: 1;
+            color: var(--navy-primary);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+        .hamburger-btn:hover { background: var(--surface-subtle); border-color: var(--blue-accent); }
+        .mobile-drawer-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            z-index: 2500;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-drawer-overlay.active { display: block; opacity: 1; }
+        .mobile-drawer {
+            position: fixed;
+            top: 0; right: -320px;
+            width: 310px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 2600;
+            padding: 24px 20px;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .mobile-drawer.active { right: 0; }
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+        }
+        .drawer-user-box {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 14px;
+            margin: 16px 0 20px;
+            border: 1px solid var(--border);
+        }
+        .drawer-links-group { display: flex; flex-direction: column; gap: 6px; }
+        .drawer-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy-primary);
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .drawer-link:hover { background: #f0f9ff; color: var(--blue-accent); transform: translateX(3px); }
+        @media (max-width: 860px) {
+            .nav-right-cluster { display: none !important; }
+            .hamburger-btn { display: inline-flex; align-items: center; justify-content: center; }
+        }
+    
     </style>
 </head>
 <body>
@@ -1246,21 +1322,66 @@
     <div class="container">
         <!-- TOP NAV -->
         <div class="top-nav">
-            <a href="../" class="back-link">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                Volver al Hub de Aula Virtual
-            </a>
-            <div class="nav-right-cluster">
-                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener noreferrer" class="nav-lab-link" title="Abrir Visor BIM 3D & CDE en vivo en el Laboratorio ConTech">
-                    <span style="font-size:15px;">📐</span>
-                    <span>Visor BIM 3D (Lab)</span>
-                    <span class="live-pill">LIVE</span>
+            <div class="nav-left-cluster">
+                <a href="./index.html" class="back-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span>Diplomado Gerencia UGMA</span>
                 </a>
-                <a href="https://motazorrilla.com/" target="_blank" rel="noopener noreferrer" title="Volver al Portal Oficial motazorrilla.com" class="brand-logo-link">
-                    <img src="../assets/img/logo-mota-zorrilla.jpg" alt="MotaZorrilla Logo Oficial" class="brand-full-logo" onerror="this.src='/assets/img/logo-mota-zorrilla.jpg'">
+                <a href="./boveda.html" class="btn-auth-action btn-auth-register" style="font-size:12.5px;">
+                    <span>📂</span> Bóveda de Descargas
+                </a>
+                <a href="./admin.html" class="btn-auth-action" style="font-size:12px; background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border);" title="Acceso Exclusivo Docente">
+                    <span>⚙️</span> Docente
                 </a>
             </div>
+
+            <div class="nav-right-cluster">
+                <div id="navAuthArea" style="display:flex; align-items:center; gap:8px;"></div>
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener" class="btn-auth-action btn-auth-register" style="font-size:12px;">
+                    <span>Visor 3D</span>
+                </a>
+            </div>
+
+            <!-- BOTÓN HAMBURGUESA MÓVIL -->
+            <button type="button" class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menú">
+                ☰
+            </button>
         </div>
+
+        <!-- OVERLAY Y MENÚ HAMBURGUESA LATERAL (DRAWER) -->
+        <div id="mobileDrawerOverlay" class="mobile-drawer-overlay" onclick="toggleMobileMenu()"></div>
+        <aside id="mobileDrawer" class="mobile-drawer">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px;">
+                <div style="font-weight:800; color:var(--navy-primary); font-size:15px;">🏛️ Menú del Diplomado</div>
+                <button type="button" class="drawer-close" onclick="toggleMobileMenu()">✕</button>
+            </div>
+
+            <div id="drawerUserStatus" class="drawer-user-box"></div>
+
+            <nav class="drawer-links-group">
+                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:8px 0 4px 6px;">Navegación Principal</div>
+                <a href="./index.html" class="drawer-link"><span>🏠</span> Portada del Diplomado</a>
+                <a href="./boveda.html" class="drawer-link"><span>📂</span> Bóveda Central de Descargas</a>
+                <a href="https://lab.motazorrilla.com/bim/" target="_blank" class="drawer-link"><span>🧪</span> Laboratorio BIM 3D WebGL</a>
+
+                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Cimientos: Módulos I al IV</div>
+                <a href="./modulo-1-organizacion.html" class="drawer-link"><span>🏛️</span> Módulo I: Organización (Pérez)</a>
+                <a href="./modulo-2-costos-evm.html" class="drawer-link"><span>📊</span> Módulo II: Costos y EVM (Angarita)</a>
+                <a href="./modulo-3-marco-legal.html" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal (Martínez)</a>
+                <a href="./modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean y Calidad (Zambrano)</a>
+
+                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Clases Interactivas</div>
+                <a href="./cde-iso19650/" class="drawer-link"><span>📁</span> Sesión 1: CDE ISO 19650</a>
+                <a href="./clash-detection/" class="drawer-link"><span>⚡</span> Sesión 2: Clash Detection 3D</a>
+                <a href="./planificacion-4d-5d/" class="drawer-link"><span>⏱️</span> Sesión 3: Simulación 4D/5D EVM</a>
+                <a href="./ia-control-obra/" class="drawer-link"><span>🤖</span> Sesión 4: IA en Control de Obra</a>
+                <a href="./energia-solar-sostenibilidad/" class="drawer-link"><span>☀️</span> Sesión 5: Sostenibilidad y Solar</a>
+                <a href="./taller-integrador/" class="drawer-link"><span>🎯</span> Sesión 6: War Room Integrador</a>
+
+                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Gestión Académica</div>
+                <a href="./admin.html" class="drawer-link" style="color:var(--emerald); font-weight:700;"><span>⚙️</span> Panel de Administración Docente</a>
+            </nav>
+        </aside>
 
         <!-- HERO PRINCIPAL -->
         <div class="module-hero">
@@ -1390,7 +1511,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                 Bóveda Centralizada de Descargas: Expedientes del Diplomado
             </h2>
-            <span class="section-subtext">Resúmenes ejecutivos oficiales y materiales auténticos de cátedra organizados por módulo</span>
+            <span class="section-subtext">Resúmenes académicos de cátedra y materiales auténticos de cátedra organizados por módulo</span>
         </div>
 
         <div class="boveda-container">
@@ -1399,7 +1520,7 @@
                 <div style="font-size:42px; margin-bottom:12px;">🔒</div>
                 <h3 style="font-size:22px; font-weight:800; margin-bottom:10px; color:#ffffff;">Bóveda Protegida · Acceso Alumnos Inscritos</h3>
                 <p style="font-size:14px; max-width:620px; line-height:1.6; color:#e2e8f0; margin-bottom:24px;">
-                    Esta bóveda reúne los 4 Resúmenes Ejecutivos Oficiales en PDF, hojas de cálculo de EVM y cómputos de Harry Osers, manuales SIGECOF, y los expedientes del Módulo V. Para desbloquear las descargas, identifícate como alumno del Diplomado.
+                    Esta bóveda reúne los 4 Resúmenes Académicos de Cátedra en PDF, hojas de cálculo de EVM y cómputos de Harry Osers, manuales SIGECOF, y los expedientes del Módulo V. Para desbloquear las descargas, identifícate como alumno del Diplomado.
                 </p>
                 <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                     <button type="button" class="btn-auth-action btn-auth-login" style="padding:10px 22px; font-size:14px;" onclick="openAuthModal('login')">
@@ -1929,9 +2050,9 @@
         <div class="section-header-academic">
             <h2>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                Dossiers Técnicos e Investigaciones de Frontera (Repositorio UGMA)
+                Compendio de Investigaciones Aplicadas (Cátedra de Tecnología)
             </h2>
-            <span class="section-subtext">Compendio investigativo de rigor universitario disponible en el repositorio local y en Obsidian</span>
+            <span class="section-subtext">Compendio investigativo de frontera desarrollado para la Cátedra de Tecnología y Sostenibilidad</span>
         </div>
 
         <div class="dossier-grid">
@@ -1940,7 +2061,7 @@
                 <div class="dossier-meta">
                     <h4>01. openBIM, Gobernanza CDE e ISO 19650</h4>
                     <p>Revisión 2026 de la serie ISO 19650, interoperabilidad IFC 4.3 para infraestructura lineal y estándar BCF 3.0.</p>
-                    <span class="dossier-tag">D:\UGMA\01_INVESTIGACION_OPENBIM_ISO19650.md</span>
+                    <span class="dossier-tag">Investigación Aplicada · Cátedra UGMA</span>
                 </div>
             </div>
 
@@ -1949,7 +2070,7 @@
                 <div class="dossier-meta">
                     <h4>02. ConTech y Digitalización en Campo</h4>
                     <p>Drones autónomos (Drone-in-a-Box), LiDAR, Visión Artificial (YOLOv12-seg/ICP) y bitácoras de voz Speech-to-Report.</p>
-                    <span class="dossier-tag">D:\UGMA\02_INVESTIGACION_CONTECH_Y_CAMPO.md</span>
+                    <span class="dossier-tag">Investigación Aplicada · Cátedra UGMA</span>
                 </div>
             </div>
 
@@ -1958,7 +2079,7 @@
                 <div class="dossier-meta">
                     <h4>03. Construcción Sostenible, LEED v5 &amp; EDGE</h4>
                     <p>50% descarbonización en LEED v5, certificación EDGE del Banco Mundial para América Latina y criterios ESG en licitaciones.</p>
-                    <span class="dossier-tag">D:\UGMA\03_INVESTIGACION_CONSTRUCCION_SOSTENIBLE.md</span>
+                    <span class="dossier-tag">Investigación Aplicada · Cátedra UGMA</span>
                 </div>
             </div>
 
@@ -1967,7 +2088,7 @@
                 <div class="dossier-meta">
                     <h4>04. Eficiencia Solar &amp; Confort Adaptativo</h4>
                     <p>Norma ASHRAE 55 a 26.5°C en Guayana, dimensionamiento paramétrico solar (5.0 HSP) y concretos con escoria GGBS.</p>
-                    <span class="dossier-tag">D:\UGMA\04_INVESTIGACION_EFICIENCIA_ENERGICA_Y_SOLAR.md</span>
+                    <span class="dossier-tag">Investigación Aplicada · Cátedra UGMA</span>
                 </div>
             </div>
 
@@ -1976,7 +2097,7 @@
                 <div class="dossier-meta">
                     <h4>05. Gestión de Residuos (RCD) y Economía Circular</h4>
                     <p>Trituración in-situ de escombros, matriz económica con más del 68% de ahorro en fletes y auditoría de derribo openBIM.</p>
-                    <span class="dossier-tag">D:\UGMA\05_INVESTIGACION_GESTION_RCD.md</span>
+                    <span class="dossier-tag">Investigación Aplicada · Cátedra UGMA</span>
                 </div>
             </div>
 
@@ -1985,7 +2106,7 @@
                 <div class="dossier-meta">
                     <h4>Compendio Maestro Integrador</h4>
                     <p>Documento rector que consolida los 5 ejes y articula la sinergia con los módulos de presupuestos, legal y Lean.</p>
-                    <span class="dossier-tag" style="color:var(--emerald);">D:\UGMA\COMPENDIO_MAESTRO_MODULO_V_TECNOLOGIA.md</span>
+                    <span class="dossier-tag">Investigación Aplicada · Cátedra UGMA</span>
                 </div>
             </div>
         </div>
@@ -2299,7 +2420,7 @@
                 filesHtml += `
                     <div style="grid-column: 1 / -1; margin-bottom: 6px;">
                         <a href="./descargas/modulos-previos/${data.resumenPdf}" download class="boveda-resumen-btn auth-protected-download" style="margin:0;">
-                            <span>📥</span> Descargar Resumen Ejecutivo Oficial en PDF (Cátedra UGMA)
+                            <span>📥</span> Descargar Resumen Académico de Cátedra en PDF (Cátedra UGMA)
                         </a>
                     </div>
                 `;
@@ -2630,6 +2751,21 @@
             };
             setAuthUser(demoUser);
             closeAuthModal();
+        }
+
+        
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            if (!overlay || !drawer) return;
+            const isOpen = drawer.classList.contains('active');
+            if (isOpen) {
+                drawer.classList.remove('active');
+                overlay.classList.remove('active');
+            } else {
+                drawer.classList.add('active');
+                overlay.classList.add('active');
+            }
         }
 
         function renderAuthState() {

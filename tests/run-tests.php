@@ -51,6 +51,11 @@ $routes = [
     'Día 4: Asistente IA en Obra' => '/ugma-gerencia-obras/ia-control-obra/index.html',
     'Día 5: Calculador Solar & RCD' => '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html',
     'Día 6: War Room Integrador' => '/ugma-gerencia-obras/taller-integrador/index.html',
+    'Módulo I: Organización (Pérez)' => '/ugma-gerencia-obras/modulo-1-organizacion.html',
+    'Módulo II: Costos y EVM (Angarita)' => '/ugma-gerencia-obras/modulo-2-costos-evm.html',
+    'Módulo III: Marco Legal (Martínez)' => '/ugma-gerencia-obras/modulo-3-marco-legal.html',
+    'Módulo IV: Lean y Calidad (Zambrano)' => '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
+    'Panel de Administración Docente' => '/ugma-gerencia-obras/admin.html',
 ];
 
 foreach ($routes as $name => $relPath) {
@@ -361,6 +366,97 @@ assert_test("Bóveda de Descargas contiene los 4 Resúmenes Ejecutivos en PDF y 
     foreach ($requiredFiles as $file) {
         if (!file_exists($bovedaDir . $file)) {
             throw new Exception("Archivo faltante en Bóveda: {$file}");
+        }
+    }
+    return true;
+});
+
+assert_test("Panel Docente (admin.html) implementa validación estricta de credenciales (hector@motazorrilla.com / Baralo00.)", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/admin.html');
+    return stripos($content, 'hector@motazorrilla.com') !== false
+        && stripos($content, 'Baralo00.') !== false
+        && stripos($content, 'ugma_admin_session') !== false;
+});
+
+assert_test("Panel Docente (admin.html) incorpora gestión de alumnos, switches de bloqueo, dilemas en vivo y rúbrica 0-20", function() use ($baseDir) {
+    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/admin.html');
+    return stripos($content, 'ugma_registered_students') !== false
+        && stripos($content, 'ugma_module_locks') !== false
+        && stripos($content, 'ugma_dilema_config') !== false
+        && stripos($content, 'exportStudentsCSV') !== false
+        && stripos($content, 'recalcGradeRubric') !== false
+        && stripos($content, 'saveStudentGrade') !== false;
+});
+
+assert_test("Navegación Móvil Responsive: Menú Hamburguesa implementado en páginas principales y módulos", function() use ($baseDir) {
+    $files = [
+        '/ugma-gerencia-obras/index.html',
+        '/ugma-gerencia-obras/boveda.html',
+        '/ugma-gerencia-obras/modulo-1-organizacion.html',
+        '/ugma-gerencia-obras/modulo-2-costos-evm.html',
+        '/ugma-gerencia-obras/modulo-3-marco-legal.html',
+        '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
+        '/ugma-gerencia-obras/admin.html',
+    ];
+    foreach ($files as $f) {
+        $c = file_get_contents($baseDir . $f);
+        if (stripos($c, 'hamburger-btn') === false || stripos($c, 'mobileDrawer') === false || stripos($c, 'toggleMobileMenu') === false) {
+            throw new Exception("Falta navegación hamburguesa en: {$f}");
+        }
+    }
+    return true;
+});
+
+assert_test("Higiene Académica: 0 referencias a rutas internas 'D:\\UGMA' u 'Obsidian' en HTML visible para alumnos", function() use ($baseDir) {
+    $files = [
+        '/ugma-gerencia-obras/index.html',
+        '/ugma-gerencia-obras/boveda.html',
+        '/ugma-gerencia-obras/modulo-1-organizacion.html',
+        '/ugma-gerencia-obras/modulo-2-costos-evm.html',
+        '/ugma-gerencia-obras/modulo-3-marco-legal.html',
+        '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
+    ];
+    foreach ($files as $f) {
+        $c = file_get_contents($baseDir . $f);
+        if (stripos($c, 'D:\\UGMA') !== false || stripos($c, 'Obsidian') !== false) {
+            throw new Exception("Referencia interna detectada en: {$f}");
+        }
+    }
+    return true;
+});
+
+assert_test("Higiene Editorial: Resúmenes etiquetados como 'Resumen Académico de Cátedra' (0 menciones de 'Resumen Ejecutivo Oficial')", function() use ($baseDir) {
+    $files = [
+        '/ugma-gerencia-obras/index.html',
+        '/ugma-gerencia-obras/boveda.html',
+        '/ugma-gerencia-obras/modulo-1-organizacion.html',
+        '/ugma-gerencia-obras/modulo-2-costos-evm.html',
+        '/ugma-gerencia-obras/modulo-3-marco-legal.html',
+        '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
+    ];
+    foreach ($files as $f) {
+        $c = file_get_contents($baseDir . $f);
+        if (stripos($c, 'Resumen Ejecutivo Oficial') !== false || stripos($c, 'Resúmenes Ejecutivos Oficiales') !== false) {
+            throw new Exception("Etiqueta de resumen no permitida en: {$f}");
+        }
+    }
+    return true;
+});
+
+assert_test("Módulos I al IV y Admin sincronizados al 100% en Triple Invariante (ugma-gerencia-obras, Blade y public)", function() use ($baseDir) {
+    $pages = [
+        'modulo-1-organizacion',
+        'modulo-2-costos-evm',
+        'modulo-3-marco-legal',
+        'modulo-4-lean-calidad',
+        'admin'
+    ];
+    foreach ($pages as $p) {
+        $html = file_get_contents($baseDir . "/ugma-gerencia-obras/{$p}.html");
+        $blade = file_get_contents($baseDir . "/resources/views/ugma/{$p}.blade.php");
+        $pub = file_get_contents($baseDir . "/public/ugma-gerencia-obras/{$p}.html");
+        if ($html !== $blade || $html !== $pub) {
+            throw new Exception("Desincronización en página: {$p}");
         }
     }
     return true;
