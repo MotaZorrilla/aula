@@ -1323,14 +1323,14 @@
         <!-- TOP NAV -->
         <div class="top-nav">
             <div class="nav-left-cluster">
-                <a href="./index.html" class="back-link">
+                <a href="{{ route('ugma.index') }}" class="back-link">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     <span>Diplomado Gerencia UGMA</span>
                 </a>
-                <a href="./boveda.html" class="btn-auth-action btn-auth-register" style="font-size:12.5px;">
+                <a href="{{ route('ugma.boveda') }}" class="btn-auth-action btn-auth-register" style="font-size:12.5px;">
                     <span>📂</span> Bóveda de Descargas
                 </a>
-                <a href="./admin.html" class="btn-auth-action" style="font-size:12px; background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border);" title="Acceso Exclusivo Docente">
+                <a href="{{ route('ugma.admin') }}" class="btn-auth-action" style="font-size:12px; background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border);" title="Acceso Exclusivo Docente">
                     <span>⚙️</span> Docente
                 </a>
             </div>
@@ -1360,26 +1360,26 @@
 
             <nav class="drawer-links-group">
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:8px 0 4px 6px;">Navegación Principal</div>
-                <a href="./index.html" class="drawer-link"><span>🏠</span> Portada del Diplomado</a>
-                <a href="./boveda.html" class="drawer-link"><span>📂</span> Bóveda Central de Descargas</a>
+                <a href="{{ route('ugma.index') }}" class="drawer-link"><span>🏠</span> Portada del Diplomado</a>
+                <a href="{{ route('ugma.boveda') }}" class="drawer-link"><span>📂</span> Bóveda Central de Descargas</a>
                 <a href="https://lab.motazorrilla.com/bim/" target="_blank" class="drawer-link"><span>🧪</span> Laboratorio BIM 3D WebGL</a>
 
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Cimientos: Módulos I al IV</div>
-                <a href="./modulo-1-organizacion.html" class="drawer-link"><span>🏛️</span> Módulo I: Organización (Pérez)</a>
-                <a href="./modulo-2-costos-evm.html" class="drawer-link"><span>📊</span> Módulo II: Costos y EVM (Angarita)</a>
-                <a href="./modulo-3-marco-legal.html" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal (Martínez)</a>
-                <a href="./modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean y Calidad (Zambrano)</a>
+                <a href="{{ route('ugma.modulo-1') }}" class="drawer-link"><span>🏛️</span> Módulo I: Organización de Obras (Pérez)</a>
+                <a href="{{ route('ugma.modulo-2') }}" class="drawer-link"><span>📊</span> Módulo II: Costos, APU & EVM (Angarita)</a>
+                <a href="{{ route('ugma.modulo-3') }}" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal & Art. 1637 (Martínez)</a>
+                <a href="{{ route('ugma.modulo-4') }}" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
 
-                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Clases Interactivas</div>
-                <a href="./cde-iso19650/" class="drawer-link"><span>📁</span> Sesión 1: CDE ISO 19650</a>
-                <a href="./clash-detection/" class="drawer-link"><span>⚡</span> Sesión 2: Clash Detection 3D</a>
-                <a href="./planificacion-4d-5d/" class="drawer-link"><span>⏱️</span> Sesión 3: Simulación 4D/5D EVM</a>
-                <a href="./ia-control-obra/" class="drawer-link"><span>🤖</span> Sesión 4: IA en Control de Obra</a>
-                <a href="./energia-solar-sostenibilidad/" class="drawer-link"><span>☀️</span> Sesión 5: Sostenibilidad y Solar</a>
-                <a href="./taller-integrador/" class="drawer-link"><span>🎯</span> Sesión 6: War Room Integrador</a>
+                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Las 6 Unidades Oficiales (Excalidraw)</div>
+                <a href="{{ route('ugma.unidad-1') }}" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
+                <a href="{{ route('ugma.unidad-2') }}" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
+                <a href="{{ route('ugma.unidad-3') }}" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
+                <a href="{{ route('ugma.unidad-4') }}" class="drawer-link"><span>☀️</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
+                <a href="{{ route('ugma.unidad-5') }}" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
+                <a href="{{ route('ugma.unidad-6') }}" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador de Grado &amp; War Room Virtual</a>
 
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Gestión Académica</div>
-                <a href="./admin.html" class="drawer-link" style="color:var(--emerald); font-weight:700;"><span>⚙️</span> Panel de Administración Docente</a>
+                <a href="{{ route('ugma.admin') }}" class="drawer-link" style="color:var(--emerald); font-weight:700;"><span>⚙️</span> Panel de Administración Docente</a>
             </nav>
         </aside>
 
@@ -1389,7 +1389,10 @@
                 <span class="inst-badge">Universidad Nororiental Gran Mariscal de Ayacucho · UGMA</span>
                 <span class="accreditation-badge">Diplomado en Planificación y Gerencia de Obras · Postgrado</span>
             </div>
-            <h1 class="module-title">Módulo V: Tecnología y Sostenibilidad en Gerencia de Obras</h1>
+            <h1 class="module-title">Módulo V: Tecnología Aplicada a la Gestión y Control de Obras</h1>
+            <div style="background:#e0f2fe; border:1px solid #0284c7; padding:10px 16px; border-radius:10px; margin:14px 0; color:#0369a1; font-size:13.5px; font-weight:700;">
+                🎯 Competencia Oficial UGMA: "Conocer sobre las herramientas tecnológicas digitales en el seguimiento y control de obras"
+            </div>
             <p class="module-sub">
                 Programa ejecutivo de posgrado (30 horas académicas) enfocado en la adopción estratégica de <strong>Construction Technology (ConTech)</strong>, modelado paramétrico bajo el estándar internacional <strong>openBIM (ISO 19650:2026)</strong>, auditoría espacial 3D, control dinámico de cronograma y costo (<strong>4D/5D EVM con Visión Artificial</strong>), automatización agéntica de bitácoras y eficiencia energética solar fotovoltaica.
             </p>
@@ -1754,25 +1757,25 @@
             </div>
         </div>
 
-        <!-- 6 DÍAS DE CLASE: ARQUITECTURA DE ALTA DENSIDAD -->
+        <!-- 6 DÍAS DE CLASE: ARQUITECTURA DE ALTA DENSIDAD (6 UNIDADES OFICIALES SEGÚN EXCALIDRAW) -->
         <div class="section-header-academic">
             <h2>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                Itinerario Curricular: Las 6 Sesiones de Trabajo (30 Horas)
+                Itinerario Curricular Oficial: Las 6 Unidades de Trabajo (30 Horas)
             </h2>
-            <span class="section-subtext">Estructura por día de clase con acordeones técnicos desplegables y enlaces a laboratorios</span>
+            <span class="section-subtext">Estructura oficial de la Planificación Docente UGMA 2026 · Competencia: "Conocer sobre las herramientas tecnológicas digitales en el seguimiento y control de obras"</span>
         </div>
 
         <div class="days-grid">
-            <!-- DÍA 1 -->
+            <!-- UNIDAD 1 -->
             <div class="day-card">
                 <div class="day-top-bar">
-                    <span class="day-badge">Día 01 · Viernes 23-10-2026</span>
+                    <span class="day-badge">Unidad 01 · Viernes 23-10-2026</span>
                     <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
                 </div>
-                <h3 class="day-title">Transformación Digital, openBIM y Gobernanza ISO 19650</h3>
+                <h3 class="day-title">UNIDAD 1: Introducción básica al BIM</h3>
                 <p class="day-objective">
-                    Fundamentación del salto de CAD 2D al modelo paramétrico. Gobernanza de información en el Entorno Común de Datos (CDE) y esquemas neutros IFC 4.3 de buildingSMART.
+                    <strong>Temario Oficial:</strong> Definición del BIM y El uso del BIM. Herramientas BIM y Aplicaciones en obra. Diferencia entre BIM y CAD. Diferentes niveles del BIM (Nivel 0 al 3). openBIM y Gobernanza CDE bajo ISO 19650.
                 </p>
 
                 <details class="density-accordion">
@@ -1800,39 +1803,39 @@
                 </details>
 
                 <div class="day-pills">
+                    <span class="day-pill">BIM vs CAD</span>
+                    <span class="day-pill">Niveles 0-3</span>
                     <span class="day-pill">ISO 19650-1/2</span>
                     <span class="day-pill">IFC 4.3</span>
-                    <span class="day-pill">Curva MacLeamy</span>
-                    <span class="day-pill">Cómputos Harry Osers</span>
-                    <span class="day-pill">Validador CDE</span>
+                    <span class="day-pill">Three.js WebGL</span>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <a href="./masterclass-bim/" class="btn-day-action featured-day" style="font-weight:800; border-color:#0284c7; background:#e0f2fe; color:#0369a1;">
+                    <a href="{{ route('ugma.masterclass-bim') }}" class="btn-day-action featured-day" style="font-weight:800; border-color:#0284c7; background:#e0f2fe; color:#0369a1;">
                         <span>🏛️</span> Tema 1: Masterclass BIM (De Maqueta a Gemelo) &rarr;
                     </a>
-                    <a href="./cde-iso19650/" class="btn-day-action">
-                        <span>📁</span> Portal Dedicado: CDE &amp; Validador ISO 19650 &rarr;
+                    <a href="{{ route('ugma.unidad-1') }}" class="btn-day-action">
+                        <span>📁</span> Entrar a Unidad 1: CDE &amp; Validador ISO 19650 &rarr;
                     </a>
                 </div>
             </div>
 
-            <!-- DÍA 2 -->
+            <!-- UNIDAD 2 -->
             <div class="day-card">
                 <div class="day-top-bar">
-                    <span class="day-badge">Día 02 · Sábado 24-10-2026</span>
+                    <span class="day-badge">Unidad 02 · Sábado 24-10-2026</span>
                     <span class="day-schedule">08:00 a 11:45 AM · 5h</span>
                 </div>
-                <h3 class="day-title">Coordinación Interdisciplinaria, Clash Detection 3D y BCF 3.0</h3>
+                <h3 class="day-title">UNIDAD 2: Tecnología y digitalización en campo</h3>
                 <p class="day-objective">
-                    Validación automatizada de modelos federados (Arquitectura, Estructuras, MEP). Jerarquía de interferencias espaciales y comunicación sin software cautivo.
+                    <strong>Temario Oficial:</strong> Aplicaciones móviles para obra. Dispositivos móviles en obra (tablets, drones, telemetría). Uso de datos en campo. Captura de datos en tiempo real y Clash Detection in-situ.
                 </p>
 
                 <details class="density-accordion">
                     <summary>Explorar Contenido Técnico &amp; Fórmulas</summary>
                     <div class="acc-content">
                         <div>
-                            <span class="acc-section-title">🔍 Tipología de Colisiones</span>
+                            <span class="acc-section-title">🔍 Tipología de Colisiones y Coordinación</span>
                             Interferencias Hard (geométricas directas), Soft (gálibos de mantenimiento) y Clearance (tolerancias de vibración y dilatación térmica).
                         </div>
                         <div>
@@ -1844,101 +1847,9 @@
                         <div>
                             <span class="acc-section-title">⚙️ Taller Práctico</span>
                             <ul class="workflow-steps">
-                                <li>Federación de modelos IFC en visor Three.js WebGL.</li>
-                                <li>Generación de reportes de incidencias en formato abierto BCF 3.0.</li>
-                                <li>Simulación en vivo de resolución de conflicto en mesa técnica.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </details>
-
-                <div class="day-pills">
-                    <span class="day-pill">Three.js WebGL</span>
-                    <span class="day-pill">Clash Detection</span>
-                    <span class="day-pill">BCF 3.0</span>
-                    <span class="day-pill">Navisworks TimeLiner</span>
-                </div>
-
-                <a href="./clash-detection/" class="btn-day-action featured-day">
-                    <span>⚡</span> Portal Dedicado: Laboratorio 3D Clash Detection &rarr;
-                </a>
-            </div>
-
-            <!-- DÍA 3 -->
-            <div class="day-card">
-                <div class="day-top-bar">
-                    <span class="day-badge">Día 03 · Viernes 30-10-2026</span>
-                    <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
-                </div>
-                <h3 class="day-title">Planificación 4D/5D, Curva S y EVM con Visión Artificial</h3>
-                <p class="day-objective">
-                    Integración del cronograma Gantt y el presupuesto paramétrico. Cálculo objetivo del Valor Ganado (EVM) contrastando As-Planned vs As-Built con drones.
-                </p>
-
-                <details class="density-accordion">
-                    <summary>Explorar Contenido Técnico &amp; Fórmulas</summary>
-                    <div class="acc-content">
-                        <div>
-                            <span class="acc-section-title">📈 Fórmulas Analíticas EVM</span>
-                            <div class="formula-box">
-                                EV = %Físico_IA × BAC | CPI = EV / AC | SPI = EV / PV | CV = EV - AC | SV = EV - PV
-                            </div>
-                        </div>
-                        <div>
-                            <span class="acc-section-title">🛸 Captura de Realidad en Sitio</span>
-                            Vuelos fotogramétricos con drones y cámaras 360°. Alineación de nubes de puntos mediante algoritmos ICP con mapas de calor de desviaciones.
-                        </div>
-                        <div>
-                            <span class="acc-section-title">⚙️ Taller Práctico</span>
-                            <ul class="workflow-steps">
-                                <li>Vinculación de GUIDs de elementos IFC a la EDT de MS Project.</li>
-                                <li>Simulación visual de la Curva S dinámica en Chart.js.</li>
-                                <li>Detección de sobrecostos e imprevistos antes del cierre mensual.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </details>
-
-                <div class="day-pills">
-                    <span class="day-pill">4D TimeLiner</span>
-                    <span class="day-pill">5D Costos</span>
-                    <span class="day-pill">EVM (CPI/SPI)</span>
-                    <span class="day-pill">Curva S Chart.js</span>
-                </div>
-
-                <a href="./planificacion-4d-5d/" class="btn-day-action">
-                    <span>⏱️</span> Portal Dedicado: Simulador Curva S &amp; EVM &rarr;
-                </a>
-            </div>
-
-            <!-- DÍA 4 -->
-            <div class="day-card">
-                <div class="day-top-bar">
-                    <span class="day-badge">Día 04 · Sábado 31-10-2026</span>
-                    <span class="day-schedule">08:00 a 11:45 AM · 5h</span>
-                </div>
-                <h3 class="day-title">Agentes Autónomos de IA y Control de Obra (Speech-to-Report)</h3>
-                <p class="day-objective">
-                    Despliegue de agentes inteligentes para inspección en faena, automatización de minutas de campo por voz y auditoría preventiva de reclamos contractuales.
-                </p>
-
-                <details class="density-accordion">
-                    <summary>Explorar Contenido Técnico &amp; Fórmulas</summary>
-                    <div class="acc-content">
-                        <div>
-                            <span class="acc-section-title">🤖 Arquitectura Agéntica ConTech 2026</span>
-                            Agentes con capacidad de ejecución de herramientas (*Tool Use*): extracción de entidades desde audios de WhatsApp dictados por capataces.
-                        </div>
-                        <div>
-                            <span class="acc-section-title">⚖️ Prevención de Reclamos (Claims)</span>
-                            Cotejo de bitácora diaria contra causales de extensión de plazo estipuladas en la Ley de Contrataciones Públicas y contratos FIDIC.
-                        </div>
-                        <div>
-                            <span class="acc-section-title">⚙️ Taller Práctico</span>
-                            <ul class="workflow-steps">
-                                <li>Dictado de novedades de faena por voz y estructuración con IA.</li>
-                                <li>Cálculo automatizado del PPC semanal (Last Planner System).</li>
-                                <li>Validación bajo protocolo Human-in-the-Loop con firma digital.</li>
+                                <li>Dictado de novedades por voz (Web Speech API) y estructuración con IA.</li>
+                                <li>Federación de modelos IFC en visor Three.js WebGL y tickets BCF 3.0.</li>
+                                <li>Captura de avance en campo con fotogrametría y nubes de puntos.</li>
                             </ul>
                         </div>
                     </div>
@@ -1946,25 +1857,78 @@
 
                 <div class="day-pills">
                     <span class="day-pill">Speech-to-Report</span>
-                    <span class="day-pill">LLMs en Obra</span>
-                    <span class="day-pill">Auditoría Claims</span>
-                    <span class="day-pill">Last Planner IA</span>
+                    <span class="day-pill">Clash Detection 3D</span>
+                    <span class="day-pill">BCF 3.0</span>
+                    <span class="day-pill">Apps de Faena</span>
+                    <span class="day-pill">Drones en Obra</span>
                 </div>
 
-                <a href="./ia-control-obra/" class="btn-day-action">
-                    <span>🤖</span> Portal Dedicado: Asistente IA &amp; Bitácoras &rarr;
+                <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
+                    <a href="{{ route('ugma.clash-detection') }}" class="btn-day-action featured-day">
+                        <span>⚡</span> Laboratorio 3D Clash Detection &rarr;
+                    </a>
+                    <a href="{{ route('ugma.unidad-2') }}" class="btn-day-action">
+                        <span>🤖</span> Entrar a Unidad 2: IA &amp; Bitácoras de Campo &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- UNIDAD 3 -->
+            <div class="day-card">
+                <div class="day-top-bar">
+                    <span class="day-badge">Unidad 03 · Viernes 30-10-2026</span>
+                    <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
+                </div>
+                <h3 class="day-title">UNIDAD 3: Construcciones sostenibles</h3>
+                <p class="day-objective">
+                    <strong>Temario Oficial:</strong> ¿Qué es una construcción sostenible? Conceptos básicos y características eco-eficientes. Certificaciones ambientales (LEED v5, BREEAM, EDGE Buildings). Criterios ESG aplicados a licitaciones y contratos de obra.
+                </p>
+
+                <details class="density-accordion">
+                    <summary>Explorar Contenido Técnico &amp; Fórmulas</summary>
+                    <div class="acc-content">
+                        <div>
+                            <span class="acc-section-title">🌱 Certificaciones Verdes</span>
+                            Puntuación LEED v5 (Certificado, Plata, Oro, Platino) y estándar EDGE (ahorro mínimo del 20% en energía, agua y carbono embebido).
+                        </div>
+                        <div>
+                            <span class="acc-section-title">📊 Criterios ESG en Contratistas</span>
+                            <div class="formula-box">
+                                Score_ESG = 0.40 × Ambiental + 0.35 × Social + 0.25 × Gobernanza
+                            </div>
+                        </div>
+                        <div>
+                            <span class="acc-section-title">⚙️ Taller Práctico</span>
+                            <ul class="workflow-steps">
+                                <li>Auditoría ambiental de proyectos civiles según LEED v5.</li>
+                                <li>Evaluación de cumplimiento de criterios ESG para selección de subcontratistas.</li>
+                                <li>Estimación de retorno financiero por ahorro operativo en ciclo de vida.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="day-pills">
+                    <span class="day-pill">LEED v5</span>
+                    <span class="day-pill">EDGE Buildings</span>
+                    <span class="day-pill">Criterios ESG</span>
+                    <span class="day-pill">Ciclo de Vida</span>
+                </div>
+
+                <a href="{{ route('ugma.unidad-3') }}" class="btn-day-action featured-day">
+                    <span>🌱</span> Entrar a Unidad 3: Certificaciones LEED, EDGE &amp; ESG &rarr;
                 </a>
             </div>
 
-            <!-- DÍA 5 -->
+            <!-- UNIDAD 4 -->
             <div class="day-card">
                 <div class="day-top-bar">
-                    <span class="day-badge">Día 05 · Viernes 06-11-2026</span>
-                    <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
+                    <span class="day-badge">Unidad 04 · Sábado 31-10-2026</span>
+                    <span class="day-schedule">08:00 a 11:45 AM · 5h</span>
                 </div>
-                <h3 class="day-title">Eficiencia Solar, ASHRAE 55 y Gestión Circular de RCD</h3>
+                <h3 class="day-title">UNIDAD 4: Eficiencia energética y materiales ecológicos</h3>
                 <p class="day-objective">
-                    Diseño bioclimático tropical en Guayana, dimensionamiento paramétrico de sistemas solares fotovoltaicos y valorización in-situ de residuos de construcción (RCD).
+                    <strong>Temario Oficial:</strong> Iluminación eficiente, climatización y energía solar. Materiales ecológicos y reciclados. Reducción de la huella de carbono. Concretos bajos en carbono con escoria GGBS de Sidor.
                 </p>
 
                 <details class="density-accordion">
@@ -1973,45 +1937,95 @@
                         <div>
                             <span class="acc-section-title">☀️ Dimensionamiento Fotovoltaico Guayana</span>
                             <div class="formula-box">
-                                P_pico = E_diario / (HSP × PR) | HSP = 5.0 kWh/m²/día | PR = 0.77
+                                P_pico = E_diario / (HSP × PR) | HSP = 5.1 kWh/m²/día | PR = 0.77
                             </div>
                         </div>
                         <div>
-                            <span class="acc-section-title">♻️ Economía Circular de RCD in-situ</span>
-                            Trituración en faena de residuos pétreos para bases granulares: ahorro comprobado superior al **68%** en fletes y botaderos.
+                            <span class="acc-section-title">❄️ Confort Térmico ASHRAE 55</span>
+                            Balance psicrométrico adaptativo tropical a 26.5°C con ventilación natural y envolvente térmica eficiente.
                         </div>
                         <div>
                             <span class="acc-section-title">⚙️ Taller Práctico</span>
                             <ul class="workflow-steps">
-                                <li>Dimensionamiento de generador solar fotovoltaico para cargas críticas.</li>
-                                <li>Cálculo de confort adaptativo tropical según ASHRAE 55 a 26.5°C.</li>
-                                <li>Estimación de sustitución de clínker por escoria GGBS (-45% CO2).</li>
+                                <li>Cálculo dinámico de generador solar fotovoltaico para cargas críticas.</li>
+                                <li>Sustitución de clínker por escoria de alto horno GGBS (-45% CO2).</li>
+                                <li>Análisis comparativo de retorno de inversión de sistemas solares.</li>
                             </ul>
                         </div>
                     </div>
                 </details>
 
                 <div class="day-pills">
-                    <span class="day-pill">HSP = 5.0 Guayana</span>
+                    <span class="day-pill">HSP = 5.1 Guayana</span>
                     <span class="day-pill">ASHRAE 55</span>
-                    <span class="day-pill">LEED v5 / EDGE</span>
-                    <span class="day-pill">RCD in-situ (-68%)</span>
+                    <span class="day-pill">Escoria GGBS (-45% CO2)</span>
+                    <span class="day-pill">Energía Solar</span>
                 </div>
 
-                <a href="./energia-solar-sostenibilidad/" class="btn-day-action">
-                    <span>☀️</span> Portal Dedicado: Calculador Solar Fotovoltaico &rarr;
+                <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
+                    <a href="{{ route('ugma.planificacion-4d-5d') }}" class="btn-day-action">
+                        <span>⏱️</span> Laboratorio 4D/5D EVM &rarr;
+                    </a>
+                    <a href="{{ route('ugma.unidad-4') }}" class="btn-day-action featured-day">
+                        <span>☀️</span> Entrar a Unidad 4: Simulador Solar &amp; Materiales Ecológicos &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- UNIDAD 5 -->
+            <div class="day-card">
+                <div class="day-top-bar">
+                    <span class="day-badge">Unidad 05 · Viernes 06-11-2026</span>
+                    <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
+                </div>
+                <h3 class="day-title">UNIDAD 5: Gestión de residuos de obra</h3>
+                <p class="day-objective">
+                    <strong>Temario Oficial:</strong> Tipos de residuos en la construcción (RCD). Reducción, reutilización y reciclaje de materiales. Marco legal y normativo venezolano. Ley de Gestión Integral de la Basura y valorización in-situ.
+                </p>
+
+                <details class="density-accordion">
+                    <summary>Explorar Contenido Técnico &amp; Fórmulas</summary>
+                    <div class="acc-content">
+                        <div>
+                            <span class="acc-section-title">♻️ Economía Circular de RCD in-situ</span>
+                            Trituración en faena de residuos pétreos para bases granulares: ahorro comprobado superior al **68%** en fletes y botaderos.
+                        </div>
+                        <div>
+                            <span class="acc-section-title">⚖️ Marco Normativo Nacional</span>
+                            Cumplimiento de la Ley de Gestión Integral de la Basura (G.O. 39.584) y normas sanitarias del Ministerio de Ecosocialismo.
+                        </div>
+                        <div>
+                            <span class="acc-section-title">⚙️ Taller Práctico</span>
+                            <ul class="workflow-steps">
+                                <li>Elaboración de la matriz de cuantificación y segregación de RCD en obra.</li>
+                                <li>Plan de valorización y trituración in-situ para subbases y rellenos.</li>
+                                <li>Auditoría preventiva de sanciones ambientales en faena.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="day-pills">
+                    <span class="day-pill">RCD in-situ (-68%)</span>
+                    <span class="day-pill">Ley de Basura</span>
+                    <span class="day-pill">Economía Circular</span>
+                    <span class="day-pill">Segregación</span>
+                </div>
+
+                <a href="{{ route('ugma.unidad-5') }}" class="btn-day-action featured-day">
+                    <span>♻️</span> Entrar a Unidad 5: Matriz RCD &amp; Ahorro en Faena &rarr;
                 </a>
             </div>
 
-            <!-- DÍA 6 -->
+            <!-- UNIDAD 6 -->
             <div class="day-card">
                 <div class="day-top-bar">
-                    <span class="day-badge" style="background:var(--emerald);">Día 06 · Sábado 07-11-2026</span>
+                    <span class="day-badge" style="background:var(--emerald);">Unidad 06 · Sábado 07-11-2026</span>
                     <span class="day-schedule">08:00 a 11:45 AM · 5h</span>
                 </div>
-                <h3 class="day-title">War Room Integrador: Defensa de Grado Caso Edificio Guayana 12P</h3>
+                <h3 class="day-title">UNIDAD 6: Taller Integrador de Grado & War Room Virtual</h3>
                 <p class="day-objective">
-                    Evaluación holística final (100% de la nota sobre 20 puntos). Defensa ejecutiva en simulación War Room frente a un panel directivo, integrando los 5 ejes del diplomado.
+                    <strong>Temario Oficial:</strong> Síntesis de competencias del Módulo V. Simulación de comité de obra multidisciplinario en tiempo real. Toma de decisiones ejecutiva del Caso Edificio Guayana 12P. Defensa oral y evaluación sobre rúbrica vigesimal de 20 puntos.
                 </p>
 
                 <details class="density-accordion">
@@ -2040,8 +2054,8 @@
                     <span class="day-pill">Defensa Ejecutiva</span>
                 </div>
 
-                <a href="./taller-integrador/" class="btn-day-action featured-day">
-                    <span>🏛️</span> Portal Dedicado: Rúbrica &amp; War Room Integrador &rarr;
+                <a href="{{ route('ugma.unidad-6') }}" class="btn-day-action featured-day">
+                    <span>🏛️</span> Entrar a Unidad 6: Rúbrica &amp; War Room Integrador &rarr;
                 </a>
             </div>
         </div>
@@ -2797,7 +2811,7 @@
                     heroTitle.innerHTML = `¡Bienvenido al Aula Virtual, ${user.name}!`;
                     heroDesc.innerHTML = `Tu matrícula de participante está verificada. Tienes acceso irrestricto a todas las clases interactivas y a la Bóveda Centralizada de Descargas.`;
                     heroBtns.innerHTML = `
-                        <a href="./boveda.html" class="btn-auth-action btn-auth-login" style="background:#047857; border-color:#047857; padding:12px 22px; font-size:14px; text-decoration:none;">
+                        <a href="{{ route('ugma.boveda') }}" class="btn-auth-action btn-auth-login" style="background:#047857; border-color:#047857; padding:12px 22px; font-size:14px; text-decoration:none;">
                             <span>🚀</span> ENTRAR A LA BÓVEDA Y AULA VIRTUAL ➜
                         </a>
                     `;
