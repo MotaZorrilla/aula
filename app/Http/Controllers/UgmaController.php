@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Ugma\AdmitStudentPresenceAction;
 use App\Actions\Ugma\EvaluateStudentAction;
+use App\Actions\Ugma\GetLiveLeaderboardAction;
+use App\Actions\Ugma\GetLiveQuizStateAction;
+use App\Actions\Ugma\PingLivePresenceAction;
 use App\Actions\Ugma\RecordWarRoomDecisionAction;
 use App\Actions\Ugma\RegisterStudentAction;
+use App\Actions\Ugma\SubmitQuizAnswerAction;
 use App\Actions\Ugma\ToggleModuleLockAction;
+use App\Actions\Ugma\TriggerLiveQuestionAction;
 use App\Domain\Ugma\ModuleUnitEnum;
 use App\Http\Requests\Ugma\AdminLoginRequest;
 use App\Http\Requests\Ugma\GradeStudentRequest;
 use App\Http\Requests\Ugma\RegisterStudentRequest;
 use App\Http\Requests\Ugma\WarRoomDecisionRequest;
+use App\Models\UgmaLivePresence;
 use App\Models\UgmaModuleLock;
+use App\Models\UgmaQuizQuestion;
 use App\Models\UgmaStudent;
 use App\Models\UgmaWarRoomDecision;
 use Illuminate\Http\JsonResponse;
@@ -132,8 +140,10 @@ class UgmaController extends Controller
         $students = UgmaStudent::with('grade')->latest()->get();
         $locks = UgmaModuleLock::pluck('is_locked', 'module_key')->toArray();
         $decisionsCount = UgmaWarRoomDecision::count();
+        $quizQuestions = UgmaQuizQuestion::orderBy('unit_number')->get();
+        $livePresences = UgmaLivePresence::active(60)->latest()->get();
 
-        return view('ugma.admin', compact('students', 'locks', 'decisionsCount'));
+        return view('ugma.admin', compact('students', 'locks', 'decisionsCount', 'quizQuestions', 'livePresences'));
     }
 
     // ==========================================
@@ -247,5 +257,112 @@ class UgmaController extends Controller
             'success' => false,
             'message' => 'Credenciales docentes inválidas.',
         ], 401);
+    }
+
+    // ==========================================
+    // PRESENCIA EN VIVO Y QUIZ TIPO MENTIMETER
+    // ==========================================
+
+    public function apiLivePresencePing(Request $request, PingLivePresenceAction $action): JsonResponse
+    {
+        $validated = $request->validate([
+            'session_token' => 'required|string',
+            'name' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $result = $action->execute(
+            $validated['session_token'],
+            $validated['name'],
+            $validated['email'],
+            $request->ip()
+        );
+
+        return response()->json($result);
+    }
+
+    public function apiLivePresenceAdmit(Request $request, AdmitStudentPresenceAction $action): JsonResponse
+    {
+        $validated = $request->validate([
+            'presence_id' => 'nullable|integer',
+            'admit_all' => 'nullable|boolean',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $result = $action->execute(
+            $validated['presence_id'] ?? null,
+            $request->boolean('admit_all', false),
+            $request->boolean('status', true)
+        );
+
+        return response()->json($result);
+    }
+
+    public function apiLivePresenceList(): JsonResponse
+    {
+        $activePresences = UgmaLivePresence::active(60)->latest()->get();
+
+        return response()->json([
+            'success' => true,
+            'presences' => $activePresences,
+            'total_online' => $activePresences->count(),
+            'admitted_count' => $activePresences->where('is_admitted', true)->count(),
+        ]);
+    }
+
+    public function apiLiveQuizTrigger(Request $request, TriggerLiveQuestionAction $action): JsonResponse
+    {
+        $validated = $request->validate([
+            'question_id' => 'nullable|integer',
+        ]);
+
+        $result = $action->execute($validated['question_id'] ?? null);
+
+        return response()->json($result);
+    }
+
+    public function apiLiveQuizState(Request $request, GetLiveQuizStateAction $action): JsonResponse
+    {
+        $result = $action->execute($request->input('email'), $request->input('name'));
+
+        return response()->json($result);
+    }
+
+    public function apiLiveQuizAnswer(Request $request, SubmitQuizAnswerAction $action): JsonResponse
+    {
+        $validated = $request->validate([
+            'question_id' => 'required|integer',
+            'chosen_index' => 'required|integer|min:0|max:3',
+            'name' => 'nullable|string',
+            'email' => 'nullable|email',
+            'response_time_ms' => 'nullable|integer',
+        ]);
+
+        $result = $action->execute(
+            (int) $validated['question_id'],
+            (int) $validated['chosen_index'],
+            $validated['name'] ?? null,
+            $validated['email'] ?? null,
+            (int) ($validated['response_time_ms'] ?? 0)
+        );
+
+        return response()->json($result);
+    }
+
+    public function apiLiveQuizLeaderboard(GetLiveLeaderboardAction $action): JsonResponse
+    {
+        $result = $action->execute(10);
+
+        return response()->json($result);
+    }
+
+    public function apiLiveQuizQuestions(): JsonResponse
+    {
+        $questions = UgmaQuizQuestion::orderBy('unit_number')->get();
+
+        return response()->json([
+            'success' => true,
+            'questions' => $questions,
+        ]);
     }
 }

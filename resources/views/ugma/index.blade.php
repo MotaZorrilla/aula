@@ -1336,6 +1336,9 @@
             </div>
 
             <div class="nav-right-cluster">
+                <a href="#boveda-descargas" class="nav-lab-link" style="background:#fef3c7; border-color:#fde68a; color:#b45309; font-weight:800;" title="Descargar expedientes oficiales y resúmenes">
+                    <span>📂</span> Bóveda de Descargas
+                </a>
                 <div id="navAuthArea" style="display:flex; align-items:center; gap:8px;"></div>
                 <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener" class="btn-auth-action btn-auth-register" style="font-size:12px;">
                     <span>Visor 3D</span>
@@ -2689,17 +2692,31 @@
             renderAuthState();
         }
 
-        function openAuthModal(tab = 'login', msg = '') {
+        let pendingRedirectUrl = null;
+
+        function openAuthModal(tab = 'login', msg = '', redirectUrl = null) {
+            if (redirectUrl) pendingRedirectUrl = redirectUrl;
             const modal = document.getElementById('authModal');
             const msgBox = document.getElementById('authContextMsg');
             if (msg) {
-                msgBox.innerHTML = `<span>ℹ️</span> <strong>Aviso:</strong> ${msg}`;
+                msgBox.innerHTML = `<span>🔒</span> <strong>Área Académica Protegida:</strong> ${msg}`;
                 msgBox.style.display = 'block';
             } else {
-                msgBox.style.display = 'none';
+                msgBox.innerHTML = `<span>🔒</span> <strong>Área Académica Protegida:</strong> Acceso exclusivo para participantes inscritos en el Diplomado en Gerencia de Obras de la UGMA. Inicia sesión con tus credenciales institucionales o regístrate.`;
+                msgBox.style.display = 'block';
             }
             switchAuthTab(tab);
             modal.classList.add('active');
+        }
+
+        function setAuthUser(user) {
+            localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+            renderAuthState();
+            if (pendingRedirectUrl) {
+                const target = pendingRedirectUrl;
+                pendingRedirectUrl = null;
+                window.location.href = target;
+            }
         }
 
         function closeAuthModal() {
@@ -2937,5 +2954,212 @@
         </div>
     </div>
     
+    <!-- BOTÓN FLOTANTE DE ACCESO RÁPIDO A LA BÓVEDA -->
+    <a href="#boveda-descargas" id="floatingBovedaBtn" style="position:fixed; bottom:24px; right:24px; z-index:999; background:#0284c7; color:#ffffff; padding:12px 20px; border-radius:9999px; font-size:13.5px; font-weight:800; display:flex; align-items:center; gap:8px; box-shadow:0 10px 25px -5px rgba(2,132,199,0.5); text-decoration:none; border:2px solid #ffffff; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <span>📂</span> Bóveda Central (Módulos I al V)
+    </a>
+
+    <!-- MODAL LIVE QUIZ SÍNCRONO PARA ESTUDIANTES (MENTIMETER STYLE) -->
+    <div id="studentQuizModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); z-index:99999; align-items:center; justify-content:center; padding:16px;">
+        <div style="background:#ffffff; border-radius:20px; max-width:680px; width:100%; padding:32px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.3); text-align:left; position:relative;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span id="studentQuizUnitBadge" style="background:#e0f2fe; color:#0369a1; font-size:11px; font-weight:800; padding:4px 10px; border-radius:9999px; text-transform:uppercase;">
+                    ⚡ PREGUNTA EN VIVO · DIPLOMADO UGMA
+                </span>
+                <div id="studentQuizTimerBox" style="font-family:var(--font-mono); font-weight:800; color:#dc2626; font-size:16px;">
+                    ⏱️ <span id="studentQuizTimerSeconds">30</span>s
+                </div>
+            </div>
+
+            <div style="width:100%; background:#e2e8f0; height:6px; border-radius:9999px; overflow:hidden; margin-bottom:18px;">
+                <div id="studentQuizTimerBar" style="background:#0284c7; height:100%; width:100%; transition:width 1s linear;"></div>
+            </div>
+
+            <h3 id="studentQuizQuestionText" style="font-size:19px; font-weight:800; color:var(--navy-primary); margin:0 0 20px; line-height:1.4;"></h3>
+
+            <div id="studentQuizOptionsContainer" style="display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:20px;">
+            </div>
+
+            <div id="studentQuizFeedbackBox" style="display:none; border-radius:12px; padding:16px; margin-bottom:16px;">
+                <div id="studentQuizFeedbackTitle" style="font-weight:800; font-size:15px; margin-bottom:4px;"></div>
+                <div id="studentQuizFeedbackText" style="font-size:13px; line-height:1.5;"></div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:12px; color:var(--text-light);">La puntuación premia la precisión y la velocidad de respuesta.</span>
+                <button type="button" id="btnStudentCloseQuiz" style="display:none; background:var(--navy-primary); color:#fff; border:none; padding:8px 18px; border-radius:8px; font-weight:700; cursor:pointer;" onclick="closeStudentQuizModal()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script>
+        // ==========================================
+        // GATE INTERCEPTOR GLOBAL DE NAVEGACIÓN
+        // ==========================================
+        document.addEventListener('click', function(e) {
+            const targetLink = e.target.closest('.btn-day-action, .boveda-resumen-btn, .boveda-file-link, .boveda-module-badge, .auth-protected-download');
+            if (targetLink) {
+                if (!getAuthUser()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const href = targetLink.getAttribute('href');
+                    openAuthModal('login', 'Contenido protegido exclusivo para estudiantes y docentes del Diplomado UGMA. Inicia sesión o regístrate para ingresar a este módulo.', href);
+                }
+            }
+        });
+
+        // ==========================================
+        // MOTOR LIVE QUIZ (ESTUDIANTE EN TIEMPO REAL)
+        // ==========================================
+        let activeStudentQuestionId = null;
+        let studentQuestionStartTime = null;
+        let studentTimerInterval = null;
+        let studentRemainingSeconds = 30;
+
+        async function studentLiveHeartbeat() {
+            const user = getAuthUser();
+            if (!user) return;
+
+            let sessionToken = localStorage.getItem('ugma_session_token');
+            if (!sessionToken) {
+                sessionToken = 'ugma_tok_' + Math.random().toString(36).substring(2) + Date.now();
+                localStorage.setItem('ugma_session_token', sessionToken);
+            }
+
+            // 1. Enviar latido de presencia
+            try {
+                await fetch('{{ route("ugma.api.live-presence.ping") }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    body: JSON.stringify({
+                        session_token: sessionToken,
+                        name: user.name,
+                        email: user.email
+                    })
+                });
+            } catch (err) {}
+
+            // 2. Comprobar si hay pregunta activa en vivo
+            try {
+                const quizRes = await fetch(`{{ route("ugma.api.live-quiz.state") }}?email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}`);
+                const quizData = await quizRes.json();
+                if (quizData.has_active_question && quizData.question) {
+                    if (activeStudentQuestionId !== quizData.question.id && !quizData.has_answered) {
+                        openStudentQuizModal(quizData.question);
+                    }
+                } else {
+                    if (activeStudentQuestionId && document.getElementById('studentQuizModal').style.display !== 'none' && !studentQuestionStartTime) {
+                        closeStudentQuizModal();
+                    }
+                }
+            } catch (err) {}
+        }
+
+        function openStudentQuizModal(q) {
+            activeStudentQuestionId = q.id;
+            studentQuestionStartTime = Date.now();
+            studentRemainingSeconds = q.time_limit_sec || 30;
+            const totalSec = studentRemainingSeconds;
+
+            document.getElementById('studentQuizUnitBadge').innerText = `⚡ UNIDAD ${q.unit_number} · RETO EN VIVO`;
+            document.getElementById('studentQuizQuestionText').innerText = q.question;
+            document.getElementById('studentQuizFeedbackBox').style.display = 'none';
+            document.getElementById('btnStudentCloseQuiz').style.display = 'none';
+
+            const opts = Array.isArray(q.options) ? q.options : JSON.parse(q.options || '[]');
+            const letters = ['A', 'B', 'C', 'D'];
+            const container = document.getElementById('studentQuizOptionsContainer');
+            container.innerHTML = opts.map((opt, idx) => `
+                <button type="button" class="btn-quiz-opt" onclick="submitStudentQuizAnswer(${q.id}, ${idx})" style="display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#f8fafc; border:2px solid var(--border); padding:14px 18px; border-radius:12px; cursor:pointer; font-size:14px; color:var(--text-main); font-weight:600; transition:all 0.2s ease;">
+                    <span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:#e0f2fe; color:#0369a1; font-weight:800; font-size:13px;">${letters[idx]}</span>
+                    <span>${opt}</span>
+                </button>
+            `).join('');
+
+            clearInterval(studentTimerInterval);
+            document.getElementById('studentQuizTimerSeconds').innerText = studentRemainingSeconds;
+            document.getElementById('studentQuizTimerBar').style.width = '100%';
+
+            studentTimerInterval = setInterval(() => {
+                studentRemainingSeconds--;
+                document.getElementById('studentQuizTimerSeconds').innerText = Math.max(0, studentRemainingSeconds);
+                const pct = Math.max(0, (studentRemainingSeconds / totalSec) * 100);
+                document.getElementById('studentQuizTimerBar').style.width = `${pct}%`;
+
+                if (studentRemainingSeconds <= 0) {
+                    clearInterval(studentTimerInterval);
+                    document.getElementById('studentQuizFeedbackBox').style.display = 'block';
+                    document.getElementById('studentQuizFeedbackBox').style.background = '#fef2f2';
+                    document.getElementById('studentQuizFeedbackBox').style.border = '1px solid #f87171';
+                    document.getElementById('studentQuizFeedbackTitle').style.color = '#991b1b';
+                    document.getElementById('studentQuizFeedbackTitle').innerText = '⏱️ Tiempo Agotado';
+                    document.getElementById('studentQuizFeedbackText').innerText = 'Se ha cerrado el tiempo límite para responder esta pregunta.';
+                    document.getElementById('btnStudentCloseQuiz').style.display = 'inline-block';
+                }
+            }, 1000);
+
+            document.getElementById('studentQuizModal').style.display = 'flex';
+        }
+
+        async function submitStudentQuizAnswer(questionId, chosenIndex) {
+            clearInterval(studentTimerInterval);
+            const user = getAuthUser();
+            const elapsedMs = Date.now() - (studentQuestionStartTime || Date.now());
+
+            const buttons = document.querySelectorAll('.btn-quiz-opt');
+            buttons.forEach(b => b.style.pointerEvents = 'none');
+
+            try {
+                const res = await fetch('{{ route("ugma.api.live-quiz.answer") }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    body: JSON.stringify({
+                        question_id: questionId,
+                        chosen_index: chosenIndex,
+                        name: user ? user.name : 'Participante',
+                        email: user ? user.email : 'alumno@ugma.edu.ve',
+                        response_time_ms: elapsedMs
+                    })
+                });
+                const data = await res.json();
+                const feedback = document.getElementById('studentQuizFeedbackBox');
+                feedback.style.display = 'block';
+
+                if (data.is_correct) {
+                    feedback.style.background = '#ecfdf5';
+                    feedback.style.border = '1px solid #10b981';
+                    document.getElementById('studentQuizFeedbackTitle').style.color = '#065f46';
+                    document.getElementById('studentQuizFeedbackTitle').innerText = `🎉 ¡RESPUESTA CORRECTA! (+${data.score} Puntos)`;
+                    buttons[chosenIndex].style.borderColor = '#10b981';
+                    buttons[chosenIndex].style.background = '#d1fae5';
+                } else {
+                    feedback.style.background = '#fef2f2';
+                    feedback.style.border = '1px solid #f87171';
+                    document.getElementById('studentQuizFeedbackTitle').style.color = '#991b1b';
+                    document.getElementById('studentQuizFeedbackTitle').innerText = '❌ RESPUESTA INCORRECTA (0 Puntos)';
+                    buttons[chosenIndex].style.borderColor = '#ef4444';
+                    buttons[chosenIndex].style.background = '#fee2e2';
+                }
+
+                document.getElementById('studentQuizFeedbackText').innerHTML = `
+                    <div style="margin-bottom:6px;">${data.explanation || ''}</div>
+                    <div style="font-size:11.5px; font-weight:700; color:var(--text-light);">Tiempo de respuesta: ${(elapsedMs / 1000).toFixed(2)}s</div>
+                `;
+                document.getElementById('btnStudentCloseQuiz').style.display = 'inline-block';
+            } catch (err) {
+                alert('Error al registrar respuesta');
+            }
+        }
+
+        function closeStudentQuizModal() {
+            clearInterval(studentTimerInterval);
+            document.getElementById('studentQuizModal').style.display = 'none';
+            activeStudentQuestionId = null;
+        }
+
+        setInterval(studentLiveHeartbeat, 4000);
+</script>
 </body>
 </html>

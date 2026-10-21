@@ -580,20 +580,155 @@
             </div>
 
             <!-- TABS DE NAVEGACIÓN DOCENTE -->
-            <div style="display:flex; gap:10px; border-bottom:2px solid var(--border); margin-bottom:24px; overflow-x:auto;">
-                <button type="button" id="tabAdminStudents" class="tab-btn-admin active" onclick="switchAdminTab('students')">
+            <div style="display:flex; gap:10px; border-bottom:2px solid var(--border); margin-bottom:24px; overflow-x:auto; padding-bottom:4px;">
+                <button type="button" id="tabAdminLive" class="tab-btn-admin active" onclick="switchAdminTab('live')">
+                    🟢 Sala de Espera y Presencia (<span id="livePresenceBadge">0</span>)
+                </button>
+                <button type="button" id="tabAdminQuiz" class="tab-btn-admin" onclick="switchAdminTab('quiz')">
+                    ⚡ Live Quiz Síncrono (Mentimeter)
+                </button>
+                <button type="button" id="tabAdminStudents" class="tab-btn-admin" onclick="switchAdminTab('students')">
                     👥 Alumnos Inscritos (<span id="studentsCountBadge">0</span>)
                 </button>
                 <button type="button" id="tabAdminLocks" class="tab-btn-admin" onclick="switchAdminTab('locks')">
                     🔒 Desbloqueo de Materiales
                 </button>
                 <button type="button" id="tabAdminPoll" class="tab-btn-admin" onclick="switchAdminTab('poll')">
-                    ⚡ Dilemas War Room (En Vivo)
+                    🏛️ Dilemas War Room
                 </button>
                 <button type="button" id="tabAdminGrades" class="tab-btn-admin" onclick="switchAdminTab('grades')">
-                    🎯 Rúbrica y Calificaciones (0-20 pts)
+                    🎯 Rúbrica y Notas (0-20 pts)
                 </button>
             </div>
+
+                        <!-- CONTENIDO TAB LIVE: SALA DE ESPERA Y CONTROL DE PRESENCIA EN VIVO -->
+            <div id="adminTabContentLive">
+                <div class="content-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                        <div>
+                            <h3 style="margin:0; display:flex; align-items:center; gap:8px;">
+                                <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10b981; animation:pulse 2s infinite;"></span>
+                                Sala de Espera y Control de Acceso en Tiempo Real
+                            </h3>
+                            <span style="font-size:12.5px; color:var(--text-muted);">Monitoreo de participantes conectados en vivo. El facilitador puede validarlos individualmente o en bloque para autorizar el acceso formal a la clase.</span>
+                        </div>
+                        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                            <button type="button" class="btn-action-admin" style="background:#059669; color:#fff;" onclick="admitAllLiveStudents(true)">
+                                <span>🟢</span> Admitir a Todos en el Aula
+                            </button>
+                            <button type="button" class="btn-action-admin" style="background:#dc2626; color:#fff;" onclick="admitAllLiveStudents(false)">
+                                <span>🔒</span> Revocar Acceso a Todos
+                            </button>
+                            <button type="button" class="btn-action-admin" onclick="refreshLivePresences()">
+                                <span>🔄</span> Actualizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:16px; display:flex; gap:20px; flex-wrap:wrap;">
+                        <div><strong>Participantes en Línea:</strong> <span id="liveTotalCount" style="color:var(--navy-primary); font-weight:800; font-size:16px;">0</span></div>
+                        <div><strong>Admitidos en Clase:</strong> <span id="liveAdmittedCount" style="color:#059669; font-weight:800; font-size:16px;">0</span></div>
+                        <div><strong>En Espera:</strong> <span id="liveWaitingCount" style="color:#d97706; font-weight:800; font-size:16px;">0</span></div>
+                        <div style="margin-left:auto; font-size:12px; color:var(--text-light); display:flex; align-items:center; gap:6px;">
+                            <span>⏱️ Sincronización automática cada 4 seg</span>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Participante / Estudiante</th>
+                                    <th>Correo Institucional</th>
+                                    <th>Dirección IP</th>
+                                    <th>Última Conexión</th>
+                                    <th>Estado de Admisión</th>
+                                    <th>Acción del Docente</th>
+                                </tr>
+                            </thead>
+                            <tbody id="livePresenceTableBody">
+                                <tr>
+                                    <td colspan="6" style="text-align:center; padding:32px; color:var(--text-light);">
+                                        Iniciando monitor de presencia en tiempo real...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENIDO TAB QUIZ: MOTOR DE EVALUACIÓN INTERACTIVA TIPO MENTIMETER -->
+            <div id="adminTabContentQuiz" style="display:none;">
+                <div class="content-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                        <div>
+                            <h3 style="margin:0; display:flex; align-items:center; gap:8px;">
+                                <span>⚡</span> Motor de Live Quiz Interactivo (Tipo Mentimeter / Kahoot)
+                            </h3>
+                            <span style="font-size:12.5px; color:var(--text-muted);">
+                                El facilitador lanza preguntas al aula en vivo. Se despliega un modal interactivo en las pantallas de todos los participantes conectados con temporizador, bonificación de velocidad y podio final.
+                            </span>
+                        </div>
+                        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                            <button type="button" class="btn-action-admin" style="background:#dc2626; color:#fff;" onclick="closeLiveQuestion()">
+                                <span>⏹️</span> Cerrar Pregunta Activa
+                            </button>
+                            <button type="button" class="btn-action-admin" style="background:#ca8a04; color:#fff;" onclick="openPodiumView()">
+                                <span>🏆</span> Ver Podio y Ganadores en Vivo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- BANNER DE PREGUNTA EN VIVO ACTIVA -->
+                    <div id="activeQuestionLiveBanner" style="display:none; background:#ecfdf5; border:2px solid #10b981; border-radius:14px; padding:18px; margin-bottom:20px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                            <div>
+                                <span style="background:#10b981; color:#fff; font-size:10.5px; font-weight:800; padding:3px 8px; border-radius:9999px; text-transform:uppercase;">
+                                    🔴 PREGUNTA ACTIVA EN LAS PANTALLAS DE LOS ALUMNOS
+                                </span>
+                                <h4 id="activeQuestionTitle" style="color:#065f46; font-size:16px; font-weight:800; margin:6px 0 2px;"></h4>
+                                <span id="activeQuestionMeta" style="font-size:12px; color:#047857;"></span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <div style="text-align:right;">
+                                    <div style="font-size:11px; color:#047857; font-weight:700;">RESPUESTAS REGISTRADAS</div>
+                                    <div id="liveAnswersCount" style="font-size:24px; font-weight:800; color:#065f46;">0</div>
+                                </div>
+                                <button type="button" onclick="closeLiveQuestion()" class="btn-action-admin" style="background:#dc2626; color:#fff; padding:8px 14px;">
+                                    Terminar Pregunta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:12px; font-weight:700; color:var(--navy-primary); font-size:14px;">
+                        📚 Banco Oficial de 12 Preguntas Curadas (Unidades 1 a 6)
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Unidad</th>
+                                    <th>Enunciado de la Pregunta</th>
+                                    <th>Respuesta Correcta</th>
+                                    <th>Tiempo</th>
+                                    <th>Acción de Lanzamiento</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quizQuestionsTableBody">
+                                <tr>
+                                    <td colspan="5" style="text-align:center; padding:24px; color:var(--text-light);">
+                                        Cargando banco de preguntas...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- CONTENIDO TAB 1: ALUMNOS INSCRITOS -->
             <div id="adminTabContentStudents">
@@ -1274,34 +1409,299 @@
         }
 
         function switchAdminTab(tab) {
-            document.getElementById('tabAdminStudents').classList.remove('active');
-            document.getElementById('tabAdminLocks').classList.remove('active');
-            document.getElementById('tabAdminPoll').classList.remove('active');
-            document.getElementById('tabAdminGrades').classList.remove('active');
+            const tabs = ['live', 'quiz', 'students', 'locks', 'poll', 'grades'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tabAdmin' + t.charAt(0).toUpperCase() + t.slice(1));
+                const content = document.getElementById('adminTabContent' + t.charAt(0).toUpperCase() + t.slice(1));
+                if (btn) btn.classList.remove('active');
+                if (content) content.style.display = 'none';
+            });
 
-            document.getElementById('adminTabContentStudents').style.display = 'none';
-            document.getElementById('adminTabContentLocks').style.display = 'none';
-            document.getElementById('adminTabContentPoll').style.display = 'none';
-            document.getElementById('adminTabContentGrades').style.display = 'none';
+            const targetBtn = document.getElementById('tabAdmin' + tab.charAt(0).toUpperCase() + tab.slice(1));
+            const targetContent = document.getElementById('adminTabContent' + tab.charAt(0).toUpperCase() + tab.slice(1));
+            if (targetBtn) targetBtn.classList.add('active');
+            if (targetContent) targetContent.style.display = 'block';
 
-            if (tab === 'students') {
-                document.getElementById('tabAdminStudents').classList.add('active');
-                document.getElementById('adminTabContentStudents').style.display = 'block';
-            } else if (tab === 'locks') {
-                document.getElementById('tabAdminLocks').classList.add('active');
-                document.getElementById('adminTabContentLocks').style.display = 'block';
-            } else if (tab === 'poll') {
-                document.getElementById('tabAdminPoll').classList.add('active');
-                document.getElementById('adminTabContentPoll').style.display = 'block';
-            } else if (tab === 'grades') {
-                document.getElementById('tabAdminGrades').classList.add('active');
-                document.getElementById('adminTabContentGrades').style.display = 'block';
+            if (tab === 'live') refreshLivePresences();
+            if (tab === 'quiz') loadQuizQuestions();
+        }
+
+        // ==========================================
+        // FUNCIONES DE CONTROL DE PRESENCIA EN VIVO
+        // ==========================================
+        let livePresenceTimer = null;
+
+        async function refreshLivePresences() {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-presence.list") }}');
+                const data = await res.json();
+                if (data.success) {
+                    renderLivePresenceTable(data.presences);
+                    document.getElementById('livePresenceBadge').innerText = data.total_online;
+                    document.getElementById('liveTotalCount').innerText = data.total_online;
+                    document.getElementById('liveAdmittedCount').innerText = data.admitted_count;
+                    document.getElementById('liveWaitingCount').innerText = data.total_online - data.admitted_count;
+                }
+            } catch (err) {
+                console.error('Error fetching live presences:', err);
             }
         }
+
+        function renderLivePresenceTable(presences) {
+            const tbody = document.getElementById('livePresenceTableBody');
+            if (!presences || presences.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:28px; color:var(--text-light);">No hay participantes conectados en la sala en este momento.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = presences.map(p => {
+                const isAdmitted = !!p.is_admitted;
+                const statusBadge = isAdmitted 
+                    ? `<span style="background:#d1fae5; color:#065f46; font-size:11px; font-weight:800; padding:4px 10px; border-radius:9999px;">🟢 Admitido en Clase</span>`
+                    : `<span style="background:#fef3c7; color:#92400e; font-size:11px; font-weight:800; padding:4px 10px; border-radius:9999px;">🟡 En Sala de Espera</span>`;
+
+                const actionBtn = isAdmitted
+                    ? `<button type="button" class="btn-action-admin" style="padding:4px 10px; font-size:11.5px; background:#ef4444; color:#fff;" onclick="toggleStudentAdmission(${p.id}, false)">Revocar</button>`
+                    : `<button type="button" class="btn-action-admin" style="padding:4px 10px; font-size:11.5px; background:#10b981; color:#fff;" onclick="toggleStudentAdmission(${p.id}, true)">Admitir Alumno</button>`;
+
+                const lastPingDate = new Date(p.last_ping).toLocaleTimeString();
+
+                return `
+                    <tr>
+                        <td><strong>${p.student_name}</strong></td>
+                        <td>${p.student_email}</td>
+                        <td style="font-family:var(--font-mono); font-size:11.5px;">${p.ip_address || 'Localhost'}</td>
+                        <td><span style="font-size:12px; color:var(--text-muted);">${lastPingDate}</span></td>
+                        <td>${statusBadge}</td>
+                        <td>${actionBtn}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function toggleStudentAdmission(presenceId, status) {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-presence.admit") }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    body: JSON.stringify({ presence_id: presenceId, status: status })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    refreshLivePresences();
+                }
+            } catch (err) {
+                alert('Error al actualizar admisión');
+            }
+        }
+
+        async function admitAllLiveStudents(status) {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-presence.admit") }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    body: JSON.stringify({ admit_all: true, status: status })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(data.message);
+                    refreshLivePresences();
+                }
+            } catch (err) {
+                alert('Error al admitir alumnos');
+            }
+        }
+
+        // ==========================================
+        // FUNCIONES DE LIVE QUIZ (MENTIMETER STYLE)
+        // ==========================================
+        let quizQuestionsCache = [];
+
+        async function loadQuizQuestions() {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-quiz.questions") }}');
+                const data = await res.json();
+                if (data.success) {
+                    quizQuestionsCache = data.questions;
+                    renderQuizQuestionsTable(data.questions);
+                    checkActiveQuizState();
+                }
+            } catch (err) {
+                console.error('Error loading quiz questions:', err);
+            }
+        }
+
+        function renderQuizQuestionsTable(questions) {
+            const tbody = document.getElementById('quizQuestionsTableBody');
+            if (!questions || questions.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:24px;">No hay preguntas en el banco.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = questions.map(q => {
+                const options = Array.isArray(q.options) ? q.options : JSON.parse(q.options || '[]');
+                const correctOptionText = options[q.correct_index] || 'No definida';
+                const isActive = !!q.is_active;
+
+                const actionBtn = isActive
+                    ? `<button type="button" class="btn-action-admin" style="background:#dc2626; color:#fff;" onclick="closeLiveQuestion()">⏹️ En Pantalla (Cerrar)</button>`
+                    : `<button type="button" class="btn-action-admin" style="background:#0284c7; color:#fff;" onclick="launchQuizQuestion(${q.id})">🚀 Lanzar al Aula</button>`;
+
+                return `
+                    <tr style="${isActive ? 'background:#ecfdf5;' : ''}">
+                        <td><span style="font-size:11px; font-weight:800; background:#e0f2fe; color:#0369a1; padding:3px 8px; border-radius:6px;">Unidad ${q.unit_number}</span></td>
+                        <td><strong>${q.question}</strong></td>
+                        <td><span style="font-size:12px; color:#059669; font-weight:700;">✓ ${correctOptionText}</span></td>
+                        <td>${q.time_limit_sec}s</td>
+                        <td>${actionBtn}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function launchQuizQuestion(questionId) {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-quiz.trigger") }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    body: JSON.stringify({ question_id: questionId })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(data.message);
+                    loadQuizQuestions();
+                }
+            } catch (err) {
+                alert('Error al lanzar pregunta');
+            }
+        }
+
+        async function closeLiveQuestion() {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-quiz.trigger") }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    body: JSON.stringify({ question_id: 0 })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(data.message);
+                    loadQuizQuestions();
+                }
+            } catch (err) {
+                alert('Error al cerrar pregunta');
+            }
+        }
+
+        async function checkActiveQuizState() {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-quiz.state") }}');
+                const data = await res.json();
+                const banner = document.getElementById('activeQuestionLiveBanner');
+                if (data.has_active_question && data.question) {
+                    banner.style.display = 'block';
+                    document.getElementById('activeQuestionTitle').innerText = data.question.question;
+                    document.getElementById('activeQuestionMeta').innerText = `Unidad ${data.question.unit_number} · Límite: ${data.question.time_limit_sec}s`;
+                    document.getElementById('liveAnswersCount').innerText = data.total_answers || 0;
+                } else {
+                    banner.style.display = 'none';
+                }
+            } catch (err) {}
+        }
+
+        async function openPodiumView() {
+            try {
+                const res = await fetch('{{ route("ugma.api.live-quiz.leaderboard") }}');
+                const data = await res.json();
+                if (data.success) {
+                    const modal = document.getElementById('podiumModal');
+                    const winner = data.top_winner;
+                    if (winner) {
+                        document.getElementById('podiumWinnerName').innerText = winner.name;
+                        document.getElementById('podiumWinnerScore').innerText = `${winner.total_score} Puntos (${winner.correct_count} aciertos · Promedio ${winner.avg_time_ms} ms)`;
+                    } else {
+                        document.getElementById('podiumWinnerName').innerText = 'Aún no hay respuestas registradas';
+                        document.getElementById('podiumWinnerScore').innerText = '';
+                    }
+
+                    const tbody = document.getElementById('podiumLeaderboardBody');
+                    tbody.innerHTML = (data.leaderboard || []).map((row, i) => {
+                        const medal = i === 0 ? '🥇' : (i === 1 ? '🥈' : (i === 2 ? '🥉' : `#${i+1}`));
+                        return `
+                            <tr>
+                                <td><strong style="font-size:14px;">${medal}</strong></td>
+                                <td><strong>${row.name}</strong></td>
+                                <td>${row.correct_count} / ${row.answers_count}</td>
+                                <td>${row.avg_time_ms} ms</td>
+                                <td><strong style="color:var(--emerald); font-size:14px;">${row.total_score} pts</strong></td>
+                            </tr>
+                        `;
+                    }).join('');
+
+                    modal.style.display = 'flex';
+                }
+            } catch (err) {
+                alert('Error al cargar podio');
+            }
+        }
+
+        function closePodiumModal() {
+            document.getElementById('podiumModal').style.display = 'none';
+        }
+
+        // Polling de presencia en admin cada 4 segundos
+        setInterval(function() {
+            const liveTab = document.getElementById('adminTabContentLive');
+            if (liveTab && liveTab.style.display !== 'none') {
+                refreshLivePresences();
+            }
+            const quizTab = document.getElementById('adminTabContentQuiz');
+            if (quizTab && quizTab.style.display !== 'none') {
+                checkActiveQuizState();
+            }
+        }, 4000);
+
 
         document.addEventListener('DOMContentLoaded', function() {
             renderAdminView();
         });
     </script>
+    <!-- MODAL DE PODIO Y GANADORES (MENTIMETER STYLE) -->
+    <div id="podiumModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); z-index:99999; align-items:center; justify-content:center; padding:16px;">
+        <div style="background:#ffffff; border-radius:20px; max-width:650px; width:100%; padding:32px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.3); text-align:center; position:relative;">
+            <button type="button" onclick="closePodiumModal()" style="position:absolute; top:18px; right:18px; background:#f1f5f9; border:none; border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer;">✕</button>
+            
+            <div style="font-size:42px; margin-bottom:8px;">🏆</div>
+            <h2 style="font-size:24px; font-weight:800; color:var(--navy-primary); margin:0;">Podio Oficial del Aula en Vivo</h2>
+            <p style="font-size:13.5px; color:var(--text-muted); margin:6px 0 20px;">Diplomado en Gerencia de Obras · Evaluación Síncrona UGMA</p>
+
+            <div id="podiumTopWinnerBox" style="background:linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border:2px solid #f59e0b; border-radius:16px; padding:20px; margin-bottom:20px;">
+                <span style="font-size:11px; font-weight:800; color:#b45309; text-transform:uppercase; letter-spacing:0.05em;">🥇 1er Lugar · Ganador del Reto</span>
+                <h3 id="podiumWinnerName" style="font-size:22px; font-weight:800; color:#78350f; margin:6px 0;"></h3>
+                <div id="podiumWinnerScore" style="font-size:15px; font-weight:700; color:#92400e;"></div>
+            </div>
+
+            <div class="table-responsive" style="max-height:260px; overflow-y:auto; margin-bottom:20px;">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Participante</th>
+                            <th>Aciertos</th>
+                            <th>Tiempo Promedio</th>
+                            <th>Puntaje Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="podiumLeaderboardBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" class="btn-action-admin" style="background:var(--navy-primary); color:#fff; padding:10px 24px;" onclick="closePodiumModal()">
+                Cerrar Podio
+            </button>
+        </div>
+    </div>
+
 </body>
 </html>
