@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Suite Oficial de Testing Automatizado · Ecosistema Aula & Lab MotaZorrilla
  * Protocolo 3: Trofeo de Testing (Feature Tests + Unit Tests + Unhappy Paths)
@@ -11,7 +12,8 @@ $passed = 0;
 $failed = 0;
 $errors = [];
 
-function assert_test(string $name, callable $testFn): void {
+function assert_test(string $name, callable $testFn): void
+{
     global $passed, $failed, $errors;
     try {
         $result = $testFn();
@@ -59,21 +61,22 @@ $routes = [
 ];
 
 foreach ($routes as $name => $relPath) {
-    assert_test("Ruta [{$name}] existe y posee estructura HTML5 válida", function() use ($baseDir, $relPath) {
-        $filePath = $baseDir . str_replace('/', DIRECTORY_SEPARATOR, $relPath);
-        if (!file_exists($filePath)) {
+    assert_test("Ruta [{$name}] existe y posee estructura HTML5 válida", function () use ($baseDir, $relPath) {
+        $filePath = $baseDir.str_replace('/', DIRECTORY_SEPARATOR, $relPath);
+        if (! file_exists($filePath)) {
             throw new Exception("Archivo no encontrado: {$filePath}");
         }
         $content = file_get_contents($filePath);
         if (stripos($content, '<!DOCTYPE html>') === false) {
-            throw new Exception("Falta declaración <!DOCTYPE html>");
+            throw new Exception('Falta declaración <!DOCTYPE html>');
         }
         if (stripos($content, '<title>') === false) {
-            throw new Exception("Falta etiqueta <title>");
+            throw new Exception('Falta etiqueta <title>');
         }
         if (stripos($content, 'name="viewport"') === false) {
-            throw new Exception("Falta meta viewport");
+            throw new Exception('Falta meta viewport');
         }
+
         return true;
     });
 }
@@ -83,273 +86,318 @@ foreach ($routes as $name => $relPath) {
 // ==========================================
 echo "\n\033[33m--- [2/3] FEATURE TESTS: MARCADORES TÉCNICOS Y ESTÁNDARES ---\033[0m\n";
 
-assert_test("Masterclass BIM contiene articulación con Cómputos Harry Osers (Módulo II)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+assert_test('Masterclass BIM contiene articulación con Cómputos Harry Osers (Módulo II)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
     return stripos($content, 'Harry Osers') !== false && stripos($content, 'COVENIN 2000') !== false;
 });
 
-assert_test("Masterclass BIM contiene blindaje legal del Art. 1637 Código Civil Venezolano", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+assert_test('Masterclass BIM contiene blindaje legal del Art. 1637 Código Civil Venezolano', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
     return stripos($content, '1637') !== false && stripos($content, 'Responsabilidad Decenal') !== false;
 });
 
-assert_test("Masterclass BIM contiene estándares buildingSMART IFC 4.3 y BCF 3.0", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+assert_test('Masterclass BIM contiene estándares buildingSMART IFC 4.3 y BCF 3.0', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
     return stripos($content, 'IFC 4.3') !== false && stripos($content, 'BCF 3.0') !== false;
 });
 
-assert_test("Masterclass BIM implementa Sangría Académica en párrafos (.academic-p text-indent)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+assert_test('Masterclass BIM implementa Sangría Académica en párrafos (.academic-p text-indent)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
     return stripos($content, 'text-indent') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Masterclass BIM implementa Paginador / Stepper secuencial de 9 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+assert_test('Masterclass BIM implementa Paginador / Stepper secuencial de 9 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Masterclass BIM implementa Modal de 8 Dimensiones (1D a 8D+)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
+assert_test('Masterclass BIM implementa Modal de 8 Dimensiones (1D a 8D+)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
     return stripos($content, 'dimModal') !== false && stripos($content, 'openDimModal') !== false;
 });
 
-assert_test("Masterclass BIM contiene enlaces oficiales a ISO, buildingSMART y TSJ", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/masterclass-bim/index.html');
-    return stripos($content, 'https://www.iso.org/') !== false 
+assert_test('Masterclass BIM contiene enlaces oficiales a ISO, buildingSMART y TSJ', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
+    return stripos($content, 'https://www.iso.org/') !== false
         && stripos($content, 'https://technical.buildingsmart.org/') !== false
         && stripos($content, 'tsj.gob.ve') !== false;
 });
 
-assert_test("Día 1 (CDE ISO 19650) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
+assert_test('Día 1 (CDE ISO 19650) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/cde-iso19650/index.html');
+
     return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Día 1 (CDE ISO 19650) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
+assert_test('Día 1 (CDE ISO 19650) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/cde-iso19650/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Día 1 (CDE ISO 19650) incorpora simuladores (cdeApprovalSim, isoConstructor, eirMatrix, ifcTree)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
-    return stripos($content, 'runCdeTransition') !== false 
+assert_test('Día 1 (CDE ISO 19650) incorpora simuladores (cdeApprovalSim, isoConstructor, eirMatrix, ifcTree)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/cde-iso19650/index.html');
+
+    return stripos($content, 'runCdeTransition') !== false
         && stripos($content, 'updateIsoBuilder') !== false
         && stripos($content, 'updateEirMatrix') !== false
         && stripos($content, 'inspectIfcNode') !== false;
 });
 
-assert_test("Día 1 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/cde-iso19650/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/cde-iso19650.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/cde-iso19650/index.html');
+assert_test('Día 1 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/cde-iso19650/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/cde-iso19650.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/cde-iso19650/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Día 2 (Clash Detection 3D) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
+assert_test('Día 2 (Clash Detection 3D) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/clash-detection/index.html');
+
     return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Día 2 (Clash Detection 3D) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
+assert_test('Día 2 (Clash Detection 3D) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/clash-detection/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Día 2 (Clash Detection 3D) incorpora simuladores (runMatrixRuleEvaluation, init3DLab, renderBcfCode, calculateReworkCost)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
-    return stripos($content, 'runMatrixRuleEvaluation') !== false 
+assert_test('Día 2 (Clash Detection 3D) incorpora simuladores (runMatrixRuleEvaluation, init3DLab, renderBcfCode, calculateReworkCost)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/clash-detection/index.html');
+
+    return stripos($content, 'runMatrixRuleEvaluation') !== false
         && stripos($content, 'init3DLab') !== false
         && stripos($content, 'renderBcfCode') !== false
         && stripos($content, 'calculateReworkCost') !== false;
 });
 
-assert_test("Día 2 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/clash-detection/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/clash-detection.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/clash-detection/index.html');
+assert_test('Día 2 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/clash-detection/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/clash-detection.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/clash-detection/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Día 3 (Planificación 4D/5D) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+assert_test('Día 3 (Planificación 4D/5D) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+
     return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Día 3 (Planificación 4D/5D) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+assert_test('Día 3 (Planificación 4D/5D) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Día 3 (Planificación 4D/5D) incorpora simuladores (initEVMChart, updateEVM, toggleTimelinePlay, updateTimelineDisplay)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
-    return stripos($content, 'initEVMChart') !== false 
+assert_test('Día 3 (Planificación 4D/5D) incorpora simuladores (initEVMChart, updateEVM, toggleTimelinePlay, updateTimelineDisplay)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+
+    return stripos($content, 'initEVMChart') !== false
         && stripos($content, 'updateEVM') !== false
         && stripos($content, 'toggleTimelinePlay') !== false
         && stripos($content, 'updateTimelineDisplay') !== false;
 });
 
-assert_test("Día 3 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/planificacion-4d-5d/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/planificacion-4d-5d.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+assert_test('Día 3 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/planificacion-4d-5d.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/planificacion-4d-5d/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Día 4 (IA Control de Obra) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
+assert_test('Día 4 (IA Control de Obra) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/ia-control-obra/index.html');
+
     return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Día 4 (IA Control de Obra) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
+assert_test('Día 4 (IA Control de Obra) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/ia-control-obra/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Día 4 (IA Control de Obra) incorpora simuladores (setScanScenario, generateMinuta, generateClaimLetter)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
-    return stripos($content, 'setScanScenario') !== false 
+assert_test('Día 4 (IA Control de Obra) incorpora simuladores (setScanScenario, generateMinuta, generateClaimLetter)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/ia-control-obra/index.html');
+
+    return stripos($content, 'setScanScenario') !== false
         && stripos($content, 'generateMinuta') !== false
         && stripos($content, 'generateClaimLetter') !== false;
 });
 
-assert_test("Día 4 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/ia-control-obra/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/ia-control-obra.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/ia-control-obra/index.html');
+assert_test('Día 4 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/ia-control-obra/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/ia-control-obra.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/ia-control-obra/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Día 5 (Energía Solar y Sostenibilidad) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+assert_test('Día 5 (Energía Solar y Sostenibilidad) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+
     return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Día 5 (Energía Solar y Sostenibilidad) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+assert_test('Día 5 (Energía Solar y Sostenibilidad) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Día 5 (Energía Solar y Sostenibilidad) incorpora simuladores (calculateSolar, calculateEmbodiedCarbon, calculateEnvelopeAudit)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
-    return stripos($content, 'calculateSolar') !== false 
+assert_test('Día 5 (Energía Solar y Sostenibilidad) incorpora simuladores (calculateSolar, calculateEmbodiedCarbon, calculateEnvelopeAudit)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+
+    return stripos($content, 'calculateSolar') !== false
         && stripos($content, 'calculateEmbodiedCarbon') !== false
         && stripos($content, 'calculateEnvelopeAudit') !== false;
 });
 
-assert_test("Día 5 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/energia-solar-sostenibilidad.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+assert_test('Día 5 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/energia-solar-sostenibilidad.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Día 6 (Taller Integrador) implementa Sangría Académica (.academic-p text-indent: 2.2em)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
+assert_test('Día 6 (Taller Integrador) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/taller-integrador/index.html');
+
     return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
 });
 
-assert_test("Día 6 (Taller Integrador) implementa Stepper paginador secuencial de 7 Módulos", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
+assert_test('Día 6 (Taller Integrador) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/taller-integrador/index.html');
+
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test("Día 6 (Taller Integrador) incorpora simuladores (calculateRubric, generateWarRoomActa, triggerCrisisScenario)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
-    return stripos($content, 'calculateRubric') !== false 
+assert_test('Día 6 (Taller Integrador) incorpora simuladores (calculateRubric, generateWarRoomActa, triggerCrisisScenario)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/taller-integrador/index.html');
+
+    return stripos($content, 'calculateRubric') !== false
         && stripos($content, 'generateWarRoomActa') !== false
         && stripos($content, 'triggerCrisisScenario') !== false;
 });
 
-assert_test("Día 6 sincronizado al 100% entre ugma-gerencia-obras, Blade y public", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/taller-integrador/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/taller-integrador.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/taller-integrador/index.html');
+assert_test('Día 6 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/taller-integrador/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/taller-integrador.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/taller-integrador/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan", function() use ($baseDir) {
-    if (!file_exists($baseDir . '/artisan') || !file_exists($baseDir . '/routes/web.php')) {
+assert_test('Laravel Framework: artisan, routes/web.php y Blade templates existen y cargan', function () use ($baseDir) {
+    if (! file_exists($baseDir.'/artisan') || ! file_exists($baseDir.'/routes/web.php')) {
         return false;
     }
-    $bladePath = $baseDir . '/resources/views/ugma/masterclass-bim.blade.php';
+    $bladePath = $baseDir.'/resources/views/ugma/masterclass-bim.blade.php';
+
     return file_exists($bladePath);
 });
 
-assert_test("Hub UGMA enlaza al Visor BIM 3D del Laboratorio ConTech (lab.motazorrilla.com/bim)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+assert_test('Hub UGMA enlaza al Visor BIM 3D del Laboratorio ConTech (lab.motazorrilla.com/bim)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
     return stripos($content, 'https://lab.motazorrilla.com/bim/') !== false;
 });
 
-assert_test("Hub UGMA implementa Clases de Repaso interactivas para Módulos I al IV (#repasoModal y openRepasoModal)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
-    return stripos($content, 'id="repasoModal"') !== false 
+assert_test('Hub UGMA implementa Clases de Repaso interactivas para Módulos I al IV (#repasoModal y openRepasoModal)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
+    return stripos($content, 'id="repasoModal"') !== false
         && stripos($content, 'openRepasoModal') !== false
         && stripos($content, 'btn-retro-open') !== false;
 });
 
-assert_test("Hub UGMA integra material real de Classroom (Harry Osers, Caso Matanzas, Lean Construction, RACI)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
-    return stripos($content, 'Harry Osers') !== false 
+assert_test('Hub UGMA integra material real de Classroom (Harry Osers, Caso Matanzas, Lean Construction, RACI)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
+    return stripos($content, 'Harry Osers') !== false
         && stripos($content, 'Expansión Industrial Matanzas') !== false
         && stripos($content, 'Last Planner System') !== false
         && stripos($content, 'Matriz RACI') !== false;
 });
 
-assert_test("Hub UGMA incorpora simuladores interactivos (calcApuSim, calcLpsSim, evalLegalCase, updateRaciSim)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
-    return stripos($content, 'function calcApuSim') !== false 
+assert_test('Hub UGMA incorpora simuladores interactivos (calcApuSim, calcLpsSim, evalLegalCase, updateRaciSim)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
+    return stripos($content, 'function calcApuSim') !== false
         && stripos($content, 'function calcLpsSim') !== false
         && stripos($content, 'function evalLegalCase') !== false
         && stripos($content, 'function updateRaciSim') !== false;
 });
 
-assert_test("Blade template ugma/index.blade.php y public/ugma-gerencia-obras/index.html sincronizados al 100%", function() use ($baseDir) {
-    $htmlContent = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
-    $bladeContent = file_get_contents($baseDir . '/resources/views/ugma/index.blade.php');
-    $publicContent = file_get_contents($baseDir . '/public/ugma-gerencia-obras/index.html');
+assert_test('Blade template ugma/index.blade.php y public/ugma-gerencia-obras/index.html sincronizados al 100%', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/index.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/index.html');
+
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
 
-assert_test("Nginx Gateway enruta Club TIA a bridge Docker (172.17.0.1:8093) y contiene aliases (/clubtia, /tia)", function() use ($baseDir) {
-    $nginxConf = file_get_contents($baseDir . '/nginx.conf');
+assert_test('Nginx Gateway enruta Club TIA a bridge Docker (172.17.0.1:8093) y contiene aliases (/clubtia, /tia)', function () use ($baseDir) {
+    $nginxConf = file_get_contents($baseDir.'/nginx.conf');
+
     return stripos($nginxConf, '172.17.0.1:8093') !== false
         && stripos($nginxConf, 'location = /clubtia') !== false
         && stripos($nginxConf, 'location = /tia') !== false;
 });
 
-assert_test("Especificaciones OpenSpec v2.0 existen y cumplen sintaxis RFC 2119", function() use ($baseDir) {
-    $specPath = $baseDir . '/openspec/specs/ugma-diplomado-portal/spec.md';
-    if (!file_exists($specPath)) {
-        throw new Exception("Falta especificación OpenSpec");
+assert_test('Especificaciones OpenSpec v2.0 existen y cumplen sintaxis RFC 2119', function () use ($baseDir) {
+    $specPath = $baseDir.'/openspec/specs/ugma-diplomado-portal/spec.md';
+    if (! file_exists($specPath)) {
+        throw new Exception('Falta especificación OpenSpec');
     }
     $content = file_get_contents($specPath);
+
     return stripos($content, 'SHALL') !== false && stripos($content, 'GIVEN') !== false && stripos($content, 'THEN') !== false;
 });
 
-assert_test("Hub UGMA implementa el Sistema de Autenticación de Alumnos (#authModal, openAuthModal, renderAuthState)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+assert_test('Hub UGMA implementa el Sistema de Autenticación de Alumnos (#authModal, openAuthModal, renderAuthState)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
     return stripos($content, 'id="authModal"') !== false
         && stripos($content, 'function openAuthModal') !== false
         && stripos($content, 'function renderAuthState') !== false
         && stripos($content, 'ugma_student_session') !== false;
 });
 
-assert_test("Hub UGMA implementa la Bóveda Centralizada de Descargas (#boveda-descargas, #bovedaLockCurtain)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
-    return stripos($content, 'id="boveda-descargas"') !== false
-        && stripos($content, 'id="bovedaLockCurtain"') !== false
-        && stripos($content, 'boveda-resumen-btn') !== false;
+assert_test('Hub UGMA integra descargas directas en Módulos I al IV y acceso facilitador (0 bóveda segregada)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
+    return stripos($content, 'Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf') !== false
+        && stripos($content, 'Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf') !== false
+        && stripos($content, 'auth-protected-download') !== false
+        && stripos($content, 'admin.html') !== false
+        && stripos($content, 'Panel Facilitador') !== false
+        && stripos($content, 'id="boveda-descargas"') === false;
 });
 
-assert_test("Hub UGMA estandarizado estrictamente a 'Módulo V: Tecnología y Sostenibilidad' (0 menciones de Módulo VI)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/index.html');
+assert_test("Hub UGMA estandarizado estrictamente a 'Módulo V: Tecnología y Sostenibilidad' (0 menciones de Módulo VI)", function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+
     return (stripos($content, 'Módulo VI') === false)
         && (stripos($content, 'Modulo VI') === false)
         && (stripos($content, 'Módulo V: Tecnología y Sostenibilidad') !== false);
 });
 
-assert_test("Bóveda de Descargas contiene los 4 Resúmenes Ejecutivos en PDF y expedientes de trabajo (Módulos I al V)", function() use ($baseDir) {
-    $bovedaDir = $baseDir . '/public/ugma-gerencia-obras/descargas/modulos-previos/';
+assert_test('Bóveda de Descargas contiene los 4 Resúmenes Ejecutivos en PDF y expedientes de trabajo (Módulos I al V)', function () use ($baseDir) {
+    $bovedaDir = $baseDir.'/public/ugma-gerencia-obras/descargas/modulos-previos/';
     $requiredFiles = [
         'Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf',
         'Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf',
@@ -361,25 +409,28 @@ assert_test("Bóveda de Descargas contiene los 4 Resúmenes Ejecutivos en PDF y 
         'Peritaje_Patologia_Edificio_San_Antonio.pdf',
         'Planilla_Computos_Harry_Osers.xlsx',
         'Modelo_Matematico_Curva_S.pdf',
-        'Guia_Softwares_Costos_Planificacion.pdf'
+        'Guia_Softwares_Costos_Planificacion.pdf',
     ];
     foreach ($requiredFiles as $file) {
-        if (!file_exists($bovedaDir . $file)) {
+        if (! file_exists($bovedaDir.$file)) {
             throw new Exception("Archivo faltante en Bóveda: {$file}");
         }
     }
+
     return true;
 });
 
-assert_test("Panel Docente (admin.html) implementa validación estricta de credenciales (hector@motazorrilla.com / Baralo00.)", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/admin.html');
+assert_test('Panel Docente (admin.html) implementa validación estricta de credenciales (hector@motazorrilla.com / Baralo00.)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/admin.html');
+
     return stripos($content, 'hector@motazorrilla.com') !== false
         && stripos($content, 'Baralo00.') !== false
         && stripos($content, 'ugma_admin_session') !== false;
 });
 
-assert_test("Panel Docente (admin.html) incorpora gestión de alumnos, switches de bloqueo, dilemas en vivo y rúbrica 0-20", function() use ($baseDir) {
-    $content = file_get_contents($baseDir . '/ugma-gerencia-obras/admin.html');
+assert_test('Panel Docente (admin.html) incorpora gestión de alumnos, switches de bloqueo, dilemas en vivo y rúbrica 0-20', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/admin.html');
+
     return stripos($content, 'ugma_registered_students') !== false
         && stripos($content, 'ugma_module_locks') !== false
         && stripos($content, 'ugma_dilema_config') !== false
@@ -388,7 +439,7 @@ assert_test("Panel Docente (admin.html) incorpora gestión de alumnos, switches 
         && stripos($content, 'saveStudentGrade') !== false;
 });
 
-assert_test("Navegación Móvil Responsive: Menú Hamburguesa implementado en páginas principales y módulos", function() use ($baseDir) {
+assert_test('Navegación Móvil Responsive: Menú Hamburguesa implementado en páginas principales y módulos', function () use ($baseDir) {
     $files = [
         '/ugma-gerencia-obras/index.html',
         '/ugma-gerencia-obras/boveda.html',
@@ -399,15 +450,16 @@ assert_test("Navegación Móvil Responsive: Menú Hamburguesa implementado en p�
         '/ugma-gerencia-obras/admin.html',
     ];
     foreach ($files as $f) {
-        $c = file_get_contents($baseDir . $f);
+        $c = file_get_contents($baseDir.$f);
         if (stripos($c, 'hamburger-btn') === false || stripos($c, 'mobileDrawer') === false || stripos($c, 'toggleMobileMenu') === false) {
             throw new Exception("Falta navegación hamburguesa en: {$f}");
         }
     }
+
     return true;
 });
 
-assert_test("Higiene Académica: 0 referencias a rutas internas 'D:\\UGMA' u 'Obsidian' en HTML visible para alumnos", function() use ($baseDir) {
+assert_test("Higiene Académica: 0 referencias a rutas internas 'D:\\UGMA' u 'Obsidian' en HTML visible para alumnos", function () use ($baseDir) {
     $files = [
         '/ugma-gerencia-obras/index.html',
         '/ugma-gerencia-obras/boveda.html',
@@ -417,15 +469,16 @@ assert_test("Higiene Académica: 0 referencias a rutas internas 'D:\\UGMA' u 'Ob
         '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
     ];
     foreach ($files as $f) {
-        $c = file_get_contents($baseDir . $f);
+        $c = file_get_contents($baseDir.$f);
         if (stripos($c, 'D:\\UGMA') !== false || stripos($c, 'Obsidian') !== false) {
             throw new Exception("Referencia interna detectada en: {$f}");
         }
     }
+
     return true;
 });
 
-assert_test("Higiene Editorial: Resúmenes etiquetados como 'Resumen Académico de Cátedra' (0 menciones de 'Resumen Ejecutivo Oficial')", function() use ($baseDir) {
+assert_test("Higiene Editorial: Resúmenes etiquetados como 'Resumen Académico de Cátedra' (0 menciones de 'Resumen Ejecutivo Oficial')", function () use ($baseDir) {
     $files = [
         '/ugma-gerencia-obras/index.html',
         '/ugma-gerencia-obras/boveda.html',
@@ -435,30 +488,32 @@ assert_test("Higiene Editorial: Resúmenes etiquetados como 'Resumen Académico 
         '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
     ];
     foreach ($files as $f) {
-        $c = file_get_contents($baseDir . $f);
+        $c = file_get_contents($baseDir.$f);
         if (stripos($c, 'Resumen Ejecutivo Oficial') !== false || stripos($c, 'Resúmenes Ejecutivos Oficiales') !== false) {
             throw new Exception("Etiqueta de resumen no permitida en: {$f}");
         }
     }
+
     return true;
 });
 
-assert_test("Módulos I al IV y Admin sincronizados al 100% en Triple Invariante (ugma-gerencia-obras, Blade y public)", function() use ($baseDir) {
+assert_test('Módulos I al IV y Admin sincronizados al 100% en Triple Invariante (ugma-gerencia-obras, Blade y public)', function () use ($baseDir) {
     $pages = [
         'modulo-1-organizacion',
         'modulo-2-costos-evm',
         'modulo-3-marco-legal',
         'modulo-4-lean-calidad',
-        'admin'
+        'admin',
     ];
     foreach ($pages as $p) {
-        $html = file_get_contents($baseDir . "/ugma-gerencia-obras/{$p}.html");
-        $blade = file_get_contents($baseDir . "/resources/views/ugma/{$p}.blade.php");
-        $pub = file_get_contents($baseDir . "/public/ugma-gerencia-obras/{$p}.html");
+        $html = file_get_contents($baseDir."/ugma-gerencia-obras/{$p}.html");
+        $blade = file_get_contents($baseDir."/resources/views/ugma/{$p}.blade.php");
+        $pub = file_get_contents($baseDir."/public/ugma-gerencia-obras/{$p}.html");
         if ($html !== $blade || $html !== $pub) {
             throw new Exception("Desincronización en página: {$p}");
         }
     }
+
     return true;
 });
 
@@ -467,7 +522,7 @@ assert_test("Módulos I al IV y Admin sincronizados al 100% en Triple Invariante
 // ==========================================
 echo "\n\033[33m--- [3/3] UNIT TESTS & UNHAPPY PATHS: FÓRMULAS PARAMÉTRICAS ---\033[0m\n";
 
-assert_test("Unit: Cálculo de ROI BIM con escenario estándar ($2,500,000 USD)", function() {
+assert_test('Unit: Cálculo de ROI BIM con escenario estándar ($2,500,000 USD)', function () {
     $budget = 2500000.0;
     $contingencyRate = 8.5; // %
     $bimCostRate = 1.8; // %
@@ -479,25 +534,37 @@ assert_test("Unit: Cálculo de ROI BIM con escenario estándar ($2,500,000 USD)"
     $netRoi = ($netBenefit / $bimInvestment) * 100;
 
     // Validación numérica determinista
-    if (round($estimatedSavings) !== 170000.0) return false;
-    if (round($bimInvestment) !== 45000.0) return false;
-    if (round($netBenefit) !== 125000.0) return false;
-    if (round($netRoi, 1) !== 277.8) return false;
+    if (round($estimatedSavings) !== 170000.0) {
+        return false;
+    }
+    if (round($bimInvestment) !== 45000.0) {
+        return false;
+    }
+    if (round($netBenefit) !== 125000.0) {
+        return false;
+    }
+    if (round($netRoi, 1) !== 277.8) {
+        return false;
+    }
+
     return true;
 });
 
-assert_test("Unit: Cálculo de Generación Solar Fotovoltaica Guayana (HSP = 5.0, PR = 0.77)", function() {
+assert_test('Unit: Cálculo de Generación Solar Fotovoltaica Guayana (HSP = 5.0, PR = 0.77)', function () {
     $consumoDiarioKwh = 120.0; // kWh/día en faena de obra
     $hsp = 5.0; // Horas Sol Pico en Guayana
     $pr = 0.77; // Performance Ratio
 
     $potenciaPicoKw = $consumoDiarioKwh / ($hsp * $pr);
     // 120 / 3.85 = 31.1688 kWp
-    if (round($potenciaPicoKw, 2) !== 31.17) return false;
+    if (round($potenciaPicoKw, 2) !== 31.17) {
+        return false;
+    }
+
     return true;
 });
 
-assert_test("Unit: Cálculo de Rework Cost MacLeamy (Demolición $1,200 + 3 días cuadrilla $650/día vs Oficina $87.50)", function() {
+assert_test('Unit: Cálculo de Rework Cost MacLeamy (Demolición $1,200 + 3 días cuadrilla $650/día vs Oficina $87.50)', function () {
     $demolition = 1200.0;
     $days = 3;
     $crew = 650.0;
@@ -509,20 +576,31 @@ assert_test("Unit: Cálculo de Rework Cost MacLeamy (Demolición $1,200 + 3 día
     $multiplier = round($totalField / $totalBim, 1); // 36.0
     $roi = round(($netSavings / $totalBim) * 100); // 3500%
 
-    if ($totalField !== 3150.0) return false;
-    if ($totalBim !== 87.50) return false;
-    if ($netSavings !== 3062.50) return false;
-    if ($multiplier !== 36.0) return false;
-    if ($roi !== 3500.0) return false;
+    if ($totalField !== 3150.0) {
+        return false;
+    }
+    if ($totalBim !== 87.50) {
+        return false;
+    }
+    if ($netSavings !== 3062.50) {
+        return false;
+    }
+    if ($multiplier !== 36.0) {
+        return false;
+    }
+    if ($roi !== 3500.0) {
+        return false;
+    }
+
     return true;
 });
 
-assert_test("Unit: Fórmulas EVM ANSI/PMI (BAC=$1.5M, PV 50%, EV 44%, AC=$720k -> CPI 0.917, SPI 0.88, EAC $1,636,364)", function() {
+assert_test('Unit: Fórmulas EVM ANSI/PMI (BAC=$1.5M, PV 50%, EV 44%, AC=$720k -> CPI 0.917, SPI 0.88, EAC $1,636,364)', function () {
     $bac = 1500000.0;
     $pv = $bac * (50.0 / 100.0); // 750000.0
     $ev = $bac * (44.0 / 100.0); // 660000.0
     $ac = 720000.0;
-    
+
     $cv = $ev - $ac; // -60000.0
     $sv = $ev - $pv; // -90000.0
     $cpi = round($ev / $ac, 3); // 0.917
@@ -530,61 +608,103 @@ assert_test("Unit: Fórmulas EVM ANSI/PMI (BAC=$1.5M, PV 50%, EV 44%, AC=$720k -
     $eac = round($bac / ($ev / $ac)); // 1636364
     $vac = $bac - $eac; // -136364
 
-    if ($pv !== 750000.0) return false;
-    if ($ev !== 660000.0) return false;
-    if ($cv !== -60000.0) return false;
-    if ($sv !== -90000.0) return false;
-    if ($cpi !== 0.917) return false;
-    if ($spi !== 0.880) return false;
-    if ($eac !== 1636364.0) return false;
-    if ($vac !== -136364.0) return false;
+    if ($pv !== 750000.0) {
+        return false;
+    }
+    if ($ev !== 660000.0) {
+        return false;
+    }
+    if ($cv !== -60000.0) {
+        return false;
+    }
+    if ($sv !== -90000.0) {
+        return false;
+    }
+    if ($cpi !== 0.917) {
+        return false;
+    }
+    if ($spi !== 0.880) {
+        return false;
+    }
+    if ($eac !== 1636364.0) {
+        return false;
+    }
+    if ($vac !== -136364.0) {
+        return false;
+    }
+
     return true;
 });
 
-assert_test("Unit: Clasificación de Riesgo IA para Bitácoras de Obra (Lluvia + Retraso -> HIGH RISK, Normal -> LOW RISK)", function() {
-    $evalRisk = function(string $weather, string $notes): string {
+assert_test('Unit: Clasificación de Riesgo IA para Bitácoras de Obra (Lluvia + Retraso -> HIGH RISK, Normal -> LOW RISK)', function () {
+    $evalRisk = function (string $weather, string $notes): string {
         $isRain = (stripos($weather, 'Lluvia') !== false);
         $hasDelay = (stripos($notes, 'retraso') !== false || stripos($notes, 'fisura') !== false || stripos($notes, 'riesgo') !== false);
-        if ($isRain && $hasDelay) return 'HIGH';
-        if ($isRain || $hasDelay) return 'MEDIUM';
+        if ($isRain && $hasDelay) {
+            return 'HIGH';
+        }
+        if ($isRain || $hasDelay) {
+            return 'MEDIUM';
+        }
+
         return 'LOW';
     };
 
-    if ($evalRisk('Lluvia Torrencial', 'Hubo retraso en vaciado') !== 'HIGH') return false;
-    if ($evalRisk('Soleado', 'Retraso de suministro') !== 'MEDIUM') return false;
-    if ($evalRisk('Soleado', 'Jornada normal sin novedades') !== 'LOW') return false;
+    if ($evalRisk('Lluvia Torrencial', 'Hubo retraso en vaciado') !== 'HIGH') {
+        return false;
+    }
+    if ($evalRisk('Soleado', 'Retraso de suministro') !== 'MEDIUM') {
+        return false;
+    }
+    if ($evalRisk('Soleado', 'Jornada normal sin novedades') !== 'LOW') {
+        return false;
+    }
+
     return true;
 });
 
-assert_test("Unhappy Path: Calculadora de ROI maneja presupuestos de cero o inversión nula", function() {
+assert_test('Unhappy Path: Calculadora de ROI maneja presupuestos de cero o inversión nula', function () {
     $budget = 0.0;
     $bimInvestment = 0.0;
     $estimatedSavings = 0.0;
-    
+
     // Evitar división por cero
     $roi = ($bimInvestment > 0) ? (($estimatedSavings - $bimInvestment) / $bimInvestment) * 100 : 0.0;
+
     return $roi === 0.0;
 });
 
-assert_test("Unit: Algoritmo de Rúbrica de Grado vigesimal (0-20 pts) y veredicto colegiado", function() {
-    $evalRubric = function($c1, $c2, $c3, $c4) {
+assert_test('Unit: Algoritmo de Rúbrica de Grado vigesimal (0-20 pts) y veredicto colegiado', function () {
+    $evalRubric = function ($c1, $c2, $c3, $c4) {
         $total = ($c1 * 0.25) + ($c2 * 0.25) + ($c3 * 0.25) + ($c4 * 0.25);
-        if ($total >= 19.0) $verdict = "SOBRESALIENTE CON MENCIÓN HONORÍFICA";
-        else if ($total >= 16.0) $verdict = "APROBADO DISTINGUIDO";
-        else if ($total >= 10.0) $verdict = "APROBADO REGULAR";
-        else $verdict = "NO CONFORME / RECHAZADO";
+        if ($total >= 19.0) {
+            $verdict = 'SOBRESALIENTE CON MENCIÓN HONORÍFICA';
+        } elseif ($total >= 16.0) {
+            $verdict = 'APROBADO DISTINGUIDO';
+        } elseif ($total >= 10.0) {
+            $verdict = 'APROBADO REGULAR';
+        } else {
+            $verdict = 'NO CONFORME / RECHAZADO';
+        }
+
         return ['score' => round($total, 2), 'verdict' => $verdict];
     };
-    
+
     $res1 = $evalRubric(19.5, 19.0, 19.2, 19.0);
-    if ($res1['score'] < 19.0 || $res1['verdict'] !== "SOBRESALIENTE CON MENCIÓN HONORÍFICA") return false;
-    
+    if ($res1['score'] < 19.0 || $res1['verdict'] !== 'SOBRESALIENTE CON MENCIÓN HONORÍFICA') {
+        return false;
+    }
+
     $res2 = $evalRubric(16.0, 17.0, 16.5, 16.0);
-    if ($res2['score'] < 16.0 || $res2['verdict'] !== "APROBADO DISTINGUIDO") return false;
+    if ($res2['score'] < 16.0 || $res2['verdict'] !== 'APROBADO DISTINGUIDO') {
+        return false;
+    }
 
     $res3 = $evalRubric(8.0, 9.0, 9.5, 9.0);
-    if ($res3['score'] >= 10.0 || $res3['verdict'] !== "NO CONFORME / RECHAZADO") return false;
-    
+    if ($res3['score'] >= 10.0 || $res3['verdict'] !== 'NO CONFORME / RECHAZADO') {
+        return false;
+    }
+
     return true;
 });
 

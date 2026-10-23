@@ -1323,22 +1323,16 @@
         <!-- TOP NAV -->
         <div class="top-nav">
             <div class="nav-left-cluster">
-                <a href="{{ route('ugma.index') }}" class="back-link">
+                <a href="index.html" class="back-link">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     <span>Diplomado Gerencia UGMA</span>
                 </a>
-                <a href="{{ route('ugma.boveda') }}" class="btn-auth-action btn-auth-register" style="font-size:12.5px;">
-                    <span>📂</span> Bóveda de Descargas
-                </a>
-                <a href="{{ route('ugma.admin') }}" class="btn-auth-action" style="font-size:12px; background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border);" title="Acceso Exclusivo Docente">
-                    <span>⚙️</span> Docente
+                <a href="admin.html" class="btn-docente-header" style="background:#0f2942; color:#38bdf8; border:2px solid #38bdf8; padding:7px 15px; border-radius:8px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 8px rgba(15,41,66,0.25);" title="Panel de Administración Docente (Ing. Héctor Mota)">
+                    <span style="font-size:16px;">👨‍🏫</span> <span>Panel Facilitador</span>
                 </a>
             </div>
 
             <div class="nav-right-cluster">
-                <a href="#boveda-descargas" class="nav-lab-link" style="background:#fef3c7; border-color:#fde68a; color:#b45309; font-weight:800;" title="Descargar expedientes oficiales y resúmenes">
-                    <span>📂</span> Bóveda de Descargas
-                </a>
                 <div id="navAuthArea" style="display:flex; align-items:center; gap:8px;"></div>
                 <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener" class="btn-auth-action btn-auth-register" style="font-size:12px;">
                     <span>Visor 3D</span>
@@ -1362,27 +1356,31 @@
             <div id="drawerUserStatus" class="drawer-user-box"></div>
 
             <nav class="drawer-links-group">
+                <div style="background:#0f2942; border:2px solid #38bdf8; border-radius:12px; padding:14px; margin:10px 0 16px;">
+                    <div style="font-size:11px; font-weight:800; color:#38bdf8; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">Acceso del Facilitador</div>
+                    <a href="admin.html" style="display:flex; align-items:center; justify-content:space-between; color:#ffffff; text-decoration:none; font-weight:800; font-size:14px;">
+                        <span>👨‍🏫 Panel Docente (Héctor Mota)</span>
+                        <span style="color:#38bdf8; font-size:18px;">&rarr;</span>
+                    </a>
+                </div>
+
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:8px 0 4px 6px;">Navegación Principal</div>
-                <a href="{{ route('ugma.index') }}" class="drawer-link"><span>🏠</span> Portada del Diplomado</a>
-                <a href="{{ route('ugma.boveda') }}" class="drawer-link"><span>📂</span> Bóveda Central de Descargas</a>
+                <a href="index.html" class="drawer-link"><span>🏠</span> Portada del Diplomado</a>
                 <a href="https://lab.motazorrilla.com/bim/" target="_blank" class="drawer-link"><span>🧪</span> Laboratorio BIM 3D WebGL</a>
 
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Cimientos: Módulos I al IV</div>
-                <a href="{{ route('ugma.modulo-1') }}" class="drawer-link"><span>🏛️</span> Módulo I: Organización de Obras (Pérez)</a>
-                <a href="{{ route('ugma.modulo-2') }}" class="drawer-link"><span>📊</span> Módulo II: Costos, APU & EVM (Angarita)</a>
-                <a href="{{ route('ugma.modulo-3') }}" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal & Art. 1637 (Martínez)</a>
-                <a href="{{ route('ugma.modulo-4') }}" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
+                <a href="modulo-1-organizacion.html" class="drawer-link"><span>🏛️</span> Módulo I: Organización de Obras (Pérez)</a>
+                <a href="modulo-2-costos-evm.html" class="drawer-link"><span>📊</span> Módulo II: Costos, APU & EVM (Angarita)</a>
+                <a href="modulo-3-marco-legal.html" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal & Art. 1637 (Martínez)</a>
+                <a href="modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
 
-                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Las 6 Unidades Oficiales (Excalidraw)</div>
-                <a href="{{ route('ugma.unidad-1') }}" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
-                <a href="{{ route('ugma.unidad-2') }}" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
-                <a href="{{ route('ugma.unidad-3') }}" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
-                <a href="{{ route('ugma.unidad-4') }}" class="drawer-link"><span>☀️</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
-                <a href="{{ route('ugma.unidad-5') }}" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
-                <a href="{{ route('ugma.unidad-6') }}" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador de Grado &amp; War Room Virtual</a>
-
-                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Gestión Académica</div>
-                <a href="{{ route('ugma.admin') }}" class="drawer-link" style="color:var(--emerald); font-weight:700;"><span>⚙️</span> Panel de Administración Docente</a>
+                <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Las 6 Unidades Curriculares</div>
+                <a href="masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
+                <a href="clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
+                <a href="#unidades-curriculares" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
+                <a href="energia-solar-sostenibilidad/index.html" class="drawer-link"><span>☀️</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
+                <a href="#unidades-curriculares" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
+                <a href="taller-integrador/index.html" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador &amp; War Room</a>
             </nav>
         </aside>
 
@@ -1396,6 +1394,27 @@
             <div style="background:#e0f2fe; border:1px solid #0284c7; padding:10px 16px; border-radius:10px; margin:14px 0; color:#0369a1; font-size:13.5px; font-weight:700;">
                 🎯 Competencia Oficial UGMA: "Conocer sobre las herramientas tecnológicas digitales en el seguimiento y control de obras"
             </div>
+
+            <!-- CONSOLA DOCENTE / ACCESO FACILITADOR TITULAR -->
+            <div style="background:linear-gradient(135deg, #0f2942 0%, #1e3a5f 100%); color:#ffffff; border-radius:14px; padding:18px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin:20px 0; border:2px solid #38bdf8; box-shadow:0 6px 20px rgba(15,41,66,0.2);">
+                <div style="display:flex; align-items:center; gap:14px; min-width:280px; flex:1;">
+                    <div style="width:48px; height:48px; border-radius:12px; background:rgba(56,189,248,0.15); border:1px solid #38bdf8; display:flex; align-items:center; justify-content:center; font-size:26px;">
+                        👨‍🏫
+                    </div>
+                    <div>
+                        <div style="font-weight:800; font-size:15.5px; color:#ffffff; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                            Panel de Control Docente · Facilitador Titular
+                            <span style="background:#0284c7; color:#ffffff; font-size:11px; padding:2px 8px; border-radius:9999px; font-weight:700;">ING. HÉCTOR MOTA</span>
+                        </div>
+                        <div style="font-size:12.5px; color:#cbd5e1; margin-top:3px;">
+                            Gestiona la sala de espera en vivo, valida alumnos presentes, lanza preguntas interactivas (Live Quiz), controla recursos y califica con la rúbrica oficial.
+                        </div>
+                    </div>
+                </div>
+                <a href="admin.html" style="background:#38bdf8; color:#0f2942; font-weight:800; font-size:13.5px; padding:11px 22px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(56,189,248,0.4); transition:all 0.2s;">
+                    <span>⚡</span> ENTRAR A MI DASHBOARD DOCENTE &rarr;
+                </a>
+            </div>
             <p class="module-sub">
                 Programa ejecutivo de posgrado (30 horas académicas) enfocado en la adopción estratégica de <strong>Construction Technology (ConTech)</strong>, modelado paramétrico bajo el estándar internacional <strong>openBIM (ISO 19650:2026)</strong>, auditoría espacial 3D, control dinámico de cronograma y costo (<strong>4D/5D EVM con Visión Artificial</strong>), automatización agéntica de bitácoras y eficiencia energética solar fotovoltaica.
             </p>
@@ -1408,8 +1427,8 @@
                 <div class="chip">🎯 <strong>Evaluación Holística 100% sobre 20 pts</strong></div>
             </div>
 
-            <!-- PORTAL PROMINENTE DE ACCESO AL AULA VIRTUAL Y BÓVEDA -->
-            <div id="heroAuthBanner" class="hero-gateway-banner" style="border: 2px solid #0284c7; background: #f0f9ff; padding: 24px; border-radius: 18px; margin: 24px 0;">
+            <!-- PORTAL PROMINENTE DE ACCESO AL AULA VIRTUAL -->
+            <div id="heroAuthBanner" class="hero-gateway-banner" style="border: 2px solid #0284c7; background: #f0f9ff; padding: 22px 24px; border-radius: 18px; margin: 24px 0;">
                 <div style="flex:1; min-width:280px;">
                     <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
                         <span style="font-size:24px;">🏛️</span>
@@ -1419,18 +1438,15 @@
                         </div>
                     </div>
                     <p id="heroAuthDesc" style="font-size:13.5px; color:var(--text-muted); margin:8px 0 0; line-height:1.6;">
-                        Para acceder a los módulos de descarga de la Bóveda (Módulos I al V), ver las clases interactivas y usar los laboratorios 3D, ingresa con tu cuenta de alumno o utiliza el botón de <strong>Acceso Rápido Demo</strong>.
+                        Para acceder a las clases interactivas, herramientas de campo y descargar el resumen y recursos de cada módulo, ingresa con tu cuenta de alumno o regístrate en el diplomado.
                     </p>
                 </div>
                 <div id="heroAuthButtons" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                    <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:12px 20px; font-size:14px; background:#047857; color:#ffffff; border:none; box-shadow:0 4px 10px rgba(4,120,87,0.25);" onclick="handleDemoLogin()">
-                        <span>⚡</span> Entrar como Alumno (Demo 1-Click)
-                    </button>
-                    <button type="button" class="btn-auth-action btn-auth-login" style="padding:11px 18px; font-size:13.5px;" onclick="openAuthModal('login')">
+                    <button type="button" class="btn-auth-action btn-auth-login" style="padding:11px 22px; font-size:14px;" onclick="openAuthModal('login')">
                         <span>🔑</span> Iniciar Sesión
                     </button>
-                    <button type="button" class="btn-auth-action btn-auth-register" style="padding:11px 18px; font-size:13.5px; background:#ffffff;" onclick="openAuthModal('register')">
-                        <span>📝</span> Registrarse
+                    <button type="button" class="btn-auth-action btn-auth-register" style="padding:11px 22px; font-size:14px; background:#ffffff;" onclick="openAuthModal('register')">
+                        <span>📝</span> Registrarse como Alumno
                     </button>
                 </div>
             </div>
@@ -1447,255 +1463,102 @@
 
         <div class="retro-grid">
             <!-- MÓDULO I -->
-            <div class="retro-card" onclick="openRepasoModal(1)">
-                <span class="retro-tag tag-m1">Módulo I · 20 Horas</span>
+            <div class="retro-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span class="retro-tag tag-m1">Módulo I · 20 Horas</span>
+                    <span style="font-size:20px;">🏛️</span>
+                </div>
                 <div class="retro-prof">Prof. Ing. José Ignacio Pérez</div>
                 <h3 class="retro-title">Estructura Organizativa de una Obra</h3>
                 <p class="retro-desc">
-                    Definición de organigramas tradicionales de faena, jerarquías de toma de decisiones entre inspectores, residentes y contratistas, y distribución de responsabilidades en obra civil.
+                    Organigramas matriciales, asignación de responsabilidades con Matriz RACI, jerarquías de faena y gestión de las 6 fases del ciclo constructivo.
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo V:</strong> Transición a roles digitales colaborativos: <em>BIM Manager</em>, Coordinador openBIM y modeladores interdisciplinarios conectados en tiempo real.
+                    <strong>Salto Tecnológico Módulo V:</strong> Transición a roles openBIM colaborativos: BIM Manager y Coordinación federada en CDE.
                 </div>
-                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(1);">
-                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
-                </button>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="modulo-1-organizacion.html" class="btn-retro-open" style="flex:1; min-width:130px; text-align:center; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+                        <span>📖</span> Ver Módulo I &rarr;
+                    </a>
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf" download class="btn-auth-action auth-protected-download" style="background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border); font-size:12px; font-weight:700; padding:8px 12px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <span>📥</span> Descargar Resumen (PDF)
+                    </a>
+                </div>
             </div>
 
             <!-- MÓDULO II -->
-            <div class="retro-card" onclick="openRepasoModal(2)">
-                <span class="retro-tag tag-m2">Módulo II · 20 Horas</span>
+            <div class="retro-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span class="retro-tag tag-m2">Módulo II · 20 Horas</span>
+                    <span style="font-size:20px;">📊</span>
+                </div>
                 <div class="retro-prof">Prof. Ing. Rafael Angarita</div>
                 <h3 class="retro-title">Planificación y Análisis Estratégico</h3>
                 <p class="retro-desc">
-                    Cómputos métricos de Harry Osers, Análisis de Precios Unitarios (APU), Factor de Costos Asociados al Salario (FCAS), formulación de la Curva S y Valor Ganado (EVM) en hojas de cálculo.
+                    Cómputos métricos Harry Osers, Análisis de Precios Unitarios (APU), Factor de Costos (FCAS), Curva S matemática y Valor Ganado (EVM).
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo V:</strong> Extracción paramétrica automática de cómputos (QTO) en modelos IFC y Curva S dinámica 4D/5D certificada mediante Visión Artificial con drones.
+                    <strong>Salto Tecnológico Módulo V:</strong> Extracción paramétrica (QTO) en modelos IFC y Curva S dinámica 4D/5D con Visión Artificial.
                 </div>
-                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(2);">
-                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
-                </button>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="modulo-2-costos-evm.html" class="btn-retro-open" style="flex:1; min-width:130px; text-align:center; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+                        <span>📖</span> Ver Módulo II &rarr;
+                    </a>
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf" download class="btn-auth-action auth-protected-download" style="background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border); font-size:12px; font-weight:700; padding:8px 12px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <span>📥</span> Descargar Resumen (PDF)
+                    </a>
+                </div>
             </div>
 
             <!-- MÓDULO III -->
-            <div class="retro-card" onclick="openRepasoModal(3)">
-                <span class="retro-tag tag-m3">Módulo III · 30 Horas</span>
+            <div class="retro-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span class="retro-tag tag-m3">Módulo III · 30 Horas</span>
+                    <span style="font-size:20px;">⚖️</span>
+                </div>
                 <div class="retro-prof">Prof. Abg. Omar Enrique Martínez</div>
                 <h3 class="retro-title">Normas y Responsabilidades Legales</h3>
                 <p class="retro-desc">
-                    Seguridad jurídica, contratos de construcción, licitaciones públicas, ordenanzas municipales y responsabilidad civil y penal decenal (Art. 1637 Código Civil Venezolano).
+                    Ley de Contrataciones Públicas, contratos de obras, régimen de garantías y responsabilidad decenal por ruina estructural (Art. 1637 Código Civil).
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo V:</strong> Entorno CDE ISO 19650 con estados <em>Published</em> como prueba judicial inmutable y Agentes de IA para detección temprana de reclamos (<em>claims</em>).
+                    <strong>Salto Tecnológico Módulo V:</strong> Entorno CDE ISO 19650 Published como prueba inmutable y Agentes IA para prevención de claims.
                 </div>
-                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(3);">
-                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
-                </button>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="modulo-3-marco-legal.html" class="btn-retro-open" style="flex:1; min-width:130px; text-align:center; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+                        <span>📖</span> Ver Módulo III &rarr;
+                    </a>
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf" download class="btn-auth-action auth-protected-download" style="background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border); font-size:12px; font-weight:700; padding:8px 12px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <span>📥</span> Descargar Resumen (PDF)
+                    </a>
+                </div>
             </div>
 
             <!-- MÓDULO IV -->
-            <div class="retro-card" onclick="openRepasoModal(4)">
-                <span class="retro-tag tag-m4">Módulo IV · 20 Horas</span>
+            <div class="retro-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span class="retro-tag tag-m4">Módulo IV · 20 Horas</span>
+                    <span style="font-size:20px;">📋</span>
+                </div>
                 <div class="retro-prof">Prof. Esp. Ing. Diego Zambrano</div>
                 <h3 class="retro-title">Control de Procesos e Informes</h3>
                 <p class="retro-desc">
-                    Filosofía <em>Lean Construction</em>, sistema <em>Last Planner (LPS)</em>, planificación colaborativa semanal (PPC/PAC), control de calidad de concreto y reportes técnicos de bitácora.
+                    Filosofía Lean Construction, Last Planner System (LPS), planificación colaborativa semanal (PPC/PAC), Caso Los Olivos y peritajes de obra.
                 </p>
                 <div class="retro-bridge">
-                    <strong>Salto Tecnológico Módulo V:</strong> Digitalización de bitácoras con voz (<em>Speech-to-Report</em>), sensores IoT de maduración de concreto y gemelos digitales de obra.
+                    <strong>Salto Tecnológico Módulo V:</strong> Digitalización de bitácoras con voz (Speech-to-Report), sensores IoT y gemelos digitales de obra.
                 </div>
-                <button type="button" class="btn-retro-open" onclick="event.stopPropagation(); openRepasoModal(4);">
-                    <span>📖</span> Abrir Clase de Repaso &amp; Recursos &rarr;
-                </button>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="modulo-4-lean-calidad.html" class="btn-retro-open" style="flex:1; min-width:130px; text-align:center; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+                        <span>📖</span> Ver Módulo IV &rarr;
+                    </a>
+                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf" download class="btn-auth-action auth-protected-download" style="background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border); font-size:12px; font-weight:700; padding:8px 12px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <span>📥</span> Descargar Resumen (PDF)
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- BÓVEDA CENTRALIZADA DE DESCARGAS (MÓDULOS I AL V) -->
-        <div class="section-header-academic" id="boveda-descargas">
-            <h2>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                Bóveda Centralizada de Descargas: Expedientes del Diplomado
-            </h2>
-            <span class="section-subtext">Resúmenes académicos de cátedra y materiales auténticos de cátedra organizados por módulo</span>
-        </div>
-
-        <div class="boveda-container">
-            <!-- TELÓN DE BLOQUEO PARA INVITADOS -->
-            <div id="bovedaLockCurtain" class="boveda-lock-curtain">
-                <div style="font-size:42px; margin-bottom:12px;">🔒</div>
-                <h3 style="font-size:22px; font-weight:800; margin-bottom:10px; color:#ffffff;">Bóveda Protegida · Acceso Alumnos Inscritos</h3>
-                <p style="font-size:14px; max-width:620px; line-height:1.6; color:#e2e8f0; margin-bottom:24px;">
-                    Esta bóveda reúne los 4 Resúmenes Académicos de Cátedra en PDF, hojas de cálculo de EVM y cómputos de Harry Osers, manuales SIGECOF, y los expedientes del Módulo V. Para desbloquear las descargas, identifícate como alumno del Diplomado.
-                </p>
-                <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                    <button type="button" class="btn-auth-action btn-auth-login" style="padding:10px 22px; font-size:14px;" onclick="openAuthModal('login')">
-                        <span>🔑</span> Iniciar Sesión para Descargar
-                    </button>
-                    <button type="button" class="btn-auth-action btn-auth-register" style="padding:10px 22px; font-size:14px; background:#ffffff; color:var(--navy-primary);" onclick="openAuthModal('register')">
-                        <span>📝</span> Registrarse en 30 Segundos
-                    </button>
-                    <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:10px 18px; font-size:14px;" onclick="handleDemoLogin()">
-                        <span>⚡</span> Ingresar con Acceso Rápido
-                    </button>
-                </div>
-            </div>
-
-            <!-- CONTENIDO DE LA BÓVEDA (5 TARJETAS) -->
-            <div class="boveda-grid">
-                <!-- MÓDULO I -->
-                <div class="boveda-card">
-                    <div class="boveda-card-head">
-                        <div>
-                            <span class="boveda-module-badge tag-m1">Módulo I · Pérez</span>
-                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Estructura Organizativa</h4>
-                        </div>
-                        <span style="font-size:20px;">🏛️</span>
-                    </div>
-                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                        Organigramas matriciales, asignación de responsabilidades con Matriz RACI y gestión de las 6 fases del ciclo constructivo.
-                    </p>
-                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf" download class="boveda-resumen-btn auth-protected-download">
-                        <span>📥</span> Descargar Resumen Oficial (PDF)
-                    </a>
-                    <div class="boveda-files-list">
-                        <a href="./descargas/modulos-previos/Caso_Expansion_Industrial_Matanzas.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>📄 Caso Práctico Matanzas</span>
-                            <span class="boveda-file-ext">PDF · 67 KB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Fases_Proceso_Constructivo.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>📑 Las 6 Fases Constructivas</span>
-                            <span class="boveda-file-ext">PDF · 858 KB</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- MÓDULO II -->
-                <div class="boveda-card">
-                    <div class="boveda-card-head">
-                        <div>
-                            <span class="boveda-module-badge tag-m2">Módulo II · Angarita</span>
-                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Costos, APU &amp; EVM</h4>
-                        </div>
-                        <span style="font-size:20px;">📊</span>
-                    </div>
-                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                        Cómputos métricos Harry Osers, modelo matemático analítico de Curva S y gestión financiera de Valor Ganado (EVM).
-                    </p>
-                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf" download class="boveda-resumen-btn auth-protected-download">
-                        <span>📥</span> Descargar Resumen Oficial (PDF)
-                    </a>
-                    <div class="boveda-files-list">
-                        <a href="./descargas/modulos-previos/Planilla_Computos_Harry_Osers.xlsx" download class="boveda-file-link auth-protected-download">
-                            <span>📐 Cómputos Harry Osers</span>
-                            <span class="boveda-file-ext">XLSX · 18 KB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Modelo_Matematico_Curva_S.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>📈 Curva S Matemática Sigmoidal</span>
-                            <span class="boveda-file-ext">PDF · 2.1 MB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Ejemplo_Valor_Ganado_EVM.xlsx" download class="boveda-file-link auth-protected-download">
-                            <span>💵 Plantilla EVM Dinámica</span>
-                            <span class="boveda-file-ext">XLSX · 185 KB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Guia_Softwares_Costos_Planificacion.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>💻 Guía Softwares (MaPreX, LuloWin)</span>
-                            <span class="boveda-file-ext">PDF · 186 KB</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- MÓDULO III -->
-                <div class="boveda-card">
-                    <div class="boveda-card-head">
-                        <div>
-                            <span class="boveda-module-badge tag-m3">Módulo III · Martínez</span>
-                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Marco Legal &amp; Art. 1637</h4>
-                        </div>
-                        <span style="font-size:20px;">⚖️</span>
-                    </div>
-                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                        Ley de Contrataciones Públicas, contratos de obras, régimen de garantías y responsabilidad decenal por ruina estructural.
-                    </p>
-                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf" download class="boveda-resumen-btn auth-protected-download">
-                        <span>📥</span> Descargar Resumen Oficial (PDF)
-                    </a>
-                    <div class="boveda-files-list">
-                        <a href="./descargas/modulos-previos/Contrataciones_y_Licitaciones.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>📜 Contrataciones y Licitaciones</span>
-                            <span class="boveda-file-ext">PDF · 17.8 MB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Marco_Legal_Ingenieria_Venezuela.png" download class="boveda-file-link auth-protected-download">
-                            <span>🗺️ Mapa Legal en Venezuela</span>
-                            <span class="boveda-file-ext">PNG · 4.5 MB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Modulo_3_Marco_Legal_Classroom.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>⚖️ Cátedra de Marco Legal</span>
-                            <span class="boveda-file-ext">PDF · 4.3 MB</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- MÓDULO IV -->
-                <div class="boveda-card">
-                    <div class="boveda-card-head">
-                        <div>
-                            <span class="boveda-module-badge tag-m4">Módulo IV · Zambrano</span>
-                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Lean, Calidad &amp; Casos</h4>
-                        </div>
-                        <span style="font-size:20px;">📋</span>
-                    </div>
-                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                        Last Planner System (LPS), Caso Residencial Los Olivos (18 tareas, ruta crítica 63 días), peritaje Edificio San Antonio y manual SIGECOF.
-                    </p>
-                    <a href="./descargas/modulos-previos/Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf" download class="boveda-resumen-btn auth-protected-download">
-                        <span>📥</span> Descargar Resumen Oficial (PDF)
-                    </a>
-                    <div class="boveda-files-list">
-                        <a href="./descargas/modulos-previos/Caso_Practico_Residencial_Los_Olivos.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>🏡 Caso Los Olivos (Ruta Crítica)</span>
-                            <span class="boveda-file-ext">PDF · 123 KB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Peritaje_Patologia_Edificio_San_Antonio.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>🔍 Peritaje Edificio San Antonio</span>
-                            <span class="boveda-file-ext">PDF · 2.4 MB</span>
-                        </a>
-                        <a href="./descargas/modulos-previos/Manual_Formatos_Obras_SIGECOF.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>📑 Manual SIGECOF (168 págs)</span>
-                            <span class="boveda-file-ext">PDF · 1.8 MB</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- MÓDULO V -->
-                <div class="boveda-card" style="border-color:#38bdf8; background:#f0f9ff;">
-                    <div class="boveda-card-head">
-                        <div>
-                            <span class="boveda-module-badge" style="background:#0284c7; color:#ffffff;">Módulo V · Mota Zorrilla</span>
-                            <h4 style="font-size:16px; font-weight:800; color:var(--navy-primary); margin-top:4px;">Tecnología y Sostenibilidad</h4>
-                        </div>
-                        <span style="font-size:20px;">🚀</span>
-                    </div>
-                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">
-                        openBIM ISO 19650, Clash Detection 3D, Simulación 4D/5D EVM, IA predictiva y eficiencia solar fotovoltaica en Guayana.
-                    </p>
-                    <a href="./descargas/modulos-previos/CONTENIDO_PROGRAMATICO_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-resumen-btn auth-protected-download" style="background:#0284c7;">
-                        <span>📥</span> Contenido Programático Oficial (PDF)
-                    </a>
-                    <div class="boveda-files-list">
-                        <a href="./descargas/modulos-previos/FORMATO_PLANIFICACION_DOCENTE_MODULO_V_HECTOR_MOTA.pdf" download class="boveda-file-link auth-protected-download">
-                            <span>🏛️ Planificación Docente Oficial UGMA</span>
-                            <span class="boveda-file-ext">PDF · 128 KB</span>
-                        </a>
-                        <a href="https://lab.motazorrilla.com/bim/" target="_blank" rel="noopener" class="boveda-file-link">
-                            <span>🌐 Visor BIM 3D WebGL (Laboratorio)</span>
-                            <span class="boveda-file-ext">WEB · Three.js</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
         <!-- EXECUTIVE WAR ROOM / LIVE DECISION SIMULATOR (CLUB TIA ADAPTADO) -->
         <div class="decision-room-card" id="executive-decision-room">
             <div class="dec-header">
@@ -1761,7 +1624,7 @@
         </div>
 
         <!-- 6 DÍAS DE CLASE: ARQUITECTURA DE ALTA DENSIDAD (6 UNIDADES OFICIALES SEGÚN EXCALIDRAW) -->
-        <div class="section-header-academic">
+        <div class="section-header-academic" id="unidades-curriculares">
             <h2>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-primary)" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                 Itinerario Curricular Oficial: Las 6 Unidades de Trabajo (30 Horas)
@@ -1814,10 +1677,10 @@
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <a href="{{ route('ugma.masterclass-bim') }}" class="btn-day-action featured-day" style="font-weight:800; border-color:#0284c7; background:#e0f2fe; color:#0369a1;">
+                    <a href="masterclass-bim/index.html" class="btn-day-action featured-day" style="font-weight:800; border-color:#0284c7; background:#e0f2fe; color:#0369a1;">
                         <span>🏛️</span> Tema 1: Masterclass BIM (De Maqueta a Gemelo) &rarr;
                     </a>
-                    <a href="{{ route('ugma.unidad-1') }}" class="btn-day-action">
+                    <a href="masterclass-bim/index.html" class="btn-day-action">
                         <span>📁</span> Entrar a Unidad 1: CDE &amp; Validador ISO 19650 &rarr;
                     </a>
                 </div>
@@ -1867,10 +1730,10 @@
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <a href="{{ route('ugma.clash-detection') }}" class="btn-day-action featured-day">
+                    <a href="clash-detection/index.html" class="btn-day-action featured-day">
                         <span>⚡</span> Laboratorio 3D Clash Detection &rarr;
                     </a>
-                    <a href="{{ route('ugma.unidad-2') }}" class="btn-day-action">
+                    <a href="clash-detection/index.html" class="btn-day-action">
                         <span>🤖</span> Entrar a Unidad 2: IA &amp; Bitácoras de Campo &rarr;
                     </a>
                 </div>
@@ -1918,7 +1781,7 @@
                     <span class="day-pill">Ciclo de Vida</span>
                 </div>
 
-                <a href="{{ route('ugma.unidad-3') }}" class="btn-day-action featured-day">
+                <a href="#unidades-curriculares" class="btn-day-action featured-day">
                     <span>🌱</span> Entrar a Unidad 3: Certificaciones LEED, EDGE &amp; ESG &rarr;
                 </a>
             </div>
@@ -1966,10 +1829,10 @@
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <a href="{{ route('ugma.planificacion-4d-5d') }}" class="btn-day-action">
+                    <a href="planificacion-4d-5d/index.html" class="btn-day-action">
                         <span>⏱️</span> Laboratorio 4D/5D EVM &rarr;
                     </a>
-                    <a href="{{ route('ugma.unidad-4') }}" class="btn-day-action featured-day">
+                    <a href="energia-solar-sostenibilidad/index.html" class="btn-day-action featured-day">
                         <span>☀️</span> Entrar a Unidad 4: Simulador Solar &amp; Materiales Ecológicos &rarr;
                     </a>
                 </div>
@@ -2015,7 +1878,7 @@
                     <span class="day-pill">Segregación</span>
                 </div>
 
-                <a href="{{ route('ugma.unidad-5') }}" class="btn-day-action featured-day">
+                <a href="#unidades-curriculares" class="btn-day-action featured-day">
                     <span>♻️</span> Entrar a Unidad 5: Matriz RCD &amp; Ahorro en Faena &rarr;
                 </a>
             </div>
@@ -2057,8 +1920,27 @@
                     <span class="day-pill">Defensa Ejecutiva</span>
                 </div>
 
-                <a href="{{ route('ugma.unidad-6') }}" class="btn-day-action featured-day">
+                <a href="taller-integrador/index.html" class="btn-day-action featured-day">
                     <span>🏛️</span> Entrar a Unidad 6: Rúbrica &amp; War Room Integrador &rarr;
+                </a>
+            </div>
+        </div>
+
+                <!-- RESUMEN MÓDULO V & PROGRAMA -->
+        <div style="background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:14px 20px; margin:20px 0 30px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:20px;">📄</span>
+                <div>
+                    <span style="font-size:13.5px; font-weight:700; color:var(--navy-primary);">Resumen del Módulo V:</span>
+                    <span style="font-size:12px; background:#fef3c7; color:#b45309; padding:2px 8px; border-radius:9999px; font-weight:700; margin-left:6px;">Pendiente (Disponible al culminar las 6 sesiones)</span>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a href="./descargas/modulos-previos/CONTENIDO_PROGRAMATICO_MODULO_V_HECTOR_MOTA.pdf" download class="btn-auth-action auth-protected-download" style="font-size:12.5px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                    <span>📋</span> Contenido Programático (PDF)
+                </a>
+                <a href="./descargas/modulos-previos/FORMATO_PLANIFICACION_DOCENTE_MODULO_V_HECTOR_MOTA.pdf" download class="btn-auth-action auth-protected-download" style="font-size:12.5px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border);">
+                    <span>🏛️</span> Planificación Docente (PDF)
                 </a>
             </div>
         </div>
@@ -2773,16 +2655,7 @@
             closeAuthModal();
         }
 
-        function handleDemoLogin() {
-            const demoUser = {
-                name: 'Ing. Carlos Mendoza',
-                email: 'carlos.mendoza@alumnos.ugma.edu.ve',
-                ci: 'V-20.123.456 (CIV 214.502)',
-                role: 'Participante Oficial · Diplomado Gerencia'
-            };
-            setAuthUser(demoUser);
-            closeAuthModal();
-        }
+        
 
         
         function toggleMobileMenu() {
@@ -2828,7 +2701,7 @@
                     heroTitle.innerHTML = `¡Bienvenido al Aula Virtual, ${user.name}!`;
                     heroDesc.innerHTML = `Tu matrícula de participante está verificada. Tienes acceso irrestricto a todas las clases interactivas y a la Bóveda Centralizada de Descargas.`;
                     heroBtns.innerHTML = `
-                        <a href="{{ route('ugma.boveda') }}" class="btn-auth-action btn-auth-login" style="background:#047857; border-color:#047857; padding:12px 22px; font-size:14px; text-decoration:none;">
+                        <a href="boveda.html" class="btn-auth-action btn-auth-login" style="background:#047857; border-color:#047857; padding:12px 22px; font-size:14px; text-decoration:none;">
                             <span>🚀</span> ENTRAR A LA BÓVEDA Y AULA VIRTUAL ➜
                         </a>
                     `;
@@ -2859,9 +2732,7 @@
                         <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
                             <span>📝</span> Registrarse
                         </button>
-                        <button type="button" class="btn-auth-demo" style="width:auto; margin:0; padding:7px 14px;" onclick="handleDemoLogin()">
-                            <span>⚡</span> Acceso Rápido Demo
-                        </button>
+                        
                     `;
                 }
                 if (bovedaCurtain) {
@@ -2920,9 +2791,7 @@
                     <span>🔑</span> Entrar al Aula Virtual
                 </button>
 
-                <button type="button" class="btn-auth-demo" onclick="handleDemoLogin()">
-                    <span>⚡</span> Acceso Inmediato Alumno Demo (1-Click)
-                </button>
+                
             </form>
 
             <!-- FORMULARIO DE REGISTRO DE ALUMNO -->
@@ -2954,10 +2823,7 @@
         </div>
     </div>
     
-    <!-- BOTÓN FLOTANTE DE ACCESO RÁPIDO A LA BÓVEDA -->
-    <a href="#boveda-descargas" id="floatingBovedaBtn" style="position:fixed; bottom:24px; right:24px; z-index:999; background:#0284c7; color:#ffffff; padding:12px 20px; border-radius:9999px; font-size:13.5px; font-weight:800; display:flex; align-items:center; gap:8px; box-shadow:0 10px 25px -5px rgba(2,132,199,0.5); text-decoration:none; border:2px solid #ffffff; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-        <span>📂</span> Bóveda Central (Módulos I al V)
-    </a>
+    
 
     <!-- MODAL LIVE QUIZ SÍNCRONO PARA ESTUDIANTES (MENTIMETER STYLE) -->
     <div id="studentQuizModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); z-index:99999; align-items:center; justify-content:center; padding:16px;">

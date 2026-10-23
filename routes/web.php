@@ -34,7 +34,15 @@ Route::prefix('ugma-gerencia-obras')->name('ugma.')->group(function () {
 
     // Bóveda de Descargas y Panel Administrativo Docente
     Route::get('/boveda', [UgmaController::class, 'boveda'])->name('boveda');
+    Route::get('/boveda.html', [UgmaController::class, 'boveda']);
     Route::get('/admin', [UgmaController::class, 'admin'])->name('admin');
+    Route::get('/admin.html', [UgmaController::class, 'admin']);
+
+    // Aliases para compatibilidad con enlaces estáticos .html
+    Route::get('/modulo-1-organizacion.html', [UgmaController::class, 'modulo1']);
+    Route::get('/modulo-2-costos-evm.html', [UgmaController::class, 'modulo2']);
+    Route::get('/modulo-3-marco-legal.html', [UgmaController::class, 'modulo3']);
+    Route::get('/modulo-4-lean-calidad.html', [UgmaController::class, 'modulo4']);
 
     // Rutas históricas (Compatibilidad con enlaces previos)
     Route::get('/masterclass-bim', [UgmaController::class, 'masterclassBim'])->name('masterclass-bim');
