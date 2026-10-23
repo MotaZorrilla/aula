@@ -1433,7 +1433,7 @@
 
         async function refreshLivePresences() {
             try {
-                const res = await fetch('{{ route("ugma.api.live-presence.list") }}');
+                const res = await fetch('/ugma-gerencia-obras/api/live-presence/list');
                 const data = await res.json();
                 if (data.success) {
                     renderLivePresenceTable(data.presences);
@@ -1481,9 +1481,9 @@
 
         async function toggleStudentAdmission(presenceId, status) {
             try {
-                const res = await fetch('{{ route("ugma.api.live-presence.admit") }}', {
+                const res = await fetch('/ugma-gerencia-obras/api/live-presence/admit', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '' },
                     body: JSON.stringify({ presence_id: presenceId, status: status })
                 });
                 const data = await res.json();
@@ -1497,9 +1497,9 @@
 
         async function admitAllLiveStudents(status) {
             try {
-                const res = await fetch('{{ route("ugma.api.live-presence.admit") }}', {
+                const res = await fetch('/ugma-gerencia-obras/api/live-presence/admit', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '' },
                     body: JSON.stringify({ admit_all: true, status: status })
                 });
                 const data = await res.json();
@@ -1519,7 +1519,7 @@
 
         async function loadQuizQuestions() {
             try {
-                const res = await fetch('{{ route("ugma.api.live-quiz.questions") }}');
+                const res = await fetch('/ugma-gerencia-obras/api/live-quiz/questions');
                 const data = await res.json();
                 if (data.success) {
                     quizQuestionsCache = data.questions;
@@ -1561,9 +1561,9 @@
 
         async function launchQuizQuestion(questionId) {
             try {
-                const res = await fetch('{{ route("ugma.api.live-quiz.trigger") }}', {
+                const res = await fetch('/ugma-gerencia-obras/api/live-quiz/trigger', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '' },
                     body: JSON.stringify({ question_id: questionId })
                 });
                 const data = await res.json();
@@ -1578,9 +1578,9 @@
 
         async function closeLiveQuestion() {
             try {
-                const res = await fetch('{{ route("ugma.api.live-quiz.trigger") }}', {
+                const res = await fetch('/ugma-gerencia-obras/api/live-quiz/trigger', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '' },
                     body: JSON.stringify({ question_id: 0 })
                 });
                 const data = await res.json();
@@ -1595,7 +1595,7 @@
 
         async function checkActiveQuizState() {
             try {
-                const res = await fetch('{{ route("ugma.api.live-quiz.state") }}');
+                const res = await fetch('/ugma-gerencia-obras/api/live-quiz/state');
                 const data = await res.json();
                 const banner = document.getElementById('activeQuestionLiveBanner');
                 if (data.has_active_question && data.question) {
@@ -1611,7 +1611,7 @@
 
         async function openPodiumView() {
             try {
-                const res = await fetch('{{ route("ugma.api.live-quiz.leaderboard") }}');
+                const res = await fetch('/ugma-gerencia-obras/api/live-quiz/leaderboard');
                 const data = await res.json();
                 if (data.success) {
                     const modal = document.getElementById('podiumModal');

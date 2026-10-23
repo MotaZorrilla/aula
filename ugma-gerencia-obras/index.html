@@ -2896,9 +2896,9 @@
 
             // 1. Enviar latido de presencia
             try {
-                await fetch('{{ route("ugma.api.live-presence.ping") }}', {
+                await fetch('/ugma-gerencia-obras/api/live-presence/ping', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '' },
                     body: JSON.stringify({
                         session_token: sessionToken,
                         name: user.name,
@@ -2909,7 +2909,7 @@
 
             // 2. Comprobar si hay pregunta activa en vivo
             try {
-                const quizRes = await fetch(`{{ route("ugma.api.live-quiz.state") }}?email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}`);
+                const quizRes = await fetch(`/ugma-gerencia-obras/api/live-quiz/state?email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}`);
                 const quizData = await quizRes.json();
                 if (quizData.has_active_question && quizData.question) {
                     if (activeStudentQuestionId !== quizData.question.id && !quizData.has_answered) {
@@ -2978,9 +2978,9 @@
             buttons.forEach(b => b.style.pointerEvents = 'none');
 
             try {
-                const res = await fetch('{{ route("ugma.api.live-quiz.answer") }}', {
+                const res = await fetch('/ugma-gerencia-obras/api/live-quiz/answer', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '' },
                     body: JSON.stringify({
                         question_id: questionId,
                         chosen_index: chosenIndex,
