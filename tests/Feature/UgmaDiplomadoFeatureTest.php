@@ -66,6 +66,36 @@ class UgmaDiplomadoFeatureTest extends TestCase
     {
         $this->get('/ugma-gerencia-obras/boveda')->assertStatus(200);
         $this->get('/ugma-gerencia-obras/admin')->assertStatus(200);
+        $this->get('/ugma-gerencia-obras/admin.html')->assertStatus(200);
+        $this->get('/ugma-gerencia-obras/boveda.html')->assertStatus(200);
+    }
+
+    public function test_html_aliases_for_foundation_modules_render_status_200(): void
+    {
+        $aliases = [
+            '/ugma-gerencia-obras/modulo-1-organizacion.html',
+            '/ugma-gerencia-obras/modulo-2-costos-evm.html',
+            '/ugma-gerencia-obras/modulo-3-marco-legal.html',
+            '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
+        ];
+
+        foreach ($aliases as $url) {
+            $this->get($url)->assertStatus(200);
+        }
+    }
+
+    public function test_hub_contains_prominent_teacher_console_and_summary_downloads(): void
+    {
+        $response = $this->get('/ugma-gerencia-obras');
+        $response->assertStatus(200);
+        $response->assertSee('Panel Facilitador');
+        $response->assertSee('ING. HÉCTOR MOTA');
+        $response->assertSee('admin.html');
+        $response->assertSee('Resumen_Ejecutivo_Modulo_I_Organizacion_Perez.pdf');
+        $response->assertSee('Resumen_Ejecutivo_Modulo_II_Costos_EVM_Angarita.pdf');
+        $response->assertSee('Resumen_Ejecutivo_Modulo_III_Marco_Legal_Martinez.pdf');
+        $response->assertSee('Resumen_Ejecutivo_Modulo_IV_Lean_Calidad_Zambrano.pdf');
+        $response->assertDontSee('boveda-descargas');
     }
 
     public function test_student_registration_action_persists_valid_participant(): void
