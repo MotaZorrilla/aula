@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AulaHubController::class, 'index'])->name('hub.index');
 
 // Diplomado en Gerencia de Obras (UGMA / Postgrado)
-Route::prefix('ugma-gerencia-obras')->name('ugma.')->group(function () {
+$registerUgmaRoutes = function () {
     // Hub Principal
     Route::get('/', [UgmaController::class, 'index'])->name('index');
 
@@ -71,26 +71,10 @@ Route::prefix('ugma-gerencia-obras')->name('ugma.')->group(function () {
         Route::get('/live-quiz/leaderboard', [UgmaController::class, 'apiLiveQuizLeaderboard'])->name('live-quiz.leaderboard');
         Route::get('/live-quiz/questions', [UgmaController::class, 'apiLiveQuizQuestions'])->name('live-quiz.questions');
     });
-});
+};
 
-// Rutas API a nivel raíz (Compatibilidad con Nginx Proxy y entornos con BaseUrl reescrita)
-Route::prefix('api')->name('ugma.api.root.')->group(function () {
-    Route::post('/register', [UgmaController::class, 'apiRegister'])->name('register');
-    Route::post('/war-room/decision', [UgmaController::class, 'apiWarRoomDecision'])->name('war-room.decision');
-    Route::post('/admin/grade', [UgmaController::class, 'apiGrade'])->name('admin.grade');
-    Route::post('/admin/toggle-lock', [UgmaController::class, 'apiToggleLock'])->name('admin.toggle-lock');
-    Route::post('/admin/login', [UgmaController::class, 'apiAdminLogin'])->name('admin.login');
-
-    // Presencia en Vivo & Live Quiz (Tipo Mentimeter)
-    Route::post('/live-presence/ping', [UgmaController::class, 'apiLivePresencePing'])->name('live-presence.ping');
-    Route::post('/live-presence/admit', [UgmaController::class, 'apiLivePresenceAdmit'])->name('live-presence.admit');
-    Route::get('/live-presence/list', [UgmaController::class, 'apiLivePresenceList'])->name('live-presence.list');
-    Route::post('/live-quiz/trigger', [UgmaController::class, 'apiLiveQuizTrigger'])->name('live-quiz.trigger');
-    Route::get('/live-quiz/state', [UgmaController::class, 'apiLiveQuizState'])->name('live-quiz.state');
-    Route::post('/live-quiz/answer', [UgmaController::class, 'apiLiveQuizAnswer'])->name('live-quiz.answer');
-    Route::get('/live-quiz/leaderboard', [UgmaController::class, 'apiLiveQuizLeaderboard'])->name('live-quiz.leaderboard');
-    Route::get('/live-quiz/questions', [UgmaController::class, 'apiLiveQuizQuestions'])->name('live-quiz.questions');
-});
+Route::prefix('ugma-gerencia-obras')->name('ugma.')->group($registerUgmaRoutes);
+Route::name('ugma.direct.')->group($registerUgmaRoutes);
 
 // Redirecciones amigables
 Route::redirect('/bim', '/ugma-gerencia-obras/unidad-1-bim');
