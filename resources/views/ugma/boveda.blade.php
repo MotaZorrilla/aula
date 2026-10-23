@@ -2118,7 +2118,7 @@
                 <h3>Ing. Héctor Mota Zorrilla</h3>
                 <span class="role">Facilitador Académico · Consultor ConTech &amp; BIM Manager</span>
                 <p>
-                    Ingeniero Electricista egresado de la Universidad Central de Venezuela (UCV) con amplia experiencia en gerencia de proyectos de edificación, desarrollo de software técnico enfocado a la industria de la construcción (full-stack web y motores gráficos 3D), implementación de flujos openBIM bajo el estándar internacional ISO 19650 e integración de sistemas fotovoltaicos e inteligencia artificial. Ha sido ponente sobre Metodología BIM en la Escuela de Ingeniería de la UGMA, las VII Jornadas de Ingeniería Civil de la UCAB Guayana y el Colegio de Ingenieros de Venezuela.
+                    Ingeniero Electricista egresado de la Universidad Central de Venezuela (UCV) con amplia experiencia en gerencia de proyectos de edificación, desarrollo de software técnico enfocado a la industria de la construcción (full-stack web y motores gráficos 3D), implementación de flujos openBIM bajo el estándar internacional ISO 19650 e integración de Inteligencia Artificial aplicada. Ha sido ponente sobre Metodología BIM e Inteligencia Artificial en la Escuela de Ingeniería de la UGMA, las VII Jornadas de Ingeniería Civil de la UCAB Guayana y el Colegio de Ingenieros de Venezuela (CIV - Seccional Ciudad Bolívar).
                 </p>
             </div>
         </div>
@@ -2127,9 +2127,9 @@
         <div class="action-box">
             <h4>¿Deseas información académica o coordinar sesiones del Diplomado?</h4>
             <p>
-                Comunícate directamente con el facilitador para consultar detalles sobre el contenido programático, software requerido (Navisworks, Synchro, BlenderBIM, IfcOpenShell), calendario de clases y acreditación de postgrado.
+                Comunícate directamente con el facilitador para consultar detalles sobre el contenido programático, calendario de clases, dinámica de las sesiones y acreditación de postgrado.
             </p>
-            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20informaci%C3%B3n%20acad%C3%A9mica%20sobre%20el%20M%C3%B3dulo%20VI%20del%20Diplomado%20en%20Gerencia%20de%20Obras%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action">
+            <a href="https://wa.me/584148873615?text=Hola%20Ing.%20H%C3%A9ctor%20Mota,%20deseo%20informaci%C3%B3n%20acad%C3%A9mica%20sobre%20el%20M%C3%B3dulo%20V%20del%20Diplomado%20en%20Gerencia%20de%20Obras%20UGMA..." target="_blank" rel="noopener noreferrer" class="btn-action">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 Contactar al Facilitador vía WhatsApp (0414-8873615)
             </a>
