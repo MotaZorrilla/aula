@@ -513,8 +513,8 @@
         const now = new Date().toISOString();
         const guid = 'bcf-' + Math.random().toString(36).substring(2, 10) + '-ugma';
 
-        const bcfXml = `<?xml version="1.0" encoding="UTF-8"?>
-<bcf:Topic Guid="${guid}" TopicType="Clash" TopicStatus="Open" xmlns:bcf="http://www.buildingsmart-tech.org/bcf">
+        const bcfXml = '<' + '?xml version="1.0" encoding="UTF-8"?>\n' +
+`<bcf:Topic Guid="${guid}" TopicType="Clash" TopicStatus="Open" xmlns:bcf="http://www.buildingsmart-tech.org/bcf">
   <bcf:Title>${escapeXml(title)}</bcf:Title>
   <bcf:Priority>${priority}</bcf:Priority>
   <bcf:AssignedTo>${assigned}</bcf:AssignedTo>
