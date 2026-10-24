@@ -45,7 +45,7 @@ $user = "motazorrilla"
 
 Write-Host "[PASO 3/3] Sincronizando con Homelab Ubuntu ($homelabIp)..." -ForegroundColor Yellow
 
-$remoteCmd = 'cd ~/apps/aula && git fetch origin master && git reset --hard origin/master && docker restart aula-gateway > /dev/null 2>&1 || true'
+$remoteCmd = 'cd ~/apps/aula && git fetch origin master && git reset --hard origin/master && docker exec ugma-app php artisan migrate --force > /dev/null 2>&1 || true && docker restart ugma-app > /dev/null 2>&1 || true && docker restart aula-gateway > /dev/null 2>&1 || true'
 
 $target = $user + "@" + $homelabIp
 ssh -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new $target $remoteCmd
@@ -63,6 +63,10 @@ try {
     $resp = Invoke-WebRequest -Uri "https://aula.motazorrilla.com/ugma-gerencia-obras/masterclass-bim/" -UseBasicParsing -TimeoutSec 10
     if ($resp.StatusCode -eq 200) {
         Write-Host "DESPLIEGUE EXITOSO: https://aula.motazorrilla.com/ugma-gerencia-obras/masterclass-bim/ [HTTP 200 OK]" -ForegroundColor Green
+    }
+    $respEval = Invoke-WebRequest -Uri "https://aula.motazorrilla.com/ugma-gerencia-obras/evaluacion-dia-1-2" -UseBasicParsing -TimeoutSec 10
+    if ($respEval.StatusCode -eq 200) {
+        Write-Host "EVALUACION ONLINE: https://aula.motazorrilla.com/ugma-gerencia-obras/evaluacion-dia-1-2 [HTTP 200 OK]" -ForegroundColor Green
     }
 } catch {
     Write-Host "Endpoint responde, verifique manualmente en el navegador." -ForegroundColor Yellow
