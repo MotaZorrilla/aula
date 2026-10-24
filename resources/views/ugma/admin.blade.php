@@ -745,8 +745,8 @@
                             <button type="button" class="btn-auth-action" style="background:var(--emerald); color:#ffffff; border:none;" onclick="exportStudentsCSV()">
                                 <span>📥</span> Exportar a CSV
                             </button>
-                            <button type="button" class="btn-auth-action" style="background:#f1f5f9; color:var(--navy-primary); border:1px solid var(--border);" onclick="resetStudentsDemo()">
-                                <span>🔄</span> Restaurar Cátedra
+                            <button type="button" class="btn-auth-action" style="background:#fee2e2; color:#b91c1c; border:1px solid #fecaca;" onclick="resetStudentsDemo()">
+                                <span>🔄</span> Reiniciar Estudiantes
                             </button>
                         </div>
                     </div>
@@ -907,6 +907,9 @@
                             </a>
                             <button type="button" class="btn-refresh" onclick="loadEvaluations()">
                                 <span>🔄</span> Actualizar
+                            </button>
+                            <button type="button" class="btn-refresh" style="background:#fee2e2; color:#b91c1c; border:1px solid #fecaca;" onclick="resetEvaluationSubmissions()">
+                                <span>🗑️</span> Reiniciar Exámenes
                             </button>
                         </div>
                     </div>
@@ -1289,12 +1292,28 @@
             } catch(e) { return DEFAULT_STUDENTS; }
         }
 
-        function resetStudentsDemo() {
+        async function resetStudentsDemo() {
+            if (!confirm('¿Estás seguro de reiniciar el listado de alumnos inscritos? Esto restablecerá los 4 alumnos oficiales de cátedra y limpiará la presencia en vivo.')) {
+                return;
+            }
+
+            try {
+                await fetch('/ugma-gerencia-obras/api/admin/reset-students', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+                });
+            } catch(e) {
+                console.warn('Reinicio offline en cliente:', e);
+            }
+
             localStorage.setItem(STUDENTS_KEY, JSON.stringify(DEFAULT_STUDENTS));
             loadStudentsTable();
             populateStudentSelect();
-            alert('Listado restaurado con los alumnos inscritos de cátedra.');
+            if (typeof refreshLivePresences === 'function') refreshLivePresences();
+            alert('Listado de alumnos reiniciado exitosamente a los 4 estudiantes oficiales de cátedra.');
         }
+
+        const resetStudentsList = resetStudentsDemo;
 
         function loadStudentsTable() {
             const list = getStudentsList();
@@ -1992,6 +2011,29 @@
                 }
             } catch (err) {
                 alert('Error de conexión al guardar nota.');
+            }
+        }
+
+        async function resetEvaluationSubmissions() {
+            if (!confirm('¿Estás seguro de reiniciar todas las entregas de examen? Esta acción eliminará los exámenes registrados de la base de datos y restablecerá las métricas a cero.')) {
+                return;
+            }
+
+            try {
+                const res = await fetch('/ugma-gerencia-obras/api/evaluacion/reset', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert('Todas las entregas de examen han sido reiniciadas exitosamente.');
+                    await loadEvaluations();
+                } else {
+                    alert('Inconveniente al reiniciar exámenes: ' + (data.message || 'Error en servidor'));
+                }
+            } catch(err) {
+                console.error('Error al reiniciar evaluaciones:', err);
+                alert('Error de conexión al reiniciar exámenes.');
             }
         }
     </script>

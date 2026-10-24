@@ -20,6 +20,7 @@ use App\Http\Requests\Ugma\AdminLoginRequest;
 use App\Http\Requests\Ugma\GradeStudentRequest;
 use App\Http\Requests\Ugma\RegisterStudentRequest;
 use App\Http\Requests\Ugma\WarRoomDecisionRequest;
+use App\Models\UgmaEvaluation;
 use App\Models\UgmaLivePresence;
 use App\Models\UgmaModuleLock;
 use App\Models\UgmaQuizQuestion;
@@ -417,5 +418,39 @@ class UgmaController extends Controller
         $result = $action->execute((int) $validated['id'], $validated);
 
         return response()->json($result);
+    }
+
+    public function apiResetEvaluations(): JsonResponse
+    {
+        UgmaEvaluation::query()->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Entregas de examen reiniciadas exitosamente.',
+            'total_submissions' => 0,
+        ]);
+    }
+
+    public function apiResetStudents(): JsonResponse
+    {
+        UgmaLivePresence::query()->delete();
+        UgmaStudent::query()->delete();
+
+        $defaults = [
+            ['cedula' => 'V-20.123.456', 'nombre' => 'Ing. Carlos Mendoza', 'email' => 'carlos.mendoza@alumnos.ugma.edu.ve', 'specialty' => 'Ing. Civil · Alumno UGMA'],
+            ['cedula' => 'V-22.789.012', 'nombre' => 'Arq. Valentina Silva', 'email' => 'valentina.silva@alumnos.ugma.edu.ve', 'specialty' => 'Arquitecta · Alumna UGMA'],
+            ['cedula' => 'V-18.456.789', 'nombre' => 'Ing. Roberto Briceño', 'email' => 'roberto.briceno@alumnos.ugma.edu.ve', 'specialty' => 'Ing. de Costos · Alumno UGMA'],
+            ['cedula' => 'V-21.345.678', 'nombre' => 'Ing. María Elena Salazar', 'email' => 'maria.salazar@alumnos.ugma.edu.ve', 'specialty' => 'Ing. Inspector · Alumna UGMA'],
+        ];
+
+        foreach ($defaults as $s) {
+            UgmaStudent::create($s);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Listado de alumnos reiniciado a los 4 estudiantes oficiales de cátedra.',
+            'total_students' => count($defaults),
+        ]);
     }
 }
