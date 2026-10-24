@@ -1020,7 +1020,16 @@
 
 
     <script>
-        
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         const AUTH_KEY = 'ugma_student_session';
         const STUDENTS_KEY = 'ugma_registered_students';
         const LOCKS_KEY = 'ugma_module_locks';
@@ -1539,10 +1548,10 @@
 
                 return `
                     <tr>
-                        <td><strong>${p.student_name}</strong></td>
-                        <td>${p.student_email}</td>
-                        <td style="font-family:var(--font-mono); font-size:11.5px;">${p.ip_address || 'Localhost'}</td>
-                        <td><span style="font-size:12px; color:var(--text-muted);">${lastPingDate}</span></td>
+                        <td><strong>${escapeHtml(p.student_name)}</strong></td>
+                        <td>${escapeHtml(p.student_email)}</td>
+                        <td style="font-family:var(--font-mono); font-size:11.5px;">${escapeHtml(p.ip_address || 'Localhost')}</td>
+                        <td><span style="font-size:12px; color:var(--text-muted);">${escapeHtml(lastPingDate)}</span></td>
                         <td>${statusBadge}</td>
                         <td>${actionBtn}</td>
                     </tr>
