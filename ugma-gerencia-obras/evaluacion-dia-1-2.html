@@ -86,9 +86,9 @@
 
         /* OPTIONS LIST */
         .options-grid { display: grid; gap: 8px; }
-        .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: var(--surface); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 13.5px; font-weight: 500; color: var(--text-main); transition: all 0.15s ease; user-select: none; }
+        .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: var(--surface); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 13.5px; font-weight: 400; color: var(--text-main); transition: all 0.15s ease; user-select: none; line-height: 1.45; }
         .option-label:hover { border-color: var(--blue-accent); background: #f0f9ff; }
-        .option-label.selected { border-color: var(--blue-accent); background: #f0f9ff; font-weight: 700; color: var(--navy-primary); }
+        .option-label.selected { border-color: var(--blue-accent); background: #f0f9ff; color: var(--navy-primary); }
         .option-label input[type="radio"] { accent-color: var(--blue-accent); width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
 
         /* MACLEAMY MINI WIDGET */
@@ -145,10 +145,10 @@
             <div class="hero-meta">Universidad Nororiental Privada "Gran Mariscal de Ayacucho" · Postgrado</div>
             <h1 class="hero-title">Evaluación Práctica Integrada: Semana 1 (Día 1 y Día 2)</h1>
             <p class="hero-desc">
-                Cuestionario interactivo simplificado de 14 preguntas sobre los fundamentos expuestos en la 
-                <strong>Presentación Magistral de Metodología BIM (CIV)</strong>, la gobernanza del 
-                <strong>Caso Real Residencias Atlantis (BIM 5D)</strong>, la estructura de contenedores 
-                <strong>CDE (ISO 19650)</strong> y la auditoría de interferencias <strong>Clash Detection 3D (BCF 3.0)</strong>.
+                Cuestionario interactivo psicométrico de 14 preguntas sobre los fundamentos expuestos en la 
+                Presentación Magistral de Metodología BIM (CIV), la gobernanza del 
+                Caso Real Residencias Atlantis (BIM 5D), la estructura de contenedores 
+                CDE (ISO 19650) y la auditoría de interferencias Clash Detection 3D (BCF 3.0).
             </p>
             <div class="hero-chips">
                 <span class="hero-chip">📊 Escala: 0 a 20 Puntos (Vigesimal)</span>
@@ -195,7 +195,7 @@
                     <span class="section-score-badge">6.0 PUNTOS MÁX (1.0 PT C/U)</span>
                 </div>
 
-                <!-- PREGUNTA 1 -->
+                <!-- PREGUNTA 1 (CLAVE: POSICIÓN C) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">1</span>
@@ -206,21 +206,25 @@
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q1_bim_def" value="software_modelado_render" onchange="handleAnswerChange()">
+                            <span>Un software de modelado tridimensional y renderizado arquitectónico avanzado orientado a la generación de recorridos virtuales para venta inmobiliaria.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q1_bim_def" value="plataforma_nube_contratistas" onchange="handleAnswerChange()">
+                            <span>Una plataforma digital de gestión documental en la nube que sustituye los planos en papel y centraliza el archivo de compras exclusivamente para los contratistas.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q1_bim_def" value="colaborativa_parametrica_3d" required onchange="handleAnswerChange()">
-                            <span><strong>Metodología de trabajo colaborativa</strong> que centraliza la información en un único modelo virtual tridimensional paramétrico (maqueta digital) con datos gráficos y alfanuméricos conectados.</span>
+                            <span>Una metodología de trabajo colaborativa que centraliza la información en un modelo virtual tridimensional paramétrico con datos gráficos y alfanuméricos conectados.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q1_bim_def" value="software_renderizado" onchange="handleAnswerChange()">
-                            <span>Un programa específico de dibujo vectorial y renderizado foto-realista que reemplaza exclusivamente a AutoCAD 2D.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q1_bim_def" value="dibujo_vectorial" onchange="handleAnswerChange()">
-                            <span>Un repositorio de planos en formato PDF firmado digitalmente sin vinculación de objetos paramétricos ni base de datos.</span>
+                            <input type="radio" name="d1_q1_bim_def" value="repositorio_planos_2d" onchange="handleAnswerChange()">
+                            <span>Un repositorio estructurado de planos vectoriales en formato bidimensional que organiza las capas de dibujo para agilizar la impresión física en las faenas de obra.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 2 -->
+                <!-- PREGUNTA 2 (CLAVE: POSICIÓN A) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">2</span>
@@ -232,20 +236,24 @@
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q2_bim_dimensions" value="3d_geom_4d_tiempo_5d_costo" required onchange="handleAnswerChange()">
-                            <span><strong>4D:</strong> Programación de actividades y simulación de fases temporales; <strong>5D:</strong> Presupuesto de obra, cómputos métricos y control de costes.</span>
+                            <span>La dimensión 4D corresponde a la programación de actividades y simulación de fases temporales, mientras que la dimensión 5D abarca el presupuesto de obra y control de costes.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q2_bim_dimensions" value="4d_ambiente_5d_mantenimiento" onchange="handleAnswerChange()">
-                            <span><strong>4D:</strong> Sostenibilidad ambiental e impacto social; <strong>5D:</strong> Operación, mantenimiento y Facility Management.</span>
+                            <input type="radio" name="d1_q2_bim_dimensions" value="4d_costo_5d_tiempo_invertido" onchange="handleAnswerChange()">
+                            <span>La dimensión 4D corresponde al presupuesto de obra y cómputos métricos de materiales, mientras que la dimensión 5D abarca la programación temporal y simulación de fases de faena.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q2_bim_dimensions" value="4d_sostenibilidad_5d_mantenimiento" onchange="handleAnswerChange()">
+                            <span>La dimensión 4D corresponde a la gestión de sostenibilidad ambiental del edificio, mientras que la dimensión 5D abarca la operación de activos y el mantenimiento de instalaciones.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q2_bim_dimensions" value="4d_seguridad_5d_permisologia" onchange="handleAnswerChange()">
-                            <span><strong>4D:</strong> Seguridad y salud laboral en faena; <strong>5D:</strong> Tramitación de solvencias y permisología municipal.</span>
+                            <span>La dimensión 4D corresponde al control de seguridad y salud laboral de cuadrillas, mientras que la dimensión 5D abarca la gestión de permisología municipal y solvencias legales.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 3 -->
+                <!-- PREGUNTA 3 (CLAVE: POSICIÓN D) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">3</span>
@@ -256,21 +264,25 @@
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q3_bim_metrics" value="costos_50_plazos_33_prod_20" onchange="handleAnswerChange()">
+                            <span>Reducción del 50% en los costos globales, disminución del 33% en los plazos de ejecución y un incremento del 20% en la productividad de las faenas.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q3_bim_metrics" value="costos_10_plazos_15_prod_5" onchange="handleAnswerChange()">
+                            <span>Reducción del 10% en los costos de materiales, disminución del 15% en los plazos de entrega y una mejora marginal del 5% en la productividad de los equipos.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q3_bim_metrics" value="costos_80_plazos_75_prod_100" onchange="handleAnswerChange()">
+                            <span>Reducción del 80% en los costos directos de obra, disminución del 75% en los plazos de entrega y una duplicación del 100% en la productividad de cuadrillas.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q3_bim_metrics" value="costos_33_plazos_50_prod_20" required onchange="handleAnswerChange()">
-                            <span><strong>33%</strong> de reducción de costos, <strong>50%</strong> de reducción de plazos de ejecución y <strong>20%</strong> de aumento de productividad general.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q3_bim_metrics" value="costos_5_plazos_10_prod_5" onchange="handleAnswerChange()">
-                            <span>5% de reducción de costos y 10% de reducción de plazos sin mejoras medibles en la productividad laboral.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q3_bim_metrics" value="costos_90_plazos_90_prod_90" onchange="handleAnswerChange()">
-                            <span>90% de reducción en el costo de los materiales pétreos mediante inteligencia artificial generativa.</span>
+                            <span>Reducción del 33% en los costos de construcción, disminución del 50% en los plazos de ejecución y un incremento del 20% en la productividad general del proyecto.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 4 -->
+                <!-- PREGUNTA 4 (CLAVE: POSICIÓN B) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">4</span>
@@ -281,21 +293,25 @@
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q4_bim_roles" value="manager_coordina_coordinador_estrategia" onchange="handleAnswerChange()">
+                            <span>El BIM Manager coordina las colisiones interdisciplinarias en el software de federación, mientras que el Coordinador BIM define la visión estratégica y aprueba el plan BEP.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q4_bim_roles" value="manager_coordinador_modelador" required onchange="handleAnswerChange()">
-                            <span>El <strong>BIM Manager</strong> establece la estrategia global, estándares y el Plan de Ejecución BIM (BEP); el <strong>Coordinador</strong> audita la compatibilización e interferencias entre disciplinas; el <strong>Modelador</strong> genera los elementos paramétricos.</span>
+                            <span>El BIM Manager define la estrategia global y estándares del plan BEP, el Coordinador BIM audita la compatibilización entre disciplinas y el Modelador BIM genera la geometría.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q4_bim_roles" value="manager_solo_dibuja" onchange="handleAnswerChange()">
-                            <span>El BIM Manager se dedica únicamente a dibujar detalles arquitectónicos, mientras el Coordinador aprueba las valuaciones financieras.</span>
+                            <input type="radio" name="d1_q4_bim_roles" value="manager_detalles_coordinador_pagos" onchange="handleAnswerChange()">
+                            <span>El BIM Manager dibuja los detalles estructurales de la edificación, el Coordinador BIM autoriza los pagos de valuaciones y el Modelador BIM tramita las compras en sitio.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q4_bim_roles" value="roles_indistintos" onchange="handleAnswerChange()">
-                            <span>Todos los roles ejecutan exactamente las mismas funciones operativas sin distinción de jerarquía ni responsabilidad legal.</span>
+                            <input type="radio" name="d1_q4_bim_roles" value="roles_indistintos_sin_jerarquia" onchange="handleAnswerChange()">
+                            <span>Todos los integrantes del equipo ejecutan indistintamente el dibujo de planos y la gestión de compras sin existir una jerarquía de responsabilidades técnicas.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 5 -->
+                <!-- PREGUNTA 5 (CLAVE: POSICIÓN C) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">5</span>
@@ -306,21 +322,25 @@
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q5_bim_uses" value="adquisicion_materiales_impuestos" onchange="handleAnswerChange()">
+                            <span>La adquisición automática de materiales con proveedores, el cálculo de impuestos municipales, la contratación de personal obrero y la publicidad de venta.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q5_bim_uses" value="impresion_gran_formato_minutas" onchange="handleAnswerChange()">
+                            <span>La impresión en gran formato de planos aprobados para obra, el almacenamiento de minutas escaneadas y la generación de imágenes publicitarias para inversores.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q5_bim_uses" value="coordinacion_fases_costes" required onchange="handleAnswerChange()">
-                            <span><strong>Coordinación 3D</strong> interdisciplinaria, <strong>Planificación de fases (4D)</strong>, <strong>Estimación de costes (5D)</strong> y <strong>Revisión de diseño</strong> constructivo.</span>
+                            <span>La coordinación tridimensional interdisciplinaria, la planificación de fases temporales, la estimación paramétrica de costes y la revisión de constructabilidad del diseño.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q5_bim_uses" value="solo_impresion_planos" onchange="handleAnswerChange()">
-                            <span>Exclusivamente el ploteo de planos en formato físico para firmas notariales.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q5_bim_uses" value="compra_materiales_directa" onchange="handleAnswerChange()">
-                            <span>La compra desatendida de insumos sin mediación técnica de los ingenieros de compras.</span>
+                            <input type="radio" name="d1_q5_bim_uses" value="inventarios_mudanzas_tasacion" onchange="handleAnswerChange()">
+                            <span>El levantamiento de inventarios para mudanzas, la tasación comercial de inmuebles terminados, la gestión de garantías post-venta y la liquidación contable de obra.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 6 -->
+                <!-- PREGUNTA 6 (CLAVE: POSICIÓN A) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">6</span>
@@ -332,15 +352,19 @@
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q6_bim_cim" value="cim_gemelos_digitales" required onchange="handleAnswerChange()">
-                            <span>Trascender la edificación aislada para integrar infraestructuras urbanas conectadas (CIM), modelos <strong>As-Built</strong> con telemetría en tiempo real (Digital Twins), sistemas GIS e Inteligencia Artificial para operación y mantenimiento inteligente.</span>
+                            <span>Integrar las edificaciones con infraestructuras urbanas conectadas en entornos CIM, incorporando modelos As-Built con telemetría en tiempo real y análisis mediante GIS e IA.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q6_bim_cim" value="cim_solo_marketing" onchange="handleAnswerChange()">
-                            <span>Un concepto netamente comercial sin aplicación técnica verificable en obras civiles ni servicios públicos.</span>
+                            <input type="radio" name="d1_q6_bim_cim" value="formato_cerrado_bloqueo_edicion" onchange="handleAnswerChange()">
+                            <span>Convertir los modelos tridimensionales a un formato propietario cerrado de visualización rápida para dispositivos móviles que bloquea la edición por terceros especialistas.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q6_bim_cim" value="sustitucion_personal" onchange="handleAnswerChange()">
-                            <span>La sustitución obligatoria de toda la mano de obra obrera por brazos robóticos autónomos en la faena.</span>
+                            <input type="radio" name="d1_q6_bim_cim" value="sustitucion_total_obreros_robots" onchange="handleAnswerChange()">
+                            <span>Sustituir por completo la presencia física de los ingenieros residentes en faena mediante la automatización total con robots autónomos de demolición.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q6_bim_cim" value="denominacion_publicitaria_sin_datos" onchange="handleAnswerChange()">
+                            <span>Utilizar una denominación meramente publicitaria para referirse a maquetas digitales renderizadas sin conexión con datos de operación ni mantenimiento real.</span>
                         </label>
                     </div>
                 </div>
@@ -356,57 +380,65 @@
                     <span class="section-score-badge">4.0 PUNTOS MÁX (1.0 PT C/U)</span>
                 </div>
 
-                <!-- PREGUNTA 7 -->
+                <!-- PREGUNTA 7 (CLAVE: POSICIÓN D) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">7</span>
                         <span>Gobernanza Financiera BIM 5D en Obras Unifamiliares</span>
                     </div>
                     <p class="q-desc">
-                        En el dossier del proyecto <strong>Residencias Atlantis</strong> (2 Townhouses de 200 m² c/u en El Tigre, Anzoátegui), ¿cómo se articula la metodología BIM 5D para el control del presupuesto de mano de obra calificada?
+                        En el dossier del proyecto Residencias Atlantis (2 Townhouses de 200 m² c/u en El Tigre, Anzoátegui), ¿cómo se articula la metodología BIM 5D para el control del presupuesto de mano de obra calificada?
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q7_atlantis_governance" value="facturacion_semanal_horas_obrero" onchange="handleAnswerChange()">
+                            <span>Facturar semanalmente las horas laboradas por el personal obrero en el sitio sin contrastar los rendimientos con los cómputos métricos del proyecto.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q7_atlantis_governance" value="presupuesto_alzado_excel_independiente" onchange="handleAnswerChange()">
+                            <span>Gestionar un presupuesto alzado en hojas de cálculo tradicionales independiente del diseño tridimensional, realizando ajustes financieros al finalizar cada etapa de obra.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q7_atlantis_governance" value="liquidar_estimados_subjetivos_verbales" onchange="handleAnswerChange()">
+                            <span>Liquidar pagos basados exclusivamente en estimados porcentuales subjetivos acordados verbalmente con los subcontratistas al final de cada jornada de trabajo.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q7_atlantis_governance" value="gobernanza_financiera_5d" required onchange="handleAnswerChange()">
-                            <span>Vinculando las partidas del régimen unitario fijo ($/m²) y las secuencias de avance en cascada directamente con los objetos paramétricos del modelo digital, garantizando trazabilidad y certificación contra avances reales medibles.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q7_atlantis_governance" value="estimacion_global_ciega" onchange="handleAnswerChange()">
-                            <span>Manejando un presupuesto global a tanto alzado sin vinculación con el modelo tridimensional ni verificación de partidas en sitio.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q7_atlantis_governance" value="control_por_horas_extra" onchange="handleAnswerChange()">
-                            <span>Liquidando pagos semanales por horas de trabajo sin cómputos métricos ni comprobación geométrica de avance.</span>
+                            <span>Vincular las partidas del régimen unitario por metro cuadrado y las secuencias de avance en cascada con los objetos paramétricos del modelo digital para certificar obra.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 8 -->
+                <!-- PREGUNTA 8 (CLAVE: POSICIÓN B) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">8</span>
                         <span>Delimitación Contractual de Alcance y Blindaje Legal (Art. 1637 CCV)</span>
                     </div>
                     <p class="q-desc">
-                        El dossier de Residencias Atlantis incluye una <em>Aclaratoria Contractual de Alcance</em> expresa que excluye la cerca perimetral y el murete divisorio central del presupuesto base de $68.000 USD. Metodológicamente, ¿por qué es crítico sincronizar el modelo BIM con las cláusulas contractuales?
+                        El dossier de Residencias Atlantis incluye una Aclaratoria Contractual de Alcance expresa que excluye la cerca perimetral y el murete divisorio central del presupuesto base de $68.000 USD. Metodológicamente, ¿por qué es crítico sincronizar el modelo BIM con las cláusulas contractuales?
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q8_atlantis_scope" value="disminuir_elementos_acelerar_permisos" onchange="handleAnswerChange()">
+                            <span>Disminuir la cantidad de elementos modelados en el software de diseño para acelerar la entrega de los planos de permiso ante las autoridades municipales.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q8_atlantis_scope" value="exclusion_expresa_contrato" required onchange="handleAnswerChange()">
-                            <span>Para delimitar con precisión milimétrica la responsabilidad civil y técnica del constructor (Art. 1637 CCV), asegurando que solo lo modelado y contratado sea exigible en faena y evitando reclamos infundados por partidas no cotizadas.</span>
+                            <span>Delimitar con exactitud la responsabilidad legal del constructor bajo el Código Civil, garantizando que solo lo modelado y contratado sea exigible sin cobros imprevistos.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q8_atlantis_scope" value="ahorro_tiempo_dibujo" onchange="handleAnswerChange()">
-                            <span>Únicamente para reducir las horas de dibujo del modelador BIM en la oficina de ingeniería.</span>
+                            <input type="radio" name="d1_q8_atlantis_scope" value="modelo_anula_contrato_escrito" onchange="handleAnswerChange()">
+                            <span>Establecer que el modelo tridimensional anula cualquier documento legal escrito firmado previamente por el promotor, rigiendo únicamente las cotizaciones de catálogo.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q8_atlantis_scope" value="omision_involuntaria" onchange="handleAnswerChange()">
-                            <span>Porque los estándares de modelado prohíben explícitamente incluir cerramientos exteriores en proyectos residenciales.</span>
+                            <input type="radio" name="d1_q8_atlantis_scope" value="formalidad_burocratica_sin_consecuencia" onchange="handleAnswerChange()">
+                            <span>Cumplir con una formalidad burocrática del colegio profesional que exige declarar exclusiones en obras residenciales sin consecuencias jurídicas reales.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 9 -->
+                <!-- PREGUNTA 9 (CLAVE: POSICIÓN A) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">9</span>
@@ -418,20 +450,24 @@
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q9_atlantis_labor" value="programacion_cuadrillas_cascada" required onchange="handleAnswerChange()">
-                            <span>Permite planificar la entrada y salida de cuadrillas especializadas (envolvente, instalaciones sanitarias/eléctricas, acabados) secuencialmente de un townhouse a otro, erradicando solapamientos espaciales y paradas no programadas.</span>
+                            <span>Planificar el ingreso secuencial y continuo de cuadrillas especializadas entre las viviendas del lote, erradicando interferencias espaciales y paradas innecesarias de faena.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q9_atlantis_labor" value="trabajo_simultaneo_desordenado" onchange="handleAnswerChange()">
-                            <span>Permite aglomerar a todos los trabajadores en el mismo ambiente al mismo tiempo sin importar el orden constructivo.</span>
+                            <input type="radio" name="d1_q9_atlantis_labor" value="presencia_simultanea_todos_oficios" onchange="handleAnswerChange()">
+                            <span>Permitir la presencia simultánea de todos los oficios en los mismos recintos de trabajo para acelerar la culminación de acabados sin importar el orden constructivo.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q9_atlantis_labor" value="eliminacion_supervision" onchange="handleAnswerChange()">
-                            <span>Elimina la necesidad de inspección de campo y bitácoras de obra física.</span>
+                            <input type="radio" name="d1_q9_atlantis_labor" value="contratar_obreros_independientes" onchange="handleAnswerChange()">
+                            <span>Contratar grupos de obreros distintos para cada edificación sin coordinar rendimientos, permitiendo que cada contratista fije su propio cronograma independiente.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q9_atlantis_labor" value="eliminar_control_asumiendo_software" onchange="handleAnswerChange()">
+                            <span>Eliminar por completo las labores de control e inspección en campo al asumir que el software de programación garantiza la ejecución física de las tareas.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 10 -->
+                <!-- PREGUNTA 10 (CLAVE: POSICIÓN C) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">10</span>
@@ -442,16 +478,20 @@
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q10_atlantis_changes" value="demoler_inmediato_negociar_liquidar" onchange="handleAnswerChange()">
+                            <span>Demoler de inmediato los elementos construidos y negociar el sobrecosto y la extensión del plazo de entrega directamente con el cliente al liquidar la obra.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d1_q10_atlantis_changes" value="rechazar_solicitud_modificacion" onchange="handleAnswerChange()">
+                            <span>Rechazar categóricamente cualquier solicitud de modificación presentada por el propietario para evitar alteraciones en el presupuesto cerrado original.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d1_q10_atlantis_changes" value="protocolo_cambios_modelo" required onchange="handleAnswerChange()">
-                            <span>Modelar la modificación en el gemelo digital preliminar, evaluar su impacto automático en el presupuesto 5D y plazo 4D, emitir la Orden de Cambio (Change Order) para aprobación del cliente y, solo tras la firma, proceder a la ejecución en obra.</span>
+                            <span>Evaluar la modificación primero en el gemelo digital para cuantificar su impacto en costo y plazo, emitiendo una orden de cambio formal antes de ejecutar en faena.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q10_atlantis_changes" value="demoler_inmediatamente" onchange="handleAnswerChange()">
-                            <span>Demoler de inmediato en el sitio y discutir los sobrecostos y atrasos una vez entregada la edificación.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d1_q10_atlantis_changes" value="rechazar_sin_analisis" onchange="handleAnswerChange()">
-                            <span>Rechazar categóricamente cualquier solicitud del propietario sin realizar análisis técnico ni económico previo.</span>
+                            <input type="radio" name="d1_q10_atlantis_changes" value="demoler_obra_actualizar_despues" onchange="handleAnswerChange()">
+                            <span>Proceder con la demolición y reubicación física en el sitio de trabajo y posteriormente actualizar el modelo digital para registrar el cambio en los planos finales.</span>
                         </label>
                     </div>
                 </div>
@@ -471,32 +511,36 @@
                     <span class="section-score-badge">10.0 PUNTOS MÁX (2.5 PTS C/U)</span>
                 </div>
 
-                <!-- PREGUNTA 11 -->
+                <!-- PREGUNTA 11 (CLAVE: POSICIÓN B) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">11</span>
                         <span>Estados de Información en el Common Data Environment (ISO 19650)</span>
                     </div>
                     <p class="q-desc">
-                        Según la norma internacional <strong>ISO 19650</strong>, ¿cuál es el ciclo de vida y flujo formal por el que deben transitar los contenedores de información para garantizar la trazabilidad de la obra?
+                        Según la norma internacional ISO 19650, ¿cuál es el ciclo de vida y flujo formal por el que deben transitar los contenedores de información para garantizar la trazabilidad de la obra?
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q1_cde_states" value="transicion_directa_publicado_compartido" onchange="handleAnswerChange()">
+                            <span>Transición directa de Trabajo en Curso a Publicado para obra, pasando luego a Compartido para revisiones y finalmente a Archivado como registro histórico.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d2_q1_cde_states" value="wip_shared_published_archive" required onchange="handleAnswerChange()">
-                            <span>De <strong>WIP (Work in Progress)</strong> a <strong>Shared (Compartido)</strong> tras compuerta de aprobación técnica; luego a <strong>Published (Publicado)</strong> para contratación/construcción; y finalmente a <strong>Archive (Archivado)</strong> como registro inmutable e histórico.</span>
+                            <span>Transición de Trabajo en Curso a Compartido tras compuerta de aprobación técnica, luego a Publicado para contratación y construcción, y finalmente a Archivado.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q1_cde_states" value="publico_directo" onchange="handleAnswerChange()">
-                            <span>Transición directa del disco duro personal del calculista a Publicado sin compuertas de revisión interdisciplinaria.</span>
+                            <input type="radio" name="d2_q1_cde_states" value="almacenamiento_disco_envio_correo" onchange="handleAnswerChange()">
+                            <span>Almacenamiento continuo en el disco duro del especialista y envío de versiones preliminares por correo electrónico sin compuertas de validación formal.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q1_cde_states" value="compartido_sin_control" onchange="handleAnswerChange()">
-                            <span>Envío desordenado de archivos por mensajería instantánea sin identificador único ni control de versiones.</span>
+                            <input type="radio" name="d2_q1_cde_states" value="publicacion_inmediata_borradores_abiertos" onchange="handleAnswerChange()">
+                            <span>Publicación inmediata de todos los borradores de diseño en un servidor de acceso abierto para que cualquier subcontratista modifique la geometría.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 12 -->
+                <!-- PREGUNTA 12 (CLAVE: POSICIÓN D) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">12</span>
@@ -507,41 +551,49 @@
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q2_clash_types" value="hard_metalicos_soft_drywall" onchange="handleAnswerChange()">
+                            <span>El Hard Clash ocurre exclusivamente entre elementos metálicos estructurales, mientras que el Soft Clash se presenta en componentes de plástico y drywall.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q2_clash_types" value="hard_anteproyecto_soft_obra" onchange="handleAnswerChange()">
+                            <span>El Hard Clash representa un error identificado durante la etapa de anteproyecto, mientras que el Soft Clash solo puede detectarse durante la faena de obra.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q2_clash_types" value="hard_galibos_soft_solidos_invertido" onchange="handleAnswerChange()">
+                            <span>El Hard Clash es la invasión de distancias de aislamiento y holguras de montaje, mientras que el Soft Clash es la colisión física volumétrica entre sólidos.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d2_q2_clash_types" value="hard_solidos_soft_galibos" required onchange="handleAnswerChange()">
-                            <span>Un <strong>Hard Clash</strong> es la interferencia física geométrica directa entre dos sólidos volumétricos (ej. viga de concreto perforada por ducto de aire); mientras que un <strong>Soft Clash</strong> es la invasión de distancias mínimas de aislamiento térmico, tolerancias de montaje o gálibos de acceso para mantenimiento.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q2_clash_types" value="hard_metales_soft_tierra" onchange="handleAnswerChange()">
-                            <span>Hard Clash ocurre únicamente entre perfiles metálicos, y Soft Clash ocurre únicamente en obras de movimiento de tierras.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q2_clash_types" value="hard_fase_diseno_soft_obra" onchange="handleAnswerChange()">
-                            <span>Hard Clash es un error detectable en fase de anteproyecto, y Soft Clash es un error que solo se descubre en la fase de demolición.</span>
+                            <span>El Hard Clash es la interferencia física directa entre dos sólidos geométricos, mientras que el Soft Clash es la invasión de distancias mínimas y gálibos de mantenimiento.</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- PREGUNTA 13 -->
+                <!-- PREGUNTA 13 (CLAVE: POSICIÓN B) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">13</span>
                         <span>Gestión Eficiente de Incidencias con el Estándar buildingSMART BCF 3.0</span>
                     </div>
                     <p class="q-desc">
-                        ¿Cuál es la ventaja decisiva de comunicar incidencias de coordinación mediante el estándar abierto <strong>BCF (BIM Collaboration Format)</strong> frente a informes tradicionales en PDF?
+                        ¿Cuál es la ventaja decisiva de comunicar incidencias de coordinación mediante el estándar abierto BCF (BIM Collaboration Format) frente a informes tradicionales en PDF?
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q3_bcf_standard" value="bcf_reemplaza_planos_fotos_fijas" onchange="handleAnswerChange()">
+                            <span>El archivo BCF reemplaza los planos de obra mediante fotografías panorámicas fijas que impiden la apertura del modelo tridimensional por seguridad.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d2_q3_bcf_standard" value="bcf_tickets_neutros_guid" required onchange="handleAnswerChange()">
-                            <span>El ticket BCF contiene el GUID universal exacto de los elementos en conflicto, las coordenadas espaciales ($X, Y, Z$) y punto de vista de la cámara, estado, autor y disciplina responsable en un esquema neutro y ligero, abriéndose automáticamente en el software de cada especialista.</span>
+                            <span>El ticket BCF comunica el identificador único del elemento colisionado, coordenadas espaciales de cámara y estado en un esquema neutro integrable entre softwares.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q3_bcf_standard" value="bcf_es_un_plano" onchange="handleAnswerChange()">
-                            <span>El BCF es simplemente una imagen estática que evita que los ingenieros tengan que utilizar herramientas de modelado.</span>
+                            <input type="radio" name="d2_q3_bcf_standard" value="bcf_contiene_solidos_mallas_totales" onchange="handleAnswerChange()">
+                            <span>El archivo BCF contiene la totalidad de los sólidos geométricos y mallas del edificio en un único archivo comprimido para evitar el uso del formato IFC.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q3_bcf_standard" value="bcf_elimina_responsables" onchange="handleAnswerChange()">
-                            <span>El BCF anonimiza los datos para que nadie sepa qué especialista cometió la interferencia.</span>
+                            <input type="radio" name="d2_q3_bcf_standard" value="bcf_oculta_identidad_proyectistas" onchange="handleAnswerChange()">
+                            <span>El ticket BCF oculta la identidad de los proyectistas y la disciplina responsable para evitar discrepancias contractuales entre los contratistas.</span>
                         </label>
                     </div>
 
@@ -552,27 +604,31 @@
                     </div>
                 </div>
 
-                <!-- PREGUNTA 14 -->
+                <!-- PREGUNTA 14 (CLAVE: POSICIÓN C) -->
                 <div class="question-box">
                     <div class="q-title">
                         <span class="q-number">14</span>
                         <span>Impacto Económico según la Curva de Patrick MacLeamy</span>
                     </div>
                     <p class="q-desc">
-                        De acuerdo con la <strong>Curva de MacLeamy</strong> analizada en clase, ¿por qué la detección y resolución de colisiones en la etapa de modelado preliminar genera un factor de ahorro superior al 95%?
+                        De acuerdo con la Curva de MacLeamy analizada en clase, ¿por qué la detección y resolución de colisiones en la etapa de modelado preliminar genera un factor de ahorro superior al 95%?
                     </p>
                     <div class="options-grid">
                         <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q4_macleamy_decision" value="macleamy_costo_invariable_todas_etapas" onchange="handleAnswerChange()">
+                            <span>La Curva de MacLeamy demuestra que el costo de introducir modificaciones técnicas es idéntico e invariable a lo largo de todas las etapas del proyecto.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
+                            <input type="radio" name="d2_q4_macleamy_decision" value="resolver_en_obra_mas_economico" onchange="handleAnswerChange()">
+                            <span>Resolver interferencias en el sitio de faena durante el vaciado resulta más económico que invertir horas de ingeniería en la etapa de diseño preliminar.</span>
+                        </label>
+                        <label class="option-label" onclick="selectOption(this)">
                             <input type="radio" name="d2_q4_macleamy_decision" value="resolucion_temprana_diseno" required onchange="handleAnswerChange()">
-                            <span>Porque modificar la geometría en oficina digital insume únicamente horas de modelador ($87.50 USD), mientras que corregir la misma colisión tras vaciar el concreto en faena implica demolición, cuadrillas adicionales, paralización de concreteras y desperdicios ($3,150.00 USD), disparando un factor de sobrecosto evitado de <strong>36.0x (97.2% de ahorro)</strong>.</span>
+                            <span>Modificar la geometría en diseño requiere únicamente horas de modelado frente a demoliciones y paradas en obra, logrando un factor de sobrecosto evitado de 36.0x.</span>
                         </label>
                         <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q4_macleamy_decision" value="macleamy_dice_igual" onchange="handleAnswerChange()">
-                            <span>Porque la Curva de MacLeamy postula que el costo de modificar un elemento es exactamente el mismo en cualquier fase del proyecto.</span>
-                        </label>
-                        <label class="option-label" onclick="selectOption(this)">
-                            <input type="radio" name="d2_q4_macleamy_decision" value="obra_es_mas_barata" onchange="handleAnswerChange()">
-                            <span>Porque demoler concreto armado en el sitio de trabajo siempre resulta más económico y rápido que modificar planos en oficina.</span>
+                            <input type="radio" name="d2_q4_macleamy_decision" value="macleamy_sugiere_postergar_decisiones" onchange="handleAnswerChange()">
+                            <span>La metodología MacLeamy sugiere postergar la toma de decisiones críticas hasta la faena para que los obreros decidan el trazado definitivo de tuberías según el espacio disponible.</span>
                         </label>
                     </div>
 
