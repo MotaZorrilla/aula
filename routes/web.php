@@ -53,6 +53,10 @@ $registerUgmaRoutes = function () {
     Route::get('/energia-solar-sostenibilidad', [UgmaController::class, 'energiaSolarSostenibilidad'])->name('energia-solar-sostenibilidad');
     Route::get('/taller-integrador', [UgmaController::class, 'tallerIntegrador'])->name('taller-integrador');
 
+    // Módulo de Evaluación Interactiva (Semana 1: Día 1 y 2)
+    Route::get('/evaluacion-dia-1-2', [UgmaController::class, 'evaluacionDia12'])->name('evaluacion-dia-1-2');
+    Route::get('/evaluacion-dia-1-2.html', [UgmaController::class, 'evaluacionDia12']);
+
     // API Endpoints (Clean Architecture Actions)
     Route::prefix('api')->name('api.')->group(function () {
         Route::post('/register', [UgmaController::class, 'apiRegister'])->name('register');
@@ -70,6 +74,11 @@ $registerUgmaRoutes = function () {
         Route::post('/live-quiz/answer', [UgmaController::class, 'apiLiveQuizAnswer'])->name('live-quiz.answer');
         Route::get('/live-quiz/leaderboard', [UgmaController::class, 'apiLiveQuizLeaderboard'])->name('live-quiz.leaderboard');
         Route::get('/live-quiz/questions', [UgmaController::class, 'apiLiveQuizQuestions'])->name('live-quiz.questions');
+
+        // Evaluación Día 1 y 2
+        Route::post('/evaluacion/submit', [UgmaController::class, 'apiSubmitEvaluation'])->name('evaluacion.submit');
+        Route::get('/evaluacion/submissions', [UgmaController::class, 'apiGetEvaluations'])->name('evaluacion.submissions');
+        Route::post('/evaluacion/grade', [UgmaController::class, 'apiGradeEvaluation'])->name('evaluacion.grade');
     });
 };
 

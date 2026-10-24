@@ -1330,6 +1330,9 @@
                 <a href="admin.html" class="btn-docente-header" style="background:#0f2942; color:#38bdf8; border:2px solid #38bdf8; padding:7px 15px; border-radius:8px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 8px rgba(15,41,66,0.25);" title="Panel de Administración Docente (Ing. Héctor Mota)">
                     <span style="font-size:16px;">👨‍🏫</span> <span>Panel Facilitador</span>
                 </a>
+                <a href="evaluacion-dia-1-2.html" class="btn-docente-header" style="background:#0284c7; color:#ffffff; border:2px solid #38bdf8; padding:7px 15px; border-radius:8px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 8px rgba(2,132,199,0.25);" title="Módulo de Evaluación Práctica Semana 1 (Día 1 y 2)">
+                    <span style="font-size:16px;">📝</span> <span>Evaluación Día 1 &amp; 2</span>
+                </a>
             </div>
 
             <div class="nav-right-cluster">
@@ -1375,6 +1378,7 @@
                 <a href="modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
 
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Las 6 Unidades Curriculares</div>
+                <a href="evaluacion-dia-1-2.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📝</span> EVALUACIÓN DÍA 1 &amp; 2 (20 pts)</a>
                 <a href="masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
                 <a href="clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
                 <a href="#unidades-curriculares" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
@@ -1632,6 +1636,32 @@
             <span class="section-subtext">Estructura oficial de la Planificación Docente UGMA 2026 · Competencia: "Conocer sobre las herramientas tecnológicas digitales en el seguimiento y control de obras"</span>
         </div>
 
+        <!-- BANNER DESTACADO DE EVALUACIÓN SEMANA 1 (DÍAS 1 Y 2) -->
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%); border-radius: 16px; padding: 22px 26px; margin: 0 0 24px 0; border: 2px solid #38bdf8; box-shadow: 0 10px 25px rgba(2,132,199,0.25); color: #ffffff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px;">
+            <div style="display: flex; align-items: center; gap: 16px; min-width: 280px; flex: 1;">
+                <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(56, 189, 248, 0.2); border: 2px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
+                    📝
+                </div>
+                <div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="font-size: 11px; font-weight: 800; background: #38bdf8; color: #0f172a; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Evaluación Oficial · 20 Puntos</span>
+                        <span style="font-size: 11px; font-weight: 700; color: #bae6fd;">Semana 1 · Unidades 1 y 2</span>
+                    </div>
+                    <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-top: 4px;">
+                        Módulo de Evaluación Práctica e Interactiva: Días 1 y 2
+                    </div>
+                    <div style="font-size: 13px; color: #e0f2fe; margin-top: 4px; line-height: 1.5;">
+                        Simulador paramétrico MacLeamy, validación openBIM ISO 19650, matriz de colisiones 3D e inyección en vivo de tickets BCF 3.0 con registro directo al panel docente.
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <a href="evaluacion-dia-1-2.html" style="background: #38bdf8; color: #0f172a; font-weight: 800; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); transition: transform 0.2s;">
+                    <span>🚀</span> Iniciar Evaluación Interactiva &rarr;
+                </a>
+            </div>
+        </div>
+
         <div class="days-grid">
             <!-- UNIDAD 1 -->
             <div class="day-card">
@@ -1682,6 +1712,9 @@
                     </a>
                     <a href="masterclass-bim/index.html" class="btn-day-action">
                         <span>📁</span> Entrar a Unidad 1: CDE &amp; Validador ISO 19650 &rarr;
+                    </a>
+                    <a href="evaluacion-dia-1-2.html" class="btn-day-action" style="background:#f0fdf4; border:1px solid #16a34a; color:#15803d; font-weight:700;">
+                        <span>📝</span> Realizar Evaluación Unidad 1 &rarr;
                     </a>
                 </div>
             </div>
@@ -1735,6 +1768,9 @@
                     </a>
                     <a href="clash-detection/index.html" class="btn-day-action">
                         <span>🤖</span> Entrar a Unidad 2: IA &amp; Bitácoras de Campo &rarr;
+                    </a>
+                    <a href="evaluacion-dia-1-2.html" class="btn-day-action" style="background:#f0fdf4; border:1px solid #16a34a; color:#15803d; font-weight:700;">
+                        <span>📝</span> Realizar Evaluación Unidad 2 &rarr;
                     </a>
                 </div>
             </div>

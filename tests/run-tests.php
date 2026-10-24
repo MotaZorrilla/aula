@@ -58,6 +58,7 @@ $routes = [
     'Módulo III: Marco Legal (Martínez)' => '/ugma-gerencia-obras/modulo-3-marco-legal.html',
     'Módulo IV: Lean y Calidad (Zambrano)' => '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
     'Panel de Administración Docente' => '/ugma-gerencia-obras/admin.html',
+    'Evaluación Práctica Día 1 & 2' => '/ugma-gerencia-obras/evaluacion-dia-1-2.html',
 ];
 
 foreach ($routes as $name => $relPath) {
@@ -706,6 +707,36 @@ assert_test('Unit: Algoritmo de Rúbrica de Grado vigesimal (0-20 pts) y veredic
     }
 
     return true;
+});
+
+// ==========================================
+// 4. PROTOCOLO 3: EVALUACIÓN DÍA 1 Y 2 E INVARIANTE TRIPLE
+// ==========================================
+assert_test('Evaluación Día 1 & 2 sincronizada al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/evaluacion-dia-1-2.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/evaluacion-dia-1-2.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/evaluacion-dia-1-2.html');
+
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
+assert_test('Evaluación Día 1 & 2 implementa simulador MacLeamy, generador BCF 3.0 y submitEvaluation', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/evaluacion-dia-1-2.html');
+
+    return stripos($content, 'calcMacLeamy') !== false
+        && stripos($content, 'generateBcfXml') !== false
+        && stripos($content, 'submitEvaluation') !== false
+        && stripos($content, 'ISO 19650') !== false
+        && stripos($content, 'Art. 1637') !== false;
+});
+
+assert_test('Panel Docente incorpora gestión y calificación de Evaluaciones Día 1 & 2', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/admin.html');
+
+    return stripos($content, 'loadEvaluations') !== false
+        && stripos($content, 'showBcfTicketModal') !== false
+        && stripos($content, 'openGradeEvalModal') !== false
+        && stripos($content, 'submitEvaluationGradeChange') !== false;
 });
 
 // ==========================================

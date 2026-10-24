@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Actions\Ugma\AdmitStudentPresenceAction;
 use App\Actions\Ugma\EvaluateStudentAction;
+use App\Actions\Ugma\GetEvaluationSubmissionsAction;
 use App\Actions\Ugma\GetLiveLeaderboardAction;
 use App\Actions\Ugma\GetLiveQuizStateAction;
+use App\Actions\Ugma\GradeEvaluationSubmissionAction;
 use App\Actions\Ugma\PingLivePresenceAction;
 use App\Actions\Ugma\RecordWarRoomDecisionAction;
 use App\Actions\Ugma\RegisterStudentAction;
+use App\Actions\Ugma\SubmitDayEvaluationAction;
 use App\Actions\Ugma\SubmitQuizAnswerAction;
 use App\Actions\Ugma\ToggleModuleLockAction;
 use App\Actions\Ugma\TriggerLiveQuestionAction;
@@ -364,5 +367,55 @@ class UgmaController extends Controller
             'success' => true,
             'questions' => $questions,
         ]);
+    }
+
+    public function evaluacionDia12(): View
+    {
+        return view('ugma.evaluacion-dia-1-2');
+    }
+
+    public function apiSubmitEvaluation(Request $request, SubmitDayEvaluationAction $action): JsonResponse
+    {
+        $validated = $request->validate([
+            'student_name' => 'required|string',
+            'student_email' => 'required|email',
+            'session_token' => 'nullable|string',
+            'time_spent_seconds' => 'nullable|integer',
+            'answers' => 'required|array',
+            'bcf_ticket_code' => 'nullable|string',
+        ]);
+
+        $result = $action->execute($validated);
+
+        return response()->json($result);
+    }
+
+    public function apiGetEvaluations(Request $request, GetEvaluationSubmissionsAction $action): JsonResponse
+    {
+        $code = $request->input('code', 'EVAL-DIA-1-2');
+        $result = $action->execute($code);
+
+        return response()->json($result);
+    }
+
+    public function apiGradeEvaluation(Request $request, GradeEvaluationSubmissionAction $action): JsonResponse
+    {
+        $validated = $request->validate([
+            'id' => 'required|integer',
+            'score_day1' => 'nullable|numeric|min:0|max:10',
+            'score_day2' => 'nullable|numeric|min:0|max:10',
+            'total_score' => 'nullable|numeric|min:0|max:20',
+            'status' => 'nullable|string',
+            'instructor_feedback' => 'nullable|string',
+            'feedback' => 'nullable|string',
+        ]);
+
+        if (! isset($validated['instructor_feedback']) && isset($validated['feedback'])) {
+            $validated['instructor_feedback'] = $validated['feedback'];
+        }
+
+        $result = $action->execute((int) $validated['id'], $validated);
+
+        return response()->json($result);
     }
 }

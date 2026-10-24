@@ -599,6 +599,9 @@
                 <button type="button" id="tabAdminGrades" class="tab-btn-admin" onclick="switchAdminTab('grades')">
                     🎯 Rúbrica y Notas (0-20 pts)
                 </button>
+                <button type="button" id="tabAdminEvaluations" class="tab-btn-admin" onclick="switchAdminTab('evaluations')">
+                    📋 Evaluaciones Día 1 &amp; 2 (<span id="evalCountBadge">0</span>)
+                </button>
             </div>
 
                         <!-- CONTENIDO TAB LIVE: SALA DE ESPERA Y CONTROL DE PRESENCIA EN VIVO -->
@@ -882,6 +885,73 @@
                             </thead>
                             <tbody id="gradedStudentsTableBody">
                                 <!-- Poblado por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENIDO TAB 7: EVALUACIONES DÍA 1 Y DÍA 2 -->
+            <div id="adminTabContentEvaluations" style="display:none;">
+                <div class="content-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
+                        <div>
+                            <h3 style="margin:0;"><span>📋</span> Evaluaciones Prácticas: Semana 1 (Día 1 y Día 2)</h3>
+                            <p style="font-size:13.5px; color:var(--text-muted); margin-top:4px;">
+                                Seguimiento en tiempo real de exámenes entregados en openBIM ISO 19650, Curva de MacLeamy, Clash Detection 3D y BCF 3.0.
+                            </p>
+                        </div>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <a href="/ugma-gerencia-obras/evaluacion-dia-1-2" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#e0f2fe; color:#0369a1; text-decoration:none; padding:8px 16px; border-radius:10px; font-size:12.5px; font-weight:700; border:1px solid #bae6fd;">
+                                🌐 Abrir Módulo de Examen ↗
+                            </a>
+                            <button type="button" class="btn-refresh" onclick="loadEvaluations()">
+                                <span>🔄</span> Actualizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- METRIC CARDS -->
+                    <div class="stats-grid" style="margin-bottom:20px;">
+                        <div class="stat-card">
+                            <span class="stat-label">Total Entregas</span>
+                            <span class="stat-value" id="evalStatTotal">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Promedio General</span>
+                            <span class="stat-value" id="evalStatAvg" style="color:var(--blue-accent);">0.0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Tasa de Aprobación</span>
+                            <span class="stat-value" id="evalStatPass" style="color:var(--emerald);">0%</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Nota Más Alta</span>
+                            <span class="stat-value" id="evalStatMax" style="color:var(--navy-primary);">0.0</span>
+                        </div>
+                    </div>
+
+                    <!-- TABLA DE ENTREGAS -->
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Participante</th>
+                                    <th>Correo</th>
+                                    <th>Día 1 (BIM/CDE)</th>
+                                    <th>Día 2 (Clash/BCF)</th>
+                                    <th>Total (0-20)</th>
+                                    <th>Estado</th>
+                                    <th>Tiempo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="evaluationsTableBody">
+                                <tr>
+                                    <td colspan="8" style="text-align:center; padding:24px; color:var(--text-light);">
+                                        Cargando entregas de evaluación...
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -1409,7 +1479,7 @@
         }
 
         function switchAdminTab(tab) {
-            const tabs = ['live', 'quiz', 'students', 'locks', 'poll', 'grades'];
+            const tabs = ['live', 'quiz', 'students', 'locks', 'poll', 'grades', 'evaluations'];
             tabs.forEach(t => {
                 const btn = document.getElementById('tabAdmin' + t.charAt(0).toUpperCase() + t.slice(1));
                 const content = document.getElementById('adminTabContent' + t.charAt(0).toUpperCase() + t.slice(1));
@@ -1424,6 +1494,7 @@
 
             if (tab === 'live') refreshLivePresences();
             if (tab === 'quiz') loadQuizQuestions();
+            if (tab === 'evaluations') loadEvaluations();
         }
 
         // ==========================================
@@ -1702,6 +1773,219 @@
             </button>
         </div>
     </div>
+
+    <!-- MODAL INSPECTOR DE TICKET BCF 3.0 -->
+    <div id="bcfInspectorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.8); z-index:99999; align-items:center; justify-content:center; padding:16px;">
+        <div style="background:#ffffff; border-radius:20px; max-width:680px; width:100%; padding:28px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.3); text-align:left; position:relative;">
+            <button type="button" onclick="closeBcfInspectorModal()" style="position:absolute; top:18px; right:18px; background:#f1f5f9; border:none; border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer;">✕</button>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                <span style="font-size:24px;">🔍</span>
+                <div>
+                    <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin:0;">Inspección de Incidencia BCF 3.0</h3>
+                    <span id="bcfModalAuthor" style="font-size:12px; color:var(--text-light); font-weight:600;">Participante</span>
+                </div>
+            </div>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">
+                Payload generado por el participante en cumplimiento del estándar buildingSMART BCF XML:
+            </p>
+            <div style="background:#0b132b; color:#38bdf8; border-radius:12px; padding:16px; font-family:var(--font-mono); font-size:12px; max-height:300px; overflow-y:auto; border:1px solid #1e293b;">
+                <pre id="bcfModalCode" style="margin:0; white-space:pre-wrap; word-break:break-all;"></pre>
+            </div>
+            <div style="margin-top:20px; text-align:right;">
+                <button type="button" class="btn-action-admin" style="background:#0f2942; color:#fff;" onclick="closeBcfInspectorModal()">
+                    Cerrar Inspector
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CALIFICACIÓN Y FEEDBACK DOCENTE -->
+    <div id="gradeEvalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.8); z-index:99999; align-items:center; justify-content:center; padding:16px;">
+        <div style="background:#ffffff; border-radius:20px; max-width:540px; width:100%; padding:28px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.3); text-align:left; position:relative;">
+            <button type="button" onclick="closeGradeEvalModal()" style="position:absolute; top:18px; right:18px; background:#f1f5f9; border:none; border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer;">✕</button>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                <span style="font-size:24px;">✏️</span>
+                <div>
+                    <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin:0;">Calificar Examen Día 1 y 2</h3>
+                    <span id="gradeEvalStudentTitle" style="font-size:12.5px; color:var(--text-light); font-weight:600;">Participante</span>
+                </div>
+            </div>
+
+            <input type="hidden" id="gradeEvalId">
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+                <div>
+                    <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Nota Día 1 (Máx 10 Pts):</label>
+                    <input type="number" id="gradeEvalDay1" min="0" max="10" step="0.5" class="auth-input-field" oninput="recalcEvalModalTotal()">
+                </div>
+                <div>
+                    <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Nota Día 2 (Máx 10 Pts):</label>
+                    <input type="number" id="gradeEvalDay2" min="0" max="10" step="0.5" class="auth-input-field" oninput="recalcEvalModalTotal()">
+                </div>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:12px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:13px; font-weight:700; color:var(--navy-primary);">Calificación Vigesimal Total:</span>
+                <span id="gradeEvalTotalDisplay" style="font-family:var(--font-mono); font-size:18px; font-weight:900; color:var(--emerald);">20.0 / 20 Pts</span>
+            </div>
+
+            <div style="margin-bottom:14px;">
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Estado de la Evaluación:</label>
+                <select id="gradeEvalStatus" class="auth-input-field">
+                    <option value="aprobado">Aprobado</option>
+                    <option value="reprobado">Reprobado</option>
+                    <option value="revisado">Revisado (Observaciones)</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Retroalimentación y Observaciones del Facilitador:</label>
+                <textarea id="gradeEvalFeedback" rows="3" class="auth-input-field" placeholder="Excelente resolución del ticket BCF y justificación MacLeamy..."></textarea>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:10px;">
+                <button type="button" onclick="closeGradeEvalModal()" style="background:#f1f5f9; border:1px solid var(--border); padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer;">
+                    Cancelar
+                </button>
+                <button type="button" class="btn-action-admin" style="background:#0284c7; color:#fff;" onclick="submitEvaluationGradeChange()">
+                    💾 Guardar Calificación
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // FUNCIONES DE EVALUACIONES DÍA 1 Y DÍA 2
+        // ==========================================
+        let currentEvalSubmissions = [];
+
+        async function loadEvaluations() {
+            try {
+                const res = await fetch('/ugma-gerencia-obras/api/evaluacion/submissions');
+                const data = await res.json();
+                if (data.success) {
+                    currentEvalSubmissions = data.submissions;
+                    document.getElementById('evalCountBadge').innerText = data.metrics.total_submissions;
+                    document.getElementById('evalStatTotal').innerText = data.metrics.total_submissions;
+                    document.getElementById('evalStatAvg').innerText = data.metrics.average_score + ' / 20';
+                    document.getElementById('evalStatPass').innerText = data.metrics.pass_rate_percentage + '%';
+                    document.getElementById('evalStatMax').innerText = data.metrics.highest_score + ' / 20';
+
+                    const tbody = document.getElementById('evaluationsTableBody');
+                    if (data.submissions.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:24px; color:var(--text-light);">No hay exámenes entregados aún.</td></tr>';
+                        return;
+                    }
+
+                    tbody.innerHTML = data.submissions.map(s => {
+                        const isApproved = s.total_score >= 10;
+                        const statusBadge = isApproved 
+                            ? `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#ecfdf5; color:#047857; font-size:11px; font-weight:800; border:1px solid #a7f3d0;">APROBADO</span>`
+                            : `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#fef2f2; color:#b91c1c; font-size:11px; font-weight:800; border:1px solid #fecaca;">REPROBADO</span>`;
+
+                        const mins = Math.floor(s.time_spent_seconds / 60);
+                        const secs = s.time_spent_seconds % 60;
+                        const timeStr = `${mins}m ${secs}s`;
+
+                        return `
+                            <tr>
+                                <td><strong style="color:var(--navy-primary); font-size:13.5px;">${escapeHtml(s.student_name)}</strong></td>
+                                <td style="font-size:12px; color:var(--text-muted);">${escapeHtml(s.student_email)}</td>
+                                <td style="font-family:var(--font-mono); font-weight:700; color:var(--blue-accent);">${s.score_day1} / 10</td>
+                                <td style="font-family:var(--font-mono); font-weight:700; color:var(--emerald);">${s.score_day2} / 10</td>
+                                <td><strong style="font-family:var(--font-mono); font-size:14px; color:var(--navy-primary);">${s.total_score} / 20</strong></td>
+                                <td>${statusBadge}</td>
+                                <td style="font-size:12px; font-family:var(--font-mono);">${timeStr}</td>
+                                <td>
+                                    <div style="display:flex; gap:6px;">
+                                        <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" onclick="showBcfTicketModal(${s.id})">
+                                            🔍 BCF
+                                        </button>
+                                        <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#f1f5f9; color:var(--text-main);" onclick="openGradeEvalModal(${s.id})">
+                                            ✏️ Nota
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+            } catch (err) {
+                console.error("Error al cargar evaluaciones:", err);
+            }
+        }
+
+        function showBcfTicketModal(submissionId) {
+            const sub = currentEvalSubmissions.find(s => s.id === submissionId);
+            if (!sub) return;
+
+            document.getElementById('bcfModalAuthor').innerText = `${sub.student_name} (${sub.student_email})`;
+            document.getElementById('bcfModalCode').innerText = sub.bcf_ticket_code || '<!-- No se generó código BCF en esta entrega -->';
+            document.getElementById('bcfInspectorModal').style.display = 'flex';
+        }
+
+        function closeBcfInspectorModal() {
+            document.getElementById('bcfInspectorModal').style.display = 'none';
+        }
+
+        function openGradeEvalModal(submissionId) {
+            const sub = currentEvalSubmissions.find(s => s.id === submissionId);
+            if (!sub) return;
+
+            document.getElementById('gradeEvalId').value = sub.id;
+            document.getElementById('gradeEvalStudentTitle').innerText = `${sub.student_name} · ${sub.student_email}`;
+            document.getElementById('gradeEvalDay1').value = sub.score_day1;
+            document.getElementById('gradeEvalDay2').value = sub.score_day2;
+            document.getElementById('gradeEvalStatus').value = sub.status || 'aprobado';
+            document.getElementById('gradeEvalFeedback').value = sub.instructor_feedback || '';
+            recalcEvalModalTotal();
+            document.getElementById('gradeEvalModal').style.display = 'flex';
+        }
+
+        function closeGradeEvalModal() {
+            document.getElementById('gradeEvalModal').style.display = 'none';
+        }
+
+        function recalcEvalModalTotal() {
+            const s1 = parseFloat(document.getElementById('gradeEvalDay1').value) || 0;
+            const s2 = parseFloat(document.getElementById('gradeEvalDay2').value) || 0;
+            const total = Math.min(20, Math.max(0, s1 + s2));
+            document.getElementById('gradeEvalTotalDisplay').innerText = total.toFixed(1) + ' / 20 Pts';
+        }
+
+        async function submitEvaluationGradeChange() {
+            const id = document.getElementById('gradeEvalId').value;
+            const s1 = parseFloat(document.getElementById('gradeEvalDay1').value) || 0;
+            const s2 = parseFloat(document.getElementById('gradeEvalDay2').value) || 0;
+            const status = document.getElementById('gradeEvalStatus').value;
+            const feedback = document.getElementById('gradeEvalFeedback').value;
+
+            try {
+                const res = await fetch('/ugma-gerencia-obras/api/evaluacion/grade', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        id: parseInt(id),
+                        score_day1: s1,
+                        score_day2: s2,
+                        status: status,
+                        instructor_feedback: feedback
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(`Calificación actualizada exitosamente para ${data.student_name} (${data.total_score} Pts).`);
+                    closeGradeEvalModal();
+                    loadEvaluations();
+                } else {
+                    alert('Error al actualizar calificación.');
+                }
+            } catch (err) {
+                alert('Error de conexión al guardar nota.');
+            }
+        }
+    </script>
 
 </body>
 </html>
