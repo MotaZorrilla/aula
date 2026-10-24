@@ -453,4 +453,42 @@ class UgmaController extends Controller
             'total_students' => count($defaults),
         ]);
     }
+
+    public function apiToggleEvalCard(Request $request): JsonResponse
+    {
+        $lock = UgmaModuleLock::firstOrNew(['module_key' => 'evaluacion_dia_1_2']);
+
+        if ($request->has('enabled')) {
+            $lock->is_locked = ! $request->boolean('enabled');
+        } elseif ($request->has('is_locked')) {
+            $lock->is_locked = $request->boolean('is_locked');
+        } else {
+            $lock->is_locked = ! $lock->is_locked;
+        }
+        $lock->save();
+
+        $isEnabled = ! $lock->is_locked;
+
+        return response()->json([
+            'success' => true,
+            'enabled' => $isEnabled,
+            'is_locked' => $lock->is_locked,
+            'message' => $isEnabled
+                ? 'Tarjeta de Evaluación Oficial habilitada exitosamente para estudiantes inscritos.'
+                : 'Tarjeta de Evaluación Oficial inhabilitada para estudiantes.',
+        ]);
+    }
+
+    public function apiGetEvalCardStatus(): JsonResponse
+    {
+        $lock = UgmaModuleLock::where('module_key', 'evaluacion_dia_1_2')->first();
+        // Por defecto, habilitada a menos que esté explícitamente bloqueada
+        $isEnabled = $lock ? ! $lock->is_locked : true;
+
+        return response()->json([
+            'success' => true,
+            'enabled' => $isEnabled,
+            'is_locked' => ! $isEnabled,
+        ]);
+    }
 }

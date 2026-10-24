@@ -234,4 +234,41 @@ class UgmaEvaluationFeatureTest extends TestCase
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['student_name', 'student_email', 'answers']);
     }
+
+    public function test_teacher_can_toggle_evaluation_card_for_students(): void
+    {
+        // Activar tarjeta
+        $res1 = $this->postJson('/ugma-gerencia-obras/api/admin/toggle-eval-card', ['enabled' => true]);
+        $res1->assertStatus(200);
+        $res1->assertJson([
+            'success' => true,
+            'enabled' => true,
+            'is_locked' => false,
+        ]);
+
+        // Verificar estado activo
+        $resStatus = $this->getJson('/ugma-gerencia-obras/api/evaluacion/card-status');
+        $resStatus->assertStatus(200);
+        $resStatus->assertJson([
+            'success' => true,
+            'enabled' => true,
+        ]);
+
+        // Inactivar tarjeta
+        $res2 = $this->postJson('/ugma-gerencia-obras/api/admin/toggle-eval-card', ['enabled' => false]);
+        $res2->assertStatus(200);
+        $res2->assertJson([
+            'success' => true,
+            'enabled' => false,
+            'is_locked' => true,
+        ]);
+
+        // Verificar estado inactivo
+        $resStatus2 = $this->getJson('/ugma-gerencia-obras/api/evaluacion/card-status');
+        $resStatus2->assertStatus(200);
+        $resStatus2->assertJson([
+            'success' => true,
+            'enabled' => false,
+        ]);
+    }
 }

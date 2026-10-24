@@ -80,7 +80,9 @@ $registerUgmaRoutes = function () {
         Route::get('/evaluacion/submissions', [UgmaController::class, 'apiGetEvaluations'])->name('evaluacion.submissions');
         Route::post('/evaluacion/grade', [UgmaController::class, 'apiGradeEvaluation'])->name('evaluacion.grade');
         Route::post('/evaluacion/reset', [UgmaController::class, 'apiResetEvaluations'])->name('evaluacion.reset');
+        Route::get('/evaluacion/card-status', [UgmaController::class, 'apiGetEvalCardStatus'])->name('evaluacion.card-status');
         Route::post('/admin/reset-students', [UgmaController::class, 'apiResetStudents'])->name('admin.reset-students');
+        Route::post('/admin/toggle-eval-card', [UgmaController::class, 'apiToggleEvalCard'])->name('admin.toggle-eval-card');
     });
 };
 

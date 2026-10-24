@@ -901,7 +901,10 @@
                                 Seguimiento en tiempo real de exámenes entregados en openBIM ISO 19650, Curva de MacLeamy, Clash Detection 3D y BCF 3.0.
                             </p>
                         </div>
-                        <div style="display:flex; gap:10px; align-items:center;">
+                        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                            <button type="button" id="btnToggleEvaluationCard" class="btn-refresh" style="background:#059669; color:#ffffff; border:1px solid #047857; font-weight:700;" onclick="toggleEvaluationCardStatus()">
+                                <span id="btnToggleEvaluationCardIcon">🟢</span> <span id="btnToggleEvaluationCardText">Habilitar Tarjeta a Estudiantes Inscritos</span>
+                            </button>
                             <a href="/ugma-gerencia-obras/evaluacion-dia-1-2" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#e0f2fe; color:#0369a1; text-decoration:none; padding:8px 16px; border-radius:10px; font-size:12.5px; font-weight:700; border:1px solid #bae6fd;">
                                 🌐 Abrir Módulo de Examen ↗
                             </a>
@@ -912,6 +915,20 @@
                                 <span>🗑️</span> Reiniciar Exámenes
                             </button>
                         </div>
+                    </div>
+
+                    <!-- BANNER DE ESTADO DE LA TARJETA EN EL AULA DE ALUMNOS -->
+                    <div id="evalCardStatusNotice" style="background:#f0fdf4; border:1px solid #86efac; border-radius:12px; padding:12px 18px; margin-bottom:18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:13px; color:#166534;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span id="evalCardStatusDot" style="width:12px; height:12px; border-radius:50%; background:#10b981; display:inline-block; box-shadow:0 0 8px rgba(16,185,129,0.5);"></span>
+                            <div>
+                                <strong>Tarjeta en el Itinerario del Alumno:</strong>
+                                <span id="evalCardStatusNoticeText" style="font-weight:700;">Habilitada para estudiantes inscritos</span>
+                            </div>
+                        </div>
+                        <span style="font-size:12px; color:#15803d; background:rgba(34,197,94,0.15); padding:3px 10px; border-radius:6px; font-weight:600;">
+                            «Evaluación Oficial · 20 Puntos (Semana 1)»
+                        </span>
                     </div>
 
                     <!-- METRIC CARDS -->
@@ -1220,6 +1237,7 @@
         ];
 
         const COURSE_MODULES = [
+            { id: 'evaluacion_dia_1_2', title: '📝 Evaluación Oficial · 20 Puntos (Semana 1: Días 1 y 2)', defaultUnlocked: true },
             { id: 'mod1', title: 'Módulo I: Organización y Gobernanza (Prof. Pérez)', defaultUnlocked: true },
             { id: 'mod2', title: 'Módulo II: Costos, APU y EVM (Prof. Angarita)', defaultUnlocked: true },
             { id: 'mod3', title: 'Módulo III: Marco Legal y Art. 1637 (Abg. Martínez)', defaultUnlocked: true },
@@ -1275,6 +1293,7 @@
                 loadGradesTable();
                 populateStudentSelect();
                 recalcGradeRubric();
+                fetchEvaluationCardStatus();
             } else {
                 gate.style.display = 'block';
                 dash.style.display = 'none';
@@ -1380,6 +1399,15 @@
             const locks = getLocksState();
             locks[id] = state;
             localStorage.setItem(LOCKS_KEY, JSON.stringify(locks));
+            if (id === 'evaluacion_dia_1_2') {
+                localStorage.setItem(EVAL_CARD_KEY, state ? 'true' : 'false');
+                renderEvaluationCardButtonState(state);
+                fetch('/ugma-gerencia-obras/api/admin/toggle-eval-card', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ enabled: state })
+                }).catch(e => console.warn('Sync eval card lock error:', e));
+            }
             loadLocksList();
         }
 
@@ -1522,7 +1550,7 @@
 
             if (tab === 'live') refreshLivePresences();
             if (tab === 'quiz') loadQuizQuestions();
-            if (tab === 'evaluations') loadEvaluations();
+            if (tab === 'evaluations') { loadEvaluations(); fetchEvaluationCardStatus(); }
         }
 
         // ==========================================
@@ -2036,6 +2064,117 @@
                 alert('Error de conexión al reiniciar exámenes.');
             }
         }
+
+        // ==========================================
+        // CONTROL DE HABILITACIÓN DE TARJETA EVALUACIÓN (ALUMNOS INSCRITOS)
+        // ==========================================
+        const EVAL_CARD_KEY = 'ugma_evaluacion_card_enabled';
+
+        async function fetchEvaluationCardStatus() {
+            let enabled = true;
+            try {
+                const res = await fetch('/ugma-gerencia-obras/api/evaluacion/card-status');
+                if (res.ok) {
+                    const data = await res.json();
+                    enabled = !!data.enabled;
+                } else {
+                    const local = localStorage.getItem(EVAL_CARD_KEY);
+                    enabled = local !== null ? local === 'true' : true;
+                }
+            } catch(e) {
+                const local = localStorage.getItem(EVAL_CARD_KEY);
+                enabled = local !== null ? local === 'true' : true;
+            }
+
+            localStorage.setItem(EVAL_CARD_KEY, enabled ? 'true' : 'false');
+            renderEvaluationCardButtonState(enabled);
+            return enabled;
+        }
+
+        function renderEvaluationCardButtonState(enabled) {
+            const btn = document.getElementById('btnToggleEvaluationCard');
+            const icon = document.getElementById('btnToggleEvaluationCardIcon');
+            const text = document.getElementById('btnToggleEvaluationCardText');
+            const notice = document.getElementById('evalCardStatusNotice');
+            const noticeText = document.getElementById('evalCardStatusNoticeText');
+            const dot = document.getElementById('evalCardStatusDot');
+
+            if (enabled) {
+                if (btn) {
+                    btn.style.background = '#059669';
+                    btn.style.color = '#ffffff';
+                    btn.style.borderColor = '#047857';
+                }
+                if (icon) icon.innerText = '🟢';
+                if (text) text.innerText = 'Tarjeta Habilitada para Alumnos (Click para Inhabilitar)';
+                if (notice) {
+                    notice.style.background = '#f0fdf4';
+                    notice.style.borderColor = '#86efac';
+                    notice.style.color = '#166534';
+                }
+                if (dot) {
+                    dot.style.background = '#10b981';
+                    dot.style.boxShadow = '0 0 8px rgba(16,185,129,0.5)';
+                }
+                if (noticeText) noticeText.innerText = 'Habilitada para estudiantes inscritos';
+            } else {
+                if (btn) {
+                    btn.style.background = '#f1f5f9';
+                    btn.style.color = '#334155';
+                    btn.style.borderColor = '#cbd5e1';
+                }
+                if (icon) icon.innerText = '🔒';
+                if (text) text.innerText = 'Habilitar Tarjeta a Estudiantes Inscritos';
+                if (notice) {
+                    notice.style.background = '#fef2f2';
+                    notice.style.borderColor = '#fecaca';
+                    notice.style.color = '#991b1b';
+                }
+                if (dot) {
+                    dot.style.background = '#ef4444';
+                    dot.style.boxShadow = '0 0 8px rgba(239,68,68,0.5)';
+                }
+                if (noticeText) noticeText.innerText = 'Inhabilitada / En preparación (Alumnos no pueden acceder)';
+            }
+        }
+
+        async function toggleEvaluationCardStatus() {
+            const current = localStorage.getItem(EVAL_CARD_KEY) === 'true';
+            const newTarget = !current;
+
+            try {
+                const res = await fetch('/ugma-gerencia-obras/api/admin/toggle-eval-card', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ enabled: newTarget })
+                });
+                const data = await res.json();
+                const effective = data.success ? data.enabled : newTarget;
+
+                localStorage.setItem(EVAL_CARD_KEY, effective ? 'true' : 'false');
+
+                // Sincronizar también con el estado de locks en localStorage
+                const locks = getLocksState();
+                locks['evaluacion_dia_1_2'] = effective;
+                localStorage.setItem(LOCKS_KEY, JSON.stringify(locks));
+                loadLocksList();
+
+                renderEvaluationCardButtonState(effective);
+
+                alert(effective
+                    ? '¡Tarjeta de Evaluación Oficial habilitada exitosamente para todos los estudiantes inscritos!'
+                    : 'Tarjeta de Evaluación Oficial inhabilitada para los alumnos.');
+            } catch(err) {
+                console.error('Error al conmutar estado de tarjeta:', err);
+                localStorage.setItem(EVAL_CARD_KEY, newTarget ? 'true' : 'false');
+                renderEvaluationCardButtonState(newTarget);
+                alert('Estado actualizado en navegador: ' + (newTarget ? 'Habilitada' : 'Inhabilitada'));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchEvaluationCardStatus();
+        });
     </script>
 
 </body>

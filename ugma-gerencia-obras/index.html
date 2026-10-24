@@ -1637,26 +1637,27 @@
         </div>
 
         <!-- BANNER DESTACADO DE EVALUACIÓN SEMANA 1 (DÍAS 1 Y 2) -->
-        <div style="background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%); border-radius: 16px; padding: 22px 26px; margin: 0 0 24px 0; border: 2px solid #38bdf8; box-shadow: 0 10px 25px rgba(2,132,199,0.25); color: #ffffff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px;">
+        <div id="cardEvaluacionSemana1" style="background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%); border-radius: 16px; padding: 22px 26px; margin: 0 0 24px 0; border: 2px solid #38bdf8; box-shadow: 0 10px 25px rgba(2,132,199,0.25); color: #ffffff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; transition: all 0.3s ease;">
             <div style="display: flex; align-items: center; gap: 16px; min-width: 280px; flex: 1;">
-                <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(56, 189, 248, 0.2); border: 2px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
+                <div id="evalCardIconBox" style="width: 54px; height: 54px; border-radius: 14px; background: rgba(56, 189, 248, 0.2); border: 2px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
                     📝
                 </div>
                 <div>
                     <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                         <span style="font-size: 11px; font-weight: 800; background: #38bdf8; color: #0f172a; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Evaluación Oficial · 20 Puntos</span>
                         <span style="font-size: 11px; font-weight: 700; color: #bae6fd;">Semana 1 · Unidades 1 y 2</span>
+                        <span id="evalStatusPill" style="font-size: 11px; font-weight: 800; background: #10b981; color: #ffffff; padding: 2px 8px; border-radius: 6px; text-transform: uppercase;">🟢 Habilitada para Alumnos</span>
                     </div>
                     <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-top: 4px;">
                         Módulo de Evaluación Práctica e Interactiva: Días 1 y 2
                     </div>
-                    <div style="font-size: 13px; color: #e0f2fe; margin-top: 4px; line-height: 1.5;">
+                    <div id="evalCardDescText" style="font-size: 13px; color: #e0f2fe; margin-top: 4px; line-height: 1.5;">
                         Simulador paramétrico MacLeamy, validación openBIM ISO 19650, matriz de colisiones 3D e inyección en vivo de tickets BCF 3.0 con registro directo al panel docente.
                     </div>
                 </div>
             </div>
-            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                <a href="evaluacion-dia-1-2.html" style="background: #38bdf8; color: #0f172a; font-weight: 800; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); transition: transform 0.2s;">
+            <div id="evalCardActionContainer" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <a id="btnIniciarEvaluacion" href="evaluacion-dia-1-2.html" style="background: #38bdf8; color: #0f172a; font-weight: 800; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); transition: transform 0.2s;">
                     <span>🚀</span> Iniciar Evaluación Interactiva &rarr;
                 </a>
             </div>
@@ -2788,7 +2789,95 @@
                     bovedaCurtain.classList.remove('unlocked');
                 }
             }
+
+            checkAndRenderEvaluationCard();
         }
+
+        async function checkAndRenderEvaluationCard() {
+            let isEnabled = true;
+            try {
+                const res = await fetch('/ugma-gerencia-obras/api/evaluacion/card-status');
+                if (res.ok) {
+                    const data = await res.json();
+                    isEnabled = !!data.enabled;
+                } else {
+                    const local = localStorage.getItem('ugma_evaluacion_card_enabled');
+                    isEnabled = local !== null ? local === 'true' : true;
+                }
+            } catch(e) {
+                const local = localStorage.getItem('ugma_evaluacion_card_enabled');
+                isEnabled = local !== null ? local === 'true' : true;
+            }
+
+            const user = getAuthUser();
+            const card = document.getElementById('cardEvaluacionSemana1');
+            const pill = document.getElementById('evalStatusPill');
+            const actionContainer = document.getElementById('evalCardActionContainer');
+            const descText = document.getElementById('evalCardDescText');
+            if (!card || !actionContainer) return;
+
+            if (!isEnabled) {
+                // Inhabilitada / En preparación por el Facilitador
+                card.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
+                card.style.borderColor = '#475569';
+                card.style.boxShadow = '0 6px 16px rgba(0,0,0,0.2)';
+                if (pill) {
+                    pill.style.background = '#475569';
+                    pill.style.color = '#cbd5e1';
+                    pill.innerText = '🔒 En Espera de Apertura';
+                }
+                if (descText) {
+                    descText.innerText = 'Esta evaluación será habilitada por el facilitador docente Ing. Héctor Mota desde el Dashboard Docente durante la sesión síncrona de clases.';
+                }
+                actionContainer.innerHTML = `
+                    <button type="button" disabled style="background:#334155; color:#94a3b8; font-weight:700; font-size:13.5px; padding:11px 20px; border-radius:10px; border:1px solid #475569; cursor:not-allowed; display:inline-flex; align-items:center; gap:8px;">
+                        <span>⏳</span> En espera de apertura por el Facilitador
+                    </button>
+                `;
+            } else if (user) {
+                // Habilitada y Estudiante Inscrito / Autenticado
+                card.style.background = 'linear-gradient(135deg, #0f172a 0%, #0369a1 100%)';
+                card.style.borderColor = '#38bdf8';
+                card.style.boxShadow = '0 10px 25px rgba(2,132,199,0.3)';
+                if (pill) {
+                    pill.style.background = '#10b981';
+                    pill.style.color = '#ffffff';
+                    pill.innerText = `🟢 Habilitada para ${user.name}`;
+                }
+                if (descText) {
+                    descText.innerText = 'Simulador paramétrico MacLeamy, validación openBIM ISO 19650, matriz de colisiones 3D e inyección en vivo de tickets BCF 3.0 con registro directo al panel docente.';
+                }
+                actionContainer.innerHTML = `
+                    <a href="evaluacion-dia-1-2.html" style="background:#38bdf8; color:#0f172a; font-weight:800; font-size:14px; padding:12px 24px; border-radius:10px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 14px rgba(56,189,248,0.4); transition:transform 0.2s;">
+                        <span>🚀</span> Iniciar Evaluación Interactiva &rarr;
+                    </a>
+                `;
+            } else {
+                // Habilitada pero Usuario No Autenticado (Invitado)
+                card.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)';
+                card.style.borderColor = '#f59e0b';
+                card.style.boxShadow = '0 8px 20px rgba(245,158,11,0.2)';
+                if (pill) {
+                    pill.style.background = '#f59e0b';
+                    pill.style.color = '#0f172a';
+                    pill.innerText = '🔐 Exclusiva Alumnos Inscritos';
+                }
+                if (descText) {
+                    descText.innerText = 'Evaluación habilitada por el facilitador docente. Inicia sesión con tus credenciales de alumno para acceder a las 14 preguntas e interactuar con el simulador.';
+                }
+                actionContainer.innerHTML = `
+                    <button type="button" onclick="openAuthModal('login')" style="background:#f59e0b; color:#0f172a; font-weight:800; font-size:13.5px; padding:12px 22px; border-radius:10px; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 14px rgba(245,158,11,0.35);">
+                        <span>🔑</span> Iniciar Sesión para Rendir Examen &rarr;
+                    </button>
+                `;
+            }
+        }
+
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'ugma_evaluacion_card_enabled' || e.key === 'ugma_student_session') {
+                checkAndRenderEvaluationCard();
+            }
+        });
 
         // Verificación de descargas: si el usuario no ha iniciado sesión, ofrece registrarse
         document.addEventListener('click', function(e) {
