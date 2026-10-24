@@ -131,6 +131,23 @@ assert_test('Masterclass BIM contiene enlaces oficiales a ISO, buildingSMART y T
         && stripos($content, 'tsj.gob.ve') !== false;
 });
 
+assert_test('Masterclass BIM y Hub UGMA incorporan la Presentación Oficial CIV de Metodología BIM', function () use ($baseDir) {
+    $hubContent = file_get_contents($baseDir.'/ugma-gerencia-obras/index.html');
+    $mbContent = file_get_contents($baseDir.'/ugma-gerencia-obras/masterclass-bim/index.html');
+
+    return stripos($hubContent, 'Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pdf') !== false
+        && stripos($mbContent, 'Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pdf') !== false
+        && stripos($mbContent, 'Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pptx') !== false;
+});
+
+assert_test('El archivo PDF de la Presentación Metodología BIM CIV existe en descargas y es accesible', function () use ($baseDir) {
+    $pdfPath = $baseDir.'/public/ugma-gerencia-obras/descargas/Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pdf';
+    if (!file_exists($pdfPath)) {
+        throw new Exception("Archivo PDF no encontrado en {$pdfPath}");
+    }
+    return filesize($pdfPath) > 1000000;
+});
+
 assert_test('Día 1 (CDE ISO 19650) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
     $content = file_get_contents($baseDir.'/ugma-gerencia-obras/cde-iso19650/index.html');
 

@@ -1710,6 +1710,19 @@
                     <a href="masterclass-bim/index.html" class="btn-day-action featured-day" style="font-weight:800; border-color:#0284c7; background:#e0f2fe; color:#0369a1;">
                         <span>🏛️</span> Tema 1: Masterclass BIM (De Maqueta a Gemelo) &rarr;
                     </a>
+                    <div style="background:#f0f9ff; border:1.5px solid #bae6fd; border-radius:10px; padding:10px 12px; margin:2px 0;">
+                        <div style="font-size:11px; font-weight:800; color:#0369a1; text-transform:uppercase; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+                            <span>📊</span> Ponencia CIV: Metodología BIM (Ing. Héctor Mota)
+                        </div>
+                        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                            <a href="/ugma-gerencia-obras/descargas/Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pdf" target="_blank" rel="noopener" style="flex:1; min-width:100px; background:#0284c7; color:#ffffff; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:6px; text-decoration:none; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:4px;">
+                                <span>👁️</span> Ver PDF
+                            </a>
+                            <a href="/ugma-gerencia-obras/descargas/Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pptx" download style="flex:1; min-width:100px; background:#e2e8f0; color:#0f172a; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:6px; text-decoration:none; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:4px;">
+                                <span>💾</span> Descargar PPTX
+                            </a>
+                        </div>
+                    </div>
                     <a href="masterclass-bim/index.html" class="btn-day-action">
                         <span>📁</span> Entrar a Unidad 1: CDE &amp; Validador ISO 19650 &rarr;
                     </a>

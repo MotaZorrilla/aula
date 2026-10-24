@@ -1311,6 +1311,37 @@
                 <strong>Lección de Gerencia de Obras:</strong> El costo de resolver una interferencia entre una tubería de aguas de lluvia de 6" y una viga postensada en el modelo digital durante el anteproyecto es de aproximadamente <strong>$15 USD</strong> (tiempo de modelador). Corregir esa misma interferencia con el encofrado armado y la cuadrilla de vaciado esperando en obra puede superar los <strong>$3,500 USD</strong> en demoliciones, refuerzos estructurales extraordinarios y retrasos en la ruta crítica del cronograma.
             </div>
 
+            <!-- TARJETA DESTACADA: PRESENTACIÓN OFICIAL COLEGIO DE INGENIEROS DE VENEZUELA -->
+            <div style="background: linear-gradient(135deg, #0f2942 0%, #1e3a5f 100%); border: 2px solid #38bdf8; border-radius: 14px; padding: 22px 24px; margin: 24px 0 16px 0; color: #ffffff; box-shadow: 0 8px 24px rgba(15, 41, 66, 0.25);">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                    <div style="display: flex; gap: 16px; align-items: flex-start; max-width: 680px;">
+                        <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(56, 189, 248, 0.15); border: 1.5px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0;">
+                            📊
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+                                <span style="background: #38bdf8; color: #0f2942; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Recurso de Cátedra · CIV</span>
+                                <span style="font-size: 12px; color: #93c5fd; font-weight: 700;">Colegio de Ingenieros de Venezuela · Seccional Ciudad Bolívar</span>
+                            </div>
+                            <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0;">
+                                Presentación Magistral: Introducción a la Metodología BIM
+                            </h3>
+                            <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.5;">
+                                Diapositivas oficiales de la ponencia dictada por el <strong>Ing. Héctor Mota Zorrilla</strong>. Abarca la evolución histórica del CAD a openBIM, interoperabilidad IFC 4.3, gobernanza ISO 19650 y casos prácticos de aplicación en la ingeniería venezolana.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; min-width: 220px;">
+                        <a href="/ugma-gerencia-obras/descargas/Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pdf" target="_blank" rel="noopener" style="background: #38bdf8; color: #0f2942; font-weight: 800; font-size: 13px; padding: 10px 18px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.35); transition: transform 0.2s;">
+                            <span>👁️</span> Visualizar Presentación (PDF) &rarr;
+                        </a>
+                        <a href="/ugma-gerencia-obras/descargas/Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pptx" download style="background: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); font-weight: 700; font-size: 12px; padding: 9px 16px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s;">
+                            <span>💾</span> Descargar Original (.PPTX, 34 MB)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- STEP NAVIGATION BUTTONS -->
             <div class="step-nav-bottom">
                 <span>Módulo 1 de 9</span>
