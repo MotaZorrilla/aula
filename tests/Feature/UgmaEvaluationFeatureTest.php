@@ -171,6 +171,59 @@ class UgmaEvaluationFeatureTest extends TestCase
         ]);
     }
 
+    public function test_simplified_14_question_evaluation_scores_perfect_20_points(): void
+    {
+        $payload = [
+            'student_name' => 'Ing. Héctor Mota Alumno',
+            'student_email' => 'alumno.bim@ugma.edu.ve',
+            'session_token' => 'tok_bim_civ_atlantis_999',
+            'time_spent_seconds' => 420,
+            'answers' => [
+                // Parte 1 · Día 1: 6 Preguntas Presentación BIM CIV (1 pt c/u = 6 pts)
+                'd1_q1_bim_def' => 'colaborativa_parametrica_3d',
+                'd1_q2_bim_dimensions' => '3d_geom_4d_tiempo_5d_costo',
+                'd1_q3_bim_metrics' => 'costos_33_plazos_50_prod_20',
+                'd1_q4_bim_roles' => 'manager_coordinador_modelador',
+                'd1_q5_bim_uses' => 'coordinacion_fases_costes',
+                'd1_q6_bim_cim' => 'cim_gemelos_digitales',
+
+                // Parte 1 · Día 1: 4 Preguntas Proyecto Atlantis (1 pt c/u = 4 pts)
+                'd1_q7_atlantis_governance' => 'gobernanza_financiera_5d',
+                'd1_q8_atlantis_scope' => 'exclusion_expresa_contrato',
+                'd1_q9_atlantis_labor' => 'programacion_cuadrillas_cascada',
+                'd1_q10_atlantis_changes' => 'protocolo_cambios_modelo',
+
+                // Parte 2 · Día 2: 4 Preguntas Clash Detection & CDE (2.5 pts c/u = 10 pts)
+                'd2_q1_cde_states' => 'wip_shared_published_archive',
+                'd2_q2_clash_types' => 'hard_solidos_soft_galibos',
+                'd2_q3_bcf_standard' => 'bcf_tickets_neutros_guid',
+                'd2_q4_macleamy_decision' => 'resolucion_temprana_diseno',
+            ],
+            'bcf_ticket_code' => '<bcf:Topic Guid="atlantis-clash-01"><bcf:Title>Colisión Ducto vs Viga Atlantis</bcf:Title></bcf:Topic>',
+        ];
+
+        $response = $this->postJson('/ugma-gerencia-obras/api/evaluacion/submit', $payload);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'student_name' => 'Ing. Héctor Mota Alumno',
+            'score_day1' => 10.0,
+            'score_day2' => 10.0,
+            'total_score' => 20.0,
+            'status' => 'aprobado',
+            'verdict' => 'Sobresaliente',
+        ]);
+
+        $this->assertDatabaseHas('ugma_evaluations', [
+            'student_email' => 'alumno.bim@ugma.edu.ve',
+            'total_score' => 20.0,
+            'score_day1' => 10.0,
+            'score_day2' => 10.0,
+            'status' => 'aprobado',
+        ]);
+    }
+
     public function test_evaluation_validation_fails_on_missing_required_fields(): void
     {
         // Unhappy path: falta student_name y student_email

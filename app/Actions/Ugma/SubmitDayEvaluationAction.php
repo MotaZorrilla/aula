@@ -18,47 +18,106 @@ class SubmitDayEvaluationAction
 
         // 1. Evaluación Día 1 (Máx 10 Pts)
         $scoreDay1 = 0.0;
-
-        // Reto 1: Contenedor CDE ISO 19650
-        if (($answers['day1_q1_cde_state'] ?? '') === 'wip_to_shared_ifc') {
-            $scoreDay1 += 3.5;
-        }
-
-        // Reto 2: MacLeamy Cost Ratio & Ahorro
-        $ratio = (float) ($answers['day1_q2_cost_ratio'] ?? 0);
-        if ($ratio >= 30.0 && $ratio <= 40.0) {
-            $scoreDay1 += 3.5;
-        } elseif ($ratio > 0) {
-            $scoreDay1 += 2.0; // Puntos parciales
-        }
-
-        // Reto 3: Blindaje Art. 1637 CCV
-        if (($answers['day1_q3_ccv_protocol'] ?? '') === 'registro_inmutable_cde') {
-            $scoreDay1 += 3.0;
-        }
-
-        // 2. Evaluación Día 2 (Máx 10 Pts)
         $scoreDay2 = 0.0;
 
-        // Reto 4: Clasificación Clash (Hard vs Soft)
-        $clashType1 = $answers['day2_q4_clash1'] ?? '';
-        $clashType2 = $answers['day2_q4_clash2'] ?? '';
-        if ($clashType1 === 'hard_clash' && $clashType2 === 'soft_clash') {
-            $scoreDay2 += 3.5;
-        } elseif ($clashType1 === 'hard_clash' || $clashType2 === 'soft_clash') {
-            $scoreDay2 += 2.0; // Puntos parciales
-        }
+        $isNewFormat = isset($answers['d1_q1_bim_def']) 
+            || isset($answers['d1_q7_atlantis_governance']) 
+            || isset($answers['d2_q1_cde_states']);
 
-        // Reto 5: Formato BCF 3.0 & Ticket
-        if (! empty($bcfTicket) && (str_contains($bcfTicket, 'Topic') || str_contains($bcfTicket, 'bcf') || str_contains($bcfTicket, 'guid'))) {
-            $scoreDay2 += 3.5;
-        } elseif (! empty($bcfTicket)) {
-            $scoreDay2 += 2.0;
-        }
+        if ($isNewFormat) {
+            // ==========================================================
+            // NUEVO FORMATO SIMPLIFICADO: 14 PREGUNTAS (ESCALA 0-20 PTS)
+            // ==========================================================
 
-        // Reto 6: Coordinación y Lookahead Lean
-        if (($answers['day2_q6_lean_plan'] ?? '') === 'lookahead_3_semanas') {
-            $scoreDay2 += 3.0;
+            // --- BLOQUE A: 6 PREGUNTAS PRESENTACIÓN BIM CIV (1 pt c/u = 6 pts) ---
+            if (($answers['d1_q1_bim_def'] ?? '') === 'colaborativa_parametrica_3d') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q2_bim_dimensions'] ?? '') === '3d_geom_4d_tiempo_5d_costo') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q3_bim_metrics'] ?? '') === 'costos_33_plazos_50_prod_20') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q4_bim_roles'] ?? '') === 'manager_coordinador_modelador') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q5_bim_uses'] ?? '') === 'coordinacion_fases_costes') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q6_bim_cim'] ?? '') === 'cim_gemelos_digitales') {
+                $scoreDay1 += 1.0;
+            }
+
+            // --- BLOQUE B: 4 PREGUNTAS METODOLOGÍA PROYECTO ATLANTIS (1 pt c/u = 4 pts) ---
+            if (($answers['d1_q7_atlantis_governance'] ?? '') === 'gobernanza_financiera_5d') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q8_atlantis_scope'] ?? '') === 'exclusion_expresa_contrato') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q9_atlantis_labor'] ?? '') === 'programacion_cuadrillas_cascada') {
+                $scoreDay1 += 1.0;
+            }
+            if (($answers['d1_q10_atlantis_changes'] ?? '') === 'protocolo_cambios_modelo') {
+                $scoreDay1 += 1.0;
+            }
+
+            // --- BLOQUE C: 4 PREGUNTAS DÍA 2 - CLASH & CDE ISO 19650 (2.5 pts c/u = 10 pts) ---
+            if (($answers['d2_q1_cde_states'] ?? '') === 'wip_shared_published_archive') {
+                $scoreDay2 += 2.5;
+            }
+            if (($answers['d2_q2_clash_types'] ?? '') === 'hard_solidos_soft_galibos') {
+                $scoreDay2 += 2.5;
+            }
+            if (($answers['d2_q3_bcf_standard'] ?? '') === 'bcf_tickets_neutros_guid') {
+                $scoreDay2 += 2.5;
+            }
+            if (($answers['d2_q4_macleamy_decision'] ?? '') === 'resolucion_temprana_diseno') {
+                $scoreDay2 += 2.5;
+            }
+        } else {
+            // ==========================================================
+            // RETROCOMPATIBILIDAD CON EVALUACIONES PREVIAS
+            // ==========================================================
+            // Reto 1: Contenedor CDE ISO 19650
+            if (($answers['day1_q1_cde_state'] ?? '') === 'wip_to_shared_ifc') {
+                $scoreDay1 += 3.5;
+            }
+
+            // Reto 2: MacLeamy Cost Ratio & Ahorro
+            $ratio = (float) ($answers['day1_q2_cost_ratio'] ?? 0);
+            if ($ratio >= 30.0 && $ratio <= 40.0) {
+                $scoreDay1 += 3.5;
+            } elseif ($ratio > 0) {
+                $scoreDay1 += 2.0;
+            }
+
+            // Reto 3: Blindaje Art. 1637 CCV
+            if (($answers['day1_q3_ccv_protocol'] ?? '') === 'registro_inmutable_cde') {
+                $scoreDay1 += 3.0;
+            }
+
+            // Reto 4: Clasificación Clash (Hard vs Soft)
+            $clashType1 = $answers['day2_q4_clash1'] ?? '';
+            $clashType2 = $answers['day2_q4_clash2'] ?? '';
+            if ($clashType1 === 'hard_clash' && $clashType2 === 'soft_clash') {
+                $scoreDay2 += 3.5;
+            } elseif ($clashType1 === 'hard_clash' || $clashType2 === 'soft_clash') {
+                $scoreDay2 += 2.0;
+            }
+
+            // Reto 5: Formato BCF 3.0 & Ticket
+            if (! empty($bcfTicket) && (str_contains($bcfTicket, 'Topic') || str_contains($bcfTicket, 'bcf') || str_contains($bcfTicket, 'guid'))) {
+                $scoreDay2 += 3.5;
+            } elseif (! empty($bcfTicket)) {
+                $scoreDay2 += 2.0;
+            }
+
+            // Reto 6: Coordinación y Lookahead Lean
+            if (($answers['day2_q6_lean_plan'] ?? '') === 'lookahead_3_semanas') {
+                $scoreDay2 += 3.0;
+            }
         }
 
         $totalScore = round($scoreDay1 + $scoreDay2, 1);
