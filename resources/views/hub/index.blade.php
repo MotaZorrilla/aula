@@ -217,10 +217,10 @@
             color: var(--text-muted);
         }
 
-        /* MAIN ACADEMIC CARDS GRID (2 CARDS) */
+        /* MAIN ACADEMIC CARDS GRID (3 CARDS) */
         .academic-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 28px;
             margin-bottom: 40px;
         }
@@ -254,6 +254,9 @@
         .program-card.montecarmelo::before {
             background: linear-gradient(90deg, #f59e0b, #7c3aed);
         }
+        .program-card.matematicas::before {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
         .program-card:hover {
             transform: translateY(-4px);
             border-color: #cbd5e1;
@@ -264,6 +267,9 @@
         }
         .program-card.montecarmelo:hover {
             box-shadow: 0 16px 36px -8px rgba(124, 58, 237, 0.12);
+        }
+        .program-card.matematicas:hover {
+            box-shadow: 0 16px 36px -8px rgba(99, 102, 241, 0.16);
         }
 
         .card-body {
@@ -300,6 +306,11 @@
             background: #f5f3ff;
             color: #6d28d9;
             border: 1px solid #ddd6fe;
+        }
+        .program-badge.canguro-badge {
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
         }
 
         .status-badge {
@@ -420,6 +431,16 @@
         .btn-enter.mc-btn:hover {
             background: linear-gradient(135deg, #8b5cf6, #a855f7);
             box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+            transform: translateY(-1px);
+        }
+        .btn-enter.canguro-btn {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-enter.canguro-btn:hover {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
             transform: translateY(-1px);
         }
 
@@ -585,7 +606,7 @@
             <div class="stat-card">
                 <div class="stat-icon">🎓</div>
                 <div class="stat-info">
-                    <span class="stat-val">02</span>
+                    <span class="stat-val">03</span>
                     <span class="stat-lbl">Programas Académicos</span>
                 </div>
             </div>
@@ -755,6 +776,67 @@
                         <div class="meta-footer">
                             <span>Facilitador: Ing. Héctor Mota Zorrilla</span>
                             <span>Horario: Tarde (3:00 - 5:30 PM)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3: MATEMÁTICAS RECREATIVAS (CLUB T.I.A. & MPPE PRIMARIA) -->
+            <div class="program-card matematicas">
+                <div class="card-body">
+                    <div class="card-top">
+                        <span class="program-badge canguro-badge">
+                            🦘 Colegio Monte Carmelo · Primaria (1.° a 6.° Grado)
+                        </span>
+                        <span class="status-badge live" style="background:#eef2ff; border-color:#c7d2fe; color:#4338ca;">
+                            ✨ Currículo MPPE &amp; Canguro Activo
+                        </span>
+                    </div>
+
+                    <h3 class="program-title">🦘 Matemáticas Recreativas &amp; Gimnasia Mental 🧠</h3>
+                    <div class="program-inst">
+                        <span style="color:#6366f1;">Club T.I.A. · Currículo Oficial MPPE &amp; Olimpiada Canguro (1.° a 6.° Grado)</span>
+                    </div>
+
+                    <p class="program-desc">
+                        ¡Aprender matemáticas con rigor y diversión! Programa pedagógico alineado con los 4 componentes oficiales del <strong>Ministerio del Poder Popular para la Educación (MPPE)</strong>: Geometría en el plano y 3D, Magnitudes y medidas con balanza y moneda, Números y operaciones con cartel de valores y ecuaciones, y Estadística descriptiva. Cuenta con gamificación escolar por niveles, acumulación de XP y cronograma semanal de clases.
+                    </p>
+
+                    <div class="thematic-tags">
+                        <span class="tag-pill" style="border-color: #c7d2fe; background: #eef2ff; color: #4338ca; font-weight: 700;">🇻🇪 Programa Oficial MPPE</span>
+                        <span class="tag-pill">🦘 Retos Canguro Internacional</span>
+                        <span class="tag-pill">🎮 Gamificación &amp; Puntos XP</span>
+                        <span class="tag-pill">🗓️ Cronograma 12 Semanas</span>
+                        <span class="tag-pill">📚 Fichas para la Prof. Joana</span>
+                    </div>
+
+                    <ul class="checklist">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>1.° y 2.° Grado (Exploradores):</strong> Croquis con puntos de referencia, balanza de equilibrio, cono monetario nacional y pictogramas escalares.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>3.° y 4.° Grado (Aventureros):</strong> Ángulos en el reloj, perímetro de huertos, cartel de valores a millardos, cubos 3D y fracciones visuales.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>5.° y 6.° Grado (Maestros):</strong> Rectas tangentes, factores primos, ecuaciones de 1.er grado, m.c.m. simultáneo y puentes de Euler.</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Fichas Didácticas &amp; Panel Docente:</strong> 6 guías metodológicas en 4 fases imprimibles y monitoreo en tiempo real para la Prof. Joana Padrino.</span>
+                        </li>
+                    </ul>
+
+                    <div class="card-actions">
+                        <a href="/matematicas/" class="btn-enter canguro-btn">
+                            🦘 Entrar al Gimnasio Mental de Matemáticas
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <div class="meta-footer">
+                            <span>Docentes: Prof. Joana Padrino &amp; Ing. Héctor Mota</span>
+                            <span>Modalidad: Club T.I.A. / Primaria Monte Carmelo</span>
                         </div>
                     </div>
                 </div>

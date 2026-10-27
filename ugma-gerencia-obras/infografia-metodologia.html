@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Visual de Transferencia Metodológica · Gestión de Información & Metodología BIM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b1320;
+            --surface: #111e33;
+            --surface-card: #15253f;
+            --surface-hover: #1b2f4f;
+            --border: #223759;
+            --border-light: #2d4773;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            
+            --blue-civ: #0284c7;
+            --blue-glow: rgba(2, 132, 199, 0.25);
+            --cyan-accent: #06b6d4;
+            --emerald: #10b981;
+            --emerald-bg: rgba(16, 185, 129, 0.12);
+            --amber: #f59e0b;
+            --amber-bg: rgba(245, 158, 11, 0.12);
+            --purple: #8b5cf6;
+            --purple-bg: rgba(139, 92, 246, 0.12);
+            --rose: #f43f5e;
+            --rose-bg: rgba(244, 63, 94, 0.12);
+
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 60px;
+        }
+
+        /* BARRA SUPERIOR */
+        .top-nav {
+            background: rgba(11, 19, 32, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+        .nav-badge {
+            background: linear-gradient(135deg, #0284c7, #06b6d4);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-title {
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-action {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .btn-action:hover {
+            background: var(--surface-hover);
+            border-color: var(--cyan-accent);
+            color: #fff;
+        }
+        .btn-primary {
+            background: #0284c7;
+            border-color: #0284c7;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #0369a1;
+            border-color: #0369a1;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        /* HERO HEADER */
+        .hero {
+            background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.15), transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.12), transparent 45%),
+                        var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 40px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cyan-accent);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: clamp(26px, 4vw, 38px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 40%, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 900px;
+            line-height: 1.6;
+        }
+
+        /* GRID PRINCIPAL DE SECCIONES */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(148, 163, 184, 0.1);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* TARJETAS Y PANELES */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* INFOGRAFÍA DE MACLEAMY */
+        .macleamy-diagram {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+            position: relative;
+        }
+        .macleamy-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .macleamy-row:last-child { border-bottom: none; }
+        .pill-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        /* CDE PIPELINE (ISO 19650) */
+        .cde-pipeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 16px;
+        }
+        .cde-step {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            position: relative;
+        }
+        .cde-step-badge {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cyan-accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .cde-step-name {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .cde-step-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* MATRIZ DE TRANSFERENCIA MULTISECTORIAL (TABLA PRINCIPAL) */
+        .transfer-matrix-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        .matrix-intro {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            background: radial-gradient(circle at 100% 0%, rgba(6, 182, 212, 0.08), transparent 50%);
+        }
+        .matrix-intro h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .matrix-intro p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .transfer-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+        .transfer-table th {
+            background: var(--surface-card);
+            color: var(--text-main);
+            font-weight: 700;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .transfer-table th:first-child { width: 22%; }
+        .transfer-table th:nth-child(2) { width: 26%; }
+        .transfer-table th:nth-child(3) { width: 26%; }
+        .transfer-table th:nth-child(4) { width: 26%; }
+        .transfer-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.55;
+            color: #cbd5e1;
+        }
+        .transfer-table tr:last-child td { border-bottom: none; }
+        .transfer-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .concept-col {
+            font-weight: 700;
+            color: #fff;
+        }
+        .concept-col small {
+            display: block;
+            font-weight: 400;
+            color: var(--text-dim);
+            font-size: 11px;
+            margin-top: 4px;
+            font-family: var(--font-mono);
+        }
+        .pill-sector {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .sector-civ { background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); }
+        .sector-sup { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .sector-tel { background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.4); }
+
+        /* CLASH & BCF DETAIL */
+        .callout-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid var(--blue-civ);
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+        .callout-box strong { color: #fff; }
+
+        /* FOOTER DE IMPRESIÓN Y REFERENCIA */
+        .page-footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* MEDIA QUERIES & IMPRESIÓN */
+        @media (max-width: 900px) {
+            .cde-pipeline { grid-template-columns: 1fr 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .cde-pipeline { grid-template-columns: 1fr; }
+            .hero { padding: 24px; }
+            .nav-actions { display: none; }
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm 12mm 10mm 12mm;
+            }
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                padding: 0 !important;
+                font-size: 10pt !important;
+            }
+            .top-nav, .nav-actions, .no-print { display: none !important; }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .hero {
+                padding: 16px 20px !important;
+                margin-bottom: 16px !important;
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+            .hero-title {
+                font-size: 20pt !important;
+                margin-bottom: 8px !important;
+                color: #0f172a !important;
+                -webkit-text-fill-color: #0f172a !important;
+            }
+            .hero-desc {
+                font-size: 9.5pt !important;
+                line-height: 1.45 !important;
+            }
+            .section-header {
+                margin-bottom: 12px !important;
+                padding-bottom: 6px !important;
+            }
+            .section-title {
+                font-size: 13pt !important;
+            }
+            .grid-2 {
+                gap: 14px !important;
+                margin-bottom: 16px !important;
+            }
+            .card {
+                padding: 14px 16px !important;
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+            }
+            .macleamy-diagram {
+                padding: 12px 14px !important;
+                margin: 10px 0 !important;
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            .macleamy-row {
+                padding: 6px 0 !important;
+                font-size: 8.5pt !important;
+            }
+            .cde-pipeline {
+                gap: 8px !important;
+            }
+            .cde-step {
+                padding: 10px 12px !important;
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+            .cde-step-name {
+                font-size: 9pt !important;
+            }
+            .cde-step-desc {
+                font-size: 8pt !important;
+                line-height: 1.35 !important;
+            }
+            .transfer-matrix-wrap {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                margin-bottom: 16px !important;
+            }
+            .matrix-intro {
+                padding: 12px 16px !important;
+            }
+            .matrix-intro h3 {
+                font-size: 11pt !important;
+            }
+            .matrix-intro p {
+                font-size: 8.5pt !important;
+            }
+            .transfer-table th {
+                background: #f1f5f9 !important;
+                color: #0f172a !important;
+                padding: 8px 10px !important;
+                font-size: 8.5pt !important;
+            }
+            .transfer-table td {
+                color: #1e293b !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+                padding: 8px 10px !important;
+                font-size: 8pt !important;
+                line-height: 1.35 !important;
+            }
+            .pill-tag, .pill-sector {
+                border: 1px solid #94a3b8 !important;
+                color: #0f172a !important;
+                background: #f8fafc !important;
+                font-size: 7.5pt !important;
+            }
+            .grid-3 {
+                gap: 12px !important;
+                margin-bottom: 16px !important;
+            }
+            .page-footer {
+                margin-top: 16px !important;
+                padding-top: 12px !important;
+                font-size: 8pt !important;
+            }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN Y ACCIONES -->
+    <header class="top-nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-badge">ConTech & BIM</span>
+            <span class="nav-title">UGMA · Módulo V: Gerencia de Obras & Control de Proyectos</span>
+        </a>
+        <div class="nav-actions">
+            <a href="descargas/Guia_Visual_Transferencia_Metodologica_BIM.pdf" download class="btn-action">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Descargar PDF Oficial
+            </a>
+            <button class="btn-action" onclick="window.print()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+            </button>
+            <a href="index.html" class="btn-action btn-primary">Volver al Portal</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- CABECERA PRINCIPAL -->
+        <section class="hero">
+            <div class="hero-eyebrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                Marco Conceptual & Operativo
+            </div>
+            <h1 class="hero-title">Guía Visual de Transferencia Metodológica</h1>
+            <p class="hero-desc">
+                La metodología BIM no es un paquete de software ni se limita a la construcción tradicional con concreto y acero. 
+                Es el estándar de <strong>Gestión Integral de la Información (Information Management)</strong> estructurada, paramétrica y verificable a lo largo de todo el ciclo de vida de un activo, aplicable con idéntico rigor en obras civiles, cadenas de suministro técnico y proyectos de telecomunicaciones.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 1: LOS PILARES CONCEPTUALES -->
+        <div class="section-header">
+            <div class="section-title">
+                <span>01. Dinámica del Esfuerzo Temprano & Estructura Dimensional</span>
+            </div>
+            <span class="section-tag">Fundamentos</span>
+        </div>
+
+        <div class="grid-2">
+            <!-- TARJETA 1: CURVA DE MACLEAMY -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">El Principio de Decisión Temprana</h3>
+                        <p class="card-subtitle">La Curva de MacLeamy y el costo del cambio</p>
+                    </div>
+                    <div class="card-icon" style="color: var(--amber);">⚡</div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+                    En la gestión tradicional, la mayor cantidad de esfuerzo y documentación se concentra tardíamente en la etapa de construcción, justo cuando la capacidad de controlar el costo se reduce y el impacto económico de corregir un error se dispara exponencialmente.
+                </p>
+
+                <div class="macleamy-diagram">
+                    <div class="macleamy-row">
+                        <span><strong>1. Fase Conceptual / Anteproyecto:</strong></span>
+                        <span class="pill-tag" style="background: var(--emerald-bg); color: var(--emerald);">Capacidad de Impacto: MÁXIMA</span>
+                    </div>
+                    <div class="macleamy-row">
+                        <span><strong>2. Costo de Modificaciones Tempranas:</strong></span>
+                        <span class="pill-tag" style="background: var(--emerald-bg); color: var(--emerald);">Costo de Cambio: MÍNIMO ($)</span>
+                    </div>
+                    <div class="macleamy-row">
+                        <span><strong>3. Fase de Construcción / Ejecución:</strong></span>
+                        <span class="pill-tag" style="background: var(--rose-bg); color: var(--rose);">Capacidad de Control: REDUCIDA</span>
+                    </div>
+                    <div class="macleamy-row">
+                        <span><strong>4. Costo de Corrección en Campo:</strong></span>
+                        <span class="pill-tag" style="background: var(--rose-bg); color: var(--rose);">Costo de Cambio: CRÍTICO ($$$$)</span>
+                    </div>
+                </div>
+
+                <div class="callout-box">
+                    <strong>Regla de Oro Metodológica:</strong> Adelantar la toma de decisiones al diseño preliminar y a la simulación virtual elimina órdenes de cambio tardías y protege el flujo de caja del proyecto.
+                </div>
+            </div>
+
+            <!-- TARJETA 2: DIMENSIONES BIM (3D A 7D) -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Ecosistema Dimensional de Información</h3>
+                        <p class="card-subtitle">De la geometría paramétrica a la operación</p>
+                    </div>
+                    <div class="card-icon" style="color: var(--cyan-accent);">📐</div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+                    Cada dimensión añade una capa de inteligencia al modelo, transformando un dibujo estático en una base de datos relacional y federada:
+                </p>
+
+                <div style="display: grid; gap: 8px;">
+                    <div style="background: var(--surface-card); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span><strong>3D · Modelado Espacial:</strong> Geometría y atributos de cada componente</span>
+                        <span class="pill-tag" style="background: rgba(2, 132, 199, 0.2); color: #38bdf8;">Geometría 1:1</span>
+                    </div>
+                    <div style="background: var(--surface-card); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span><strong>4D · Dimensión Temporal:</strong> Planificación, fases y simulación constructiva</span>
+                        <span class="pill-tag" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee;">Tiempo & Fases</span>
+                    </div>
+                    <div style="background: var(--surface-card); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span><strong>5D · Dimensión Económica:</strong> Presupuestos dinámicos, cómputos y Curva S</span>
+                        <span class="pill-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">Costos & APU</span>
+                    </div>
+                    <div style="background: var(--surface-card); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span><strong>6D · Sostenibilidad:</strong> Eficiencia energética y huella de ciclo de vida</span>
+                        <span class="pill-tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Energía & Huella</span>
+                    </div>
+                    <div style="background: var(--surface-card); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span><strong>7D · Operación & Facility Management:</strong> Mantenimiento y gemelos digitales</span>
+                        <span class="pill-tag" style="background: rgba(139, 92, 246, 0.2); color: #a78bfa;">Activos & GIS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: CDE Y GOBERNANZA ISO 19650 -->
+        <div class="section-header">
+            <div class="section-title">
+                <span>02. El Entorno Común de Datos (CDE) bajo ISO 19650</span>
+            </div>
+            <span class="section-tag">Única Fuente de Verdad</span>
+        </div>
+
+        <div class="card" style="margin-bottom: 32px;">
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+                Un CDE no es una carpeta compartida en la nube ni un disco duro desordenado; es un <strong>entorno procedimental estricto</strong> que gobierna el tránsito de la información técnica mediante 4 estados sucesivos y compuertas de aprobación verificables:
+            </p>
+
+            <div class="cde-pipeline">
+                <div class="cde-step">
+                    <span class="cde-step-badge">ESTADO 01</span>
+                    <h4 class="cde-step-name">WIP (Trabajo en Curso)</h4>
+                    <p class="cde-step-desc">
+                        Información en desarrollo por una disciplina o equipo específico. No está aprobada para consulta externa ni para ejecución.
+                    </p>
+                </div>
+                <div class="cde-step">
+                    <span class="cde-step-badge">ESTADO 02</span>
+                    <h4 class="cde-step-name">SHARED (Compartido)</h4>
+                    <p class="cde-step-desc">
+                        Modelos o datos revisados internamente, liberados exclusivamente para coordinación federada e inspección de interferencias.
+                    </p>
+                </div>
+                <div class="cde-step">
+                    <span class="cde-step-badge">ESTADO 03</span>
+                    <h4 class="cde-step-name">PUBLISHED (Publicado)</h4>
+                    <p class="cde-step-desc">
+                        Información contractual aprobada por el cliente y la gerencia para construcción, fabricación o compras oficiales.
+                    </p>
+                </div>
+                <div class="cde-step">
+                    <span class="cde-step-badge">ESTADO 04</span>
+                    <h4 class="cde-step-name">ARCHIVED (Archivado)</h4>
+                    <p class="cde-step-desc">
+                        Registro histórico inmutable de versiones entregadas, base de datos de lecciones aprendidas y soporte para auditorías.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: LA GRAN MATRIZ DE TRANSFERENCIA MULTISECTORIAL -->
+        <div class="section-header page-break">
+            <div class="section-title">
+                <span>03. Matriz Universal de Transferencia Metodológica</span>
+            </div>
+            <span class="section-tag">Aplicación Práctica</span>
+        </div>
+
+        <div class="transfer-matrix-wrap">
+            <div class="matrix-intro">
+                <h3>Cómo se traduce la misma metodología en tres áreas profesionales distintas</h3>
+                <p>
+                    Compara cómo la gestión de información estructurada resuelve problemas críticos en obras civiles, en la administración de almacenes o cadenas de suministro y en proyectos de infraestructura de telecomunicaciones.
+                </p>
+            </div>
+            <div class="table-responsive">
+                <table class="transfer-table">
+                    <thead>
+                        <tr>
+                            <th>Concepto Metodológico</th>
+                            <th>Sector 1: Obra Civil & Edificación</th>
+                            <th>Sector 2: Cadena de Suministro & Almacén Técnico</th>
+                            <th>Sector 3: Telecomunicaciones & Redes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- FILA 1: CDE -->
+                        <tr>
+                            <td class="concept-col">
+                                Única Fuente de Verdad
+                                <small>CDE · ISO 19650</small>
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-civ">Obra Civil</span><br>
+                                Planos y modelos federados con estados controlados: los contratistas en terreno solo ejecutan planos con sello <strong>Published</strong>; nadie construye sobre versiones WIP o borradores preliminares.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-sup">Almacén / Retail</span><br>
+                                Catálogo maestro de productos y stock: cotizaciones de proveedores (WIP) $\rightarrow$ orden de compra formalizada (Shared) $\rightarrow$ inventario oficial disponible para venta (Published).
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-tel">Telecomunicaciones</span><br>
+                                Dossier técnico de estación y repetidoras: levantamiento de caseta (WIP) $\rightarrow$ ingeniería de detalle y radioenlace revisada (Shared) $\rightarrow$ diagrama de tendido y montaje aprobado (Published).
+                            </td>
+                        </tr>
+
+                        <!-- FILA 2: MACLEAMY -->
+                        <tr>
+                            <td class="concept-col">
+                                Curva de MacLeamy
+                                <small>Anticipación del Costo</small>
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-civ">Obra Civil</span><br>
+                                Reubicar el pase de una tubería en el modelo digital cuesta minutos. Romper la viga de concreto ya vaciada en obra para dar paso al ducto genera sobrecostos y debilidad estructural.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-sup">Almacén / Retail</span><br>
+                                Validar la especificación técnica antes de cargar el flete cuesta cero. Descubrir en la obra del cliente que se despachó una pieza incompatible cuesta transporte de retorno y penalización comercial.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-tel">Telecomunicaciones</span><br>
+                                Simular la carga estática de viento y línea de vista de las antenas antes de subir a la torre cuesta cero. Subir a 40 metros y notar que el soporte colisiona paraliza la cuadrilla en campo.
+                            </td>
+                        </tr>
+
+                        <!-- FILA 3: CLASH DETECTION -->
+                        <tr>
+                            <td class="concept-col">
+                                Clasificación de Colisiones
+                                <small>Hard, Soft & Clearance</small>
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-civ">Obra Civil</span><br>
+                                <strong>Hard:</strong> Tubería sanitaria atravesando columna.<br>
+                                <strong>Clearance:</strong> Espacio libre insuficiente para maniobrar una válvula de compuerta o abrir la puerta de un tablero eléctrico.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-sup">Almacén / Retail</span><br>
+                                <strong>Hard:</strong> Despachar conexiones de rosca cónica con tubos de soldadura líquida.<br>
+                                <strong>Clearance:</strong> Apilar paletas de materiales invadiendo el pasillo de giro del montacargas o bloqueando extintores.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-tel">Telecomunicaciones</span><br>
+                                <strong>Hard:</strong> Bandeja de fibra óptica colisionando con el ducto de climatización de la caseta.<br>
+                                <strong>Clearance:</strong> Cable de radiofrecuencia tendido a menos de la distancia reglamentaria de una línea de media tensión.
+                            </td>
+                        </tr>
+
+                        <!-- FILA 4: BCF 3.0 -->
+                        <tr>
+                            <td class="concept-col">
+                                Gestión de Incidencias
+                                <small>Estándar BCF 3.0</small>
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-civ">Obra Civil</span><br>
+                                Se emite un ticket BCF con punto de vista 3D, ID único del elemento, responsable asignado y fecha límite, sin enviar archivos pesados por correo electrónico.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-sup">Almacén / Retail</span><br>
+                                Nota técnica de no conformidad al fabricante con fotografía del lote defectuoso, código de barras y solicitud de reposición de inventario con trazabilidad.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-tel">Telecomunicaciones</span><br>
+                                Reporte de inconsistencia en torre remota con coordenadas satelitales, fotografía de la antena descalibrada y asignación de orden a la cuadrilla de guardia.
+                            </td>
+                        </tr>
+
+                        <!-- FILA 5: BIM 5D & CURVA S -->
+                        <tr>
+                            <td class="concept-col">
+                                Control de Costos y Avance
+                                <small>BIM 5D & Curva S</small>
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-civ">Obra Civil</span><br>
+                                Cómputos métricos dinámicos vinculados a los Análisis de Precios Unitarios (APU). Telemetría de valuaciones físicas vs. desembolso financiero mediante la Curva S.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-sup">Almacén / Retail</span><br>
+                                Rotación de inventario y punto de reorden: control del capital inmovilizado en estantes frente a la demanda real proyectada de materiales de alta rotación.
+                            </td>
+                            <td>
+                                <span class="pill-sector sector-tel">Telecomunicaciones</span><br>
+                                Control de presupuesto por estación instalada y operativa: costo acumulado de equipamiento y viáticos frente a la curva de despliegue programada.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: GOBERNANZA, OPENBIM & ROLES -->
+        <div class="section-header">
+            <div class="section-title">
+                <span>04. Interoperabilidad openBIM y Estructura de Roles</span>
+            </div>
+            <span class="section-tag">Gobernanza de Equipo</span>
+        </div>
+
+        <div class="grid-3">
+            <!-- ESTÁNDAR ABIERTO IFC -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h4 class="card-title">openBIM & Formato IFC</h4>
+                        <p class="card-subtitle">ISO 16739 · Datos No Propietarios</p>
+                    </div>
+                    <div class="card-icon" style="color: var(--emerald);">🌐</div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">
+                    Ninguna organización debe quedar cautiva de licencias de software privativo que caduquen con los años. 
+                    El formato <strong>IFC (Industry Foundation Classes)</strong> garantiza que la información pertenezca al dueño del activo y pueda ser consultada en cualquier sistema a lo largo de décadas.
+                </p>
+            </div>
+
+            <!-- ROLES OPERATIVOS -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h4 class="card-title">Roles de Coordinación</h4>
+                        <p class="card-subtitle">Liderazgo y Responsabilidades</p>
+                    </div>
+                    <div class="card-icon" style="color: var(--purple);">👥</div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">
+                    El <strong>Modelador</strong> genera la geometría y los metadatos de su especialidad; el <strong>Coordinador</strong> federará los modelos y audita la matriz de interferencias; y el <strong>Gerente (BIM Manager)</strong> define el Plan de Ejecución (BEP), la gobernanza del CDE y el cumplimiento de los hitos contractuales.
+                </p>
+            </div>
+
+            <!-- ESCALA TERRITORIAL -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h4 class="card-title">De BIM a CIM / GIS</h4>
+                        <p class="card-subtitle">Integración con el Entorno</p>
+                    </div>
+                    <div class="card-icon" style="color: var(--blue-civ);">🗺️</div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">
+                    Mientras que el <strong>BIM</strong> gobierna la microescala de un edificio o estación específica, el <strong>CIM (City Information Modeling)</strong> y los sistemas <strong>GIS</strong> vinculan la infraestructura a la red territorial: vialidad, topografía, servicios públicos y microclima regional.
+                </p>
+            </div>
+        </div>
+
+        <!-- PIE DE PÁGINA INSTITUCIONAL -->
+        <footer class="page-footer">
+            <div>
+                <strong>Universidad Gran Mariscal de Ayacucho (UGMA)</strong> · Decanato de Postgrado e Investigación<br>
+                Diplomado en Gerencia de Obras & Control de Proyectos con Enfoque ConTech/BIM
+            </div>
+            <div style="text-align: right;">
+                Ing. Héctor Mota Zorrilla · Facilitador Principal<br>
+                <span style="font-family: var(--font-mono); font-size: 11px;">Documento Técnico de Consulta · 2026</span>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>

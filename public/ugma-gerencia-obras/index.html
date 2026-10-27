@@ -1330,6 +1330,9 @@
                 <a href="admin.html" class="btn-docente-header" style="background:#0f2942; color:#38bdf8; border:2px solid #38bdf8; padding:7px 15px; border-radius:8px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 8px rgba(15,41,66,0.25);" title="Panel de Administración Docente (Ing. Héctor Mota)">
                     <span style="font-size:16px;">👨‍🏫</span> <span>Panel Facilitador</span>
                 </a>
+                <a href="infografia-metodologia.html" class="btn-docente-header" style="background:#0f2942; color:#38bdf8; border:2px solid #0284c7; padding:7px 15px; border-radius:8px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 8px rgba(2,132,199,0.25);" title="Guía Visual de Transferencia Metodológica (Infografía & PDF)">
+                    <span style="font-size:16px;">📊</span> <span>Guía Metodológica</span>
+                </a>
                 <a href="evaluacion-dia-1-2.html" class="btn-docente-header" style="background:#0284c7; color:#ffffff; border:2px solid #38bdf8; padding:7px 15px; border-radius:8px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 8px rgba(2,132,199,0.25);" title="Módulo de Evaluación Práctica Semana 1 (Día 1 y 2)">
                     <span style="font-size:16px;">📝</span> <span>Evaluación Día 1 &amp; 2</span>
                 </a>
@@ -1378,6 +1381,7 @@
                 <a href="modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
 
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Las 6 Unidades Curriculares</div>
+                <a href="infografia-metodologia.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📊</span> GUÍA VISUAL METODOLÓGICA (PDF)</a>
                 <a href="evaluacion-dia-1-2.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📝</span> EVALUACIÓN DÍA 1 &amp; 2 (20 pts)</a>
                 <a href="masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
                 <a href="clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
@@ -1721,6 +1725,19 @@
                             </a>
                             <a href="/ugma-gerencia-obras/descargas/Presentacion_Metodologia_BIM_Colegio_de_Ingenieros_CIV.pptx" download style="flex:1; min-width:100px; background:#e2e8f0; color:#0f172a; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:6px; text-decoration:none; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:4px;">
                                 <span>💾</span> Descargar PPTX
+                            </a>
+                        </div>
+                    </div>
+                    <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:10px; padding:10px 12px; margin:2px 0;">
+                        <div style="font-size:11px; font-weight:800; color:#0f2942; text-transform:uppercase; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+                            <span>📑</span> Guía Visual de Transferencia Metodológica (Infografía &amp; PDF)
+                        </div>
+                        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                            <a href="infografia-metodologia.html" style="flex:1; min-width:100px; background:#0f2942; color:#38bdf8; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:6px; text-decoration:none; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:4px;">
+                                <span>🌐</span> Ver Infografía
+                            </a>
+                            <a href="/ugma-gerencia-obras/descargas/Guia_Visual_Transferencia_Metodologica_BIM.pdf" target="_blank" rel="noopener" style="flex:1; min-width:100px; background:#0284c7; color:#ffffff; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:6px; text-decoration:none; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:4px;">
+                                <span>📄</span> Descargar PDF
                             </a>
                         </div>
                     </div>
