@@ -218,13 +218,17 @@ assert_test('Día 3 (Planificación 4D/5D) implementa Stepper paginador secuenci
     return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
 });
 
-assert_test('Día 3 (Planificación 4D/5D) incorpora simuladores (initEVMChart, updateEVM, toggleTimelinePlay, updateTimelineDisplay)', function () use ($baseDir) {
+assert_test('Día 3 (Planificación 4D/5D) incorpora simuladores (initEVMChart, updateEVM, toggleTimelinePlay, updateTimelineDisplay, computeCPM, initOlivos3DViewer, exportMSProjectXML)', function () use ($baseDir) {
     $content = file_get_contents($baseDir.'/ugma-gerencia-obras/planificacion-4d-5d/index.html');
 
     return stripos($content, 'initEVMChart') !== false
         && stripos($content, 'updateEVM') !== false
         && stripos($content, 'toggleTimelinePlay') !== false
-        && stripos($content, 'updateTimelineDisplay') !== false;
+        && stripos($content, 'updateTimelineDisplay') !== false
+        && stripos($content, 'computeCPM') !== false
+        && stripos($content, 'initOlivos3DViewer') !== false
+        && stripos($content, 'exportMSProjectXML') !== false
+        && stripos($content, 'Residencial Los Olivos') !== false;
 });
 
 assert_test('Día 3 sincronizado al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {

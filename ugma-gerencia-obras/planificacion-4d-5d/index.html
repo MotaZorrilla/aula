@@ -19,8 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Chart.js for S-Curves -->
+    <!-- Chart.js for S-Curves & Three.js for 4D TimeLiner -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
     <style>
         :root {
@@ -675,6 +677,240 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
         }
+
+        /* SIMULADOR PROPIO 4D TIMELINER & GANTT (CASO LOS OLIVOS) */
+        .olivos-sim-wrapper {
+            background: #f8fafc;
+            border: 1.5px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .olivos-top-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 960px) {
+            .olivos-top-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .olivos-3d-card {
+            background: #090d16;
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+        }
+        .olivos-3d-viewport {
+            width: 100%;
+            height: 410px;
+            position: relative;
+            cursor: grab;
+        }
+        .olivos-3d-viewport:active {
+            cursor: grabbing;
+        }
+        .olivos-hud-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .olivos-legend-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            color: #cbd5e1;
+            z-index: 5;
+        }
+        .legend-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .olivos-status-panel {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 14px;
+        }
+        .scenario-btn-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .scenario-btn {
+            padding: 9px 10px;
+            border-radius: 9px;
+            border: 1.5px solid var(--border);
+            background: #f8fafc;
+            color: var(--text-main);
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .scenario-btn:hover {
+            border-color: var(--blue-accent);
+            background: var(--blue-light);
+        }
+        .scenario-btn.active {
+            background: var(--navy-primary);
+            color: #ffffff;
+            border-color: var(--navy-primary);
+        }
+        .gantt-master-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .gantt-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #0f172a;
+            color: #ffffff;
+        }
+        .gantt-scroll-area {
+            overflow-x: auto;
+            max-height: 520px;
+            overflow-y: auto;
+        }
+        .gantt-table {
+            width: 100%;
+            min-width: 980px;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .gantt-table th {
+            position: sticky;
+            top: 0;
+            background: #f1f5f9;
+            color: #0f172a;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.04em;
+            padding: 10px 10px;
+            border-bottom: 2px solid #cbd5e1;
+            z-index: 4;
+            text-align: left;
+        }
+        .gantt-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+        .gantt-row {
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .gantt-row:hover {
+            background: #f0f9ff;
+        }
+        .gantt-row.active-day-row {
+            background: #fef3c7;
+        }
+        .gantt-bar-track {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background: #f1f5f9;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .gantt-bar-fill {
+            position: absolute;
+            top: 2px;
+            bottom: 2px;
+            border-radius: 4px;
+            transition: all 0.25s;
+        }
+        .gantt-cursor-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #0284c7;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .crit-pill {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .crit-yes {
+            background: #ffe4e6;
+            color: #e11d48;
+            border: 1px solid #fecdd3;
+        }
+        .crit-no {
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+        /* Modal Inspector de Tarea */
+        .task-modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .task-modal-card {
+            background: #ffffff;
+            border-radius: 18px;
+            max-width: 560px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
@@ -712,7 +948,7 @@
             <div class="speaker-bar">
                 <span>👨‍🏫 Facilitador: <strong>Ing. Héctor Mota Zorrilla</strong> (Especialista BIM / ConTech)</span>
                 <span>📚 Programa: <strong>Diplomado en Planificación y Gerencia de Obras</strong></span>
-                <span>🏛️ Módulo VI: <strong>Tecnología y Sostenibilidad en Gerencia de Obras</strong></span>
+                <span>🏛️ Módulo V: <strong>Tecnología y Sostenibilidad en Gerencia de Obras</strong></span>
             </div>
         </div>
 
@@ -957,63 +1193,211 @@
         </section>
 
         <!-- ======================================================== -->
-        <!-- MÓDULO 4: SIMULADOR DE LÍNEA DE TIEMPO 4D                -->
+        <!-- MÓDULO 4: SIMULADOR PROPIO 4D TIMELINER & GANTT LOS OLIVOS -->
         <!-- ======================================================== -->
         <section class="content-card" id="step-4">
             <h2 class="section-title">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                Módulo 4: Simulador de Secuencia Constructiva 4D y Certificación de Fases
+                Módulo 4: Simulador Propio MS Project &amp; Navisworks TimeLiner 4D · Caso "Residencial Los Olivos"
             </h2>
 
             <p class="academic-p">
-                La planificación 4D divide el cronograma maestro en frentes de trabajo correlativos vinculados con las entidades físicas del gemelo digital. El siguiente simulador cinemático permite reproducir semana a semana las 24 semanas de ejecución de un edificio corporativo en Guayana, observando la activación secuencial de frentes, el porcentaje de avance físico acumulado y la valuación de obra devengada bajo norma COVENIN:
+                Siguiendo la continuidad pedagógica del **Módulo IV (Prof. Esp. Ing. Diego Giovanni Zambrano)** y el formato oficial de cátedra, integramos el expediente real de la **Vivienda Unifamiliar "Residencial Los Olivos" (Parcela N° 14 · 100 m² · 10m × 10m)** en nuestro propio motor WebGL de simulación **TimeLiner 4D (estilo Navisworks)** y **Programador PDM de Ruta Crítica (estilo MS Project)**. A diferencia del software de escritorio cerrado, este entorno abierto permite auditar en el navegador las **18 tareas contractuales (A hasta R)**, inspeccionar la relación especial Inicio-a-Inicio con desfase (`SS+1` en la Tarea J), comprobar las **Holguras Libres/Totales** y exportar el archivo `.XML` (formato oficial MSPDI) listo para interoperabilidad openBIM.
             </p>
 
-            <div class="timeline-container">
-                <div class="timeline-controls">
+            <!-- CONTROLES GLOBALES DE LÍNEA DE TIEMPO 4D -->
+            <div class="olivos-sim-wrapper">
+                <div class="timeline-controls" style="margin-bottom:16px; background:#ffffff; padding:14px 16px; border-radius:12px; border:1px solid var(--border);">
                     <button type="button" class="btn-playback" id="btnPlayPause" onclick="toggleTimelinePlay()">
-                        <span>▶️</span> Reproducir Simulación 4D
+                        <span>▶️</span> Reproducir TimeLiner 4D
                     </button>
                     <button type="button" class="btn-playback" onclick="resetTimeline()">
-                        <span>🔄</span> Reiniciar
+                        <span>🔄</span> Día 1
                     </button>
-                    <div style="flex:1; display:flex; align-items:center; gap:10px; min-width:200px;">
-                        <label for="timelineSlider" style="font-size:12.5px; font-weight:700; color:var(--navy-primary); white-space:nowrap;">Semana de Obra:</label>
-                        <input type="range" id="timelineSlider" min="1" max="24" value="12" step="1" oninput="onTimelineSliderChange()" style="width:100%;">
-                        <span id="timelineWeekText" style="font-family:var(--font-mono); font-size:13px; font-weight:800; color:var(--blue-accent); min-width:85px;">Semana 12</span>
+                    <div style="flex:1; display:flex; align-items:center; gap:10px; min-width:220px;">
+                        <label for="timelineSlider" style="font-size:12.5px; font-weight:800; color:var(--navy-primary); white-space:nowrap;">Día Laborable (CPM):</label>
+                        <input type="range" id="timelineSlider" min="1" max="63" value="22" step="1" oninput="onTimelineSliderChange()" style="width:100%;">
+                        <span id="timelineWeekText" style="font-family:var(--font-mono); font-size:13px; font-weight:800; color:var(--blue-accent); min-width:115px; text-align:right;">Día 22 / 63</span>
+                    </div>
+                    <button type="button" class="btn-playback" style="background:var(--emerald); color:#fff; border-color:var(--emerald);" onclick="exportMSProjectXML()">
+                        <span>📥</span> Exportar .XML (MS Project / Navisworks)
+                    </button>
+                </div>
+
+                <!-- VISOR 3D WEBGL TIMELINER + PANEL DE AUDITORÍA DE IMPACTO -->
+                <div class="olivos-top-grid">
+                    <!-- Visor 3D estilo Atlantis / Navisworks TimeLiner -->
+                    <div class="olivos-3d-card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#0f172a; border-bottom:1px solid #1e293b; color:#cbd5e1; font-size:12px;">
+                            <div style="display:flex; align-items:center; gap:8px; font-weight:700;">
+                                <span style="color:#38bdf8;">🧊</span>
+                                <span>Visor 4D TimeLiner WebGL · Parcela 14 Los Olivos (10m × 10m)</span>
+                            </div>
+                            <div style="display:flex; gap:6px;">
+                                <button type="button" onclick="setOlivosCamera('iso')" style="background:#1e293b; color:#e2e8f0; border:1px solid #334155; padding:3px 8px; border-radius:6px; font-size:11px; cursor:pointer;">Isométrica</button>
+                                <button type="button" onclick="setOlivosCamera('top')" style="background:#1e293b; color:#e2e8f0; border:1px solid #334155; padding:3px 8px; border-radius:6px; font-size:11px; cursor:pointer;">Planta</button>
+                                <button type="button" onclick="setOlivosCamera('front')" style="background:#1e293b; color:#e2e8f0; border:1px solid #334155; padding:3px 8px; border-radius:6px; font-size:11px; cursor:pointer;">Fachada</button>
+                            </div>
+                        </div>
+
+                        <div id="olivos3DViewport" class="olivos-3d-viewport">
+                            <div class="olivos-hud-badge" id="olivos3DHud">
+                                TimeLiner 4D · Día 22/63 · 35% Avance Físico
+                            </div>
+                            <div class="olivos-legend-overlay">
+                                <span><i class="legend-dot" style="background:#10b981;"></i>100% Ejecutado (Certificado)</span>
+                                <span><i class="legend-dot" style="background:#f59e0b;"></i>En Construcción Activa (TimeLiner)</span>
+                                <span><i class="legend-dot" style="background:#38bdf8;"></i>Instalación con Holgura</span>
+                                <span><i class="legend-dot" style="background:#475569;"></i>Alambre / Pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Control de Escenarios (Casos A, B y Fast-Tracking) -->
+                    <div class="olivos-status-panel">
+                        <div>
+                            <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:var(--purple); letter-spacing:0.05em; margin-bottom:4px;">
+                                Simulador de Análisis de Impacto (Módulo IV &rarr; V)
+                            </div>
+                            <h4 style="font-size:15px; font-weight:800; color:var(--navy-primary); margin-bottom:10px;">
+                                Escenarios del Caso Práctico Los Olivos
+                            </h4>
+                            <div class="scenario-btn-group">
+                                <button type="button" class="scenario-btn active" id="scen-base" onclick="setOlivosScenario('baseline')">
+                                    📊 1. Línea Base Oficial<br>
+                                    <span style="font-size:10.5px; font-weight:500; opacity:0.85;">63 días hábiles · CPM Puro</span>
+                                </button>
+                                <button type="button" class="scenario-btn" id="scen-caseA" onclick="setOlivosScenario('caseA')">
+                                    🚨 2. Caso A: Retraso Losa (D)<br>
+                                    <span style="font-size:10.5px; font-weight:500; opacity:0.85;">+4 días hormigón &rarr; 67 días</span>
+                                </button>
+                                <button type="button" class="scenario-btn" id="scen-caseB" onclick="setOlivosScenario('caseB')">
+                                    💧 3. Caso B: Fontanería (J)<br>
+                                    <span style="font-size:10.5px; font-weight:500; opacity:0.85;">5 a 8 días (Holgura absorbe)</span>
+                                </button>
+                                <button type="button" class="scenario-btn" id="scen-lean" onclick="setOlivosScenario('lean')">
+                                    ⚡ 4. Fast-Tracking / Cascada<br>
+                                    <span style="font-size:10.5px; font-weight:500; opacity:0.85;">Compresión Lean &rarr; 55 días</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Respuesta analítica automática a las preguntas del Caso Los Olivos -->
+                        <div id="olivosScenarioDiagnosis" style="background:var(--surface-subtle); border-left:4px solid var(--blue-accent); padding:12px 14px; border-radius:0 10px 10px 0; font-size:12.2px; line-height:1.55; color:var(--text-main);">
+                            <!-- Poblado dinámicamente -->
+                        </div>
+
+                        <!-- Tarjetas de estado WBS (compatibles con suite de pruebas) -->
+                        <div class="timeline-phases" style="grid-template-columns: repeat(5, 1fr); gap:6px; margin:0;">
+                            <div class="phase-card completed" id="phase-1" style="padding:8px;">
+                                <div class="phase-title" style="font-size:10.5px;">EDT 1.0 Cimentación</div>
+                                <div class="phase-progress" style="font-size:10px;">Tareas A-D (Días 1-14)</div>
+                            </div>
+                            <div class="phase-card active" id="phase-2" style="padding:8px;">
+                                <div class="phase-title" style="font-size:10.5px;">EDT 2.0 Estructura</div>
+                                <div class="phase-progress" style="font-size:10px;">Tareas E-G (Días 15-35)</div>
+                            </div>
+                            <div class="phase-card" id="phase-3" style="padding:8px;">
+                                <div class="phase-title" style="font-size:10.5px;">EDT 3.0 Albañil/MEP</div>
+                                <div class="phase-progress" id="phase3Prog" style="font-size:10px;">Tareas H-J (Días 29-37)</div>
+                            </div>
+                            <div class="phase-card" id="phase-4" style="padding:8px;">
+                                <div class="phase-title" style="font-size:10.5px;">EDT 4.0 Acabados</div>
+                                <div class="phase-progress" style="font-size:10px;">Tareas K-P (Días 38-59)</div>
+                            </div>
+                            <div class="phase-card" id="phase-5" style="padding:8px;">
+                                <div class="phase-title" style="font-size:10.5px;">EDT 5.0 Entrega</div>
+                                <div class="phase-progress" style="font-size:10px;">Tareas Q-R (Días 60-63)</div>
+                            </div>
+                        </div>
+
+                        <div id="timelineDetailBox" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:12px; font-size:12.5px; color:var(--text-main); line-height:1.5;">
+                            <!-- Dynamic status text -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-phases">
-                    <div class="phase-card completed" id="phase-1">
-                        <div class="phase-title">Fase 1: Obras Preliminares &amp; Fundaciones</div>
-                        <div class="phase-progress">Sem 1 - 5 · 100% Completo</div>
-                        <div style="font-size:11px; color:#047857; margin-top:4px;">Zapatas y Muros de Contención</div>
+                <!-- TABLA INTERACTIVA DE 18 TAREAS ESTILO MICROSOFT PROJECT -->
+                <div class="gantt-master-box">
+                    <div class="gantt-toolbar">
+                        <div>
+                            <div style="font-size:13.5px; font-weight:800; display:flex; align-items:center; gap:8px;">
+                                <span>📅</span>
+                                <span>Cronograma Maestro PDM (Estilo Microsoft Project) · 18 Actividades Caso "Residencial Los Olivos"</span>
+                            </div>
+                            <div style="font-size:11.5px; color:#94a3b8; margin-top:2px;">
+                                Haz clic sobre cualquier actividad (A - R) para abrir su ficha técnica de recursos, holguras, predecesoras y vinculación 4D (`IfcTask`).
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:10px; align-items:center; font-family:var(--font-mono); font-size:11.5px;">
+                            <span id="ganttTotalDaysBadge" style="background:#e11d48; color:#fff; padding:4px 10px; border-radius:6px; font-weight:800;">Duración Total: 63 Días Hábiles</span>
+                            <span style="background:#1e293b; color:#38bdf8; padding:4px 10px; border-radius:6px; border:1px solid #334155;">Ruta Crítica: 14 / 18 Tareas</span>
+                        </div>
                     </div>
-                    <div class="phase-card completed" id="phase-2">
-                        <div class="phase-title">Fase 2: Estructura Concreto PB a P4</div>
-                        <div class="phase-progress">Sem 6 - 11 · 100% Completo</div>
-                        <div style="font-size:11px; color:#047857; margin-top:4px;">Columnas, Vigas y Losas Vaciadas</div>
-                    </div>
-                    <div class="phase-card active" id="phase-3">
-                        <div class="phase-title">Fase 3: Estructura P5 a P12 &amp; Cerramientos</div>
-                        <div class="phase-progress" id="phase3Prog">Sem 12 - 17 · En Curso (20%)</div>
-                        <div style="font-size:11px; color:#0284c7; margin-top:4px;">Frente Activo de Vaciado</div>
-                    </div>
-                    <div class="phase-card" id="phase-4">
-                        <div class="phase-title">Fase 4: Instalaciones MEP &amp; Puntos Sanitarios</div>
-                        <div class="phase-progress">Sem 16 - 21 · Programado</div>
-                        <div style="font-size:11px; color:var(--text-light); margin-top:4px;">Climatización y Ductería</div>
-                    </div>
-                    <div class="phase-card" id="phase-5">
-                        <div class="phase-title">Fase 5: Acabados, Vidrios &amp; Puesta en Marcha</div>
-                        <div class="phase-progress">Sem 20 - 24 · Programado</div>
-                        <div style="font-size:11px; color:var(--text-light); margin-top:4px;">Pruebas Finales y Entrega</div>
+
+                    <div class="gantt-scroll-area">
+                        <table class="gantt-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:42px;">ID</th>
+                                    <th style="width:72px;">EDT / WBS</th>
+                                    <th style="min-width:210px;">Nombre de la Actividad</th>
+                                    <th style="width:65px;">Duración</th>
+                                    <th style="width:95px;">Predecesora</th>
+                                    <th style="width:85px;">Inicio / Fin</th>
+                                    <th style="width:68px;">Holgura</th>
+                                    <th style="width:95px;">Estado CPM</th>
+                                    <th style="min-width:260px;">Diagrama de Barras Gantt (Escala Días Laborables)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="olivosGanttBody">
+                                <!-- Renderizado dinámicamente por JS -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
 
-                <div id="timelineDetailBox" style="background:#ffffff; border:1px solid var(--border); border-radius:10px; padding:16px; font-size:13px; color:var(--text-main); line-height:1.6;">
-                    <!-- Dynamic status text -->
+            <!-- MODAL EMERGENTE DE INSPECCIÓN DE TAREA (ESTILO ATLANTIS) -->
+            <div class="task-modal-backdrop" id="olivosTaskModal" onclick="if(event.target===this) closeOlivosTaskModal()">
+                <div class="task-modal-card">
+                    <div style="background:var(--navy-primary); color:#fff; padding:16px 20px; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <div id="modalTaskWbs" style="font-family:var(--font-mono); font-size:11px; color:#38bdf8; font-weight:700;">EDT 1.1 · TAREA A</div>
+                            <h3 id="modalTaskName" style="font-size:16px; font-weight:800; margin-top:2px;">Limpieza, nivelación y replanteo</h3>
+                        </div>
+                        <button type="button" onclick="closeOlivosTaskModal()" style="background:rgba(255,255,255,0.12); color:#fff; border:none; width:30px; height:30px; border-radius:8px; cursor:pointer; font-weight:800;">✕</button>
+                    </div>
+                    <div style="padding:20px; font-size:13px; color:var(--text-main); display:flex; flex-direction:column; gap:12px;">
+                        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; background:var(--surface-subtle); padding:12px; border-radius:10px; border:1px solid var(--border); text-align:center;">
+                            <div>
+                                <div style="font-size:10.5px; color:var(--text-light); font-weight:700; text-transform:uppercase;">Duración</div>
+                                <div id="modalTaskDur" style="font-size:15px; font-weight:800; color:var(--navy-primary); font-family:var(--font-mono);">3 días</div>
+                            </div>
+                            <div>
+                                <div style="font-size:10.5px; color:var(--text-light); font-weight:700; text-transform:uppercase;">Ventana CPM</div>
+                                <div id="modalTaskWindow" style="font-size:14px; font-weight:800; color:var(--blue-accent); font-family:var(--font-mono);">Día 1 al 3</div>
+                            </div>
+                            <div>
+                                <div style="font-size:10.5px; color:var(--text-light); font-weight:700; text-transform:uppercase;">Holgura Total</div>
+                                <div id="modalTaskFloat" style="font-size:14px; font-weight:800; color:var(--rose); font-family:var(--font-mono);">0 días (Crítica)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <strong style="color:var(--navy-primary);">👷 Recursos Principales Asignados (Caso Los Olivos):</strong>
+                            <div id="modalTaskResources" style="margin-top:4px; color:var(--text-muted); background:#f8fafc; padding:8px 12px; border-radius:8px; border:1px solid var(--border);"></div>
+                        </div>
+                        <div>
+                            <strong style="color:var(--navy-primary);">🔗 Lógica de Red PDM &amp; Vinculación BIM 4D (`IfcTask`):</strong>
+                            <div id="modalTaskBimInfo" style="margin-top:4px; color:var(--text-muted); line-height:1.55;"></div>
+                        </div>
+                        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:6px;">
+                            <button type="button" class="btn-playback" id="modalJumpDayBtn" style="background:var(--blue-accent); color:#fff; border-color:var(--blue-accent);">
+                                🎯 Saltar a este Día en el Visor 3D
+                            </button>
+                            <button type="button" class="btn-playback" onclick="closeOlivosTaskModal()">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1484,9 +1868,488 @@ if __name__ == "__main__":
             }
         }
 
-        // --- 3. SIMULADOR DE LÍNEA DE TIEMPO 4D (MÓDULO 4) ---
+        // --- 3. SIMULADOR PROPIO 4D TIMELINER & GANTT (CASO RESIDENCIAL LOS OLIVOS) ---
         let timelineInterval = null;
         let isTimelinePlaying = false;
+        let currentOlivosScenario = 'baseline';
+        let currentOlivosTasks = [];
+        let maxScheduleDays = 63;
+
+        // 18 Tareas Oficiales del Caso Práctico "Residencial Los Olivos" (Módulo IV -> Módulo V)
+        const BASE_OLIVOS_TASKS = [
+            { id: 'A', wbs: 'EDT 1.1', phase: 1, name: 'Limpieza, nivelación y replanteo', dur: 3, preds: [], rel: '—', res: 'Topógrafo, retroexcavadora, oficial de albañilería', ifc: 'IfcSite · Replanteo topográfico parcela N° 14 (10m x 10m)' },
+            { id: 'B', wbs: 'EDT 1.2', phase: 1, name: 'Excavación para cimentación', dur: 2, preds: [{id:'A', type:'FS', lag:0}], rel: 'A (FS)', res: 'Retroexcavadora, operador, peón', ifc: 'IfcEarthworksCut · Zanjas y caja de cimentación' },
+            { id: 'C', wbs: 'EDT 1.3', phase: 1, name: 'Colocación de acero y encofrado de losa', dur: 4, preds: [{id:'B', type:'FS', lag:0}], rel: 'B (FS)', res: 'Cuadrilla de fierreros / encofradores', ifc: 'IfcReinforcingMesh + IfcFooting (Armado)' },
+            { id: 'D', wbs: 'EDT 1.4', phase: 1, name: 'Vaciado y curado de losa de cimentación', dur: 5, preds: [{id:'C', type:'FS', lag:0}], rel: 'C (FS)', res: 'Camión hormigonera, bomba, cuadrilla de vaciado', ifc: 'IfcSlab (FUNDACION_100M2 · Concreto f\'c=250 kg/cm²)' },
+            { id: 'E', wbs: 'EDT 2.1', phase: 2, name: 'Levantamiento de muros portantes y columnas', dur: 8, preds: [{id:'D', type:'FS', lag:0}], rel: 'D (FS)', res: 'Oficiales albañiles, peones, andamios', ifc: 'IfcWallStandardCase + IfcColumn (Muros portantes cerámicos)' },
+            { id: 'F', wbs: 'EDT 2.2', phase: 2, name: 'Encofrado, armado y vaciado de losa de cubierta', dur: 6, preds: [{id:'E', type:'FS', lag:0}], rel: 'E (FS)', res: 'Cuadrilla de estructura, bomba de hormigón', ifc: 'IfcSlab (CUBIERTA_PLANA_100M2)' },
+            { id: 'G', wbs: 'EDT 2.3', phase: 2, name: 'Curado de losa e impermeabilización de cubierta', dur: 7, preds: [{id:'F', type:'FS', lag:0}], rel: 'F (FS)', res: 'Impermeabilizadores, peones', ifc: 'IfcCovering (Manto asfáltico e impermeabilización)' },
+            { id: 'H', wbs: 'EDT 3.1', phase: 3, name: 'Tabiquería interior (divisiones)', dur: 5, preds: [{id:'F', type:'FS', lag:0}], rel: 'F (FS)', res: 'Oficiales albañiles, peones', ifc: 'IfcWall (Particiones internas dormitorios/baño/cocina)' },
+            { id: 'I', wbs: 'EDT 3.2', phase: 3, name: 'Canalizaciones de electricidad y telecomunicaciones', dur: 4, preds: [{id:'H', type:'FS', lag:0}], rel: 'H (FS)', res: 'Electricista oficial, ayudante', ifc: 'IfcCableCarrierSegment (Tubería EMT/PVC empotrada)' },
+            { id: 'J', wbs: 'EDT 3.3', phase: 3, name: 'Trazado e instalación de fontanería y saneamiento', dur: 5, preds: [{id:'H', type:'SS', lag:1}], rel: 'H (SS+1)*', res: 'Fontanero oficial, ayudante', ifc: 'IfcPipeSegment (Redes aguas blancas y aguas servidas)' },
+            { id: 'K', wbs: 'EDT 4.1', phase: 4, name: 'Guarnecido, enlucido de yeso / enfoscado interior', dur: 6, preds: [{id:'I', type:'FS', lag:0}, {id:'J', type:'FS', lag:0}], rel: 'I, J (FS)', res: 'Cuadrilla de yeseros / revocadores', ifc: 'IfcCovering (Friso liso y acabado interior)' },
+            { id: 'L', wbs: 'EDT 4.2', phase: 4, name: 'Colocación de solados (pisos) y alicatados (baño/cocina)', dur: 7, preds: [{id:'K', type:'FS', lag:0}], rel: 'K (FS)', res: 'Soladores, alicatadores, obrero', ifc: 'IfcCovering (Porcelanato y cerámica en áreas húmedas)' },
+            { id: 'M', wbs: 'EDT 4.3', phase: 4, name: 'Montaje de ventanas y carpintería exterior', dur: 3, preds: [{id:'K', type:'FS', lag:0}], rel: 'K (FS)', res: 'Cristalero / carpintero metálico', ifc: 'IfcWindow (Ventanales corredizos aluminio/vidrio)' },
+            { id: 'N', wbs: 'EDT 4.4', phase: 4, name: 'Pintura interior y exterior', dur: 5, preds: [{id:'L', type:'FS', lag:0}, {id:'M', type:'FS', lag:0}], rel: 'L, M (FS)', res: 'Cuadrilla de pintores', ifc: 'IfcCovering (Pintura caucho clase A interior/fachada)' },
+            { id: 'O', wbs: 'EDT 4.5', phase: 4, name: 'Montaje de aparatos sanitarios y mecanismos eléctricos', dur: 3, preds: [{id:'N', type:'FS', lag:0}], rel: 'N (FS)', res: 'Electricista, fontanero', ifc: 'IfcSanitaryTerminal + IfcSwitchingDevice' },
+            { id: 'P', wbs: 'EDT 4.6', phase: 4, name: 'Carpintería interior (puertas y armarios)', dur: 4, preds: [{id:'N', type:'FS', lag:0}], rel: 'N (FS)', res: 'Carpintero de madera', ifc: 'IfcDoor + IfcFurniture (Puertas entamboradas y closets)' },
+            { id: 'Q', wbs: 'EDT 5.1', phase: 5, name: 'Pruebas de instalaciones y remates finales', dur: 2, preds: [{id:'O', type:'FS', lag:0}, {id:'P', type:'FS', lag:0}], rel: 'O, P (FS)', res: 'Jefe de obra, técnicos de instalaciones', ifc: 'IfcTask (Pruebas hidrostáticas y megado eléctrico)' },
+            { id: 'R', wbs: 'EDT 5.2', phase: 5, name: 'Limpieza final de obra y entrega de llaves', dur: 2, preds: [{id:'Q', type:'FS', lag:0}], rel: 'Q (FS)', res: 'Personal de limpieza, Director de Obra', ifc: 'IfcTask (Acta de Recepción Provisional y Entrega)' }
+        ];
+
+        function computeCPM(scenarioMode) {
+            // Clonar tareas base
+            const tasks = JSON.parse(JSON.stringify(BASE_OLIVOS_TASKS));
+            const map = {};
+            tasks.forEach(t => { map[t.id] = t; });
+
+            if (scenarioMode === 'caseA') {
+                // Caso A: Hormigón de losa de cimentación (Tarea D) se retrasa 4 días (pasa de 5 a 9 días)
+                map['D'].dur = 9;
+            } else if (scenarioMode === 'caseB') {
+                // Caso B: Fontanería (Tarea J) pasa de 5 a 8 días de duración
+                map['J'].dur = 8;
+            } else if (scenarioMode === 'lean') {
+                // Fast-Tracking / Crashing Lean: sectorización en 2 frentes reduce E (8->6), F (6->4), H inicia SS+2 con F, K (6->5), L (7->5)
+                map['E'].dur = 6;
+                map['F'].dur = 4;
+                map['K'].dur = 5;
+                map['L'].dur = 5;
+            }
+
+            // Forward Pass (ES, EF en base 1: día 1 al día N)
+            tasks.forEach(t => {
+                if (!t.preds || t.preds.length === 0) {
+                    t.es = 1;
+                } else {
+                    let maxStart = 1;
+                    t.preds.forEach(p => {
+                        const predTask = map[p.id];
+                        if (p.type === 'FS') {
+                            const cand = predTask.ef + 1 + (p.lag || 0);
+                            if (cand > maxStart) maxStart = cand;
+                        } else if (p.type === 'SS') {
+                            const cand = predTask.es + (p.lag || 0);
+                            if (cand > maxStart) maxStart = cand;
+                        }
+                    });
+                    t.es = maxStart;
+                }
+                t.ef = t.es + t.dur - 1;
+            });
+
+            const totalDuration = Math.max(...tasks.map(t => t.ef));
+
+            // Backward Pass (LS, LF, Total Float)
+            for (let i = tasks.length - 1; i >= 0; i--) {
+                const t = tasks[i];
+                // Buscar sucesoras
+                const succs = tasks.filter(s => s.preds.some(p => p.id === t.id));
+                if (succs.length === 0) {
+                    t.lf = totalDuration;
+                } else {
+                    let minLf = totalDuration;
+                    succs.forEach(s => {
+                        const relObj = s.preds.find(p => p.id === t.id);
+                        if (relObj.type === 'FS') {
+                            const candLf = s.ls - 1 - (relObj.lag || 0);
+                            if (candLf < minLf) minLf = candLf;
+                        } else if (relObj.type === 'SS') {
+                            // Para SS+lag: t.es + lag <= s.ls => t.ls <= s.ls - lag => t.lf = t.ls + t.dur - 1
+                            const candLs = s.ls - (relObj.lag || 0);
+                            const candLf = candLs + t.dur - 1;
+                            if (candLf < minLf) minLf = candLf;
+                        }
+                    });
+                    t.lf = minLf;
+                }
+                t.ls = t.lf - t.dur + 1;
+                t.float = t.ls - t.es;
+                t.critical = (t.float === 0);
+            }
+
+            return { tasks, totalDuration };
+        }
+
+        function setOlivosScenario(scen) {
+            currentOlivosScenario = scen;
+            ['base', 'caseA', 'caseB', 'lean'].forEach(k => {
+                const btn = document.getElementById('scen-' + k);
+                if (btn) btn.classList.remove('active');
+            });
+            const btnMap = { baseline: 'scen-base', caseA: 'scen-caseA', caseB: 'scen-caseB', lean: 'scen-lean' };
+            const activeBtn = document.getElementById(btnMap[scen]);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const cpm = computeCPM(scen);
+            currentOlivosTasks = cpm.tasks;
+            maxScheduleDays = cpm.totalDuration;
+
+            const slider = document.getElementById('timelineSlider');
+            slider.max = maxScheduleDays;
+            if (parseInt(slider.value) > maxScheduleDays) {
+                slider.value = maxScheduleDays;
+            }
+
+            const badge = document.getElementById('ganttTotalDaysBadge');
+            if (badge) {
+                badge.textContent = `Duración Total: ${maxScheduleDays} Días Hábiles`;
+                badge.style.background = scen === 'caseA' ? '#e11d48' : (scen === 'lean' ? '#047857' : '#0284c7');
+            }
+
+            const diagEl = document.getElementById('olivosScenarioDiagnosis');
+            if (diagEl) {
+                if (scen === 'baseline') {
+                    diagEl.style.borderLeftColor = 'var(--blue-accent)';
+                    diagEl.innerHTML = `<strong>📊 Respuesta Oficial Línea Base (63 Días Hábiles):</strong> La <strong>Ruta Crítica (Holgura = 0)</strong> está conformada por <strong>14 actividades</strong>: <code>A &rarr; B &rarr; C &rarr; D &rarr; E &rarr; F &rarr; H &rarr; I &rarr; K &rarr; L &rarr; N &rarr; P &rarr; Q &rarr; R</code>. Las 4 tareas con holgura positiva son: <strong>G</strong> (Holgura: 2 días), <strong>J</strong> (Holgura: 3 días gracias al inicio SS+1), <strong>M</strong> (Holgura: 4 días) y <strong>O</strong> (Holgura: 1 día).`;
+                } else if (scen === 'caseA') {
+                    diagEl.style.borderLeftColor = 'var(--rose)';
+                    diagEl.innerHTML = `<strong>🚨 Análisis de Impacto · Caso A (Retraso de 4 días en Tarea D):</strong> Como el <em>Vaciado y curado de losa de cimentación (Tarea D)</em> pertenece a la <strong>Ruta Crítica (Holgura = 0)</strong>, un retraso logístico de 4 días desplaza directamente todas las actividades sucesoras (E hasta R), retrasando la entrega final de la vivienda de <strong>63 a 67 días laborables (+4 días de mora)</strong>.`;
+                } else if (scen === 'caseB') {
+                    diagEl.style.borderLeftColor = 'var(--emerald)';
+                    diagEl.innerHTML = `<strong>💧 Análisis de Impacto · Caso B (Fontanería Tarea J pasa de 5 a 8 días):</strong> En la línea base, la Tarea J inicia el Día 30 (relación <code>SS+1</code> con H) y finaliza el Día 34, mientras que la Tarea I termina el Día 37 (Holgura de J = <strong>3 días</strong>). Al aumentar J en +3 días (de 5 a 8 días), finaliza exactamente el <strong>Día 37</strong>, consumiendo su holgura (Holgura = 0) y volviéndose co-crítica con I, pero <strong>NO retrasa la fecha final del proyecto (se mantiene en 63 días)</strong>.`;
+                } else if (scen === 'lean') {
+                    diagEl.style.borderLeftColor = 'var(--purple)';
+                    diagEl.innerHTML = `<strong>⚡ Optimización Lean / Fast-Tracking (55 Días Hábiles):</strong> Aplicando sectorización en cascada (2 frentes desfasados en estructura E-F y acabados K-L), el plazo total se comprime de <strong>63 a 55 días hábiles (-8 días · 12.7% de ahorro temporal)</strong>, liberando puntales metálicos anticipadamente.`;
+                }
+            }
+
+            updateTimelineDisplay(parseInt(slider.value));
+        }
+
+        function renderOlivosGanttTable(currentDay) {
+            const tbody = document.getElementById('olivosGanttBody');
+            if (!tbody) return;
+
+            let html = '';
+            currentOlivosTasks.forEach(t => {
+                const isRunning = currentDay >= t.es && currentDay <= t.ef;
+                const isDone = currentDay > t.ef;
+                const leftPct = ((t.es - 1) / maxScheduleDays) * 100;
+                const widthPct = (t.dur / maxScheduleDays) * 100;
+                const cursorPct = ((currentDay - 0.5) / maxScheduleDays) * 100;
+
+                let barColor = t.critical ? '#e11d48' : '#0284c7';
+                if (isDone) barColor = '#10b981';
+                else if (isRunning) barColor = '#f59e0b';
+
+                html += `
+                    <tr class="gantt-row ${isRunning ? 'active-day-row' : ''}" onclick="openOlivosTaskModal('${t.id}')">
+                        <td style="font-family:var(--font-mono); font-weight:800; color:var(--navy-primary);">${t.id}</td>
+                        <td style="font-family:var(--font-mono); font-size:11px; color:var(--text-light);">${t.wbs}</td>
+                        <td style="font-weight:700; color:var(--text-main);">
+                            ${isDone ? '✅ ' : (isRunning ? '⏳ ' : '')}${t.name}
+                        </td>
+                        <td style="font-family:var(--font-mono); font-weight:700;">${t.dur} d</td>
+                        <td style="font-family:var(--font-mono); font-size:11px;">${t.rel}</td>
+                        <td style="font-family:var(--font-mono); font-size:11px;">D${t.es} &rarr; D${t.ef}</td>
+                        <td style="font-family:var(--font-mono); font-weight:700; color:${t.float === 0 ? 'var(--rose)' : 'var(--blue-accent)'};">
+                            ${t.float} d
+                        </td>
+                        <td>
+                            <span class="crit-pill ${t.critical ? 'crit-yes' : 'crit-no'}">
+                                ${t.critical ? 'Ruta Crítica' : 'Holgura'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="gantt-bar-track">
+                                <div class="gantt-cursor-line" style="left:${cursorPct}%;"></div>
+                                <div class="gantt-bar-fill" style="left:${leftPct}%; width:${Math.max(widthPct, 2.2)}%; background:${barColor};"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function openOlivosTaskModal(taskId) {
+            const t = currentOlivosTasks.find(x => x.id === taskId);
+            if (!t) return;
+            document.getElementById('modalTaskWbs').textContent = `${t.wbs} · ACTIVIDAD ${t.id}`;
+            document.getElementById('modalTaskName').textContent = t.name;
+            document.getElementById('modalTaskDur').textContent = `${t.dur} días hábiles`;
+            document.getElementById('modalTaskWindow').textContent = `Día ${t.es} al Día ${t.ef}`;
+            const floatEl = document.getElementById('modalTaskFloat');
+            floatEl.textContent = t.float === 0 ? '0 días (Ruta Crítica)' : `${t.float} días (Con Holgura)`;
+            floatEl.style.color = t.float === 0 ? 'var(--rose)' : 'var(--emerald)';
+            document.getElementById('modalTaskResources').textContent = t.res;
+            document.getElementById('modalTaskBimInfo').innerHTML = `Predecesoras: <strong>${t.rel}</strong> ·Inicio Tardío (LS): Día ${t.ls} · Fin Tardío (LF): Día ${t.lf}.<br>Entidad IFC 4.3 vinculada en TimeLiner: <code>${t.ifc}</code>.`;
+
+            const jumpBtn = document.getElementById('modalJumpDayBtn');
+            jumpBtn.onclick = function() {
+                document.getElementById('timelineSlider').value = t.es;
+                updateTimelineDisplay(t.es);
+                closeOlivosTaskModal();
+            };
+
+            document.getElementById('olivosTaskModal').style.display = 'flex';
+        }
+
+        function closeOlivosTaskModal() {
+            document.getElementById('olivosTaskModal').style.display = 'none';
+        }
+
+        // --- VISOR 3D WEBGL THREE.JS PARA VIVIENDA UNIFAMILIAR LOS OLIVOS (10m x 10m) ---
+        let olivosScene = null, olivosCamera = null, olivosRenderer = null, olivosControls = null;
+        let olivosModelGroup = null;
+
+        function initOlivos3DViewer() {
+            const container = document.getElementById('olivos3DViewport');
+            if (!container || typeof THREE === 'undefined') return;
+
+            olivosScene = new THREE.Scene();
+            olivosScene.background = new THREE.Color(0x090d16);
+
+            const w = container.clientWidth || 600;
+            const h = container.clientHeight || 410;
+            olivosCamera = new THREE.PerspectiveCamera(42, w / h, 0.1, 300);
+            olivosCamera.position.set(16, 13, 18);
+
+            olivosRenderer = new THREE.WebGLRenderer({ antialias: true });
+            olivosRenderer.setSize(w, h);
+            olivosRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            olivosRenderer.shadowMap.enabled = true;
+
+            // Insertar canvas sin borrar los overlays HUD
+            container.appendChild(olivosRenderer.domElement);
+
+            if (typeof THREE.OrbitControls !== 'undefined') {
+                olivosControls = new THREE.OrbitControls(olivosCamera, olivosRenderer.domElement);
+                olivosControls.enableDamping = true;
+                olivosControls.target.set(0, 1.8, 0);
+                olivosControls.maxPolarAngle = Math.PI / 2 - 0.04;
+            }
+
+            // Iluminación arquitectónica
+            const amb = new THREE.AmbientLight(0xffffff, 0.85);
+            olivosScene.add(amb);
+
+            const dir = new THREE.DirectionalLight(0xfffbeb, 1.15);
+            dir.position.set(20, 30, 18);
+            dir.castShadow = true;
+            olivosScene.add(dir);
+
+            // Terreno Parcela N° 14 Sector Los Olivos
+            const ground = new THREE.Mesh(
+                new THREE.PlaneGeometry(36, 36),
+                new THREE.MeshStandardMaterial({ color: 0x162419, roughness: 0.9 })
+            );
+            ground.rotation.x = -Math.PI / 2;
+            ground.position.y = -0.05;
+            ground.receiveShadow = true;
+            olivosScene.add(ground);
+
+            const grid = new THREE.GridHelper(24, 24, 0x334155, 0x1e293b);
+            grid.position.y = 0.01;
+            olivosScene.add(grid);
+
+            olivosModelGroup = new THREE.Group();
+            olivosScene.add(olivosModelGroup);
+
+            const animate3D = () => {
+                requestAnimationFrame(animate3D);
+                if (olivosControls) olivosControls.update();
+                if (olivosRenderer && olivosScene && olivosCamera) {
+                    olivosRenderer.render(olivosScene, olivosCamera);
+                }
+            };
+            animate3D();
+
+            window.addEventListener('resize', () => {
+                if (!container || !olivosRenderer || !olivosCamera) return;
+                const nw = container.clientWidth;
+                const nh = container.clientHeight;
+                olivosCamera.aspect = nw / nh;
+                olivosCamera.updateProjectionMatrix();
+                olivosRenderer.setSize(nw, nh);
+            });
+        }
+
+        function setOlivosCamera(preset) {
+            if (!olivosCamera || !olivosControls) return;
+            if (preset === 'iso') {
+                olivosCamera.position.set(16, 13, 18);
+                olivosControls.target.set(0, 1.8, 0);
+            } else if (preset === 'top') {
+                olivosCamera.position.set(0, 24, 0.1);
+                olivosControls.target.set(0, 0, 0);
+            } else if (preset === 'front') {
+                olivosCamera.position.set(0, 4.5, 20);
+                olivosControls.target.set(0, 1.8, 0);
+            }
+            olivosControls.update();
+        }
+
+        function getTaskStateColor(taskIds, currentDay, doneHex) {
+            // Verifica el estado de un grupo de tareas en el día actual
+            let anyActive = false;
+            let allDone = true;
+            let anyStarted = false;
+            let isNonCritActive = false;
+
+            taskIds.forEach(id => {
+                const t = currentOlivosTasks.find(x => x.id === id);
+                if (!t) return;
+                if (currentDay >= t.es && currentDay <= t.ef) {
+                    anyActive = true;
+                    anyStarted = true;
+                    if (!t.critical) isNonCritActive = true;
+                } else if (currentDay > t.ef) {
+                    anyStarted = true;
+                } else {
+                    allDone = false;
+                }
+            });
+
+            if (!anyStarted) return { visible: false };
+            if (anyActive) {
+                return {
+                    visible: true,
+                    color: isNonCritActive ? 0x38bdf8 : 0xf59e0b,
+                    opacity: 0.88,
+                    wireframe: false
+                };
+            }
+            if (allDone) {
+                return {
+                    visible: true,
+                    color: doneHex,
+                    opacity: 1.0,
+                    wireframe: false
+                };
+            }
+            return {
+                visible: true,
+                color: doneHex,
+                opacity: 0.95,
+                wireframe: false
+            };
+        }
+
+        function updateOlivos3DModel(currentDay) {
+            if (!olivosModelGroup || typeof THREE === 'undefined') return;
+
+            while (olivosModelGroup.children.length > 0) {
+                const obj = olivosModelGroup.children[0];
+                if (obj.geometry) obj.geometry.dispose();
+                olivosModelGroup.remove(obj);
+            }
+
+            // 1. Tareas A-B: Replanteo y Excavación parcela 10m x 10m
+            const stAB = getTaskStateColor(['A', 'B'], currentDay, 0x64748b);
+            if (stAB.visible) {
+                const pad = new THREE.Mesh(
+                    new THREE.BoxGeometry(10.6, 0.12, 10.6),
+                    new THREE.MeshStandardMaterial({ color: stAB.color, roughness: 0.85 })
+                );
+                pad.position.set(0, 0.06, 0);
+                olivosModelGroup.add(pad);
+            }
+
+            // 2. Tareas C-D: Losa de Cimentación de Hormigón Armado (10m x 10m)
+            const stCD = getTaskStateColor(['C', 'D'], currentDay, 0x94a3b8);
+            if (stCD.visible) {
+                const foundation = new THREE.Mesh(
+                    new THREE.BoxGeometry(10.0, 0.45, 10.0),
+                    new THREE.MeshStandardMaterial({ color: stCD.color, roughness: 0.7 })
+                );
+                foundation.position.set(0, 0.25, 0);
+                foundation.castShadow = true;
+                foundation.receiveShadow = true;
+                olivosModelGroup.add(foundation);
+            }
+
+            // 3. Tarea E: Muros portantes de ladrillo cerámico y columnas
+            const stE = getTaskStateColor(['E'], currentDay, 0xd97706);
+            const stN = getTaskStateColor(['N'], currentDay, 0xf8fafc); // Pintura blanquea fachada
+            if (stE.visible) {
+                const wallColor = (stN.visible && currentDay > currentOlivosTasks.find(x=>x.id==='N').es) ? stN.color : stE.color;
+                const wallMat = new THREE.MeshStandardMaterial({ color: wallColor, roughness: 0.65 });
+
+                // 4 muros perimetrales portantes (10m x 10m, altura 3.0m)
+                const wNorth = new THREE.Mesh(new THREE.BoxGeometry(10.0, 3.0, 0.25), wallMat);
+                wNorth.position.set(0, 1.95, -4.875);
+                olivosModelGroup.add(wNorth);
+
+                const wWest = new THREE.Mesh(new THREE.BoxGeometry(0.25, 3.0, 10.0), wallMat);
+                wWest.position.set(-4.875, 1.95, 0);
+                olivosModelGroup.add(wWest);
+
+                const wEast = new THREE.Mesh(new THREE.BoxGeometry(0.25, 3.0, 10.0), wallMat);
+                wEast.position.set(4.875, 1.95, 0);
+                olivosModelGroup.add(wEast);
+
+                // Muro fachada sur con vano para puerta y ventanal
+                const wSouthLeft = new THREE.Mesh(new THREE.BoxGeometry(3.2, 3.0, 0.25), wallMat);
+                wSouthLeft.position.set(-3.4, 1.95, 4.875);
+                olivosModelGroup.add(wSouthLeft);
+
+                const wSouthRight = new THREE.Mesh(new THREE.BoxGeometry(4.2, 3.0, 0.25), wallMat);
+                wSouthRight.position.set(2.9, 1.95, 4.875);
+                olivosModelGroup.add(wSouthRight);
+            }
+
+            // 4. Tarea H: Tabiquería interior (divisiones de ambientes) y K (Enlucido yeso)
+            const stH = getTaskStateColor(['H', 'K'], currentDay, 0xe2e8f0);
+            if (stH.visible) {
+                const partMat = new THREE.MeshStandardMaterial({ color: stH.color, roughness: 0.7 });
+                const p1 = new THREE.Mesh(new THREE.BoxGeometry(9.5, 2.85, 0.18), partMat);
+                p1.position.set(0, 1.9, -0.5);
+                olivosModelGroup.add(p1);
+
+                const p2 = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.85, 4.5), partMat);
+                p2.position.set(0.5, 1.9, -2.5);
+                olivosModelGroup.add(p2);
+            }
+
+            // 5. Tareas I & J: Canalizaciones Eléctricas y Fontanería (SS+1)
+            const stIJ = getTaskStateColor(['I', 'J'], currentDay, 0x0284c7);
+            if (stIJ.visible) {
+                const mepMat = new THREE.MeshStandardMaterial({ color: stIJ.color, roughness: 0.3, metalness: 0.6 });
+                const pipe1 = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 8.5, 12), mepMat);
+                pipe1.rotation.z = Math.PI / 2;
+                pipe1.position.set(0, 1.1, -0.35);
+                olivosModelGroup.add(pipe1);
+            }
+
+            // 6. Tarea L: Solados (pisos) y alicatados
+            const stL = getTaskStateColor(['L'], currentDay, 0x0f766e);
+            if (stL.visible) {
+                const floorTile = new THREE.Mesh(
+                    new THREE.BoxGeometry(9.5, 0.08, 9.5),
+                    new THREE.MeshStandardMaterial({ color: stL.color, roughness: 0.35 })
+                );
+                floorTile.position.set(0, 0.52, 0);
+                olivosModelGroup.add(floorTile);
+            }
+
+            // 7. Tareas F & G: Losa de cubierta plana transitable + Impermeabilización
+            const stFG = getTaskStateColor(['F', 'G'], currentDay, 0x334155);
+            if (stFG.visible) {
+                // Si la cámara no está en vista planta, mostramos la cubierta con ligera transparencia cuando se inspecciona el interior
+                const roofMat = new THREE.MeshStandardMaterial({
+                    color: stFG.color,
+                    roughness: 0.55,
+                    transparent: true,
+                    opacity: currentDay >= 29 && currentDay <= 54 ? 0.45 : 0.95
+                });
+                const roof = new THREE.Mesh(new THREE.BoxGeometry(10.3, 0.32, 10.3), roofMat);
+                roof.position.set(0, 3.6, 0);
+                olivosModelGroup.add(roof);
+            }
+
+            // 8. Tareas M, O, P, Q, R: Carpintería exterior, ventanas, puertas y entrega
+            const stMOP = getTaskStateColor(['M', 'O', 'P', 'Q', 'R'], currentDay, 0x10b981);
+            if (stMOP.visible) {
+                const glass = new THREE.Mesh(
+                    new THREE.BoxGeometry(2.6, 2.2, 0.12),
+                    new THREE.MeshStandardMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.65 })
+                );
+                glass.position.set(-0.5, 1.6, 4.88);
+                olivosModelGroup.add(glass);
+            }
+        }
 
         function toggleTimelinePlay() {
             if (isTimelinePlaying) {
@@ -1501,19 +2364,19 @@ if __name__ == "__main__":
             document.getElementById('btnPlayPause').innerHTML = '<span>⏸️</span> Pausar Simulación';
             timelineInterval = setInterval(() => {
                 let val = parseInt(document.getElementById('timelineSlider').value);
-                if (val >= 24) {
+                if (val >= maxScheduleDays) {
                     val = 1;
                 } else {
                     val++;
                 }
                 document.getElementById('timelineSlider').value = val;
                 updateTimelineDisplay(val);
-            }, 1000);
+            }, 550);
         }
 
         function pauseTimeline() {
             isTimelinePlaying = false;
-            document.getElementById('btnPlayPause').innerHTML = '<span>▶️</span> Reproducir Simulación 4D';
+            document.getElementById('btnPlayPause').innerHTML = '<span>▶️</span> Reproducir TimeLiner 4D';
             if (timelineInterval) clearInterval(timelineInterval);
         }
 
@@ -1528,8 +2391,14 @@ if __name__ == "__main__":
             updateTimelineDisplay(val);
         }
 
-        function updateTimelineDisplay(week) {
-            document.getElementById('timelineWeekText').textContent = 'Semana ' + week;
+        function updateTimelineDisplay(day) {
+            if (!currentOlivosTasks || currentOlivosTasks.length === 0) {
+                const cpm = computeCPM(currentOlivosScenario);
+                currentOlivosTasks = cpm.tasks;
+                maxScheduleDays = cpm.totalDuration;
+            }
+
+            document.getElementById('timelineWeekText').textContent = `Día ${day} / ${maxScheduleDays}`;
 
             const p1 = document.getElementById('phase-1');
             const p2 = document.getElementById('phase-2');
@@ -1538,46 +2407,77 @@ if __name__ == "__main__":
             const p5 = document.getElementById('phase-5');
             const detailBox = document.getElementById('timelineDetailBox');
 
-            // Reset classes
-            [p1, p2, p3, p4, p5].forEach(p => {
-                p.className = 'phase-card';
-            });
+            [p1, p2, p3, p4, p5].forEach(p => { if (p) p.className = 'phase-card'; });
 
-            let statusHtml = '';
+            // Determinar tareas activas en el día actual
+            const activeTasks = currentOlivosTasks.filter(t => day >= t.es && day <= t.ef);
+            const completedCount = currentOlivosTasks.filter(t => day > t.ef).length;
+            const pctGlobal = Math.min(100, Math.round((day / maxScheduleDays) * 100));
 
-            if (week <= 5) {
-                p1.className = 'phase-card active';
-                const pct = Math.round((week / 5) * 100);
-                statusHtml = `<strong>🏗️ FASE 1 EN EJECUCIÓN (Semana ${week} de 24):</strong> Replanteo, excavación masiva y fundaciones superficiales/profundas. Avance de fase: ${pct}%. Equipos en sitio: 1 Retroexcavadora, 2 Camiones volteo. Valuación N° 1 en trámite ante el Ingeniero Inspector.`;
-            } else if (week <= 11) {
-                p1.className = 'phase-card completed';
-                p2.className = 'phase-card active';
-                const pct = Math.round(((week - 5) / 6) * 100);
-                statusHtml = `<strong>🏢 FASE 2 EN EJECUCIÓN (Semana ${week} de 24):</strong> Estructura portante de concreto armado PB a Piso 4. Avance de fase: ${pct}%. Vaciado de losas nervadas y columnas. Ensayos de rotura a 28 días certificados conforme a COVENIN 1753.`;
-            } else if (week <= 17) {
-                p1.className = 'phase-card completed';
-                p2.className = 'phase-card completed';
-                p3.className = 'phase-card active';
-                const pct = Math.round(((week - 11) / 6) * 100);
-                statusHtml = `<strong>🧱 FASE 3 EN EJECUCIÓN (Semana ${week} de 24):</strong> Estructura superior Pisos 5 a 12 y cerramientos de mampostería. Avance de fase: ${pct}%. Se coordina el montaje de ductos hidrónicos principales antes de cerrar ductos técnicos de ventilación.`;
-            } else if (week <= 21) {
-                p1.className = 'phase-card completed';
-                p2.className = 'phase-card completed';
-                p3.className = 'phase-card completed';
-                p4.className = 'phase-card active';
-                const pct = Math.round(((week - 17) / 4) * 100);
-                statusHtml = `<strong>🔌 FASE 4 EN EJECUCIÓN (Semana ${week} de 24):</strong> Redes MEP, bandejas portacables eléctricas, rociadores contra incendio y climatización HVAC. Avance de fase: ${pct}%. Pruebas de presión hidrostática y balance de caudales en conductos.`;
-            } else {
-                p1.className = 'phase-card completed';
-                p2.className = 'phase-card completed';
-                p3.className = 'phase-card completed';
-                p4.className = 'phase-card completed';
-                p5.className = 'phase-card active';
-                const pct = Math.round(((week - 21) / 3) * 100);
-                statusHtml = `<strong>🏁 FASE 5 EN EJECUCIÓN (Semana ${week} de 24):</strong> Acabados finos, carpintería metálica, pintura, puesta en marcha de ascensores y comisionamiento. Avance de fase: ${pct}%. Elaboración de planos As-Built e inventario de activos COBie para entrega formal.`;
+            const hud = document.getElementById('olivos3DHud');
+            if (hud) {
+                const names = activeTasks.map(t => `Tarea ${t.id}`).join(', ') || 'Cierre';
+                hud.textContent = `TimeLiner 4D · Día ${day}/${maxScheduleDays} (${pctGlobal}%) · Activas: ${names}`;
             }
 
-            detailBox.innerHTML = statusHtml;
+            // Actualizar estado de las 5 Fases EDT (WBS 1.0 a 5.0)
+            const phaseEls = [null, p1, p2, p3, p4, p5];
+            for (let ph = 1; ph <= 5; ph++) {
+                const phTasks = currentOlivosTasks.filter(t => t.phase === ph);
+                const minEs = Math.min(...phTasks.map(t => t.es));
+                const maxEf = Math.max(...phTasks.map(t => t.ef));
+                if (day > maxEf) {
+                    if (phaseEls[ph]) phaseEls[ph].className = 'phase-card completed';
+                } else if (day >= minEs && day <= maxEf) {
+                    if (phaseEls[ph]) phaseEls[ph].className = 'phase-card active';
+                }
+            }
+
+            if (detailBox) {
+                if (activeTasks.length > 0) {
+                    const listStr = activeTasks.map(t => `<strong>[${t.id}] ${t.name}</strong> (${t.critical ? '<span style="color:var(--rose);">Crítica</span>' : '<span style="color:var(--blue-accent);">Holgura: ' + t.float + 'd</span>'} · Recursos: ${t.res})`).join('<br>• ');
+                    detailBox.innerHTML = `<strong>⏱️ DÍA LABORABLE ${day} DE ${maxScheduleDays} (${completedCount}/18 tareas completadas):</strong><br>• ${listStr}`;
+                } else {
+                    detailBox.innerHTML = `<strong>🏁 PROYECTO COMPLETADO (Día ${day}):</strong> Vivienda Unifamiliar "Residencial Los Olivos" (100 m²) entregada llave en mano.`;
+                }
+            }
+
+            renderOlivosGanttTable(day);
+            updateOlivos3DModel(day);
+        }
+
+        // Exportación de archivo .XML (Formato oficial MSPDI compatible con MS Project y Navisworks TimeLiner)
+        function exportMSProjectXML() {
+            if (!currentOlivosTasks || currentOlivosTasks.length === 0) return;
+            let xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n`;
+            xml += `<Project xmlns="http://schemas.microsoft.com/project">\n`;
+            xml += `  <Name>Caso_Practico_Residencial_Los_Olivos_UGMA.xml</Name>\n`;
+            xml += `  <Title>Vivienda Unifamiliar Residencial Los Olivos (100m2 - Parcela 14)</Title>\n`;
+            xml += `  <Author>Ing. Hector Mota Zorrilla - Diplomado UGMA Modulo V</Author>\n`;
+            xml += `  <Tasks>\n`;
+            currentOlivosTasks.forEach((t, idx) => {
+                xml += `    <Task>\n`;
+                xml += `      <UID>${idx + 1}</UID>\n`;
+                xml += `      <ID>${idx + 1}</ID>\n`;
+                xml += `      <WBS>${t.wbs}</WBS>\n`;
+                xml += `      <Name>${t.id} - ${t.name}</Name>\n`;
+                xml += `      <Duration>PT${t.dur * 8}H0M0S</Duration>\n`;
+                xml += `      <Critical>${t.critical ? 1 : 0}</Critical>\n`;
+                xml += `      <TotalSlack>${t.float * 4800}</TotalSlack>\n`;
+                xml += `      <Notes>Recursos: ${t.res} | IFC 4D: ${t.ifc}</Notes>\n`;
+                xml += `    </Task>\n`;
+            });
+            xml += `  </Tasks>\n</Project>`;
+
+            const blob = new Blob([xml], { type: 'application/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Cronograma_Los_Olivos_4D_${currentOlivosScenario}.xml`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
         // --- 4. SCRIPT PYTHON CLIPBOARD ---
@@ -1593,7 +2493,9 @@ if __name__ == "__main__":
             updateStepperUI();
             initEVMChart();
             updateEVM();
-            updateTimelineDisplay(12);
+            initOlivos3DViewer();
+            setOlivosScenario('baseline');
+            updateTimelineDisplay(22);
         });
     </script>
 </body>

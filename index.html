@@ -781,62 +781,62 @@
                 </div>
             </div>
 
-            <!-- CARD 3: MATEMÁTICAS RECREATIVAS (CLUB T.I.A. & MPPE PRIMARIA) -->
+            <!-- CARD 3: MATEMÁTICAS RECREATIVAS (CURRÍCULO OFICIAL MPPE - 20 SEMANAS PARALELAS) -->
             <div class="program-card matematicas">
                 <div class="card-body">
                     <div class="card-top">
                         <span class="program-badge canguro-badge">
-                            🦘 Colegio Monte Carmelo · Primaria (1.° a 6.° Grado)
+                            🎮 U. E. Colegio Monte Carmelo · Primaria (1.° a 6.° Grado)
                         </span>
-                        <span class="status-badge live" style="background:#eef2ff; border-color:#c7d2fe; color:#4338ca;">
-                            ✨ Currículo MPPE &amp; Canguro Activo
+                        <span class="status-badge live" style="background:#f5f3ff; border-color:#ddd6fe; color:#6d28d9;">
+                            ✨ 20 Semanas Curriculares en Paralelo
                         </span>
                     </div>
 
-                    <h3 class="program-title">🦘 Matemáticas Recreativas &amp; Gimnasia Mental 🧠</h3>
+                    <h3 class="program-title">🎮 Matemáticas Recreativas 📐</h3>
                     <div class="program-inst">
-                        <span style="color:#6366f1;">Club T.I.A. · Currículo Oficial MPPE &amp; Olimpiada Canguro (1.° a 6.° Grado)</span>
+                        <span style="color:#7c3aed;">Programa Oficial de Primaria MPPE · Mente Ágil &amp; Gamificación Pixel Art</span>
                     </div>
 
                     <p class="program-desc">
-                        ¡Aprender matemáticas con rigor y diversión! Programa pedagógico alineado con los 4 componentes oficiales del <strong>Ministerio del Poder Popular para la Educación (MPPE)</strong>: Geometría en el plano y 3D, Magnitudes y medidas con balanza y moneda, Números y operaciones con cartel de valores y ecuaciones, y Estadística descriptiva. Cuenta con gamificación escolar por niveles, acumulación de XP y cronograma semanal de clases.
+                        ¡Aprender matemáticas con rigor, dinámica y diversión! Programa pedagógico formal alineado con los 4 componentes oficiales del <strong>Ministerio del Poder Popular para la Educación (MPPE)</strong>: Geometría plana y 3D, Magnitudes y medidas con balanza y moneda, Números y operaciones con cartel de valores y ecuaciones, y Estadística descriptiva. Cuenta con <strong>120 retos interactivos estructurados en 20 semanas paralelas simultáneas</strong> (20 sesiones por cada grado de 1.° a 6.°), estética retro pixel art, acceso con pupitres cero-fricción para niños y guías docentes para el aula.
                     </p>
 
                     <div class="thematic-tags">
-                        <span class="tag-pill" style="border-color: #c7d2fe; background: #eef2ff; color: #4338ca; font-weight: 700;">🇻🇪 Programa Oficial MPPE</span>
-                        <span class="tag-pill">🦘 Retos Canguro Internacional</span>
-                        <span class="tag-pill">🎮 Gamificación &amp; Puntos XP</span>
-                        <span class="tag-pill">🗓️ Cronograma 12 Semanas</span>
-                        <span class="tag-pill">📚 Fichas para la Prof. Joana</span>
+                        <span class="tag-pill" style="border-color: #ddd6fe; background: #f5f3ff; color: #6d28d9; font-weight: 700;">🇻🇪 Programa Oficial MPPE</span>
+                        <span class="tag-pill">🗓️ 20 Semanas Simultáneas</span>
+                        <span class="tag-pill">🕹️ Gamificación Retro &amp; Pixel Art</span>
+                        <span class="tag-pill">🎒 Pupitres Cero-Fricción</span>
+                        <span class="tag-pill">📚 20 Guías para la Prof. Joana</span>
                     </div>
 
                     <ul class="checklist">
                         <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>1.° y 2.° Grado (Exploradores):</strong> Croquis con puntos de referencia, balanza de equilibrio, cono monetario nacional y pictogramas escalares.</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>120 Retos en Paralelo:</strong> 20 sesiones semanales por cada grado escolar (1.° a 6.°) avanzando simultáneamente durante el año lectivo.</span>
                         </li>
                         <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>3.° y 4.° Grado (Aventureros):</strong> Ángulos en el reloj, perímetro de huertos, cartel de valores a millardos, cubos 3D y fracciones visuales.</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>4 Componentes MPPE:</strong> Semanas 1-5 Geometría, Semanas 6-10 Medidas, Semanas 11-16 Números, Semanas 17-20 Estadística &amp; Gran Desafío Integrador.</span>
                         </li>
                         <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>5.° y 6.° Grado (Maestros):</strong> Rectas tangentes, factores primos, ecuaciones de 1.er grado, m.c.m. simultáneo y puentes de Euler.</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Pupitres Virtuales Sin Contraseñas:</strong> Onboarding visual e intuitivo para alumnos de primer grado con avatares pixel art (gato, león, robot, cohete, ninja).</span>
                         </li>
                         <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>Fichas Didácticas &amp; Panel Docente:</strong> 6 guías metodológicas en 4 fases imprimibles y monitoreo en tiempo real para la Prof. Joana Padrino.</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Fichas Didácticas &amp; Panel Docente:</strong> 20 guías de clase imprimibles en 4 fases metodológicas y monitoreo en tiempo real para la Prof. Joana Padrino.</span>
                         </li>
                     </ul>
 
                     <div class="card-actions">
-                        <a href="/matematicas/" class="btn-enter canguro-btn">
-                            🦘 Entrar al Gimnasio Mental de Matemáticas
+                        <a href="/matematicas/" class="btn-enter canguro-btn" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">
+                            🎮 Entrar a Matemáticas Recreativas
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
                         <div class="meta-footer">
                             <span>Docentes: Prof. Joana Padrino &amp; Ing. Héctor Mota</span>
-                            <span>Modalidad: Club T.I.A. / Primaria Monte Carmelo</span>
+                            <span>Institución: U. E. Colegio Monte Carmelo · Primaria</span>
                         </div>
                     </div>
                 </div>
