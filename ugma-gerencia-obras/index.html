@@ -1385,9 +1385,9 @@
                 <a href="evaluacion-dia-1-2.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📝</span> EVALUACIÓN DÍA 1 &amp; 2 (20 pts)</a>
                 <a href="masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
                 <a href="clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
-                <a href="#unidades-curriculares" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
-                <a href="energia-solar-sostenibilidad/index.html" class="drawer-link"><span>☀️</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
-                <a href="#unidades-curriculares" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
+                <a href="energia-solar-sostenibilidad/index.html?unidad=3" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
+                <a href="energia-solar-sostenibilidad/index.html?unidad=4" class="drawer-link"><span>☀️</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
+                <a href="energia-solar-sostenibilidad/index.html?unidad=5" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
                 <a href="taller-integrador/index.html" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador &amp; War Room</a>
             </nav>
         </aside>
@@ -1848,7 +1848,7 @@
                     <span class="day-pill">Ciclo de Vida</span>
                 </div>
 
-                <a href="#unidades-curriculares" class="btn-day-action featured-day">
+                <a href="energia-solar-sostenibilidad/index.html?unidad=3" class="btn-day-action featured-day">
                     <span>🌱</span> Entrar a Unidad 3: Certificaciones LEED, EDGE &amp; ESG &rarr;
                 </a>
             </div>
@@ -1857,7 +1857,7 @@
             <div class="day-card">
                 <div class="day-top-bar">
                     <span class="day-badge">Unidad 04 · Sábado 31-10-2026</span>
-                    <span class="day-schedule">08:00 a 11:45 AM · 5h</span>
+                    <span class="day-schedule">08:00 a 12:30 PM · 5h</span>
                 </div>
                 <h3 class="day-title">UNIDAD 4: Eficiencia energética y materiales ecológicos</h3>
                 <p class="day-objective">
@@ -1897,9 +1897,9 @@
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
                     <a href="planificacion-4d-5d/index.html" class="btn-day-action">
-                        <span>⏱️</span> Laboratorio 4D/5D EVM &rarr;
+                        <span>⏱️</span> Simulador Propio 4D TimeLiner &amp; Gantt (Caso Los Olivos) &rarr;
                     </a>
-                    <a href="energia-solar-sostenibilidad/index.html" class="btn-day-action featured-day">
+                    <a href="energia-solar-sostenibilidad/index.html?unidad=4" class="btn-day-action featured-day">
                         <span>☀️</span> Entrar a Unidad 4: Simulador Solar &amp; Materiales Ecológicos &rarr;
                     </a>
                 </div>
@@ -1909,7 +1909,7 @@
             <div class="day-card">
                 <div class="day-top-bar">
                     <span class="day-badge">Unidad 05 · Viernes 06-11-2026</span>
-                    <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
+                    <span class="day-schedule">01:15 a 05:45 PM · 5h</span>
                 </div>
                 <h3 class="day-title">UNIDAD 5: Gestión de residuos de obra</h3>
                 <p class="day-objective">
@@ -1945,7 +1945,7 @@
                     <span class="day-pill">Segregación</span>
                 </div>
 
-                <a href="#unidades-curriculares" class="btn-day-action featured-day">
+                <a href="energia-solar-sostenibilidad/index.html?unidad=5" class="btn-day-action featured-day">
                     <span>♻️</span> Entrar a Unidad 5: Matriz RCD &amp; Ahorro en Faena &rarr;
                 </a>
             </div>

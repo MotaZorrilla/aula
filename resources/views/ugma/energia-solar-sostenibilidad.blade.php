@@ -790,16 +790,16 @@
         <!-- HEADER ACADÉMICO -->
         <header class="page-header">
             <div class="badge-row">
-                <span class="badge">Eje Temático 05 · 5 Horas</span>
-                <span class="badge badge-norma">BIM 6D &amp; Sostenibilidad Financiera</span>
-                <span class="badge badge-amber">ASHRAE 90.1 / ASHRAE 55 / EDGE v3 / LEED v5</span>
+                <span class="badge" id="unitHeaderBadge">Semana 2 (Unidades 3 y 4) &amp; Unidad 5 · 15 Horas</span>
+                <span class="badge badge-norma">BIM 6D · Construcción Sostenible &amp; Eficiencia Energética</span>
+                <span class="badge badge-amber">LEED v5 / EDGE v3 / ASHRAE 55 / RCD</span>
             </div>
-            <h1 class="page-title">Eficiencia Energética, Huella de Carbono y Sistemas Solares</h1>
+            <h1 class="page-title" id="unitHeaderTitle">Construcciones Sostenibles, Eficiencia Energética y Materiales Ecológicos</h1>
             <p class="page-subtitle academic-p">
-                El diseño y la gerencia de obras en la región Guayana exigen una rigurosa convergencia entre la física de la edificación, el análisis bioclimático y la ingeniería económica. En el marco del modelo BIM 6D, la sostenibilidad trasciende el discurso retórico para convertirse en un activo financiero cuantificable, bancable y auditable. Este módulo profundiza en el dimensionamiento paramétrico de sistemas solares fotovoltaicos adaptados al régimen solar de Ciudad Guayana, la descarbonización estructural mediante mezclas con escoria siderúrgica (GGBS), el confort adaptativo bajo norma ASHRAE 55 y el cumplimiento del marco legal venezolano sobre energía y residuos de construcción.
+                El diseño y la gerencia de obras en la región Guayana exigen una rigurosa convergencia entre los principios de la construcción sostenible (Unidad 3), la eficiencia energética y materiales ecológicos (Unidad 4) y la gestión circular de residuos de construcción y demolición (Unidad 5). En el marco del modelo BIM 6D, la sostenibilidad trasciende el discurso retórico para convertirse en un activo financiero cuantificable, bancable y auditable bajo normas LEED v5 y EDGE Buildings. Este laboratorio interactivo integra la Matriz de Evaluación de Sostenibilidad y Criterios ESG, el dimensionamiento paramétrico de sistemas solares fotovoltaicos adaptados al régimen solar de Ciudad Guayana (5.1 HSP), la descarbonización estructural mediante mezclas con escoria siderúrgica (GGBS de Sidor), el confort térmico adaptativo bajo norma ASHRAE 55 y la valorización económica de escombros RCD.
             </p>
             <div class="speaker-bar">
-                <span>Facilitador: <strong>Ing. Héctor Mota Zorrilla</strong> (Consultor ConTech &amp; Sistemas Solares)</span>
+                <span>Facilitador: <strong>Ing. Héctor Ramón Mota Zorrilla</strong> (Módulo V: Tecnología y Sostenibilidad)</span>
                 <span>•</span>
                 <span>Cátedra: <strong>Diplomado en Planificación y Gerencia de Obras</strong></span>
                 <span>•</span>
@@ -935,6 +935,70 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- SIMULADOR UNIDAD 3: MATRIZ DE EVALUACIÓN DE SOSTENIBILIDAD LEED v5, EDGE & ESG -->
+            <div class="sim-grid" style="margin-top:26px;">
+                <div class="sim-card">
+                    <h3 style="font-size:15.5px; font-weight:800; color:var(--navy-primary); display:flex; align-items:center; gap:8px;">
+                        <span>🌿</span> Matriz de Evaluación de Sostenibilidad (Evidencia Unidad 3 · Viernes 30/10)
+                    </h3>
+                    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5;">
+                        Evalúa el cumplimiento de criterios técnicos, normativos e impacto social de una obra en Guayana bajo <strong>LEED v5, EDGE Buildings y Criterios ESG</strong> (Instrumento: Escala de Estimación):
+                    </p>
+
+                    <div>
+                        <label class="form-label" for="esgEnvSlider">
+                            <span>1. Dimensión Ambiental (E) · Ahorro Energía/Agua/Materiales (Peso 40%):</span>
+                            <span id="esgEnvVal" style="font-family:var(--font-mono); color:var(--emerald); font-weight:800;">78 pts</span>
+                        </label>
+                        <input type="range" class="form-range" id="esgEnvSlider" min="20" max="100" value="78" oninput="calculateEsgMatrix()">
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="esgSocSlider">
+                            <span>2. Impacto Social y Confort en Obra (S) · Seguridad, Comunidad y Salud (Peso 35%):</span>
+                            <span id="esgSocVal" style="font-family:var(--font-mono); color:var(--emerald); font-weight:800;">82 pts</span>
+                        </label>
+                        <input type="range" class="form-range" id="esgSocSlider" min="20" max="100" value="82" oninput="calculateEsgMatrix()">
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="esgGovSlider">
+                            <span>3. Gobernanza y Transparencia Técnica (G) · CDE ISO 19650 y Trazabilidad (Peso 25%):</span>
+                            <span id="esgGovVal" style="font-family:var(--font-mono); color:var(--emerald); font-weight:800;">85 pts</span>
+                        </label>
+                        <input type="range" class="form-range" id="esgGovSlider" min="20" max="100" value="85" oninput="calculateEsgMatrix()">
+                    </div>
+                </div>
+
+                <div class="results-box">
+                    <div>
+                        <div style="font-size:12px; font-weight:800; color:#065f46; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">
+                            📊 Dictamen de Certificación Sostenible y Bancabilidad ESG
+                        </div>
+                        <div class="kpi-matrix">
+                            <div class="kpi-box">
+                                <div class="kpi-label">Score Global ESG</div>
+                                <div class="kpi-val" id="esgTotalScore">81.2 / 100</div>
+                                <div class="kpi-sub">Ponderación 40/35/25</div>
+                            </div>
+                            <div class="kpi-box">
+                                <div class="kpi-label">Nivel LEED v5</div>
+                                <div class="kpi-val" id="leedTierVal" style="color:#d97706;">PLATINO</div>
+                                <div class="kpi-sub">Escala USGBC</div>
+                            </div>
+                            <div class="kpi-box">
+                                <div class="kpi-label">Estándar EDGE</div>
+                                <div class="kpi-val" id="edgeTierVal" style="color:#0284c7;">ZERO CARBON</div>
+                                <div class="kpi-sub">Banco Mundial (IFC)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="esgVerdictBox" style="background:#ffffff; border:1px solid #d1fae5; border-radius:10px; padding:14px; font-size:12.5px; color:var(--text-main); line-height:1.55;">
+                        <strong>✅ Dictamen de Escala de Estimación:</strong> La edificación cumple los principios de diseño sostenible e impacto social positivo en Guayana, siendo elegible para financiamiento preferencial con Bonos Verdes (Green Bonds).
+                    </div>
+                </div>
             </div>
 
             <div class="module-nav-footer">
@@ -1844,7 +1908,49 @@ if __name__ == "__main__":
             else barFill.style.background = '#ef4444';
         }
 
-        // --- 5. COPIADO DE CÓDIGO PYTHON ---
+        // --- 5. MATRIZ DE EVALUACIÓN DE SOSTENIBILIDAD LEED v5, EDGE & ESG (UNIDAD 3) ---
+        function calculateEsgMatrix() {
+            const envEl = document.getElementById('esgEnvSlider');
+            if (!envEl) return;
+            const eVal = parseFloat(envEl.value) || 0;
+            const sVal = parseFloat(document.getElementById('esgSocSlider').value) || 0;
+            const gVal = parseFloat(document.getElementById('esgGovSlider').value) || 0;
+
+            document.getElementById('esgEnvVal').innerText = `${eVal} pts`;
+            document.getElementById('esgSocVal').innerText = `${sVal} pts`;
+            document.getElementById('esgGovVal').innerText = `${gVal} pts`;
+
+            const total = (0.40 * eVal) + (0.35 * sVal) + (0.25 * gVal);
+            document.getElementById('esgTotalScore').innerText = `${total.toFixed(1)} / 100`;
+
+            const leedEl = document.getElementById('leedTierVal');
+            const edgeEl = document.getElementById('edgeTierVal');
+            const verdictEl = document.getElementById('esgVerdictBox');
+
+            if (total >= 80) {
+                leedEl.innerText = 'PLATINO';
+                leedEl.style.color = '#047857';
+                edgeEl.innerText = 'ZERO CARBON';
+                verdictEl.innerHTML = `<strong>✅ Dictamen Sobresaliente (Score ESG: ${total.toFixed(1)}):</strong> La obra cumple rigurosamente los principios de construcción sostenible, descarbonización LEED v5 (≥80 pts) e impacto social comunitario en Guayana. Califica para créditos verdes preferenciales (IFC / BID).`;
+            } else if (total >= 60) {
+                leedEl.innerText = 'ORO (GOLD)';
+                leedEl.style.color = '#d97706';
+                edgeEl.innerText = 'EDGE ADVANCED';
+                verdictEl.innerHTML = `<strong>🌿 Dictamen Aprobado (Score ESG: ${total.toFixed(1)}):</strong> Cumplimiento sólido en eficiencia de recursos (≥40% ahorro energético EDGE Advanced) y normas de seguridad e impacto social en obra.`;
+            } else if (total >= 50) {
+                leedEl.innerText = 'PLATA / CERT.';
+                leedEl.style.color = '#0284c7';
+                edgeEl.innerText = 'EDGE ESTÁNDAR';
+                verdictEl.innerHTML = `<strong>⚠️ Dictamen Básico (Score ESG: ${total.toFixed(1)}):</strong> Alcanza el umbral mínimo del 20% en energía, agua y materiales, pero requiere fortalecer la gobernanza CDE y el confort social en faena.`;
+            } else {
+                leedEl.innerText = 'NO CERTIFICA';
+                leedEl.style.color = '#b91c1c';
+                edgeEl.innerText = 'BAJO UMBRAL';
+                verdictEl.innerHTML = `<strong>🚨 Dictamen No Conforme (Score ESG: ${total.toFixed(1)}):</strong> El proyecto presenta alto impacto ambiental y deficiencias en criterios ESG. Riesgo de rechazo en licitaciones multilaterales.`;
+            }
+        }
+
+        // --- 6. COPIADO DE CÓDIGO PYTHON ---
         function copyPythonCode() {
             const code = document.getElementById('pythonCodeSnippet').innerText;
             navigator.clipboard.writeText(code).then(() => {
@@ -1852,12 +1958,32 @@ if __name__ == "__main__":
             });
         }
 
-        // --- 6. INICIALIZACIÓN GLOBAL ---
+        // --- 7. INICIALIZACIÓN GLOBAL Y ENRUTAMIENTO POR UNIDAD (3, 4 o 5) ---
         window.addEventListener('DOMContentLoaded', () => {
             updateStepperUI();
+            calculateEsgMatrix();
             calculateSolar();
             calculateEmbodiedCarbon();
             calculateEnvelopeAudit();
+
+            const params = new URLSearchParams(window.location.search);
+            const unidad = params.get('unidad');
+            const badge = document.getElementById('unitHeaderBadge');
+            const title = document.getElementById('unitHeaderTitle');
+
+            if (unidad === '3') {
+                if (badge) badge.innerText = 'Unidad 03 · Viernes 30-10-2026 (01:15 PM - 05:45 PM · 5h)';
+                if (title) title.innerText = 'UNIDAD 3: Construcciones Sostenibles, Normas LEED/EDGE e Impacto Social';
+                goToStep(1);
+            } else if (unidad === '4') {
+                if (badge) badge.innerText = 'Unidad 04 · Sábado 31-10-2026 (08:00 AM - 12:30 PM · 5h)';
+                if (title) title.innerText = 'UNIDAD 4: Eficiencia Energética, Sistemas Solares y Materiales Ecológicos';
+                goToStep(3);
+            } else if (unidad === '5') {
+                if (badge) badge.innerText = 'Unidad 05 · Viernes 06-11-2026 (01:15 PM - 05:45 PM · 5h)';
+                if (title) title.innerText = 'UNIDAD 5: Gestión Integral de Residuos de Construcción y Demolición (RCD)';
+                goToStep(4);
+            }
         });
     </script>
 </body>
