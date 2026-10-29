@@ -1385,8 +1385,8 @@
                 <a href="evaluacion-dia-1-2.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📝</span> EVALUACIÓN DÍA 1 &amp; 2 (20 pts)</a>
                 <a href="masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
                 <a href="clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
-                <a href="energia-solar-sostenibilidad/index.html?unidad=3" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
-                <a href="energia-solar-sostenibilidad/index.html?unidad=4" class="drawer-link"><span>☀️</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
+                <a href="construcciones-sostenibles/index.html" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
+                <a href="eficiencia-energetica-materiales/index.html" class="drawer-link"><span>⚡</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
                 <a href="energia-solar-sostenibilidad/index.html?unidad=5" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
                 <a href="taller-integrador/index.html" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador &amp; War Room</a>
             </nav>
@@ -1848,7 +1848,7 @@
                     <span class="day-pill">Ciclo de Vida</span>
                 </div>
 
-                <a href="energia-solar-sostenibilidad/index.html?unidad=3" class="btn-day-action featured-day">
+                <a href="construcciones-sostenibles/index.html" class="btn-day-action featured-day">
                     <span>🌱</span> Entrar a Unidad 3: Certificaciones LEED, EDGE &amp; ESG &rarr;
                 </a>
             </div>
@@ -1857,50 +1857,46 @@
             <div class="day-card">
                 <div class="day-top-bar">
                     <span class="day-badge">Unidad 04 · Sábado 31-10-2026</span>
-                    <span class="day-schedule">08:00 a 12:30 PM · 5h</span>
+                    <span class="day-schedule">08:00 AM a 12:30 PM · 5h</span>
                 </div>
                 <h3 class="day-title">UNIDAD 4: Eficiencia energética y materiales ecológicos</h3>
                 <p class="day-objective">
-                    <strong>Temario Oficial:</strong> Iluminación eficiente, climatización y energía solar. Materiales ecológicos y reciclados. Reducción de la huella de carbono. Concretos bajos en carbono con escoria GGBS de Sidor.
+                    <strong>Temario Oficial:</strong> Auditoría termo-eléctrica de 16 TR HVAC (Caso Real: 4 unidades Trifásicas Inverter vs 4 Monofásicas On/Off, calibres CEN 200, efecto Joule y desbalance NEMA MG-1). Confort adaptativo ASHRAE 55, dimensionamiento fotovoltaico (5.1 HSP) y concretos bajos en carbono con escoria GGBS de Sidor.
                 </p>
 
                 <details class="density-accordion">
                     <summary>Explorar Contenido Técnico &amp; Fórmulas</summary>
                     <div class="acc-content">
                         <div>
-                            <span class="acc-section-title">☀️ Dimensionamiento Fotovoltaico Guayana</span>
+                            <span class="acc-section-title">⚡ Auditoría HVAC 16 TR (2x 5 TR + 2x 3 TR)</span>
                             <div class="formula-box">
-                                P_pico = E_diario / (HSP × PR) | HSP = 5.1 kWh/m²/día | PR = 0.77
+                                Trifásico 208V (#8 Cu, ΔV=1.50%, 222W Joule) vs Monofásico 220V (ΔV=3.46% VIOLA CEN 200, 661W Joule)
                             </div>
                         </div>
                         <div>
-                            <span class="acc-section-title">❄️ Confort Térmico ASHRAE 55</span>
-                            Balance psicrométrico adaptativo tropical a 26.5°C con ventilación natural y envolvente térmica eficiente.
+                            <span class="acc-section-title">⚠️ Desbalance NEMA MG-1 (25.55%)</span>
+                            Cargas monofásicas desbalancean la acometida e inducen derating del 25% en el transformador.
                         </div>
                         <div>
-                            <span class="acc-section-title">⚙️ Taller Práctico</span>
-                            <ul class="workflow-steps">
-                                <li>Cálculo dinámico de generador solar fotovoltaico para cargas críticas.</li>
-                                <li>Sustitución de clínker por escoria de alto horno GGBS (-45% CO2).</li>
-                                <li>Análisis comparativo de retorno de inversión de sistemas solares.</li>
-                            </ul>
+                            <span class="acc-section-title">☀️ Solar 5.1 HSP &amp; Concreto GGBS</span>
+                            Generador solar de 24.5 kWp para cubrir el 100% de HVAC y sustitución del 40% de clínker con escoria Sidor (-37% CO2).
                         </div>
                     </div>
                 </details>
 
                 <div class="day-pills">
+                    <span class="day-pill">Auditoría HVAC 16 TR</span>
+                    <span class="day-pill">Trifásico vs Monofásico</span>
                     <span class="day-pill">HSP = 5.1 Guayana</span>
-                    <span class="day-pill">ASHRAE 55</span>
-                    <span class="day-pill">Escoria GGBS (-45% CO2)</span>
-                    <span class="day-pill">Energía Solar</span>
+                    <span class="day-pill">Escoria GGBS Sidor</span>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
                     <a href="planificacion-4d-5d/index.html" class="btn-day-action">
                         <span>⏱️</span> Simulador Propio 4D TimeLiner &amp; Gantt (Caso Los Olivos) &rarr;
                     </a>
-                    <a href="energia-solar-sostenibilidad/index.html?unidad=4" class="btn-day-action featured-day">
-                        <span>☀️</span> Entrar a Unidad 4: Simulador Solar &amp; Materiales Ecológicos &rarr;
+                    <a href="eficiencia-energetica-materiales/index.html" class="btn-day-action featured-day">
+                        <span>⚡</span> Entrar a Unidad 4: Auditoría HVAC 16 TR &amp; Solar &rarr;
                     </a>
                 </div>
             </div>

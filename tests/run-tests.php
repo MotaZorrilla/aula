@@ -57,6 +57,8 @@ $routes = [
     'Módulo II: Costos y EVM (Angarita)' => '/ugma-gerencia-obras/modulo-2-costos-evm.html',
     'Módulo III: Marco Legal (Martínez)' => '/ugma-gerencia-obras/modulo-3-marco-legal.html',
     'Módulo IV: Lean y Calidad (Zambrano)' => '/ugma-gerencia-obras/modulo-4-lean-calidad.html',
+    'Unidad 3: Construcciones Sostenibles' => '/ugma-gerencia-obras/construcciones-sostenibles/index.html',
+    'Unidad 4: Eficiencia Energética y Materiales' => '/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html',
     'Panel de Administración Docente' => '/ugma-gerencia-obras/admin.html',
     'Evaluación Práctica Día 1 & 2' => '/ugma-gerencia-obras/evaluacion-dia-1-2.html',
 ];
@@ -319,6 +321,63 @@ assert_test('Día 6 sincronizado al 100% entre ugma-gerencia-obras, Blade y publ
     $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/taller-integrador/index.html');
     $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/taller-integrador.blade.php');
     $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/taller-integrador/index.html');
+
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
+assert_test('Unidad 3 (Construcciones Sostenibles) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/construcciones-sostenibles/index.html');
+
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test('Unidad 3 (Construcciones Sostenibles) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/construcciones-sostenibles/index.html');
+
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test('Unidad 3 (Construcciones Sostenibles) incorpora Matriz ESG & Certificaciones (calculateEsgMatrix, generateTechnicalAct)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/construcciones-sostenibles/index.html');
+
+    return stripos($content, 'calculateEsgMatrix') !== false
+        && stripos($content, 'generateTechnicalAct') !== false
+        && stripos($content, 'EN 15978') !== false;
+});
+
+assert_test('Unidad 3 sincronizada al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/construcciones-sostenibles/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/construcciones-sostenibles.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/construcciones-sostenibles/index.html');
+
+    return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
+});
+
+assert_test('Unidad 4 (Eficiencia Energética) implementa Sangría Académica (.academic-p text-indent: 2.2em)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html');
+
+    return stripos($content, 'text-indent: 2.2em') !== false && stripos($content, '.academic-p') !== false;
+});
+
+assert_test('Unidad 4 (Eficiencia Energética) implementa Stepper paginador secuencial de 7 Módulos', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html');
+
+    return stripos($content, 'stepper-container') !== false && stripos($content, 'goToStep') !== false;
+});
+
+assert_test('Unidad 4 incorpora Auditoría HVAC 16 TR con simuladores (runHvacSimulation, generateHvacCalculationMemory)', function () use ($baseDir) {
+    $content = file_get_contents($baseDir.'/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html');
+
+    return stripos($content, 'runHvacSimulation') !== false
+        && stripos($content, 'generateHvacCalculationMemory') !== false
+        && stripos($content, 'NEMA MG-1') !== false
+        && stripos($content, '25.55%') !== false;
+});
+
+assert_test('Unidad 4 sincronizada al 100% entre ugma-gerencia-obras, Blade y public', function () use ($baseDir) {
+    $htmlContent = file_get_contents($baseDir.'/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html');
+    $bladeContent = file_get_contents($baseDir.'/resources/views/ugma/eficiencia-energetica-materiales.blade.php');
+    $publicContent = file_get_contents($baseDir.'/public/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html');
 
     return ($htmlContent === $bladeContent) && ($htmlContent === $publicContent);
 });
@@ -694,6 +753,62 @@ assert_test('Unhappy Path: Calculadora de ROI maneja presupuestos de cero o inve
     $roi = ($bimInvestment > 0) ? (($estimatedSavings - $bimInvestment) / $bimInvestment) * 100 : 0.0;
 
     return $roi === 0.0;
+});
+
+assert_test('Unit: Auditoría Eléctrica HVAC 16 TR: Corrientes RLA Trifásica vs Monofásica (5 TR: 14.61A vs 34.20A)', function () {
+    $p_5tr_A = 5000.0;
+    $v_A = 208.0;
+    $fp_A = 0.95;
+    $rla_5tr_A = $p_5tr_A / (sqrt(3) * $v_A * $fp_A);
+
+    $p_5tr_B = 6320.0;
+    $v_B = 220.0;
+    $fp_B = 0.84;
+    $rla_5tr_B = $p_5tr_B / ($v_B * $fp_B);
+
+    return round($rla_5tr_A, 2) === 14.61 && round($rla_5tr_B, 2) === 34.20;
+});
+
+assert_test('Unit: Caída de Tensión CEN 200 a 50m (3F #8 AWG = 1.50% CUMPLE vs 1F #8 AWG = 3.46% VIOLA)', function () {
+    $dist = 50.0;
+    $r_8 = 0.00255;
+    $x = 0.00016;
+
+    $dV_A = sqrt(3) * 14.61 * $dist * ($r_8 * 0.95 + $x * 0.312);
+    $pct_A = ($dV_A / 208.0) * 100;
+
+    $dV_B = 2.0 * 34.20 * $dist * ($r_8 * 0.84 + $x * 0.542);
+    $pct_B = ($dV_B / 220.0) * 100;
+
+    return round($pct_A, 2) === 1.50 && round($pct_B, 2) === 3.46;
+});
+
+assert_test('Unit: Desbalance de Fases NEMA MG-1 por 4 cargas monofásicas pesadas = 25.55%', function () {
+    $i_L1 = 67.33;
+    $i_L2 = 77.67;
+    $i_L3 = 47.86;
+    $i_avg = ($i_L1 + $i_L2 + $i_L3) / 3.0;
+    $max_dev = max(abs($i_L1 - $i_avg), abs($i_L2 - $i_avg), abs($i_L3 - $i_avg));
+    $unbalance = ($max_dev / $i_avg) * 100.0;
+
+    return round($unbalance, 2) === 25.55;
+});
+
+assert_test('Unit: Retorno de Inversión Payback HVAC Inverter (12.7 meses ante ahorro de $2,460 USD/año)', function () {
+    $capex_diff = 2600.0;
+    $annual_savings = 2459.80;
+    $payback_years = $capex_diff / $annual_savings;
+    $payback_months = round($payback_years * 12, 1);
+
+    return $payback_months === 12.7;
+});
+
+assert_test('Unit: Descarbonización de Concreto con Escoria GGBS Sidor (-36.9% CO2e superando umbral EDGE 20%)', function () {
+    $co2_opc = 340.0;
+    $co2_ggbs = 214.4;
+    $reduction_pct = (($co2_opc - $co2_ggbs) / $co2_opc) * 100.0;
+
+    return round($reduction_pct, 1) === 36.9 && $reduction_pct >= 20.0;
 });
 
 assert_test('Unit: Algoritmo de Rúbrica de Grado vigesimal (0-20 pts) y veredicto colegiado', function () {

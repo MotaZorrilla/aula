@@ -69,22 +69,30 @@ class UgmaController extends Controller
 
     public function unidad3(): View
     {
-        return view('ugma.energia-solar-sostenibilidad', [
+        return view('ugma.construcciones-sostenibles', [
             'unitNumber' => 3,
             'unitTitle' => 'UNIDAD 3: Construcciones sostenibles',
-            'focusSection' => 'leed-edge-esg',
-            'competency' => ModuleUnitEnum::COMPETENCY_GENERAL,
+            'competency' => 'Comprender y aplicar los fundamentos, principios y normativas de las construcciones sostenibles en proyectos de edificación.',
         ]);
     }
 
     public function unidad4(): View
     {
-        return view('ugma.energia-solar-sostenibilidad', [
+        return view('ugma.eficiencia-energetica-materiales', [
             'unitNumber' => 4,
             'unitTitle' => 'UNIDAD 4: Eficiencia energética y materiales ecológicos',
-            'focusSection' => 'solar-ashrae-ggbs',
-            'competency' => ModuleUnitEnum::COMPETENCY_GENERAL,
+            'competency' => 'Evaluar estrategias de eficiencia energética, selección de materiales ecológicos y tecnologías aplicadas para el ahorro energético.',
         ]);
+    }
+
+    public function construccionesSostenibles(): View
+    {
+        return $this->unidad3();
+    }
+
+    public function eficienciaEnergeticaMateriales(): View
+    {
+        return $this->unidad4();
     }
 
     public function unidad5(): View
@@ -181,7 +189,7 @@ class UgmaController extends Controller
 
     public function energiaSolarSostenibilidad(): View
     {
-        return $this->unidad4();
+        return view('ugma.energia-solar-sostenibilidad');
     }
 
     public function tallerIntegrador(): View
