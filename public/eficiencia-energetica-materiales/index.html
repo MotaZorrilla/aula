@@ -450,6 +450,254 @@
             margin: 18px 0 8px;
         }
 
+        /* ECUACIONES MATEMÁTICAS CLARAS Y ACADÉMICAS */
+        .equation-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--navy-primary);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 22px 0;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .equation-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-hover);
+        }
+        .equation-card.equation-emerald {
+            border-left-color: var(--emerald);
+            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+        }
+        .equation-card.equation-danger {
+            border-left-color: var(--red-accent);
+            background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+        }
+        .equation-card.equation-amber {
+            border-left-color: var(--amber-accent);
+            background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);
+        }
+        .equation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .equation-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .equation-tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            background: var(--surface-subtle);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .equation-display {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            font-family: var(--font-mono);
+            font-size: 15.5px;
+            color: var(--navy-dark);
+            margin: 12px 0;
+            padding: 12px 18px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .math-var {
+            font-weight: 700;
+            color: var(--navy-primary);
+        }
+        .math-equals {
+            color: var(--text-light);
+            font-weight: 700;
+            padding: 0 4px;
+        }
+        .math-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 4px;
+        }
+        .math-num {
+            border-bottom: 2px solid var(--navy-primary);
+            padding: 2px 6px;
+            font-size: 0.92em;
+            font-weight: 600;
+        }
+        .math-den {
+            padding: 2px 6px;
+            font-size: 0.92em;
+            font-weight: 600;
+        }
+        .math-result {
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+        .math-result.result-emerald {
+            background: #d1fae5;
+            color: #064e3b;
+            border-color: #a7f3d0;
+        }
+        .math-result.result-danger {
+            background: #fee2e2;
+            color: #991b1b;
+            border-color: #fecaca;
+        }
+        .equation-steps {
+            margin-top: 12px;
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            border-top: 1px dashed var(--border);
+            padding-top: 10px;
+        }
+        .step-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .step-bullet {
+            color: var(--amber-accent);
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        /* TABLA COMPARATIVA MEJORADA */
+        .table-hvac-compare th.col-case-a {
+            background: #ecfdf5;
+            color: #064e3b;
+            border-bottom: 3px solid #10b981;
+        }
+        .table-hvac-compare th.col-case-b {
+            background: #fef2f2;
+            color: #991b1b;
+            border-bottom: 3px solid #ef4444;
+        }
+        .table-hvac-compare td.cell-case-a {
+            background: #f0fdf4;
+            color: #064e3b;
+            font-weight: 600;
+        }
+        .table-hvac-compare td.cell-case-b {
+            background: #fff1f2;
+            color: #991b1b;
+            font-weight: 600;
+        }
+        .hvac-kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .kpi-banner-card {
+            border-radius: 12px;
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+        }
+        .kpi-banner-a {
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+        }
+        .kpi-banner-b {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+        .kpi-banner-title {
+            font-size: 11.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .kpi-banner-stat {
+            font-size: 22px;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            margin: 4px 0;
+        }
+        .kpi-banner-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* SELECTOR Y TOGGLE DEL SIMULADOR */
+        .sim-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--surface-subtle);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .sim-select-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy-primary);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .sim-select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy-primary);
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .sim-select:focus {
+            border-color: var(--amber-accent);
+            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
+        }
+        .sim-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy-primary);
+            user-select: none;
+        }
+        .sim-checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--amber-accent);
+            cursor: pointer;
+        }
+
         /* FORMULAS MATEMÁTICAS DESTACADAS */
         .math-box {
             background: #0f172a;
@@ -739,7 +987,7 @@
         <section class="page-header">
             <div class="badge-row">
                 <span class="badge">Unidad 04 &middot; Sábado 31-10-2026</span>
-                <span class="badge badge-blue">08:00 AM a 12:30 PM &middot; 5 Horas Académicas</span>
+                <span class="badge badge-blue">Sesión Práctica &middot; 5 Horas Académicas</span>
                 <span class="badge badge-emerald">Auditoría HVAC 16 TR &middot; Solar 5.1 HSP &middot; GGBS Sidor</span>
             </div>
 
@@ -762,7 +1010,7 @@
         <nav class="stepper-container" aria-label="Paginador de temas académicos">
             <div class="stepper-header">
                 <div class="stepper-title">
-                    <span>⚡</span> Temario Curricular &middot; 5 Horas Académicas
+                    <span>⚡</span> Temario Curricular de la Unidad
                 </div>
                 <div class="stepper-controls">
                     <button type="button" class="btn-stepper-nav" onclick="prevStep()">&larr; Ant.</button>
@@ -777,56 +1025,49 @@
                 <button type="button" class="step-btn active" onclick="goToStep(1)" id="stepBtn-1">
                     <span class="step-num">1</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 01</span>
-                        <span class="step-name">Confort Térmico &amp; ASHRAE 55</span>
+                        <span class="step-name">1 Confort térmico</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(2)" id="stepBtn-2">
                     <span class="step-num">2</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 02</span>
-                        <span class="step-name">Caso Real HVAC 16 TR</span>
+                        <span class="step-name">2 Caso Real HVAC 16 TR</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(3)" id="stepBtn-3">
                     <span class="step-num">3</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 03</span>
-                        <span class="step-name">Cálculos CEN 200 &amp; Joule</span>
+                        <span class="step-name">3 Cálculos CEN 200 &amp; Joule</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(4)" id="stepBtn-4">
                     <span class="step-num">4</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 04</span>
-                        <span class="step-name">Desbalance NEMA &amp; Neutro</span>
+                        <span class="step-name">4 Desbalance NEMA &amp; Neutro</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(5)" id="stepBtn-5">
                     <span class="step-num">5</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 05</span>
-                        <span class="step-name">LCC &amp; Retorno a 15 Años</span>
+                        <span class="step-name">5 LCC &amp; Retorno 15 Años</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(6)" id="stepBtn-6">
                     <span class="step-num">6</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 06</span>
-                        <span class="step-name">Solar 5.1 HSP &amp; GGBS Sidor</span>
+                        <span class="step-name">6 Solar 5.1 HSP &amp; GGBS</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(7)" id="stepBtn-7">
                     <span class="step-num">7</span>
                     <div class="step-info">
-                        <span class="step-tag">MÓDULO 07</span>
-                        <span class="step-name">Simulador &amp; Memoria</span>
+                        <span class="step-name">7 Simulador &amp; Memoria</span>
                     </div>
                 </button>
             </div>
@@ -856,11 +1097,36 @@
                 Uno de los errores más costosos y extendidos en la operación de obras es ajustar arbitrariamente los termostatos a 18°C o 20°C bajo la falsa premisa de que \"así enfriará más rápido\". Esta práctica obliga a los compresores a trabajar de forma ininterrumpida en sus presiones de succión más bajas, duplicando el consumo eléctrico y provocando congelamiento de evaporadores. De acuerdo con el <strong>Modelo de Confort Térmico Adaptativo de la norma ASHRAE 55-2023</strong> para recintos con ventilación natural o acondicionamiento mixto en el trópico, la temperatura de confort neutro se calcula mediante la fórmula:
             </p>
 
-            <div class="math-box">
-                <span class="math-hl">T_comf = 17.8 + 0.31 &times; T_ext_med</span><br>
-                <span>Para Ciudad Guayana (T_ext_med = 28.0°C):</span><br>
-                <span class="math-val">T_comf = 17.8 + (0.31 &times; 28.0) = 26.48°C &approx; 26.5°C</span><br>
-                <span>Banda de confort aceptable (80% satisfacción):</span> <span class="math-hl">23.0°C a 30.0°C</span>
+            <div class="equation-card equation-emerald">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>🌡️</span> Modelo Adaptativo de Confort Térmico Tropical (ASHRAE 55-2023)
+                    </div>
+                    <span class="equation-tag">Psicrometría &middot; Confort Pasivo</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">T<sub>comf</sub></span>
+                    <span class="math-equals">=</span>
+                    <span>17.8 + 0.31 &times; <span class="math-var">T<sub>ext_med</sub></span></span>
+                </div>
+                <div class="equation-steps">
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Temperatura exterior media en Ciudad Guayana: <strong>T<sub>ext_med</sub> = 28.0°C</strong></span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Sustitución y cálculo: <strong>T<sub>comf</sub> = 17.8 + (0.31 &times; 28.0) = 26.48°C &approx; </strong><span class="math-result result-emerald">26.5°C</span></span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Banda de confort admisible (80% aceptabilidad adaptativa): <strong>23.0°C a 30.0°C</strong></span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Sensación térmica con ventilación inducida (v &ge; 0.8 m/s): <strong>Equivale a 23.5°C reales sin consumo frigorífico adicional</strong>.</span>
+                    </div>
+                </div>
             </div>
 
             <p class="academic-p">
@@ -895,52 +1161,80 @@
                 La propuesta técnica original de ingeniería exigía la instalación de <strong>equipos Trifásicos de Alta Eficiencia (208/230V 3F)</strong> con compresores tipo Inverter de modulación continua y arrancadores suaves electrónicos (<em>Caso A</em>). Sin embargo, argumentando una supuesta \"mayor disponibilidad comercial inmediata en el mercado local\", el contratista de climatización ejecutó la instalación de <strong>cuatro unidades Monofásicas Convencionales (220V 1F)</strong> con compresores tipo Scroll fijos de encendido directo en línea On/Off (<em>Caso B</em>).
             </p>
 
+            <!-- KPI COMPARATIVO RESUMEN -->
+            <div class="hvac-kpi-banner">
+                <div class="kpi-banner-card kpi-banner-a">
+                    <div class="kpi-banner-title" style="color: #064e3b;">
+                        <span>Caso A &middot; Ingeniería Original</span>
+                        <span class="badge badge-emerald">✅ CONFORME</span>
+                    </div>
+                    <div class="kpi-banner-stat" style="color: #047857;">16.0 kW Pico / 8.6 kW Med.</div>
+                    <div class="kpi-banner-desc">
+                        <strong>Trifásico Inverter 208/230V 3F</strong> &bull; Modulación continua VFD &bull; FP = 0.95 &bull; Arrancador suave (LRA &le; 16A) &bull; Conductores ligeros #10 AWG.
+                    </div>
+                </div>
+
+                <div class="kpi-banner-card kpi-banner-b">
+                    <div class="kpi-banner-title" style="color: #991b1b;">
+                        <span>Caso B &middot; Mala Praxis en Obra</span>
+                        <span class="badge" style="background: #fee2e2; color: #dc2626;">🚨 RECHAZADO</span>
+                    </div>
+                    <div class="kpi-banner-stat" style="color: #dc2626;">20.2 kW Pico / 15.2 kW Med.</div>
+                    <div class="kpi-banner-desc">
+                        <strong>Monofásico On/Off 220V 1F</strong> &bull; Ciclado fijo pleno &bull; FP = 0.84 &bull; Golpe de arranque DOL (LRA 188A) &bull; Requiere cable pesado #4 AWG.
+                    </div>
+                </div>
+            </div>
+
             <div class="table-responsive">
-                <table class="academic-table">
+                <table class="academic-table table-hvac-compare">
                     <thead>
                         <tr>
-                            <th>Parámetro Técnico / Eléctrico</th>
-                            <th>Caso A: Ingeniería Propuesta (Trifásico Alta Eficiencia)</th>
-                            <th>Caso B: Mala Praxis Ejecutada (Monofásico Convencional)</th>
-                            <th>Dictamen de Inspección UGMA</th>
+                            <th style="width: 25%;">Parámetro Técnico / Eléctrico</th>
+                            <th class="col-case-a" style="width: 35%;">Caso A: Ingeniería Propuesta (Trifásico Alta Eficiencia)</th>
+                            <th class="col-case-b" style="width: 40%;">Caso B: Mala Praxis Ejecutada (Monofásico Convencional)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Configuración de Equipos</strong></td>
-                            <td>4 Unidades Trifásicas (2 de 5 TR + 2 de 3 TR)</td>
-                            <td>4 Unidades Monofásicas (2 de 5 TR + 2 de 3 TR)</td>
-                            <td>Misma capacidad frigorífica total instalada (16 TR).</td>
+                            <td class="cell-case-a">4 Unidades Trifásicas (2 de 5 TR + 2 de 3 TR)</td>
+                            <td class="cell-case-b">4 Unidades Monofásicas (2 de 5 TR + 2 de 3 TR)</td>
                         </tr>
                         <tr>
                             <td><strong>Tensión y Fases de Alimentación</strong></td>
-                            <td><strong>208/230V &middot; Trifásico (3 Fases + Tierra)</strong></td>
-                            <td><strong>220V &middot; Monofásico bifilar (2 Fases + Tierra)</strong></td>
-                            <td>Severo impacto en distribución de fases del tablero general.</td>
+                            <td class="cell-case-a"><strong>208/230V &middot; Trifásico (3 Fases + Tierra)</strong></td>
+                            <td class="cell-case-b"><strong>220V &middot; Monofásico bifilar (2 Fases + Tierra)</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Tecnología del Compresor</strong></td>
-                            <td>Scroll / Rotativo DC Inverter con VFD modulante</td>
-                            <td>Scroll convencional de velocidad fija (On/Off)</td>
-                            <td>El Caso B cicla bruscamente; el Caso A modula según carga.</td>
+                            <td class="cell-case-a">Scroll / Rotativo DC Inverter con VFD modulante continuo</td>
+                            <td class="cell-case-b">Scroll convencional de velocidad fija (On/Off brusco)</td>
                         </tr>
                         <tr>
                             <td><strong>Eficiencia Energética (EER / SEER)</strong></td>
-                            <td><strong>EER = 12.0 BTU/Wh &middot; SEER = 18 - 20</strong></td>
-                            <td><strong>EER = 9.5 BTU/Wh &middot; SEER = 10 - 12</strong></td>
-                            <td>El Caso A requiere 21% menos potencia para el mismo frío.</td>
+                            <td class="cell-case-a"><strong>EER = 12.0 BTU/Wh &middot; SEER = 18 - 20</strong></td>
+                            <td class="cell-case-b"><strong>EER = 9.5 BTU/Wh &middot; SEER = 10 - 12</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Factor de Potencia (FP / cos &phi;)</strong></td>
-                            <td><strong>FP = 0.95</strong> (Compensado internamente por VFD)</td>
-                            <td><strong>FP = 0.84</strong> (Carga inductiva sin compensación)</td>
-                            <td>El Caso B inyecta alta potencia reactiva (13 kVAR).</td>
+                            <td class="cell-case-a"><strong>FP = 0.95</strong> (Compensado activamente por inversor)</td>
+                            <td class="cell-case-b"><strong>FP = 0.84</strong> (Carga inductiva sin compensación: 13 kVAR)</td>
                         </tr>
                         <tr>
-                            <td><strong>Potencia Eléctrica Pico Total (kW)</strong></td>
-                            <td><strong>16.00 kW</strong> (Plena Carga) &middot; Media: <strong>8.60 kW</strong></td>
-                            <td><strong>20.22 kW</strong> (Fija al operar) &middot; Media: <strong>15.17 kW</strong></td>
-                            <td>Sobrecarga continua de 4.22 kW en la acometida principal.</td>
+                            <td><strong>Potencia Eléctrica Pico y Media</strong></td>
+                            <td class="cell-case-a"><strong>16.00 kW Pico</strong> &middot; Carga parcial media: <strong>8.60 kW</strong></td>
+                            <td class="cell-case-b"><strong>20.22 kW Pico</strong> &middot; Carga parcial media: <strong>15.17 kW</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Calibre de Conductor Alimentador (50m)</strong></td>
+                            <td class="cell-case-a"><strong>3x #10 AWG Cu</strong> (o #8 AWG con caída mínima 1.50%)</td>
+                            <td class="cell-case-b"><strong>2x #4 AWG Cu</strong> (con #8 instalado la caída es 3.46% violando CEN 200)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Desbalance de Fases en Tablero Principal</strong></td>
+                            <td class="cell-case-a"><strong>0.00% Desbalance</strong> (Simetría vectorial perfecta)</td>
+                            <td class="cell-case-b"><strong>25.55% Desbalance</strong> (Alerta destructiva NEMA MG-1)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -975,22 +1269,109 @@
                 Para los equipos de 5 TR (60.000 BTU/h), determinamos la corriente nominal de marcha a plena carga (<strong>RLA - Rated Load Amps</strong>) y la capacidad mínima de conducción del circuito (<strong>MCA - Minimum Circuit Ampacity = 1.25 &times; RLA</strong>):
             </p>
 
-            <div class="math-box">
-                <span class="math-hl">CASO A (Trifásico 208V, P_in = 5.0 kW, FP = 0.95):</span><br>
-                <span>RLA_5TR = 5,000 / (&radic;3 &times; 208 &times; 0.95) = </span><span class="math-val">14.61 A</span><br>
-                <span>MCA_5TR = 1.25 &times; 14.61 A = </span><span class="math-val">18.26 A</span> &rarr; Conductor requerido por ampacidad: <strong>3x #10 AWG Cu</strong><br><br>
-                <span class="math-warn">CASO B (Monofásico 220V, P_in = 6.32 kW, FP = 0.84):</span><br>
-                <span>RLA_5TR = 6,320 / (220 &times; 0.84) = </span><span class="math-warn">34.20 A</span> (¡2.34 veces mayor corriente continua!)<br>
-                <span>MCA_5TR = 1.25 &times; 34.20 A = </span><span class="math-warn">42.75 A</span> &rarr; Conductor requerido por ampacidad: <strong>2x #8 AWG Cu</strong>
+            <div class="equation-card equation-emerald">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>⚡</span> Caso A: Unidad Trifásica Inverter 5 TR (208V 3F &middot; P<sub>in</sub> = 5.0 kW &middot; FP = 0.95)
+                    </div>
+                    <span class="equation-tag">CEN FONDONORMA 200 &middot; Sec. 440</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">RLA<sub>3&phi;</sub></span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">P</span>
+                        <span class="math-den">&radic;3 &times; V &times; FP</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">5.000 W</span>
+                        <span class="math-den">&radic;3 &times; 208 V &times; 0.95</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-emerald">14.61 A</span>
+                </div>
+                <div class="equation-display" style="margin-top: 8px;">
+                    <span class="math-var">MCA<sub>3&phi;</sub></span>
+                    <span class="math-equals">=</span>
+                    <span>1.25 &times; <span class="math-var">RLA</span></span>
+                    <span class="math-equals">=</span>
+                    <span>1.25 &times; 14.61 A</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-emerald">18.26 A</span>
+                    <span style="font-size: 13px; color: var(--emerald-dark); margin-left: 8px;">&rarr; Conductor normativo: <strong>3x #10 AWG Cu</strong> (Ampacidad 30A a 75°C)</span>
+                </div>
+            </div>
+
+            <div class="equation-card equation-danger">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>🚨</span> Caso B: Unidad Monofásica Convencional 5 TR (220V 1F &middot; P<sub>in</sub> = 6.32 kW &middot; FP = 0.84)
+                    </div>
+                    <span class="equation-tag" style="background:#fee2e2; color:#991b1b;">Mala Praxis en Obra</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">RLA<sub>1&phi;</sub></span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">P</span>
+                        <span class="math-den">V &times; FP</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">6.320 W</span>
+                        <span class="math-den">220 V &times; 0.84</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-danger">34.20 A</span>
+                    <span style="font-size: 12.5px; color: #991b1b; margin-left: 6px;">(¡2.34 veces mayor corriente continua!)</span>
+                </div>
+                <div class="equation-display" style="margin-top: 8px;">
+                    <span class="math-var">MCA<sub>1&phi;</sub></span>
+                    <span class="math-equals">=</span>
+                    <span>1.25 &times; <span class="math-var">RLA</span></span>
+                    <span class="math-equals">=</span>
+                    <span>1.25 &times; 34.20 A</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-danger">42.75 A</span>
+                    <span style="font-size: 13px; color: #991b1b; margin-left: 8px;">&rarr; Requiere obligatoriamente: <strong>2x #8 AWG o #4 AWG Cu</strong></span>
+                </div>
             </div>
 
             <h3 class="academic-h3">💥 2. Corrientes de Arranque con Rotor Bloqueado (LRA)</h3>
             <p class="academic-p">
                 El impacto dinámico sobre la red eléctrica durante la partida del compresor marca una diferencia abismal entre ambas tecnologías:
             </p>
-            <div class="math-box">
-                <span class="math-hl">Caso A (Inverter con Soft-Start):</span> Rampa electrónica desde 0.1 Hz &rarr; <span class="math-val">LRA &le; 1.1 &times; RLA = 16.07 A</span> (Cero parpadeo)<br>
-                <span class="math-warn">Caso B (On/Off Arranque Directo DOL):</span> 5.5 a 6 veces RLA &rarr; <span class="math-warn">LRA &approx; 5.5 &times; 34.20 A = 188.10 A</span> (¡Impacto severo!)
+
+            <div class="equation-card">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>💥</span> Corrientes de Arranque con Rotor Bloqueado (LRA - Locked Rotor Amps)
+                    </div>
+                    <span class="equation-tag">Dinámica de Red &middot; CEN Sec. 430</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">Caso A (Inverter Soft-Start):</span>
+                    <span class="math-var">LRA</span>
+                    <span class="math-equals">&le;</span>
+                    <span>1.10 &times; <span class="math-var">RLA</span></span>
+                    <span class="math-equals">=</span>
+                    <span>1.10 &times; 14.61 A</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-emerald">16.07 A</span>
+                    <span style="font-size: 12.5px; color: var(--emerald-dark); margin-left: 6px;">(Arranque progresivo sin caída de tensión)</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">Caso B (On/Off DOL Convencional):</span>
+                    <span class="math-var">LRA</span>
+                    <span class="math-equals">&approx;</span>
+                    <span>5.50 &times; <span class="math-var">RLA</span></span>
+                    <span class="math-equals">=</span>
+                    <span>5.50 &times; 34.20 A</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-danger">188.10 A</span>
+                    <span style="font-size: 12.5px; color: #991b1b; margin-left: 6px;">(¡Severo parpadeo y golpe electromecánico!)</span>
+                </div>
             </div>
 
             <h3 class="academic-h3">📏 3. Verificación de Caída de Tensión (&Delta;V &lt; 3%) para Acometida de 50 Metros</h3>
@@ -1052,15 +1433,48 @@
                 La energía disipada como calor en los conductores a lo largo de los 50 metros de tubería conduit representa desperdicio puro de kilovatios-hora que termina cocinando los cables bajo la losa de la azotea:
             </p>
 
-            <div class="math-box">
-                <span>Pérdidas Joule en 1 unidad de 5 TR (50 metros):</span><br>
-                <span class="math-hl">Caso A (#8 AWG, 3 conductores, 14.61 A):</span> P_loss = 3 &times; (14.61)&sup2; &times; (0.00255 &Omega;/m) &times; 50m = <span class="math-val">81.6 Watts</span><br>
-                <span class="math-warn">Caso B (#4 AWG, 2 conductores, 34.20 A):</span> P_loss = 2 &times; (34.20)&sup2; &times; (0.00101 &Omega;/m) &times; 50m = <span class="math-warn">118.1 Watts</span><br>
-                <span class="math-warn">Caso B si se usó #8 AWG (Mala praxis):</span> P_loss = 2 &times; (34.20)&sup2; &times; (0.00255 &Omega;/m) &times; 50m = <span class="math-warn">298.3 Watts</span><br><br>
-                <span class="math-hl">TOTAL PÉRDIDAS JOULE CONTINUAS EN LOS 4 CIRCUITOS (16 TR):</span><br>
-                &bull; Caso A Trifásico (conductores adecuados): <span class="math-val">222.0 Watts continuos</span><br>
-                &bull; Caso B Monofásico con #4 AWG: <span class="math-warn">661.0 Watts continuos</span> (+197% más calor disipado)<br>
-                &bull; Caso B Monofásico con #8 AWG: <span class="math-warn">1,215.0 Watts continuos</span> (+447% de sobrecalentamiento)
+            <div class="equation-card equation-danger">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>🔥</span> Disipación Térmica por Efecto Joule en Tuberías Conduit (L = 50 metros)
+                    </div>
+                    <span class="equation-tag">Termodinámica de Conductores</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">P<sub>Joule</sub></span>
+                    <span class="math-equals">=</span>
+                    <span>n &times; <span class="math-var">I<sup>2</sup></span> &times; <span class="math-var">R</span> &times; <span class="math-var">L</span></span>
+                </div>
+                <div class="equation-steps">
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Caso A (1 unidad 5 TR &middot; 3 hilos #8 AWG Cu &middot; 14.61 A):</strong> P<sub>loss</sub> = 3 &times; (14.61)<sup>2</sup> &times; (0.00255 &Omega;/m) &times; 50m = <span class="math-result result-emerald">81.6 Watts</span></span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Caso B (1 unidad 5 TR &middot; 2 hilos #4 AWG Cu &middot; 34.20 A):</strong> P<sub>loss</sub> = 2 &times; (34.20)<sup>2</sup> &times; (0.00101 &Omega;/m) &times; 50m = <span class="math-result">118.1 Watts</span></span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Caso B con #8 AWG (Mala praxis ejecutada en obra):</strong> P<sub>loss</sub> = 2 &times; (34.20)<sup>2</sup> &times; (0.00255 &Omega;/m) &times; 50m = <span class="math-result result-danger">298.3 Watts</span></span>
+                    </div>
+                    <div class="step-row" style="margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px;">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>BALANCE TOTAL CONTINUO EN LOS 4 CIRCUITOS (16 TR):</strong></span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Caso A Trifásico Inverter (conductores óptimos): <span class="math-result result-emerald">222.0 Watts continuos</span> (Bajo impacto térmico)</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Caso B Monofásico con #4 AWG: <span class="math-result">661.0 Watts continuos</span> (+197% más calor disipado)</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span>Caso B Monofásico con #8 AWG (Realidad en obra): <span class="math-result result-danger">1,215.0 Watts continuos</span> (<strong>+447% de sobrecalentamiento crítico</strong>)</span>
+                    </div>
+                </div>
             </div>
 
             <div class="callout-box callout-red">
@@ -1115,16 +1529,75 @@
                 Al resolver el diagrama fasorial vectorial de corrientes de línea considerando el factor de potencia desfasado (<strong>FP = 0.84 &rarr; &phi; = 32.86&deg;</strong>), obtenemos las corrientes que realmente circulan por la acometida trifásica del edificio:
             </p>
 
-            <div class="math-box">
-                <span>Corrientes vectoriales de línea en la acometida:</span><br>
-                &bull; Fase L1: <span class="math-warn">I_L1 = 67.33 A</span><br>
-                &bull; Fase L2: <span class="math-warn">I_L2 = 77.67 A</span> (Fase más sobrecargada)<br>
-                &bull; Fase L3: <span class="math-val">I_L3 = 47.86 A</span> (Fase subcargada)<br>
-                <span>Corriente promedio: I_avg = (67.33 + 77.67 + 47.86) / 3 = 64.29 A</span><br>
-                <span>Desviación máxima respecto al promedio: |77.67 - 64.29| = </span><span class="math-warn">16.42 A</span><br><br>
-                <span class="math-hl">DESBALANCE DE CORRIENTE SEGÚN NORMA NEMA MG-1:</span><br>
-                <span>% Desbalance = (Desviación Máxima / Corriente Promedio) &times; 100%</span><br>
-                <span class="math-warn">% Desbalance = (16.42 A / 64.29 A) &times; 100% = </span><span class="math-warn" style="font-size: 16px;">25.55%</span>
+            <div class="equation-card equation-danger">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>⚡</span> Análisis Vectorial de Corrientes de Línea en Acometida (Caso B)
+                    </div>
+                    <span class="equation-tag" style="background:#fee2e2; color:#991b1b;">NEMA MG-1 &middot; IEEE 141</span>
+                </div>
+                <div class="equation-display">
+                    <span>Fase L1: <strong class="math-var" style="color: #b91c1c;">I<sub>L1</sub> = 67.33 A</strong></span>
+                    <span style="color: #cbd5e1;">&bull;</span>
+                    <span>Fase L2: <strong class="math-var" style="color: #b91c1c;">I<sub>L2</sub> = 77.67 A</strong> <span style="font-size: 11px; background: #fee2e2; padding: 2px 6px; border-radius: 4px;">(Sobrecarga Crítica)</span></span>
+                    <span style="color: #cbd5e1;">&bull;</span>
+                    <span>Fase L3: <strong class="math-var" style="color: #047857;">I<sub>L3</sub> = 47.86 A</strong> <span style="font-size: 11px; background: #d1fae5; padding: 2px 6px; border-radius: 4px;">(Subcargada)</span></span>
+                </div>
+
+                <div class="equation-display" style="margin-top: 8px;">
+                    <span class="math-var">I<sub>avg</sub></span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">I<sub>L1</sub> + I<sub>L2</sub> + I<sub>L3</sub></span>
+                        <span class="math-den">3</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">67.33 + 77.67 + 47.86</span>
+                        <span class="math-den">3</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result">64.29 A</span>
+                </div>
+
+                <div class="equation-display" style="margin-top: 8px;">
+                    <span class="math-var">&Delta;I<sub>max</sub></span>
+                    <span class="math-equals">=</span>
+                    <span>|I<sub>L2</sub> - I<sub>avg</sub>|</span>
+                    <span class="math-equals">=</span>
+                    <span>|77.67 A - 64.29 A|</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-danger">16.42 A</span>
+                </div>
+
+                <div class="equation-display" style="margin-top: 8px;">
+                    <span class="math-var">% Desbalance<sub>NEMA</sub></span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">&Delta;I<sub>max</sub></span>
+                        <span class="math-den">I<sub>avg</sub></span>
+                    </span>
+                    <span>&times; 100%</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">16.42 A</span>
+                        <span class="math-den">64.29 A</span>
+                    </span>
+                    <span>&times; 100%</span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result result-danger" style="font-size: 17px;">25.55%</span>
+                </div>
+
+                <div class="equation-steps">
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Límite Internacional Máximo Tolerable (NEMA MG-1):</strong> <strong>&le; 5.0%</strong> (Alerta roja superada en más de 5 veces).</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Caso A Trifásico:</strong> Las 4 unidades se distribuyen equitativamente en las 3 fases &rarr; <strong>0.00% Desbalance</strong> y corriente de neutro <strong>I<sub>N</sub> = 0 A</strong>.</span>
+                    </div>
+                </div>
             </div>
 
             <div class="callout-box callout-red">
@@ -1245,15 +1718,57 @@
                 Ciudad Guayana presenta un promedio anual de <strong>Horas Solar Pico (HSP) de 5.1 kWh/m²/día</strong> con una inclinación óptima de paneles de 10° orientados al Sur. Para abastecer el 100% de la demanda diurna del sistema HVAC de alta eficiencia (Caso A, que consume aproximadamente <strong>100 kWh/día</strong> de faena):
             </p>
 
-            <div class="math-box">
-                <span>Energía requerida: E_dia = 100.0 kWh/día &middot; HSP = 5.1 &middot; Performance Ratio (PR) = 0.80</span><br>
-                <span>Potencia Pico Requerida (P_dc):</span><br>
-                <span class="math-hl">P_dc = E_dia / (HSP &times; PR) = 100 / (5.1 &times; 0.80) = </span><span class="math-val">24.51 kWp</span><br><br>
-                <span>Arreglo Fotovoltaico Sugerido:</span><br>
-                &bull; <strong>42 Módulos Monocristalinos TOPCon Bifaciales de 580W</strong> (Potencia total: 24.36 kWp)<br>
-                &bull; Área de techo requerida: <strong>108 m²</strong> en azotea técnica.<br>
-                &bull; <strong>Inversor Trifásico Híbrido de 25 kW (208/230V 3F)</strong> con doble MPPT y limitador de inyección cero.<br>
-                &bull; Banco de baterías <strong>LiFePO4 de 30 kWh</strong> para respaldo de cargas críticas y respaldo ante cortes del SEN.
+            <div class="equation-card equation-amber">
+                <div class="equation-header">
+                    <div class="equation-title">
+                        <span>☀️</span> Dimensionamiento del Generador Solar Fotovoltaico (HSP = 5.1 &middot; Ciudad Guayana)
+                    </div>
+                    <span class="equation-tag">Net-Zero Energy &middot; ASHRAE 90.1</span>
+                </div>
+                <div class="equation-display">
+                    <span class="math-var">P<sub>dc</sub></span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">E<sub>dia</sub></span>
+                        <span class="math-den">HSP &times; PR</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">100.0 kWh/día</span>
+                        <span class="math-den">5.1 h &times; 0.80</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span class="math-result" style="background: #fef3c7; color: #92400e; border-color: #fde68a;">24.51 kWp</span>
+                </div>
+                <div class="equation-display" style="margin-top: 8px;">
+                    <span class="math-var">N<sub>módulos</sub></span>
+                    <span class="math-equals">=</span>
+                    <span class="math-fraction">
+                        <span class="math-num">24.510 Wp</span>
+                        <span class="math-den">580 Wp / módulo</span>
+                    </span>
+                    <span class="math-equals">=</span>
+                    <span>42.26 &rarr;</span>
+                    <span class="math-result result-emerald">42 Módulos Bifaciales</span>
+                </div>
+                <div class="equation-steps">
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Módulos Fotovoltaicos Seleccionados:</strong> 42 unidades monocristalinas TOPCon bifaciales de 580W (Potencia pico instalada: <strong>24.36 kWp</strong>).</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Superficie Requerida en Azotea:</strong> <strong>108 m²</strong> orientados al Sur con inclinación de 10°.</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Equipamiento de Conversión:</strong> Inversor trifásico híbrido de 25 kW (208/230V 3F) con doble MPPT y limitador dinámico de inyección cero.</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-bullet">&bull;</span>
+                        <span><strong>Almacenamiento de Respaldo:</strong> Banco modular LiFePO4 de <strong>30 kWh</strong> para estabilizar microrred ante perturbaciones del SEN.</span>
+                    </div>
+                </div>
             </div>
 
             <h3 class="academic-h3">🏗️ 2. Concretos de Bajo Carbono con Escoria Granulada GGBS de Sidor</h3>
@@ -1322,8 +1837,26 @@
                     🎛️ Simulador Paramétrico: Auditoría Termo-Eléctrica HVAC 16 TR
                 </h3>
                 <p style="font-size: 13px; color: var(--text-light); margin-bottom: 22px;">
-                    Ajuste las variables de campo para calcular inmediatamente corrientes, caídas de tensión, pérdidas Joule y ahorro económico:
+                    Ajuste las variables de campo para calcular inmediatamente corrientes, caídas de tensión, pérdidas Joule, integración solar y dictamen pericial:
                 </p>
+
+                <!-- PARÁMETROS ADICIONALES: CALIBRE Y SOLAR -->
+                <div class="sim-selector-grid">
+                    <div>
+                        <label for="simGaugeSelect" class="sim-select-label">🔌 Conductor Instalado en Caso B (Monofásico)</label>
+                        <select id="simGaugeSelect" class="sim-select" onchange="runHvacSimulation()">
+                            <option value="8">#8 AWG Cu (Mala praxis ejecutada · R = 2.55 Ω/km)</option>
+                            <option value="4">#4 AWG Cu (Corrección técnica forzada · R = 1.01 Ω/km)</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-end; padding-bottom: 4px;">
+                        <label class="sim-checkbox-label">
+                            <input type="checkbox" id="simSolarToggle" onchange="runHvacSimulation()">
+                            <span>☀️ Acoplar Sistema Solar 24.5 kWp (Compensación Diurna Net-Zero)</span>
+                        </label>
+                    </div>
+                </div>
 
                 <!-- SLIDER LONGITUD -->
                 <div class="slider-group">
@@ -1357,22 +1890,25 @@
                     <div class="side-kpi-card side-kpi-a">
                         <div class="side-title" style="color: #064e3b;">Caso A &middot; Trifásico Inverter 208V</div>
                         <div class="side-val" id="kpiDva" style="color: #047857;">1.50% &Delta;V</div>
-                        <div class="side-desc">Caída de tensión con cable #8 AWG Cu (CUMPLE holgado &lt; 3%)</div>
+                        <div class="side-desc" id="kpiDescA">Caída con #8 AWG Cu (<span class="badge badge-emerald" style="padding: 2px 6px;">CUMPLE CEN 200 &lt; 3%</span>)</div>
                         <div style="margin-top: 10px; font-weight: 700; font-size: 13px; color: #064e3b;" id="kpiJouleA">Pérdidas Joule: 222 W</div>
+                        <div style="font-size: 11.5px; color: #064e3b; margin-top: 4px;">Desbalance NEMA: <strong>0.00%</strong> &bull; I<sub>N</sub> = 0 A</div>
                     </div>
 
                     <div class="side-kpi-card side-kpi-b">
                         <div class="side-title" style="color: #991b1b;">Caso B &middot; Monofásico On/Off 220V</div>
                         <div class="side-val" id="kpiDvb" style="color: #dc2626;">3.46% &Delta;V</div>
-                        <div class="side-desc">Caída con cable #8 (VIOLA CEN 200). Requiere cable pesado #4 AWG</div>
-                        <div style="margin-top: 10px; font-weight: 700; font-size: 13px; color: #991b1b;" id="kpiJouleB">Pérdidas Joule: 661 W a 1.2 kW</div>
+                        <div class="side-desc" id="kpiDescB">Caída con #8 AWG (<span class="badge" style="background:#fee2e2; color:#dc2626; padding: 2px 6px;">VIOLA CEN 200 &gt; 3%</span>)</div>
+                        <div style="margin-top: 10px; font-weight: 700; font-size: 13px; color: #991b1b;" id="kpiJouleB">Pérdidas Joule: 1.215 W</div>
+                        <div style="font-size: 11.5px; color: #991b1b; margin-top: 4px;">Desbalance NEMA: <strong>25.55%</strong> &bull; Derating Trafo -25%</div>
                     </div>
 
                     <div class="side-kpi-card" style="background: #f0fdf4; border-color: #86efac;">
-                        <div class="side-title" style="color: #166534;">Ahorro Financiero Anual</div>
+                        <div class="side-title" style="color: #166534;" id="kpiSavingsTitle">Ahorro Financiero Anual</div>
                         <div class="side-val" id="kpiSavings" style="color: #15803d;">$2.460 USD</div>
                         <div class="side-desc" id="kpiPaybackDesc">Retorno de inversión: 12.7 meses</div>
                         <div style="margin-top: 10px; font-weight: 700; font-size: 13px; color: #166534;" id="kpiLcc15">Ahorro a 15 Años: $21.878 USD</div>
+                        <div style="font-size: 11.5px; color: #166534; margin-top: 4px;" id="kpiSolarNote">Sin acople solar diurno</div>
                     </div>
                 </div>
 
@@ -1380,63 +1916,11 @@
                     <strong>📋 Dictamen Técnico Pericial:</strong> Con la longitud actual de alimentador y régimen de horas seleccionado, el sistema Trifásico Inverter (Caso A) optimiza el uso de cobre, disipa una fracción despreciable de calor y ahorra miles de dólares al año. Por el contrario, el sistema Monofásico (Caso B) incurre en caída de tensión no reglamentaria y desbalance del 25.55% en transformador.
                 </div>
 
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px;">
                     <button type="button" class="btn-acta" onclick="generateHvacCalculationMemory()">
                         <span>📑</span> Exportar Memoria de Cálculo y Dictamen Pericial (16 TR)
                     </button>
-                    <button type="button" class="btn-acta" style="background: var(--surface-subtle); color: var(--navy-primary); border: 1px solid var(--border);" onclick="window.print()">
-                        <span>🖨️</span> Imprimir Informe de Auditoría
-                    </button>
                 </div>
-            </div>
-
-            <h3 class="academic-h3">📊 Escala de Estimación y Rúbrica Pedagógica (20 Puntos UGMA)</h3>
-            <p class="academic-p">
-                La evaluación continua de la Unidad 4 se rige por la escala vigesimal universitaria reglamentaria, ponderada a través de cuatro criterios técnicos rigurosos:
-            </p>
-
-            <div class="table-responsive">
-                <table class="academic-table">
-                    <thead>
-                        <tr>
-                            <th>Criterio de Evaluación Técnica</th>
-                            <th>Ponderación</th>
-                            <th>Desempeño Sobresaliente (Excelente)</th>
-                            <th>Desempeño Aceptable (Suficiente)</th>
-                            <th>Desempeño Deficiente (Insuficiente)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. Modelado de Confort Térmico Adaptativo ASHRAE 55</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Calcula correctamente la temperatura neutra tropical (26.5°C), integra velocidad de aire inducida y fundamenta la reducción del 30% en carga térmica.</td>
-                            <td>Comprende el confort adaptativo pero no cuantifica el ahorro en kWh derivado del setpoint.</td>
-                            <td>Mantiene la premisa obsoleta de sobredimensionar chillers a 18°C.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Auditoría Eléctrica y Cálculos de Caída CEN 200</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Calcula con precisión RLA, LRA, MCA, caída de tensión (&Delta;V) a 50m y pérdidas Joule para los 16 TR en ambos casos técnicos.</td>
-                            <td>Calcula corrientes nominales pero omite la verificación de caída de tensión porcentual o las pérdidas por calor.</td>
-                            <td>Incurre en errores de selección de calibre y no detecta la violación de código.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Análisis Vectorial de Desbalance de Fases (NEMA)</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Demuestra matemáticamente el desbalance del 25.55% por cargas monofásicas y deduce el derating necesario en el transformador.</td>
-                            <td>Reconoce que hay desbalance pero no sabe aplicar la fórmula NEMA MG-1 ni cuantificar la corriente de neutro.</td>
-                            <td>Desconoce el impacto destructivo del desbalance sobre los motores y transformadores.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4. Evaluación LCC, Solar 5.1 HSP y Concretos GGBS</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Formula el flujo de caja LCC a 15 años, dimensiona el generador solar de 24.5 kWp y cuantifica la descarbonización del concreto GGBS (-37%).</td>
-                            <td>Calcula el Payback simple pero no formula el valor presente neto ni el dimensionamiento de módulos solares.</td>
-                            <td>No articula la viabilidad económica ni conoce las aplicaciones de la escoria de Sidor.</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </article>
 
@@ -1530,6 +2014,10 @@
             const dist = parseFloat(distEl.value) || 50;
             const hours = parseFloat(document.getElementById('simHoursSlider').value) || 12;
             const rate = parseFloat(document.getElementById('simRateSlider').value) || 0.10;
+            const gaugeEl = document.getElementById('simGaugeSelect');
+            const gauge = gaugeEl ? gaugeEl.value : '8';
+            const solarEl = document.getElementById('simSolarToggle');
+            const hasSolar = solarEl ? solarEl.checked : false;
 
             document.getElementById('simDistVal').innerText = `${dist} metros`;
             document.getElementById('simHoursVal').innerText = `${hours} horas/día`;
@@ -1540,70 +2028,114 @@
             const dV_A = Math.sqrt(3) * 14.61 * dist * (0.00255 * 0.95 + 0.00016 * 0.312);
             const pct_dV_A = (dV_A / 208) * 100;
 
-            // Caída de tensión Caso B con #8 AWG: 2 hilos, 34.20 A, 220V, FP=0.84
-            const dV_B = 2 * 34.20 * dist * (0.00255 * 0.84 + 0.00016 * 0.542);
+            // Caída de tensión Caso B según calibre seleccionado
+            // #8 AWG: R = 2.55 ohm/km (0.00255 ohm/m)
+            // #4 AWG: R = 1.01 ohm/km (0.00101 ohm/m)
+            const r_B = gauge === '4' ? 0.00101 : 0.00255;
+            const dV_B = 2 * 34.20 * dist * (r_B * 0.84 + 0.00016 * 0.542);
             const pct_dV_B = (dV_B / 220) * 100;
 
             // Pérdidas Joule totales (2x5 TR + 2x3 TR)
-            // Caso A: 222 W a 50m prop a dist
+            // Caso A: 222 W a 50m proporcional a dist
             const joule_A = Math.round(222 * (dist / 50));
-            const joule_B = Math.round(661 * (dist / 50));
+            // Caso B: si #8 AWG -> 1215 W a 50m; si #4 AWG -> 661 W a 50m
+            const baseJouleB = gauge === '4' ? 661 : 1215;
+            const joule_B = Math.round(baseJouleB * (dist / 50));
 
+            // Actualizar KPIs Caso A
             const kpiDva = document.getElementById('kpiDva');
             kpiDva.innerText = `${pct_dV_A.toFixed(2)}% ΔV`;
+            document.getElementById('kpiJouleA').innerText = `Pérdidas Joule: ${joule_A} W`;
 
+            // Actualizar KPIs Caso B
             const kpiDvb = document.getElementById('kpiDvb');
+            const kpiDescB = document.getElementById('kpiDescB');
             kpiDvb.innerText = `${pct_dV_B.toFixed(2)}% ΔV`;
+
             if (pct_dV_B > 3.0) {
                 kpiDvb.style.color = '#dc2626';
+                kpiDescB.innerHTML = `Conductor #${gauge} AWG (<span class="badge" style="background:#fee2e2; color:#dc2626; padding: 2px 6px;">VIOLA CEN 200 &gt; 3%</span>)`;
             } else {
-                kpiDvb.style.color = '#047857';
+                kpiDvb.style.color = gauge === '4' ? '#0284c7' : '#047857';
+                kpiDescB.innerHTML = `Conductor #${gauge} AWG (<span class="badge ${gauge === '4' ? 'badge-blue' : 'badge-emerald'}" style="padding: 2px 6px;">${gauge === '4' ? 'CUMPLE CON SOBRECOBRE' : 'CUMPLE CEN 200'}</span>)`;
             }
 
-            document.getElementById('kpiJouleA').innerText = `Pérdidas Joule: ${joule_A} W`;
-            document.getElementById('kpiJouleB').innerText = `Pérdidas Joule: ${joule_B} W (con #4 AWG)`;
+            document.getElementById('kpiJouleB').innerText = `Pérdidas Joule: ${joule_B} W (Conductor #${gauge} AWG)`;
 
-            // Consumo Anual:
+            // Consumo Anual HVAC:
             // Caso A = 8.60 kW promedio * hours * 26 días * 12 meses
-            const kwh_A = 8.60 * hours * 26 * 12;
+            const kwh_A_raw = 8.60 * hours * 26 * 12;
             // Caso B = 15.17 kW promedio * hours * 26 días * 12 meses
-            const kwh_B = 15.17 * hours * 26 * 12;
+            const kwh_B_raw = 15.17 * hours * 26 * 12;
 
-            const bill_A = kwh_A * rate;
-            const bill_B = kwh_B * rate;
+            // Generación solar anual (24.51 kWp * 5.1 HSP * 0.80 PR * 26 días * 12 meses = ~31.200 kWh/año)
+            const solarAnnualKwh = hasSolar ? Math.round(24.51 * 5.1 * 0.80 * 26 * 12) : 0;
+            const netKwh_A = Math.max(0, kwh_A_raw - solarAnnualKwh);
+            const netKwh_B = Math.max(0, kwh_B_raw - solarAnnualKwh);
+
+            const bill_A = netKwh_A * rate;
+            const bill_B = netKwh_B * rate;
+            const rawBill_A = kwh_A_raw * rate;
+            const rawBill_B = kwh_B_raw * rate;
+
+            // Ahorro anual entre A y B (más el efecto solar en la factura neta)
             const savings = bill_B - bill_A;
+            const totalSavingsWithSolar = hasSolar ? ((rawBill_B - bill_A)) : savings;
 
-            const paybackYears = savings > 0 ? (2600 / savings) : 0;
+            const extraCapEx = hasSolar ? (2600 + 14500) : 2600; // Inversión solar adicional
+            const paybackYears = totalSavingsWithSolar > 0 ? (extraCapEx / totalSavingsWithSolar) : 0;
             const paybackMonths = Math.round(paybackYears * 12 * 10) / 10;
 
-            // LCC 15 años a r = 8%
+            // Costo de ciclo de vida (LCC a 15 años, r = 8%)
             const r = 0.08;
             let pv_A = 0;
             let pv_B = 0;
             for (let t = 1; t <= 15; t++) {
-                pv_A += (bill_A + 450) / Math.pow(1 + r, t);
-                pv_B += (bill_B + 850) / Math.pow(1 + r, t);
+                pv_A += (bill_A + (hasSolar ? 650 : 450)) / Math.pow(1 + r, t);
+                pv_B += (rawBill_B + 850) / Math.pow(1 + r, t);
             }
-            const lcc_A = 10600 + pv_A;
+            const lcc_A = (hasSolar ? (10600 + 14500) : 10600) + pv_A;
             const lcc_B = 8000 + pv_B;
             const netLccSavings = Math.round(lcc_B - lcc_A);
 
-            document.getElementById('kpiSavings').innerText = `$${Math.round(savings).toLocaleString('es-VE')} USD/año`;
+            document.getElementById('kpiSavings').innerText = `$${Math.round(totalSavingsWithSolar).toLocaleString('es-VE')} USD/año`;
             document.getElementById('kpiPaybackDesc').innerText = `Retorno de inversión: ${paybackMonths} meses (${paybackYears.toFixed(2)} años)`;
             document.getElementById('kpiLcc15').innerText = `Ahorro a 15 Años: $${netLccSavings.toLocaleString('es-VE')} USD`;
 
-            const verdictEl = document.getElementById('simVerdictBox');
-            if (pct_dV_B > 3.0) {
-                verdictEl.innerHTML = `<strong>🚨 Dictamen Técnico de Inspección:</strong> Para una acometida de ${dist} metros, el conductor #8 AWG en el Caso Monofásico <strong>VIOLA EL CÓDIGO CEN 200 con una caída de tensión de ${pct_dV_B.toFixed(2)}% (&gt; 3%)</strong>. Esto sobrecalienta el motor y anula la garantía del fabricante. En contraste, el sistema Trifásico Inverter opera holgadamente al ${pct_dV_A.toFixed(2)}%, genera un ahorro anual de <strong>$${Math.round(savings).toLocaleString('es-VE')} USD</strong> y amortiza su diferencia de compra en solo ${paybackMonths} meses.`;
+            const solarNoteEl = document.getElementById('kpiSolarNote');
+            if (hasSolar) {
+                solarNoteEl.innerHTML = `☀️ <strong>Solar 24.5 kWp activo:</strong> Genera ${solarAnnualKwh.toLocaleString('es-VE')} kWh/año &bull; Net-Zero HVAC: <strong>${((solarAnnualKwh / kwh_A_raw) * 100).toFixed(0)}% cubierto</strong>`;
             } else {
-                verdictEl.innerHTML = `<strong>✅ Dictamen Técnico Favorable al Caso Trifásico:</strong> Con ${dist} metros de alimentador, el sistema Trifásico Inverter minimiza el Efecto Joule a solo ${joule_A}W en ductos y reduce el consumo anual en ${Math.round(kwh_B - kwh_A).toLocaleString('es-VE')} kWh. Ahorro acumulado a 15 años: <strong>$${netLccSavings.toLocaleString('es-VE')} USD</strong>.`;
+                solarNoteEl.innerText = 'Sin acople solar diurno (Solo red eléctrica SEN)';
             }
+
+            // Dictamen Técnico Dinámico
+            const verdictEl = document.getElementById('simVerdictBox');
+            let verdictHtml = '';
+
+            if (pct_dV_B > 3.0) {
+                verdictHtml += `<strong>🚨 Dictamen Técnico de Inspección Pericial:</strong> A ${dist} metros de alimentador, el conductor instalado #${gauge} AWG en el Caso Monofásico <strong>VIOLA EL CÓDIGO CEN 200 con una caída de tensión de ${pct_dV_B.toFixed(2)}% (&gt; 3.0%)</strong>. Esto ocasiona sub-tensión en bornes del compresor, paradas por térmico y quema prematura del devanado. Además, el desbalance de fases del <strong>25.55%</strong> sobrecalienta destructivamente el transformador principal.<br><br>`;
+            } else if (gauge === '4') {
+                verdictHtml += `<strong>⚠️ Dictamen Técnico: Conductor #4 AWG Mitiga Caída pero No Soluciona el Desbalance:</strong> Aunque el cable pesado #4 AWG reduce la caída a ${pct_dV_B.toFixed(2)}%, requiere 4 veces más cobre por fase, disipa ${joule_B}W en calor continuo y <strong>mantiene el desbalance crítico del 25.55% en el transformador</strong> con derating forzoso del 25%.<br><br>`;
+            } else {
+                verdictHtml += `<strong>✅ Verificación de Conductores:</strong> La acometida trifásica opera en rango normativo con apenas ${pct_dV_A.toFixed(2)}% de caída y disipación de calor despreciable (${joule_A}W).<br><br>`;
+            }
+
+            if (hasSolar) {
+                verdictHtml += `☀️ <strong>Beneficio de la Integración Solar 24.5 kWp:</strong> El arreglo fotovoltaico de 42 paneles TOPCon cubre ${solarAnnualKwh.toLocaleString('es-VE')} kWh/año, logrando una operación prácticamente <strong>Net-Zero Carbon</strong> durante las horas diurnas pico y protegiendo la faena operativa contra fluctuaciones y racionamientos del sistema eléctrico.`;
+            } else {
+                verdictHtml += `💰 <strong>Beneficio Económico del Caso A:</strong> La adopción de tecnología Trifásica Inverter ahorra <strong>$${Math.round(totalSavingsWithSolar).toLocaleString('es-VE')} USD/año</strong> en factura eléctrica, amortizando la diferencia de inversión en solo <strong>${paybackMonths} meses</strong> y acumulando <strong>$${netLccSavings.toLocaleString('es-VE')} USD</strong> a los 15 años de vida útil.`;
+            }
+
+            verdictEl.innerHTML = verdictHtml;
         }
 
         function generateHvacCalculationMemory() {
             const dist = document.getElementById('simDistSlider').value;
             const hours = document.getElementById('simHoursSlider').value;
             const rate = document.getElementById('simRateSlider').value;
+            const gauge = document.getElementById('simGaugeSelect').value;
+            const hasSolar = document.getElementById('simSolarToggle').checked;
             const kpiDva = document.getElementById('kpiDva').innerText;
             const kpiDvb = document.getElementById('kpiDvb').innerText;
             const savings = document.getElementById('kpiSavings').innerText;
@@ -1612,7 +2144,7 @@
 
             const textReport = `====================================================================
 🏛️ UNIVERSIDAD GRAN MARISCAL DE AYACUCHO (UGMA)
-VICERRECTORADO DE INVESTIGACIÓN Y POSTGRADO &middot; COHORTE 2026
+VICERRECTORADO DE INVESTIGACIÓN Y POSTGRADO · COHORTE 2026
 MEMORIA DE CÁLCULO Y DICTAMEN PERICIAL TERMO-ELÉCTRICO (16 TR HVAC)
 Cátedra: ConTech, Eficiencia Energética y Gerencia de Obras
 Profesor Titular: Ing. Héctor Mota Zorrilla
@@ -1622,47 +2154,54 @@ PROYECTO AUDITADO: Edificación Comercial-Institucional (Bancada de 16 TR)
 UBICACIÓN: Ciudad Guayana, Estado Bolívar, Venezuela
 
 PARÁMETROS DE DISEÑO AUDITADOS:
-&bull; Carga Frigorífica Total: 16 Toneladas de Refrigeración (2x 5 TR + 2x 3 TR)
-&bull; Longitud de Alimentadores a Azotea: ${dist} metros
-&bull; Régimen Operativo: ${hours} horas/día &middot; 26 días/mes (312 h/mes)
-&bull; Tarifa Eléctrica Estimada: $${rate} USD / kWh
+• Carga Frigorífica Total: 16 Toneladas de Refrigeración (2x 5 TR + 2x 3 TR)
+• Longitud de Alimentadores a Azotea Técnica: ${dist} metros
+• Régimen Operativo: ${hours} horas/día · 26 días/mes (312 h/mes)
+• Tarifa Eléctrica Aplicada: $${rate} USD / kWh
+• Conductor Evaluado en Caso Monofásico: #${gauge} AWG Cu
+• Integración Solar Fotovoltaica (24.5 kWp): ${hasSolar ? 'ACTIVADA (Generación Diurna Net-Zero)' : 'DESACTIVADA'}
 
 RESULTADOS COMPARATIVOS DE AUDITORÍA:
 --------------------------------------------------------------------
-1. CASO A (TRIFÁSICO 208V INVERTER &middot; INGENIERÍA SUGERIDA):
-   - Corriente Nominal (5 TR): 14.61 A (MCA = 18.26 A) &rarr; Conductor #8 AWG Cu
-   - Corriente de Arranque LRA: &le; 16.07 A (Soft-start modulado)
-   - Caída de Tensión a ${dist}m: ${kpiDva} (CUMPLE CEN 200 &lt; 3%)
-   - Desbalance de Fases NEMA: 0.00% (Simetría perfecta)
-   - Factor de Potencia: 0.95 (Cero penalización por reactivos)
+1. CASO A (TRIFÁSICO 208V INVERTER · INGENIERÍA SUGERIDA):
+   - Corriente Nominal Marcha (5 TR): 14.61 A (MCA = 18.26 A) -> Conductor #10 / #8 AWG Cu
+   - Corriente de Arranque LRA: <= 16.07 A (Soft-start modulado continuo)
+   - Caída de Tensión a ${dist}m: ${kpiDva} (CUMPLE CEN 200 < 3.0%)
+   - Desbalance de Fases NEMA MG-1: 0.00% (Simetría vectorial simétrica)
+   - Corriente de Neutro: I_N = 0.0 A
+   - Factor de Potencia: 0.95 (Cero inyección de reactivos parásitos)
 
-2. CASO B (MONOFÁSICO 220V ON/OFF &middot; MALA PRAXIS EJECUTADA):
-   - Corriente Nominal (5 TR): 34.20 A (MCA = 42.75 A) &rarr; Requiere #4 AWG Cu
-   - Corriente de Arranque LRA: 188.10 A (Impacto severo DOL)
-   - Caída de Tensión con #8 AWG: ${kpiDvb}
-   - Desbalance de Fases NEMA MG-1: 25.55% (Alerta destructiva &gt; 10%)
-   - Derating en Transformador: -25% de capacidad útil
-   - Factor de Potencia: 0.84 (13.0 kVAR reactivos inyectados)
+2. CASO B (MONOFÁSICO 220V ON/OFF · MALA PRAXIS EJECUTADA EN OBRA):
+   - Corriente Nominal Marcha (5 TR): 34.20 A (MCA = 42.75 A) -> Requiere cable grueso #4 AWG
+   - Corriente de Arranque LRA: 188.10 A (Impacto severo Direct-On-Line)
+   - Caída de Tensión con conductor #${gauge} AWG: ${kpiDvb}
+   - Desbalance de Fases NEMA MG-1: 25.55% (Alerta destructiva > 5.0%)
+   - Afectación al Transformador: Derating forzoso del 25% de kVA nominales
+   - Factor de Potencia: 0.84 (13.0 kVAR reactivos inductivos no compensados)
 
 EVALUACIÓN ECONÓMICA Y RETORNO DE INVERSIÓN:
 --------------------------------------------------------------------
-&bull; Ahorro Económico Operativo: ${savings}
-&bull; Período de Recuperación (Payback): ${payback}
-&bull; ${lcc15}
+• Ahorro Operativo Anual Calculado: ${savings}
+• Período de Recuperación (Payback): ${payback}
+• ${lcc15}
+• Generación Solar Anual: ${hasSolar ? '31.200 kWh/año cubiertos in-situ' : 'N/A'}
 
-DICTAMEN PERICIAL VINCULANTE:
-Se rechaza técnicamente la sustitución monofásica ejecutada por el contratista.
-Se ordena la rectificación inmediata hacia unidades trifásicas Inverter o el
-reemplazo forzoso de la acometida por calibre #4 AWG más compensación activa de
-reactivos y balanceo de fases para salvaguardar el transformador principal.
+DICTAMEN PERICIAL VINCULANTE (ING. HÉCTOR MOTA ZORRILLA):
+Se rechaza categóricamente la sustitución monofásica efectuada por el contratista.
+La supuesta economía inicial de compra generó una infracción flagrante a la norma
+CEN FONDONORMA 200 (caída de tensión > 3%), sobrecalentamiento crítico en canalizaciones
+por Efecto Joule (> 1.2 kW de calor en techo) y un desbalance de fases del 25.55% que
+compromete la vida útil del transformador de potencia y equipos vecinos. Se ordena la
+reversión hacia tecnología Trifásica Inverter o la imposición de calibres #4 AWG más
+compensación activa de reactivos.
 
-Documento emitido con validez académica para evaluación de grado UGMA.
+Documento pericial emitido con rigor académico y validez para evaluación de grado UGMA.
 ====================================================================`;
 
             navigator.clipboard.writeText(textReport).then(() => {
-                alert('¡Memoria de Cálculo y Dictamen Pericial HVAC (16 TR) copiado al portapapeles!\n\nPuede adjuntarlo a su informe de auditoría o exportarlo a PDF.');
+                alert('¡Memoria de Cálculo y Dictamen Pericial HVAC (16 TR) copiado al portapapeles con éxito!\n\nPuede pegarlo directamente en su informe pericial, documento Word o compartirlo.');
             }).catch(() => {
-                alert('Memoria generada. Utilice la función de imprimir de la página para exportarla a PDF.');
+                alert('Memoria generada exitosamente. Copie el texto desde la consola o reporte pericial.');
             });
         }
 
