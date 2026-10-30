@@ -1377,18 +1377,18 @@
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Cimientos: Módulos I al IV</div>
                 <a href="modulo-1-organizacion.html" class="drawer-link"><span>🏛️</span> Módulo I: Organización de Obras (Pérez)</a>
                 <a href="modulo-2-costos-evm.html" class="drawer-link"><span>📊</span> Módulo II: Costos, APU & EVM (Angarita)</a>
-                <a href="modulo-3-marco-legal.html" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal & Art. 1637 (Martínez)</a>
-                <a href="modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
+                <a href="/ugma-gerencia-obras/modulo-3-marco-legal.html" class="drawer-link"><span>⚖️</span> Módulo III: Marco Legal & Art. 1637 (Martínez)</a>
+                <a href="/ugma-gerencia-obras/modulo-4-lean-calidad.html" class="drawer-link"><span>📋</span> Módulo IV: Lean, Calidad & Casos (Zambrano)</a>
 
                 <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; margin:14px 0 4px 6px;">Módulo V: Las 6 Unidades Curriculares</div>
-                <a href="infografia-metodologia.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📊</span> GUÍA VISUAL METODOLÓGICA (PDF)</a>
-                <a href="evaluacion-dia-1-2.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📝</span> EVALUACIÓN DÍA 1 &amp; 2 (20 pts)</a>
-                <a href="masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
-                <a href="clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
-                <a href="construcciones-sostenibles/index.html" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
-                <a href="eficiencia-energetica-materiales/index.html" class="drawer-link"><span>⚡</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
-                <a href="energia-solar-sostenibilidad/index.html?unidad=5" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
-                <a href="taller-integrador/index.html" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador &amp; War Room</a>
+                <a href="/ugma-gerencia-obras/infografia-metodologia.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📊</span> GUÍA VISUAL METODOLÓGICA (PDF)</a>
+                <a href="/ugma-gerencia-obras/evaluacion-dia-1-2.html" class="drawer-link" style="color:#0284c7; font-weight:800; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; margin-bottom:6px;"><span>📝</span> EVALUACIÓN DÍA 1 &amp; 2 (20 pts)</a>
+                <a href="/ugma-gerencia-obras/masterclass-bim/index.html" class="drawer-link"><span>📁</span> UNIDAD 1: Introducción básica al BIM</a>
+                <a href="/ugma-gerencia-obras/clash-detection/index.html" class="drawer-link"><span>⚡</span> UNIDAD 2: Tecnología y digitalización en campo</a>
+                <a href="/ugma-gerencia-obras/construcciones-sostenibles/index.html" class="drawer-link"><span>🌱</span> UNIDAD 3: Construcciones sostenibles</a>
+                <a href="/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html" class="drawer-link"><span>⚡</span> UNIDAD 4: Eficiencia energética y materiales ecológicos</a>
+                <a href="/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html?unidad=5" class="drawer-link"><span>♻️</span> UNIDAD 5: Gestión de residuos de obra</a>
+                <a href="/ugma-gerencia-obras/taller-integrador/index.html" class="drawer-link"><span>🎯</span> UNIDAD 6: Taller Integrador &amp; War Room</a>
             </nav>
         </aside>
 
@@ -1741,10 +1741,10 @@
                             </a>
                         </div>
                     </div>
-                    <a href="masterclass-bim/index.html" class="btn-day-action">
+                    <a href="/ugma-gerencia-obras/masterclass-bim/index.html" class="btn-day-action">
                         <span>📁</span> Entrar a Unidad 1: CDE &amp; Validador ISO 19650 &rarr;
                     </a>
-                    <a href="evaluacion-dia-1-2.html" class="btn-day-action" style="background:#f0fdf4; border:1px solid #16a34a; color:#15803d; font-weight:700;">
+                    <a href="/ugma-gerencia-obras/evaluacion-dia-1-2.html" class="btn-day-action" style="background:#f0fdf4; border:1px solid #16a34a; color:#15803d; font-weight:700;">
                         <span>📝</span> Realizar Evaluación Unidad 1 &rarr;
                     </a>
                 </div>
@@ -1794,25 +1794,29 @@
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <a href="clash-detection/index.html" class="btn-day-action featured-day">
+                    <a href="/ugma-gerencia-obras/clash-detection/index.html" class="btn-day-action featured-day">
                         <span>⚡</span> Laboratorio 3D Clash Detection &rarr;
                     </a>
-                    <a href="clash-detection/index.html" class="btn-day-action">
+                    <a href="/ugma-gerencia-obras/clash-detection/index.html" class="btn-day-action">
                         <span>🤖</span> Entrar a Unidad 2: IA &amp; Bitácoras de Campo &rarr;
                     </a>
-                    <a href="evaluacion-dia-1-2.html" class="btn-day-action" style="background:#f0fdf4; border:1px solid #16a34a; color:#15803d; font-weight:700;">
+                    <a href="/ugma-gerencia-obras/evaluacion-dia-1-2.html" class="btn-day-action" style="background:#f0fdf4; border:1px solid #16a34a; color:#15803d; font-weight:700;">
                         <span>📝</span> Realizar Evaluación Unidad 2 &rarr;
                     </a>
                 </div>
             </div>
 
             <!-- UNIDAD 3 -->
-            <div class="day-card">
+            <div class="day-card" style="cursor:pointer;" onclick="if(event.target.closest('details, a, button')) return; window.location.href='/ugma-gerencia-obras/construcciones-sostenibles/index.html';">
                 <div class="day-top-bar">
                     <span class="day-badge">Unidad 03 · Viernes 30-10-2026</span>
                     <span class="day-schedule">01:15 a 05:00 PM · 5h</span>
                 </div>
-                <h3 class="day-title">UNIDAD 3: Construcciones sostenibles</h3>
+                <h3 class="day-title">
+                    <a href="/ugma-gerencia-obras/construcciones-sostenibles/index.html" style="color:inherit; text-decoration:none;">
+                        UNIDAD 3: Construcciones sostenibles &rarr;
+                    </a>
+                </h3>
                 <p class="day-objective">
                     <strong>Temario Oficial:</strong> ¿Qué es una construcción sostenible? Conceptos básicos y características eco-eficientes. Certificaciones ambientales (LEED v5, BREEAM, EDGE Buildings). Criterios ESG aplicados a licitaciones y contratos de obra.
                 </p>
@@ -1848,18 +1852,22 @@
                     <span class="day-pill">Ciclo de Vida</span>
                 </div>
 
-                <a href="construcciones-sostenibles/index.html" class="btn-day-action featured-day">
+                <a href="/ugma-gerencia-obras/construcciones-sostenibles/index.html" class="btn-day-action featured-day">
                     <span>🌱</span> Entrar a Unidad 3: Certificaciones LEED, EDGE &amp; ESG &rarr;
                 </a>
             </div>
 
             <!-- UNIDAD 4 -->
-            <div class="day-card">
+            <div class="day-card" style="cursor:pointer;" onclick="if(event.target.closest('details, a, button')) return; window.location.href='/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html';">
                 <div class="day-top-bar">
                     <span class="day-badge">Unidad 04 · Sábado 31-10-2026</span>
                     <span class="day-schedule">08:00 AM a 12:30 PM · 5h</span>
                 </div>
-                <h3 class="day-title">UNIDAD 4: Eficiencia energética y materiales ecológicos</h3>
+                <h3 class="day-title">
+                    <a href="/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html" style="color:inherit; text-decoration:none;">
+                        UNIDAD 4: Eficiencia energética y materiales ecológicos &rarr;
+                    </a>
+                </h3>
                 <p class="day-objective">
                     <strong>Temario Oficial:</strong> Auditoría termo-eléctrica de 16 TR HVAC (Caso Real: 4 unidades Trifásicas Inverter vs 4 Monofásicas On/Off, calibres CEN 200, efecto Joule y desbalance NEMA MG-1). Confort adaptativo ASHRAE 55, dimensionamiento fotovoltaico (5.1 HSP) y concretos bajos en carbono con escoria GGBS de Sidor.
                 </p>
@@ -1892,10 +1900,10 @@
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <a href="planificacion-4d-5d/index.html" class="btn-day-action">
+                    <a href="/ugma-gerencia-obras/planificacion-4d-5d/index.html" class="btn-day-action">
                         <span>⏱️</span> Simulador Propio 4D TimeLiner &amp; Gantt (Caso Los Olivos) &rarr;
                     </a>
-                    <a href="eficiencia-energetica-materiales/index.html" class="btn-day-action featured-day">
+                    <a href="/ugma-gerencia-obras/eficiencia-energetica-materiales/index.html" class="btn-day-action featured-day">
                         <span>⚡</span> Entrar a Unidad 4: Auditoría HVAC 16 TR &amp; Solar &rarr;
                     </a>
                 </div>
@@ -1941,7 +1949,7 @@
                     <span class="day-pill">Segregación</span>
                 </div>
 
-                <a href="energia-solar-sostenibilidad/index.html?unidad=5" class="btn-day-action featured-day">
+                <a href="/ugma-gerencia-obras/energia-solar-sostenibilidad/index.html?unidad=5" class="btn-day-action featured-day">
                     <span>♻️</span> Entrar a Unidad 5: Matriz RCD &amp; Ahorro en Faena &rarr;
                 </a>
             </div>
@@ -1983,7 +1991,7 @@
                     <span class="day-pill">Defensa Ejecutiva</span>
                 </div>
 
-                <a href="taller-integrador/index.html" class="btn-day-action featured-day">
+                <a href="/ugma-gerencia-obras/taller-integrador/index.html" class="btn-day-action featured-day">
                     <span>🏛️</span> Entrar a Unidad 6: Rúbrica &amp; War Room Integrador &rarr;
                 </a>
             </div>

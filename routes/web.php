@@ -45,8 +45,10 @@ $registerUgmaRoutes = function () {
     Route::get('/modulo-4-lean-calidad.html', [UgmaController::class, 'modulo4']);
     Route::get('/construcciones-sostenibles', [UgmaController::class, 'unidad3'])->name('construcciones-sostenibles');
     Route::get('/construcciones-sostenibles.html', [UgmaController::class, 'unidad3']);
+    Route::get('/construcciones-sostenibles/index.html', [UgmaController::class, 'unidad3']);
     Route::get('/eficiencia-energetica-materiales', [UgmaController::class, 'unidad4'])->name('eficiencia-energetica-materiales');
     Route::get('/eficiencia-energetica-materiales.html', [UgmaController::class, 'unidad4']);
+    Route::get('/eficiencia-energetica-materiales/index.html', [UgmaController::class, 'unidad4']);
 
     // Rutas históricas (Compatibilidad con enlaces previos)
     Route::get('/masterclass-bim', [UgmaController::class, 'masterclassBim'])->name('masterclass-bim');

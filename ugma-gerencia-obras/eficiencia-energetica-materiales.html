@@ -777,7 +777,7 @@
                 <button type="button" class="step-btn active" onclick="goToStep(1)" id="stepBtn-1">
                     <span class="step-num">1</span>
                     <div class="step-info">
-                        <span class="step-tag">08:00 - 08:35 AM</span>
+                        <span class="step-tag">MÓDULO 01</span>
                         <span class="step-name">Confort Térmico &amp; ASHRAE 55</span>
                     </div>
                 </button>
@@ -785,7 +785,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(2)" id="stepBtn-2">
                     <span class="step-num">2</span>
                     <div class="step-info">
-                        <span class="step-tag">08:35 - 09:15 AM</span>
+                        <span class="step-tag">MÓDULO 02</span>
                         <span class="step-name">Caso Real HVAC 16 TR</span>
                     </div>
                 </button>
@@ -793,7 +793,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(3)" id="stepBtn-3">
                     <span class="step-num">3</span>
                     <div class="step-info">
-                        <span class="step-tag">09:15 - 10:00 AM</span>
+                        <span class="step-tag">MÓDULO 03</span>
                         <span class="step-name">Cálculos CEN 200 &amp; Joule</span>
                     </div>
                 </button>
@@ -801,7 +801,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(4)" id="stepBtn-4">
                     <span class="step-num">4</span>
                     <div class="step-info">
-                        <span class="step-tag">10:00 - 10:40 AM</span>
+                        <span class="step-tag">MÓDULO 04</span>
                         <span class="step-name">Desbalance NEMA &amp; Neutro</span>
                     </div>
                 </button>
@@ -809,7 +809,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(5)" id="stepBtn-5">
                     <span class="step-num">5</span>
                     <div class="step-info">
-                        <span class="step-tag">10:40 - 11:15 AM</span>
+                        <span class="step-tag">MÓDULO 05</span>
                         <span class="step-name">LCC &amp; Retorno a 15 Años</span>
                     </div>
                 </button>
@@ -817,7 +817,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(6)" id="stepBtn-6">
                     <span class="step-num">6</span>
                     <div class="step-info">
-                        <span class="step-tag">11:15 - 11:50 AM</span>
+                        <span class="step-tag">MÓDULO 06</span>
                         <span class="step-name">Solar 5.1 HSP &amp; GGBS Sidor</span>
                     </div>
                 </button>
@@ -825,7 +825,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(7)" id="stepBtn-7">
                     <span class="step-num">7</span>
                     <div class="step-info">
-                        <span class="step-tag">11:50 - 12:30 PM</span>
+                        <span class="step-tag">MÓDULO 07</span>
                         <span class="step-name">Simulador &amp; Memoria</span>
                     </div>
                 </button>
@@ -844,7 +844,7 @@
                 <div class="module-badge-num">01</div>
                 <div>
                     <h2 class="module-title">Fundamentos de Eficiencia Energética y Confort Adaptativo (ASHRAE 55-2023)</h2>
-                    <p class="module-desc">Horario: 08:00 AM a 08:35 AM &middot; Psicrometría Tropical, Cargas Sensibles/Latentes y la Regla de Oro del Setpoint</p>
+                    <p class="module-desc">Psicrometría Tropical, Cargas Sensibles/Latentes y la Regla de Oro del Setpoint</p>
                 </div>
             </div>
 
@@ -864,7 +864,7 @@
             </div>
 
             <p class="academic-p">
-                Al integrar ventiladores de cielo raso de alta eficiencia (HVLS o convencionales) que generen una velocidad de aire sobre la piel humana de $v \ge 0.6\text{ m/s}$ a $1.2\text{ m/s}$, la tasa de evaporación transpiratoria se acelera, induciendo una <strong>sensación térmica de enfriamiento fisiológico de 2.5°C a 3.0°C menos</strong> sin requerir potencia frigorífica adicional.
+                Al integrar ventiladores de cielo raso de alta eficiencia (HVLS o convencionales) que generen una velocidad de aire sobre la piel humana de <strong>v &ge; 0.6 m/s a 1.2 m/s</strong>, la tasa de evaporación transpiratoria se acelera, induciendo una <strong>sensación térmica de enfriamiento fisiológico de 2.5°C a 3.0°C menos</strong> sin requerir potencia frigorífica adicional.
             </p>
 
             <div class="callout-box callout-emerald">
@@ -883,7 +883,7 @@
                 <div class="module-badge-num">02</div>
                 <div>
                     <h2 class="module-title">El Caso Práctico Real: Auditoría Termo-Eléctrica HVAC (16 TR)</h2>
-                    <p class="module-desc">Horario: 08:35 AM a 09:15 AM &middot; Experiencia de Inspección del Ing. Héctor Mota: 4 Unidades Trifásicas vs 4 Monofásicas</p>
+                    <p class="module-desc">Experiencia de Inspección del Ing. Héctor Mota: 4 Unidades Trifásicas vs 4 Monofásicas</p>
                 </div>
             </div>
 
@@ -949,7 +949,7 @@
             <div class="callout-box callout-red">
                 <strong>🚨 El Veredicto de la Inspección Técnica:</strong>
                 <p style="margin-top: 6px; font-size: 13.5px;">
-                    Lo que el contratista presentó como un \"ahorro comercial\" de \$2.600 USD en la compra de las máquinas provocó una cadena de consecuencias críticas: calibres de conductores duplicados, caída de tensión superior al límite normativo, calentamiento excesivo en ductos metálicos del techo, desbalance severo en el transformador y un sobrecosto operativo en energía eléctrica de más de \$21.800 USD a lo largo de 15 años.
+                    Lo que el contratista presentó como un "ahorro comercial" de 2.600 USD en la compra de las máquinas provocó una cadena de consecuencias críticas: calibres de conductores duplicados, caída de tensión superior al límite normativo, calentamiento excesivo en ductos metálicos del techo, desbalance severo en el transformador y un sobrecosto operativo en energía eléctrica de más de 21.800 USD a lo largo de 15 años.
                 </p>
             </div>
         </article>
@@ -962,7 +962,7 @@
                 <div class="module-badge-num">03</div>
                 <div>
                     <h2 class="module-title">Fórmulas Rigurosas, Conductores CEN 200, Caída de Tensión y Efecto Joule</h2>
-                    <p class="module-desc">Horario: 09:15 AM a 10:00 AM &middot; Fórmulas RLA/LRA, Verificación de 50m a la Azotea y Calentamiento en Tuberías Conduit</p>
+                    <p class="module-desc">Fórmulas RLA/LRA, Verificación de 50m a la Azotea y Calentamiento en Tuberías Conduit</p>
                 </div>
             </div>
 
@@ -972,7 +972,7 @@
 
             <h3 class="academic-h3">⚡ 1. Cálculo de Corrientes Nominales de Marcha (RLA) y Capacidad Mínima (MCA)</h3>
             <p class="academic-p">
-                Para los equipos de 5 TR (60.000 BTU/h), determinamos la corriente nominal de marcha a plena carga ($RLA$) y la capacidad mínima de conducción del circuito ($MCA = 1.25 \times RLA$):
+                Para los equipos de 5 TR (60.000 BTU/h), determinamos la corriente nominal de marcha a plena carga (<strong>RLA - Rated Load Amps</strong>) y la capacidad mínima de conducción del circuito (<strong>MCA - Minimum Circuit Ampacity = 1.25 &times; RLA</strong>):
             </p>
 
             <div class="math-box">
@@ -1047,7 +1047,7 @@
                 </table>
             </div>
 
-            <h3 class="academic-h3">🔥 4. Pérdidas por Efecto Joule ($P = I^2 \times R \times L$) y Sobrecalentamiento en Techo</h3>
+            <h3 class="academic-h3">🔥 4. Pérdidas por Efecto Joule (P = I<sup>2</sup> &times; R &times; L) y Sobrecalentamiento en Techo</h3>
             <p class="academic-p">
                 La energía disipada como calor en los conductores a lo largo de los 50 metros de tubería conduit representa desperdicio puro de kilovatios-hora que termina cocinando los cables bajo la losa de la azotea:
             </p>
@@ -1079,12 +1079,12 @@
                 <div class="module-badge-num">04</div>
                 <div>
                     <h2 class="module-title">Desbalance de Fases (NEMA MG-1) y Afectación del Transformador</h2>
-                    <p class="module-desc">Horario: 10:00 AM a 10:40 AM &middot; Análisis Vectorial de Cargas Monofásicas sobre Tablero Trifásico (25.55% Desbalance)</p>
+                    <p class="module-desc">Análisis Vectorial de Cargas Monofásicas sobre Tablero Trifásico (25.55% Desbalance)</p>
                 </div>
             </div>
 
             <p class="academic-p">
-                Uno de los aspectos más destructivos de la sustitución monofásica ejecutada en obra es el <strong>desbalance severo de fases</strong> inducido en el Tablero de Distribución Principal. En el Caso A (Trifásico), cada una de las cuatro unidades demanda corrientes rigurosamente idénticas y simétricas en las fases A, B y C, resultando en un desbalance nulo (0.0%) y una corriente de neutro de cero amperios ($I_N = 0\text{ A}$).
+                Uno de los aspectos más destructivos de la sustitución monofásica ejecutada en obra es el <strong>desbalance severo de fases</strong> inducido en el Tablero de Distribución Principal. En el Caso A (Trifásico), cada una de las cuatro unidades demanda corrientes rigurosamente idénticas y simétricas en las fases A, B y C, resultando en un desbalance nulo (0.0%) y una corriente de neutro de cero amperios (<strong>I<sub>N</sub> = 0 A</strong>).
             </p>
 
             <p class="academic-p">
@@ -1112,7 +1112,7 @@
             </div>
 
             <p class="academic-p">
-                Al resolver el diagrama fasorial vectorial de corrientes de línea considerando el factor de potencia desfasado ($FP = 0.84 \rightarrow \phi = 32.86^\circ$), obtenemos las corrientes que realmente circulan por la acometida trifásica del edificio:
+                Al resolver el diagrama fasorial vectorial de corrientes de línea considerando el factor de potencia desfasado (<strong>FP = 0.84 &rarr; &phi; = 32.86&deg;</strong>), obtenemos las corrientes que realmente circulan por la acometida trifásica del edificio:
             </p>
 
             <div class="math-box">
@@ -1146,7 +1146,7 @@
                 <div class="module-badge-num">05</div>
                 <div>
                     <h2 class="module-title">Evaluación Económica, Facturación y Costo de Ciclo de Vida (LCC)</h2>
-                    <p class="module-desc">Horario: 10:40 AM a 11:15 AM &middot; Retorno Simple en 12.7 Meses y \$21.878 USD Ahorrados a 15 Años (LCC)</p>
+                    <p class="module-desc">Retorno Simple en 12.7 Meses y 21.878 USD Ahorrados a 15 Años (LCC)</p>
                 </div>
             </div>
 
@@ -1219,7 +1219,7 @@
             <div class="callout-box callout-emerald">
                 <strong>💰 Conclusión Financiera Rotunda:</strong>
                 <p style="margin-top: 6px; font-size: 13.5px;">
-                    El supuesto \"ahorro\" de \$2.600 USD obtenido por el contratista al comprar unidades monofásicas se evaporó en apenas <strong>12.7 meses de operación</strong>. A los 15 años de servicio, la mala praxis le costará al propietario <strong>\$21.878 USD adicionales</strong> en desperdicio eléctrico, sin incluir el costo de reparaciones por quemado prematuro de compresores debido a vibraciones y caídas de tensión.
+                    El supuesto "ahorro" de 2.600 USD obtenido por el contratista al comprar unidades monofásicas se evaporó en apenas <strong>12.7 meses de operación</strong>. A los 15 años de servicio, la mala praxis le costará al propietario <strong>21.878 USD adicionales</strong> en desperdicio eléctrico, sin incluir el costo de reparaciones por quemado prematuro de compresores debido a vibraciones y caídas de tensión.
                 </p>
             </div>
         </article>
@@ -1232,7 +1232,7 @@
                 <div class="module-badge-num">06</div>
                 <div>
                     <h2 class="module-title">Dimensionamiento Solar Fotovoltaico (5.1 HSP) y Concretos GGBS Sidor</h2>
-                    <p class="module-desc">Horario: 11:15 AM a 11:50 AM &middot; Sistema Solar de 24.5 kWp para HVAC y Reducción del 37% de Carbono en Concretos Locales</p>
+                    <p class="module-desc">Sistema Solar de 24.5 kWp para HVAC y Reducción del 37% de Carbono en Concretos Locales</p>
                 </div>
             </div>
 
@@ -1242,7 +1242,7 @@
 
             <h3 class="academic-h3">☀️ 1. Dimensionamiento Solar Fotovoltaico para los 16 TR de Climatización</h3>
             <p class="academic-p">
-                Ciudad Guayana presenta un promedio anual de <strong>Horas Solar Pico (HSP) de 5.1 kWh/m²/día</strong> con una inclinación óptima de paneles de 10° orientados al Sur. Para abastecer el 100% de la demanda diurna del sistema HVAC de alta eficiencia (Caso A, que consume aproximadamente $100\text{ kWh/día}$ de faena):
+                Ciudad Guayana presenta un promedio anual de <strong>Horas Solar Pico (HSP) de 5.1 kWh/m²/día</strong> con una inclinación óptima de paneles de 10° orientados al Sur. Para abastecer el 100% de la demanda diurna del sistema HVAC de alta eficiencia (Caso A, que consume aproximadamente <strong>100 kWh/día</strong> de faena):
             </p>
 
             <div class="math-box">
@@ -1309,7 +1309,7 @@
                 <div class="module-badge-num">07</div>
                 <div>
                     <h2 class="module-title">Simulador Interactivo HVAC &amp; Generador de Memoria de Cálculo</h2>
-                    <p class="module-desc">Horario: 11:50 AM a 12:30 PM &middot; Experimentación Dinámica de Acometidas, Caída de Tensión, Desbalance y Exportación Pericial</p>
+                    <p class="module-desc">Experimentación Dinámica de Acometidas, Caída de Tensión, Desbalance y Exportación Pericial</p>
                 </div>
             </div>
 

@@ -612,6 +612,152 @@
             box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
         }
 
+        /* ABP COCKPIT & CRITERIA CHECKLIST */
+        .pillar-cockpit-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: border-color 0.2s;
+        }
+        .pillar-cockpit-card:hover { border-color: #94a3b8; }
+        .pillar-cockpit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .pillar-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pillar-title-text {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--navy-primary);
+        }
+        .pillar-weight-badge {
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .pillar-score-display {
+            font-family: var(--font-mono);
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--emerald-dark);
+            background: #ecfdf5;
+            padding: 4px 12px;
+            border-radius: 8px;
+            border: 1px solid #a7f3d0;
+        }
+        .criteria-checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .criteria-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            user-select: none;
+        }
+        .criteria-item:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .criteria-item.active {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+        .criteria-checkbox {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--emerald);
+            cursor: pointer;
+        }
+        .criteria-body { flex: 1; }
+        .criteria-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .criteria-pts-badge {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 800;
+            background: #e2e8f0;
+            color: #334155;
+            padding: 2px 7px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .criteria-item.active .criteria-pts-badge {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .criteria-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            line-height: 1.45;
+        }
+        .abp-explanation-panel {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 20px 22px;
+            margin-top: 22px;
+        }
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+        .exp-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .exp-card-title {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .exp-card-body {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #475569;
+        }
+
         /* GRID CARDS */
         .cards-grid-3 {
             display: grid;
@@ -747,7 +893,7 @@
                 <button type="button" class="step-btn active" onclick="goToStep(1)" id="stepBtn-1">
                     <span class="step-num">1</span>
                     <div class="step-info">
-                        <span class="step-tag">01:15 - 01:50 PM</span>
+                        <span class="step-tag">MÓDULO 01</span>
                         <span class="step-name">Ontología &amp; LCA EN 15978</span>
                     </div>
                 </button>
@@ -755,7 +901,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(2)" id="stepBtn-2">
                     <span class="step-num">2</span>
                     <div class="step-info">
-                        <span class="step-tag">01:50 - 02:30 PM</span>
+                        <span class="step-tag">MÓDULO 02</span>
                         <span class="step-name">Bioclimática Guayana</span>
                     </div>
                 </button>
@@ -763,7 +909,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(3)" id="stepBtn-3">
                     <span class="step-num">3</span>
                     <div class="step-info">
-                        <span class="step-tag">02:30 - 03:15 PM</span>
+                        <span class="step-tag">MÓDULO 03</span>
                         <span class="step-name">LEED v5 vs EDGE Buildings</span>
                     </div>
                 </button>
@@ -771,7 +917,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(4)" id="stepBtn-4">
                     <span class="step-num">4</span>
                     <div class="step-info">
-                        <span class="step-tag">03:15 - 03:55 PM</span>
+                        <span class="step-tag">MÓDULO 04</span>
                         <span class="step-name">Finanzas &amp; Bonos Verdes</span>
                     </div>
                 </button>
@@ -779,7 +925,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(5)" id="stepBtn-5">
                     <span class="step-num">5</span>
                     <div class="step-info">
-                        <span class="step-tag">03:55 - 04:35 PM</span>
+                        <span class="step-tag">MÓDULO 05</span>
                         <span class="step-name">IEQ, Salud &amp; Ocupantes</span>
                     </div>
                 </button>
@@ -787,7 +933,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(6)" id="stepBtn-6">
                     <span class="step-num">6</span>
                     <div class="step-info">
-                        <span class="step-tag">04:35 - 05:05 PM</span>
+                        <span class="step-tag">MÓDULO 06</span>
                         <span class="step-name">Criterios ESG en Licitaciones</span>
                     </div>
                 </button>
@@ -795,7 +941,7 @@
                 <button type="button" class="step-btn" onclick="goToStep(7)" id="stepBtn-7">
                     <span class="step-num">7</span>
                     <div class="step-info">
-                        <span class="step-tag">05:05 - 05:45 PM</span>
+                        <span class="step-tag">MÓDULO 07</span>
                         <span class="step-name">Taller ABP &amp; Matriz ESG</span>
                     </div>
                 </button>
@@ -814,7 +960,7 @@
                 <div class="module-badge-num">01</div>
                 <div>
                     <h2 class="module-title">Definición Ontológica de la Sostenibilidad &amp; Ciclo de Vida LCA (EN 15978)</h2>
-                    <p class="module-desc">Horario: 01:15 PM a 01:50 PM &middot; Desmontaje del Greenwashing, Límites Planetarios y Fases Normativas A1 a D</p>
+                    <p class="module-desc">Desmontaje del Greenwashing, Límites Planetarios y Fases Normativas A1 a D</p>
                 </div>
             </div>
 
@@ -822,8 +968,20 @@
                 En la práctica contemporánea de la ingeniería civil y la gerencia de proyectos, la sostenibilidad trasciende con creces la adopción cosmética de vegetación ornamental o la simple incorporación de paneles solares sobre edificaciones energéticamente ineficientes. Desde una perspectiva ontológica y termodinámica, la edificación sostenible debe conceptualizarse como un <strong>sistema termodinámico abierto y transitorio</strong> que intercambia flujos continuos de materia, energía, entropía e información con la biosfera a lo largo de todas sus fases temporales de existencia. El imperativo técnico radica en desacoplar el crecimiento y la habitabilidad humana del agotamiento irreversible del capital natural y la degradación climática global.
             </p>
 
+            <div class="callout-box" style="background:#f0f9ff; border-left:4px solid #0284c7; padding:16px 20px; border-radius:8px; margin:18px 0;">
+                <div style="font-weight:800; color:#0369a1; font-size:15px; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                    <span>🏛️</span> ¿Qué significa el Enfoque "Ontológico" en la Construcción Sostenible?
+                </div>
+                <p style="font-size:13.5px; line-height:1.6; color:#1e293b; margin-bottom:8px;">
+                    Etimológicamente, la palabra <strong>Ontología</strong> proviene de las voces griegas <em>ontos</em> (&oacute;ντος: el ser, la entidad, la realidad sustancial) y <em>logos</em> (λóγος: estudio, ciencia, razón estructurada). En epistemología técnica y filosofía de la ciencia, la ontología estudia <strong>la naturaleza y existencia real de las cosas en sí mismas</strong>, distinguiéndolas de apariencias cosméticas o discursos comerciales.
+                </p>
+                <p style="font-size:13.5px; line-height:1.6; color:#1e293b; margin:0;">
+                    <strong>Aplicación en Ingeniería Civil:</strong> Pasar de un enfoque tradicional a una perspectiva <em>ontológica</em> de la sostenibilidad exige evaluar la edificación por lo que física y termodinámicamente <strong>ES</strong>: una estructura material sujeta a balances irreversibles de masa, energía y entropía. Por ende, la sostenibilidad real no es un adorno publicitario (<em>greenwashing</em>), sino una verdad medible a través del <strong>Análisis de Ciclo de Vida (LCA)</strong> normalizado por <strong>ISO 14040 / ISO 14044</strong> y la norma europea <strong>EN 15978</strong> a lo largo de sus 17 etapas de balance de carbono.
+                </p>
+            </div>
+
             <p class="academic-p">
-                Para erradicar la ambigüedad y la simulación corporativa conocida como <em>greenwashing</em>, la ingeniería de costos e inspección de obras en Venezuela y el mundo adopta el <strong>Análisis de Ciclo de Vida (LCA - Life Cycle Assessment)</strong> estandarizado formalmente por las normas internacionales <strong>ISO 14040, ISO 14044 y la norma europea de referencia EN 15978</strong> (<em>Sostenibilidad en obras de construcción - Evaluación del comportamiento ambiental de los edificios</em>). Bajo este estándar riguroso, toda obra de construcción divide sus impactos ambientales en cuatro grandes etapas y diecisiete módulos metodológicos claramente delimitados:
+                Para erradicar la ambigüedad y la simulación corporativa conocida como <em>greenwashing</em>, la ingeniería de costos e inspección de obras en Venezuela y el mundo adopta el <strong>Análisis de Ciclo de Vida (LCA - Life Cycle Assessment)</strong> estandarizado formalmente por las normas internacionales <strong>ISO</strong> (<em>International Organization for Standardization</em> / Organización Internacional de Normalización, normas ISO 14040 e ISO 14044) y la norma europea de referencia <strong>EN 15978</strong> (<em>European Norm</em> / Norma Europea del Comité Europeo de Normalización CEN: <em>Sostenibilidad en obras de construcción - Evaluación del comportamiento ambiental de los edificios</em>). Bajo este estándar riguroso, toda obra de construcción divide sus impactos ambientales en cuatro grandes etapas y diecisiete módulos metodológicos claramente delimitados:
             </p>
 
             <div class="table-responsive">
@@ -887,7 +1045,7 @@
                 <div class="module-badge-num">02</div>
                 <div>
                     <h2 class="module-title">Principios del Diseño Bioclimático Pasivo en Clima Tropical Cálido-Húmedo</h2>
-                    <p class="module-desc">Horario: 01:50 PM a 02:30 PM &middot; Orientación Heliodon, Ventilación Inductiva, Envolvente Térmica y Cosecha Pluvial</p>
+                    <p class="module-desc">Orientación Heliodon, Ventilación Inductiva, Envolvente Térmica y Cosecha Pluvial</p>
                 </div>
             </div>
 
@@ -914,15 +1072,15 @@
 
                 <div class="card-feat">
                     <span class="card-feat-icon">🛡️</span>
-                    <h3 class="card-feat-title">3. Envolvente de Alto SRI</h3>
+                    <h3 class="card-feat-title">3. Envolvente de Alto SRI (Solar Reflectance Index)</h3>
                     <p class="card-feat-text">
-                        Aplicación de recubrimientos atérmicos y membranas de techo con Índice de Reflectancia Solar (SRI &ge; 82). El uso de techos fríos evita que las losas de concreto o cubiertas metálicas alcancen los 70°C superficiales, reduciendo el flujo conductivo descendente de calor hacia el interior habitable.
+                        El <strong>SRI (Solar Reflectance Index - Índice de Reflectancia Solar)</strong> mide la capacidad de una superficie para rechazar el calor solar (escala 0 a 100+ según ASTM E1980), combinando reflectancia y emitancia térmica. Membranas de techo con SRI &ge; 82 evitan que los techos alcancen los 70°C superficiales, reduciendo drásticamente la conducción térmica hacia el interior.
                     </p>
                 </div>
             </div>
 
             <p class="academic-p">
-                El control de la transmitancia térmica ($U$-value) de cerramientos exteriores es mandatorio. El uso de bloques de arcilla perforados o paneles de concreto celular aligerado con cámaras de aire intermedias abate la ganancia térmica sensible hasta en un 40% respecto a los muros macizos de concreto armado no aislados. Asimismo, los vidrios deben seleccionarse no por su tinte oscuro estético, sino por su <strong>Coeficiente de Ganancia de Calor Solar (SHGC &le; 0.30)</strong> y su factor de transmisión luminosa visible (VLT &ge; 0.50), garantizando luz diurna natural sin incurrir en una carga de enfriamiento insostenible para el chiller o los splits.
+                El control de la <strong>Transmitancia Térmica (Valor U / U-Value expresado en W/m²·K)</strong> de cerramientos exteriores es mandatorio. El uso de bloques de arcilla perforados o paneles de concreto celular aligerado con cámaras de aire intermedias abate la ganancia térmica sensible hasta en un 40% respecto a los muros macizos de concreto armado no aislados. Asimismo, los vidrios deben seleccionarse no por su tinte oscuro estético, sino por su <strong>Coeficiente de Ganancia de Calor Solar (SHGC - Solar Heat Gain Coefficient &le; 0.30)</strong> y su <strong>Transmitancia de Luz Visible (VLT - Visible Light Transmittance &ge; 0.50)</strong>, garantizando luz diurna natural sin incurrir en una carga de enfriamiento insostenible para el chiller o los splits.
             </p>
 
             <div class="callout-box callout-blue">
@@ -941,7 +1099,7 @@
                 <div class="module-badge-num">03</div>
                 <div>
                     <h2 class="module-title">Normas y Certificaciones Internacionales: LEED v5 vs EDGE Buildings</h2>
-                    <p class="module-desc">Horario: 02:30 PM a 03:15 PM &middot; El Giro de LEED v5 hacia la Descarbonización neta y la Agilidad Cuantitativa de EDGE</p>
+                    <p class="module-desc">El Giro de LEED v5 hacia la Descarbonización Neta y la Agilidad Cuantitativa de EDGE</p>
                 </div>
             </div>
 
@@ -949,12 +1107,22 @@
                 Los sistemas de certificación ambiental de edificaciones han evolucionado desde listas de verificación genéricas hacia sofisticados protocolos de aseguramiento técnico y financiero. Para un gerente de obras, comprender la taxonomía, las categorías de crédito y los mecanismos de verificación de estas normas es indispensable para formular ofertas técnicas competitivas y optar a financiamiento con fondos de inversión multilateral.
             </p>
 
+            <div class="callout-box" style="background:#f8fafc; border-left:4px solid #64748b; padding:14px 18px; border-radius:8px; margin:16px 0;">
+                <strong>📚 Glosario Normativo Fundamental: Normas Técnicas vs. Sellos de Certificación</strong>
+                <p style="margin-top:6px; font-size:13.5px; line-height:1.6; color:#334155;">
+                    &bull; <strong>ISO (International Organization for Standardization - Organización Internacional de Normalización):</strong> Federación mundial independiente que elabora estándares globales (ej. ISO 14040/14044 para Ciclo de Vida LCA, ISO 19650 para Gestión de Información BIM).<br>
+                    &bull; <strong>EN (European Norm - Norma Europea):</strong> Estándares ratificados por el Comité Europeo de Normalización (CEN) de estricto rigor metodológico (ej. EN 15978 para sostenibilidad en edificación).<br>
+                    &bull; <strong>LEED (Leadership in Energy and Environmental Design - Liderazgo en Energía y Diseño Ambiental):</strong> Sistema de certificación voluntario creado por el USGBC (<em>U.S. Green Building Council</em>) y auditado por GBCI (<em>Green Business Certification Inc.</em>).<br>
+                    &bull; <strong>EDGE (Excellence in Design for Greater Efficiencies - Excelencia en Diseño para Mayores Eficiencias):</strong> Estándar y software de certificación del IFC (<em>International Finance Corporation</em> / Corporación Financiera Internacional), miembro del Grupo Banco Mundial (<em>World Bank Group</em>).
+                </p>
+            </div>
+
             <h3 class="academic-h3">🌿 LEED v5 (USGBC / GBCI 2025-2026): El Enfoque Radical en Descarbonización</h3>
             <p class="academic-p">
                 La quinta versión del estándar de mayor difusión global (Leadership in Energy and Environmental Design) redefine las prioridades del sector constructor asignando <strong>más del 50% de su puntaje total a la descarbonización climática directa</strong>, discriminada en mitigación de carbono operacional (reducción drástica de kWh y electrificación) y reducción de carbono embebido en materiales estructurales. El sistema se estructura en una escala de 100 puntos base más 10 puntos de innovación y prioridad regional, manteniendo los cuatro niveles de certificación vigentes:
             </p>
 
-            <div class="cards-grid-3">
+            <div class="cards-grid-3" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
                 <div class="card-feat" style="border-left: 4px solid #94a3b8;">
                     <span class="badge" style="background: #e2e8f0; color: #334155;">40 - 49 Puntos</span>
                     <h4 class="card-feat-title" style="margin-top: 8px;">LEED Certified</h4>
@@ -971,6 +1139,12 @@
                     <span class="badge badge-amber">60 - 79 Puntos</span>
                     <h4 class="card-feat-title" style="margin-top: 8px;">LEED Gold (Oro)</h4>
                     <p class="card-feat-text">Estándar de referencia institucional. Exige reducción superior al 30% en carbono operacional, generación renovable in-situ, comisionamiento reforzado y desvío de RCD &ge; 75%.</p>
+                </div>
+
+                <div class="card-feat" style="border-left: 4px solid #059669;">
+                    <span class="badge" style="background: #d1fae5; color: #065f46;">&ge; 80 Puntos</span>
+                    <h4 class="card-feat-title" style="margin-top: 8px;">LEED Platinum (Platino)</h4>
+                    <p class="card-feat-text">Máxima cúspide de desempeño bioclimático global. Demuestra descarbonización neta, comisionamiento total de envolvente, 100% agua tratada in-situ y liderazgo tecnológico regional.</p>
                 </div>
             </div>
 
@@ -1025,7 +1199,7 @@
                 <div class="module-badge-num">04</div>
                 <div>
                     <h2 class="module-title">Finanzas Sostenibles, Retorno de Inversión y Bancabilidad Multilateral</h2>
-                    <p class="module-desc">Horario: 03:15 PM a 03:55 PM &middot; CapEx Incremental vs OpEx, Bonos Verdes, CAF, BID e Incremento del Valor Patrimonial</p>
+                    <p class="module-desc">CapEx Incremental vs OpEx, Bonos Verdes, CAF, BID e Incremento del Valor Patrimonial</p>
                 </div>
             </div>
 
@@ -1050,15 +1224,15 @@
                     <tbody>
                         <tr>
                             <td><strong>CapEx Directo de Construcción</strong></td>
-                            <td>Línea Base 100% (\$650 / m²)</td>
-                            <td>+2.0% a +4.0% (\$665 - \$676 / m²)</td>
+                            <td>Línea Base 100% (650 USD / m²)</td>
+                            <td>+2.0% a +4.0% (665 a 676 USD / m²)</td>
                             <td>Inversión marginal compensada por ahorro de conductores y capacidad de chiller.</td>
                         </tr>
                         <tr>
                             <td><strong>OpEx Anual de Climatización y Agua</strong></td>
-                            <td>Línea Base 100% (\$42 / m² / año)</td>
-                            <td>-35% a -48% (\$22 - \$27 / m² / año)</td>
-                            <td>Ahorro neto acumulado proyectado a 20 años superior a \$320.000 USD.</td>
+                            <td>Línea Base 100% (42 USD / m² / año)</td>
+                            <td>-35% a -48% (22 a 27 USD / m² / año)</td>
+                            <td>Ahorro neto acumulado proyectado a 20 años superior a 320.000 USD.</td>
                         </tr>
                         <tr>
                             <td><strong>Tasa de Ocupación y Arrendamiento</strong></td>
@@ -1068,8 +1242,8 @@
                         </tr>
                         <tr>
                             <td><strong>Canon de Arrendamiento (Rent Premium)</strong></td>
-                            <td>Tarifa estándar de mercado (\$12 / m² / mes)</td>
-                            <td>Prima verde de +8% a +14% (\$13.20 - \$13.70)</td>
+                            <td>Tarifa estándar de mercado (12 USD / m² / mes)</td>
+                            <td>Prima verde de +8% a +14% (13.20 a 13.70 USD / m² / mes)</td>
                             <td>Incremento directo de la Tasa Interna de Retorno (TIR) inmobiliaria.</td>
                         </tr>
                         <tr>
@@ -1085,7 +1259,7 @@
             <div class="callout-box">
                 <strong>🏦 Bancabilidad Internacional y Bonos Verdes (Green Bonds):</strong>
                 <p style="margin-top: 6px; font-size: 13.5px;">
-                    Las instituciones multilaterales que financian infraestructura en la región (como el Banco Interamericano de Desarrollo - BID, el Banco de Desarrollo de América Latina - CAF y la IFC) mantienen mandatos estrictos de asignación de capital condicionados a taxonomías verdes (ICMA Green Bond Principles). Presentar un proyecto con pre-certificación EDGE o LEED abre líneas de crédito blando con períodos de gracia extendidos y subsidios de asistencia técnica para comisionamiento que no están disponibles para desarrollos tradicionales no certificados.
+                    Las instituciones multilaterales que financian infraestructura en la región (como el <strong>BID</strong> - Banco Interamericano de Desarrollo, <strong>CAF</strong> - Banco de Desarrollo de América Latina y el Caribe, y la <strong>IFC</strong> - Corporación Financiera Internacional del Grupo Banco Mundial) mantienen mandatos estrictos de asignación de capital condicionados a taxonomías verdes (<em>ICMA Green Bond Principles</em>). Presentar un proyecto con pre-certificación EDGE o LEED abre líneas de crédito blando con períodos de gracia extendidos y subsidios de asistencia técnica para comisionamiento que no están disponibles para desarrollos tradicionales no certificados.
                 </p>
             </div>
         </article>
@@ -1098,7 +1272,7 @@
                 <div class="module-badge-num">05</div>
                 <div>
                     <h2 class="module-title">Impacto Social, Calidad Ambiental Interior (IEQ) y Salud Ocupacional</h2>
-                    <p class="module-desc">Horario: 03:55 PM a 04:35 PM &middot; Ventilación ASHRAE 62.1, Control de COV, Confort Lumínico y Estrés Térmico en Obra</p>
+                    <p class="module-desc">Ventilación ASHRAE 62.1, Control de COV, Confort Lumínico y Estrés Térmico en Obra</p>
                 </div>
             </div>
 
@@ -1106,13 +1280,13 @@
                 La dimensión social de la sostenibilidad en la construcción abarca dos poblaciones complementarias: <strong>los trabajadores de faena durante la ejecución del proyecto</strong> y <strong>los ocupantes finales durante los 50 años de servicio del inmueble</strong>. Ignorar el factor humano invalida cualquier pretensión de sostenibilidad: un edificio con cero emisiones operacionales que enferme a sus usuarios o cuyas cuadrillas sufran accidentes y estrés térmico severo durante el vaciado de losas constituye un rotundo fracaso de la gerencia técnica de obras.
             </p>
 
-            <h3 class="academic-h3">🛡️ 1. Calidad Ambiental Interior (Indoor Environmental Quality - IEQ)</h3>
+            <h3 class="academic-h3">🛡️ 1. Calidad Ambiental Interior (IEQ - Indoor Environmental Quality)</h3>
             <p class="academic-p">
-                Los ocupantes pasan más del 85% de sus jornadas dentro de recintos construidos. De acuerdo con el estándar <strong>ASHRAE 62.1-2022 (Ventilación para Calidad Aceptable de Aire Interior)</strong>, la acumulación de dióxido de carbono por encima de 1.000 partes por millón (ppm) reduce la función cognitiva, la toma de decisiones complejas y la productividad laboral en más de un 18%, desencadenando el denominado <em>Síndrome del Edificio Enfermo</em>. Las especificaciones de obras sostenibles exigen tasas mínimas de inyección de aire exterior filtrado mediante unidades de filtración <strong>MERV 13 o superior</strong>, capaces de capturar partículas finas PM2.5 y polvillo industrial presente en las zonas adyacentes a las empresas básicas de Guayana.
+                Los ocupantes pasan más del 85% de sus jornadas dentro de recintos construidos. De acuerdo con el estándar de la <strong>ASHRAE</strong> (<em>American Society of Heating, Refrigerating and Air-Conditioning Engineers</em> / Sociedad Americana de Ingenieros de Calefacción, Refrigeración y Aire Acondicionado, norma <strong>ASHRAE 62.1-2022: Ventilación para Calidad Aceptable de Aire Interior</strong>), la acumulación de dióxido de carbono por encima de 1.000 partes por millón (ppm) reduce la función cognitiva, la toma de decisiones complejas y la productividad laboral en más de un 18%, desencadenando el denominado <em>Síndrome del Edificio Enfermo</em>. Las especificaciones de obras sostenibles exigen tasas mínimas de inyección de aire exterior filtrado mediante unidades de filtración <strong>MERV 13 o superior</strong> (<em>Minimum Efficiency Reporting Value</em> / Valor de Reporte de Eficiencia Mínima según ASHRAE 52.2), capaces de capturar partículas finas PM2.5 y polvillo industrial presente en las zonas adyacentes a las empresas básicas de Guayana.
             </p>
 
             <p class="academic-p">
-                Asimismo, la selección de materiales interiores debe limitar estrictamente las emisiones de <strong>Compuestos Orgánicos Volátiles (COV / VOC)</strong>. Las pinturas arquitectónicas, selladores elastoméricos para juntas de dilatación, impermeabilizantes asfálticos y adhesivos para baldosas deben cumplir con el estándar South Coast Air Quality Management District (SCAQMD Rule 1113 y Rule 1168), prohibiendo el uso de formaldehído añadido, benceno y solventes aromáticos clorados que degradan la salud pulmonar.
+                Asimismo, la selección de materiales interiores debe limitar estrictamente las emisiones de <strong>Compuestos Orgánicos Volátiles (COV en español / VOC en inglés: <em>Volatile Organic Compounds</em>)</strong>. Las pinturas arquitectónicas, selladores elastoméricos para juntas de dilatación, impermeabilizantes asfálticos y adhesivos para baldosas deben cumplir con el estándar South Coast Air Quality Management District (SCAQMD Rule 1113 y Rule 1168), prohibiendo el uso de formaldehído añadido, benceno y solventes aromáticos clorados que degradan la salud pulmonar.
             </p>
 
             <h3 class="academic-h3">☀️ 2. Confort Lumínico y Ergonómico</h3>
@@ -1123,7 +1297,7 @@
             <div class="callout-box callout-amber">
                 <strong>👷 Prevención de Estrés Térmico en Cuadrillas de Obra (Clima Guayana):</strong>
                 <p style="margin-top: 6px; font-size: 13.5px;">
-                    Bajo el sol de mediodía en Puerto Ordaz, con temperaturas de bulbo húmedo y globo (WBGT) que superan los 32°C, los obreros de enfierrado, encofrado y vaciado de concreto sufren riesgo crítico de golpe de calor, deshidratación aguda y pérdida de reflejos motrices (lo que multiplica la tasa de accidentes con maquinaria pesada). Cumpliendo con la norma técnica venezolana NT-01-2008 de la LOPCYMAT y los créditos de salud ocupacional de LEED v5, el plan de seguridad de la obra debe estipular:
+                    Bajo el sol de mediodía en Puerto Ordaz, con temperaturas de bulbo húmedo y globo (<strong>WBGT - Wet Bulb Globe Temperature</strong>) que superan los 32°C, los obreros de enfierrado, encofrado y vaciado de concreto sufren riesgo crítico de golpe de calor, deshidratación aguda y pérdida de reflejos motrices (lo que multiplica la tasa de accidentes con maquinaria pesada). Cumpliendo con la norma técnica venezolana NT-01-2008 de la <strong>LOPCYMAT</strong> (<em>Ley Orgánica de Prevención, Condiciones y Medio Ambiente de Trabajo</em>) y los créditos de salud ocupacional de LEED v5, el plan de seguridad de la obra debe estipular:
                     <br>&bull; <strong>Estaciones de hidratación isotónica refrigerada</strong> a no más de 30 metros de cualquier frente activo.
                     <br>&bull; <strong>Toldos de sombra móviles</strong> en azoteas y losas para pausas de recuperación física de 15 minutos cada 2 horas.
                     <br>&bull; <strong>Reprogramación de vaciados masivos</strong> hacia turnos nocturnos o de madrugada (04:00 AM a 09:00 AM), protegiendo simultáneamente la salud del personal y evitando la fisuración térmica del concreto joven.
@@ -1139,36 +1313,36 @@
                 <div class="module-badge-num">06</div>
                 <div>
                     <h2 class="module-title">Criterios ESG en Licitaciones Públicas y Privadas en Venezuela</h2>
-                    <p class="module-desc">Horario: 04:35 PM a 05:05 PM &middot; Environmental, Social &amp; Governance aplicados a Pliegos de Contratación de Obras</p>
+                    <p class="module-desc">Environmental, Social &amp; Governance aplicados a Pliegos de Contratación de Obras</p>
                 </div>
             </div>
 
             <p class="academic-p">
-                El ecosistema de contratación de ingeniería y construcción en Venezuela y a nivel regional está transitando de un modelo basado exclusivamente en el "menor precio ofertado" hacia esquemas colegiados de adjudicación por <strong>Mejor Valor Integral (Best Value)</strong>, en los cuales los factores <strong>ESG (Environmental, Social, and Governance)</strong> representan entre el 20% y el 35% de la ponderación de la oferta técnica en licitaciones privadas de empresas mixtas petroleras, mineras, industriales y multilaterales.
+                El ecosistema de contratación de ingeniería y construcción en Venezuela y a nivel regional está transitando de un modelo basado exclusivamente en el "menor precio ofertado" hacia esquemas colegiados de adjudicación por <strong>Mejor Valor Integral (Best Value)</strong>, en los cuales los factores <strong>ESG (Environmental, Social, and Governance - Criterios Ambientales, Sociales y de Gobernanza Corporativa)</strong> representan entre el 20% y el 35% de la ponderación de la oferta técnica en licitaciones privadas de empresas mixtas petroleras, mineras, industriales y multilaterales.
             </p>
 
             <div class="cards-grid-3">
                 <div class="card-feat">
-                    <span class="badge" style="background: #dcfce7; color: #166534;">Pilar E &middot; Environmental</span>
+                    <span class="badge" style="background: #dcfce7; color: #166534;">Pilar E &middot; Environmental (Ambiental)</span>
                     <h4 class="card-feat-title" style="margin-top: 8px;">Gestión Ambiental Rigurosa</h4>
                     <p class="card-feat-text">
-                        Plan de desvío y valorización de Residuos de Construcción y Demolición (RCD &ge; 50%). Protocolo de control de sedimentos y escorrentía para no contaminar afluentes del río Caroní. Uso de concretos bajos en carbono con escoria GGBS y sustitución de agregados de canteras vírgenes.
+                        Plan de desvío y valorización de Residuos de Construcción y Demolición (<strong>RCD</strong> &ge; 50%). Protocolo de control de sedimentos y escorrentía para no contaminar afluentes del río Caroní. Uso de concretos bajos en carbono con <strong>GGBS</strong> (<em>Ground Granulated Blast-Furnace Slag</em> / Escoria de alto horno de Sidor) y sustitución de agregados de canteras vírgenes.
                     </p>
                 </div>
 
                 <div class="card-feat">
-                    <span class="badge badge-blue">Pilar S &middot; Social</span>
+                    <span class="badge badge-blue">Pilar S &middot; Social (Social &amp; Laboral)</span>
                     <h4 class="card-feat-title" style="margin-top: 8px;">Compromiso Laboral y Comunitario</h4>
                     <p class="card-feat-text">
-                        Cumplimiento estricto de la LOPCYMAT (tasa de accidentabilidad cero). Contratación de mano de obra local calificada en las parroquias vecinas a la obra. Programas de formación técnica y paridad de oportunidades de género en cuadrillas de topografía y control de calidad.
+                        Cumplimiento estricto de la <strong>LOPCYMAT</strong> (tasa de accidentabilidad cero). Contratación de mano de obra local calificada en las parroquias vecinas a la obra. Programas de formación técnica y paridad de oportunidades de género en cuadrillas de topografía y control de calidad.
                     </p>
                 </div>
 
                 <div class="card-feat">
-                    <span class="badge badge-amber">Pilar G &middot; Governance</span>
+                    <span class="badge badge-amber">Pilar G &middot; Governance (Gobernanza)</span>
                     <h4 class="card-feat-title" style="margin-top: 8px;">Transparencia y Gobernanza CDE</h4>
                     <p class="card-feat-text">
-                        Trazabilidad digital de cómputos métricos y valuaciones de obra mediante un Entorno Común de Datos (CDE) conforme a la norma ISO 19650. Protocolo anticorrupción y homologación técnica de proveedores de insumos certificados.
+                        Trazabilidad digital de cómputos métricos y valuaciones de obra mediante un <strong>CDE (Common Data Environment - Entorno Común de Datos)</strong> conforme a la norma internacional <strong>ISO 19650</strong>. Protocolo anticorrupción y homologación técnica de proveedores de insumos certificados.
                     </p>
                 </div>
             </div>
@@ -1186,47 +1360,235 @@
                 <div class="module-badge-num">07</div>
                 <div>
                     <h2 class="module-title">Taller Práctico ABP: Matriz de Evaluación de Sostenibilidad y Certificación</h2>
-                    <p class="module-desc">Horario: 05:05 PM a 05:45 PM &middot; Simulador Interactivo de Puntuación ESG, LEED v5 / EDGE y Dictamen Pericial</p>
+                    <p class="module-desc">Simulador Paramétrico Multicriterio ESG, Equivalencias LEED v5 / EDGE Buildings y Dictamen Pericial</p>
                 </div>
             </div>
 
             <p class="academic-p">
-                <strong>Metodología Pedagógica:</strong> En esta estación práctica de cierre de jornada, los profesionales del diplomado asumen el rol de la <strong>Comisión Técnica Auditora de Sostenibilidad</strong> designada para evaluar la propuesta de modernización de una edificación comercial-institucional de 2.400 m² ubicada en el sector Alta Vista de Puerto Ordaz. El objetivo es ajustar los tres pilares de desempeño sustentable (Ambiental, Social y Gobernanza), verificar la calificación final obtenida (0 a 100 puntos), determinar qué nivel de certificación internacional alcanza (LEED v5 / EDGE Buildings) y emitir el dictamen vinculante de bancabilidad.
+                <strong>Metodología Pedagógica (ABP - Aprendizaje Basado en Proyectos / Project-Based Learning):</strong> En esta estación práctica de cierre de jornada, los profesionales del diplomado asumen el rol de la <strong>Comisión Técnica Auditora de Sostenibilidad</strong> designada para evaluar la propuesta de modernización de una edificación comercial-institucional de 2.400 m² ubicada en el sector Alta Vista de Puerto Ordaz. Seleccione las medidas de ingeniería implementadas en cada uno de los tres pilares (Ambiental, Social y Gobernanza), observe cómo se pondera en tiempo real el Score Global, explore las justificaciones técnicas detalladas de por qué se obtiene cada acreditación internacional y genere el acta pericial oficial.
             </p>
 
             <div class="esg-calculator-card">
-                <h3 style="font-size: 17px; font-weight: 800; color: var(--navy-primary); margin-bottom: 6px;">
-                    🎛️ Simulador Paramétrico: Matriz de Sostenibilidad ESG &middot; Caso Guayana
-                </h3>
-                <p style="font-size: 13px; color: var(--text-light); margin-bottom: 22px;">
-                    Modifique los controles deslizantes de los tres componentes para auditar la puntuación ponderada conforme a las mejores prácticas internacionales:
-                </p>
-
-                <!-- SLIDER AMBIENTAL -->
-                <div class="slider-group">
-                    <div class="slider-header">
-                        <span>🌱 Pilar Ambiental (E) &middot; Ponderación: 40% (Eficiencia HVAC, Solar, Concretos GGBS, Agua pluvial)</span>
-                        <span class="slider-val" id="esgEnvVal">85 pts</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px;">
+                    <div>
+                        <h3 style="font-size: 17px; font-weight: 800; color: var(--navy-primary); margin-bottom: 4px;">
+                            🎛️ Simulador Paramétrico Multicriterio: Matriz ESG Caso Guayana
+                        </h3>
+                        <p style="font-size: 13px; color: var(--text-light); margin: 0;">
+                            Active o desactive las medidas técnicas reales para auditar la puntuación ponderada y su impacto en comisionamiento:
+                        </p>
                     </div>
-                    <input type="range" min="0" max="100" value="85" class="custom-slider" id="esgEnvSlider" oninput="calculateEsgMatrix()">
+                    <div style="display:flex; gap:8px;">
+                        <button type="button" onclick="selectAllEsgCriteria(true)" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#334155; font-size:12px; font-weight:700; padding:6px 12px; border-radius:6px; cursor:pointer;">
+                            ✓ Seleccionar Todo
+                        </button>
+                        <button type="button" onclick="selectAllEsgCriteria(false)" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#334155; font-size:12px; font-weight:700; padding:6px 12px; border-radius:6px; cursor:pointer;">
+                            ✕ Reiniciar
+                        </button>
+                    </div>
                 </div>
 
-                <!-- SLIDER SOCIAL -->
-                <div class="slider-group">
-                    <div class="slider-header">
-                        <span>👥 Pilar Social (S) &middot; Ponderación: 35% (LOPCYMAT, IEQ ASHRAE 62.1, Estrés térmico, Empleo local)</span>
-                        <span class="slider-val" id="esgSocVal">80 pts</span>
+                <!-- PILAR AMBIENTAL (E) -->
+                <div class="pillar-cockpit-card">
+                    <div class="pillar-cockpit-header">
+                        <div class="pillar-title-wrap">
+                            <span style="font-size:22px;">🌱</span>
+                            <div>
+                                <span class="pillar-title-text">PILAR AMBIENTAL (E - Environmental)</span>
+                                <span class="pillar-weight-badge">Ponderación: 40% del Score Total</span>
+                            </div>
+                        </div>
+                        <div class="pillar-score-display">
+                            Subtotal E: <span id="esgEnvVal">85</span> / 100 pts &middot; Aporte: <span id="esgEnvWeighted">34.0</span> pts
+                        </div>
                     </div>
-                    <input type="range" min="0" max="100" value="80" class="custom-slider" id="esgSocSlider" oninput="calculateEsgMatrix()">
+                    <div class="slider-group" style="margin-bottom: 12px;">
+                        <input type="range" min="0" max="100" value="85" class="custom-slider" id="esgEnvSlider" oninput="syncSliderToCriteria('E')">
+                    </div>
+                    <div class="criteria-checklist" id="checklistE">
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'E', 25)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>E1. Climatización HVAC Trifásica Inverter (SEER ≥ 18 vs Monofásica On/Off)</span>
+                                    <span class="criteria-pts-badge">+25 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Control de caída de tensión CEN 200 (&lt;1.5%), eliminación de pérdidas Joule (-66%) y balance de fases simétrico.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'E', 25)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>E2. Envolvente Bioclimática & Vidrios Bajo SHGC con Techo Alto SRI</span>
+                                    <span class="criteria-pts-badge">+25 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Muros celulares aligerados, doble vidriado SHGC &le; 0.28 con VLT &ge; 0.55 y membrana de techo con SRI &ge; 82 (ASTM E1980).</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'E', 20)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>E3. Generación Solar Fotovoltaica In-Situ (HSP 5.1 Guayana)</span>
+                                    <span class="criteria-pts-badge">+20 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Arreglo solar en azotea de 24.5 kWp (45 módulos de 550W) para suministrar el 100% del consumo de climatización diurna.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item" onclick="toggleCriterion(this, 'E', 15)">
+                            <input type="checkbox" class="criteria-checkbox">
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>E4. Concretos de Cemento con Escoria GGBS Sidor (-37% CO₂ Embebido)</span>
+                                    <span class="criteria-pts-badge">+15 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Sustitución del 40% de clínker por escoria granulada siderúrgica según norma EN 15978 (Módulos de ciclo de vida A1-A3).</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'E', 15)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>E5. Cosecha Pluvial en Techo y Griferías de Ultra Bajo Consumo (1.28 GPF)</span>
+                                    <span class="criteria-pts-badge">+15 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Tanques de captación de lluvia (1.400 mm/año) para sanitarios y áreas verdes, reduciendo agua de red municipal en más de 45%.</div>
+                            </div>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- SLIDER GOBERNANZA -->
-                <div class="slider-group">
-                    <div class="slider-header">
-                        <span>⚖️ Pilar Gobernanza (G) &middot; Ponderación: 25% (CDE ISO 19650, Transparencia APU, Compliance)</span>
-                        <span class="slider-val" id="esgGovVal">75 pts</span>
+                <!-- PILAR SOCIAL (S) -->
+                <div class="pillar-cockpit-card">
+                    <div class="pillar-cockpit-header">
+                        <div class="pillar-title-wrap">
+                            <span style="font-size:22px;">👥</span>
+                            <div>
+                                <span class="pillar-title-text">PILAR SOCIAL (S - Social &amp; Salud Ocupacional)</span>
+                                <span class="pillar-weight-badge">Ponderación: 35% del Score Total</span>
+                            </div>
+                        </div>
+                        <div class="pillar-score-display">
+                            Subtotal S: <span id="esgSocVal">80</span> / 100 pts &middot; Aporte: <span id="esgSocWeighted">28.0</span> pts
+                        </div>
                     </div>
-                    <input type="range" min="0" max="100" value="75" class="custom-slider" id="esgGovSlider" oninput="calculateEsgMatrix()">
+                    <div class="slider-group" style="margin-bottom: 12px;">
+                        <input type="range" min="0" max="100" value="80" class="custom-slider" id="esgSocSlider" oninput="syncSliderToCriteria('S')">
+                    </div>
+                    <div class="criteria-checklist" id="checklistS">
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'S', 25)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>S1. Calidad de Aire Interior IEQ: Ventilación ASHRAE 62.1 y Filtros MERV 13</span>
+                                    <span class="criteria-pts-badge">+25 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Tasa de inyección exterior de aire filtrado, monitoreo continuo de CO₂ (&lt;800 ppm) y prevención del Síndrome del Edificio Enfermo.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'S', 20)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>S2. Materiales de Bajas Emisiones Químicas (Pinturas & Selladores Cero VOC)</span>
+                                    <span class="criteria-pts-badge">+20 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Cumplimiento del estándar SCAQMD Rule 1113/1168: sin solventes aromáticos, sin formaldehído ni benceno en interiores.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'S', 25)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>S3. Protocolo de Prevención de Estrés Térmico en Obra (LOPCYMAT & WBGT)</span>
+                                    <span class="criteria-pts-badge">+25 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Monitoreo WBGT &gt; 32°C, puntos de hidratación isotónica a &lt;30m, toldos móviles y vaciados de concreto nocturnos/madrugada.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item" onclick="toggleCriterion(this, 'S', 15)">
+                            <input type="checkbox" class="criteria-checkbox">
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>S4. Confort Lumínico Natural y Ergonómico (Daylighting FLN ≥ 2.5%)</span>
+                                    <span class="criteria-pts-badge">+15 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Luz diurna tamizada sin deslumbramiento, diseño ergonómico de puestos de trabajo y sincronización de ritmos circadianos.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'S', 15)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>S5. Mano de Obra Local Comunitaria & Plan Cero Accidentes</span>
+                                    <span class="criteria-pts-badge">+15 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Contratación en parroquias vecinas de Guayana, igualdad de oportunidades de género y plan de seguridad industrial certificado.</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- PILAR GOBERNANZA (G) -->
+                <div class="pillar-cockpit-card">
+                    <div class="pillar-cockpit-header">
+                        <div class="pillar-title-wrap">
+                            <span style="font-size:22px;">⚖️</span>
+                            <div>
+                                <span class="pillar-title-text">PILAR GOBERNANZA (G - Governance &amp; Transparencia)</span>
+                                <span class="pillar-weight-badge">Ponderación: 25% del Score Total</span>
+                            </div>
+                        </div>
+                        <div class="pillar-score-display">
+                            Subtotal G: <span id="esgGovVal">75</span> / 100 pts &middot; Aporte: <span id="esgGovWeighted">18.8</span> pts
+                        </div>
+                    </div>
+                    <div class="slider-group" style="margin-bottom: 12px;">
+                        <input type="range" min="0" max="100" value="75" class="custom-slider" id="esgGovSlider" oninput="syncSliderToCriteria('G')">
+                    </div>
+                    <div class="criteria-checklist" id="checklistG">
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'G', 30)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>G1. Entorno Común de Datos (CDE) en la Nube bajo Norma ISO 19650</span>
+                                    <span class="criteria-pts-badge">+30 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Trazabilidad de modelos federados BIM, control estricto de versiones de planos y bitácora de obra digital inalterable.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'G', 25)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>G2. Desagregación Rigurosa de APU & Valuaciones en Tiempo Real</span>
+                                    <span class="criteria-pts-badge">+25 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Cálculo transparente de cómputos métricos, rendimientos comprobables y auditoría sin partidas ocultas ni sobreprecios.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item" onclick="toggleCriterion(this, 'G', 25)">
+                            <input type="checkbox" class="criteria-checkbox">
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>G3. Homologación Ética y Cadena de Custodia de Proveedores</span>
+                                    <span class="criteria-pts-badge">+25 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Verificación fiscal, solvencias laborales, origen certificado de acero/cemento y política anticorrupción estricta.</div>
+                            </div>
+                        </label>
+                        <label class="criteria-item active" onclick="toggleCriterion(this, 'G', 20)">
+                            <input type="checkbox" class="criteria-checkbox" checked>
+                            <div class="criteria-body">
+                                <div class="criteria-title">
+                                    <span>G4. Compliance Contractual y Resolución Rápida de Disputas (Dispute Boards)</span>
+                                    <span class="criteria-pts-badge">+20 Pts</span>
+                                </div>
+                                <div class="criteria-desc">Mecanismos técnicos transparentes para dirimir reclamos de contratistas sin paralizar frentes de trabajo en faena.</div>
+                            </div>
+                        </label>
+                    </div>
                 </div>
 
                 <!-- RESULTADOS EN TIEMPO REAL -->
@@ -1240,19 +1602,67 @@
                     <div class="kpi-card">
                         <div class="kpi-title">Equivalencia LEED v5</div>
                         <div class="kpi-score" id="leedTierVal" style="color: #047857;">PLATINO</div>
-                        <span class="kpi-badge" style="background: #d1fae5; color: #064e3b;">&ge; 80 Puntos</span>
+                        <span class="kpi-badge" id="leedBadge" style="background: #d1fae5; color: #064e3b;">&ge; 80 Puntos</span>
                     </div>
 
                     <div class="kpi-card">
                         <div class="kpi-title">Clasificación EDGE</div>
                         <div class="kpi-score" id="edgeTierVal" style="color: #0284c7;">ZERO CARBON</div>
-                        <span class="kpi-badge" style="background: #e0f2fe; color: #0369a1;">Descarbonización Neta</span>
+                        <span class="kpi-badge" id="edgeBadge" style="background: #e0f2fe; color: #0369a1;">Descarbonización Neta</span>
                     </div>
 
                     <div class="kpi-card">
                         <div class="kpi-title">Bancabilidad Multilateral</div>
                         <div class="kpi-score" id="bankTierVal" style="color: #d97706; font-size: 20px;">ELEGIBLE A+</div>
-                        <span class="kpi-badge" style="background: #fef3c7; color: #92400e;">Bonos Verdes IFC/BID</span>
+                        <span class="kpi-badge" id="bankBadge" style="background: #fef3c7; color: #92400e;">Bonos Verdes IFC/BID</span>
+                    </div>
+                </div>
+
+                <!-- PANEL EXPLICATIVO INTERACTIVO: ¿DE DÓNDE SALE CADA RESULTADO? -->
+                <div class="abp-explanation-panel">
+                    <div style="font-weight: 800; color: var(--navy-primary); font-size: 15px; display: flex; align-items: center; gap: 8px;">
+                        <span>💡</span> ¿Por qué el proyecto obtiene esta Calificación? Desglose Explicativo Dinámico
+                    </div>
+                    <div class="explanation-grid">
+                        <div class="exp-card">
+                            <div class="exp-card-title">
+                                <span>📐</span> 1. Desglose Matemático Ponderado
+                            </div>
+                            <div class="exp-card-body" id="expFormulaBreakdown">
+                                <strong>Fórmula:</strong> Score = (E × 40%) + (S × 35%) + (G × 25%)<br>
+                                &bull; Ambiental: 85 × 0.40 = <strong>34.0 pts</strong><br>
+                                &bull; Social: 80 × 0.35 = <strong>28.0 pts</strong><br>
+                                &bull; Gobernanza: 75 × 0.25 = <strong>18.8 pts</strong><br>
+                                <strong>Total = 80.8 / 100 puntos</strong>
+                            </div>
+                        </div>
+
+                        <div class="exp-card">
+                            <div class="exp-card-title">
+                                <span>🌿</span> 2. Equivalencia LEED v5 (USGBC / GBCI)
+                            </div>
+                            <div class="exp-card-body" id="expLeedReason">
+                                <strong>Nivel Platino (≥ 80 pts):</strong> El proyecto supera el umbral más riguroso del estándar global. Demuestra descarbonización neta, comisionamiento reforzado de envolvente e instalaciones, y reducción drástica de emisiones de ciclo de vida.
+                            </div>
+                        </div>
+
+                        <div class="exp-card">
+                            <div class="exp-card-title">
+                                <span>⚡</span> 3. Clasificación EDGE Buildings (IFC)
+                            </div>
+                            <div class="exp-card-body" id="expEdgeReason">
+                                <strong>EDGE Zero Carbon (100% Descarbonización):</strong> Al superar el 40% de ahorro energético in-situ con respaldo solar fotovoltaico y más del 20% en agua y carbono embebido, califica para el nivel máximo de descarbonización neta.
+                            </div>
+                        </div>
+
+                        <div class="exp-card">
+                            <div class="exp-card-title">
+                                <span>🏦</span> 4. Bancabilidad Multilateral (BID / CAF / IFC)
+                            </div>
+                            <div class="exp-card-body" id="expBankReason">
+                                <strong>Elegible A+ (Bonos Verdes):</strong> Cumple cabalmente con los <em>Green Bond Principles</em> del ICMA. Aplica a créditos sindicados blandos con reducción de spread (150 a 300 puntos básicos menos en tasa de interés).
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1260,63 +1670,11 @@
                     <strong>✅ Dictamen Colegiado del Comité Auditor:</strong> La edificación califica de manera sobresaliente en los tres pilares de sostenibilidad. Demuestra cumplimiento ejemplar de la norma EN 15978 en reducción de carbono embebido, mitigación del carbono operacional mediante bioclimática y solidez ética en gobernanza de contratos de obra. Apto para financiamiento blando multilateral.
                 </div>
 
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px;">
                     <button type="button" class="btn-acta" onclick="generateTechnicalAct()">
                         <span>📋</span> Generar y Copiar Acta Técnica de Sostenibilidad (ABP)
                     </button>
-                    <button type="button" class="btn-acta" style="background: var(--surface-subtle); color: var(--navy-primary); border: 1px solid var(--border);" onclick="window.print()">
-                        <span>🖨️</span> Imprimir Ficha de Evaluación
-                    </button>
                 </div>
-            </div>
-
-            <h3 class="academic-h3">📊 Escala de Estimación y Rúbrica Pedagógica (20 Puntos UGMA)</h3>
-            <p class="academic-p">
-                La evaluación continua de la Unidad 3 se rige por la escala vigesimal universitaria reglamentaria, ponderada a través de cuatro criterios técnicos rigurosos:
-            </p>
-
-            <div class="table-responsive">
-                <table class="academic-table">
-                    <thead>
-                        <tr>
-                            <th>Criterio de Evaluación Técnica</th>
-                            <th>Ponderación</th>
-                            <th>Desempeño Sobresaliente (Excelente)</th>
-                            <th>Desempeño Aceptable (Suficiente)</th>
-                            <th>Desempeño Deficiente (Insuficiente)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. Dominio Conceptual y Ontológico del LCA</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Diferencia con precisión las etapas A1 a D de la norma EN 15978 y cuantifica el carbono embebido vs operacional sin caer en greenwashing.</td>
-                            <td>Conoce las etapas del ciclo de vida pero confunde la delimitación de módulos en la fase de mantenimiento B2-B4.</td>
-                            <td>Asocia sostenibilidad exclusivamente a ahorro eléctrico o jardinería superficial.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Adaptación Bioclimática al Clima de Guayana</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Calcula correctamente la orientación heliodon, protecciones solares de fachada, transmitancia de envolvente y ventilación inductiva para Guayana.</td>
-                            <td>Aplica principios de orientación pero omite el cálculo del Índice de Reflectancia Solar (SRI) o el aprovechamiento de vientos alisios.</td>
-                            <td>Propone cerramientos vidriados masivos sin protección solar en fachadas poniente.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Articulación de Normas LEED v5 y EDGE</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Compara exhaustivamente los requerimientos de descarbonización de LEED v5 y los umbrales cuantitativos del 20% de EDGE Buildings.</td>
-                            <td>Identifica los niveles de certificación pero desconoce los mecanismos de auditoría documental y software de modelado.</td>
-                            <td>No distingue entre una certificación por puntos ponderados (LEED) y una métrica cuantitativa (EDGE).</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4. Formulación de Criterios ESG y Bancabilidad</strong></td>
-                            <td>5.0 Pts</td>
-                            <td>Estructura un pliego licitatorio con salvaguardas ambientales reales, cumplimiento LOPCYMAT en faena y gobernanza de compras transparentes.</td>
-                            <td>Incorpora cláusulas ambientales y de seguridad pero de forma genérica sin indicadores clave verificables.</td>
-                            <td>Omite el impacto social de la obra y no contempla la trazabilidad ética de proveedores.</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </article>
 
@@ -1402,6 +1760,62 @@
             }
         }
 
+        // --- MANEJO INTERACTIVO DEL COCKPIT ABP MULTICRITERIO ---
+        function toggleCriterion(labelEl, pillar, pts) {
+            // El click en el label conmuta automáticamente el checkbox en navegadores
+            setTimeout(() => {
+                const cb = labelEl.querySelector('input[type="checkbox"]');
+                if (cb.checked) {
+                    labelEl.classList.add('active');
+                } else {
+                    labelEl.classList.remove('active');
+                }
+                recalculatePillarFromCheckboxes(pillar);
+            }, 10);
+        }
+
+        function recalculatePillarFromCheckboxes(pillar) {
+            const container = document.getElementById(`checklist${pillar}`);
+            if (!container) return;
+            let sum = 0;
+            const items = container.querySelectorAll('.criteria-item');
+            items.forEach(item => {
+                const cb = item.querySelector('input[type="checkbox"]');
+                if (cb && cb.checked) {
+                    const badge = item.querySelector('.criteria-pts-badge');
+                    if (badge) {
+                        const val = parseInt(badge.innerText.replace(/\D/g, ''), 10) || 0;
+                        sum += val;
+                    }
+                }
+            });
+            if (sum > 100) sum = 100;
+            const slider = document.getElementById(pillar === 'E' ? 'esgEnvSlider' : (pillar === 'S' ? 'esgSocSlider' : 'esgGovSlider'));
+            if (slider) slider.value = sum;
+            calculateEsgMatrix();
+        }
+
+        function syncSliderToCriteria(pillar) {
+            calculateEsgMatrix();
+        }
+
+        function selectAllEsgCriteria(selectAll) {
+            ['E', 'S', 'G'].forEach(pillar => {
+                const container = document.getElementById(`checklist${pillar}`);
+                if (!container) return;
+                const items = container.querySelectorAll('.criteria-item');
+                items.forEach(item => {
+                    const cb = item.querySelector('input[type="checkbox"]');
+                    if (cb) {
+                        cb.checked = selectAll;
+                        if (selectAll) item.classList.add('active');
+                        else item.classList.remove('active');
+                    }
+                });
+                recalculatePillarFromCheckboxes(pillar);
+            });
+        }
+
         // --- CÁLCULO DE LA MATRIZ DE EVALUACIÓN ESG Y CERTIFICACIONES ---
         function calculateEsgMatrix() {
             const envEl = document.getElementById('esgEnvSlider');
@@ -1410,64 +1824,134 @@
             const sVal = parseFloat(document.getElementById('esgSocSlider').value) || 0;
             const gVal = parseFloat(document.getElementById('esgGovSlider').value) || 0;
 
-            document.getElementById('esgEnvVal').innerText = `${eVal} pts`;
-            document.getElementById('esgSocVal').innerText = `${sVal} pts`;
-            document.getElementById('esgGovVal').innerText = `${gVal} pts`;
+            const eWeighted = (eVal * 0.40);
+            const sWeighted = (sVal * 0.35);
+            const gWeighted = (gVal * 0.25);
+            const total = eWeighted + sWeighted + gWeighted;
 
-            // Ponderación: 40% Ambiental, 35% Social, 25% Gobernanza
-            const total = (0.40 * eVal) + (0.35 * sVal) + (0.25 * gVal);
+            document.getElementById('esgEnvVal').innerText = `${Math.round(eVal)}`;
+            document.getElementById('esgEnvWeighted').innerText = `${eWeighted.toFixed(1)}`;
+            document.getElementById('esgSocVal').innerText = `${Math.round(sVal)}`;
+            document.getElementById('esgSocWeighted').innerText = `${sWeighted.toFixed(1)}`;
+            document.getElementById('esgGovVal').innerText = `${Math.round(gVal)}`;
+            document.getElementById('esgGovWeighted').innerText = `${gWeighted.toFixed(1)}`;
+
             document.getElementById('esgTotalScore').innerText = `${total.toFixed(1)} / 100`;
+
+            // Desglose de fórmula dinámico
+            const fEl = document.getElementById('expFormulaBreakdown');
+            if (fEl) {
+                fEl.innerHTML = `<strong>Fórmula:</strong> Score = (E × 40%) + (S × 35%) + (G × 25%)<br>` +
+                    `&bull; Ambiental (E): ${Math.round(eVal)} × 0.40 = <strong>${eWeighted.toFixed(1)} pts</strong><br>` +
+                    `&bull; Social (S): ${Math.round(sVal)} × 0.35 = <strong>${sWeighted.toFixed(1)} pts</strong><br>` +
+                    `&bull; Gobernanza (G): ${Math.round(gVal)} × 0.25 = <strong>${gWeighted.toFixed(1)} pts</strong><br>` +
+                    `<strong>Score Global Ponderado = ${total.toFixed(1)} / 100 pts</strong>`;
+            }
 
             const badgeEl = document.getElementById('esgScoreBadge');
             const leedEl = document.getElementById('leedTierVal');
+            const leedBadge = document.getElementById('leedBadge');
             const edgeEl = document.getElementById('edgeTierVal');
+            const edgeBadge = document.getElementById('edgeBadge');
             const bankEl = document.getElementById('bankTierVal');
+            const bankBadge = document.getElementById('bankBadge');
             const verdictEl = document.getElementById('esgVerdictBox');
+            const expLeed = document.getElementById('expLeedReason');
+            const expEdge = document.getElementById('expEdgeReason');
+            const expBank = document.getElementById('expBankReason');
 
+            // LEED Tier
+            if (total >= 80) {
+                leedEl.innerText = 'PLATINO';
+                leedEl.style.color = '#047857';
+                if (leedBadge) { leedBadge.innerText = '≥ 80 Puntos'; leedBadge.style.background = '#d1fae5'; leedBadge.style.color = '#064e3b'; }
+                if (expLeed) expLeed.innerHTML = `<strong>Nivel Platino (≥ 80 pts):</strong> El proyecto supera el umbral máximo de USGBC/GBCI con ${total.toFixed(1)} pts. Acredita descarbonización integral neta, comisionamiento reforzado de envolvente, HVAC de máxima eficiencia y gestión circular de residuos.`;
+            } else if (total >= 60) {
+                const gap = (80 - total).toFixed(1);
+                leedEl.innerText = 'ORO (GOLD)';
+                leedEl.style.color = '#d97706';
+                if (leedBadge) { leedBadge.innerText = '60 - 79 Puntos'; leedBadge.style.background = '#fef3c7'; leedBadge.style.color = '#92400e'; }
+                if (expLeed) expLeed.innerHTML = `<strong>Nivel Oro (60 - 79 pts):</strong> Obtiene certificación LEED Gold con ${total.toFixed(1)} pts. Acredita más del 30% de ahorro en carbono operacional. <em>Faltan ${gap} pts para alcanzar el nivel Platino</em> (se recomienda sumar autogeneración solar o concretos GGBS).`;
+            } else if (total >= 50) {
+                const gap = (60 - total).toFixed(1);
+                leedEl.innerText = 'PLATA (SILVER)';
+                leedEl.style.color = '#0284c7';
+                if (leedBadge) { leedBadge.innerText = '50 - 59 Puntos'; leedBadge.style.background = '#e0f2fe'; leedBadge.style.color = '#0369a1'; }
+                if (expLeed) expLeed.innerHTML = `<strong>Nivel Plata (50 - 59 pts):</strong> Cumple comisionamiento fundamental y ahorro base con ${total.toFixed(1)} pts. <em>Faltan ${gap} pts para LEED Oro</em>. Requiere incorporar filtración MERV 13 y protocolo de estrés térmico WBGT.`;
+            } else if (total >= 40) {
+                const gap = (50 - total).toFixed(1);
+                leedEl.innerText = 'CERTIFICADO';
+                leedEl.style.color = '#64748b';
+                if (leedBadge) { leedBadge.innerText = '40 - 49 Puntos'; leedBadge.style.background = '#f1f5f9'; leedBadge.style.color = '#334155'; }
+                if (expLeed) expLeed.innerHTML = `<strong>Nivel Certificado (40 - 49 pts):</strong> Apenas alcanza el umbral de entrada de 40 puntos. <em>Faltan ${gap} pts para Plata</em>. El proyecto presenta vulnerabilidades en envolvente térmica y falta de trazabilidad digital CDE.`;
+            } else {
+                const gap = (40 - total).toFixed(1);
+                leedEl.innerText = 'NO CERTIFICA';
+                leedEl.style.color = '#b91c1c';
+                if (leedBadge) { leedBadge.innerText = '< 40 Puntos'; leedBadge.style.background = '#fee2e2'; leedBadge.style.color = '#991b1b'; }
+                if (expLeed) expLeed.innerHTML = `<strong>No Certifica (< 40 pts):</strong> Con ${total.toFixed(1)} pts queda por debajo del umbral mínimo de 40 pts exigido por el USGBC. <em>Faltan ${gap} pts mínimos para certificar</em>.`;
+            }
+
+            // EDGE Tier
+            if (total >= 80) {
+                edgeEl.innerText = 'ZERO CARBON';
+                edgeEl.style.color = '#0284c7';
+                if (edgeBadge) { edgeBadge.innerText = '100% Descarbonización'; edgeBadge.style.background = '#e0f2fe'; edgeBadge.style.color = '#0369a1'; }
+                if (expEdge) expEdge.innerHTML = `<strong>EDGE Zero Carbon:</strong> Demuestra ≥40% de ahorro de energía in-situ y 100% de neutralidad con fuentes renovables locales (5.1 HSP Guayana), además de ≥20% en agua y carbono de materiales.`;
+            } else if (total >= 60) {
+                edgeEl.innerText = 'EDGE ADVANCED';
+                edgeEl.style.color = '#0284c7';
+                if (edgeBadge) { edgeBadge.innerText = '≥ 40% Ahorro Energía'; edgeBadge.style.background = '#e0f2fe'; edgeBadge.style.color = '#0369a1'; }
+                if (expEdge) expEdge.innerHTML = `<strong>EDGE Advanced (Alto Desempeño):</strong> Supera el 40% de ahorro energético sobre la línea base de Puerto Ordaz. Obtiene reducción de primas de seguro y sellos internacionales IFC.`;
+            } else if (total >= 40) {
+                edgeEl.innerText = 'EDGE CERTIFIED';
+                edgeEl.style.color = '#0284c7';
+                if (edgeBadge) { edgeBadge.innerText = '≥ 20% Ahorro Cuantitativo'; edgeBadge.style.background = '#e0f2fe'; edgeBadge.style.color = '#0369a1'; }
+                if (expEdge) expEdge.innerHTML = `<strong>EDGE Certified (Estándar):</strong> Cumple el umbral mínimo del 20% en energía, agua y carbono embebido. Elegible para líneas de crédito verde de la banca local.`;
+            } else {
+                edgeEl.innerText = 'BAJO UMBRAL';
+                edgeEl.style.color = '#b91c1c';
+                if (edgeBadge) { edgeBadge.innerText = '< 20% Ahorro'; edgeBadge.style.background = '#fee2e2'; edgeBadge.style.color = '#991b1b'; }
+                if (expEdge) expEdge.innerHTML = `<strong>Bajo Umbral EDGE:</strong> No alcanza el ahorro mínimo exigido del 20% respecto a la línea base local. Se descarta para validación por auditores EDGE del Banco Mundial.`;
+            }
+
+            // Bankability Tier
             if (total >= 80) {
                 badgeEl.innerText = 'SOBRESALIENTE';
                 badgeEl.style.background = '#dcfce7';
                 badgeEl.style.color = '#166534';
-                leedEl.innerText = 'PLATINO';
-                leedEl.style.color = '#047857';
-                edgeEl.innerText = 'ZERO CARBON';
-                edgeEl.style.color = '#0284c7';
                 bankEl.innerText = 'ELEGIBLE A+';
                 bankEl.style.color = '#047857';
-                verdictEl.innerHTML = `<strong>✅ Dictamen Colegiado del Comité Auditor (Score: ${total.toFixed(1)}):</strong> La edificación califica de manera sobresaliente en los tres pilares de sostenibilidad. Demuestra cumplimiento ejemplar de la norma EN 15978 en reducción de carbono embebido, mitigación del carbono operacional mediante bioclimática pasiva y solidez ética en gobernanza de contratos de obra. Apto para emisión de Bonos Verdes y financiamiento blando multilateral (IFC / BID).`;
+                if (bankBadge) { bankBadge.innerText = 'Bonos Verdes IFC/BID'; bankBadge.style.background = '#dcfce7'; bankBadge.style.color = '#166534'; }
+                if (expBank) expBank.innerHTML = `<strong>Elegible A+ (Bonos Verdes):</strong> Máxima solvencia técnica y reputacional. Aplica a emisión de Bonos Verdes con CAF, BID Invest e IFC con descuento de 150 a 300 puntos básicos (bps) en tasas de interés y períodos de gracia extendidos.`;
+                verdictEl.innerHTML = `<strong>✅ Dictamen Colegiado del Comité Auditor (Score: ${total.toFixed(1)} / 100):</strong> La edificación califica de manera sobresaliente en los tres pilares de sostenibilidad. Demuestra cumplimiento ejemplar de la norma EN 15978 en reducción de carbono embebido, mitigación del carbono operacional mediante bioclimática pasiva y solidez ética en gobernanza de contratos de obra. Apto para emisión de Bonos Verdes y financiamiento blando multilateral (IFC / BID / CAF).`;
             } else if (total >= 60) {
                 badgeEl.innerText = 'DESEMPEÑO SÓLIDO';
                 badgeEl.style.background = '#fef3c7';
                 badgeEl.style.color = '#92400e';
-                leedEl.innerText = 'ORO (GOLD)';
-                leedEl.style.color = '#d97706';
-                edgeEl.innerText = 'EDGE ADVANCED';
-                edgeEl.style.color = '#0284c7';
                 bankEl.innerText = 'ELEGIBLE B+';
                 bankEl.style.color = '#d97706';
-                verdictEl.innerHTML = `<strong>🌿 Dictamen Favorable Condicionado (Score: ${total.toFixed(1)}):</strong> El proyecto alcanza los rigurosos estándares de certificación LEED Gold y EDGE Advanced (&ge;40% de ahorro energético). Se recomienda reforzar el plan de salud ocupacional para faenas en horas de radiación cenital y asegurar la trazabilidad del acero reciclado en el Módulo D del LCA.`;
+                if (bankBadge) { bankBadge.innerText = 'Fondos Multilaterales'; bankBadge.style.background = '#fef3c7'; bankBadge.style.color = '#92400e'; }
+                if (expBank) expBank.innerHTML = `<strong>Elegible B+ (Fondos Sostenibles):</strong> Proyecto bancable con líneas de crédito verde de CAF y BID Invest. Requiere mantener comisionamiento independiente y auditoría semestral de residuos.`;
+                verdictEl.innerHTML = `<strong>🌿 Dictamen Favorable Condicionado (Score: ${total.toFixed(1)} / 100):</strong> El proyecto alcanza los rigurosos estándares de certificación LEED Gold y EDGE Advanced (&ge;40% de ahorro energético). Se recomienda reforzar el plan de salud ocupacional para faenas en horas de radiación cenital y asegurar la trazabilidad del acero reciclado en el Módulo D del LCA.`;
             } else if (total >= 50) {
                 badgeEl.innerText = 'CUMPLIMIENTO BÁSICO';
                 badgeEl.style.background = '#e0f2fe';
                 badgeEl.style.color = '#0369a1';
-                leedEl.innerText = 'PLATA / CERT.';
-                leedEl.style.color = '#0284c7';
-                edgeEl.innerText = 'EDGE ESTÁNDAR';
-                edgeEl.style.color = '#0284c7';
                 bankEl.innerText = 'EN REVISIÓN';
                 bankEl.style.color = '#0284c7';
-                verdictEl.innerHTML = `<strong>⚠️ Dictamen de Alerta Temprana (Score: ${total.toFixed(1)}):</strong> Cumple el umbral mínimo del 20% cuantitativo de EDGE y certifica en categorías base de LEED. Sin embargo, persisten brechas en calidad ambiental interior (IEQ) y falta de protocolos claros de prevención de estrés térmico bajo la LOPCYMAT.`;
+                if (bankBadge) { bankBadge.innerText = 'Auditoría Condicionada'; bankBadge.style.background = '#e0f2fe'; bankBadge.style.color = '#0369a1'; }
+                if (expBank) expBank.innerHTML = `<strong>En Revisión Condicionada:</strong> El desembolso financiero está sujeto a subsanar no conformidades en calidad ambiental interior (IEQ) y formalizar protocolos de seguridad ocupacional LOPCYMAT.`;
+                verdictEl.innerHTML = `<strong>⚠️ Dictamen de Alerta Temprana (Score: ${total.toFixed(1)} / 100):</strong> Cumple el umbral mínimo del 20% cuantitativo de EDGE y certifica en categorías base de LEED. Sin embargo, persisten brechas en calidad ambiental interior (IEQ) y falta de protocolos claros de prevención de estrés térmico bajo la LOPCYMAT.`;
             } else {
                 badgeEl.innerText = 'NO CONFORME';
                 badgeEl.style.background = '#fee2e2';
                 badgeEl.style.color = '#991b1b';
-                leedEl.innerText = 'NO CERTIFICA';
-                leedEl.style.color = '#b91c1c';
-                edgeEl.innerText = 'RECHAZADO';
-                edgeEl.style.color = '#b91c1c';
                 bankEl.innerText = 'NO BANCABLE';
                 bankEl.style.color = '#b91c1c';
-                verdictEl.innerHTML = `<strong>🚨 Dictamen No Conforme (Score: ${total.toFixed(1)}):</strong> La propuesta técnica incurre en severo greenwashing y altos pasivos ambientales. Incumple los parámetros mínimos de descarbonización y presenta deficiencias inaceptables en gobernanza contractual y seguridad en obra.`;
+                if (bankBadge) { bankBadge.innerText = 'Riesgo Ambiental Alto'; bankBadge.style.background = '#fee2e2'; bankBadge.style.color = '#991b1b'; }
+                if (expBank) expBank.innerHTML = `<strong>No Bancable (Riesgo Alto):</strong> Calificado con severo riesgo de greenwashing e incumplimiento normativo. Inelegible para financiamiento multilateral preferente.`;
+                verdictEl.innerHTML = `<strong>🚨 Dictamen No Conforme (Score: ${total.toFixed(1)} / 100):</strong> La propuesta técnica incurre en severo greenwashing y altos pasivos ambientales. Incumple los parámetros mínimos de descarbonización y presenta deficiencias inaceptables en gobernanza contractual y seguridad en obra.`;
             }
         }
 
@@ -1480,10 +1964,26 @@
             const edge = document.getElementById('edgeTierVal').innerText;
             const bank = document.getElementById('bankTierVal').innerText;
 
+            // Recopilar medidas seleccionadas
+            const selectedMeasures = [];
+            ['E', 'S', 'G'].forEach(p => {
+                const container = document.getElementById(`checklist${p}`);
+                if (container) {
+                    container.querySelectorAll('.criteria-item').forEach(item => {
+                        const cb = item.querySelector('input[type="checkbox"]');
+                        if (cb && cb.checked) {
+                            const title = item.querySelector('.criteria-title span').innerText;
+                            const pts = item.querySelector('.criteria-pts-badge').innerText;
+                            selectedMeasures.push(`  [✓] ${title} (${pts})`);
+                        }
+                    });
+                }
+            });
+
             const textAct = `====================================================================
-🏛️ UNIVERSIDAD GRAN MARISCAL DE AYACUCHO (UGMA)
-VICERRECTORADO DE INVESTIGACIÓN Y POSTGRADO &middot; COHORTE 2026
-ACTA TÉCNICA DE AUDITORÍA DE SOSTENIBILIDAD &amp; CRITERIOS ESG (ABP)
+🏛️ UNIVERSIDAD NORORIENTAL GRAN MARISCAL DE AYACUCHO (UGMA)
+VICERRECTORADO DE INVESTIGACIÓN Y POSTGRADO · COHORTE 2026
+ACTA TÉCNICA DE AUDITORÍA DE SOSTENIBILIDAD & CRITERIOS ESG (ABP)
 Cátedra: ConTech, Eficiencia Energética y Gerencia de Obras
 Profesor Titular: Ing. Héctor Mota Zorrilla
 ====================================================================
@@ -1491,21 +1991,26 @@ FECHA DE EMISIÓN: Viernes 30 de Octubre de 2026
 PROYECTO EVALUADO: Edificación Comercial-Institucional Alta Vista (2.400 m²)
 UBICACIÓN: Ciudad Guayana, Estado Bolívar, Venezuela
 
-RESULTADOS CUANTITATIVOS DEL MODELADO:
+MEDIDAS TÉCNICAS AUDITADAS Y VALIDADAS EN FAENA:
 --------------------------------------------------------------------
-&bull; Pilar Ambiental (E) [40%]: ${eVal} / 100 pts (LCA EN 15978, Envolvente, Cosecha Pluvial)
-&bull; Pilar Social (S) [35%]:    ${sVal} / 100 pts (IEQ ASHRAE 62.1, LOPCYMAT, Estrés Térmico)
-&bull; Pilar Gobernanza (G) [25%]: ${gVal} / 100 pts (CDE ISO 19650, APU, Ética Licitatoria)
+${selectedMeasures.join('\n')}
+
+RESULTADOS CUANTITATIVOS DEL MODELADO MULTICRITERIO:
 --------------------------------------------------------------------
-SCORE GLOBAL PONDERADO: ${total}
-CLASIFICACIÓN LEED v5:   ${leed}
-ESTÁNDAR EDGE IFC:       ${edge}
-DICTAMEN BANCABILIDAD:   ${bank}
+• Pilar Ambiental (E) [40%]: ${eVal} / 100 pts (LCA EN 15978, Envolvente, Solar, Cosecha Pluvial)
+• Pilar Social (S) [35%]:    ${sVal} / 100 pts (IEQ ASHRAE 62.1, LOPCYMAT, Estrés Térmico WBGT)
+• Pilar Gobernanza (G) [25%]: ${gVal} / 100 pts (CDE ISO 19650, APU, Ética Licitatoria)
+--------------------------------------------------------------------
+FÓRMULA PONDERADA: Score = (${eVal} × 0.40) + (${sVal} × 0.35) + (${gVal} × 0.25)
+SCORE GLOBAL PONDERADO:    ${total}
+CLASIFICACIÓN LEED v5:      ${leed} (USGBC / GBCI)
+ESTÁNDAR EDGE BUILDINGS:    ${edge} (IFC / Banco Mundial)
+DICTAMEN BANCABILIDAD:      ${bank} (Elegibilidad Bonos Verdes BID/CAF)
 
 DICTAMEN VINCULANTE:
 El Comité Técnico Colegiado dictamina que la propuesta cumple satisfactoriamente
-los principios de construcción sostenible, minimizando el carbono operacional
-y garantizando la resiliencia bioclimática de la infraestructura en el trópico.
+los principios ontológicos de construcción sostenible, minimizando el carbono operacional
+y garantizando la resiliencia bioclimática de la infraestructura en el trópico venezolano.
 
 Emitido para fines académicos y de evaluación de grado en la UGMA.
 ====================================================================`;
@@ -1513,7 +2018,7 @@ Emitido para fines académicos y de evaluación de grado en la UGMA.
             navigator.clipboard.writeText(textAct).then(() => {
                 alert('¡Acta Técnica de Sostenibilidad (ABP) copiada exitosamente al portapapeles!\n\nPuede pegarla en su reporte de evaluación o enviarla al facilitador.');
             }).catch(() => {
-                alert('Acta generada. Utilice la función de imprimir de la página para exportarla en PDF.');
+                alert('Acta generada exitosamente.');
             });
         }
 
