@@ -896,17 +896,21 @@
                 <div class="content-card">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
                         <div>
-                            <h3 style="margin:0;"><span>📋</span> Evaluaciones Prácticas y Entregas</h3>
+                            <h3 style="margin:0;"><span>📊</span> Evaluaciones Prácticas y Entregas</h3>
                             <p style="font-size:13.5px; color:var(--text-muted); margin-top:4px;">
-                                Seguimiento en tiempo real de exámenes de la Cátedra (Semana 1 openBIM/BCF y Unidad 4 Telecom Karuay-Waikirimá).
+                                Seguimiento oficial de calificaciones (0-20 Pts), estado de aprobación y tiempos de examen (Semana 1 openBIM/BCF y Semana 2 Telecom Karuay-Waikirimá).
                             </p>
                         </div>
                         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                             <select id="evalFilterCode" onchange="renderEvaluationsTable()" style="padding:8px 12px; border-radius:10px; border:1px solid #cbd5e1; font-size:12.5px; font-weight:700; background:#ffffff; color:var(--navy-primary); cursor:pointer;">
-                                <option value="ALL">🔍 Todas las Evaluaciones</option>
-                                <option value="EVAL-DIA-1-2">📋 Semana 1: openBIM &amp; BCF (20 Pts)</option>
-                                <option value="EVAL-U4-TELECOM">📡 U4: Telecom Karuay-Waikirimá (20 Pts)</option>
+                                <option value="ALL">📊 Todas las Evaluaciones (Semana 1 y 2)</option>
+                                <option value="EVAL-DIA-1-2">📋 Semana 1: openBIM &amp; BCF (Días 1 y 2)</option>
+                                <option value="EVAL-U4-TELECOM">📡 Semana 2: Telecom Karuay-Waikirimá (Días 3 y 4)</option>
                             </select>
+                            <label style="font-size:12px; display:inline-flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-muted); font-weight:600; background:#f8fafc; padding:7px 11px; border-radius:10px; border:1px solid #e2e8f0;">
+                                <input type="checkbox" id="evalHideTestAccounts" onchange="renderEvaluationsTable()">
+                                Ocultar pruebas facilitador
+                            </label>
                             <button type="button" id="btnToggleEvaluationCard" class="btn-refresh" style="background:#059669; color:#ffffff; border:1px solid #047857; font-weight:700;" onclick="toggleEvaluationCardStatus()">
                                 <span id="btnToggleEvaluationCardIcon">🟢</span> <span id="btnToggleEvaluationCardText">Habilitar Tarjeta Semana 1</span>
                             </button>
@@ -918,9 +922,6 @@
                             </a>
                             <button type="button" class="btn-refresh" onclick="loadEvaluations()">
                                 <span>🔄</span> Actualizar
-                            </button>
-                            <button type="button" class="btn-refresh" style="background:#fee2e2; color:#b91c1c; border:1px solid #fecaca;" onclick="resetEvaluationSubmissions()">
-                                <span>🗑️</span> Reiniciar Exámenes
                             </button>
                         </div>
                     </div>
@@ -964,20 +965,19 @@
                         <table class="admin-table">
                             <thead>
                                 <tr>
+                                    <th style="width:40px; text-align:center;">#</th>
                                     <th>Participante</th>
-                                    <th>Correo</th>
-                                    <th>Evaluación</th>
-                                    <th>Día 1 / Etapa 1</th>
-                                    <th>Día 2 / Etapa 2</th>
-                                    <th>Total (0-20)</th>
-                                    <th>Estado</th>
-                                    <th>Tiempo</th>
-                                    <th>Acciones</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>Examen / Módulo</th>
+                                    <th style="text-align:center;">Nota (0-20 Pts)</th>
+                                    <th style="text-align:center;">Estado</th>
+                                    <th style="text-align:center;">Tiempo</th>
+                                    <th>Fecha y Hora</th>
                                 </tr>
                             </thead>
                             <tbody id="evaluationsTableBody">
                                 <tr>
-                                    <td colspan="9" style="text-align:center; padding:24px; color:var(--text-light);">
+                                    <td colspan="8" style="text-align:center; padding:24px; color:var(--text-light);">
                                         Cargando entregas de evaluación...
                                     </td>
                                 </tr>
@@ -1239,10 +1239,18 @@
         const GRADES_KEY = 'ugma_student_grades';
 
         const DEFAULT_STUDENTS = [
-            { name: 'Ing. Carlos Mendoza', email: 'carlos.mendoza@alumnos.ugma.edu.ve', ci: 'V-20.123.456 (CIV 214.502)', role: 'Ing. Civil · Alumno UGMA', date: '18/10/2026' },
-            { name: 'Arq. Valentina Silva', email: 'valentina.silva@alumnos.ugma.edu.ve', ci: 'V-22.789.012 (CAV 8.910)', role: 'Arquitecta · Alumna UGMA', date: '19/10/2026' },
-            { name: 'Ing. Roberto Briceño', email: 'roberto.briceno@alumnos.ugma.edu.ve', ci: 'V-18.456.789 (CIV 198.320)', role: 'Ing. de Costos · Alumno UGMA', date: '19/10/2026' },
-            { name: 'Ing. María Elena Salazar', email: 'maria.salazar@alumnos.ugma.edu.ve', ci: 'V-21.345.678 (CIV 220.140)', role: 'Ing. Inspector · Alumna UGMA', date: '20/10/2026' }
+            { name: 'Ing. Valeria Restrepo', email: 'vagedia1@gmail.com', ci: 'V-Oficial', role: 'Ing. Civil · Alumna UGMA', date: '24/10/2026' },
+            { name: 'Lcdo. Carlos Eduardo Basantes', email: 'cmdte347bcepiar@gmai.com', ci: 'V-Oficial', role: 'Lcdo. / Gerencia · Alumno UGMA', date: '24/10/2026' },
+            { name: 'Ing. Migledys Betancourt', email: 'ingenieromigledysbetancourt@gmail.com', ci: 'V-Oficial', role: 'Ingeniera · Alumna UGMA', date: '24/10/2026' },
+            { name: 'Ing. Pierina Spagnolo', email: 'pierinaspagnolo.2119@gmail.com', ci: 'V-Oficial', role: 'Ingeniera · Alumna UGMA', date: '24/10/2026' },
+            { name: 'Ing. José Madrid', email: 'josemadridgallo2@gmail.com', ci: 'V-Oficial', role: 'Ingeniero · Alumno UGMA', date: '24/10/2026' },
+            { name: 'Ing. Daviana Fuenmayor', email: 'davianaf87@gmail.com', ci: 'V-Oficial', role: 'Ingeniera · Alumna UGMA', date: '24/10/2026' },
+            { name: 'Ing. Jhonatan Quiñones', email: 'jhonatanquinones19@gmail.com', ci: 'V-Oficial', role: 'Ingeniero · Alumno UGMA', date: '24/10/2026' },
+            { name: 'Ing. Alexis Gamardo', email: 'alexisgamardo1994@gmail.com', ci: 'V-Oficial', role: 'Ingeniero · Alumno UGMA', date: '24/10/2026' },
+            { name: 'Rosnnet Velasquez', email: 'rosnnet.v92@gmail.com', ci: 'V-Oficial', role: 'Participante · Alumna UGMA', date: '24/10/2026' },
+            { name: 'Ing. Diego Ezequiel Arellano Castellanos', email: 'diego.echekel1@gmail.com', ci: 'V-Oficial', role: 'Ingeniero · Alumno UGMA', date: '24/10/2026' },
+            { name: 'Maria de los Angeles Ruiz', email: 'maria.ruizadmon@gmail.com', ci: 'V-Oficial', role: 'Administración · Alumna UGMA', date: '29/10/2026' },
+            { name: 'Ing. Daniel Morales', email: 'gabomorals1@gmail.com', ci: 'V-Oficial', role: 'Ingeniero · Alumno UGMA', date: '24/10/2026' }
         ];
 
         const COURSE_MODULES = [
@@ -1314,16 +1322,18 @@
         function getStudentsList() {
             try {
                 let list = JSON.parse(localStorage.getItem(STUDENTS_KEY) || '[]');
-                if (list.length === 0) {
+                const hasDemoLegacy = list.some(s => s.email === 'carlos.mendoza@alumnos.ugma.edu.ve' || s.email === 'valentina.silva@alumnos.ugma.edu.ve');
+                if (list.length === 0 || hasDemoLegacy) {
                     list = [...DEFAULT_STUDENTS];
                     localStorage.setItem(STUDENTS_KEY, JSON.stringify(list));
                 }
+                list = list.filter(s => s.email !== 'hectormotazorrilla@gmail.com' && s.email !== 'alumno@ugma.edu.ve');
                 return list;
             } catch(e) { return DEFAULT_STUDENTS; }
         }
 
         async function resetStudentsDemo() {
-            if (!confirm('¿Estás seguro de reiniciar el listado de alumnos inscritos? Esto restablecerá los 4 alumnos oficiales de cátedra y limpiará la presencia en vivo.')) {
+            if (!confirm('¿Estás seguro de restablecer el listado oficial de alumnos inscritos con los 12 participantes registrados del diplomado?')) {
                 return;
             }
 
@@ -1340,7 +1350,7 @@
             loadStudentsTable();
             populateStudentSelect();
             if (typeof refreshLivePresences === 'function') refreshLivePresences();
-            alert('Listado de alumnos reiniciado exitosamente a los 4 estudiantes oficiales de cátedra.');
+            alert('Listado de alumnos restablecido exitosamente a los 12 participantes oficiales del diplomado.');
         }
 
         const resetStudentsList = resetStudentsDemo;
@@ -1944,14 +1954,20 @@
         function renderEvaluationsTable() {
             const filterEl = document.getElementById('evalFilterCode');
             const filterVal = filterEl ? filterEl.value : 'ALL';
+            const hideTestsEl = document.getElementById('evalHideTestAccounts');
+            const hideTests = hideTestsEl ? hideTestsEl.checked : false;
 
-            const filtered = currentEvalSubmissions.filter(s => {
+            let filtered = currentEvalSubmissions.filter(s => {
                 if (filterVal === 'ALL') return true;
                 if (filterVal === 'EVAL-DIA-1-2') {
                     return !s.evaluation_code || s.evaluation_code === 'EVAL-DIA-1-2';
                 }
                 return s.evaluation_code === filterVal;
             });
+
+            if (hideTests) {
+                filtered = filtered.filter(s => s.student_email !== 'hectormotazorrilla@gmail.com' && s.student_email !== 'alumno@ugma.edu.ve');
+            }
 
             // Update stats
             const total = filtered.length;
@@ -1969,12 +1985,13 @@
             if (!tbody) return;
 
             if (filtered.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:24px; color:var(--text-light);">No hay exámenes entregados para el filtro seleccionado.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:24px; color:var(--text-light);">No hay exámenes entregados para el filtro seleccionado.</td></tr>';
                 return;
             }
 
-            tbody.innerHTML = filtered.map(s => {
-                const isApproved = (parseFloat(s.total_score) || 0) >= 10;
+            tbody.innerHTML = filtered.map((s, idx) => {
+                const score = parseFloat(s.total_score) || 0;
+                const isApproved = score >= 10;
                 const statusBadge = isApproved 
                     ? `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#ecfdf5; color:#047857; font-size:11px; font-weight:800; border:1px solid #a7f3d0;">APROBADO</span>`
                     : `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#fef2f2; color:#b91c1c; font-size:11px; font-weight:800; border:1px solid #fecaca;">REPROBADO</span>`;
@@ -1985,33 +2002,38 @@
 
                 const isTelecom = s.evaluation_code === 'EVAL-U4-TELECOM';
                 const evalBadge = isTelecom
-                    ? `<span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#fef3c7; color:#92400e; font-size:10.5px; font-weight:800; border:1px solid #fde68a;">📡 U4 TELECOM</span>`
-                    : `<span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#e0f2fe; color:#0369a1; font-size:10.5px; font-weight:800; border:1px solid #bae6fd;">📋 SEMANA 1</span>`;
+                    ? `<span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#fef3c7; color:#92400e; font-size:11px; font-weight:800; border:1px solid #fde68a;">📡 Semana 2: Telecom Karuay (Días 3 y 4)</span>`
+                    : `<span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#e0f2fe; color:#0369a1; font-size:11px; font-weight:800; border:1px solid #bae6fd;">📋 Semana 1: openBIM &amp; BCF (Días 1 y 2)</span>`;
 
-                const d1Label = isTelecom ? 'Etapa 1' : 'Día 1';
-                const d2Label = isTelecom ? 'Etapa 2' : 'Día 2';
-                const inspectBtnText = isTelecom ? '🔍 Respuestas' : '🔍 BCF';
+                const isTestUser = (s.student_email === 'hectormotazorrilla@gmail.com' || s.student_email === 'alumno@ugma.edu.ve');
+                const testBadge = isTestUser 
+                    ? `<span style="display:inline-block; margin-left:6px; padding:2px 7px; border-radius:4px; font-size:10px; font-weight:700; background:#f1f5f9; color:#475569; border:1px solid #cbd5e1;">🧪 Facilitador (Prueba)</span>` 
+                    : '';
+
+                const rawDate = s.created_at || s.updated_at || s.graded_at || '';
+                let formattedDate = '—';
+                if (rawDate) {
+                    try {
+                        const d = new Date(rawDate.replace(' ', 'T'));
+                        formattedDate = !isNaN(d.getTime()) 
+                            ? d.toLocaleString('es-VE', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' })
+                            : rawDate;
+                    } catch(e) { formattedDate = rawDate; }
+                }
 
                 return `
                     <tr>
-                        <td><strong style="color:var(--navy-primary); font-size:13.5px;">${escapeHtml(s.student_name || 'Sin Nombre')}</strong></td>
-                        <td style="font-size:12px; color:var(--text-muted);">${escapeHtml(s.student_email || '')}</td>
-                        <td>${evalBadge}</td>
-                        <td style="font-family:var(--font-mono); font-weight:700; color:var(--blue-accent);">${s.score_day1} / 10 <span style="font-size:10px; color:var(--text-light); font-weight:400;">(${d1Label})</span></td>
-                        <td style="font-family:var(--font-mono); font-weight:700; color:var(--emerald);">${s.score_day2} / 10 <span style="font-size:10px; color:var(--text-light); font-weight:400;">(${d2Label})</span></td>
-                        <td><strong style="font-family:var(--font-mono); font-size:14px; color:var(--navy-primary);">${s.total_score} / 20</strong></td>
-                        <td>${statusBadge}</td>
-                        <td style="font-size:12px; font-family:var(--font-mono);">${timeStr}</td>
+                        <td style="font-weight:700; color:var(--text-light); text-align:center; width:40px;">${idx + 1}</td>
                         <td>
-                            <div style="display:flex; gap:6px;">
-                                <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" onclick="showBcfTicketModal(${s.id})">
-                                    ${inspectBtnText}
-                                </button>
-                                <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#f1f5f9; color:var(--text-main);" onclick="openGradeEvalModal(${s.id})">
-                                    ✏️ Nota
-                                </button>
-                            </div>
+                            <strong style="color:var(--navy-primary); font-size:13.5px;">${escapeHtml(s.student_name || 'Sin Nombre')}</strong>
+                            ${testBadge}
                         </td>
+                        <td style="font-size:12px; color:var(--text-muted);"><a href="mailto:${escapeHtml(s.student_email || '')}" style="color:var(--blue-accent); text-decoration:none;">${escapeHtml(s.student_email || '')}</a></td>
+                        <td>${evalBadge}</td>
+                        <td style="text-align:center;"><strong style="font-family:var(--font-mono); font-size:14px; color:${isApproved ? 'var(--emerald)' : 'var(--rose)'};">${score.toFixed(1)} / 20</strong></td>
+                        <td style="text-align:center;">${statusBadge}</td>
+                        <td style="text-align:center; font-size:12px; font-family:var(--font-mono); font-weight:700; color:var(--navy-primary);">${timeStr}</td>
+                        <td style="font-size:12px; color:var(--text-muted);">${formattedDate}</td>
                     </tr>
                 `;
             }).join('');

@@ -446,10 +446,18 @@ class UgmaController extends Controller
         UgmaStudent::query()->delete();
 
         $defaults = [
-            ['cedula' => 'V-20.123.456', 'nombre' => 'Ing. Carlos Mendoza', 'email' => 'carlos.mendoza@alumnos.ugma.edu.ve', 'specialty' => 'Ing. Civil · Alumno UGMA'],
-            ['cedula' => 'V-22.789.012', 'nombre' => 'Arq. Valentina Silva', 'email' => 'valentina.silva@alumnos.ugma.edu.ve', 'specialty' => 'Arquitecta · Alumna UGMA'],
-            ['cedula' => 'V-18.456.789', 'nombre' => 'Ing. Roberto Briceño', 'email' => 'roberto.briceno@alumnos.ugma.edu.ve', 'specialty' => 'Ing. de Costos · Alumno UGMA'],
-            ['cedula' => 'V-21.345.678', 'nombre' => 'Ing. María Elena Salazar', 'email' => 'maria.salazar@alumnos.ugma.edu.ve', 'specialty' => 'Ing. Inspector · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Valeria Restrepo', 'email' => 'vagedia1@gmail.com', 'specialty' => 'Ing. Civil · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Lcdo. Carlos Eduardo Basantes', 'email' => 'cmdte347bcepiar@gmai.com', 'specialty' => 'Lcdo. / Gerencia · Alumno UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Migledys Betancourt', 'email' => 'ingenieromigledysbetancourt@gmail.com', 'specialty' => 'Ingeniera · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Pierina Spagnolo', 'email' => 'pierinaspagnolo.2119@gmail.com', 'specialty' => 'Ingeniera · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. José Madrid', 'email' => 'josemadridgallo2@gmail.com', 'specialty' => 'Ingeniero · Alumno UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Daviana Fuenmayor', 'email' => 'davianaf87@gmail.com', 'specialty' => 'Ingeniera · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Jhonatan Quiñones', 'email' => 'jhonatanquinones19@gmail.com', 'specialty' => 'Ingeniero · Alumno UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Alexis Gamardo', 'email' => 'alexisgamardo1994@gmail.com', 'specialty' => 'Ingeniero · Alumno UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Rosnnet Velasquez', 'email' => 'rosnnet.v92@gmail.com', 'specialty' => 'Participante · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Diego Ezequiel Arellano Castellanos', 'email' => 'diego.echekel1@gmail.com', 'specialty' => 'Ingeniero · Alumno UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Maria de los Angeles Ruiz', 'email' => 'maria.ruizadmon@gmail.com', 'specialty' => 'Administración · Alumna UGMA'],
+            ['cedula' => 'V-Oficial', 'nombre' => 'Ing. Daniel Morales', 'email' => 'gabomorals1@gmail.com', 'specialty' => 'Ingeniero · Alumno UGMA'],
         ];
 
         foreach ($defaults as $s) {

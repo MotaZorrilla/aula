@@ -47,6 +47,7 @@ class GetEvaluationSubmissionsAction
                     'answers' => $e->answers_payload,
                     'instructor_feedback' => $e->instructor_feedback,
                     'graded_at' => $e->graded_at ? $e->graded_at->toDateTimeString() : null,
+                    'created_at' => $e->created_at ? $e->created_at->toDateTimeString() : null,
                     'updated_at' => $e->updated_at->toDateTimeString(),
                 ];
             }),
