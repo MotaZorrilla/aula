@@ -958,7 +958,7 @@
             .academic-p { text-indent: 1.4em; font-size: 14.5px; }
         }
     
-                                /* ================================================================= */
+                                        /* ================================================================= */
         /* MÓDULOS 8 Y 9: TALLER PRÁCTICO & EVALUACIÓN INTERACTIVA (V3)      */
         /* ================================================================= */
         .interactive-cockpit {
@@ -1522,6 +1522,200 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+
+
+/* ==========================================================================
+   ESTILOS V3: NAVBAR USUARIO ACTIVO & GUÍA TÉCNICA DE APOYO AL PARTICIPANTE
+   ========================================================================== */
+
+/* Badge de Usuario Activo en Navbar Superior */
+.nav-user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #166534;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+}
+
+.nav-user-badge:hover {
+    background: #dcfce7;
+    border-color: #4ade80;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.15);
+}
+
+.user-pulse-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #10b981;
+    display: inline-block;
+    box-shadow: 0 0 0 2px #d1fae5, 0 0 8px rgba(16, 185, 129, 0.7);
+    animation: pulseGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Identificación Estudiantil en Módulo de Evaluación */
+.student-identity-bar {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.student-identity-fields {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.student-input-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+.student-input-group input {
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-primary);
+    background: transparent;
+    width: 200px;
+}
+
+/* Guía Técnica y Criterios de Decisión para el Alumno */
+.student-guide-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 36px;
+    color: #f8fafc;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+}
+
+.student-guide-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.student-guide-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.student-guide-btn-toggle {
+    background: #1e293b;
+    border: 1px solid #475569;
+    color: #f1f5f9;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.student-guide-btn-toggle:hover {
+    background: #334155;
+    color: #38bdf8;
+}
+
+.student-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.student-guide-box {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #cbd5e1;
+    transition: border-color 0.2s;
+}
+
+.student-guide-box:hover {
+    border-color: #38bdf8;
+}
+
+.student-guide-box strong {
+    color: #f8fafc;
+    font-size: 13.5px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.student-guide-box span.guide-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Insignias Técnicas Neutrales */
+.res-option-badge-neutral {
+    font-size: 10.5px;
+    font-weight: 700;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+.res-option-card.selected .res-option-badge-neutral {
+    background: #dbeafe;
+    color: #1e40af;
+    border-color: #93c5fd;
+}
+
     </style>
 </head>
 <body>
@@ -1542,9 +1736,11 @@
                 <a href="/ugma-gerencia-obras/unidad-3-construcciones-sostenibles" class="nav-lab-link" style="background: var(--emerald-light); color: var(--emerald-dark); border-color: #a7f3d0;">
                     &larr; Unidad 3: Construcciones Sostenibles
                 </a>
-                <a href="https://lab.motazorrilla.com/bim" target="_blank" class="nav-lab-link">
-                    <span>🔬</span> Laboratorio ConTech 3D
-                </a>
+                <div id="navUserBadge" class="nav-user-badge" onclick="promptStudentLogin()" title="Identificación del Participante (Click para cambiar)">
+                    <span class="user-pulse-dot"></span>
+                    <span id="navUserNameDisplay">Ing. Participante</span>
+                    <span style="font-size:10.5px; background:#dcfce7; color:#15803d; padding:2px 7px; border-radius:9999px; font-weight:800; border:1px solid #bbf7d0;">EN LÍNEA</span>
+                </div>
             </div>
         </header>
 
@@ -2529,7 +2725,7 @@
             </div>
         </div>
 
-                                <!-- ================================================================= -->
+                                        <!-- ================================================================= -->
         <!-- MÓDULO 8: TALLER PRÁCTICO GUIADO – ALMACÉN TÉCNICO CLIMATIZADO   -->
         <!-- ================================================================= -->
         <article class="module-section" id="moduleSection-8">
@@ -2956,6 +3152,7 @@
             </div>
         </article>
 
+
         <!-- ================================================================= -->
         <!-- MÓDULO 9: EVALUACIÓN PRÁCTICA PERICIAL – TELECOM KARUAY-WAIKIRIMÁ -->
         <!-- ================================================================= -->
@@ -3034,11 +3231,11 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 14 días · 👥 4 pers.</span>
-                            <strong>$4.000 USD</strong>
+                            <strong>$3.500 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected" id="cardT1_lastrado" onclick="selectRadioVialidad('lastrado')">
+                    <div class="res-option-card" id="cardT1_lastrado" onclick="selectRadioVialidad('lastrado')">
                         <div class="res-option-header">
                             <span class="res-option-title">Escarificado, Lastrado &amp; Cunetas Concreto</span>
                             <span class="res-option-badge-neutral">Sub-base Lastrada</span>
@@ -3048,7 +3245,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 8 días · 👥 4 pers.</span>
-                            <strong>$9.800 USD</strong>
+                            <strong>$8.200 USD</strong>
                         </div>
                     </div>
 
@@ -3062,7 +3259,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 10 días · 👥 4 pers.</span>
-                            <strong>$6.800 USD</strong>
+                            <strong>$5.800 USD</strong>
                         </div>
                     </div>
 
@@ -3076,7 +3273,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 22 días · 👥 8 pers.</span>
-                            <strong>$24.000 USD</strong>
+                            <strong>$22.000 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -3096,7 +3293,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 8 días · 👥 4 pers.</span>
-                            <strong>$6.200 USD</strong>
+                            <strong>$4.800 USD</strong>
                         </div>
                     </div>
 
@@ -3110,11 +3307,11 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 7 días · 👥 4 pers.</span>
-                            <strong>$7.000 USD</strong>
+                            <strong>$4.800 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected" id="cardT2_sotavento" onclick="selectRadioImplantacion('sotavento')">
+                    <div class="res-option-card" id="cardT2_sotavento" onclick="selectRadioImplantacion('sotavento')">
                         <div class="res-option-header">
                             <span class="res-option-title">Implantación Escalonada a Sotavento</span>
                             <span class="res-option-badge-neutral">Abrigo a Sotavento</span>
@@ -3123,8 +3320,8 @@
                             Shelter resguardado tras espolón rocoso natural (reduce carga térmica eólica), torre en cota firme y campo solar elevado libre de sombras a 5.1 HSP.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 6 días · 👥 4 pers.</span>
-                            <strong>$7.800 USD</strong>
+                            <span>⏱️ 7 días · 👥 4 pers.</span>
+                            <strong>$6.400 USD</strong>
                         </div>
                     </div>
 
@@ -3138,7 +3335,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 12 días · 👥 6 pers.</span>
-                            <strong>$11.500 USD</strong>
+                            <strong>$10.500 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -3148,7 +3345,7 @@
                     <span>3️⃣</span> Dimensión Envolvente &amp; Sostenibilidad: Shelter de Equipos y Cubierta Térmica
                 </div>
                 <div class="resource-cards-grid-4">
-                    <div class="res-option-card selected" id="cardT3_pir" onclick="selectRadioShelter('pir')">
+                    <div class="res-option-card" id="cardT3_pir" onclick="selectRadioShelter('pir')">
                         <div class="res-option-header">
                             <span class="res-option-title">Shelter Modular PIR + Cubierta Aluminizada</span>
                             <span class="res-option-badge-neutral">Shelter Modular PIR</span>
@@ -3157,8 +3354,8 @@
                             Cabina prefabricada con paneles sándwich PIR 75mm y sobretecho aluminizado. Montaje estanco en 6 días. Reduce la carga del clima a solo 0.45 kW.
                         </div>
                         <div class="res-option-meta">
-                            <span>☀️ 45°C · 6 días</span>
-                            <strong>$8.600 USD</strong>
+                            <span>☀️ 45°C · 8 días</span>
+                            <strong>$7.500 USD</strong>
                         </div>
                     </div>
 
@@ -3172,7 +3369,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 82°C · 12 días</span>
-                            <strong>$5.200 USD</strong>
+                            <strong>$4.800 USD</strong>
                         </div>
                     </div>
 
@@ -3186,7 +3383,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 65°C · 10 días</span>
-                            <strong>$6.500 USD</strong>
+                            <strong>$5.800 USD</strong>
                         </div>
                     </div>
 
@@ -3199,8 +3396,8 @@
                             Estructura de concreto armado vaciado en sitio con encofrados pesados. Máxima protección física contra intemperie y actos vandálicos en cumbre.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 20 días · 👥 8 pers.</span>
-                            <strong>$17.000 USD</strong>
+                            <span>⏱️ 18 días · 👥 8 pers.</span>
+                            <strong>$16.000 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -3219,8 +3416,8 @@
                             2 torristas. Elementos reacondicionados de segunda mano. Montaje artesanal prolongado de 24 días con riesgo de deformación en bridas de empalme.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 24 días · 👥 2 pers.</span>
-                            <strong>$12.500 USD</strong>
+                            <span>⏱️ 22 días · 👥 2 pers.</span>
+                            <strong>$11.500 USD</strong>
                         </div>
                     </div>
 
@@ -3233,8 +3430,8 @@
                             Mástil tubular ligero arriostrado con cables de acero galvanizado. Demanda un radio de anclaje de retenidas de 31.5m desde el baricentro.
                         </div>
                         <div class="res-option-meta">
-                            <span>⚠️ Radio Anclaje 31.5m</span>
-                            <strong>$14.500 USD</strong>
+                            <span>⏱️ 16 días · Radio 31.5m</span>
+                            <strong>$13.200 USD</strong>
                         </div>
                     </div>
 
@@ -3248,11 +3445,11 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 7 días · 👥 8 pers.</span>
-                            <strong>$26.000 USD</strong>
+                            <strong>$25.000 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected" id="cardT4_autosop" onclick="selectRadioTorre('autosop')">
+                    <div class="res-option-card" id="cardT4_autosop" onclick="selectRadioTorre('autosop')">
                         <div class="res-option-header">
                             <span class="res-option-title">Torre Autosoportada 45m</span>
                             <span class="res-option-badge-neutral">Autosoportada 45m</span>
@@ -3261,8 +3458,8 @@
                             4 torristas certificados. Base troncopiramidal compacta sobre roca. Montaje seguro en tramos en 14 días bajo normas TIA-222-G y COVENIN 2003.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 14 días · 👥 4 pers.</span>
-                            <strong>$16.500 USD</strong>
+                            <span>⏱️ 16 días · 👥 4 pers.</span>
+                            <strong>$15.200 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -3282,11 +3479,11 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⚠️ 25.5% Desbal. · 0.8 kW</span>
-                            <strong>$2.500 USD</strong>
+                            <strong>$2.200 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected" id="cardT5_mochila" onclick="selectRadioClima('mochila')">
+                    <div class="res-option-card" id="cardT5_mochila" onclick="selectRadioClima('mochila')">
                         <div class="res-option-header">
                             <span class="res-option-title">Mochila Dual 3F Inverter N+1</span>
                             <span class="res-option-badge-neutral">Mochila Dual N+1</span>
@@ -3296,7 +3493,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>✅ 0% Desbal. · 0.45 kW</span>
-                            <strong>$5.200 USD</strong>
+                            <strong>$4.800 USD</strong>
                         </div>
                     </div>
 
@@ -3310,7 +3507,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⚡ 0.6 kW · 1F Inverter</span>
-                            <strong>$3.400 USD</strong>
+                            <strong>$3.200 USD</strong>
                         </div>
                     </div>
 
@@ -3324,7 +3521,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 6 días · 1.5 kW</span>
-                            <strong>$13.500 USD</strong>
+                            <strong>$11.500 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -3344,7 +3541,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>⛽ Tanque 200L · 6 días</span>
-                            <strong>$7.800 USD</strong>
+                            <strong>$7.200 USD</strong>
                         </div>
                     </div>
 
@@ -3357,12 +3554,12 @@
                             Arreglo fotovoltaico con 4 módulos de almacenamiento. Entrega una reserva energética de 16 kWh útiles (80% DoD) para las cargas del sitio.
                         </div>
                         <div class="res-option-meta">
-                            <span>🔋 4.5 Horas · 20 kWh</span>
-                            <strong>$12.500 USD</strong>
+                            <span>🔋 4.6 Horas · 20 kWh</span>
+                            <strong>$11.500 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected" id="cardT6_solar_opt" onclick="selectRadioEnergy('solar_opt')">
+                    <div class="res-option-card" id="cardT6_solar_opt" onclick="selectRadioEnergy('solar_opt')">
                         <div class="res-option-header">
                             <span class="res-option-title">Híbrido Solar 18 kWp + 7 LiFePO4 (35 kWh)</span>
                             <span class="res-option-badge-neutral">Híbrido LiFePO4 35 kWh</span>
@@ -3371,8 +3568,8 @@
                             28 kWh útiles (80% DoD). Con carga optimizada (3.0 kW RF + 0.45 kW clima = 3.45 kW), entrega 8.1 horas continuas de transmisión ininterrumpida.
                         </div>
                         <div class="res-option-meta">
-                            <span>🔋 8.1 Horas · 35 kWh</span>
-                            <strong>$17.900 USD</strong>
+                            <span>⏱️ 12 días · 🔋 8.1 Horas</span>
+                            <strong>$15.500 USD</strong>
                         </div>
                     </div>
 
@@ -3386,7 +3583,7 @@
                         </div>
                         <div class="res-option-meta">
                             <span>🔋 16.5 Horas · 70 kWh</span>
-                            <strong>$34.000 USD</strong>
+                            <strong>$32.000 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -3399,28 +3596,28 @@
                     <div class="telemetry-kpis">
                         <div class="tel-kpi-card">
                             <div class="tel-kpi-title">Autonomía Nocturna</div>
-                            <div class="tel-kpi-val" id="telRadioBackup">8.1 Horas</div>
-                            <div class="tel-kpi-status status-ok" id="telRadioBackupStatus">≥ 8.0h Cumple</div>
+                            <div class="tel-kpi-val" id="telRadioBackup">--</div>
+                            <div class="tel-kpi-status" id="telRadioBackupStatus" style="color:#64748b;">Selección pendiente</div>
                         </div>
                         <div class="tel-kpi-card">
                             <div class="tel-kpi-title">Pico en Campamento</div>
-                            <div class="tel-kpi-val" id="telRadioWorkers">7 Personas</div>
-                            <div class="tel-kpi-status status-ok" id="telRadioWorkersStatus">≤ 12 pers. Cumple</div>
+                            <div class="tel-kpi-val" id="telRadioWorkers">--</div>
+                            <div class="tel-kpi-status" id="telRadioWorkersStatus" style="color:#64748b;">Máx. 12 campamento</div>
                         </div>
                         <div class="tel-kpi-card">
                             <div class="tel-kpi-title">Desbalance Fases CEN 200</div>
-                            <div class="tel-kpi-val" id="telRadioDesbalance">0.0%</div>
-                            <div class="tel-kpi-status status-ok" id="telRadioDesbalanceStatus">0% Cumple</div>
+                            <div class="tel-kpi-val" id="telRadioDesbalance">--</div>
+                            <div class="tel-kpi-status" id="telRadioDesbalanceStatus" style="color:#64748b;">Código CEN 200</div>
                         </div>
                         <div class="tel-kpi-card">
                             <div class="tel-kpi-title">Presupuesto Programado</div>
-                            <div class="tel-kpi-val" id="telRadioCost">$62.000</div>
-                            <div class="tel-kpi-status status-ok" id="telRadioCostStatus">Bajo Techo $65k</div>
+                            <div class="tel-kpi-val" id="telRadioCost">$0 USD</div>
+                            <div class="tel-kpi-status" id="telRadioCostStatus" style="color:#64748b;">0 de 6 seleccionadas</div>
                         </div>
                         <div class="tel-kpi-card">
                             <div class="tel-kpi-title">Plazo Total Ruta Crítica</div>
-                            <div class="tel-kpi-val" id="telRadioDays">42 Días</div>
-                            <div class="tel-kpi-status status-ok" id="telRadioDaysStatus">≤ 56d (8 sem)</div>
+                            <div class="tel-kpi-val" id="telRadioDays">--</div>
+                            <div class="tel-kpi-status" id="telRadioDaysStatus" style="color:#64748b;">Máx. 56d contractuales</div>
                         </div>
                     </div>
                 </div>
@@ -3491,19 +3688,19 @@
                             </div>
                             <div class="cf-kpi-pill">
                                 <div class="cf-kpi-lbl">Inversión Programada</div>
-                                <div class="cf-kpi-num" id="cfRadioTotal">$62.000 USD</div>
+                                <div class="cf-kpi-num" id="cfRadioTotal">$0 USD</div>
                             </div>
                             <div class="cf-kpi-pill">
                                 <div class="cf-kpi-lbl">Desembolso Semanal Prom.</div>
-                                <div class="cf-kpi-num" id="cfRadioAvg">$10.333 /sem</div>
+                                <div class="cf-kpi-num" id="cfRadioAvg">$0 /sem</div>
                             </div>
                             <div class="cf-kpi-pill">
                                 <div class="cf-kpi-lbl">Pico Máximo Semanal</div>
-                                <div class="cf-kpi-num" id="cfRadioPeak">$17.900 USD</div>
+                                <div class="cf-kpi-num" id="cfRadioPeak">$0 USD</div>
                             </div>
                             <div class="cf-kpi-pill">
                                 <div class="cf-kpi-lbl">Margen de Contingencia</div>
-                                <div class="cf-kpi-num" id="cfRadioContingency" style="color:#059669;">+$3.000 USD</div>
+                                <div class="cf-kpi-num" id="cfRadioContingency" style="color:#059669;">$65.000 USD</div>
                             </div>
                         </div>
                         <div class="scurve-svg-box">
@@ -3558,41 +3755,61 @@
                     </div>
                 </div>
 
-                <!-- ARGUMENTARIO PERICIAL FORENSE DE CÁTEDRA (PARA EL DOCENTE) -->
-                <div class="forensic-docente-card">
-                    <div class="forensic-docente-title">
-                        <span>⚖️</span> Fundamentos Periciales de Cátedra &amp; Argumentario Técnico para el Docente
+                <!-- GUÍA TÉCNICA Y CRITERIOS DE DECISIÓN (AYUDA AL PARTICIPANTE) -->
+                <div class="student-guide-card">
+                    <div class="student-guide-header">
+                        <div class="student-guide-title">
+                            <span>💡</span> Guía Técnica de Ingeniería &amp; Criterios de Decisión
+                        </div>
+                        <button type="button" class="student-guide-btn-toggle" onclick="toggleStudentGuide()">
+                            <span id="guideToggleIcon">▼</span> <span id="guideToggleText">Ocultar Guía de Criterios</span>
+                        </button>
                     </div>
-                    <p style="font-size:12.5px;color:#cbd5e1;margin-bottom:14px;line-height:1.5;">
-                        Guía de refutación técnica basada en mecánica de suelos, termodinámica, CEN 200 y normativa laboral para fundamentar la calificación y rebatir objeciones en el aula:
+                    <p style="font-size:12.5px; color:#cbd5e1; margin-bottom:12px; line-height:1.5;">
+                        Si tienes dudas al seleccionar tus estrategias, consulta estos criterios técnicos de mecánica de suelos, aerodinámica, termodinámica y normativa (CEN 200, TIA-222-G, COVENIN) para orientar tus decisiones:
                     </p>
-                    <div class="forensic-item-box">
-                        <strong>1. ¿Por qué el Relleno Manual fracasa ante el Escarificado y Lastrado?</strong><br>
-                        Una grúa de 40T transmite más de 12 toneladas por eje. El suelo con relleno manual sin compactar tiene un CBR &lt; 3%. Ante la primera lluvia se produce licuefacción superficial y atascamiento de la grúa ($1.500 USD/día de paralización). El escarificado compactado al 95% del Proctor con cunetas de concreto vaciado (Manning) es la única vía con capacidad portante todo tiempo.
-                    </div>
-                    <div class="forensic-item-box">
-                        <strong>2. ¿Por qué la Implantación a Sotavento del Espolón Rocoso es obligatoria?</strong><br>
-                        En la cresta de barlovento, el viento acelera a &gt; 85 km/h por efecto Venturi, forzando infiltraciones de aire húmedo en el shelter y elevando el riesgo de caída de los torristas. Además, la torre de 45m proyectaría un cono de sombra vespertino sobre el campo solar, reduciendo la captación de 5.1 a 3.2 HSP e impidiendo recargar las baterías.
-                    </div>
-                    <div class="forensic-item-box">
-                        <strong>3. ¿Por qué el Bloque de Concreto colapsa el Respaldo Nocturno?</strong><br>
-                        La albañilería de bloque posee una inercia térmica muy alta. Durante el día absorbe calor solar por radiación (U &approx; 2.8 W/m²K) y durante el corte nocturno de 8 horas lo emite hacia el interior (efecto horno). Esto obliga al climatizador a consumir 2.2 kW en vez de 450W, agotando las baterías a las 2:00 AM. El panel PIR 75mm (U=0.28 W/m²K) no tiene inercia y frena el calor en seco.
-                    </div>
-                    <div class="forensic-item-box">
-                        <strong>4. ¿Por qué la Torre Arriostrada es inviable geométricamente?</strong><br>
-                        La norma TIA-222-G exige para torres arriostradas un radio de anclaje de retenidas de al menos 70% de su altura (31.5 metros). La meseta de Karuay-Waikirimá mide apenas 20m &times; 25m: los anclajes caerían en el abismo vertical fuera del derecho de vía. La torre autosoportada troncopiramidal es la única físicamente instalable.
-                    </div>
-                    <div class="forensic-item-box">
-                        <strong>5. ¿Por qué los Splits Residenciales violan el Código Eléctrico CEN 200?</strong><br>
-                        Dos splits monofásicos de 230V en una acometida de cerro de 65m inducen un desbalance de fases NEMA del 25.55%, recalentando el transformador y disparando el relé térmico del inversor. Además, carecen de redundancia N+1: si un equipo se congela, la radiobase se apaga por sobretemperatura (&gt; 45°C).
-                    </div>
-                    <div class="forensic-item-box">
-                        <strong>6. ¿Por qué el Diésel es una trampa de Ciclo de Vida (7D)?</strong><br>
-                        Acarrear 200 litros semanales de gasoil a una cumbre selvática remota cuesta más de $16.800 USD/año en flete 4x4. En época de lluvias, la vialidad se corta temporalmente: el combustible se agota y la radiobase colapsa. El sistema solar LiFePO4 tiene OpEx cero y 12 años de vida útil (6.000 ciclos).
-                    </div>
-                    <div class="forensic-item-box">
-                        <strong>7. ¿Por qué no meter más personal para acelerar el cronograma?</strong><br>
-                        El campamento provisional de supervivencia en cumbre está limitado a 12 camas por normativa de seguridad y salud laboral (INPSASEL / COVENIN 2270). Superar 12 trabajadores provoca hacinamiento, falta de agua potable y fatiga extrema en faenas de alto riesgo de izaje a 45m de altura.
+                    <div id="studentGuideContent" class="student-guide-grid">
+                        <div class="student-guide-box">
+                            <span class="guide-tag">1. Vialidad &amp; Tránsito Pesado</span>
+                            <strong>Capacidad Portante vs. Tiempos de Fraguado:</strong>
+                            Las grúas de 40T transmiten hasta 12 toneladas por eje. Un relleno manual sin compactar tiene un CBR &lt; 3%, perdiendo sustentación con la primera lluvia y atascando la maquinaria. Por el contrario, un pavimento de concreto requiere 28 días de curado normativo, consumiendo la mitad del plazo del proyecto. La <em>sub-base granular lastrada y compactada con cunetas de concreto</em> garantiza tránsito pesado inmediato y drenaje sin tiempos muertos.
+                        </div>
+
+                        <div class="student-guide-box">
+                            <span class="guide-tag">2. Implantación 3D en Cumbre</span>
+                            <strong>Aerodinámica de Cresta vs. Radiación Solar:</strong>
+                            En la cresta a barlovento, el viento acelera fuertemente por efecto Venturi (&gt;85 km/h), elevando las tensiones de fatiga en mástiles (ANSI/TIA-222-G) e inyectando lluvia lateral en el shelter. En contraste, el pie de talud crea sombras matutinas que reducen la captación fotovoltaica y acumula escorrentías. La <em>terraza a sotavento</em> protege los equipos tras el espolón natural y mantiene el campo solar en cota alta libre de sombras a 5.1 HSP.
+                        </div>
+
+                        <div class="student-guide-box">
+                            <span class="guide-tag">3. Envolvente &amp; Termodinámica</span>
+                            <strong>Inercia Térmica vs. Aislamiento Estanco:</strong>
+                            La albañilería tradicional de bloques almacena radiación solar diurna (U &approx; 2.8 W/m²K) y la reemite hacia el interior durante la noche, forzando al aire acondicionado a demandar 2.2 kW en vez de 450W y agotando las baterías antes de la madrugada. El <em>panel sándwich PIR de 75 mm (U=0.28 W/m²K) con sobretecho aluminizado</em> frena la transferencia térmica, reduciendo el consumo nocturno a niveles mínimos.
+                        </div>
+
+                        <div class="student-guide-box">
+                            <span class="guide-tag">4. Dimensión Estructural 3D/4D</span>
+                            <strong>Geometría de Cumbre vs. Retenidas Radiales:</strong>
+                            Las torres arriostradas con tirantes exigen por norma TIA-222-G un radio de anclaje de retenidas de al menos el 70% de su altura (31.5 m para 45m). En una cumbre rocosa con meseta reducida (20m &times; 25m), las retenidas caerían al abismo vertical. La <em>torre autosoportada troncopiramidal</em> concentra las cargas en su huella compacta (6m &times; 6m) anclada a zapatas macizas en roca.
+                        </div>
+
+                        <div class="student-guide-box">
+                            <span class="guide-tag">5. Electromecánica &amp; CEN 200</span>
+                            <strong>Equilibrio de Fases &amp; Redundancia N+1:</strong>
+                            Cargas monofásicas pesadas conectadas a acometidas de montaña generan desbalances superiores al 20%, violando la norma NEMA MG-1 y el Código Eléctrico Nacional CEN 200, además de provocar corrientes de arranque (LRA) que desestabilizan inversores. Una <em>unidad mochila industrial trifásica Inverter con doble compresor redundante N+1</em> garantiza 0% de desbalance y arranque suave VFD.
+                        </div>
+
+                        <div class="student-guide-box">
+                            <span class="guide-tag">6. Continuidad 7D &amp; Respaldo</span>
+                            <strong>CapEx Inicial vs. Trampa de OpEx en Diésel:</strong>
+                            Un generador diésel parece más económico en compra inicial, pero transportar 200 litros semanales de gasoil por vía escarpada cuesta más de $16.800 USD/año en fletes 4x4, arriesgando cortes de servicio en lluvias. Un <em>banco LiFePO4 de 35 kWh nominales (28 kWh útiles a 80% DoD)</em> suministra con holgura las 8 horas nocturnas continuas con cero mantenimiento logístico y 12 años de vida útil.
+                        </div>
+
+                        <div class="student-guide-box">
+                            <span class="guide-tag">7. Seguridad Laboral &amp; Campamento</span>
+                            <strong>Capacidad Máxima de Pernocta (LOPCYMAT):</strong>
+                            Las normativas de seguridad laboral en zonas remotas restringen la pernocta en cumbre a un máximo estricto de 12 personas. Superar este límite produce hacinamiento, riesgo de accidentes y estrés por fatiga en faenas de izaje a 45 m. La programación CPM debe mantener cuadrillas solapadas cuyo total en faena no exceda las 12 personas.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3880,7 +4097,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         
-                                // =================================================================
+                                        // =================================================================
         // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 8 (TALLER ALMACÉN V3)
         // =================================================================
         const almacenState = {
@@ -4161,12 +4378,12 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 9 (TELECOM KARUAY-WAIKIRIMÁ)
         // =================================================================
         const radioState = {
-            vialidad: 'lastrado',
-            implantacion: 'sotavento',
-            shelter: 'pir',
-            torre: 'autosop',
-            clima: 'mochila',
-            energy: 'solar_opt',
+            vialidad: null,
+            implantacion: null,
+            shelter: null,
+            torre: null,
+            clima: null,
+            energy: null,
             phases: { T1: 1, T2: 2, T3: 3, T4: 3, T5: 4, T6: 4, T7: 5 }
         };
 
@@ -4250,75 +4467,79 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         function runRadioSimulation() {
-            // Mapeo de decisiones técnicas (Rotación de claves implementada)
+            // Mapeo de decisiones técnicas rebalanceadas (Techo: $65,000 USD, Lluvias: 56 días)
             const viaMap = {
-                manual: { name: 'Mantenimiento Manual & Relleno', days: 14, cost: 4000, workers: 4 },
-                lastrado: { name: 'Escarificado, Lastrado & Cunetas Concreto', days: 8, cost: 9800, workers: 4 },
-                patrol: { name: 'Patrol & Cunetas en Tierra', days: 10, cost: 6800, workers: 4 },
-                pavimento: { name: 'Pavimento Rígido Concreto 15cm', days: 22, cost: 24000, workers: 8 }
+                manual: { name: 'Mantenimiento Manual & Relleno', days: 14, cost: 3500, workers: 4 },
+                lastrado: { name: 'Escarificado, Lastrado & Cunetas Concreto', days: 8, cost: 8200, workers: 4 },
+                patrol: { name: 'Patrol & Cunetas en Tierra', days: 10, cost: 5800, workers: 4 },
+                pavimento: { name: 'Pavimento Rígido Concreto 15cm', days: 22, cost: 22000, workers: 8 }
             };
             const impMap = {
-                barlovento: { name: 'Disposición Lineal en Cresta Barlovento', days: 8, cost: 6200, workers: 4, shadowLoss: 0.35, windThermalKW: 1.2 },
-                talud: { name: 'Disposición Agrupada al Pie del Talud', days: 7, cost: 7000, workers: 4, shadowLoss: 0.25, windThermalKW: 0.8 },
-                sotavento: { name: 'Implantación Escalonada a Sotavento', days: 6, cost: 7800, workers: 4, shadowLoss: 0.0, windThermalKW: 0.0 },
-                dispersa: { name: 'Disposición Dispersa Perimetral', days: 12, cost: 11500, workers: 6, shadowLoss: 0.10, windThermalKW: 0.5 }
+                barlovento: { name: 'Disposición Lineal en Cresta Barlovento', days: 8, cost: 5200, workers: 4, shadowLoss: 0.35, windThermalKW: 1.2 },
+                talud: { name: 'Disposición Agrupada al Pie del Talud', days: 7, cost: 4800, workers: 4, shadowLoss: 0.25, windThermalKW: 0.8 },
+                sotavento: { name: 'Implantación Escalonada a Sotavento', days: 7, cost: 6400, workers: 4, shadowLoss: 0.0, windThermalKW: 0.0 },
+                dispersa: { name: 'Disposición Dispersa Perimetral', days: 12, cost: 10500, workers: 6, shadowLoss: 0.10, windThermalKW: 0.5 }
             };
             const sheMap = {
-                pir: { name: 'Shelter Modular PIR + Cubierta Aluminizada', days: 6, cost: 8600, workers: 4, thermalKW: 0.45 },
-                black: { name: 'Caseta Bloque + Manto Negro', days: 12, cost: 5200, workers: 4, thermalKW: 3.5 },
-                white: { name: 'Caseta Bloque + Pintura Térmica', days: 10, cost: 6500, workers: 4, thermalKW: 2.0 },
-                bunker: { name: 'Búnker Concreto Antivandálico', days: 20, cost: 17000, workers: 8, thermalKW: 1.2 }
+                pir: { name: 'Shelter Modular PIR + Cubierta Aluminizada', days: 8, cost: 7500, workers: 4, thermalKW: 0.45 },
+                black: { name: 'Caseta Bloque + Manto Negro', days: 12, cost: 4800, workers: 4, thermalKW: 3.5 },
+                white: { name: 'Caseta Bloque + Pintura Térmica', days: 10, cost: 5800, workers: 4, thermalKW: 2.0 },
+                bunker: { name: 'Búnker Concreto Antivandálico', days: 18, cost: 16000, workers: 8, thermalKW: 1.2 }
             };
             const torMap = {
-                used: { name: 'Torre Usada Reacondicionada', days: 24, cost: 12500, workers: 2 },
-                arriostrada: { name: 'Torre Arriostrada (Tirantes)', days: 18, cost: 14500, workers: 4 },
-                grua: { name: 'Doble Cuadrilla + Grúa 70T', days: 7, cost: 26000, workers: 8 },
-                autosop: { name: 'Torre Autosoportada 45m', days: 14, cost: 16500, workers: 4 }
+                used: { name: 'Torre Usada Reacondicionada', days: 22, cost: 11500, workers: 2 },
+                arriostrada: { name: 'Torre Arriostrada (Tirantes)', days: 16, cost: 13200, workers: 4 },
+                grua: { name: 'Doble Cuadrilla + Grúa 70T', days: 7, cost: 25000, workers: 8 },
+                autosop: { name: 'Torre Autosoportada 45m', days: 16, cost: 15200, workers: 4 }
             };
             const cliMap = {
-                mono: { name: 'Split Monofásico Convencional', days: 4, cost: 2500, workers: 2, powerKW: 0.8, desbal: 25.55, redOk: false },
-                mochila: { name: 'Mochila Dual 3F Inverter N+1', days: 4, cost: 5200, workers: 2, powerKW: 0.45, desbal: 0.0, redOk: true },
-                inv_mono: { name: 'Split Dual Inverter 1F', days: 4, cost: 3400, workers: 2, powerKW: 0.6, desbal: 25.55, redOk: false },
-                chiller: { name: 'Chiller de Precisión Líquido', days: 6, cost: 13500, workers: 3, powerKW: 1.5, desbal: 0.0, redOk: true }
+                mono: { name: 'Split Monofásico Convencional', days: 4, cost: 2200, workers: 2, powerKW: 0.8, desbal: 25.55, redOk: false },
+                mochila: { name: 'Mochila Dual 3F Inverter N+1', days: 6, cost: 4800, workers: 2, powerKW: 0.45, desbal: 0.0, redOk: true },
+                inv_mono: { name: 'Split Dual Inverter 1F', days: 4, cost: 3200, workers: 2, powerKW: 0.6, desbal: 25.55, redOk: false },
+                chiller: { name: 'Chiller de Precisión Líquido', days: 6, cost: 12500, workers: 3, powerKW: 1.5, desbal: 0.0, redOk: true }
             };
             const eneMap = {
-                diesel: { name: 'Motogenerador Diésel 15 kVA', days: 6, cost: 7800, workers: 4, kwh: 999, isDiesel: true },
-                solar_basic: { name: 'Solar 12 kWp + 4 Baterías (20 kWh)', days: 8, cost: 12500, workers: 4, kwh: 20, isDiesel: false },
-                solar_opt: { name: 'Híbrido Solar 18 kWp + 7 LiFePO4 (35 kWh)', days: 10, cost: 17900, workers: 4, kwh: 35, isDiesel: false },
-                solar_macro: { name: 'Micro-Red Solar 30 kWp + 14 LiFePO4 (70 kWh)', days: 14, cost: 34000, workers: 6, kwh: 70, isDiesel: false }
+                diesel: { name: 'Motogenerador Diésel 15 kVA', days: 6, cost: 7200, workers: 4, kwh: 999, isDiesel: true },
+                solar_basic: { name: 'Solar 12 kWp + 4 Baterías (20 kWh)', days: 8, cost: 11500, workers: 4, kwh: 20, isDiesel: false },
+                solar_opt: { name: 'Híbrido Solar 18 kWp + 7 LiFePO4 (35 kWh)', days: 12, cost: 15500, workers: 4, kwh: 35, isDiesel: false },
+                solar_macro: { name: 'Micro-Red Solar 30 kWp + 14 LiFePO4 (70 kWh)', days: 14, cost: 32000, workers: 6, kwh: 70, isDiesel: false }
             };
 
-            const selVia = viaMap[radioState.vialidad] || viaMap.lastrado;
-            const selImp = impMap[radioState.implantacion] || impMap.sotavento;
-            const selShe = sheMap[radioState.shelter] || sheMap.pir;
-            const selTor = torMap[radioState.torre] || torMap.autosop;
-            const selCli = cliMap[radioState.clima] || cliMap.mochila;
-            const selEne = eneMap[radioState.energy] || eneMap.solar_opt;
+            const selVia = viaMap[radioState.vialidad] || null;
+            const selImp = impMap[radioState.implantacion] || null;
+            const selShe = sheMap[radioState.shelter] || null;
+            const selTor = torMap[radioState.torre] || null;
+            const selCli = cliMap[radioState.clima] || null;
+            const selEne = eneMap[radioState.energy] || null;
+
+            const selectedCount = [selVia, selImp, selShe, selTor, selCli, selEne].filter(Boolean).length;
 
             // Demanda total de la radiobase (3.0 kW RF base + Clima + Viento/Térmica 3D)
-            let totalRadioLoadKW = 3.0 + selCli.powerKW + selImp.windThermalKW;
+            let totalRadioLoadKW = 3.0 + (selCli ? selCli.powerKW : 0.45) + (selImp ? selImp.windThermalKW : 0);
             if (radioState.shelter === 'black') totalRadioLoadKW += 1.8;
             else if (radioState.shelter === 'white') totalRadioLoadKW += 0.8;
 
             // Autonomía nocturna
             let backupHours = 0;
-            if (selEne.isDiesel) {
-                backupHours = 14.0;
-            } else {
-                let effectiveKWh = selEne.kwh * 0.8; // 80% DoD
-                if (selImp.shadowLoss > 0) effectiveKWh *= (1.0 - selImp.shadowLoss * 0.4);
-                backupHours = +(effectiveKWh / totalRadioLoadKW).toFixed(1);
+            if (selEne) {
+                if (selEne.isDiesel) {
+                    backupHours = 14.0;
+                } else {
+                    let effectiveKWh = selEne.kwh * 0.8; // 80% DoD
+                    if (selImp && selImp.shadowLoss > 0) effectiveKWh *= (1.0 - selImp.shadowLoss * 0.4);
+                    backupHours = +(effectiveKWh / totalRadioLoadKW).toFixed(1);
+                }
             }
 
             // 7 Actividades Telecom
             const activities = [
-                { id: 'T1', title: 'Escarificado & Vialidad de Cumbre', days: selVia.days, cost: selVia.cost, workers: selVia.workers },
-                { id: 'T2', title: 'Implantación 3D & Losa en Roca', days: selImp.days, cost: selImp.cost, workers: selImp.workers },
-                { id: 'T3', title: 'Montaje Shelter Modular PIR', days: selShe.days, cost: selShe.cost, workers: selShe.workers },
-                { id: 'T4', title: 'Izaje & Verticalidad Torre 45m', days: selTor.days, cost: selTor.cost, workers: selTor.workers },
-                { id: 'T5', title: 'Montaje Clima Mochila Dual N+1', days: selCli.days, cost: selCli.cost, workers: selCli.workers },
-                { id: 'T6', title: 'Arreglo Solar & Banco LiFePO4', days: selEne.days, cost: selEne.cost, workers: selEne.workers },
-                { id: 'T7', title: 'Comisionamiento RF & Pruebas 8h', days: 4, cost: 1600, workers: 2 }
+                { id: 'T1', title: selVia ? selVia.name : 'Vialidad (Pendiente)', days: selVia ? selVia.days : 0, cost: selVia ? selVia.cost : 0, workers: selVia ? selVia.workers : 0 },
+                { id: 'T2', title: selImp ? selImp.name : 'Implantación 3D (Pendiente)', days: selImp ? selImp.days : 0, cost: selImp ? selImp.cost : 0, workers: selImp ? selImp.workers : 0 },
+                { id: 'T3', title: selShe ? selShe.name : 'Shelter & Cubierta (Pendiente)', days: selShe ? selShe.days : 0, cost: selShe ? selShe.cost : 0, workers: selShe ? selShe.workers : 0 },
+                { id: 'T4', title: selTor ? selTor.name : 'Torre Transmisión (Pendiente)', days: selTor ? selTor.days : 0, cost: selTor ? selTor.cost : 0, workers: selTor ? selTor.workers : 0 },
+                { id: 'T5', title: selCli ? selCli.name : 'Climatización RF (Pendiente)', days: selCli ? selCli.days : 0, cost: selCli ? selCli.cost : 0, workers: selCli ? selCli.workers : 0 },
+                { id: 'T6', title: selEne ? selEne.name : 'Respaldo Eléctrico (Pendiente)', days: selEne ? selEne.days : 0, cost: selEne ? selEne.cost : 0, workers: selEne ? selEne.workers : 0 },
+                { id: 'T7', title: 'Comisionamiento RF & Pruebas 8h', days: 5, cost: 1500, workers: 2 }
             ];
 
             // Renderizar pool Telecom
@@ -4341,7 +4562,9 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                                 <span class="exec-phase-label">Asignar Fase:</span>
                                 <div class="phase-btn-group">
                                     ${[1, 2, 3, 4, 5].map(p => `
-                                        <button type="button" class="phase-btn ${p === currentPhase ? 'active' : ''}" onclick="setRadioPhase('${act.id}', ${p})">${p}</button>
+                                        <button type="button" class="phase-btn ${p === currentPhase ? 'active' : ''}" onclick="setRadioTaskPhase('${act.id}', ${p})">
+                                            Fase ${p}
+                                        </button>
                                     `).join('')}
                                 </div>
                             </div>
@@ -4353,9 +4576,9 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             // Fases y cálculo 4D
             const phaseSummary = {
                 1: { title: 'Fase 1: Acceso & Vialidad', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
-                2: { title: 'Fase 2: Implantación 3D & Shelter', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
-                3: { title: 'Fase 3: Torre & Climatización', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
-                4: { title: 'Fase 4: Energía & Respaldo', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                2: { title: 'Fase 2: Implantación 3D & Fundación', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                3: { title: 'Fase 3: Torre & Shelter', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                4: { title: 'Fase 4: Clima & Energía Solar', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 5: { title: 'Fase 5: Comisionamiento RF & CDE', days: 0, workers: 0, tasks: [], start: 0, finish: 0 }
             };
 
@@ -4382,7 +4605,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 const p = radioState.phases[act.id] || 1;
                 act.start = phaseSummary[p].start;
                 act.finish = act.start + act.days;
-                act.isCritical = (act.days === phaseSummary[p].days);
+                act.isCritical = (act.days === phaseSummary[p].days && act.days > 0);
             });
 
             const totalScheduledCost = activities.reduce((acc, a) => acc + a.cost, 0);
@@ -4421,73 +4644,125 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             const bakEl = document.getElementById('telRadioBackup');
             const bakSt = document.getElementById('telRadioBackupStatus');
             if (bakEl && bakSt) {
-                bakEl.textContent = backupHours.toFixed(1) + ' Horas';
-                if (backupHours >= 8.0) {
-                    bakSt.className = 'tel-kpi-status status-ok';
-                    bakSt.textContent = '≥ 8.0h Cumple';
-                } else {
+                if (!selEne) {
+                    bakEl.textContent = '--';
+                    bakSt.className = 'tel-kpi-status';
+                    bakSt.textContent = 'Selección pendiente';
+                    bakSt.style.color = '#64748b';
+                } else if (selEne.isDiesel) {
+                    bakEl.textContent = backupHours.toFixed(1) + ' Horas (Diésel)';
                     bakSt.className = 'tel-kpi-status status-danger';
-                    bakSt.textContent = '< 8.0h Falla';
+                    bakSt.textContent = '⚠️ Viola 100% verde';
+                } else {
+                    bakEl.textContent = backupHours.toFixed(1) + ' Horas';
+                    if (backupHours >= 8.0) {
+                        bakSt.className = 'tel-kpi-status status-ok';
+                        bakSt.textContent = '✅ ≥ 8.0h Cumple';
+                    } else {
+                        bakSt.className = 'tel-kpi-status status-danger';
+                        bakSt.textContent = '⚠️ < 8.0h Falla';
+                    }
                 }
             }
 
             const wrkEl = document.getElementById('telRadioWorkers');
             const wrkSt = document.getElementById('telRadioWorkersStatus');
             if (wrkEl && wrkSt) {
-                wrkEl.textContent = peakCampWorkers + ' Personas';
-                if (peakCampWorkers <= 12) {
-                    wrkSt.className = 'tel-kpi-status status-ok';
-                    wrkSt.textContent = '≤ 12 pers. Cumple';
+                if (selectedCount === 0) {
+                    wrkEl.textContent = '--';
+                    wrkSt.className = 'tel-kpi-status';
+                    wrkSt.textContent = 'Máx. 12 campamento';
+                    wrkSt.style.color = '#64748b';
                 } else {
-                    wrkSt.className = 'tel-kpi-status status-danger';
-                    wrkSt.textContent = 'Excede Campamento!';
+                    wrkEl.textContent = peakCampWorkers + ' Personas';
+                    if (peakCampWorkers <= 12) {
+                        wrkSt.className = 'tel-kpi-status status-ok';
+                        wrkSt.textContent = '✅ ≤ 12 pers. Cumple';
+                    } else {
+                        wrkSt.className = 'tel-kpi-status status-danger';
+                        wrkSt.textContent = '⚠️ Hacinamiento (>12)';
+                    }
                 }
             }
 
             const desEl = document.getElementById('telRadioDesbalance');
             const desSt = document.getElementById('telRadioDesbalanceStatus');
             if (desEl && desSt) {
-                desEl.textContent = selCli.desbal.toFixed(1) + '%';
-                if (selCli.desbal <= 2.0) {
-                    desSt.className = 'tel-kpi-status status-ok';
-                    desSt.textContent = '0% CEN 200';
+                if (!selCli) {
+                    desEl.textContent = '--';
+                    desSt.className = 'tel-kpi-status';
+                    desSt.textContent = 'Código CEN 200';
+                    desSt.style.color = '#64748b';
                 } else {
-                    desSt.className = 'tel-kpi-status status-danger';
-                    desSt.textContent = 'Desbalance Severo';
+                    desEl.textContent = selCli.desbal.toFixed(1) + '%';
+                    if (selCli.desbal <= 2.0) {
+                        desSt.className = 'tel-kpi-status status-ok';
+                        desSt.textContent = '✅ 0% CEN 200';
+                    } else {
+                        desSt.className = 'tel-kpi-status status-danger';
+                        desSt.textContent = '⚠️ Desbalance Severo';
+                    }
                 }
             }
 
             const cstEl = document.getElementById('telRadioCost');
             const cstSt = document.getElementById('telRadioCostStatus');
             if (cstEl && cstSt) {
-                cstEl.textContent = '$' + totalScheduledCost.toLocaleString('en-US');
-                if (totalScheduledCost <= 65000) {
+                cstEl.textContent = '$' + totalScheduledCost.toLocaleString('en-US') + ' USD';
+                if (selectedCount < 6) {
+                    cstSt.className = 'tel-kpi-status';
+                    cstSt.textContent = `${selectedCount} de 6 seleccionadas`;
+                    cstSt.style.color = '#64748b';
+                } else if (totalScheduledCost <= 65000) {
                     cstSt.className = 'tel-kpi-status status-ok';
-                    cstSt.textContent = 'Bajo Techo $65k';
+                    cstSt.textContent = `✅ Bajo Techo ($${(65000 - totalScheduledCost).toLocaleString('en-US')} Margen)`;
                 } else {
                     cstSt.className = 'tel-kpi-status status-danger';
-                    cstSt.textContent = 'Excede Techo $65k';
+                    cstSt.textContent = `⚠️ Excede por $${(totalScheduledCost - 65000).toLocaleString('en-US')}`;
                 }
             }
 
             const dayEl = document.getElementById('telRadioDays');
             const daySt = document.getElementById('telRadioDaysStatus');
             if (dayEl && daySt) {
-                dayEl.textContent = totalProjectDays + ' Días';
-                if (totalProjectDays <= 56) {
-                    daySt.className = 'tel-kpi-status status-ok';
-                    daySt.textContent = '≤ 56d (8 sem)';
+                if (selectedCount === 0) {
+                    dayEl.textContent = '--';
+                    daySt.className = 'tel-kpi-status';
+                    daySt.textContent = 'Máx. 56d contractuales';
+                    daySt.style.color = '#64748b';
                 } else {
-                    daySt.className = 'tel-kpi-status status-danger';
-                    daySt.textContent = '> 56d Lluvias!';
+                    dayEl.textContent = totalProjectDays + ' Días';
+                    if (totalProjectDays <= 56) {
+                        daySt.className = 'tel-kpi-status status-ok';
+                        daySt.textContent = `✅ Holgura: ${(56 - totalProjectDays)}d ante lluvias`;
+                    } else {
+                        daySt.className = 'tel-kpi-status status-danger';
+                        daySt.textContent = `⚠️ Excede por ${(totalProjectDays - 56)}d`;
+                    }
                 }
+            }
+
+            // Actualizar KPIs de Flujo de Caja 5D
+            const cfTot = document.getElementById('cfRadioTotal');
+            const cfAvg = document.getElementById('cfRadioAvg');
+            const cfPeak = document.getElementById('cfRadioPeak');
+            const cfCont = document.getElementById('cfRadioContingency');
+            if (cfTot) cfTot.textContent = '$' + totalScheduledCost.toLocaleString('en-US') + ' USD';
+            if (cfAvg) cfAvg.textContent = '$' + Math.round(totalScheduledCost / 8).toLocaleString('en-US') + ' /sem';
+            
+            const weeklyCosts = calculateWeeklyCashflow(activities, 8, 7);
+            const peakWeekly = Math.max(0, ...weeklyCosts);
+            if (cfPeak) cfPeak.textContent = '$' + peakWeekly.toLocaleString('en-US') + ' USD';
+            if (cfCont) {
+                const diff = 65000 - totalScheduledCost;
+                cfCont.textContent = (diff >= 0 ? '+$' : '-$') + Math.abs(diff).toLocaleString('en-US') + ' USD';
+                cfCont.style.color = diff >= 0 ? '#059669' : '#b91c1c';
             }
 
             // Renderizar Gantt 4D en SVG (60 días max, 56d deadline)
             renderGanttChartSvg('ganttSvgRadioContainer', activities, 60, 56);
 
             // Renderizar Flujo de Caja 5D y Curva S en SVG (Semanas 1 a 8)
-            const weeklyCosts = calculateWeeklyCashflow(activities, 8, 7);
             renderSCurveSvg('scurveSvgRadioContainer', weeklyCosts, 65000, 8, totalScheduledCost, 'Radio');
         }
 
@@ -4718,7 +4993,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             const studentEmail = (emailInput?.value || '').trim();
 
             if (!studentName || !studentEmail) {
-                alert('⚠️ IDENTIFICACIÓN OBLIGATORIA:\n\nPor favor ingrese su Nombre Completo y Correo Institucional en la barra superior del módulo antes de calificar la evaluación.');
+                alert('⚠️ IDENTIFICACIÓN OBLIGATORIA:\\n\\nPor favor ingrese su Nombre Completo y Correo Institucional en la barra superior del módulo antes de calificar la evaluación.');
                 nameInput?.focus();
                 return;
             }
