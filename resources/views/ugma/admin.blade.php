@@ -1303,6 +1303,8 @@
                 populateStudentSelect();
                 recalcGradeRubric();
                 fetchEvaluationCardStatus();
+                loadEvaluations();
+                if (typeof refreshLivePresences === 'function') refreshLivePresences();
             } else {
                 gate.style.display = 'block';
                 dash.style.display = 'none';
