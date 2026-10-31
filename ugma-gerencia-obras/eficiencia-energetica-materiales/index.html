@@ -1905,6 +1905,28 @@
                     &larr; Unidad 3: Construcciones Sostenibles
                 </a>
                 <div id="navAuthArea" style="display:flex; align-items:center; gap:8px;"></div>
+                <script>
+                    (function(){
+                        try {
+                            var raw = localStorage.getItem('ugma_student_session');
+                            var u = null;
+                            if (raw) {
+                                try { u = JSON.parse(raw); } catch(e) { u = { name: raw }; }
+                            }
+                            var el = document.getElementById('navAuthArea');
+                            if (el) {
+                                if (u && (u.name || (typeof u === 'string' && u))) {
+                                    var nm = u.name || u;
+                                    el.innerHTML = '<div class="user-profile-badge"><span>🟢</span><span id="navUserNameDisplay">' + nm + '</span></div>' +
+                                                   '<button type="button" class="btn-auth-logout" onclick="logoutUser()" title="Cerrar sesión">Cerrar Sesión</button>';
+                                } else {
+                                    el.innerHTML = '<button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal(\'login\')"><span>🔑</span> Iniciar Sesión</button>' +
+                                                   '<button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal(\'register\')"><span>📝</span> Registrarse</button>';
+                                }
+                            }
+                        } catch(err) {}
+                    })();
+                </script>
             </div>
         </header>
 
@@ -4616,10 +4638,28 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         // =================================================================
         const AUTH_KEY = 'ugma_student_session';
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         function getAuthUser() {
             try {
                 const data = localStorage.getItem(AUTH_KEY);
-                return data ? JSON.parse(data) : null;
+                if (!data) return null;
+                try {
+                    const parsed = JSON.parse(data);
+                    if (typeof parsed === 'string') return { name: parsed, email: '' };
+                    if (parsed && typeof parsed === 'object') return parsed;
+                    return null;
+                } catch(e) {
+                    return { name: data, email: '' };
+                }
             } catch(e) {
                 return null;
             }
@@ -4734,12 +4774,14 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         function renderAuthState() {
             const user = getAuthUser();
             const navAuth = document.getElementById('navAuthArea');
+            const userName = user ? (user.name || user.fullName || '') : '';
+
             if (navAuth) {
-                if (user && user.name) {
+                if (user && userName) {
                     navAuth.innerHTML = `
                         <div class="user-profile-badge">
                             <span>🟢</span>
-                            <span id="navUserNameDisplay">${escapeHtml(user.name)}</span>
+                            <span id="navUserNameDisplay">${escapeHtml(userName)}</span>
                         </div>
                         <button type="button" class="btn-auth-logout" onclick="logoutUser()" title="Cerrar sesión">
                             Cerrar Sesión
@@ -4748,10 +4790,10 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 } else {
                     navAuth.innerHTML = `
                         <button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal('login')">
-                            Ingresar
+                            <span>🔑</span> Iniciar Sesión
                         </button>
                         <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
-                            Registrarse
+                            <span>📝</span> Registrarse
                         </button>
                     `;
                 }
@@ -4762,11 +4804,11 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             const emailField = document.getElementById('evalStudentEmail');
             const sessionBadge = document.getElementById('evalSessionStatusBadge');
 
-            if (user && user.name) {
-                if (nameField) nameField.value = user.name;
-                if (emailField) emailField.value = user.email || 'hector@motazorrilla.com';
+            if (user && userName) {
+                if (nameField) nameField.value = userName;
+                if (emailField && !emailField.value) emailField.value = user.email || 'hector@motazorrilla.com';
                 if (sessionBadge) {
-                    sessionBadge.innerHTML = `<span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;"></span> Sesión Verificada: ${escapeHtml(user.name)}`;
+                    sessionBadge.innerHTML = `<span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;"></span> Sesión Verificada: ${escapeHtml(userName)}`;
                     sessionBadge.style.background = '#ecfdf5';
                     sessionBadge.style.color = '#047857';
                     sessionBadge.style.borderColor = '#a7f3d0';
@@ -4780,6 +4822,12 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 }
             }
         }
+
+        window.addEventListener('storage', function(e) {
+            if (e.key === AUTH_KEY) {
+                renderAuthState();
+            }
+        });
 
         function runRadioSimulation() {
             // Mapeo de decisiones técnicas rebalanceadas (Techo: $65,000 USD, Lluvias: 56 días)
@@ -5301,17 +5349,31 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         async function evaluateRadioPlan() {
-            // 1. Validar identidad del estudiante
+            // 1. Obtener y validar identidad del estudiante (sesión activa o inputs)
+            let user = getAuthUser();
+            let studentName = user ? (user.name || '') : '';
+            let studentEmail = user ? (user.email || '') : '';
+
             const nameInput = document.getElementById('evalStudentName');
             const emailInput = document.getElementById('evalStudentEmail');
-            const studentName = (nameInput?.value || '').trim();
-            const studentEmail = (emailInput?.value || '').trim();
 
-            if (!studentName || !studentEmail) {
-                alert('⚠️ IDENTIFICACIÓN OBLIGATORIA:\\n\\nPor favor ingrese su Nombre Completo y Correo Institucional en la barra superior del módulo antes de calificar la evaluación.');
-                nameInput?.focus();
-                return;
+            if (!studentName && nameInput && nameInput.value.trim()) {
+                studentName = nameInput.value.trim();
             }
+            if (!studentEmail && emailInput && emailInput.value.trim()) {
+                studentEmail = emailInput.value.trim();
+            }
+
+            // Si aún no hay identidad, solicitar amigablemente y guardar en sesión
+            if (!studentName) {
+                studentName = prompt('Ingrese su Nombre Completo para certificar la Evaluación:', 'Ing. Héctor Mota');
+                if (!studentName) return;
+                studentEmail = (emailInput && emailInput.value.trim()) || 'alumno@ugma.edu.ve';
+                setAuthUser({ name: studentName, email: studentEmail, role: 'Alumno UGMA', ci: 'V-Oficial' });
+            }
+
+            if (nameInput) nameInput.value = studentName;
+            if (emailInput && !emailInput.value) emailInput.value = studentEmail || 'alumno@ugma.edu.ve';
 
             const verdictCard = document.getElementById('radioVerdictCard');
             if (!verdictCard) return;
