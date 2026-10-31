@@ -958,7 +958,7 @@
             .academic-p { text-indent: 1.4em; font-size: 14.5px; }
         }
     
-                                        /* ================================================================= */
+                                                /* ================================================================= */
         /* MÓDULOS 8 Y 9: TALLER PRÁCTICO & EVALUACIÓN INTERACTIVA (V3)      */
         /* ================================================================= */
         .interactive-cockpit {
@@ -1716,6 +1716,174 @@
     border-color: #93c5fd;
 }
 
+
+/* ==========================================================================
+   SISTEMA DE AUTENTICACIÓN Y SESIÓN (SINCRONIZADO CON PORTAL PRINCIPAL)
+   ========================================================================== */
+.btn-auth-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+}
+.btn-auth-login {
+    background: var(--navy-primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+.btn-auth-login:hover {
+    background: #0f172a;
+    transform: translateY(-1px);
+}
+.btn-auth-register {
+    background: #f0f9ff;
+    color: var(--blue-accent);
+    border: 1px solid #bae6fd;
+}
+.btn-auth-register:hover {
+    background: var(--blue-accent);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+.user-profile-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    background: #ecfdf5;
+    border: 1.5px solid #a7f3d0;
+    color: var(--emerald);
+    font-size: 12.5px;
+    font-weight: 700;
+}
+.btn-auth-logout {
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-auth-logout:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* MODAL DE AUTENTICACIÓN Y REGISTRO */
+.auth-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.auth-modal-overlay.active { display: flex; }
+.auth-modal-box {
+    background: #ffffff;
+    border-radius: 20px;
+    max-width: 520px;
+    width: 100%;
+    padding: 34px 30px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border);
+    animation: modalFade 0.25s ease-out;
+}
+@keyframes modalFade {
+    from { opacity: 0; transform: translateY(14px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.auth-tabs-row {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 22px;
+    gap: 10px;
+}
+.auth-tab-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+}
+.auth-tab-btn.active {
+    color: var(--navy-primary);
+    border-bottom-color: var(--navy-primary);
+}
+.auth-field-input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    margin-bottom: 12px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+.auth-field-input:focus {
+    border-color: var(--blue-accent);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+.btn-auth-submit {
+    width: 100%;
+    padding: 12px;
+    background: var(--navy-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.btn-auth-submit:hover {
+    background: #0f172a;
+}
+.repaso-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.repaso-modal-close:hover {
+    background: #e2e8f0;
+    color: var(--navy-primary);
+}
+
     </style>
 </head>
 <body>
@@ -1736,11 +1904,7 @@
                 <a href="/ugma-gerencia-obras/unidad-3-construcciones-sostenibles" class="nav-lab-link" style="background: var(--emerald-light); color: var(--emerald-dark); border-color: #a7f3d0;">
                     &larr; Unidad 3: Construcciones Sostenibles
                 </a>
-                <div id="navUserBadge" class="nav-user-badge" onclick="promptStudentLogin()" title="Identificación del Participante (Click para cambiar)">
-                    <span class="user-pulse-dot"></span>
-                    <span id="navUserNameDisplay">Ing. Participante</span>
-                    <span style="font-size:10.5px; background:#dcfce7; color:#15803d; padding:2px 7px; border-radius:9999px; font-weight:800; border:1px solid #bbf7d0;">EN LÍNEA</span>
-                </div>
+                <div id="navAuthArea" style="display:flex; align-items:center; gap:8px;"></div>
             </div>
         </header>
 
@@ -2725,7 +2889,7 @@
             </div>
         </div>
 
-                                        <!-- ================================================================= -->
+                                                <!-- ================================================================= -->
         <!-- MÓDULO 8: TALLER PRÁCTICO GUIADO – ALMACÉN TÉCNICO CLIMATIZADO   -->
         <!-- ================================================================= -->
         <article class="module-section" id="moduleSection-8">
@@ -4097,7 +4261,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         
-                                        // =================================================================
+                                                // =================================================================
         // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 8 (TALLER ALMACÉN V3)
         // =================================================================
         const almacenState = {
@@ -4446,24 +4610,175 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             runRadioSimulation();
         }
 
-        // Sincronización de Identidad de Alumno
-        function syncStudentFromSession() {
+        
+        // =================================================================
+        // SISTEMA DE AUTENTICACIÓN Y SESIÓN (ORIGEN UGMA SINCRONIZADO)
+        // =================================================================
+        const AUTH_KEY = 'ugma_student_session';
+
+        function getAuthUser() {
             try {
-                const sessionRaw = localStorage.getItem('ugma_student_session');
-                if (sessionRaw) {
-                    const session = JSON.parse(sessionRaw);
-                    const nameField = document.getElementById('evalStudentName');
-                    const emailField = document.getElementById('evalStudentEmail');
-                    const authStatus = document.getElementById('evalStudentAuthStatus');
-                    if (nameField && session.name) nameField.value = session.name;
-                    if (emailField && session.email) emailField.value = session.email;
-                    if (authStatus) {
-                        authStatus.innerHTML = `<span style="color:#059669;font-weight:800;">🟢 Sesión Activa: ${session.name}</span>`;
-                    }
-                    return;
+                const data = localStorage.getItem(AUTH_KEY);
+                return data ? JSON.parse(data) : null;
+            } catch(e) {
+                return null;
+            }
+        }
+
+        function setAuthUser(user) {
+            localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+            renderAuthState();
+        }
+
+        function logoutUser() {
+            localStorage.removeItem(AUTH_KEY);
+            renderAuthState();
+        }
+
+        function openAuthModal(tab = 'login', msg = '') {
+            const modal = document.getElementById('authModal');
+            const msgBox = document.getElementById('authContextMsg');
+            if (modal) {
+                if (msg && msgBox) {
+                    msgBox.innerHTML = `<span>🔒</span> <strong>Área Académica:</strong> ${msg}`;
+                    msgBox.style.display = 'block';
+                } else if (msgBox) {
+                    msgBox.style.display = 'none';
                 }
-            } catch (err) {}
-            alert('No se detectó sesión abierta en este navegador. Por favor ingrese su Nombre y Correo Institucional en los campos provistos.');
+                switchAuthTab(tab);
+                modal.classList.add('active');
+            }
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function switchAuthTab(tab) {
+            const tabLogin = document.getElementById('tabLoginBtn');
+            const tabReg = document.getElementById('tabRegisterBtn');
+            const formLogin = document.getElementById('formLogin');
+            const formReg = document.getElementById('formRegister');
+            if (!tabLogin || !tabReg || !formLogin || !formReg) return;
+
+            if (tab === 'login') {
+                tabLogin.classList.add('active');
+                tabReg.classList.remove('active');
+                formLogin.style.display = 'block';
+                formReg.style.display = 'none';
+            } else {
+                tabLogin.classList.remove('active');
+                tabReg.classList.add('active');
+                formLogin.style.display = 'none';
+                formReg.style.display = 'block';
+            }
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('loginEmail');
+            const email = emailInput ? emailInput.value.trim() : '';
+            let name = '';
+            if (email.toLowerCase().includes('hector') || email.toLowerCase().includes('mota')) {
+                name = 'Ing. Héctor Mota';
+            } else {
+                name = 'Ing. ' + (email ? email.split('@')[0].replace('.', ' ').toUpperCase() : 'PARTICIPANTE');
+            }
+            const user = {
+                name: name,
+                email: email,
+                role: 'Alumno UGMA',
+                ci: 'V-Oficial'
+            };
+            setAuthUser(user);
+            closeAuthModal();
+        }
+
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            const nameEl = document.getElementById('regName');
+            const emailEl = document.getElementById('regEmail');
+            const ciEl = document.getElementById('regCi');
+            const profEl = document.getElementById('regProf');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const ci = ciEl ? ciEl.value.trim() : 'V-Oficial';
+            const prof = profEl ? profEl.value.trim() : 'Ing. Civil';
+
+            const user = {
+                name: name.startsWith('Ing.') || name.startsWith('Arq.') ? name : `Ing. ${name}`,
+                email: email,
+                ci: ci,
+                role: `${prof} · Alumno UGMA`
+            };
+            setAuthUser(user);
+            closeAuthModal();
+        }
+
+        function handleStudentIdentityChange() {
+            const nameInput = document.getElementById('evalStudentName');
+            const emailInput = document.getElementById('evalStudentEmail');
+            if (!nameInput) return;
+            const name = nameInput.value.trim();
+            const email = emailInput ? emailInput.value.trim() : '';
+            if (name.length > 0) {
+                const currentUser = getAuthUser() || {};
+                currentUser.name = name;
+                if (email) currentUser.email = email;
+                setAuthUser(currentUser);
+            }
+        }
+
+        function renderAuthState() {
+            const user = getAuthUser();
+            const navAuth = document.getElementById('navAuthArea');
+            if (navAuth) {
+                if (user && user.name) {
+                    navAuth.innerHTML = `
+                        <div class="user-profile-badge">
+                            <span>🟢</span>
+                            <span id="navUserNameDisplay">${escapeHtml(user.name)}</span>
+                        </div>
+                        <button type="button" class="btn-auth-logout" onclick="logoutUser()" title="Cerrar sesión">
+                            Cerrar Sesión
+                        </button>
+                    `;
+                } else {
+                    navAuth.innerHTML = `
+                        <button type="button" class="btn-auth-action btn-auth-login" onclick="openAuthModal('login')">
+                            Ingresar
+                        </button>
+                        <button type="button" class="btn-auth-action btn-auth-register" onclick="openAuthModal('register')">
+                            Registrarse
+                        </button>
+                    `;
+                }
+            }
+
+            // Sincronizar en barra de evaluación de Módulo 9
+            const nameField = document.getElementById('evalStudentName');
+            const emailField = document.getElementById('evalStudentEmail');
+            const sessionBadge = document.getElementById('evalSessionStatusBadge');
+
+            if (user && user.name) {
+                if (nameField) nameField.value = user.name;
+                if (emailField) emailField.value = user.email || 'hector@motazorrilla.com';
+                if (sessionBadge) {
+                    sessionBadge.innerHTML = `<span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;"></span> Sesión Verificada: ${escapeHtml(user.name)}`;
+                    sessionBadge.style.background = '#ecfdf5';
+                    sessionBadge.style.color = '#047857';
+                    sessionBadge.style.borderColor = '#a7f3d0';
+                }
+            } else {
+                if (sessionBadge) {
+                    sessionBadge.innerHTML = `<span style="width:7px;height:7px;border-radius:50%;background:#f59e0b;display:inline-block;"></span> No identificado (Inicie sesión)`;
+                    sessionBadge.style.background = '#fffbeb';
+                    sessionBadge.style.color = '#b45309';
+                    sessionBadge.style.borderColor = '#fde68a';
+                }
+            }
         }
 
         function runRadioSimulation() {
@@ -5166,11 +5481,76 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            renderAuthState();
             runAlmacenSimulation();
             runRadioSimulation();
             updateStepperUI();
             runHvacSimulation();
         });
     </script>
+
+    <!-- MODAL DE AUTENTICACIÓN Y REGISTRO DE ALUMNOS UGMA -->
+    <div id="authModal" class="auth-modal-overlay">
+        <div class="auth-modal-box">
+            <button type="button" class="repaso-modal-close" onclick="closeAuthModal()">✕</button>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <span style="font-size:26px;">🏛️</span>
+                <div>
+                    <h3 style="font-size:18px; font-weight:800; color:var(--navy-primary); margin:0;">Diplomado en Gerencia de Obras</h3>
+                    <span style="font-size:12px; color:var(--text-light); font-weight:600;">Postgrado UGMA · Control de Acceso Académico</span>
+                </div>
+            </div>
+
+            <div id="authContextMsg" style="display:none; background:#f0f9ff; border:1px solid #bae6fd; padding:10px 12px; border-radius:8px; font-size:12px; color:#0369a1; margin-bottom:16px;">
+            </div>
+
+            <div class="auth-tabs-row">
+                <button type="button" id="tabLoginBtn" class="auth-tab-btn active" onclick="switchAuthTab('login')">Iniciar Sesión</button>
+                <button type="button" id="tabRegisterBtn" class="auth-tab-btn" onclick="switchAuthTab('register')">Registrarse como Alumno</button>
+            </div>
+
+            <!-- FORMULARIO DE INICIO DE SESIÓN -->
+            <form id="formLogin" onsubmit="handleLoginSubmit(event)">
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Correo Institucional o Personal:</label>
+                <input type="email" id="loginEmail" required class="auth-field-input" placeholder="ejemplo: hector@motazorrilla.com">
+
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Contraseña de Acceso:</label>
+                <input type="password" id="loginPass" required class="auth-field-input" placeholder="••••••••">
+
+                <button type="submit" class="btn-auth-submit">
+                    <span>🔑</span> Entrar al Aula Virtual
+                </button>
+            </form>
+
+            <!-- FORMULARIO DE REGISTRO DE ALUMNO -->
+            <form id="formRegister" style="display:none;" onsubmit="handleRegisterSubmit(event)">
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Nombres y Apellidos:</label>
+                <input type="text" id="regName" required class="auth-field-input" placeholder="ej: Ing. Héctor Mota">
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">C.I. / N° CIV:</label>
+                        <input type="text" id="regCi" required class="auth-field-input" placeholder="V-18.450.210">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Especialidad:</label>
+                        <input type="text" id="regProf" required class="auth-field-input" placeholder="Ingeniería Civil / Arq.">
+                    </div>
+                </div>
+
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Correo Electrónico:</label>
+                <input type="email" id="regEmail" required class="auth-field-input" placeholder="alumno@ugma.edu.ve">
+
+                <label style="display:block; font-size:12px; font-weight:700; color:var(--navy-primary); margin-bottom:4px;">Crear Contraseña:</label>
+                <input type="password" id="regPass" required class="auth-field-input" placeholder="Mínimo 6 caracteres">
+
+                <button type="submit" class="btn-auth-submit" style="background:#0284c7;">
+                    <span>📝</span> Completar Registro e Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
