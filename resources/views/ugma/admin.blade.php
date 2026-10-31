@@ -600,7 +600,7 @@
                     🎯 Rúbrica y Notas (0-20 pts)
                 </button>
                 <button type="button" id="tabAdminEvaluations" class="tab-btn-admin" onclick="switchAdminTab('evaluations')">
-                    📋 Evaluaciones Día 1 &amp; 2 (<span id="evalCountBadge">0</span>)
+                    📋 Evaluaciones (<span id="evalCountBadge">0</span>)
                 </button>
             </div>
 
@@ -896,17 +896,25 @@
                 <div class="content-card">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
                         <div>
-                            <h3 style="margin:0;"><span>📋</span> Evaluaciones Prácticas: Semana 1 (Día 1 y Día 2)</h3>
+                            <h3 style="margin:0;"><span>📋</span> Evaluaciones Prácticas y Entregas</h3>
                             <p style="font-size:13.5px; color:var(--text-muted); margin-top:4px;">
-                                Seguimiento en tiempo real de exámenes entregados en openBIM ISO 19650, Curva de MacLeamy, Clash Detection 3D y BCF 3.0.
+                                Seguimiento en tiempo real de exámenes de la Cátedra (Semana 1 openBIM/BCF y Unidad 4 Telecom Karuay-Waikirimá).
                             </p>
                         </div>
                         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                            <select id="evalFilterCode" onchange="renderEvaluationsTable()" style="padding:8px 12px; border-radius:10px; border:1px solid #cbd5e1; font-size:12.5px; font-weight:700; background:#ffffff; color:var(--navy-primary); cursor:pointer;">
+                                <option value="ALL">🔍 Todas las Evaluaciones</option>
+                                <option value="EVAL-DIA-1-2">📋 Semana 1: openBIM &amp; BCF (20 Pts)</option>
+                                <option value="EVAL-U4-TELECOM">📡 U4: Telecom Karuay-Waikirimá (20 Pts)</option>
+                            </select>
                             <button type="button" id="btnToggleEvaluationCard" class="btn-refresh" style="background:#059669; color:#ffffff; border:1px solid #047857; font-weight:700;" onclick="toggleEvaluationCardStatus()">
-                                <span id="btnToggleEvaluationCardIcon">🟢</span> <span id="btnToggleEvaluationCardText">Habilitar Tarjeta a Estudiantes Inscritos</span>
+                                <span id="btnToggleEvaluationCardIcon">🟢</span> <span id="btnToggleEvaluationCardText">Habilitar Tarjeta Semana 1</span>
                             </button>
-                            <a href="/ugma-gerencia-obras/evaluacion-dia-1-2" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#e0f2fe; color:#0369a1; text-decoration:none; padding:8px 16px; border-radius:10px; font-size:12.5px; font-weight:700; border:1px solid #bae6fd;">
-                                🌐 Abrir Módulo de Examen ↗
+                            <a href="/ugma-gerencia-obras/evaluacion-dia-1-2" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#e0f2fe; color:#0369a1; text-decoration:none; padding:8px 14px; border-radius:10px; font-size:12.5px; font-weight:700; border:1px solid #bae6fd;">
+                                📋 Abrir Semana 1 ↗
+                            </a>
+                            <a href="/ugma-gerencia-obras/eficiencia-energetica-materiales/#modulo-9-evaluacion" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#fef3c7; color:#92400e; text-decoration:none; padding:8px 14px; border-radius:10px; font-size:12.5px; font-weight:700; border:1px solid #fde68a;">
+                                📡 Abrir U4 Telecom ↗
                             </a>
                             <button type="button" class="btn-refresh" onclick="loadEvaluations()">
                                 <span>🔄</span> Actualizar
@@ -958,8 +966,9 @@
                                 <tr>
                                     <th>Participante</th>
                                     <th>Correo</th>
-                                    <th>Día 1 (BIM/CDE)</th>
-                                    <th>Día 2 (Clash/BCF)</th>
+                                    <th>Evaluación</th>
+                                    <th>Día 1 / Etapa 1</th>
+                                    <th>Día 2 / Etapa 2</th>
                                     <th>Total (0-20)</th>
                                     <th>Estado</th>
                                     <th>Tiempo</th>
@@ -968,7 +977,7 @@
                             </thead>
                             <tbody id="evaluationsTableBody">
                                 <tr>
-                                    <td colspan="8" style="text-align:center; padding:24px; color:var(--text-light);">
+                                    <td colspan="9" style="text-align:center; padding:24px; color:var(--text-light);">
                                         Cargando entregas de evaluación...
                                     </td>
                                 </tr>
@@ -1516,7 +1525,7 @@
             try { grades = JSON.parse(localStorage.getItem(GRADES_KEY) || '[]'); } catch(e) {}
 
             if (grades.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:var(--text-light); padding:16px;">No hay calificaciones asentadas aún.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:var(--text-light); padding:16px;">No hay calificaciones asentadas aún.</td></tr>';
                 return;
             }
 
@@ -1912,7 +1921,7 @@
 
     <script>
         // ==========================================
-        // FUNCIONES DE EVALUACIONES DÍA 1 Y DÍA 2
+        // FUNCIONES DE EVALUACIONES (SEMANA 1 Y UNIDAD 4 TELECOM)
         // ==========================================
         let currentEvalSubmissions = [];
 
@@ -1921,55 +1930,89 @@
                 const res = await fetch('/ugma-gerencia-obras/api/evaluacion/submissions');
                 const data = await res.json();
                 if (data.success) {
-                    currentEvalSubmissions = data.submissions;
-                    document.getElementById('evalCountBadge').innerText = data.metrics.total_submissions;
-                    document.getElementById('evalStatTotal').innerText = data.metrics.total_submissions;
-                    document.getElementById('evalStatAvg').innerText = data.metrics.average_score + ' / 20';
-                    document.getElementById('evalStatPass').innerText = data.metrics.pass_rate_percentage + '%';
-                    document.getElementById('evalStatMax').innerText = data.metrics.highest_score + ' / 20';
-
-                    const tbody = document.getElementById('evaluationsTableBody');
-                    if (data.submissions.length === 0) {
-                        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:24px; color:var(--text-light);">No hay exámenes entregados aún.</td></tr>';
-                        return;
-                    }
-
-                    tbody.innerHTML = data.submissions.map(s => {
-                        const isApproved = s.total_score >= 10;
-                        const statusBadge = isApproved 
-                            ? `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#ecfdf5; color:#047857; font-size:11px; font-weight:800; border:1px solid #a7f3d0;">APROBADO</span>`
-                            : `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#fef2f2; color:#b91c1c; font-size:11px; font-weight:800; border:1px solid #fecaca;">REPROBADO</span>`;
-
-                        const mins = Math.floor(s.time_spent_seconds / 60);
-                        const secs = s.time_spent_seconds % 60;
-                        const timeStr = `${mins}m ${secs}s`;
-
-                        return `
-                            <tr>
-                                <td><strong style="color:var(--navy-primary); font-size:13.5px;">${escapeHtml(s.student_name)}</strong></td>
-                                <td style="font-size:12px; color:var(--text-muted);">${escapeHtml(s.student_email)}</td>
-                                <td style="font-family:var(--font-mono); font-weight:700; color:var(--blue-accent);">${s.score_day1} / 10</td>
-                                <td style="font-family:var(--font-mono); font-weight:700; color:var(--emerald);">${s.score_day2} / 10</td>
-                                <td><strong style="font-family:var(--font-mono); font-size:14px; color:var(--navy-primary);">${s.total_score} / 20</strong></td>
-                                <td>${statusBadge}</td>
-                                <td style="font-size:12px; font-family:var(--font-mono);">${timeStr}</td>
-                                <td>
-                                    <div style="display:flex; gap:6px;">
-                                        <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" onclick="showBcfTicketModal(${s.id})">
-                                            🔍 BCF
-                                        </button>
-                                        <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#f1f5f9; color:var(--text-main);" onclick="openGradeEvalModal(${s.id})">
-                                            ✏️ Nota
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
-                    }).join('');
+                    currentEvalSubmissions = data.submissions || [];
+                    document.getElementById('evalCountBadge').innerText = currentEvalSubmissions.length;
+                    renderEvaluationsTable();
                 }
             } catch (err) {
                 console.error("Error al cargar evaluaciones:", err);
             }
+        }
+
+        function renderEvaluationsTable() {
+            const filterEl = document.getElementById('evalFilterCode');
+            const filterVal = filterEl ? filterEl.value : 'ALL';
+
+            const filtered = currentEvalSubmissions.filter(s => {
+                if (filterVal === 'ALL') return true;
+                if (filterVal === 'EVAL-DIA-1-2') {
+                    return !s.evaluation_code || s.evaluation_code === 'EVAL-DIA-1-2';
+                }
+                return s.evaluation_code === filterVal;
+            });
+
+            // Update stats
+            const total = filtered.length;
+            const avg = total > 0 ? (filtered.reduce((sum, s) => sum + (parseFloat(s.total_score) || 0), 0) / total).toFixed(1) : '0.0';
+            const passCount = filtered.filter(s => (parseFloat(s.total_score) || 0) >= 10).length;
+            const passRate = total > 0 ? ((passCount / total) * 100).toFixed(1) : '0';
+            const maxScore = total > 0 ? Math.max(...filtered.map(s => parseFloat(s.total_score) || 0)).toFixed(1) : '0.0';
+
+            document.getElementById('evalStatTotal').innerText = total;
+            document.getElementById('evalStatAvg').innerText = avg + ' / 20';
+            document.getElementById('evalStatPass').innerText = passRate + '%';
+            document.getElementById('evalStatMax').innerText = maxScore + ' / 20';
+
+            const tbody = document.getElementById('evaluationsTableBody');
+            if (!tbody) return;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:24px; color:var(--text-light);">No hay exámenes entregados para el filtro seleccionado.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(s => {
+                const isApproved = (parseFloat(s.total_score) || 0) >= 10;
+                const statusBadge = isApproved 
+                    ? `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#ecfdf5; color:#047857; font-size:11px; font-weight:800; border:1px solid #a7f3d0;">APROBADO</span>`
+                    : `<span style="display:inline-block; padding:3px 10px; border-radius:9999px; background:#fef2f2; color:#b91c1c; font-size:11px; font-weight:800; border:1px solid #fecaca;">REPROBADO</span>`;
+
+                const mins = Math.floor((s.time_spent_seconds || 0) / 60);
+                const secs = (s.time_spent_seconds || 0) % 60;
+                const timeStr = `${mins}m ${secs}s`;
+
+                const isTelecom = s.evaluation_code === 'EVAL-U4-TELECOM';
+                const evalBadge = isTelecom
+                    ? `<span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#fef3c7; color:#92400e; font-size:10.5px; font-weight:800; border:1px solid #fde68a;">📡 U4 TELECOM</span>`
+                    : `<span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#e0f2fe; color:#0369a1; font-size:10.5px; font-weight:800; border:1px solid #bae6fd;">📋 SEMANA 1</span>`;
+
+                const d1Label = isTelecom ? 'Etapa 1' : 'Día 1';
+                const d2Label = isTelecom ? 'Etapa 2' : 'Día 2';
+                const inspectBtnText = isTelecom ? '🔍 Respuestas' : '🔍 BCF';
+
+                return `
+                    <tr>
+                        <td><strong style="color:var(--navy-primary); font-size:13.5px;">${escapeHtml(s.student_name || 'Sin Nombre')}</strong></td>
+                        <td style="font-size:12px; color:var(--text-muted);">${escapeHtml(s.student_email || '')}</td>
+                        <td>${evalBadge}</td>
+                        <td style="font-family:var(--font-mono); font-weight:700; color:var(--blue-accent);">${s.score_day1} / 10 <span style="font-size:10px; color:var(--text-light); font-weight:400;">(${d1Label})</span></td>
+                        <td style="font-family:var(--font-mono); font-weight:700; color:var(--emerald);">${s.score_day2} / 10 <span style="font-size:10px; color:var(--text-light); font-weight:400;">(${d2Label})</span></td>
+                        <td><strong style="font-family:var(--font-mono); font-size:14px; color:var(--navy-primary);">${s.total_score} / 20</strong></td>
+                        <td>${statusBadge}</td>
+                        <td style="font-size:12px; font-family:var(--font-mono);">${timeStr}</td>
+                        <td>
+                            <div style="display:flex; gap:6px;">
+                                <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" onclick="showBcfTicketModal(${s.id})">
+                                    ${inspectBtnText}
+                                </button>
+                                <button type="button" class="btn-action-admin" style="padding:4px 8px; font-size:11.5px; background:#f1f5f9; color:var(--text-main);" onclick="openGradeEvalModal(${s.id})">
+                                    ✏️ Nota
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         function showBcfTicketModal(submissionId) {
@@ -1977,7 +2020,34 @@
             if (!sub) return;
 
             document.getElementById('bcfModalAuthor').innerText = `${sub.student_name} (${sub.student_email})`;
-            document.getElementById('bcfModalCode').innerText = sub.bcf_ticket_code || '<!-- No se generó código BCF en esta entrega -->';
+            if (sub.evaluation_code === 'EVAL-U4-TELECOM') {
+                let ansDetails = '';
+                if (sub.answers) {
+                    ansDetails = `=== EXPEDIENTE TÉCNICO DE EVALUACIÓN U4: TELECOMUNICACIONES ===
+` +
+                                 `Emplazamiento: ${sub.answers.location || 'Karuay-Waikirimá'}
+` +
+                                 `Calificación: ${sub.total_score} / 20 pts
+` +
+                                 `Costo Estimado: $${(sub.answers.total_cost || 0).toLocaleString()} USD
+` +
+                                 `Plazo CPM: ${sub.answers.total_days || 0} días
+` +
+                                 `Pico Personal: ${sub.answers.peak_workers || 0} obreros (Campamento)
+` +
+                                 `Autonomía Baterías: ${sub.answers.backup_hours || 0} horas
+
+` +
+                                 `--- ELECCIONES SELECCIONADAS ---
+` +
+                                 JSON.stringify(sub.answers, null, 2);
+                } else {
+                    ansDetails = sub.bcf_ticket_code || 'Entrega registrada';
+                }
+                document.getElementById('bcfModalCode').innerText = ansDetails;
+            } else {
+                document.getElementById('bcfModalCode').innerText = sub.bcf_ticket_code || '<!-- No se generó código BCF en esta entrega -->';
+            }
             document.getElementById('bcfInspectorModal').style.display = 'flex';
         }
 

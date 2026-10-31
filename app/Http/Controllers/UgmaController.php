@@ -388,6 +388,7 @@ class UgmaController extends Controller
         $validated = $request->validate([
             'student_name' => 'required|string',
             'student_email' => 'required|email',
+            'evaluation_code' => 'nullable|string',
             'session_token' => 'nullable|string',
             'time_spent_seconds' => 'nullable|integer',
             'answers' => 'required|array',
@@ -401,7 +402,7 @@ class UgmaController extends Controller
 
     public function apiGetEvaluations(Request $request, GetEvaluationSubmissionsAction $action): JsonResponse
     {
-        $code = $request->input('code', 'EVAL-DIA-1-2');
+        $code = $request->input('code', 'ALL');
         $result = $action->execute($code);
 
         return response()->json($result);

@@ -958,8 +958,8 @@
             .academic-p { text-indent: 1.4em; font-size: 14.5px; }
         }
     
-                /* ================================================================= */
-        /* MÓDULOS 8 Y 9: TALLER PRÁCTICO & EVALUACIÓN INTERACTIVA (V2)      */
+                                /* ================================================================= */
+        /* MÓDULOS 8 Y 9: TALLER PRÁCTICO & EVALUACIÓN INTERACTIVA (V3)      */
         /* ================================================================= */
         .interactive-cockpit {
             background: #ffffff;
@@ -1013,8 +1013,34 @@
             margin-top: 2px;
             font-family: var(--font-mono);
         }
+        .student-identity-bar {
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .student-identity-inputs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .student-id-field {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 12.5px;
+            min-width: 200px;
+        }
         .selectors-section-title {
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 800;
             color: var(--navy-primary);
             margin: 24px 0 12px;
@@ -1048,16 +1074,6 @@
             box-shadow: var(--shadow-sm);
         }
         .res-option-card.selected {
-            border-color: var(--amber-accent);
-            background: #fffbeb;
-            box-shadow: 0 0 0 1px var(--amber-accent);
-        }
-        .res-option-card.selected.opt-emerald {
-            border-color: var(--emerald);
-            background: #ecfdf5;
-            box-shadow: 0 0 0 1px var(--emerald);
-        }
-        .res-option-card.selected.opt-blue {
             border-color: var(--blue-accent);
             background: #f0f9ff;
             box-shadow: 0 0 0 1px var(--blue-accent);
@@ -1075,13 +1091,13 @@
             color: var(--navy-primary);
             line-height: 1.35;
         }
-        .res-option-badge {
+        .res-option-badge-neutral {
             font-size: 10px;
             font-weight: 800;
             padding: 2px 7px;
             border-radius: 6px;
             background: #e2e8f0;
-            color: #475569;
+            color: #334155;
             white-space: nowrap;
         }
         .res-option-desc {
@@ -1414,6 +1430,37 @@
             width: 100%;
             min-width: 780px;
             height: auto;
+        }
+
+        /* ARGUMENTARIO PERICIAL PARA EL DOCENTE */
+        .forensic-docente-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1.5px solid #334155;
+            border-radius: 14px;
+            padding: 20px 22px;
+            margin-top: 24px;
+            color: #f1f5f9;
+        }
+        .forensic-docente-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #f59e0b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .forensic-item-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #38bdf8;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            font-size: 12.2px;
+            line-height: 1.55;
+        }
+        .forensic-item-box strong {
+            color: #38bdf8;
         }
 
         /* DICTAMEN PERICIAL */
@@ -2482,7 +2529,7 @@
             </div>
         </div>
 
-                <!-- ================================================================= -->
+                                <!-- ================================================================= -->
         <!-- MÓDULO 8: TALLER PRÁCTICO GUIADO – ALMACÉN TÉCNICO CLIMATIZADO   -->
         <!-- ================================================================= -->
         <article class="module-section" id="moduleSection-8">
@@ -2490,7 +2537,7 @@
                 <div class="module-badge-num">08</div>
                 <div>
                     <h2 class="module-title">Taller Práctico Guiado: Centro de Distribución y Almacén Técnico Climatizado</h2>
-                    <p class="module-desc">Simulador BIM Interdimensional: Integración de Envolvente Térmica, Climatización CEN 200, Respaldo Híbrido, Diagrama de Gantt 4D y Flujo de Caja 5D</p>
+                    <p class="module-desc">Simulador BIM Interdimensional: Integración de Configuración Espacial 3D, Envolvente Térmica, Climatización CEN 200, Respaldo Híbrido, Diagrama de Gantt 4D y Flujo de Caja 5D</p>
                 </div>
             </div>
 
@@ -2498,10 +2545,10 @@
                 <!-- HERO CARD MANDATO -->
                 <div class="cockpit-hero-card">
                     <div class="cockpit-hero-title">
-                        <span>🏢</span> Mandato de Obra: Centro de Distribución de Materiales Sensibles (Zona Ind. Unare II)
+                        <span>🏢</span> Mandato de Obra: Centro de Distribución de Suministros Termosensibles (Zona Ind. Unare II)
                     </div>
                     <div class="cockpit-hero-desc">
-                        Se le ha encomendado la gerencia integral para la adecuación y habilitación de una nave logística de 600 m² destinada al almacenamiento de insumos farmacéuticos y resinas poliméricas de alta sensibilidad térmica (degradación crítica si T &gt; 25°C). Debe tomar decisiones en cada dimensión BIM garantizando la viabilidad física, eléctrica y presupuestaria antes del inicio de operaciones.
+                        Se le ha encomendado la gerencia integral para la adecuación y habilitación de una nave logística de 600 m² destinada al almacenamiento de insumos farmacéuticos, reactivos y polímeros de alta sensibilidad térmica (degradación química irreversible si la temperatura interior supera los 25°C). Debe tomar decisiones en cada dimensión BIM garantizando la viabilidad física, eléctrica y presupuestaria antes del inicio de operaciones.
                     </div>
                     <div class="mandate-grid">
                         <div class="mandate-pill">
@@ -2523,64 +2570,64 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 1: OBRA CIVIL Y RACKS -->
+                <!-- SELECTOR 1: CONFIGURACIÓN ESPACIAL 3D -->
                 <div class="selectors-section-title">
-                    <span>1️⃣</span> Dimensión 3D/4D: Selección de Cuadrilla de Obra Civil y Montaje Estructural
+                    <span>1️⃣</span> Dimensión 3D: Configuración Espacial, Disposición de Racks y Zonificación Térmica
                 </div>
                 <div class="resource-cards-grid-4">
-                    <div class="res-option-card" id="cardA1_min" onclick="selectAlmacenCivil('min')">
+                    <div class="res-option-card" id="cardA1_perimetral" onclick="selectAlmacenConfig('perimetral')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Cuadrilla Mínima</span>
-                            <span class="res-option-badge">Económica</span>
+                            <span class="res-option-title">Disposición Perimetral Abierta</span>
+                            <span class="res-option-badge-neutral">Muros Este/Oeste</span>
                         </div>
                         <div class="res-option-desc">
-                            4 obreros. Ritmo de avance lento. Reduce el costo de nómina pero dilata la obra civil a 16 días, poniendo en riesgo la ruta crítica del proyecto.
+                            Racks adosados a cerramientos exteriores expuestos al sol. Sin confinamiento térmico. El aire frío se disipa en toda la nave de 2.400 m³ elevando la carga térmica continua a 15.5 kW.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 16 días · 👥 4 pers.</span>
-                            <strong>$5.200 USD</strong>
+                            <span>⏱️ 14 días · 15.5 kW</span>
+                            <strong>$6.800 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardA1_std" onclick="selectAlmacenCivil('std')">
+                    <div class="res-option-card" id="cardA1_longitudinal" onclick="selectAlmacenConfig('longitudinal')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Cuadrilla Estándar</span>
-                            <span class="res-option-badge">Convencional</span>
+                            <span class="res-option-title">Longitudinal con Pasillos Mixtos</span>
+                            <span class="res-option-badge-neutral">Hileras Estándar</span>
                         </div>
                         <div class="res-option-desc">
-                            6 obreros. Rendimiento convencional según tabulador regional. Completa la adecuación de piso y racks en 12 días calendario.
+                            Hileras longitudinales paralelas sin segregación de aire. Se genera recirculación turbulenta entre aire caliente de retorno y aire frío inyectado, demandando 12.0 kW continuos.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 12 días · 👥 6 pers.</span>
-                            <strong>$7.000 USD</strong>
+                            <span>⏱️ 10 días · 12.0 kW</span>
+                            <strong>$7.500 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardA1_reforz" onclick="selectAlmacenCivil('reforz')">
+                    <div class="res-option-card selected" id="cardA1_confinado" onclick="selectAlmacenConfig('confinado')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Cuadrilla Reforzada</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                            <span class="res-option-title">Celda Central con Pasillo Frío Confinado</span>
+                            <span class="res-option-badge-neutral" style="background:#d1fae5;color:#065f46;">⭐ Óptima 3D</span>
                         </div>
                         <div class="res-option-desc">
-                            8 obreros. Excelente paralelismo en nave sin generar congestión física. Acorta la ruta civil a solo 8 días garantizando holgura al comisionamiento.
+                            Racks en el baricentro geométrico (lejos de muros perimetrales) formando un túnel hermético con cerramientos de policarbonato y cortinas de aire. Climatiza únicamente el volumen útil (180 m³ en vez de 2.400 m³), abatiendo la carga a solo 8.0 kW a 22°C.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 8 días · 👥 8 pers.</span>
+                            <span>⏱️ 8 días · 8.0 kW</span>
                             <strong>$8.200 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardA1_doble" onclick="selectAlmacenCivil('doble')">
+                    <div class="res-option-card" id="cardA1_mezzanina" onclick="selectAlmacenConfig('mezzanina')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Doble Cuadrilla Masiva</span>
-                            <span class="res-option-badge">Acelerada</span>
+                            <span class="res-option-title">Racks en Mezzanina Metálica (6m)</span>
+                            <span class="res-option-badge-neutral">Densidad Vertical</span>
                         </div>
                         <div class="res-option-desc">
-                            12 obreros. Máxima velocidad (5 días), pero satura las vías de circulación interna, incrementa riesgos de seguridad y genera un sobrecosto severo.
+                            Estructura vertical que sufre estratificación térmica en el tercio superior de la nave (T &gt; 32°C en niveles altos). Demanda ventiladores de desestratificación forzada y sobrecosto elevado.
                         </div>
                         <div class="res-option-meta">
-                            <span>⏱️ 5 días · 👥 12 pers.</span>
-                            <strong>$12.500 USD</strong>
+                            <span>⏱️ 16 días · 14.0 kW</span>
+                            <strong>$13.500 USD</strong>
                         </div>
                     </div>
                 </div>
@@ -2592,11 +2639,11 @@
                 <div class="resource-cards-grid-4">
                     <div class="res-option-card" id="cardA2_black" onclick="selectAlmacenTecho('black')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Manto Asfáltico Negro</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inadecuado</span>
+                            <span class="res-option-title">Manto Asfáltico Negro Tradicional</span>
+                            <span class="res-option-badge-neutral">Albedo 0.08</span>
                         </div>
                         <div class="res-option-desc">
-                            Impermeabilización tradicional sin reflectividad (albedo 0.08). Alcanza 82°C bajo el sol de Guayana e inyecta 16.5 kW de calor parásito al recinto.
+                            Impermeabilización tradicional sin reflectividad. Alcanza 82°C bajo el sol de Guayana e inyecta calor parásito masivo a la nave por transferencia térmica.
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 82°C · +35% calor</span>
@@ -2607,10 +2654,10 @@
                     <div class="res-option-card" id="cardA2_white" onclick="selectAlmacenTecho('white')">
                         <div class="res-option-header">
                             <span class="res-option-title">Pintura Elastomérica Blanca</span>
-                            <span class="res-option-badge">Básica</span>
+                            <span class="res-option-badge-neutral">Albedo 0.60</span>
                         </div>
                         <div class="res-option-desc">
-                            Reflexión superficial del 60% que reduce la temperatura a 64°C, pero carece de aislamiento conductivo. Requiere 13.5 kW en el sistema climatizador.
+                            Reflexión superficial que reduce la temperatura a 64°C, pero carece de aislamiento conductivo. Requiere mayor potencia en el sistema climatizador.
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 64°C · +15% calor</span>
@@ -2618,13 +2665,13 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardA2_alum" onclick="selectAlmacenTecho('alum')">
+                    <div class="res-option-card selected" id="cardA2_alum" onclick="selectAlmacenTecho('alum')">
                         <div class="res-option-header">
                             <span class="res-option-title">Manto Aluminizado + Lana 50mm</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                            <span class="res-option-badge-neutral" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
                         </div>
                         <div class="res-option-desc">
-                            Lámina aluminizada reflectiva (albedo 0.85) más alma de lana de roca. Abate la temperatura a 54°C y reduce la carga térmica HVAC a solo 8.0 kW.
+                            Lámina aluminizada reflectiva (albedo 0.85) más alma de lana de roca. Abate la temperatura superficial a 54°C y reduce la carga térmica a solo 8.0 kW.
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 54°C · R=1.8 m²K/W</span>
@@ -2635,10 +2682,10 @@
                     <div class="res-option-card" id="cardA2_pir" onclick="selectAlmacenTecho('pir')">
                         <div class="res-option-header">
                             <span class="res-option-title">Sándwich Termoacústico PIR 80mm</span>
-                            <span class="res-option-badge">Premium</span>
+                            <span class="res-option-badge-neutral">Panel Industrial</span>
                         </div>
                         <div class="res-option-desc">
-                            Panel industrial de poliisocianurato de máxima eficiencia (42°C sup, 6.5 kW HVAC), pero su costo de $11.500 USD quiebra el presupuesto disponible.
+                            Panel de poliisocianurato de máxima eficiencia (42°C superficial, U=0.28 W/m²K), pero su costo de $11.500 USD quiebra el presupuesto disponible.
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 42°C · U=0.28 W/m²K</span>
@@ -2647,18 +2694,18 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 3: HVAC 16 TR Y CÓDIGO ELÉCTRICO -->
+                <!-- SELECTOR 3: CLIMATIZADOR INDUSTRIAL DE PRECISIÓN (CEN 200) -->
                 <div class="selectors-section-title">
-                    <span>3️⃣</span> Dimensión Electromecánica: Sistema Climatizador HVAC 16 TR y Código CEN 200
+                    <span>3️⃣</span> Dimensión Electromecánica: Sistema Climatizador de Precisión y Código CEN 200
                 </div>
                 <div class="resource-cards-grid-4">
                     <div class="res-option-card" id="cardA3_mono8" onclick="selectAlmacenHvac('mono8')">
                         <div class="res-option-header">
                             <span class="res-option-title">Monofásico On/Off (#8 AWG)</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Norma Viola</span>
+                            <span class="res-option-badge-neutral">Comercial 230V 1F</span>
                         </div>
                         <div class="res-option-desc">
-                            4 unidades 4 TR 230V monofásicas con cable #8. Provoca 3.8% de caída de tensión (viola límite 3.0%), desbalance NEMA 25.55% y recalienta el neutro.
+                            Compresores comerciales monofásicos con cable #8. Provoca 3.8% de caída de tensión (viola límite normativo de 3.0%), desbalance NEMA de 25.55% y recalienta el neutro.
                         </div>
                         <div class="res-option-meta">
                             <span>⚠️ 3.8% Caída · 14.8 kW</span>
@@ -2669,7 +2716,7 @@
                     <div class="res-option-card" id="cardA3_mono4" onclick="selectAlmacenHvac('mono4')">
                         <div class="res-option-header">
                             <span class="res-option-title">Monofásico (#4 AWG Sobredim.)</span>
-                            <span class="res-option-badge">Parche</span>
+                            <span class="res-option-badge-neutral">Calibre #4</span>
                         </div>
                         <div class="res-option-desc">
                             Corrige la caída de tensión a 1.9% pero perpetúa el desbalance severo de fases (25.55%) en el transformador de distribución y mantiene 12.2 kW de consumo.
@@ -2682,11 +2729,11 @@
 
                     <div class="res-option-card" id="cardA3_tri_onoff" onclick="selectAlmacenHvac('tri_onoff')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Trifásico On/Off 208V</span>
-                            <span class="res-option-badge">Convencional</span>
+                            <span class="res-option-title">Trifásico Industrial On/Off 208V</span>
+                            <span class="res-option-badge-neutral">Trifásico Simétrico</span>
                         </div>
                         <div class="res-option-desc">
-                            Distribución simétrica de fases (0% desbalance, CEN 200), pero compresores directos con alto pico de arranque LRA y consumo plano de 11.5 kW.
+                            Distribución simétrica de fases (0% desbalance, cumple CEN 200), pero compresores directos con alto pico de arranque LRA y consumo plano de 11.5 kW.
                         </div>
                         <div class="res-option-meta">
                             <span>⚖️ 0% Desbalance · 11.5 kW</span>
@@ -2694,13 +2741,13 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardA3_tri_inv" onclick="selectAlmacenHvac('tri_inv')">
+                    <div class="res-option-card selected" id="cardA3_tri_inv" onclick="selectAlmacenHvac('tri_inv')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Trifásico Inverter VFD 208V</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                            <span class="res-option-title">Trifásico Inverter VFD 208V CEN 200</span>
+                            <span class="res-option-badge-neutral" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
                         </div>
                         <div class="res-option-desc">
-                            Cumplimiento pleno CEN 200: 0% desbalance, caída de solo 0.4%, arranque suave progresivo y modulación inverter que reduce la demanda a solo 8.0 kW.
+                            Cumplimiento pleno CEN 200: 0% desbalance, caída de solo 0.4%, arranque suave progresivo y modulación inverter que reduce la demanda a solo 8.0 kW a 22°C.
                         </div>
                         <div class="res-option-meta">
                             <span>✅ CEN 200 · 8.0 kW Mod.</span>
@@ -2709,7 +2756,7 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 4: ENERGÍA DE RESPALDO (CONTINUIDAD) -->
+                <!-- SELECTOR 4: ENERGÍA DE RESPALDO (CONTINUIDAD 4 HORAS) -->
                 <div class="selectors-section-title">
                     <span>4️⃣</span> Dimensión Respaldo Energético: Continuidad Operativa ante Apagón (4 Horas)
                 </div>
@@ -2717,10 +2764,10 @@
                     <div class="res-option-card" id="cardA4_r1" onclick="selectAlmacenEnergy('r1')">
                         <div class="res-option-header">
                             <span class="res-option-title">Solar Básico (10 kWp + 15 kWh)</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Insuficiente</span>
+                            <span class="res-option-badge-neutral">Litio Reducido</span>
                         </div>
                         <div class="res-option-desc">
-                            Banco de litio reducido. Ante corte de luz, entrega únicamente 1.5 horas de autonomía real antes del colapso de frío de los fármacos.
+                            Banco de baterías reducido. Ante corte de luz, entrega únicamente 1.5 horas de autonomía real antes de que la temperatura interna supere los 25°C degradando fármacos.
                         </div>
                         <div class="res-option-meta">
                             <span>🔋 1.5 Horas · 15 kWh</span>
@@ -2731,7 +2778,7 @@
                     <div class="res-option-card" id="cardA4_r2" onclick="selectAlmacenEnergy('r2')">
                         <div class="res-option-header">
                             <span class="res-option-title">Generador Diésel 25 kVA</span>
-                            <span class="res-option-badge" style="background:#fef3c7;color:#92400e;">Alto OPEX</span>
+                            <span class="res-option-badge-neutral">Combustión Fósil</span>
                         </div>
                         <div class="res-option-desc">
                             Planta automática accesible en compra inicial, pero consume $9.600 USD/año en gasoil y sus emisiones de hollín amenazan la inocuidad farmacéutica.
@@ -2742,13 +2789,13 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardA4_r3" onclick="selectAlmacenEnergy('r3')">
+                    <div class="res-option-card selected" id="cardA4_r3" onclick="selectAlmacenEnergy('r3')">
                         <div class="res-option-header">
                             <span class="res-option-title">Híbrido Solar Óptimo (20 kWp + 40 kWh)</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                            <span class="res-option-badge-neutral" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
                         </div>
                         <div class="res-option-desc">
-                            Inversor trifásico y banco LiFePO4 de 40 kWh (32 kWh útiles). Soporta con solvencia 4.2 horas continuas con cubierta aluminizada e inverter.
+                            Inversor trifásico y banco LiFePO4 de 40 kWh (32 kWh útiles). Soporta con solvencia 4.2 horas continuas con cubierta aluminizada, pasillo frío e inverter.
                         </div>
                         <div class="res-option-meta">
                             <span>🔋 4.2 Horas · 40 kWh</span>
@@ -2759,7 +2806,7 @@
                     <div class="res-option-card" id="cardA4_r4" onclick="selectAlmacenEnergy('r4')">
                         <div class="res-option-header">
                             <span class="res-option-title">Macro-Banco Solar (35 kWp + 90 kWh)</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Sobrediseño</span>
+                            <span class="res-option-badge-neutral">Capacidad Extendida</span>
                         </div>
                         <div class="res-option-desc">
                             Autonomía extendida de más de 9 horas, pero su costo de $28.000 USD rompe el presupuesto global del proyecto en más de $10.000 USD.
@@ -2899,7 +2946,7 @@
                             🚀 Taller de Almacén Integrado con Éxito
                         </strong>
                         <span style="font-size:12.5px;color:#334155;">
-                            Ha verificado cómo las decisiones bioclimáticas abaten la carga de climatización y viabilizan el respaldo solar en tiempo y costo. Continúe a la evaluación pericial en el Cerro San Félix.
+                            Ha verificado cómo las decisiones bioclimáticas abaten la carga de climatización y viabilizan el respaldo solar en tiempo y costo. Continúe a la evaluación pericial en la Cumbre Escarpada de Karuay-Waikirimá.
                         </span>
                     </div>
                     <button type="button" class="btn-stepper-nav" onclick="goToStep(9)" style="background:#0284c7;color:#ffffff;border:none;padding:10px 18px;border-radius:10px;font-weight:800;cursor:pointer;">
@@ -2910,25 +2957,47 @@
         </article>
 
         <!-- ================================================================= -->
-        <!-- MÓDULO 9: EVALUACIÓN PRÁCTICA PERICIAL – TELECOM CERRO SAN FÉLIX -->
+        <!-- MÓDULO 9: EVALUACIÓN PRÁCTICA PERICIAL – TELECOM KARUAY-WAIKIRIMÁ -->
         <!-- ================================================================= -->
         <article class="module-section" id="moduleSection-9">
             <div class="module-header">
                 <div class="module-badge-num">09</div>
                 <div>
-                    <h2 class="module-title">Evaluación Práctica Pericial: Estación de Radiobase Telecom Cerro San Félix</h2>
-                    <p class="module-desc">Caso de Estudio Autónomo: Gerencia de Infraestructura Remota, Logística de Cumbre, Restricción de Campamento, Sostenibilidad Energética y Evaluación Vigesimal (0-20)</p>
+                    <h2 class="module-title">Evaluación Práctica Pericial: Estación de Radiobase Telecom Karuay-Waikirimá</h2>
+                    <p class="module-desc">Caso de Estudio de Grado: Gerencia de Infraestructura Remota, Micro-topografía 3D, Logística de Cumbre, Restricción de Campamento, Sostenibilidad Energética y Registro de Calificación Vigesimal (0-20)</p>
                 </div>
             </div>
 
             <div class="interactive-cockpit">
+                <!-- BARRA DE IDENTIFICACIÓN DEL ESTUDIANTE -->
+                <div class="student-identity-bar" id="studentIdentityBar">
+                    <div class="student-identity-inputs">
+                        <span style="font-size:16px;">👤</span>
+                        <div>
+                            <div style="font-size:11px;font-weight:700;color:var(--text-light);text-transform:uppercase;">
+                                Identificación Obligatoria del Alumno Evaluado
+                            </div>
+                            <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;">
+                                <input type="text" id="evalStudentName" class="student-id-field" placeholder="Nombre y Apellido (ej. Ing. Carlos Mendoza)" required>
+                                <input type="email" id="evalStudentEmail" class="student-id-field" placeholder="Correo Electrónico Institucional" required>
+                                <input type="text" id="evalStudentCiv" class="student-id-field" style="min-width:140px;" placeholder="C.I. / N° CIV">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="evalStudentAuthStatus" style="font-size:12px;font-weight:700;color:#0284c7;">
+                        <button type="button" class="btn-stepper-nav" onclick="syncStudentFromSession()" style="padding:6px 12px;font-size:11.5px;background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;border-radius:6px;cursor:pointer;">
+                            🔄 Cargar Datos de Mi Sesión
+                        </button>
+                    </div>
+                </div>
+
                 <!-- HERO CARD MANDATO PERICIAL -->
                 <div class="cockpit-hero-card" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">
                     <div class="cockpit-hero-title">
-                        <span>📡</span> Mandato Pericial: Radiobase de Telecomunicaciones 4G/5G en Cumbre Rocosa
+                        <span>📡</span> Mandato Pericial: Radiobase de Transmisión en Cumbre Escarpada de Karuay-Waikirimá
                     </div>
                     <div class="cockpit-hero-desc">
-                        Como Gerente Director de Proyecto, debe planificar y ejecutar el despliegue de una estación de transmisión en el Cerro San Félix (Puerto Ordaz). El entorno impone restricciones extremas de acceso por pendiente pronunciada, riesgo de incomunicación total por lluvias en 8 semanas, capacidad limitada de pernocta en campamento y necesidad absoluta de continuidad de transmisión durante los cortes nocturnos de energía.
+                        Como Gerente Director de Proyecto, debe planificar y ejecutar el despliegue de una estación de telecomunicaciones en la <strong>Cumbre Escarpada de Karuay-Waikirimá</strong> (macizo rocoso y estribaciones selváticas remotas del sur de Bolívar). El entorno impone restricciones extremas de acceso por pendiente pronunciada, riesgo de incomunicación total por lluvias en 8 semanas, límite estricto de campamento de cumbre y necesidad absoluta de continuidad de transmisión durante los cortes nocturnos de energía.
                     </div>
                     <div class="mandate-grid">
                         <div class="mandate-pill">
@@ -2950,18 +3019,18 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 1: VIALIDAD DE ACCESO -->
+                <!-- SELECTOR 1: VIALIDAD DE ACCESO (Óptima en Posición 2) -->
                 <div class="selectors-section-title">
-                    <span>1️⃣</span> Dimensión Logística &amp; Vialidad: Acceso a Cumbre de Cerro San Félix
+                    <span>1️⃣</span> Dimensión Logística &amp; Vialidad: Acceso a Cumbre de Karuay-Waikirimá
                 </div>
                 <div class="resource-cards-grid-4">
                     <div class="res-option-card" id="cardT1_manual" onclick="selectRadioVialidad('manual')">
                         <div class="res-option-header">
                             <span class="res-option-title">Mantenimiento Manual &amp; Relleno</span>
-                            <span class="res-option-badge">Precario</span>
+                            <span class="res-option-badge-neutral">Relleno Manual</span>
                         </div>
                         <div class="res-option-desc">
-                            4 obreros rellenando baches a mano. Económico ($4.000), pero la primera lluvia lava el material y deja varada la grúa de 40T requerida para la torre.
+                            4 obreros rellenando baches a mano. Acarreo de material local sin compactación mecánica para habilitar paso provisional.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 14 días · 👥 4 pers.</span>
@@ -2969,27 +3038,13 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT1_patrol" onclick="selectRadioVialidad('patrol')">
-                        <div class="res-option-header">
-                            <span class="res-option-title">Patrol &amp; Cunetas en Tierra</span>
-                            <span class="res-option-badge">Vulnerable</span>
-                        </div>
-                        <div class="res-option-desc">
-                            Conformación mecanizada rápida. Mejora la rasante pero las cunetas en tierra colapsan con las fuertes escorrentías del cerro, cortando el paso.
-                        </div>
-                        <div class="res-option-meta">
-                            <span>⏱️ 10 días · 👥 4 pers.</span>
-                            <strong>$6.800 USD</strong>
-                        </div>
-                    </div>
-
-                    <div class="res-option-card selected opt-emerald" id="cardT1_lastrado" onclick="selectRadioVialidad('lastrado')">
+                    <div class="res-option-card selected" id="cardT1_lastrado" onclick="selectRadioVialidad('lastrado')">
                         <div class="res-option-header">
                             <span class="res-option-title">Escarificado, Lastrado &amp; Cunetas Concreto</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                            <span class="res-option-badge-neutral">Sub-base Lastrada</span>
                         </div>
                         <div class="res-option-desc">
-                            Sub-base granular compactada con cunetas de concreto vaciado. Garantiza tránsito seguro todo tiempo para grúas pesadas en solo 8 días.
+                            Sub-base granular compactada con patrol y rodillo más cunetas de concreto vaciado para canalización de escorrentías pluviales.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 8 días · 👥 4 pers.</span>
@@ -2997,13 +3052,27 @@
                         </div>
                     </div>
 
+                    <div class="res-option-card" id="cardT1_patrol" onclick="selectRadioVialidad('patrol')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Patrol &amp; Cunetas en Tierra</span>
+                            <span class="res-option-badge-neutral">Rasante con Patrol</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Perfilado mecanizado rápido de la rasante con motoniveladora y apertura de zanjas laterales en tierra sin revestimiento.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 10 días · 👥 4 pers.</span>
+                            <strong>$6.800 USD</strong>
+                        </div>
+                    </div>
+
                     <div class="res-option-card" id="cardT1_pavimento" onclick="selectRadioVialidad('pavimento')">
                         <div class="res-option-header">
                             <span class="res-option-title">Pavimento Rígido Concreto 15cm</span>
-                            <span class="res-option-badge">Excesivo</span>
+                            <span class="res-option-badge-neutral">Pavimento Concreto</span>
                         </div>
                         <div class="res-option-desc">
-                            Calidad suprema, pero consume el 37% de todo el presupuesto disponible ($24.000 USD) y toma 22 días, dilatando críticamente las demás etapas.
+                            Losa de concreto armado vaciado continuo de 15cm de espesor con malla electro-soldada y juntas de dilatación para tránsito pesado.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 22 días · 👥 8 pers.</span>
@@ -3012,46 +3081,80 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 2: SHELTER Y CUBIERTA -->
+                <!-- SELECTOR 2: IMPLANTACIÓN ESPACIAL 3D (Óptima en Posición 3) -->
                 <div class="selectors-section-title">
-                    <span>2️⃣</span> Dimensión Envolvente &amp; Sostenibilidad: Shelter de Equipos y Cubierta Térmica
+                    <span>2️⃣</span> Dimensión 3D: Implantación Espacial, Micro-topografía &amp; Orientación en Cumbre
                 </div>
                 <div class="resource-cards-grid-4">
-                    <div class="res-option-card" id="cardT2_black" onclick="selectRadioShelter('black')">
+                    <div class="res-option-card" id="cardT2_barlovento" onclick="selectRadioImplantacion('barlovento')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Caseta Bloque + Manto Negro</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inadecuado</span>
+                            <span class="res-option-title">Disposición Lineal en Cresta Barlovento</span>
+                            <span class="res-option-badge-neutral">Cresta Barlovento</span>
                         </div>
                         <div class="res-option-desc">
-                            Albañilería tradicional con manto asfáltico negro. Techo a 82°C que transmite 3.5 kW térmicos de calor parásito, recalentando los gabinetes RF.
+                            Alineación directa en el filo expuesto al viento. Espacio despejado pero sometido a ráfagas de 85 km/h que aumentan infiltraciones en shelter.
                         </div>
                         <div class="res-option-meta">
-                            <span>☀️ 82°C · 12 días</span>
-                            <strong>$5.200 USD</strong>
+                            <span>⏱️ 8 días · 👥 4 pers.</span>
+                            <strong>$6.200 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT2_white" onclick="selectRadioShelter('white')">
+                    <div class="res-option-card" id="cardT2_talud" onclick="selectRadioImplantacion('talud')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Caseta Bloque + Pintura Térmica</span>
-                            <span class="res-option-badge">Básica</span>
+                            <span class="res-option-title">Disposición Agrupada al Pie del Talud</span>
+                            <span class="res-option-badge-neutral">Pie de Talud</span>
                         </div>
                         <div class="res-option-desc">
-                            Pintura elastomérica blanca sobre placa. Refleja radiación solar directa pero las paredes de bloque acumulan calor diurno que liberan de noche.
+                            Agrupación compacta al pie del corte rocoso. Protege de vientos pero el talud acumula calor radiante y proyecta sombra matutina sobre paneles.
                         </div>
                         <div class="res-option-meta">
-                            <span>☀️ 65°C · 10 días</span>
-                            <strong>$6.500 USD</strong>
+                            <span>⏱️ 7 días · 👥 4 pers.</span>
+                            <strong>$7.000 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardT2_pir" onclick="selectRadioShelter('pir')">
+                    <div class="res-option-card selected" id="cardT2_sotavento" onclick="selectRadioImplantacion('sotavento')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Shelter Modular PIR + Aluminizado</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                            <span class="res-option-title">Implantación Escalonada a Sotavento</span>
+                            <span class="res-option-badge-neutral">Abrigo a Sotavento</span>
                         </div>
                         <div class="res-option-desc">
-                            Cabina prefabricada con paneles sándwich PIR 75mm y cubierta aluminizada. Montaje estanco en 6 días. Reduce la carga del clima a solo 0.45 kW.
+                            Shelter resguardado tras espolón rocoso natural (reduce carga térmica eólica), torre en cota firme y campo solar elevado libre de sombras a 5.1 HSP.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 6 días · 👥 4 pers.</span>
+                            <strong>$7.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT2_dispersa" onclick="selectRadioImplantacion('dispersa')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Disposición Dispersa Perimetral</span>
+                            <span class="res-option-badge-neutral">Dispersa Perimetral</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Instalaciones separadas a más de 45m en la meseta rocosa. Demanda zanjas en roca viva para bandejas y genera alta caída de tensión DC.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 12 días · 👥 6 pers.</span>
+                            <strong>$11.500 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SELECTOR 3: ENVOLVENTE Y SHELTER (Óptima en Posición 1) -->
+                <div class="selectors-section-title">
+                    <span>3️⃣</span> Dimensión Envolvente &amp; Sostenibilidad: Shelter de Equipos y Cubierta Térmica
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card selected" id="cardT3_pir" onclick="selectRadioShelter('pir')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Shelter Modular PIR + Cubierta Aluminizada</span>
+                            <span class="res-option-badge-neutral">Shelter Modular PIR</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Cabina prefabricada con paneles sándwich PIR 75mm y sobretecho aluminizado. Montaje estanco en 6 días. Reduce la carga del clima a solo 0.45 kW.
                         </div>
                         <div class="res-option-meta">
                             <span>☀️ 45°C · 6 días</span>
@@ -3059,13 +3162,41 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT2_bunker" onclick="selectRadioShelter('bunker')">
+                    <div class="res-option-card" id="cardT3_black" onclick="selectRadioShelter('black')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Búnker Concreto Antivandálico</span>
-                            <span class="res-option-badge">Lento / Caro</span>
+                            <span class="res-option-title">Caseta Bloque + Manto Negro</span>
+                            <span class="res-option-badge-neutral">Albañilería Tradicional</span>
                         </div>
                         <div class="res-option-desc">
-                            Estructura de concreto armado vaciado en sitio. Altísima seguridad pero 20 días de fraguado y $17.000 USD de costo que desbordan el presupuesto.
+                            Albañilería tradicional de bloques con manto asfáltico negro. Alta inercia térmica que absorbe radiación diurna y emite calor infrarrojo durante la noche.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 82°C · 12 días</span>
+                            <strong>$5.200 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT3_white" onclick="selectRadioShelter('white')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Caseta Bloque + Pintura Térmica</span>
+                            <span class="res-option-badge-neutral">Pintura Elastomérica</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Pintura elastomérica blanca sobre placa de concreto. Refleja radiación solar directa pero las paredes de bloque conservan calor diurno en su masa.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 65°C · 10 días</span>
+                            <strong>$6.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT3_bunker" onclick="selectRadioShelter('bunker')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Búnker Concreto Antivandálico</span>
+                            <span class="res-option-badge-neutral">Concreto Armado</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Estructura de concreto armado vaciado en sitio con encofrados pesados. Máxima protección física contra intemperie y actos vandálicos en cumbre.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 20 días · 👥 8 pers.</span>
@@ -3074,18 +3205,18 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 3: TORRE DE TRANSMISIÓN 45M -->
+                <!-- SELECTOR 4: TORRE DE TRANSMISIÓN 45M (Óptima en Posición 4) -->
                 <div class="selectors-section-title">
-                    <span>3️⃣</span> Dimensión Estructural 3D/4D: Montaje de Torre de Transmisión de 45 Metros
+                    <span>4️⃣</span> Dimensión Estructural 3D/4D: Montaje de Torre de Transmisión de 45 Metros
                 </div>
                 <div class="resource-cards-grid-4">
-                    <div class="res-option-card" id="cardT3_used" onclick="selectRadioTorre('used')">
+                    <div class="res-option-card" id="cardT4_used" onclick="selectRadioTorre('used')">
                         <div class="res-option-header">
                             <span class="res-option-title">Torre Usada Reacondicionada</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Riesgosa</span>
+                            <span class="res-option-badge-neutral">Torre Reutilizada</span>
                         </div>
                         <div class="res-option-desc">
-                            2 torristas. Elementos con corrosión previa. Montaje lento y peligroso de 24 días con alto riesgo de no superar la prueba de verticalidad eólica.
+                            2 torristas. Elementos reacondicionados de segunda mano. Montaje artesanal prolongado de 24 días con riesgo de deformación en bridas de empalme.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 24 días · 👥 2 pers.</span>
@@ -3093,61 +3224,61 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT3_arriostrada" onclick="selectRadioTorre('arriostrada')">
+                    <div class="res-option-card" id="cardT4_arriostrada" onclick="selectRadioTorre('arriostrada')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Torre Arriostrada (Tirantes)</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inviable en Sitio</span>
+                            <span class="res-option-title">Torre Arriostrada (Tirantes Radiales)</span>
+                            <span class="res-option-badge-neutral">Torre Arriostrada</span>
                         </div>
                         <div class="res-option-desc">
-                            Torre ligera con vientos de acero. Inviable en la cumbre del cerro: requiere un radio de anclaje de 30m que cae en el abismo fuera del terreno.
+                            Mástil tubular ligero arriostrado con cables de acero galvanizado. Demanda un radio de anclaje de retenidas de 31.5m desde el baricentro.
                         </div>
                         <div class="res-option-meta">
-                            <span>⚠️ Radio Anclaje 30m</span>
+                            <span>⚠️ Radio Anclaje 31.5m</span>
                             <strong>$14.500 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardT3_autosop" onclick="selectRadioTorre('autosop')">
-                        <div class="res-option-header">
-                            <span class="res-option-title">Torre Autosoportada 45m</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
-                        </div>
-                        <div class="res-option-desc">
-                            4 torristas certificados. Base troncopiramidal compacta sobre roca. Montaje seguro en tramos en 14 días en estricto cumplimiento normativo.
-                        </div>
-                        <div class="res-option-meta">
-                            <span>⏱️ 14 días · 👥 4 pers.</span>
-                            <strong>$16.500 USD</strong>
-                        </div>
-                    </div>
-
-                    <div class="res-option-card" id="cardT3_grua" onclick="selectRadioTorre('grua')">
+                    <div class="res-option-card" id="cardT4_grua" onclick="selectRadioTorre('grua')">
                         <div class="res-option-header">
                             <span class="res-option-title">Doble Cuadrilla + Grúa 70T</span>
-                            <span class="res-option-badge">Sobrecupo</span>
+                            <span class="res-option-badge-neutral">Montaje Acelerado</span>
                         </div>
                         <div class="res-option-desc">
-                            Montaje exprés en 7 días pero requiere 8 torristas. Al coincidir con la cuadrilla solar (6 pers.), suma 14 trabajadores excediendo el límite de 12 de campamento.
+                            Montaje exprés en 7 días mediante 8 torristas especializados y grúa telescópica de alto tonelaje trabajando en turnos continuos.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 7 días · 👥 8 pers.</span>
                             <strong>$26.000 USD</strong>
                         </div>
                     </div>
-                </div>
 
-                <!-- SELECTOR 4: CLIMATIZACIÓN GABINETES RF -->
-                <div class="selectors-section-title">
-                    <span>4️⃣</span> Dimensión Electromecánica &amp; CEN 200: Climatización de Equipos RF (Norma N+1)
-                </div>
-                <div class="resource-cards-grid-4">
-                    <div class="res-option-card" id="cardT4_mono" onclick="selectRadioClima('mono')">
+                    <div class="res-option-card selected" id="cardT4_autosop" onclick="selectRadioTorre('autosop')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Split Monofásico Convencional</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Viola CEN 200</span>
+                            <span class="res-option-title">Torre Autosoportada 45m</span>
+                            <span class="res-option-badge-neutral">Autosoportada 45m</span>
                         </div>
                         <div class="res-option-desc">
-                            Unidad comercial 230V 1F. Desbalance NEMA 25.55%, caída 3.8% en 65m de acometida de cerro y sin redundancia: si falla, la radiobase se apaga por calor.
+                            4 torristas certificados. Base troncopiramidal compacta sobre roca. Montaje seguro en tramos en 14 días bajo normas TIA-222-G y COVENIN 2003.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 14 días · 👥 4 pers.</span>
+                            <strong>$16.500 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SELECTOR 5: CLIMATIZACIÓN GABINETES RF (Óptima en Posición 2) -->
+                <div class="selectors-section-title">
+                    <span>5️⃣</span> Dimensión Electromecánica &amp; CEN 200: Climatización de Equipos RF (Norma N+1)
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardT5_mono" onclick="selectRadioClima('mono')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Split Monofásico Convencional</span>
+                            <span class="res-option-badge-neutral">Split Comercial 230V</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Unidad comercial 230V 1F. Desbalance NEMA de 25.55%, caída de 3.8% en acometida y sin equipo de respaldo: si falla, la radiobase se apaga por sobretemperatura.
                         </div>
                         <div class="res-option-meta">
                             <span>⚠️ 25.5% Desbal. · 0.8 kW</span>
@@ -3155,27 +3286,13 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT4_inv_mono" onclick="selectRadioClima('inv_mono')">
-                        <div class="res-option-header">
-                            <span class="res-option-title">Split Dual Inverter 1F</span>
-                            <span class="res-option-badge">Sin Redundancia</span>
-                        </div>
-                        <div class="res-option-desc">
-                            Reduce consumo continuo a 0.6 kW, pero persiste el desbalance monofásico y carece de conmutador automático de emergencia ante falla simple.
-                        </div>
-                        <div class="res-option-meta">
-                            <span>⚡ 0.6 kW · 1F Inverter</span>
-                            <strong>$3.400 USD</strong>
-                        </div>
-                    </div>
-
-                    <div class="res-option-card selected opt-emerald" id="cardT4_mochila" onclick="selectRadioClima('mochila')">
+                    <div class="res-option-card selected" id="cardT5_mochila" onclick="selectRadioClima('mochila')">
                         <div class="res-option-header">
                             <span class="res-option-title">Mochila Dual 3F Inverter N+1</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                            <span class="res-option-badge-neutral">Mochila Dual N+1</span>
                         </div>
                         <div class="res-option-desc">
-                            Unidad industrial compacta trifásica 208V con doble compresor redundante y conmutación automática. 0% desbalance y consumo ultra-eficiente de solo 450W.
+                            Unidad industrial trifásica 208V con doble compresor redundante y conmutación automática. 0% desbalance vectorial y consumo ultra-eficiente de solo 450W.
                         </div>
                         <div class="res-option-meta">
                             <span>✅ 0% Desbal. · 0.45 kW</span>
@@ -3183,13 +3300,27 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT4_chiller" onclick="selectRadioClima('chiller')">
+                    <div class="res-option-card" id="cardT5_inv_mono" onclick="selectRadioClima('inv_mono')">
                         <div class="res-option-header">
-                            <span class="res-option-title">Chiller de Precisión Circuito Cerrado</span>
-                            <span class="res-option-badge">Complejo</span>
+                            <span class="res-option-title">Split Dual Inverter 1F</span>
+                            <span class="res-option-badge-neutral">Inverter Monofásico</span>
                         </div>
                         <div class="res-option-desc">
-                            Refrigeración líquida para centros de datos. Consume 1.5 kW y demanda bombas presurizadas con repuestos importados imposibles de mantener en cumbre.
+                            Compresor de velocidad variable monofásico. Reduce consumo continuo a 0.6 kW, pero persiste el desbalance de fases y carece de lógica N+1 de emergencia.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚡ 0.6 kW · 1F Inverter</span>
+                            <strong>$3.400 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT5_chiller" onclick="selectRadioClima('chiller')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Chiller de Precisión Circuito Cerrado</span>
+                            <span class="res-option-badge-neutral">Refrigeración Líquida</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Circuito cerrado de agua helada con bombas redundantes. Consume 1.5 kW y demanda mantenimiento hidráulico especializado con repuestos importados.
                         </div>
                         <div class="res-option-meta">
                             <span>⏱️ 6 días · 1.5 kW</span>
@@ -3198,32 +3329,32 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR 5: RESPALDO ENERGÉTICO 8 HORAS CONTINUAS -->
+                <!-- SELECTOR 6: RESPALDO 8 HORAS CONTINUAS (Óptima en Posición 3) -->
                 <div class="selectors-section-title">
-                    <span>5️⃣</span> Dimensión Continuidad &amp; Ciclo de Vida (7D): Respaldo Eléctrico 8 Horas Nocturnas
+                    <span>6️⃣</span> Dimensión Continuidad &amp; Ciclo de Vida (7D): Respaldo Eléctrico 8 Horas Nocturnas
                 </div>
                 <div class="resource-cards-grid-4">
-                    <div class="res-option-card" id="cardT5_diesel" onclick="selectRadioEnergy('diesel')">
+                    <div class="res-option-card" id="cardT6_diesel" onclick="selectRadioEnergy('diesel')">
                         <div class="res-option-header">
                             <span class="res-option-title">Motogenerador Diésel 15 kVA</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inviable 7D</span>
+                            <span class="res-option-badge-neutral">Generador Diésel ATS</span>
                         </div>
                         <div class="res-option-desc">
-                            Planta automática con tanque 200L. Inviable en ciclo de vida: el flete de combustible por cerro cuesta $16.800 USD/año y en lluvias el paso se corta.
+                            Planta automática con tanque de 200L. Requiere suministro semanal de gasoil por vía de cumbre y acarreo en vehículos 4x4 todo terreno.
                         </div>
                         <div class="res-option-meta">
-                            <span>⛽ OPEX +$16.8k/año</span>
+                            <span>⛽ Tanque 200L · 6 días</span>
                             <strong>$7.800 USD</strong>
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT5_solar_basic" onclick="selectRadioEnergy('solar_basic')">
+                    <div class="res-option-card" id="cardT6_solar_basic" onclick="selectRadioEnergy('solar_basic')">
                         <div class="res-option-header">
                             <span class="res-option-title">Solar 12 kWp + 4 Baterías (20 kWh)</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Apagón a las 2 AM</span>
+                            <span class="res-option-badge-neutral">Banco Solar Básico</span>
                         </div>
                         <div class="res-option-desc">
-                            Autonomía real: solo 4.5 horas para la carga total de 3.45 kW. La radiobase se apaga a mitad de la noche incumpliendo el contrato de conectividad.
+                            Arreglo fotovoltaico con 4 módulos de almacenamiento. Entrega una reserva energética de 16 kWh útiles (80% DoD) para las cargas del sitio.
                         </div>
                         <div class="res-option-meta">
                             <span>🔋 4.5 Horas · 20 kWh</span>
@@ -3231,10 +3362,10 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card selected opt-emerald" id="cardT5_solar_opt" onclick="selectRadioEnergy('solar_opt')">
+                    <div class="res-option-card selected" id="cardT6_solar_opt" onclick="selectRadioEnergy('solar_opt')">
                         <div class="res-option-header">
                             <span class="res-option-title">Híbrido Solar 18 kWp + 7 LiFePO4 (35 kWh)</span>
-                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                            <span class="res-option-badge-neutral">Híbrido LiFePO4 35 kWh</span>
                         </div>
                         <div class="res-option-desc">
                             28 kWh útiles (80% DoD). Con carga optimizada (3.0 kW RF + 0.45 kW clima = 3.45 kW), entrega 8.1 horas continuas de transmisión ininterrumpida.
@@ -3245,13 +3376,13 @@
                         </div>
                     </div>
 
-                    <div class="res-option-card" id="cardT5_solar_macro" onclick="selectRadioEnergy('solar_macro')">
+                    <div class="res-option-card" id="cardT6_solar_macro" onclick="selectRadioEnergy('solar_macro')">
                         <div class="res-option-header">
                             <span class="res-option-title">Micro-Red Solar 30 kWp + 14 LiFePO4 (70 kWh)</span>
-                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Sobrediseño</span>
+                            <span class="res-option-badge-neutral">Micro-Red 70 kWh</span>
                         </div>
                         <div class="res-option-desc">
-                            Más de 16 horas de autonomía, pero su costo de $34.000 USD eleva el presupuesto total a más de $78.000 USD, superando con creces el techo contractual.
+                            Parque fotovoltaico y gabinete de baterías masivo que asegura más de 16 horas continuas de operación aislada sin red eléctrica.
                         </div>
                         <div class="res-option-meta">
                             <span>🔋 16.5 Horas · 70 kWh</span>
@@ -3263,7 +3394,7 @@
                 <!-- TELEMETRÍA EN VIVO TELECOM -->
                 <div class="telemetry-dashboard">
                     <div style="font-size:13px;font-weight:800;color:var(--navy-primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
-                        <span>📡</span> Telemetría Pericial en Tiempo Real: Restricciones de Sitio Remoto
+                        <span>📡</span> Telemetría Pericial en Tiempo Real: Restricciones de Karuay-Waikirimá
                     </div>
                     <div class="telemetry-kpis">
                         <div class="tel-kpi-card">
@@ -3384,8 +3515,11 @@
                 <!-- BOTÓN DE ACCIÓN: EVALUAR ESTRATEGIA PERICIAL -->
                 <div style="text-align:center;margin:30px 0 10px;">
                     <button type="button" class="btn-stepper-nav" id="evalRadioBtn" onclick="evaluateRadioPlan()" style="background:linear-gradient(135deg, #059669 0%, #047857 100%);color:#ffffff;font-size:15px;font-weight:800;padding:14px 32px;border-radius:12px;border:none;box-shadow:0 6px 16px rgba(5, 150, 105, 0.3);cursor:pointer;">
-                        <span>📋</span> Evaluar Estrategia Pericial de Telecomunicaciones
+                        <span>📋</span> Emitir Plan Maestro y Calificar Evaluación (0-20 Pts)
                     </button>
+                    <div id="evalSubmitNotice" style="margin-top:8px;font-size:12px;color:var(--text-light);">
+                        La calificación obtenida se registrará oficialmente en la base de datos de cátedra vinculada a su identidad.
+                    </div>
                 </div>
 
                 <!-- TARJETA DE VEREDICTO PERICIAL VIGESIMAL (0-20 PTS) -->
@@ -3397,7 +3531,7 @@
                             </span>
                             <div class="score-number" id="evalScoreNum" style="color: #059669;">20 / 20</div>
                             <span id="evalScoreLabel" style="font-size:14px;font-weight:800;color:#065f46;">
-                                EXCELENCIA ACADÉMICA Y GERENCIAL (Aprobado con Mención)
+                                EXCELENCIA ACADÉMICA Y GERENCIAL (Aprobado con Mención de Honor)
                             </span>
                         </div>
                         <div style="text-align:right;">
@@ -3421,6 +3555,44 @@
                         <button type="button" class="btn-stepper-nav" onclick="reopenRadioEvaluation()" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
                             <span>✏️</span> Modificar Decisiones y Reintentar Simulación
                         </button>
+                    </div>
+                </div>
+
+                <!-- ARGUMENTARIO PERICIAL FORENSE DE CÁTEDRA (PARA EL DOCENTE) -->
+                <div class="forensic-docente-card">
+                    <div class="forensic-docente-title">
+                        <span>⚖️</span> Fundamentos Periciales de Cátedra &amp; Argumentario Técnico para el Docente
+                    </div>
+                    <p style="font-size:12.5px;color:#cbd5e1;margin-bottom:14px;line-height:1.5;">
+                        Guía de refutación técnica basada en mecánica de suelos, termodinámica, CEN 200 y normativa laboral para fundamentar la calificación y rebatir objeciones en el aula:
+                    </p>
+                    <div class="forensic-item-box">
+                        <strong>1. ¿Por qué el Relleno Manual fracasa ante el Escarificado y Lastrado?</strong><br>
+                        Una grúa de 40T transmite más de 12 toneladas por eje. El suelo con relleno manual sin compactar tiene un CBR &lt; 3%. Ante la primera lluvia se produce licuefacción superficial y atascamiento de la grúa ($1.500 USD/día de paralización). El escarificado compactado al 95% del Proctor con cunetas de concreto vaciado (Manning) es la única vía con capacidad portante todo tiempo.
+                    </div>
+                    <div class="forensic-item-box">
+                        <strong>2. ¿Por qué la Implantación a Sotavento del Espolón Rocoso es obligatoria?</strong><br>
+                        En la cresta de barlovento, el viento acelera a &gt; 85 km/h por efecto Venturi, forzando infiltraciones de aire húmedo en el shelter y elevando el riesgo de caída de los torristas. Además, la torre de 45m proyectaría un cono de sombra vespertino sobre el campo solar, reduciendo la captación de 5.1 a 3.2 HSP e impidiendo recargar las baterías.
+                    </div>
+                    <div class="forensic-item-box">
+                        <strong>3. ¿Por qué el Bloque de Concreto colapsa el Respaldo Nocturno?</strong><br>
+                        La albañilería de bloque posee una inercia térmica muy alta. Durante el día absorbe calor solar por radiación (U &approx; 2.8 W/m²K) y durante el corte nocturno de 8 horas lo emite hacia el interior (efecto horno). Esto obliga al climatizador a consumir 2.2 kW en vez de 450W, agotando las baterías a las 2:00 AM. El panel PIR 75mm (U=0.28 W/m²K) no tiene inercia y frena el calor en seco.
+                    </div>
+                    <div class="forensic-item-box">
+                        <strong>4. ¿Por qué la Torre Arriostrada es inviable geométricamente?</strong><br>
+                        La norma TIA-222-G exige para torres arriostradas un radio de anclaje de retenidas de al menos 70% de su altura (31.5 metros). La meseta de Karuay-Waikirimá mide apenas 20m &times; 25m: los anclajes caerían en el abismo vertical fuera del derecho de vía. La torre autosoportada troncopiramidal es la única físicamente instalable.
+                    </div>
+                    <div class="forensic-item-box">
+                        <strong>5. ¿Por qué los Splits Residenciales violan el Código Eléctrico CEN 200?</strong><br>
+                        Dos splits monofásicos de 230V en una acometida de cerro de 65m inducen un desbalance de fases NEMA del 25.55%, recalentando el transformador y disparando el relé térmico del inversor. Además, carecen de redundancia N+1: si un equipo se congela, la radiobase se apaga por sobretemperatura (&gt; 45°C).
+                    </div>
+                    <div class="forensic-item-box">
+                        <strong>6. ¿Por qué el Diésel es una trampa de Ciclo de Vida (7D)?</strong><br>
+                        Acarrear 200 litros semanales de gasoil a una cumbre selvática remota cuesta más de $16.800 USD/año en flete 4x4. En época de lluvias, la vialidad se corta temporalmente: el combustible se agota y la radiobase colapsa. El sistema solar LiFePO4 tiene OpEx cero y 12 años de vida útil (6.000 ciclos).
+                    </div>
+                    <div class="forensic-item-box">
+                        <strong>7. ¿Por qué no meter más personal para acelerar el cronograma?</strong><br>
+                        El campamento provisional de supervivencia en cumbre está limitado a 12 camas por normativa de seguridad y salud laboral (INPSASEL / COVENIN 2270). Superar 12 trabajadores provoca hacinamiento, falta de agua potable y fatiga extrema en faenas de alto riesgo de izaje a 45m de altura.
                     </div>
                 </div>
             </div>
@@ -3708,50 +3880,50 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         
-                // =================================================================
-        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 8 (TALLER ALMACÉN V2)
+                                // =================================================================
+        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 8 (TALLER ALMACÉN V3)
         // =================================================================
         const almacenState = {
-            civil: 'reforz',
+            config: 'confinado',
             techo: 'alum',
             hvac: 'tri_inv',
             energy: 'r3',
             phases: { A1: 1, A2: 2, A3: 2, A4: 3, A5: 3, A6: 4, A7: 5 }
         };
 
-        function selectAlmacenCivil(opt) {
-            almacenState.civil = opt;
-            document.querySelectorAll('#cardA1_min, #cardA1_std, #cardA1_reforz, #cardA1_doble')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+        function selectAlmacenConfig(opt) {
+            almacenState.config = opt;
+            document.querySelectorAll('#cardA1_perimetral, #cardA1_longitudinal, #cardA1_confinado, #cardA1_mezzanina')
+                .forEach(c => c.classList.remove('selected'));
             const sel = document.getElementById('cardA1_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'reforz' ? 'opt-emerald' : 'opt-blue');
+            if (sel) sel.classList.add('selected');
             runAlmacenSimulation();
         }
 
         function selectAlmacenTecho(opt) {
             almacenState.techo = opt;
             document.querySelectorAll('#cardA2_black, #cardA2_white, #cardA2_alum, #cardA2_pir')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+                .forEach(c => c.classList.remove('selected'));
             const sel = document.getElementById('cardA2_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'alum' ? 'opt-emerald' : 'opt-blue');
+            if (sel) sel.classList.add('selected');
             runAlmacenSimulation();
         }
 
         function selectAlmacenHvac(opt) {
             almacenState.hvac = opt;
             document.querySelectorAll('#cardA3_mono8, #cardA3_mono4, #cardA3_tri_onoff, #cardA3_tri_inv')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+                .forEach(c => c.classList.remove('selected'));
             const sel = document.getElementById('cardA3_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'tri_inv' ? 'opt-emerald' : 'opt-blue');
+            if (sel) sel.classList.add('selected');
             runAlmacenSimulation();
         }
 
         function selectAlmacenEnergy(opt) {
             almacenState.energy = opt;
             document.querySelectorAll('#cardA4_r1, #cardA4_r2, #cardA4_r3, #cardA4_r4')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+                .forEach(c => c.classList.remove('selected'));
             const sel = document.getElementById('cardA4_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'r3' ? 'opt-emerald' : 'opt-blue');
+            if (sel) sel.classList.add('selected');
             runAlmacenSimulation();
         }
 
@@ -3761,24 +3933,24 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         function runAlmacenSimulation() {
-            // Calibración paramétrica de decisiones
-            const civilMap = {
-                min: { name: 'Cuadrilla Mínima', days: 16, cost: 5200, workers: 4 },
-                std: { name: 'Cuadrilla Estándar', days: 12, cost: 7000, workers: 6 },
-                reforz: { name: 'Cuadrilla Reforzada', days: 8, cost: 8200, workers: 8 },
-                doble: { name: 'Doble Cuadrilla Masiva', days: 5, cost: 12500, workers: 12 }
+            // Calibración paramétrica de decisiones (Sin nombrar 16 TR, todo en °C)
+            const configMap = {
+                perimetral: { name: 'Disposición Perimetral Abierta', days: 14, cost: 6800, workers: 6, powerKW: 15.5 },
+                longitudinal: { name: 'Longitudinal con Pasillos Mixtos', days: 10, cost: 7500, workers: 6, powerKW: 12.0 },
+                confinado: { name: 'Celda Central con Pasillo Frío Confinado', days: 8, cost: 8200, workers: 8, powerKW: 8.0 },
+                mezzanina: { name: 'Racks en Mezzanina Metálica (6m)', days: 16, cost: 13500, workers: 8, powerKW: 14.0 }
             };
             const techoMap = {
-                black: { name: 'Manto Asfáltico Negro Tradicional', days: 8, cost: 2800, workers: 4, thermalKW: 16.5, temp: 82 },
-                white: { name: 'Pintura Elastomérica Blanca', days: 6, cost: 3800, workers: 4, thermalKW: 13.5, temp: 64 },
-                alum: { name: 'Manto Aluminizado + Lana de Roca 50mm', days: 6, cost: 4800, workers: 4, thermalKW: 8.0, temp: 54 },
-                pir: { name: 'Sándwich Termoacústico PIR 80mm', days: 5, cost: 11500, workers: 4, thermalKW: 6.5, temp: 42 }
+                black: { name: 'Manto Asfáltico Negro Tradicional', days: 8, cost: 2800, workers: 4, thermalAddKW: 4.5, temp: 82 },
+                white: { name: 'Pintura Elastomérica Blanca', days: 6, cost: 3800, workers: 4, thermalAddKW: 2.0, temp: 64 },
+                alum: { name: 'Manto Aluminizado + Lana de Roca 50mm', days: 6, cost: 4800, workers: 4, thermalAddKW: 0.0, temp: 54 },
+                pir: { name: 'Sándwich Termoacústico PIR 80mm', days: 5, cost: 11500, workers: 4, thermalAddKW: -1.0, temp: 42 }
             };
             const hvacMap = {
-                mono8: { name: 'Monofásico On/Off (#8 AWG)', days: 5, cost: 6800, workers: 3, desbal: 25.55, vdrop: 3.8, powerKW: 14.8, cenOk: false },
-                mono4: { name: 'Monofásico (#4 AWG Sobredim.)', days: 5, cost: 8400, workers: 3, desbal: 25.55, vdrop: 1.9, powerKW: 12.2, cenOk: false },
-                tri_onoff: { name: 'Trifásico On/Off 208V', days: 5, cost: 7800, workers: 3, desbal: 0.0, vdrop: 0.9, powerKW: 11.5, cenOk: true },
-                tri_inv: { name: 'Trifásico Inverter VFD 208V CEN 200', days: 5, cost: 9200, workers: 3, desbal: 0.0, vdrop: 0.4, powerKW: 8.0, cenOk: true }
+                mono8: { name: 'Monofásico On/Off (#8 AWG)', days: 5, cost: 6800, workers: 3, desbal: 25.55, vdrop: 3.8, basePowerKW: 14.8, cenOk: false },
+                mono4: { name: 'Monofásico (#4 AWG Sobredim.)', days: 5, cost: 8400, workers: 3, desbal: 25.55, vdrop: 1.9, basePowerKW: 12.2, cenOk: false },
+                tri_onoff: { name: 'Trifásico Industrial On/Off 208V', days: 5, cost: 7800, workers: 3, desbal: 0.0, vdrop: 0.9, basePowerKW: 11.5, cenOk: true },
+                tri_inv: { name: 'Trifásico Inverter VFD 208V CEN 200', days: 5, cost: 9200, workers: 3, desbal: 0.0, vdrop: 0.4, basePowerKW: 8.0, cenOk: true }
             };
             const energyMap = {
                 r1: { name: 'Solar Básico 10 kWp + 15 kWh Litio', days: 6, cost: 8500, workers: 4, kwh: 15 },
@@ -3787,16 +3959,17 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 r4: { name: 'Macro-Banco Solar 35 kWp + 90 kWh LiFePO4', days: 12, cost: 28000, workers: 6, kwh: 90 }
             };
 
-            const selCiv = civilMap[almacenState.civil] || civilMap.reforz;
+            const selCfg = configMap[almacenState.config] || configMap.confinado;
             const selTec = techoMap[almacenState.techo] || techoMap.alum;
             const selHva = hvacMap[almacenState.hvac] || hvacMap.tri_inv;
             const selEne = energyMap[almacenState.energy] || energyMap.r3;
 
-            // Potencia activa requerida (kW) según envolvente + clima
-            let actualPowerKW = selHva.powerKW;
-            if (selTec.thermalKW > 10) actualPowerKW += (selTec.thermalKW - 8.0) * 0.4;
+            // Potencia activa real requerida (kW) según configuración 3D + envolvente + clima
+            let actualPowerKW = selCfg.powerKW + selTec.thermalAddKW;
+            if (selHva.basePowerKW > 10.0) actualPowerKW += (selHva.basePowerKW - 8.0) * 0.35;
+            if (actualPowerKW < 7.0) actualPowerKW = 7.0;
 
-            // Autonomía en horas
+            // Autonomía en horas ante corte de red
             let backupHours = 0;
             if (almacenState.energy === 'r2') {
                 backupHours = 12.0; // Diésel con tanque lleno
@@ -3807,7 +3980,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
 
             // Las 7 Actividades de Almacén
             const activities = [
-                { id: 'A1', title: 'Obras Civiles y Montaje Racks', days: selCiv.days, cost: selCiv.cost, workers: selCiv.workers },
+                { id: 'A1', title: 'Configuración Espacial 3D y Racks Confinados', days: selCfg.days, cost: selCfg.cost, workers: selCfg.workers },
                 { id: 'A2', title: 'Impermeabilización y Cubierta Térmica', days: selTec.days, cost: selTec.cost, workers: selTec.workers },
                 { id: 'A3', title: 'Bandejas, Conduit y Acometida CEN 200', days: 6, cost: 2800, workers: 3 },
                 { id: 'A4', title: 'Montaje Evaporadoras/Condensadoras HVAC', days: selHva.days, cost: selHva.cost, workers: selHva.workers },
@@ -3847,7 +4020,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
 
             // Cálculo secuencial de Fases y Ruta Crítica
             const phaseSummary = {
-                1: { title: 'Fase 1: Preparación & Civil', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                1: { title: 'Fase 1: Configuración 3D & Estructuras', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 2: { title: 'Fase 2: Envolvente & Ductería', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 3: { title: 'Fase 3: Electromecánica & HVAC', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 4: { title: 'Fase 4: Energía & Respaldo', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
@@ -3862,15 +4035,13 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             });
 
             let currentTimelineDay = 0;
-            let totalProjectDays = 0;
             for (let p = 1; p <= 5; p++) {
                 phaseSummary[p].start = currentTimelineDay;
                 phaseSummary[p].finish = currentTimelineDay + phaseSummary[p].days;
                 currentTimelineDay = phaseSummary[p].finish;
             }
-            totalProjectDays = currentTimelineDay;
+            const totalProjectDays = currentTimelineDay;
 
-            // Calcular Ruta Crítica por tarea
             activities.forEach(act => {
                 const p = almacenState.phases[act.id] || 1;
                 act.start = phaseSummary[p].start;
@@ -3878,7 +4049,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 act.isCritical = (act.days === phaseSummary[p].days);
             });
 
-            // Costo total programado
             const totalScheduledCost = activities.reduce((acc, a) => acc + a.cost, 0);
 
             // Renderizar resumen de Fases
@@ -3917,10 +4087,10 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 powEl.textContent = actualPowerKW.toFixed(1) + ' kW';
                 if (actualPowerKW <= 8.5) {
                     powSt.className = 'tel-kpi-status status-ok';
-                    powSt.textContent = 'Eficiente';
+                    powSt.textContent = 'Eficiente a 22°C';
                 } else if (actualPowerKW <= 12.0) {
                     powSt.className = 'tel-kpi-status status-warn';
-                    powSt.textContent = 'Moderado';
+                    powSt.textContent = 'Demanda Moderada';
                 } else {
                     powSt.className = 'tel-kpi-status status-danger';
                     powSt.textContent = 'Sobrecarga Térmica';
@@ -3982,16 +4152,17 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             // Renderizar Gantt 4D en SVG
             renderGanttChartSvg('ganttSvgAlmacenContainer', activities, 35, 30);
 
-            // Renderizar Flujo de Caja 5D y Curva S en SVG (Semanas 1 a 5)
+            // Renderizar Flujo de Caja 5D y Curva S en SVG
             const weeklyCosts = calculateWeeklyCashflow(activities, 5, 7);
             renderSCurveSvg('scurveSvgAlmacenContainer', weeklyCosts, 46000, 5, totalScheduledCost, 'Almacen');
         }
 
         // =================================================================
-        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 9 (EVALUACIÓN TELECOM V2)
+        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 9 (TELECOM KARUAY-WAIKIRIMÁ)
         // =================================================================
         const radioState = {
             vialidad: 'lastrado',
+            implantacion: 'sotavento',
             shelter: 'pir',
             torre: 'autosop',
             clima: 'mochila',
@@ -4001,46 +4172,55 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
 
         function selectRadioVialidad(opt) {
             radioState.vialidad = opt;
-            document.querySelectorAll('#cardT1_manual, #cardT1_patrol, #cardT1_lastrado, #cardT1_pavimento')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+            document.querySelectorAll('#cardT1_manual, #cardT1_lastrado, #cardT1_patrol, #cardT1_pavimento')
+                .forEach(c => c.classList.remove('selected'));
             const sel = document.getElementById('cardT1_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'lastrado' ? 'opt-emerald' : 'opt-blue');
+            if (sel) sel.classList.add('selected');
+            runRadioSimulation();
+        }
+
+        function selectRadioImplantacion(opt) {
+            radioState.implantacion = opt;
+            document.querySelectorAll('#cardT2_barlovento, #cardT2_talud, #cardT2_sotavento, #cardT2_dispersa')
+                .forEach(c => c.classList.remove('selected'));
+            const sel = document.getElementById('cardT2_' + opt);
+            if (sel) sel.classList.add('selected');
             runRadioSimulation();
         }
 
         function selectRadioShelter(opt) {
             radioState.shelter = opt;
-            document.querySelectorAll('#cardT2_black, #cardT2_white, #cardT2_pir, #cardT2_bunker')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
-            const sel = document.getElementById('cardT2_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'pir' ? 'opt-emerald' : 'opt-blue');
+            document.querySelectorAll('#cardT3_pir, #cardT3_black, #cardT3_white, #cardT3_bunker')
+                .forEach(c => c.classList.remove('selected'));
+            const sel = document.getElementById('cardT3_' + opt);
+            if (sel) sel.classList.add('selected');
             runRadioSimulation();
         }
 
         function selectRadioTorre(opt) {
             radioState.torre = opt;
-            document.querySelectorAll('#cardT3_used, #cardT3_arriostrada, #cardT3_autosop, #cardT3_grua')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
-            const sel = document.getElementById('cardT3_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'autosop' ? 'opt-emerald' : 'opt-blue');
+            document.querySelectorAll('#cardT4_used, #cardT4_arriostrada, #cardT4_grua, #cardT4_autosop')
+                .forEach(c => c.classList.remove('selected'));
+            const sel = document.getElementById('cardT4_' + opt);
+            if (sel) sel.classList.add('selected');
             runRadioSimulation();
         }
 
         function selectRadioClima(opt) {
             radioState.clima = opt;
-            document.querySelectorAll('#cardT4_mono, #cardT4_inv_mono, #cardT4_mochila, #cardT4_chiller')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
-            const sel = document.getElementById('cardT4_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'mochila' ? 'opt-emerald' : 'opt-blue');
+            document.querySelectorAll('#cardT5_mono, #cardT5_mochila, #cardT5_inv_mono, #cardT5_chiller')
+                .forEach(c => c.classList.remove('selected'));
+            const sel = document.getElementById('cardT5_' + opt);
+            if (sel) sel.classList.add('selected');
             runRadioSimulation();
         }
 
         function selectRadioEnergy(opt) {
             radioState.energy = opt;
-            document.querySelectorAll('#cardT5_diesel, #cardT5_solar_basic, #cardT5_solar_opt, #cardT5_solar_macro')
-                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
-            const sel = document.getElementById('cardT5_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'solar_opt' ? 'opt-emerald' : 'opt-blue');
+            document.querySelectorAll('#cardT6_diesel, #cardT6_solar_basic, #cardT6_solar_opt, #cardT6_solar_macro')
+                .forEach(c => c.classList.remove('selected'));
+            const sel = document.getElementById('cardT6_' + opt);
+            if (sel) sel.classList.add('selected');
             runRadioSimulation();
         }
 
@@ -4049,30 +4229,56 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             runRadioSimulation();
         }
 
+        // Sincronización de Identidad de Alumno
+        function syncStudentFromSession() {
+            try {
+                const sessionRaw = localStorage.getItem('ugma_student_session');
+                if (sessionRaw) {
+                    const session = JSON.parse(sessionRaw);
+                    const nameField = document.getElementById('evalStudentName');
+                    const emailField = document.getElementById('evalStudentEmail');
+                    const authStatus = document.getElementById('evalStudentAuthStatus');
+                    if (nameField && session.name) nameField.value = session.name;
+                    if (emailField && session.email) emailField.value = session.email;
+                    if (authStatus) {
+                        authStatus.innerHTML = `<span style="color:#059669;font-weight:800;">🟢 Sesión Activa: ${session.name}</span>`;
+                    }
+                    return;
+                }
+            } catch (err) {}
+            alert('No se detectó sesión abierta en este navegador. Por favor ingrese su Nombre y Correo Institucional en los campos provistos.');
+        }
+
         function runRadioSimulation() {
-            // Mapeo paramétrico
+            // Mapeo de decisiones técnicas (Rotación de claves implementada)
             const viaMap = {
                 manual: { name: 'Mantenimiento Manual & Relleno', days: 14, cost: 4000, workers: 4 },
-                patrol: { name: 'Patrol & Cunetas en Tierra', days: 10, cost: 6800, workers: 4 },
                 lastrado: { name: 'Escarificado, Lastrado & Cunetas Concreto', days: 8, cost: 9800, workers: 4 },
+                patrol: { name: 'Patrol & Cunetas en Tierra', days: 10, cost: 6800, workers: 4 },
                 pavimento: { name: 'Pavimento Rígido Concreto 15cm', days: 22, cost: 24000, workers: 8 }
             };
+            const impMap = {
+                barlovento: { name: 'Disposición Lineal en Cresta Barlovento', days: 8, cost: 6200, workers: 4, shadowLoss: 0.35, windThermalKW: 1.2 },
+                talud: { name: 'Disposición Agrupada al Pie del Talud', days: 7, cost: 7000, workers: 4, shadowLoss: 0.25, windThermalKW: 0.8 },
+                sotavento: { name: 'Implantación Escalonada a Sotavento', days: 6, cost: 7800, workers: 4, shadowLoss: 0.0, windThermalKW: 0.0 },
+                dispersa: { name: 'Disposición Dispersa Perimetral', days: 12, cost: 11500, workers: 6, shadowLoss: 0.10, windThermalKW: 0.5 }
+            };
             const sheMap = {
+                pir: { name: 'Shelter Modular PIR + Cubierta Aluminizada', days: 6, cost: 8600, workers: 4, thermalKW: 0.45 },
                 black: { name: 'Caseta Bloque + Manto Negro', days: 12, cost: 5200, workers: 4, thermalKW: 3.5 },
                 white: { name: 'Caseta Bloque + Pintura Térmica', days: 10, cost: 6500, workers: 4, thermalKW: 2.0 },
-                pir: { name: 'Shelter Modular PIR + Aluminizado', days: 6, cost: 8600, workers: 4, thermalKW: 0.45 },
                 bunker: { name: 'Búnker Concreto Antivandálico', days: 20, cost: 17000, workers: 8, thermalKW: 1.2 }
             };
             const torMap = {
                 used: { name: 'Torre Usada Reacondicionada', days: 24, cost: 12500, workers: 2 },
                 arriostrada: { name: 'Torre Arriostrada (Tirantes)', days: 18, cost: 14500, workers: 4 },
-                autosop: { name: 'Torre Autosoportada 45m', days: 14, cost: 16500, workers: 4 },
-                grua: { name: 'Doble Cuadrilla + Grúa 70T', days: 7, cost: 26000, workers: 8 }
+                grua: { name: 'Doble Cuadrilla + Grúa 70T', days: 7, cost: 26000, workers: 8 },
+                autosop: { name: 'Torre Autosoportada 45m', days: 14, cost: 16500, workers: 4 }
             };
             const cliMap = {
                 mono: { name: 'Split Monofásico Convencional', days: 4, cost: 2500, workers: 2, powerKW: 0.8, desbal: 25.55, redOk: false },
-                inv_mono: { name: 'Split Dual Inverter 1F', days: 4, cost: 3400, workers: 2, powerKW: 0.6, desbal: 25.55, redOk: false },
                 mochila: { name: 'Mochila Dual 3F Inverter N+1', days: 4, cost: 5200, workers: 2, powerKW: 0.45, desbal: 0.0, redOk: true },
+                inv_mono: { name: 'Split Dual Inverter 1F', days: 4, cost: 3400, workers: 2, powerKW: 0.6, desbal: 25.55, redOk: false },
                 chiller: { name: 'Chiller de Precisión Líquido', days: 6, cost: 13500, workers: 3, powerKW: 1.5, desbal: 0.0, redOk: true }
             };
             const eneMap = {
@@ -4083,13 +4289,14 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             };
 
             const selVia = viaMap[radioState.vialidad] || viaMap.lastrado;
+            const selImp = impMap[radioState.implantacion] || impMap.sotavento;
             const selShe = sheMap[radioState.shelter] || sheMap.pir;
             const selTor = torMap[radioState.torre] || torMap.autosop;
             const selCli = cliMap[radioState.clima] || cliMap.mochila;
             const selEne = eneMap[radioState.energy] || eneMap.solar_opt;
 
-            // Demanda total de la radiobase (3.0 kW RF base + Climatizador + Térmica)
-            let totalRadioLoadKW = 3.0 + selCli.powerKW;
+            // Demanda total de la radiobase (3.0 kW RF base + Clima + Viento/Térmica 3D)
+            let totalRadioLoadKW = 3.0 + selCli.powerKW + selImp.windThermalKW;
             if (radioState.shelter === 'black') totalRadioLoadKW += 1.8;
             else if (radioState.shelter === 'white') totalRadioLoadKW += 0.8;
 
@@ -4098,18 +4305,19 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             if (selEne.isDiesel) {
                 backupHours = 14.0;
             } else {
-                const usableKWh = selEne.kwh * 0.8; // 80% DoD
-                backupHours = +(usableKWh / totalRadioLoadKW).toFixed(1);
+                let effectiveKWh = selEne.kwh * 0.8; // 80% DoD
+                if (selImp.shadowLoss > 0) effectiveKWh *= (1.0 - selImp.shadowLoss * 0.4);
+                backupHours = +(effectiveKWh / totalRadioLoadKW).toFixed(1);
             }
 
             // 7 Actividades Telecom
             const activities = [
                 { id: 'T1', title: 'Escarificado & Vialidad de Cumbre', days: selVia.days, cost: selVia.cost, workers: selVia.workers },
-                { id: 'T2', title: 'Losa Fundación & Montaje Shelter', days: selShe.days, cost: selShe.cost, workers: selShe.workers },
-                { id: 'T3', title: 'Izaje & Verticalidad Torre 45m', days: selTor.days, cost: selTor.cost, workers: selTor.workers },
-                { id: 'T4', title: 'Montaje & Sellado Clima Mochila', days: selCli.days, cost: selCli.cost, workers: selCli.workers },
-                { id: 'T5', title: 'Arreglo Fotovoltaico & Generación', days: selEne.days, cost: selEne.cost, workers: selEne.workers },
-                { id: 'T6', title: 'Tendido Guías de Onda & Baterías', days: 5, cost: 2400, workers: 3 },
+                { id: 'T2', title: 'Implantación 3D & Losa en Roca', days: selImp.days, cost: selImp.cost, workers: selImp.workers },
+                { id: 'T3', title: 'Montaje Shelter Modular PIR', days: selShe.days, cost: selShe.cost, workers: selShe.workers },
+                { id: 'T4', title: 'Izaje & Verticalidad Torre 45m', days: selTor.days, cost: selTor.cost, workers: selTor.workers },
+                { id: 'T5', title: 'Montaje Clima Mochila Dual N+1', days: selCli.days, cost: selCli.cost, workers: selCli.workers },
+                { id: 'T6', title: 'Arreglo Solar & Banco LiFePO4', days: selEne.days, cost: selEne.cost, workers: selEne.workers },
                 { id: 'T7', title: 'Comisionamiento RF & Pruebas 8h', days: 4, cost: 1600, workers: 2 }
             ];
 
@@ -4145,7 +4353,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             // Fases y cálculo 4D
             const phaseSummary = {
                 1: { title: 'Fase 1: Acceso & Vialidad', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
-                2: { title: 'Fase 2: Obras Civiles & Shelter', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                2: { title: 'Fase 2: Implantación 3D & Shelter', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 3: { title: 'Fase 3: Torre & Climatización', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 4: { title: 'Fase 4: Energía & Respaldo', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
                 5: { title: 'Fase 5: Comisionamiento RF & CDE', days: 0, workers: 0, tasks: [], start: 0, finish: 0 }
@@ -4307,7 +4515,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 `;
             }
 
-            // Línea de deadline contractual
             const deadX = leftMargin + deadlineDay * pxPerDay;
             const deadlineSvg = `
                 <line x1="${deadX}" y1="${topMargin - 15}" x2="${deadX}" y2="${height - 20}" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" />
@@ -4315,7 +4522,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 <text x="${deadX}" y="${height - 8}" fill="#ffffff" font-size="9.5" font-weight="bold" font-family="sans-serif" text-anchor="middle">Límite: ${deadlineDay}d</text>
             `;
 
-            // Filas de tareas
             let rowsSvg = '';
             activities.forEach((act, idx) => {
                 const y = topMargin + idx * rowHeight;
@@ -4327,7 +4533,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 const strokeColor = isCrit ? '#f59e0b' : '#38bdf8';
 
                 rowsSvg += `
-                    <!-- Fila ${act.id} -->
                     <text x="${leftMargin - 10}" y="${y + 16}" fill="#e2e8f0" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">
                         ${act.id}: ${act.title.length > 20 ? act.title.substring(0, 19) + '…' : act.title}
                     </text>
@@ -4386,12 +4591,10 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             const chartWidth = width - leftMargin - 40;
             const chartHeight = height - topMargin - bottomMargin;
 
-            // Escala Y (máximo hasta 1.15 del techo presupuestario)
             const maxY = budgetCeiling * 1.15;
             const pxPerDollar = chartHeight / maxY;
             const pxPerWeek = chartWidth / totalWeeks;
 
-            // Acumulados
             const cumulative = [];
             let runningSum = 0;
             weeklyCosts.forEach(c => {
@@ -4399,7 +4602,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 cumulative.push(runningSum);
             });
 
-            // Grid y Ejes
             let gridSvg = '';
             for (let val = 0; val <= maxY; val += (budgetCeiling / 4)) {
                 const y = topMargin + chartHeight - val * pxPerDollar;
@@ -4411,7 +4613,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 `;
             }
 
-            // Techo presupuestario (Línea roja discontinua)
             const ceilingY = topMargin + chartHeight - budgetCeiling * pxPerDollar;
             const ceilingSvg = `
                 <line x1="${leftMargin}" y1="${ceilingY}" x2="${width - 40}" y2="${ceilingY}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4" />
@@ -4420,7 +4621,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 </text>
             `;
 
-            // Barras semanales de desembolso (CapEx Periódico)
             let barsSvg = '';
             weeklyCosts.forEach((cost, idx) => {
                 const barH = cost * pxPerDollar;
@@ -4439,7 +4639,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 `;
             });
 
-            // Curva S Acumulada
             let pathD = `M ${leftMargin} ${topMargin + chartHeight}`;
             let areaD = `M ${leftMargin} ${topMargin + chartHeight}`;
             let dotsSvg = '';
@@ -4479,7 +4678,6 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 </svg>
             `;
 
-            // Actualizar tarjetas de KPI financiero
             const totEl = document.getElementById(`cf${prefix}Total`);
             const avgEl = document.getElementById(`cf${prefix}Avg`);
             const peakEl = document.getElementById(`cf${prefix}Peak`);
@@ -4504,7 +4702,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         // =================================================================
-        // MOTOR DE EVALUACIÓN VIGESIMAL (0-20 PTS) - TELECOM
+        // MOTOR DE EVALUACIÓN VIGESIMAL (0-20 PTS) CON REGISTRO EN BD
         // =================================================================
         function reopenRadioEvaluation() {
             const verdictCard = document.getElementById('radioVerdictCard');
@@ -4512,42 +4710,48 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             window.scrollTo({ top: document.getElementById('moduleSection-9').offsetTop - 60, behavior: 'smooth' });
         }
 
-        function evaluateRadioPlan() {
+        async function evaluateRadioPlan() {
+            // 1. Validar identidad del estudiante
+            const nameInput = document.getElementById('evalStudentName');
+            const emailInput = document.getElementById('evalStudentEmail');
+            const studentName = (nameInput?.value || '').trim();
+            const studentEmail = (emailInput?.value || '').trim();
+
+            if (!studentName || !studentEmail) {
+                alert('⚠️ IDENTIFICACIÓN OBLIGATORIA:\n\nPor favor ingrese su Nombre Completo y Correo Institucional en la barra superior del módulo antes de calificar la evaluación.');
+                nameInput?.focus();
+                return;
+            }
+
             const verdictCard = document.getElementById('radioVerdictCard');
             if (!verdictCard) return;
             verdictCard.classList.add('active');
 
-            // Criterios de auditoría
-            const viaMap = { manual: 4000, patrol: 6800, lastrado: 9800, pavimento: 24000 };
-            const sheMap = { black: 5200, white: 6500, pir: 8600, bunker: 17000 };
-            const torMap = { used: 12500, arriostrada: 14500, autosop: 16500, grua: 26000 };
-            const cliMap = { mono: 2500, inv_mono: 3400, mochila: 5200, chiller: 13500 };
-            const eneMap = { diesel: 7800, solar_basic: 12500, solar_opt: 17900, solar_macro: 34000 };
-
-            const totalCost = (viaMap[radioState.vialidad] || 0) +
-                              (sheMap[radioState.shelter] || 0) +
-                              (torMap[radioState.torre] || 0) +
-                              (cliMap[radioState.clima] || 0) +
-                              (eneMap[radioState.energy] || 0) + 2400 + 1600;
+            // 2. Criterios de auditoría técnica (Rotación de claves)
+            const isViaOk = (radioState.vialidad === 'lastrado'); // Posición 2 (B)
+            const isImpOk = (radioState.implantacion === 'sotavento'); // Posición 3 (C)
+            const isSheOk = (radioState.shelter === 'pir'); // Posición 1 (A)
+            const isTorOk = (radioState.torre === 'autosop'); // Posición 4 (D)
+            const isCliOk = (radioState.clima === 'mochila'); // Posición 2 (B)
+            const isEneOk = (radioState.energy === 'solar_opt'); // Posición 3 (C)
 
             const cpmDays = parseInt(document.getElementById('telRadioDays')?.textContent || '42');
             const peakWorkers = parseInt(document.getElementById('telRadioWorkers')?.textContent || '7');
             const backupHours = parseFloat(document.getElementById('telRadioBackup')?.textContent || '8.1');
+            const costStr = document.getElementById('telRadioCost')?.textContent || '$62.000';
+            const totalCost = parseInt(costStr.replace(/[^0-9]/g, '')) || 62000;
 
             const isBudgetOk = (totalCost <= 65000);
             const isTimeOk = (cpmDays <= 56);
             const isCampOk = (peakWorkers <= 12);
-            const isBackupOk = (backupHours >= 8.0);
-            const isCenOk = (radioState.clima === 'mochila' || radioState.clima === 'chiller');
-            const isGreenOk = (radioState.energy !== 'diesel');
 
             let score = 0;
-            if (isBudgetOk) score += 3.5;
-            if (isTimeOk) score += 3.5;
-            if (isCampOk) score += 3.0;
-            if (isBackupOk) score += 3.5;
-            if (isCenOk) score += 3.5;
-            if (isGreenOk) score += 3.0;
+            if (isViaOk) score += 3.5;
+            if (isImpOk) score += 3.5;
+            if (isSheOk) score += 3.5;
+            if (isTorOk) score += 3.5;
+            if (isCliOk) score += 3.0;
+            if (isEneOk) score += 3.0;
 
             score = Math.round(score);
 
@@ -4569,26 +4773,32 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                 scoreLbl.textContent = 'DICTAMEN NO CONFORME (Requiere Reingeniería de Proyecto)';
             }
 
-            // Lista de criterios
+            // Lista de criterios auditados
             const critList = document.getElementById('evalCriteriaList');
             critList.innerHTML = `
+                <div class="crit-item ${isViaOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isViaOk ? '✔' : '✖'}</span> Vialidad de Cumbre (${isViaOk ? 'Lastrado & Cunetas Concreto' : 'Sub-base Inestable o Sobrecosto'})
+                </div>
+                <div class="crit-item ${isImpOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isImpOk ? '✔' : '✖'}</span> Implantación 3D (${isImpOk ? 'Sotavento Libre de Sombras' : 'Viento Barlovento o Sombras'})
+                </div>
+                <div class="crit-item ${isSheOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isSheOk ? '✔' : '✖'}</span> Shelter & Cubierta (${isSheOk ? 'Modular PIR 75mm' : 'Inercia Térmica Bloque'})
+                </div>
+                <div class="crit-item ${isTorOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isTorOk ? '✔' : '✖'}</span> Torre de Transmisión (${isTorOk ? 'Autosoportada 45m' : 'Inviable en Poligonal o Lenta'})
+                </div>
+                <div class="crit-item ${isCliOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isCliOk ? '✔' : '✖'}</span> Clima RF N+1 CEN 200 (${isCliOk ? 'Mochila Dual Trifásica N+1' : 'Desbalance o Sin Redundancia'})
+                </div>
+                <div class="crit-item ${isEneOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isEneOk ? '✔' : '✖'}</span> Respaldo 8h Continuas (${isEneOk ? 'Híbrido Solar LiFePO4 35 kWh' : 'Falla Autonomía o Diésel'})
+                </div>
                 <div class="crit-item ${isBudgetOk ? 'crit-ok' : 'crit-fail'}">
                     <span>${isBudgetOk ? '✔' : '✖'}</span> Techo CapEx ($${totalCost.toLocaleString('en-US')} / $65.000 USD)
                 </div>
-                <div class="crit-item ${isTimeOk ? 'crit-ok' : 'crit-fail'}">
-                    <span>${isTimeOk ? '✔' : '✖'}</span> Plazo Contractual (${cpmDays} / 56 Días)
-                </div>
                 <div class="crit-item ${isCampOk ? 'crit-ok' : 'crit-fail'}">
                     <span>${isCampOk ? '✔' : '✖'}</span> Límite Campamento (${peakWorkers} / 12 Personas)
-                </div>
-                <div class="crit-item ${isBackupOk ? 'crit-ok' : 'crit-fail'}">
-                    <span>${isBackupOk ? '✔' : '✖'}</span> Respaldo Nocturno (${backupHours}h / 8.0h Mín.)
-                </div>
-                <div class="crit-item ${isCenOk ? 'crit-ok' : 'crit-fail'}">
-                    <span>${isCenOk ? '✔' : '✖'}</span> Código CEN 200 (Trifásico 208V / 0% Desbal.)
-                </div>
-                <div class="crit-item ${isGreenOk ? 'crit-ok' : 'crit-fail'}">
-                    <span>${isGreenOk ? '✔' : '✖'}</span> Sostenibilidad 7D (Cero Diésel en Cumbre)
                 </div>
             `;
 
@@ -4596,31 +4806,87 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             const fbBox = document.getElementById('evalFeedbackBox');
             let fbHtml = '';
             if (score === 20) {
-                fbHtml = `<strong>🏆 Dictamen Pericial de la Cátedra (Ing. Héctor Mota Zorrilla):</strong><br>
-                Su solución de ingeniería y gerencia demuestra el dominio holístico de la Metodología BIM y la Planificación 4D/5D. La selección del <strong>Shelter Modular PIR con cubierta aluminizada</strong> redujo la carga térmica parásita a solo 0.45 kW, lo que sumado a la unidad <strong>Mochila Dual Trifásica Inverter N+1 (CEN 200)</strong> mantuvo la demanda total en 3.45 kW. Con ello, el banco de <strong>7 baterías LiFePO4 de 35 kWh (28 kWh útiles)</strong> soporta con exactitud matemática las 8.1 horas de corte nocturno sin emitir ni un gramo de CO2 ni depender de la peligrosa logística de diésel. Además, la programación secuencial de la torre autosoportada y el arreglo solar respetó el límite estricto de 12 camas en campamento culminando en 42 días (con 14 días de holgura antes de las lluvias) e invirtiendo $62.000 USD con una reserva de contingencia de $3.000 USD.`;
+                fbHtml = `<strong>🏆 Dictamen Pericial Oficial de Grado (Ing. Héctor Mota Zorrilla):</strong><br>
+                Su solución de gerencia para la <strong>Cumbre Escarpada de Karuay-Waikirimá</strong> demuestra maestría integral de la Metodología BIM 1D a 7D. La <strong>implantación a sotavento del espolón rocoso</strong> abatió la turbulencia eólica y eliminó las sombras sobre el banco solar; el <strong>Shelter Modular PIR</strong> redujo la carga a 0.45 kW, lo que con la <strong>Mochila Dual N+1</strong> mantuvo la demanda en 3.45 kW. Así, el banco de <strong>35 kWh LiFePO4 (28 kWh útiles)</strong> garantiza con solvencia matemática las 8.1 horas nocturnas continuas sin recurrir a la onerosa e inviable logística de diésel. Culminó en 42 días (con 14 días de holgura antes de las lluvias), con 7 personas en campamento e invirtiendo $62.000 USD con una reserva de contingencia de $3.000 USD.`;
             } else {
                 fbHtml = `<strong>🔍 Diagnóstico Forense y Recomendaciones de Reingeniería:</strong><br>`;
-                if (!isBudgetOk) {
-                    fbHtml += `&bull; <strong>Quiebre Financiero (Dimensión 5D):</strong> El presupuesto de $${totalCost.toLocaleString('en-US')} excede el techo contractual de $65.000 USD. Revise opciones sobredimensionadas como el pavimento rígido o el macro-banco solar.<br>`;
+                if (!isViaOk) {
+                    fbHtml += `&bull; <strong>Falla Vial (Capacidad Portante):</strong> El relleno manual o sin cunetas colapsa bajo el eje de 12T de la grúa telescópica ante el primer aguacero, o la pavimentación rígida consume el 37% de su presupuesto.<br>`;
                 }
-                if (!isTimeOk) {
-                    fbHtml += `&bull; <strong>Riesgo Crítico de Incomunicación (Dimensión 4D):</strong> La duración de ${cpmDays} días supera las 8 semanas (56 días). Las lluvias torrenciales iniciarán dejando la obra a medio construir.<br>`;
+                if (!isImpOk) {
+                    fbHtml += `&bull; <strong>Falla Espacial 3D (Aerodinámica y Sombras):</strong> Implantar en barlovento expone el shelter a vientos de 85 km/h y la torre proyecta sombras sobre los paneles solares reduciendo la captación diurna.<br>`;
                 }
-                if (!isCampOk) {
-                    fbHtml += `&bull; <strong>Infracción de Seguridad y Campamento:</strong> El pico de ${peakWorkers} trabajadores simultáneos rebasa la capacidad de 12 camas en cumbre. Separe actividades a fases distintas para reducir la congestión en sitio.<br>`;
+                if (!isSheOk) {
+                    fbHtml += `&bull; <strong>Falla en Envolvente Térmica (Inercia Nocturna):</strong> La caseta de bloques acumula calor diurno y lo irradia en la noche forzando al clima a consumir 2.2 kW, agotando las baterías a mitad de la noche.<br>`;
                 }
-                if (!isBackupOk) {
-                    fbHtml += `&bull; <strong>Colapso de Continuidad de Red:</strong> La autonomía nocturna de ${backupHours}h no alcanza las 8 horas contratadas. La antena se apagará de madrugada interrumpiendo el servicio de emergencia.<br>`;
+                if (!isTorOk) {
+                    fbHtml += `&bull; <strong>Inviabilidad Geométrica / Sobrecupo:</strong> La torre arriostrada requiere retenidas fuera de la meseta, mientras que la grúa 70T satura el campamento de cumbre (&gt; 12 personas).<br>`;
                 }
-                if (!isCenOk) {
-                    fbHtml += `&bull; <strong>Infracción Eléctrica (CEN 200):</strong> El climatizador monofásico induce desbalance severo en la acometida trifásica de 65m y carece de redundancia N+1 ante avería.<br>`;
+                if (!isCliOk) {
+                    fbHtml += `&bull; <strong>Infracción CEN 200 y Confiabilidad:</strong> El split monofásico desbalancea las fases en un 25.55% y carece de redundancia N+1 ante fallo simple.<br>`;
                 }
-                if (!isGreenOk) {
-                    fbHtml += `&bull; <strong>Inviabilidad en Ciclo de Vida (7D):</strong> El generador diésel tiene un costo de acarreo de combustible de $16.800 USD/año que arruina el OPEX de la operadora y contamina la cumbre.<br>`;
+                if (!isEneOk) {
+                    fbHtml += `&bull; <strong>Inviabilidad en Ciclo de Vida 7D:</strong> El generador diésel cuesta $16.800 USD/año en flete 4x4 y el camino se corta en invierno, o el banco solar básico se apaga a las 2:00 AM.<br>`;
                 }
                 fbHtml += `<br><em>Pulse en "Modificar Decisiones y Reintentar Simulación" para ajustar su estrategia hasta obtener los 20 puntos de grado.</em>`;
             }
             fbBox.innerHTML = fbHtml;
+
+            // 3. REGISTRAR OFICIALMENTE EN EL BACKEND LARAVEL (MySQL ugma_evaluations)
+            const submitNotice = document.getElementById('evalSubmitNotice');
+            if (submitNotice) {
+                submitNotice.innerHTML = `<span style="color:#0284c7;">⏳ Registrando examen en el expediente académico del facilitador...</span>`;
+            }
+
+            try {
+                const payload = {
+                    student_name: studentName,
+                    student_email: studentEmail,
+                    evaluation_code: 'EVAL-U4-TELECOM',
+                    session_token: 'tok_u4_' + Date.now(),
+                    time_spent_seconds: 300,
+                    answers: {
+                        is_telecom_u4: true,
+                        location: 'Cumbre Escarpada de Karuay-Waikirimá',
+                        vialidad: radioState.vialidad,
+                        implantacion: radioState.implantacion,
+                        shelter: radioState.shelter,
+                        torre: radioState.torre,
+                        clima: radioState.clima,
+                        energy: radioState.energy,
+                        score: score,
+                        total_cost: totalCost,
+                        total_days: cpmDays,
+                        peak_workers: peakWorkers,
+                        backup_hours: backupHours
+                    }
+                };
+
+                const res = await fetch('/ugma-gerencia-obras/api/evaluacion/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (data.success && submitNotice) {
+                    submitNotice.innerHTML = `
+                        <div style="background:#d1fae5;color:#065f46;padding:8px 14px;border-radius:8px;font-weight:700;display:inline-block;border:1px solid #a7f3d0;">
+                            ✅ Examen registrado exitosamente en la Cátedra UGMA para ${studentName} (Nota: ${score}/20 pts).
+                        </div>
+                    `;
+                }
+            } catch (err) {
+                console.warn('Nota calculada localmente:', err);
+                if (submitNotice) {
+                    submitNotice.innerHTML = `
+                        <span style="color:#059669;font-weight:700;">
+                            ✅ Calificación calculada y validada en su navegador (${score}/20 pts).
+                        </span>
+                    `;
+                }
+            }
+
             verdictCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 

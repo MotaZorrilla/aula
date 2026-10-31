@@ -15,16 +15,40 @@ class SubmitDayEvaluationAction
         $timeSpent = (int) ($data['time_spent_seconds'] ?? 0);
         $answers = $data['answers'] ?? [];
         $bcfTicket = $data['bcf_ticket_code'] ?? null;
+        $evalCode = trim($data['evaluation_code'] ?? 'EVAL-DIA-1-2');
+        if (empty($evalCode)) {
+            $evalCode = 'EVAL-DIA-1-2';
+        }
 
-        // 1. Evaluación Día 1 (Máx 10 Pts)
+        // 1. Evaluación Día 1 y Día 2
         $scoreDay1 = 0.0;
         $scoreDay2 = 0.0;
 
+        $isTelecomU4 = ($evalCode === 'EVAL-U4-TELECOM') || isset($answers['is_telecom_u4']);
         $isNewFormat = isset($answers['d1_q1_bim_def']) 
             || isset($answers['d1_q7_atlantis_governance']) 
             || isset($answers['d2_q1_cde_states']);
 
-        if ($isNewFormat) {
+        if ($isTelecomU4) {
+            // ==========================================================
+            // EVALUACIÓN PERICIAL UNIDAD 4: TELECOM KARUAY-WAIKIRIMÁ (0-20 PTS)
+            // ==========================================================
+            $evalCode = 'EVAL-U4-TELECOM';
+            $calcScore = 0.0;
+            if (($answers['vialidad'] ?? '') === 'lastrado') $calcScore += 3.5;
+            if (($answers['implantacion'] ?? '') === 'sotavento') $calcScore += 3.5;
+            if (($answers['shelter'] ?? '') === 'pir_alum') $calcScore += 3.5;
+            if (($answers['torre'] ?? '') === 'autosop') $calcScore += 3.5;
+            if (($answers['clima'] ?? '') === 'mochila') $calcScore += 3.0;
+            if (($answers['energy'] ?? '') === 'solar_opt') $calcScore += 3.0;
+
+            if (isset($answers['score']) && is_numeric($answers['score'])) {
+                $calcScore = (float) $answers['score'];
+            }
+
+            $scoreDay1 = round($calcScore / 2, 1);
+            $scoreDay2 = round($calcScore / 2, 1);
+        } elseif ($isNewFormat) {
             // ==========================================================
             // NUEVO FORMATO SIMPLIFICADO: 14 PREGUNTAS (ESCALA 0-20 PTS)
             // ==========================================================
@@ -126,7 +150,7 @@ class SubmitDayEvaluationAction
         $evaluation = UgmaEvaluation::updateOrCreate(
             [
                 'student_email' => $email,
-                'evaluation_code' => 'EVAL-DIA-1-2',
+                'evaluation_code' => $evalCode,
             ],
             [
                 'student_name' => $name,

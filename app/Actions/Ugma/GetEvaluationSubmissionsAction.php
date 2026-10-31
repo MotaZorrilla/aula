@@ -6,10 +6,14 @@ use App\Models\UgmaEvaluation;
 
 class GetEvaluationSubmissionsAction
 {
-    public function execute(string $code = 'EVAL-DIA-1-2'): array
+    public function execute(string $code = 'ALL'): array
     {
-        $evaluations = UgmaEvaluation::where('evaluation_code', $code)
-            ->orderBy('total_score', 'desc')
+        $query = UgmaEvaluation::query();
+        if (! empty($code) && strtoupper($code) !== 'ALL') {
+            $query->where('evaluation_code', $code);
+        }
+
+        $evaluations = $query->orderBy('total_score', 'desc')
             ->orderBy('updated_at', 'desc')
             ->get();
 
@@ -31,6 +35,7 @@ class GetEvaluationSubmissionsAction
             'submissions' => $evaluations->map(function ($e) {
                 return [
                     'id' => $e->id,
+                    'evaluation_code' => $e->evaluation_code,
                     'student_name' => $e->student_name,
                     'student_email' => $e->student_email,
                     'score_day1' => $e->score_day1,
