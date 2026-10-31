@@ -4628,9 +4628,53 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         function setRadioPhase(actId, phaseNum) {
-            radioState.phases[actId] = parseInt(phaseNum);
+            if (!radioState.phases) {
+                radioState.phases = { T1: 1, T2: 2, T3: 3, T4: 3, T5: 4, T6: 4, T7: 5 };
+            }
+            radioState.phases[actId] = parseInt(phaseNum, 10);
             runRadioSimulation();
         }
+        const setRadioTaskPhase = setRadioPhase;
+        const setAlmacenTaskPhase = setAlmacenPhase;
+        window.setRadioPhase = setRadioPhase;
+        window.setRadioTaskPhase = setRadioPhase;
+        window.setAlmacenPhase = setAlmacenPhase;
+        window.setAlmacenTaskPhase = setAlmacenPhase;
+
+        function toggleStudentGuide() {
+            const content = document.getElementById('studentGuideContent');
+            const icon = document.getElementById('guideToggleIcon');
+            const text = document.getElementById('guideToggleText');
+            if (!content) return;
+            const isHidden = (content.style.display === 'none' || getComputedStyle(content).display === 'none');
+            content.style.display = isHidden ? 'grid' : 'none';
+            if (icon) icon.textContent = isHidden ? '▼' : '►';
+            if (text) text.textContent = isHidden ? 'Ocultar Guía de Criterios' : 'Mostrar Guía de Criterios';
+        }
+        window.toggleStudentGuide = toggleStudentGuide;
+
+        function syncStudentFromSession() {
+            renderAuthState();
+            const user = getAuthUser();
+            if (user && (user.name || user.email)) {
+                const nameField = document.getElementById('evalStudentName');
+                const emailField = document.getElementById('evalStudentEmail');
+                const civField = document.getElementById('evalStudentCiv');
+                if (nameField && user.name) nameField.value = user.name;
+                if (emailField && user.email) emailField.value = user.email;
+                if (civField && user.ci) civField.value = user.ci;
+                const statusBadge = document.getElementById('evalSessionStatusBadge');
+                if (statusBadge) {
+                    statusBadge.innerHTML = `<span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;"></span> Sesión Verificada: ${escapeHtml(user.name || user.email)}`;
+                    statusBadge.style.background = '#ecfdf5';
+                    statusBadge.style.color = '#047857';
+                    statusBadge.style.borderColor = '#a7f3d0';
+                }
+            } else {
+                openAuthModal('login', 'Inicia sesión con tus credenciales UGMA para vincular automáticamente tus datos a la evaluación.');
+            }
+        }
+        window.syncStudentFromSession = syncStudentFromSession;
 
         
         // =================================================================
@@ -4925,7 +4969,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
                                 <span class="exec-phase-label">Asignar Fase:</span>
                                 <div class="phase-btn-group">
                                     ${[1, 2, 3, 4, 5].map(p => `
-                                        <button type="button" class="phase-btn ${p === currentPhase ? 'active' : ''}" onclick="setRadioTaskPhase('${act.id}', ${p})">
+                                        <button type="button" class="phase-btn ${p === currentPhase ? 'active' : ''}" onclick="setRadioPhase('${act.id}', ${p})">
                                             Fase ${p}
                                         </button>
                                     `).join('')}
@@ -5207,11 +5251,14 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         function calculateWeeklyCashflow(activities, totalWeeks, daysPerWeek) {
             const weekly = new Array(totalWeeks).fill(0);
             activities.forEach(act => {
+                if (!act.days || act.days <= 0 || !act.cost) return;
                 const dailyCost = act.cost / act.days;
                 for (let d = 0; d < act.days; d++) {
                     const currentDay = act.start + d;
                     const weekIdx = Math.min(Math.floor(currentDay / daysPerWeek), totalWeeks - 1);
-                    weekly[weekIdx] += dailyCost;
+                    if (weekIdx >= 0 && weekIdx < totalWeeks) {
+                        weekly[weekIdx] += dailyCost;
+                    }
                 }
             });
             return weekly.map(w => Math.round(w));
@@ -5229,7 +5276,7 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
             const chartWidth = width - leftMargin - 40;
             const chartHeight = height - topMargin - bottomMargin;
 
-            const maxY = budgetCeiling * 1.15;
+            const maxY = Math.max(budgetCeiling, totalCost, 1000) * 1.15;
             const pxPerDollar = chartHeight / maxY;
             const pxPerWeek = chartWidth / totalWeeks;
 
