@@ -958,8 +958,8 @@
             .academic-p { text-indent: 1.4em; font-size: 14.5px; }
         }
     
-        /* ================================================================= */
-        /* MÓDULOS 8 Y 9: TALLER PRÁCTICO & EVALUACIÓN INTERACTIVA          */
+                /* ================================================================= */
+        /* MÓDULOS 8 Y 9: TALLER PRÁCTICO & EVALUACIÓN INTERACTIVA (V2)      */
         /* ================================================================= */
         .interactive-cockpit {
             background: #ffffff;
@@ -994,7 +994,7 @@
         }
         .mandate-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 12px;
             margin-top: 16px;
         }
@@ -1008,7 +1008,7 @@
         }
         .mandate-pill strong {
             display: block;
-            font-size: 14.5px;
+            font-size: 14px;
             color: #38bdf8;
             margin-top: 2px;
             font-family: var(--font-mono);
@@ -1022,16 +1022,16 @@
             align-items: center;
             gap: 8px;
         }
-        .resource-cards-grid {
+        .resource-cards-grid-4 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
             margin-bottom: 20px;
         }
         .res-option-card {
             border: 2px solid var(--border);
             border-radius: 12px;
-            padding: 14px 16px;
+            padding: 14px 15px;
             background: #f8fafc;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1070,12 +1070,13 @@
             gap: 8px;
         }
         .res-option-title {
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 800;
             color: var(--navy-primary);
+            line-height: 1.35;
         }
         .res-option-badge {
-            font-size: 10.5px;
+            font-size: 10px;
             font-weight: 800;
             padding: 2px 7px;
             border-radius: 6px;
@@ -1084,9 +1085,9 @@
             white-space: nowrap;
         }
         .res-option-desc {
-            font-size: 12px;
+            font-size: 11.8px;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.45;
             margin-bottom: 10px;
         }
         .res-option-meta {
@@ -1095,7 +1096,7 @@
             align-items: center;
             padding-top: 8px;
             border-top: 1px dashed var(--border);
-            font-size: 11.5px;
+            font-size: 11px;
             font-family: var(--font-mono);
             color: var(--text-light);
         }
@@ -1108,19 +1109,19 @@
         }
         .telemetry-kpis {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 14px;
         }
         .tel-kpi-card {
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 14px;
+            padding: 12px 14px;
             text-align: center;
         }
         .tel-kpi-title {
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -1128,14 +1129,14 @@
             margin-bottom: 4px;
         }
         .tel-kpi-val {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
             font-family: var(--font-mono);
             color: var(--navy-primary);
-            margin: 4px 0;
+            margin: 3px 0;
         }
         .tel-kpi-status {
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 800;
             padding: 2px 8px;
             border-radius: 9999px;
@@ -1144,71 +1145,282 @@
         .status-ok { background: #d1fae5; color: #065f46; }
         .status-warn { background: #fef3c7; color: #92400e; }
         .status-danger { background: #fee2e2; color: #991b1b; }
+
+        /* REJILLA Y TARJETAS DE EJECUCIÓN 4D */
         .cpm-rack {
             background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            margin-top: 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 22px;
         }
-        .cpm-cards-pool {
+        .cpm-cards-pool-7 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 10px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
         }
-        .cpm-card-pill {
-            background: #f8fafc;
+        .exec-card-item {
+            background: #ffffff;
             border: 1.5px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 10px 12px;
-            font-size: 12px;
+            border-radius: 12px;
+            padding: 12px 14px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            justify-content: space-between;
+            gap: 8px;
             box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
         }
-        .cpm-phase-container {
+        .exec-card-item:hover {
+            border-color: #94a3b8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .exec-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .exec-card-title {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            line-height: 1.35;
+        }
+        .exec-card-code {
+            font-size: 11px;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            background: #e2e8f0;
+            color: #334155;
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+        .exec-card-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: #475569;
+        }
+        .exec-badge-pill {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+        .exec-phase-selector {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border);
+            margin-top: 4px;
+        }
+        .exec-phase-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        .phase-btn-group {
+            display: flex;
+            gap: 4px;
+        }
+        .phase-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .phase-btn:hover {
+            background: #e2e8f0;
+        }
+        .phase-btn.active {
+            background: var(--blue-accent);
+            color: #ffffff;
+            border-color: var(--blue-accent);
+        }
+        .phase-summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
+            gap: 10px;
+            margin: 16px 0;
         }
-        .cpm-phase-col {
+        .phase-col-card {
             background: #f8fafc;
-            border: 1.5px dashed var(--border-hover);
+            border: 1.5px solid var(--border);
             border-radius: 10px;
             padding: 12px;
-            min-height: 160px;
         }
-        .cpm-col-header {
+        .phase-col-title {
             font-size: 12px;
             font-weight: 800;
             color: var(--navy-primary);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .phase-col-meta {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: var(--text-light);
             margin-bottom: 8px;
             padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px dashed var(--border);
+        }
+        .phase-col-tasks {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .task-micro-tag {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 4px 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #334155;
             display: flex;
             justify-content: space-between;
         }
-        .cpm-task-item {
-            background: #ffffff;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 8px 10px;
-            margin-bottom: 8px;
-            font-size: 11.5px;
-            box-shadow: var(--shadow-sm);
+        .task-micro-tag.critical {
+            border-color: #f59e0b;
+            background: #fffbeb;
+            color: #b45309;
+            font-weight: 700;
         }
-        .cpm-task-item strong {
+
+        /* CONTENEDOR GANTT 4D */
+        .gantt-section {
+            background: #0f172a;
+            border-radius: 14px;
+            padding: 20px;
+            color: #f8fafc;
+            margin-top: 18px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+        }
+        .gantt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 10px;
+        }
+        .gantt-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .gantt-legend {
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            flex-wrap: wrap;
+        }
+        .gantt-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+        }
+        .gantt-svg-scroll {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .gantt-svg {
             display: block;
-            color: var(--navy-primary);
-            margin-bottom: 2px;
+            width: 100%;
+            min-width: 780px;
+            height: auto;
         }
+
+        /* CONTENEDOR 5D: FLUJO DE CAJA Y CURVA S */
+        .cashflow-section {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 22px;
+        }
+        .cashflow-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cashflow-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--navy-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cashflow-kpis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .cf-kpi-pill {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+        .cf-kpi-lbl {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        .cf-kpi-num {
+            font-size: 16px;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            color: var(--navy-primary);
+            margin-top: 2px;
+        }
+        .scurve-svg-box {
+            width: 100%;
+            overflow-x: auto;
+        }
+        .scurve-svg {
+            display: block;
+            width: 100%;
+            min-width: 780px;
+            height: auto;
+        }
+
+        /* DICTAMEN PERICIAL */
         .eval-verdict-card {
             border-radius: 14px;
             padding: 22px;
-            margin-top: 20px;
+            margin-top: 22px;
             display: none;
             animation: fadeIn 0.3s ease;
         }
@@ -1257,6 +1469,10 @@
             flex-wrap: wrap;
             gap: 16px;
             box-shadow: var(--shadow-sm);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
     </style>
@@ -1327,63 +1543,63 @@
                 <button type="button" class="step-btn active" onclick="goToStep(1)" id="stepBtn-1">
                     <span class="step-num">1</span>
                     <div class="step-info">
-                        <span class="step-name">1 Confort térmico</span>
+                        <span class="step-name">Confort Térmico</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(2)" id="stepBtn-2">
                     <span class="step-num">2</span>
                     <div class="step-info">
-                        <span class="step-name">2 Caso Real HVAC 16 TR</span>
+                        <span class="step-name">Caso Real 16 TR</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(3)" id="stepBtn-3">
                     <span class="step-num">3</span>
                     <div class="step-info">
-                        <span class="step-name">3 Cálculos CEN 200 &amp; Joule</span>
+                        <span class="step-name">Cálculos CEN 200</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(4)" id="stepBtn-4">
                     <span class="step-num">4</span>
                     <div class="step-info">
-                        <span class="step-name">4 Desbalance NEMA &amp; Neutro</span>
+                        <span class="step-name">Desbalance NEMA</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(5)" id="stepBtn-5">
                     <span class="step-num">5</span>
                     <div class="step-info">
-                        <span class="step-name">5 LCC &amp; Retorno 15 Años</span>
+                        <span class="step-name">LCC 15 Años</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(6)" id="stepBtn-6">
                     <span class="step-num">6</span>
                     <div class="step-info">
-                        <span class="step-name">6 Solar 5.1 HSP &amp; GGBS</span>
+                        <span class="step-name">Solar 5.1 HSP</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(7)" id="stepBtn-7">
                     <span class="step-num">7</span>
                     <div class="step-info">
-                        <span class="step-name">7 Simulador &amp; Memoria</span>
+                        <span class="step-name">Simulador &amp; Memoria</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(8)" id="stepBtn-8">
                     <span class="step-num">8</span>
                     <div class="step-info">
-                        <span class="step-name">8 Taller: Almacén</span>
+                        <span class="step-name">Taller Almacén</span>
                     </div>
                 </button>
 
                 <button type="button" class="step-btn" onclick="goToStep(9)" id="stepBtn-9">
                     <span class="step-num">9</span>
                     <div class="step-info">
-                        <span class="step-name">9 Evaluación: Telecom</span>
+                        <span class="step-name">Evaluación Telecom</span>
                     </div>
                 </button>
             </div>
@@ -2266,812 +2482,945 @@
             </div>
         </div>
 
-        <!-- ================================================================= -->
-        <!-- MÓDULO 8: TALLER PRÁCTICO GUIADO · ALMACÉN TÉCNICO CLIMATIZADO   -->
+                <!-- ================================================================= -->
+        <!-- MÓDULO 8: TALLER PRÁCTICO GUIADO – ALMACÉN TÉCNICO CLIMATIZADO   -->
         <!-- ================================================================= -->
         <article class="module-section" id="moduleSection-8">
             <div class="module-header">
                 <div class="module-badge-num">08</div>
                 <div>
-                    <h2 class="module-title">UNIDAD 4: Taller Práctico Guiado · Centro de Distribución y Almacén Técnico</h2>
-                    <p class="module-desc">Planificación BIM (1D–7D) para Insumos Termodegradables (T &le; 25°C), Envolvente Tropical y Cortes de 4 Horas</p>
+                    <h2 class="module-title">Taller Práctico Guiado: Centro de Distribución y Almacén Técnico Climatizado</h2>
+                    <p class="module-desc">Simulador BIM Interdimensional: Integración de Envolvente Térmica, Climatización CEN 200, Respaldo Híbrido, Diagrama de Gantt 4D y Flujo de Caja 5D</p>
                 </div>
             </div>
 
-            <p class="academic-p">
-                <strong>Contexto Operativo del Taller:</strong> La gerencia de procura adjudicó el suministro masivo de polímeros epóxicos, recubrimientos reactivos y sensores de instrumentación para una parada de planta. Estos insumos sufren <strong>degradación irreversible si la temperatura ambiente supera los 25°C</strong> o si la humedad relativa rebasa el 60%. En la zona industrial se registran <strong>cortes eléctricos frecuentes del SEN de hasta 4 horas continuas</strong>. Para evitar pérdidas millonarias, el encargado debe transformar su gestión empírica en un <strong>flujo formal de dimensiones BIM</strong>, correlacionando la envolvente térmica, los equipos electromecánicos y el banco de respaldo.
-            </p>
-
             <div class="interactive-cockpit">
-                <!-- HERO MANDATO -->
+                <!-- HERO CARD MANDATO -->
                 <div class="cockpit-hero-card">
-                    <div style="flex:1;">
-                        <div class="cockpit-hero-title">
-                            <span>📦</span> Ficha de Mandato y Restricciones de Nave (Almacén Central)
+                    <div class="cockpit-hero-title">
+                        <span>🏢</span> Mandato de Obra: Centro de Distribución de Materiales Sensibles (Zona Ind. Unare II)
+                    </div>
+                    <div class="cockpit-hero-desc">
+                        Se le ha encomendado la gerencia integral para la adecuación y habilitación de una nave logística de 600 m² destinada al almacenamiento de insumos farmacéuticos y resinas poliméricas de alta sensibilidad térmica (degradación crítica si T &gt; 25°C). Debe tomar decisiones en cada dimensión BIM garantizando la viabilidad física, eléctrica y presupuestaria antes del inicio de operaciones.
+                    </div>
+                    <div class="mandate-grid">
+                        <div class="mandate-pill">
+                            <span>Techo Presupuestario CapEx</span>
+                            <strong>$46.000 USD Máximo</strong>
                         </div>
-                        <div class="cockpit-hero-desc">
-                            El plan de obra debe sincronizar las cuadrillas en el modelo 4D, respetar el límite de personal en nave y garantizar que el banco de baterías mantenga la climatización activa durante todo el apagón sin rebasar el presupuesto.
+                        <div class="mandate-pill">
+                            <span>Plazo Contractual Improrrogable</span>
+                            <strong>30 Días Calendario</strong>
                         </div>
-                        <div class="mandate-grid">
-                            <div class="mandate-pill">
-                                ⏱️ Plazo Improrrogable:
-                                <strong>&le; 6 Semanas (42 días)</strong>
-                            </div>
-                            <div class="mandate-pill">
-                                👷 Personal Máximo en Nave:
-                                <strong>&le; 14 Trabajadores</strong>
-                            </div>
-                            <div class="mandate-pill">
-                                💰 Techo Presupuestario (5D):
-                                <strong>&le; $46.000 USD</strong>
-                            </div>
-                            <div class="mandate-pill">
-                                🔋 Continuidad en Apagón (6D):
-                                <strong>&ge; 4.0 Horas Continuas</strong>
-                            </div>
+                        <div class="mandate-pill">
+                            <span>Autonomía de Emergencia</span>
+                            <strong>4 Horas Mínimo (Apagón)</strong>
+                        </div>
+                        <div class="mandate-pill">
+                            <span>Norma CEN 200 / NEMA</span>
+                            <strong>Trifásico 208V / 0% Desbalance</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- PASO 1: SELECTORES DE RECURSOS -->
+                <!-- SELECTOR 1: OBRA CIVIL Y RACKS -->
                 <div class="selectors-section-title">
-                    <span>1️⃣</span> Paso 1: Configuración de Recursos y Decisiones Técnicas (1D, 2D, 3D y 6D)
+                    <span>1️⃣</span> Dimensión 3D/4D: Selección de Cuadrilla de Obra Civil y Montaje Estructural
                 </div>
-
-                <!-- SELECTOR A1: OBRA CIVIL -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        🏗️ 1. Cuadrilla de Obra Civil, Pisos Industriales y CDE ISO 19650
-                    </label>
-                    <div class="resource-cards-grid">
-                        <div class="res-option-card selected opt-blue" id="cardA1_std" onclick="selectAlmacenCivil('std')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Cuadrilla Estándar</span>
-                                <span class="res-option-badge">6 Trabajadores</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Acondicionamiento de losa, racks y codificación de lotes en CDE a ritmo normal. Flujo de caja estable.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 12 Días</span>
-                                <span>💵 $8.500 USD</span>
-                            </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardA1_min" onclick="selectAlmacenCivil('min')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Cuadrilla Mínima</span>
+                            <span class="res-option-badge">Económica</span>
                         </div>
+                        <div class="res-option-desc">
+                            4 obreros. Ritmo de avance lento. Reduce el costo de nómina pero dilata la obra civil a 16 días, poniendo en riesgo la ruta crítica del proyecto.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 16 días · 👥 4 pers.</span>
+                            <strong>$5.200 USD</strong>
+                        </div>
+                    </div>
 
-                        <div class="res-option-card" id="cardA1_fast" onclick="selectAlmacenCivil('fast')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Cuadrilla Reforzada (Doble Frente)</span>
-                                <span class="res-option-badge" style="background:#dcfce7; color:#166534;">8 Trabajadores</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Acelera el vaciado y montaje de estanterías. Reduce 4 días pero incrementa el personal simultáneo en nave.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 8 Días</span>
-                                <span>💵 $9.800 USD</span>
-                            </div>
+                    <div class="res-option-card" id="cardA1_std" onclick="selectAlmacenCivil('std')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Cuadrilla Estándar</span>
+                            <span class="res-option-badge">Convencional</span>
+                        </div>
+                        <div class="res-option-desc">
+                            6 obreros. Rendimiento convencional según tabulador regional. Completa la adecuación de piso y racks en 12 días calendario.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 12 días · 👥 6 pers.</span>
+                            <strong>$7.000 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardA1_reforz" onclick="selectAlmacenCivil('reforz')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Cuadrilla Reforzada</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                        </div>
+                        <div class="res-option-desc">
+                            8 obreros. Excelente paralelismo en nave sin generar congestión física. Acorta la ruta civil a solo 8 días garantizando holgura al comisionamiento.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 8 días · 👥 8 pers.</span>
+                            <strong>$8.200 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardA1_doble" onclick="selectAlmacenCivil('doble')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Doble Cuadrilla Masiva</span>
+                            <span class="res-option-badge">Acelerada</span>
+                        </div>
+                        <div class="res-option-desc">
+                            12 obreros. Máxima velocidad (5 días), pero satura las vías de circulación interna, incrementa riesgos de seguridad y genera un sobrecosto severo.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 5 días · 👥 12 pers.</span>
+                            <strong>$12.500 USD</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- SELECTOR A2: CUBIERTA TECHO (MANTO NEGRO VS ALUMINIZADO) -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        ☀️ 2. Impermeabilización de Cubierta: Manto Negro vs. Manto Aluminizado (Unidad 3)
-                    </label>
-                    <div class="resource-cards-grid">
-                        <div class="res-option-card" id="cardA2_black" onclick="selectAlmacenTecho('black')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Manto Asfáltico Negro Tradicional</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">⚠️ Alta Ganancia Térmica</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Absorbe el 92% de la radiación solar (&alpha; = 0.92, SRI &approx; 0). El techo alcanza 80°C y transfiere calor constante al almacén, <strong>aumentando en un +35% el consumo de los aires</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 5 Días · 4 Pers.</span>
-                                <span>💵 $3.200 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardA2_alum" onclick="selectAlmacenTecho('alum')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Manto Aluminizado Reflectivo + Aislamiento</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">✅ Bioclimático Eficiente</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Refleja el 70% de la radiación solar y reduce la temperatura del techo a 54°C. <strong>Abate la potencia frigorífica media a 8.0 kW</strong>, reduciendo a la mitad el banco de baterías necesario.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 7 Días · 4 Pers.</span>
-                                <span>💵 $5.600 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SELECTOR A3: CLIMATIZACIÓN 16 TR (MONO VS TRIFÁSICO) -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        ⚡ 3. Arquitectura de Climatización HVAC 16 TR y Alimentadores (Unidad 4 - Caso Real CEN 200)
-                    </label>
-                    <div class="resource-cards-grid">
-                        <div class="res-option-card" id="cardA3_mono" onclick="selectAlmacenHvac('mono')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">4 Unidades Monofásicas On/Off 220V</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">🚨 Mala Praxis en Obra</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Compresores de ciclado fijo directo. Demanda 15.2 kW continuos, produce caída de tensión del 3.46% (viola CEN 200), desbalance NEMA del 25.55% y golpe de arranque (LRA 188A) que apaga inversores.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 6 Días · 4 Pers.</span>
-                                <span>💵 $8.000 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardA3_tri" onclick="selectAlmacenHvac('tri')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">4 Unidades Trifásicas Inverter VFD 208V</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">✅ Ingeniería Conforme</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Compresores modulantes continuos. Demanda media reducida a 8.0 kW (con techo aluminizado), caída &Delta;V &lt; 2%, simetría 0% desbalance y arrancador suave (LRA &le; 16A) compatible con banco de litio.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 8 Días · 5 Pers.</span>
-                                <span>💵 $10.600 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SELECTOR A4: SISTEMA SECUNDARIO DE RESPALDO (4 MODELOS) -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        🔋 4. Elección del Sistema Secundario de Energía para Cortes Eléctricos de 4 Horas (Unidad 4)
-                    </label>
-                    <div class="resource-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                        <div class="res-option-card" id="cardA4_r1" onclick="selectAlmacenEnergy('r1')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">R1: Solar Básico 10 kWp</span>
-                                <span class="res-option-badge">3 Bat. (15 kWh)</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Entrega 12 kWh útiles. Bajo costo, pero en apagón <strong>se agota a la hora 1.5</strong>, provocando la pérdida total de los insumos termodegradables.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 5 Días · 4 Pers.</span>
-                                <span>💵 $9.500 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card" id="cardA4_r2" onclick="selectAlmacenEnergy('r2')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">R2: Motogenerador Diésel 25 kVA</span>
-                                <span class="res-option-badge">Sin Baterías</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Cubre 4h si hay combustible, pero no ahorra energía diurna y genera un sobrecosto operativo anual de <strong>+$9.600 USD/año en gasoil y filtros</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 6 Días · 4 Pers.</span>
-                                <span>💵 $11.000 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardA4_r3" onclick="selectAlmacenEnergy('r3')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">R3: Híbrido Solar Óptimo 20 kWp</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">8 Bat. (40 kWh)</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Entrega 32 kWh útiles. Con Manto Aluminizado + Inverter (8 kW demandados), <strong>cubre exactamente las 4.0h de apagón</strong> y se recarga con 5.1 HSP.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 8 Días · 5 Pers.</span>
-                                <span>💵 $16.800 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card" id="cardA4_r4" onclick="selectAlmacenEnergy('r4')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">R4: Macro-Banco 35 kWp</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">18 Bat. (90 kWh)</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Sostendría incluso la mala praxis de manto negro y monofásico, pero su costo de $31.500 <strong>dispara el CAPEX a $55.000+, violando el presupuesto</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 12 Días · 6 Pers.</span>
-                                <span>💵 $31.500 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PASO 2: GENERACIÓN DE TARJETAS Y RUTA CRÍTICA 4D -->
+                <!-- SELECTOR 2: ENVOLVENTE TÉRMICA Y TECHO -->
                 <div class="selectors-section-title">
-                    <span>2️⃣</span> Paso 2: Bandeja de Tarjetas Generadas y Secuenciador de Ruta Crítica (4D)
+                    <span>2️⃣</span> Dimensión Sostenibilidad &amp; Térmica: Envolvente y Aislamiento de Cubierta (Unidad 3/4)
                 </div>
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">
-                    Cada tarjeta sintetiza los recursos elegidos. Asígnelas a las Fases del cronograma para coordinar las cuadrillas sin colisiones espaciales (3D) ni sobrepasar el límite de personal en nave:
-                </p>
-
-                <!-- POOL DE TARJETAS GENERADAS -->
-                <div class="cpm-cards-pool" id="almacenCardsPool">
-                    <!-- Se llena dinámicamente con renderAlmacenCards() -->
-                </div>
-
-                <!-- ASIGNADOR DE FASES 4D -->
-                <div class="cpm-rack">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-                        <span style="font-weight:800; font-size:13.5px; color:var(--navy-primary);">
-                            ⏱️ Rejilla Temporal de Fases Constructivas (Fast-Tracking Seguro)
-                        </span>
-                        <div style="display:flex; gap:8px;">
-                            <button type="button" class="btn-stepper-nav" onclick="applyOptimalAlmacenSchedule()" style="background:#dcfce7; color:#166534; font-weight:700;">
-                                <span>💡</span> Cargar Secuencia Óptima Didáctica
-                            </button>
-                            <button type="button" class="btn-stepper-nav" onclick="resetAlmacenSchedule()">
-                                <span>🔄</span> Reiniciar Secuencia
-                            </button>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardA2_black" onclick="selectAlmacenTecho('black')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Manto Asfáltico Negro</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inadecuado</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Impermeabilización tradicional sin reflectividad (albedo 0.08). Alcanza 82°C bajo el sol de Guayana e inyecta 16.5 kW de calor parásito al recinto.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 82°C · +35% calor</span>
+                            <strong>$2.800 USD</strong>
                         </div>
                     </div>
 
-                    <div style="font-size:12px; color:var(--text-light); margin-bottom:12px;">
-                        Defina en qué fase se ejecuta cada actividad. Las tareas en la misma fase se ejecutan en <strong>Paralelo</strong> (su personal se suma); las fases avanzan en <strong>Serie</strong>.
-                    </div>
-
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:14px;">
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[A1] Obra Civil &amp; CDE:</label>
-                            <select id="phase_A1" class="sim-select" onchange="updateAlmacenPhase('A1', this.value)">
-                                <option value="1" selected>Fase 1 (Inicio)</option>
-                                <option value="2">Fase 2</option>
-                                <option value="3">Fase 3</option>
-                            </select>
+                    <div class="res-option-card" id="cardA2_white" onclick="selectAlmacenTecho('white')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Pintura Elastomérica Blanca</span>
+                            <span class="res-option-badge">Básica</span>
                         </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[A2] Cubierta Techo:</label>
-                            <select id="phase_A2" class="sim-select" onchange="updateAlmacenPhase('A2', this.value)">
-                                <option value="1" selected>Fase 1 (En Paralelo en Techo)</option>
-                                <option value="2">Fase 2</option>
-                                <option value="3">Fase 3</option>
-                            </select>
+                        <div class="res-option-desc">
+                            Reflexión superficial del 60% que reduce la temperatura a 64°C, pero carece de aislamiento conductivo. Requiere 13.5 kW en el sistema climatizador.
                         </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[A3] Climatización HVAC:</label>
-                            <select id="phase_A3" class="sim-select" onchange="updateAlmacenPhase('A3', this.value)">
-                                <option value="1">Fase 1</option>
-                                <option value="2" selected>Fase 2 (Instalación)</option>
-                                <option value="3">Fase 3</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[A4] Respaldo Eléctrico:</label>
-                            <select id="phase_A4" class="sim-select" onchange="updateAlmacenPhase('A4', this.value)">
-                                <option value="1">Fase 1</option>
-                                <option value="2" selected>Fase 2 (En Paralelo)</option>
-                                <option value="3">Fase 3</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[A5] Comisionamiento IoT:</label>
-                            <select id="phase_A5" class="sim-select" onchange="updateAlmacenPhase('A5', this.value)">
-                                <option value="2">Fase 2</option>
-                                <option value="3" selected>Fase 3 (Cierre Final)</option>
-                                <option value="4">Fase 4</option>
-                            </select>
+                        <div class="res-option-meta">
+                            <span>☀️ 64°C · +15% calor</span>
+                            <strong>$3.800 USD</strong>
                         </div>
                     </div>
 
-                    <!-- ESQUEMA VISUAL DE FASES -->
-                    <div class="cpm-phase-container" id="almacenPhaseViewer">
-                        <!-- Llenado dinámicamente -->
+                    <div class="res-option-card selected opt-emerald" id="cardA2_alum" onclick="selectAlmacenTecho('alum')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Manto Aluminizado + Lana 50mm</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Lámina aluminizada reflectiva (albedo 0.85) más alma de lana de roca. Abate la temperatura a 54°C y reduce la carga térmica HVAC a solo 8.0 kW.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 54°C · R=1.8 m²K/W</span>
+                            <strong>$4.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardA2_pir" onclick="selectAlmacenTecho('pir')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Sándwich Termoacústico PIR 80mm</span>
+                            <span class="res-option-badge">Premium</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Panel industrial de poliisocianurato de máxima eficiencia (42°C sup, 6.5 kW HVAC), pero su costo de $11.500 USD quiebra el presupuesto disponible.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 42°C · U=0.28 W/m²K</span>
+                            <strong>$11.500 USD</strong>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PASO 3: DASHBOARD DE TELEMETRÍA EN VIVO -->
+                <!-- SELECTOR 3: HVAC 16 TR Y CÓDIGO ELÉCTRICO -->
+                <div class="selectors-section-title">
+                    <span>3️⃣</span> Dimensión Electromecánica: Sistema Climatizador HVAC 16 TR y Código CEN 200
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardA3_mono8" onclick="selectAlmacenHvac('mono8')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Monofásico On/Off (#8 AWG)</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Norma Viola</span>
+                        </div>
+                        <div class="res-option-desc">
+                            4 unidades 4 TR 230V monofásicas con cable #8. Provoca 3.8% de caída de tensión (viola límite 3.0%), desbalance NEMA 25.55% y recalienta el neutro.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚠️ 3.8% Caída · 14.8 kW</span>
+                            <strong>$6.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardA3_mono4" onclick="selectAlmacenHvac('mono4')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Monofásico (#4 AWG Sobredim.)</span>
+                            <span class="res-option-badge">Parche</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Corrige la caída de tensión a 1.9% pero perpetúa el desbalance severo de fases (25.55%) en el transformador de distribución y mantiene 12.2 kW de consumo.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚡ 1.9% Caída · 12.2 kW</span>
+                            <strong>$8.400 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardA3_tri_onoff" onclick="selectAlmacenHvac('tri_onoff')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Trifásico On/Off 208V</span>
+                            <span class="res-option-badge">Convencional</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Distribución simétrica de fases (0% desbalance, CEN 200), pero compresores directos con alto pico de arranque LRA y consumo plano de 11.5 kW.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚖️ 0% Desbalance · 11.5 kW</span>
+                            <strong>$7.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardA3_tri_inv" onclick="selectAlmacenHvac('tri_inv')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Trifásico Inverter VFD 208V</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Cumplimiento pleno CEN 200: 0% desbalance, caída de solo 0.4%, arranque suave progresivo y modulación inverter que reduce la demanda a solo 8.0 kW.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>✅ CEN 200 · 8.0 kW Mod.</span>
+                            <strong>$9.200 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SELECTOR 4: ENERGÍA DE RESPALDO (CONTINUIDAD) -->
+                <div class="selectors-section-title">
+                    <span>4️⃣</span> Dimensión Respaldo Energético: Continuidad Operativa ante Apagón (4 Horas)
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardA4_r1" onclick="selectAlmacenEnergy('r1')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Solar Básico (10 kWp + 15 kWh)</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Insuficiente</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Banco de litio reducido. Ante corte de luz, entrega únicamente 1.5 horas de autonomía real antes del colapso de frío de los fármacos.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>🔋 1.5 Horas · 15 kWh</span>
+                            <strong>$8.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardA4_r2" onclick="selectAlmacenEnergy('r2')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Generador Diésel 25 kVA</span>
+                            <span class="res-option-badge" style="background:#fef3c7;color:#92400e;">Alto OPEX</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Planta automática accesible en compra inicial, pero consume $9.600 USD/año en gasoil y sus emisiones de hollín amenazan la inocuidad farmacéutica.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⛽ OPEX +$9.6k/año</span>
+                            <strong>$9.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardA4_r3" onclick="selectAlmacenEnergy('r3')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Híbrido Solar Óptimo (20 kWp + 40 kWh)</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Inversor trifásico y banco LiFePO4 de 40 kWh (32 kWh útiles). Soporta con solvencia 4.2 horas continuas con cubierta aluminizada e inverter.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>🔋 4.2 Horas · 40 kWh</span>
+                            <strong>$14.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardA4_r4" onclick="selectAlmacenEnergy('r4')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Macro-Banco Solar (35 kWp + 90 kWh)</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Sobrediseño</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Autonomía extendida de más de 9 horas, pero su costo de $28.000 USD rompe el presupuesto global del proyecto en más de $10.000 USD.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>🔋 9.5 Horas · 90 kWh</span>
+                            <strong>$28.000 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TELEMETRÍA EN VIVO -->
                 <div class="telemetry-dashboard">
-                    <div style="font-size:14px; font-weight:800; color:var(--navy-primary); margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
-                        <span>📊 Telemetría Gerencial en Vivo · Correlación 4D / 5D / 6D</span>
-                        <span id="almacenOverallBadge" class="tel-kpi-status status-ok">🟢 CONFIGURACIÓN CONFORME</span>
+                    <div style="font-size:13px;font-weight:800;color:var(--navy-primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                        <span>📡</span> Telemetría de Diseño Interdimensional en Tiempo Real
                     </div>
-
                     <div class="telemetry-kpis">
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Duración Ruta Crítica (4D)</div>
-                            <div class="tel-kpi-val" id="tel_alm_days">28 Días</div>
-                            <div id="tel_alm_days_pill" class="tel-kpi-status status-ok">4.0 Sem. (&le; 6 Sem.)</div>
+                            <div class="tel-kpi-title">Potencia Eléctrica Total</div>
+                            <div class="tel-kpi-val" id="telAlmacenPower">8.0 kW</div>
+                            <div class="tel-kpi-status status-ok" id="telAlmacenPowerStatus">Eficiente</div>
                         </div>
-
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Pico Máximo de Personal</div>
-                            <div class="tel-kpi-val" id="tel_alm_workers">10 Pers.</div>
-                            <div id="tel_alm_workers_pill" class="tel-kpi-status status-ok">Seguro (&le; 14 Máx.)</div>
+                            <div class="tel-kpi-title">Desbalance Fases NEMA</div>
+                            <div class="tel-kpi-val" id="telAlmacenDesbalance">0.0%</div>
+                            <div class="tel-kpi-status status-ok" id="telAlmacenDesbalanceStatus">Cumple CEN 200</div>
                         </div>
-
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Inversión Total (5D CAPEX)</div>
-                            <div class="tel-kpi-val" id="tel_alm_cost">$42.700 USD</div>
-                            <div id="tel_alm_cost_pill" class="tel-kpi-status status-ok">Bajo Techo ($46k)</div>
+                            <div class="tel-kpi-title">Autonomía de Respaldo</div>
+                            <div class="tel-kpi-val" id="telAlmacenBackup">4.2 Horas</div>
+                            <div class="tel-kpi-status status-ok" id="telAlmacenBackupStatus">≥ 4.0h Cumple</div>
                         </div>
-
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Autonomía ante Apagón (6D)</div>
-                            <div class="tel-kpi-val" id="tel_alm_autonomy">4.0 Horas</div>
-                            <div id="tel_alm_autonomy_pill" class="tel-kpi-status status-ok">Cubre Apagón (&ge; 4h)</div>
+                            <div class="tel-kpi-title">Presupuesto Programado</div>
+                            <div class="tel-kpi-val" id="telAlmacenCost">$42.800</div>
+                            <div class="tel-kpi-status status-ok" id="telAlmacenCostStatus">Bajo Techo $46k</div>
+                        </div>
+                        <div class="tel-kpi-card">
+                            <div class="tel-kpi-title">Plazo Total Ruta Crítica</div>
+                            <div class="tel-kpi-val" id="telAlmacenDays">29 Días</div>
+                            <div class="tel-kpi-status status-ok" id="telAlmacenDaysStatus">≤ 30d Cumple</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REJILLA TEMPORAL Y TARJETAS DE EJECUCIÓN (7 TARJETAS) -->
+                <div class="cpm-rack">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+                        <div>
+                            <h3 style="font-size:15px;font-weight:800;color:var(--navy-primary);margin:0;">
+                                ⏱️ Rejilla Temporal y Programación de Actividades (Dimensión 4D)
+                            </h3>
+                            <p style="font-size:12px;color:var(--text-muted);margin:2px 0 0;">
+                                Asigne cada una de las 7 actividades de ejecución a una de las 5 fases. Las actividades en una misma fase se ejecutan en <strong>paralelo</strong>.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="verdict-box" id="tel_alm_narrative" style="margin-top:10px;">
-                        <strong>💡 Diagnóstico del Taller:</strong> La elección del <strong>Manto Aluminizado</strong> en cubierta rebota el 70% del calor solar y reduce la demanda térmica a 8 kW. Combinado con el sistema <strong>Trifásico Inverter (CEN 200)</strong>, el modelo de respaldo solar <strong>R3 (8 baterías LiFePO4 de 5 kWh = 40 kWh)</strong> cubre exactamente las 4 horas de corte eléctrico ($8	ext{ kW} 	imes 4	ext{h} = 32	ext{ kWh útiles}$). La ejecución en paralelo de cubierta y muelles reduce la duración total a solo 28 días sin sobrepasar los 14 trabajadores en nave.
+                    <!-- POOL DE 7 TARJETAS -->
+                    <div class="cpm-cards-pool-7" id="almacenTasksPool">
+                        <!-- Las 7 tarjetas se inyectan o actualizan dinámicamente -->
                     </div>
+
+                    <!-- RESUMEN DE LAS 5 FASES -->
+                    <div class="phase-summary-grid" id="almacenPhasesSummary">
+                        <!-- Resumen dinámico de cada fase -->
+                    </div>
+
+                    <!-- GANTT 4D EN TIEMPO REAL (SVG) -->
+                    <div class="gantt-section">
+                        <div class="gantt-header">
+                            <div class="gantt-title">
+                                <span>📊</span> Diagrama de Gantt 4D Dinámico (Simulación en Tiempo Real)
+                            </div>
+                            <div class="gantt-legend">
+                                <div class="gantt-legend-item">
+                                    <div class="legend-dot" style="background:#f59e0b;"></div>
+                                    <span>Ruta Crítica (RC)</span>
+                                </div>
+                                <div class="gantt-legend-item">
+                                    <div class="legend-dot" style="background:#0ea5e9;"></div>
+                                    <span>Actividad Paralela</span>
+                                </div>
+                                <div class="gantt-legend-item">
+                                    <div class="legend-dot" style="background:#ef4444;"></div>
+                                    <span>Límite Contractual (30d)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gantt-svg-scroll">
+                            <div id="ganttSvgAlmacenContainer"></div>
+                        </div>
+                    </div>
+
+                    <!-- DIMENSIÓN 5D: FLUJO DE CAJA Y CURVA S -->
+                    <div class="cashflow-section">
+                        <div class="cashflow-header">
+                            <div class="cashflow-title">
+                                <span>📈</span> Dimensión 5D: Flujo de Caja y Curva S de Desembolso Financiero
+                            </div>
+                            <div style="font-size:12px;color:var(--text-light);font-family:var(--font-mono);">
+                                Techo CapEx: $46.000 USD
+                            </div>
+                        </div>
+                        <div class="cashflow-kpis">
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Presupuesto Techo</div>
+                                <div class="cf-kpi-num">$46.000 USD</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Inversión Programada</div>
+                                <div class="cf-kpi-num" id="cfAlmacenTotal">$42.800 USD</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Desembolso Semanal Prom.</div>
+                                <div class="cf-kpi-num" id="cfAlmacenAvg">$8.560 /sem</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Pico Máximo Semanal</div>
+                                <div class="cf-kpi-num" id="cfAlmacenPeak">$14.500 USD</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Margen de Contingencia</div>
+                                <div class="cf-kpi-num" id="cfAlmacenContingency" style="color:#059669;">+$3.200 USD</div>
+                            </div>
+                        </div>
+                        <div class="scurve-svg-box">
+                            <div id="scurveSvgAlmacenContainer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BANNER DE ENLACE A MÓDULO 9 -->
+                <div class="station-jump-banner">
+                    <div>
+                        <strong style="font-size:14.5px;color:#0369a1;display:block;margin-bottom:4px;">
+                            🚀 Taller de Almacén Integrado con Éxito
+                        </strong>
+                        <span style="font-size:12.5px;color:#334155;">
+                            Ha verificado cómo las decisiones bioclimáticas abaten la carga de climatización y viabilizan el respaldo solar en tiempo y costo. Continúe a la evaluación pericial en el Cerro San Félix.
+                        </span>
+                    </div>
+                    <button type="button" class="btn-stepper-nav" onclick="goToStep(9)" style="background:#0284c7;color:#ffffff;border:none;padding:10px 18px;border-radius:10px;font-weight:800;cursor:pointer;">
+                        Ir a la Evaluación Telecom <span>➡️</span>
+                    </button>
                 </div>
             </div>
         </article>
 
         <!-- ================================================================= -->
-        <!-- MÓDULO 9: RETO EVALUATIVO OFICIAL · RADIO BASE EN SITIO REMOTO    -->
+        <!-- MÓDULO 9: EVALUACIÓN PRÁCTICA PERICIAL – TELECOM CERRO SAN FÉLIX -->
         <!-- ================================================================= -->
         <article class="module-section" id="moduleSection-9">
             <div class="module-header">
                 <div class="module-badge-num">09</div>
                 <div>
-                    <h2 class="module-title">UNIDAD 4: Reto Evaluativo · Estación Radio Base en Sitio Remoto con Vialidad Crítica</h2>
-                    <p class="module-desc">Simulador y Evaluación Gerencial Multidisciplinaria: Ruta Crítica (4D), Presupuesto (5D) y Autonomía en Cortes de 8 Horas</p>
+                    <h2 class="module-title">Evaluación Práctica Pericial: Estación de Radiobase Telecom Cerro San Félix</h2>
+                    <p class="module-desc">Caso de Estudio Autónomo: Gerencia de Infraestructura Remota, Logística de Cumbre, Restricción de Campamento, Sostenibilidad Energética y Evaluación Vigesimal (0-20)</p>
                 </div>
             </div>
 
-            <p class="academic-p">
-                <strong>Mandato de la Evaluación:</strong> Su empresa contratista debe ejecutar el despliegue de una estación radio base de telecomunicaciones de alta disponibilidad en una cumbre remota del Estado Bolívar. La caseta (shelter) alberga equipamiento de radiofrecuencia sensible (2.0 kW fijos) que requiere climatización continua sin superar los 25°C. En esta zona montañosa, la red eléctrica comercial sufre <strong>racionamientos y apagones de hasta 8 horas continuas</strong>, y el inicio de la temporada de lluvias en 8 semanas cerrará completamente el paso de tierra.
-            </p>
-
             <div class="interactive-cockpit">
-                <!-- HERO MANDATO INAMOVIBLE -->
-                <div class="cockpit-hero-card" style="background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%); border-color:#38bdf8;">
-                    <div style="flex:1;">
-                        <div class="cockpit-hero-title">
-                            <span>📡</span> Mandato Contractual Inamovible (SLA de Telecomunicaciones)
+                <!-- HERO CARD MANDATO PERICIAL -->
+                <div class="cockpit-hero-card" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">
+                    <div class="cockpit-hero-title">
+                        <span>📡</span> Mandato Pericial: Radiobase de Telecomunicaciones 4G/5G en Cumbre Rocosa
+                    </div>
+                    <div class="cockpit-hero-desc">
+                        Como Gerente Director de Proyecto, debe planificar y ejecutar el despliegue de una estación de transmisión en el Cerro San Félix (Puerto Ordaz). El entorno impone restricciones extremas de acceso por pendiente pronunciada, riesgo de incomunicación total por lluvias en 8 semanas, capacidad limitada de pernocta en campamento y necesidad absoluta de continuidad de transmisión durante los cortes nocturnos de energía.
+                    </div>
+                    <div class="mandate-grid">
+                        <div class="mandate-pill">
+                            <span>Techo Presupuestario CapEx</span>
+                            <strong>$65.000 USD Máximo</strong>
                         </div>
-                        <div class="cockpit-hero-desc">
-                            Configure los recursos y organice la Ruta Crítica en el secuenciador 4D. El sistema auditará si su estrategia cumple simultáneamente los 5 criterios contractuales antes de emitir la calificación definitiva.
+                        <div class="mandate-pill">
+                            <span>Plazo Improrrogable</span>
+                            <strong>56 Días (8 Semanas)</strong>
                         </div>
-                        <div class="mandate-grid">
-                            <div class="mandate-pill" style="border-color:#38bdf8;">
-                                ⏱️ Plazo Improrrogable:
-                                <strong style="color:#ffffff;">&le; 8 Semanas (56 Días)</strong>
-                            </div>
-                            <div class="mandate-pill" style="border-color:#38bdf8;">
-                                👷 Límite en Campamento:
-                                <strong style="color:#ffffff;">&le; 12 Personas Máximo</strong>
-                            </div>
-                            <div class="mandate-pill" style="border-color:#38bdf8;">
-                                💰 Techo Presupuestario (5D):
-                                <strong style="color:#ffffff;">&le; $65.000 USD</strong>
-                            </div>
-                            <div class="mandate-pill" style="border-color:#38bdf8;">
-                                🔋 Autonomía en Cortes (6D):
-                                <strong style="color:#ffffff;">&ge; 8.0 Horas Continuas</strong>
-                            </div>
+                        <div class="mandate-pill">
+                            <span>Límite de Campamento</span>
+                            <strong>12 Personas Máx. Pernocta</strong>
+                        </div>
+                        <div class="mandate-pill">
+                            <span>Respaldo Continuo</span>
+                            <strong>8 Horas Nocturnas Mínimo</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- PASO 1: SELECTORES DE RECURSOS TELECOM -->
+                <!-- SELECTOR 1: VIALIDAD DE ACCESO -->
                 <div class="selectors-section-title">
-                    <span>1️⃣</span> Paso 1: Configuración de Recursos y Estrategia de Sitio (1D a 6D)
+                    <span>1️⃣</span> Dimensión Logística &amp; Vialidad: Acceso a Cumbre de Cerro San Félix
                 </div>
-
-                <!-- SELECTOR T1: VIALIDAD DE ACCESO -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        🚜 1. Estrategia de Logística y Vialidad de Acceso a Montaña (1D)
-                    </label>
-                    <div class="resource-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                        <div class="res-option-card" id="cardT1_rust" onclick="selectRadioVia('rust')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Acarreo Rústico 4x4 Directo</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">0 Días Iniciales</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Sube materiales sin acondicionar la trocha. El atasco constante de vehículos <strong>penaliza con +8 días de retraso global</strong> a todas las actividades siguientes.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 0d (+8d retraso)</span>
-                                <span>💵 $2.000 USD</span>
-                            </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardT1_manual" onclick="selectRadioVialidad('manual')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Mantenimiento Manual &amp; Relleno</span>
+                            <span class="res-option-badge">Precario</span>
                         </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardT1_light" onclick="selectRadioVia('light')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Cuadrilla Vialidad Liviana</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">6 Trabajadores</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Construcción de cunetas y vados de piedra en puntos críticos. Habilita el paso fluido de camiones y cuadrillas sin retrasos.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 10 Días</span>
-                                <span>💵 $7.200 USD</span>
-                            </div>
+                        <div class="res-option-desc">
+                            4 obreros rellenando baches a mano. Económico ($4.000), pero la primera lluvia lava el material y deja varada la grúa de 40T requerida para la torre.
                         </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 14 días · 👥 4 pers.</span>
+                            <strong>$4.000 USD</strong>
+                        </div>
+                    </div>
 
-                        <div class="res-option-card" id="cardT1_heavy" onclick="selectRadioVia('heavy')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Maquinaria Pesada Completa</span>
-                                <span class="res-option-badge">8 Trabajadores</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Conformación total de vía con patrol y retroexcavadora. Vía impecable pero <strong>consume 18 días y casi un tercio del presupuesto</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 18 Días</span>
-                                <span>💵 $18.500 USD</span>
-                            </div>
+                    <div class="res-option-card" id="cardT1_patrol" onclick="selectRadioVialidad('patrol')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Patrol &amp; Cunetas en Tierra</span>
+                            <span class="res-option-badge">Vulnerable</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Conformación mecanizada rápida. Mejora la rasante pero las cunetas en tierra colapsan con las fuertes escorrentías del cerro, cortando el paso.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 10 días · 👥 4 pers.</span>
+                            <strong>$6.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardT1_lastrado" onclick="selectRadioVialidad('lastrado')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Escarificado, Lastrado &amp; Cunetas Concreto</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Sub-base granular compactada con cunetas de concreto vaciado. Garantiza tránsito seguro todo tiempo para grúas pesadas en solo 8 días.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 8 días · 👥 4 pers.</span>
+                            <strong>$9.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT1_pavimento" onclick="selectRadioVialidad('pavimento')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Pavimento Rígido Concreto 15cm</span>
+                            <span class="res-option-badge">Excesivo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Calidad suprema, pero consume el 37% de todo el presupuesto disponible ($24.000 USD) y toma 22 días, dilatando críticamente las demás etapas.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 22 días · 👥 8 pers.</span>
+                            <strong>$24.000 USD</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- SELECTOR T2: FUNDACIÓN Y ENVOLVENTE SHELTER (MANTO NEGRO VS ALUMINIZADO) -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        🏠 2. Cimentación Civil y Envolvente Térmica del Shelter (Unidad 3 - Manto Negro vs. Aluminizado)
-                    </label>
-                    <div class="resource-cards-grid">
-                        <div class="res-option-card" id="cardT2_black" onclick="selectRadioCaseta('black')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Fundación + Caseta con Manto Negro</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">⚠️ Inyección Térmica Crítica</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Losa de concreto y techo con manto asfáltico negro sin aislar (&alpha; = 0.92). Bajo el sol cenital de Guayana el techo llega a 82°C, <strong>inyectando +3.5 kW de carga térmica al shelter</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 12 Días · 6 Pers.</span>
-                                <span>💵 $10.500 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardT2_alum" onclick="selectRadioCaseta('alum')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Fundación + Shelter con Manto Aluminizado &amp; Paneles Aislados</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">✅ Envolvente Bioclimática</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Techo con manto aluminizado reflectivo (54°C en superficie) y muros con paneles sándwich aislados. <strong>Reduce la demanda de climatización a solo 1.5 kW</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 12 Días · 6 Pers.</span>
-                                <span>💵 $13.000 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SELECTOR T3: MONTAJE DE TORRE 42M -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        🗼 3. Montaje Estructural de Torre Autosoportada 42m y Antenas (3D / 4D)
-                    </label>
-                    <div class="resource-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                        <div class="res-option-card" id="cardT3_manual" onclick="selectRadioTorre('manual')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Cuadrilla Manual (Pluma)</span>
-                                <span class="res-option-badge">4 Torristas</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Izaje tramo a tramo con aparejos manuales. Bajo costo pero muy lento (20 días), dejando la obra al filo de la temporada de lluvias.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 20 Días</span>
-                                <span>💵 $10.800 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardT3_winch" onclick="selectRadioTorre('winch')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Cuadrilla con Winche Motorizado</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">6 Torristas</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Izaje mecanizado seguro. Permite ejecutar en paralelo con otra cuadrilla de 5 personas sin rebasar el límite de 12 en campamento.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 12 Días</span>
-                                <span>💵 $13.500 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card" id="cardT3_double" onclick="selectRadioTorre('double')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Doble Cuadrilla Masiva</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">10 Torristas</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Montaje en 9 días pero satura el campamento (10 personas), <strong>bloqueando cualquier trabajo en paralelo</strong> por límite logístico (10+4 &gt; 12).
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 9 Días</span>
-                                <span>💵 $17.900 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SELECTOR T4: CLIMATIZACIÓN DEL SHELTER Y ALIMENTADOR -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        ❄️ 4. Climatización de Shelter y Alimentador Eléctrico a 65m (Unidad 4 - CEN 200 y NEMA)
-                    </label>
-                    <div class="resource-cards-grid">
-                        <div class="res-option-card" id="cardT4_mono" onclick="selectRadioHvac('mono')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Climatización Monofásica On/Off 220V</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">🚨 Viola CEN 200</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Alimentador en cable #8 AWG con caída &Delta;V = 3.8% (&gt; 3%), desbalance NEMA &gt; 25% y ciclado brusco. La demanda total de la estación se eleva a <strong>6.5 kW</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 6 Días · 4 Pers.</span>
-                                <span>💵 $5.800 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardT4_tri" onclick="selectRadioHvac('tri')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">Climatización Inverter Trifásica 208V de Precisión</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">✅ CEN 200 &amp; ASHRAE 55</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Caída &Delta;V &lt; 2%, simetría 0% desbalance y modulación suave a 25°C. Con manto aluminizado, la demanda total de la estación (RF + Clima) <strong>se abate a 3.5 kW continuos</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 7 Días · 4 Pers.</span>
-                                <span>💵 $8.400 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SELECTOR T5: SISTEMA SECUNDARIO DE ENERGÍA (CORTES DE 8 HORAS) -->
-                <div style="margin-bottom:18px;">
-                    <label style="font-size:13px; font-weight:700; color:var(--navy-primary); margin-bottom:8px; display:block;">
-                        🔋 5. Matriz Secundaria de Energía para Cortes Eléctricos de 8 Horas Continuas (Unidad 4)
-                    </label>
-                    <div class="resource-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                        <div class="res-option-card" id="cardT5_e1" onclick="selectRadioEnergy('e1')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">E1: Motogenerador Diésel 15 kVA</span>
-                                <span class="res-option-badge">Sin Solar</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Requiere subir cisterna de gasoil por la trocha cada 12 días. Costo operativo anual de <strong>$16.800 USD/año en OPEX (viola límite de $3.500)</strong> y falla en lluvias.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 6 Días · 4 Pers.</span>
-                                <span>💵 $8.500 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card" id="cardT5_e2" onclick="selectRadioEnergy('e2')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">E2: Solar Básico 6 kWp</span>
-                                <span class="res-option-badge">4 Bat. (20 kWh)</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Entrega 16 kWh útiles. En apagón prolongado <strong>se apaga a la hora 4.5</strong>, violando el SLA de telecomunicaciones de 8 horas ininterrumpidas.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 7 Días · 4 Pers.</span>
-                                <span>💵 $11.200 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card selected opt-emerald" id="cardT5_e3" onclick="selectRadioEnergy('e3')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">E3: Híbrido Solar Óptimo 12 kWp</span>
-                                <span class="res-option-badge" style="background:#d1fae5; color:#064e3b;">7 Bat. (35 kWh)</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Entrega 28 kWh útiles. Con Manto Aluminizado + Inverter (3.5 kW demanda total), <strong>soporta exactamente las 8.0 horas de corte</strong> con CAPEX de $62.800 (&le; $65k).
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 10 Días · 5 Pers.</span>
-                                <span>💵 $18.200 USD</span>
-                            </div>
-                        </div>
-
-                        <div class="res-option-card" id="cardT5_e4" onclick="selectRadioEnergy('e4')">
-                            <div class="res-option-header">
-                                <span class="res-option-title">E4: Macro-Banco 22 kWp</span>
-                                <span class="res-option-badge" style="background:#fee2e2; color:#991b1b;">14 Bat. (70 kWh)</span>
-                            </div>
-                            <div class="res-option-desc">
-                                Entrega 56 kWh útiles. Sostendría el gasto térmico de la mala praxis pero <strong>su costo de $31.000 dispara el presupuesto a $72.000+, reprobando la evaluación</strong>.
-                            </div>
-                            <div class="res-option-meta">
-                                <span>⏱️ 14 Días · 6 Pers.</span>
-                                <span>💵 $31.000 USD</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PASO 2: ASIGNADOR 4D DE FASES Y PARALELISMO -->
+                <!-- SELECTOR 2: SHELTER Y CUBIERTA -->
                 <div class="selectors-section-title">
-                    <span>2️⃣</span> Paso 2: Bandeja de Tarjetas de Faena y Planificación de Fases 4D
+                    <span>2️⃣</span> Dimensión Envolvente &amp; Sostenibilidad: Shelter de Equipos y Cubierta Térmica
                 </div>
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">
-                    Organice la secuencia de ejecución (Fase 1 a 5). Las cuadrillas en la misma fase conviven en el campamento; compruebe que no superen el límite de 12 personas:
-                </p>
-
-                <!-- POOL DE TARJETAS TELECOM -->
-                <div class="cpm-cards-pool" id="radioCardsPool">
-                    <!-- Se llena dinámicamente con renderRadioCards() -->
-                </div>
-
-                <!-- ASIGNADOR DE FASES TELECOM -->
-                <div class="cpm-rack">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-                        <span style="font-weight:800; font-size:13.5px; color:var(--navy-primary);">
-                            ⏱️ Cronograma de Fases Constructivas en Sitio Remoto
-                        </span>
-                        <div style="display:flex; gap:8px;">
-                            <button type="button" class="btn-stepper-nav" onclick="applyOptimalRadioSchedule()" style="background:#dcfce7; color:#166534; font-weight:700;">
-                                <span>💡</span> Cargar Secuencia Óptima de Cátedra
-                            </button>
-                            <button type="button" class="btn-stepper-nav" onclick="resetRadioSchedule()">
-                                <span>🔄</span> Reiniciar
-                            </button>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardT2_black" onclick="selectRadioShelter('black')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Caseta Bloque + Manto Negro</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inadecuado</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Albañilería tradicional con manto asfáltico negro. Techo a 82°C que transmite 3.5 kW térmicos de calor parásito, recalentando los gabinetes RF.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 82°C · 12 días</span>
+                            <strong>$5.200 USD</strong>
                         </div>
                     </div>
 
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:14px;">
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[T1] Vialidad Acceso:</label>
-                            <select id="phase_T1" class="sim-select" onchange="updateRadioPhase('T1', this.value)">
-                                <option value="1" selected>Fase 1 (Apertura)</option>
-                                <option value="2">Fase 2</option>
-                                <option value="3">Fase 3</option>
-                            </select>
+                    <div class="res-option-card" id="cardT2_white" onclick="selectRadioShelter('white')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Caseta Bloque + Pintura Térmica</span>
+                            <span class="res-option-badge">Básica</span>
                         </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[T2] Fundación &amp; Caseta:</label>
-                            <select id="phase_T2" class="sim-select" onchange="updateRadioPhase('T2', this.value)">
-                                <option value="1">Fase 1</option>
-                                <option value="2" selected>Fase 2 (Obra Civil)</option>
-                                <option value="3">Fase 3</option>
-                            </select>
+                        <div class="res-option-desc">
+                            Pintura elastomérica blanca sobre placa. Refleja radiación solar directa pero las paredes de bloque acumulan calor diurno que liberan de noche.
                         </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[T3] Izaje de Torre 42m:</label>
-                            <select id="phase_T3" class="sim-select" onchange="updateRadioPhase('T3', this.value)">
-                                <option value="2">Fase 2</option>
-                                <option value="3" selected>Fase 3 (En Paralelo)</option>
-                                <option value="4">Fase 4</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[T5] Sistema de Energía:</label>
-                            <select id="phase_T5" class="sim-select" onchange="updateRadioPhase('T5', this.value)">
-                                <option value="2">Fase 2</option>
-                                <option value="3" selected>Fase 3 (En Paralelo en Patio)</option>
-                                <option value="4">Fase 4</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[T4] Climatización Shelter:</label>
-                            <select id="phase_T4" class="sim-select" onchange="updateRadioPhase('T4', this.value)">
-                                <option value="3">Fase 3</option>
-                                <option value="4" selected>Fase 4 (Instalación)</option>
-                                <option value="5">Fase 5</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-size:11.5px; font-weight:700; color:var(--navy-primary);">[T6] Integración RF &amp; Enlace:</label>
-                            <select id="phase_T6" class="sim-select" onchange="updateRadioPhase('T6', this.value)">
-                                <option value="4">Fase 4</option>
-                                <option value="5" selected>Fase 5 (Puesta en Servicio)</option>
-                            </select>
+                        <div class="res-option-meta">
+                            <span>☀️ 65°C · 10 días</span>
+                            <strong>$6.500 USD</strong>
                         </div>
                     </div>
 
-                    <!-- ESQUEMA VISUAL DE FASES TELECOM -->
-                    <div class="cpm-phase-container" id="radioPhaseViewer">
-                        <!-- Llenado dinámicamente -->
+                    <div class="res-option-card selected opt-emerald" id="cardT2_pir" onclick="selectRadioShelter('pir')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Shelter Modular PIR + Aluminizado</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Cabina prefabricada con paneles sándwich PIR 75mm y cubierta aluminizada. Montaje estanco en 6 días. Reduce la carga del clima a solo 0.45 kW.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>☀️ 45°C · 6 días</span>
+                            <strong>$8.600 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT2_bunker" onclick="selectRadioShelter('bunker')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Búnker Concreto Antivandálico</span>
+                            <span class="res-option-badge">Lento / Caro</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Estructura de concreto armado vaciado en sitio. Altísima seguridad pero 20 días de fraguado y $17.000 USD de costo que desbordan el presupuesto.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 20 días · 👥 8 pers.</span>
+                            <strong>$17.000 USD</strong>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PASO 3: DASHBOARD EN VIVO Y ACCIÓN DE EVALUACIÓN -->
+                <!-- SELECTOR 3: TORRE DE TRANSMISIÓN 45M -->
+                <div class="selectors-section-title">
+                    <span>3️⃣</span> Dimensión Estructural 3D/4D: Montaje de Torre de Transmisión de 45 Metros
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardT3_used" onclick="selectRadioTorre('used')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Torre Usada Reacondicionada</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Riesgosa</span>
+                        </div>
+                        <div class="res-option-desc">
+                            2 torristas. Elementos con corrosión previa. Montaje lento y peligroso de 24 días con alto riesgo de no superar la prueba de verticalidad eólica.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 24 días · 👥 2 pers.</span>
+                            <strong>$12.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT3_arriostrada" onclick="selectRadioTorre('arriostrada')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Torre Arriostrada (Tirantes)</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inviable en Sitio</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Torre ligera con vientos de acero. Inviable en la cumbre del cerro: requiere un radio de anclaje de 30m que cae en el abismo fuera del terreno.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚠️ Radio Anclaje 30m</span>
+                            <strong>$14.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardT3_autosop" onclick="selectRadioTorre('autosop')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Torre Autosoportada 45m</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptima</span>
+                        </div>
+                        <div class="res-option-desc">
+                            4 torristas certificados. Base troncopiramidal compacta sobre roca. Montaje seguro en tramos en 14 días en estricto cumplimiento normativo.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 14 días · 👥 4 pers.</span>
+                            <strong>$16.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT3_grua" onclick="selectRadioTorre('grua')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Doble Cuadrilla + Grúa 70T</span>
+                            <span class="res-option-badge">Sobrecupo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Montaje exprés en 7 días pero requiere 8 torristas. Al coincidir con la cuadrilla solar (6 pers.), suma 14 trabajadores excediendo el límite de 12 de campamento.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 7 días · 👥 8 pers.</span>
+                            <strong>$26.000 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SELECTOR 4: CLIMATIZACIÓN GABINETES RF -->
+                <div class="selectors-section-title">
+                    <span>4️⃣</span> Dimensión Electromecánica &amp; CEN 200: Climatización de Equipos RF (Norma N+1)
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardT4_mono" onclick="selectRadioClima('mono')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Split Monofásico Convencional</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Viola CEN 200</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Unidad comercial 230V 1F. Desbalance NEMA 25.55%, caída 3.8% en 65m de acometida de cerro y sin redundancia: si falla, la radiobase se apaga por calor.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚠️ 25.5% Desbal. · 0.8 kW</span>
+                            <strong>$2.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT4_inv_mono" onclick="selectRadioClima('inv_mono')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Split Dual Inverter 1F</span>
+                            <span class="res-option-badge">Sin Redundancia</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Reduce consumo continuo a 0.6 kW, pero persiste el desbalance monofásico y carece de conmutador automático de emergencia ante falla simple.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⚡ 0.6 kW · 1F Inverter</span>
+                            <strong>$3.400 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardT4_mochila" onclick="selectRadioClima('mochila')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Mochila Dual 3F Inverter N+1</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Unidad industrial compacta trifásica 208V con doble compresor redundante y conmutación automática. 0% desbalance y consumo ultra-eficiente de solo 450W.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>✅ 0% Desbal. · 0.45 kW</span>
+                            <strong>$5.200 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT4_chiller" onclick="selectRadioClima('chiller')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Chiller de Precisión Circuito Cerrado</span>
+                            <span class="res-option-badge">Complejo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Refrigeración líquida para centros de datos. Consume 1.5 kW y demanda bombas presurizadas con repuestos importados imposibles de mantener en cumbre.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⏱️ 6 días · 1.5 kW</span>
+                            <strong>$13.500 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SELECTOR 5: RESPALDO ENERGÉTICO 8 HORAS CONTINUAS -->
+                <div class="selectors-section-title">
+                    <span>5️⃣</span> Dimensión Continuidad &amp; Ciclo de Vida (7D): Respaldo Eléctrico 8 Horas Nocturnas
+                </div>
+                <div class="resource-cards-grid-4">
+                    <div class="res-option-card" id="cardT5_diesel" onclick="selectRadioEnergy('diesel')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Motogenerador Diésel 15 kVA</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Inviable 7D</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Planta automática con tanque 200L. Inviable en ciclo de vida: el flete de combustible por cerro cuesta $16.800 USD/año y en lluvias el paso se corta.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>⛽ OPEX +$16.8k/año</span>
+                            <strong>$7.800 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT5_solar_basic" onclick="selectRadioEnergy('solar_basic')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Solar 12 kWp + 4 Baterías (20 kWh)</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Apagón a las 2 AM</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Autonomía real: solo 4.5 horas para la carga total de 3.45 kW. La radiobase se apaga a mitad de la noche incumpliendo el contrato de conectividad.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>🔋 4.5 Horas · 20 kWh</span>
+                            <strong>$12.500 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card selected opt-emerald" id="cardT5_solar_opt" onclick="selectRadioEnergy('solar_opt')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Híbrido Solar 18 kWp + 7 LiFePO4 (35 kWh)</span>
+                            <span class="res-option-badge" style="background:#d1fae5;color:#065f46;">⭐ Óptimo</span>
+                        </div>
+                        <div class="res-option-desc">
+                            28 kWh útiles (80% DoD). Con carga optimizada (3.0 kW RF + 0.45 kW clima = 3.45 kW), entrega 8.1 horas continuas de transmisión ininterrumpida.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>🔋 8.1 Horas · 35 kWh</span>
+                            <strong>$17.900 USD</strong>
+                        </div>
+                    </div>
+
+                    <div class="res-option-card" id="cardT5_solar_macro" onclick="selectRadioEnergy('solar_macro')">
+                        <div class="res-option-header">
+                            <span class="res-option-title">Micro-Red Solar 30 kWp + 14 LiFePO4 (70 kWh)</span>
+                            <span class="res-option-badge" style="background:#fee2e2;color:#991b1b;">Sobrediseño</span>
+                        </div>
+                        <div class="res-option-desc">
+                            Más de 16 horas de autonomía, pero su costo de $34.000 USD eleva el presupuesto total a más de $78.000 USD, superando con creces el techo contractual.
+                        </div>
+                        <div class="res-option-meta">
+                            <span>🔋 16.5 Horas · 70 kWh</span>
+                            <strong>$34.000 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TELEMETRÍA EN VIVO TELECOM -->
                 <div class="telemetry-dashboard">
-                    <div style="font-size:14px; font-weight:800; color:var(--navy-primary); margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
-                        <span>📊 Telemetría Preliminar de Sitio (Antes de Emitir)</span>
-                        <span id="radioOverallBadge" class="tel-kpi-status status-ok">🟡 EN CONFIGURACIÓN</span>
+                    <div style="font-size:13px;font-weight:800;color:var(--navy-primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                        <span>📡</span> Telemetría Pericial en Tiempo Real: Restricciones de Sitio Remoto
                     </div>
-
                     <div class="telemetry-kpis">
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Duración Ruta Crítica (4D)</div>
-                            <div class="tel-kpi-val" id="tel_rad_days">45 Días</div>
-                            <div id="tel_rad_days_pill" class="tel-kpi-status status-ok">6.4 Sem. (&le; 8 Sem.)</div>
+                            <div class="tel-kpi-title">Autonomía Nocturna</div>
+                            <div class="tel-kpi-val" id="telRadioBackup">8.1 Horas</div>
+                            <div class="tel-kpi-status status-ok" id="telRadioBackupStatus">≥ 8.0h Cumple</div>
                         </div>
-
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Personal Pico en Sitio</div>
-                            <div class="tel-kpi-val" id="tel_rad_workers">11 Pers.</div>
-                            <div id="tel_rad_workers_pill" class="tel-kpi-status status-ok">Campamento (&le; 12)</div>
+                            <div class="tel-kpi-title">Pico en Campamento</div>
+                            <div class="tel-kpi-val" id="telRadioWorkers">7 Personas</div>
+                            <div class="tel-kpi-status status-ok" id="telRadioWorkersStatus">≤ 12 pers. Cumple</div>
                         </div>
-
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Presupuesto CAPEX (5D)</div>
-                            <div class="tel-kpi-val" id="tel_rad_cost">$62.800 USD</div>
-                            <div id="tel_rad_cost_pill" class="tel-kpi-status status-ok">Bajo Techo ($65k)</div>
+                            <div class="tel-kpi-title">Desbalance Fases CEN 200</div>
+                            <div class="tel-kpi-val" id="telRadioDesbalance">0.0%</div>
+                            <div class="tel-kpi-status status-ok" id="telRadioDesbalanceStatus">0% Cumple</div>
                         </div>
-
                         <div class="tel-kpi-card">
-                            <div class="tel-kpi-title">Autonomía en Apagón (6D)</div>
-                            <div class="tel-kpi-val" id="tel_rad_autonomy">8.0 Horas</div>
-                            <div id="tel_rad_autonomy_pill" class="tel-kpi-status status-ok">Cumple SLA (&ge; 8h)</div>
+                            <div class="tel-kpi-title">Presupuesto Programado</div>
+                            <div class="tel-kpi-val" id="telRadioCost">$62.000</div>
+                            <div class="tel-kpi-status status-ok" id="telRadioCostStatus">Bajo Techo $65k</div>
+                        </div>
+                        <div class="tel-kpi-card">
+                            <div class="tel-kpi-title">Plazo Total Ruta Crítica</div>
+                            <div class="tel-kpi-val" id="telRadioDays">42 Días</div>
+                            <div class="tel-kpi-status status-ok" id="telRadioDaysStatus">≤ 56d (8 sem)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REJILLA TEMPORAL Y TARJETAS DE EJECUCIÓN (7 TARJETAS) -->
+                <div class="cpm-rack">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+                        <div>
+                            <h3 style="font-size:15px;font-weight:800;color:var(--navy-primary);margin:0;">
+                                ⏱️ Rejilla Temporal y Programación de Actividades Telecom (Dimensión 4D)
+                            </h3>
+                            <p style="font-size:12px;color:var(--text-muted);margin:2px 0 0;">
+                                Asigne las 7 actividades a las 5 fases. Supervise que las cuadrillas simultáneas en una fase no excedan las <strong>12 personas de campamento</strong>.
+                            </p>
                         </div>
                     </div>
 
-                    <div style="text-align:center; margin-top:20px;">
-                        <button type="button" class="btn-acta" onclick="submitRadioEvaluation()" style="background:#0284c7; padding:14px 28px; font-size:15px; box-shadow:0 6px 16px rgba(2,132,199,0.3);">
-                            <span>🗳️</span> Emitir Plan Maestro de Obra (Evaluar) &rarr;
-                        </button>
+                    <!-- POOL DE 7 TARJETAS TELECOM -->
+                    <div class="cpm-cards-pool-7" id="radioTasksPool">
+                        <!-- Se inyectan dinámicamente -->
                     </div>
 
-                    <!-- CARD DE RESULTADO Y DICTAMEN DE EVALUACIÓN (SE DESPLIEGA AL EMITIR) -->
-                    <div class="eval-verdict-card" id="evalVerdictCard">
-                        <div class="score-display-box">
-                            <div>
-                                <span style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:#475569;">
-                                    Dictamen Oficial de Auditoría Gerencial · Módulo V
-                                </span>
-                                <div style="font-size:22px; font-weight:800; color:var(--navy-primary); margin-top:2px;" id="evalVerdictTitle">
-                                    ¡PLAN MAESTRO APROBADO CON EXCELENCIA!
+                    <!-- RESUMEN DE LAS 5 FASES -->
+                    <div class="phase-summary-grid" id="radioPhasesSummary">
+                        <!-- Resumen dinámico -->
+                    </div>
+
+                    <!-- GANTT 4D EN TIEMPO REAL (SVG) -->
+                    <div class="gantt-section">
+                        <div class="gantt-header">
+                            <div class="gantt-title">
+                                <span>📊</span> Diagrama de Gantt 4D Dinámico (Simulación Telecom)
+                            </div>
+                            <div class="gantt-legend">
+                                <div class="gantt-legend-item">
+                                    <div class="legend-dot" style="background:#f59e0b;"></div>
+                                    <span>Ruta Crítica (RC)</span>
+                                </div>
+                                <div class="gantt-legend-item">
+                                    <div class="legend-dot" style="background:#0ea5e9;"></div>
+                                    <span>Actividad Paralela</span>
+                                </div>
+                                <div class="gantt-legend-item">
+                                    <div class="legend-dot" style="background:#ef4444;"></div>
+                                    <span>Límite Lluvias (56d / 8 Sem)</span>
                                 </div>
                             </div>
-                            <div style="text-align:right;">
-                                <div class="score-number" id="evalScoreNumber" style="color:var(--emerald);">20 / 20</div>
-                                <span style="font-size:12px; font-weight:700; color:var(--emerald);" id="evalScorePct">100% Calificación Vigesimal</span>
+                        </div>
+                        <div class="gantt-svg-scroll">
+                            <div id="ganttSvgRadioContainer"></div>
+                        </div>
+                    </div>
+
+                    <!-- DIMENSIÓN 5D: FLUJO DE CAJA Y CURVA S -->
+                    <div class="cashflow-section">
+                        <div class="cashflow-header">
+                            <div class="cashflow-title">
+                                <span>📈</span> Dimensión 5D: Flujo de Caja y Curva S de Desembolso Telecom
+                            </div>
+                            <div style="font-size:12px;color:var(--text-light);font-family:var(--font-mono);">
+                                Techo CapEx: $65.000 USD
                             </div>
                         </div>
-
-                        <!-- LISTA DE CRITERIOS -->
-                        <div class="criteria-check-list" id="evalCriteriaList">
-                            <!-- Inyectado dinámicamente -->
+                        <div class="cashflow-kpis">
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Presupuesto Techo</div>
+                                <div class="cf-kpi-num">$65.000 USD</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Inversión Programada</div>
+                                <div class="cf-kpi-num" id="cfRadioTotal">$62.000 USD</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Desembolso Semanal Prom.</div>
+                                <div class="cf-kpi-num" id="cfRadioAvg">$10.333 /sem</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Pico Máximo Semanal</div>
+                                <div class="cf-kpi-num" id="cfRadioPeak">$17.900 USD</div>
+                            </div>
+                            <div class="cf-kpi-pill">
+                                <div class="cf-kpi-lbl">Margen de Contingencia</div>
+                                <div class="cf-kpi-num" id="cfRadioContingency" style="color:#059669;">+$3.000 USD</div>
+                            </div>
                         </div>
-
-                        <!-- TABLA COMPARATIVA CONTRA CÁTEDRA -->
-                        <div class="table-responsive" style="margin:16px 0;">
-                            <table class="academic-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width:25%;">Dimensión / Variable</th>
-                                        <th style="width:35%; background:#e0f2fe; color:#0369a1;">Tu Selección</th>
-                                        <th style="width:40%; background:#dcfce7; color:#166534;">Solución Óptima de Cátedra</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="evalComparisonBody">
-                                    <!-- Inyectado dinámicamente -->
-                                </tbody>
-                            </table>
+                        <div class="scurve-svg-box">
+                            <div id="scurveSvgRadioContainer"></div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- CAUSA RAÍZ Y RETROALIMENTACIÓN PEDAGÓGICA -->
-                        <div class="verdict-box" id="evalFeedbackBox">
-                            <!-- Inyectado dinámicamente -->
-                        </div>
+                <!-- BOTÓN DE ACCIÓN: EVALUAR ESTRATEGIA PERICIAL -->
+                <div style="text-align:center;margin:30px 0 10px;">
+                    <button type="button" class="btn-stepper-nav" id="evalRadioBtn" onclick="evaluateRadioPlan()" style="background:linear-gradient(135deg, #059669 0%, #047857 100%);color:#ffffff;font-size:15px;font-weight:800;padding:14px 32px;border-radius:12px;border:none;box-shadow:0 6px 16px rgba(5, 150, 105, 0.3);cursor:pointer;">
+                        <span>📋</span> Evaluar Estrategia Pericial de Telecomunicaciones
+                    </button>
+                </div>
 
-                        <div style="margin-top:16px; text-align:right;">
-                            <button type="button" class="btn-stepper-nav" onclick="reopenRadioEvaluation()">
-                                <span>✏️</span> Modificar Decisiones y Reintentar Simulación
-                            </button>
+                <!-- TARJETA DE VEREDICTO PERICIAL VIGESIMAL (0-20 PTS) -->
+                <div class="eval-verdict-card" id="radioVerdictCard" style="border: 2px solid #cbd5e1; background: #ffffff;">
+                    <div class="score-display-box">
+                        <div>
+                            <span style="font-size:12px;font-weight:700;text-transform:uppercase;color:var(--text-light);letter-spacing:0.05em;">
+                                Calificación Pericial de Grado UGMA
+                            </span>
+                            <div class="score-number" id="evalScoreNum" style="color: #059669;">20 / 20</div>
+                            <span id="evalScoreLabel" style="font-size:14px;font-weight:800;color:#065f46;">
+                                EXCELENCIA ACADÉMICA Y GERENCIAL (Aprobado con Mención)
+                            </span>
                         </div>
+                        <div style="text-align:right;">
+                            <span style="font-size:11px;color:var(--text-light);display:block;">Cohorte 2026 &middot; Diplomado Gerencia de Obras</span>
+                            <span style="font-size:12px;font-weight:800;color:var(--navy-primary);">Cátedra de Planificación &amp; Control</span>
+                        </div>
+                    </div>
+
+                    <div style="font-size:13px;font-weight:800;color:var(--navy-primary);margin-bottom:8px;">
+                        Auditoría Forense de Decisiones Interdimensionales:
+                    </div>
+                    <div class="criteria-check-list" id="evalCriteriaList">
+                        <!-- Lista de criterios evaluados -->
+                    </div>
+
+                    <div id="evalFeedbackBox" style="font-size:13px;line-height:1.65;color:#334155;background:#f8fafc;border-radius:10px;padding:16px;border:1px solid #e2e8f0;margin-top:14px;">
+                        <!-- Retroalimentación técnica -->
+                    </div>
+
+                    <div style="margin-top:18px;text-align:right;">
+                        <button type="button" class="btn-stepper-nav" onclick="reopenRadioEvaluation()" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
+                            <span>✏️</span> Modificar Decisiones y Reintentar Simulación
+                        </button>
                     </div>
                 </div>
             </div>
@@ -3359,619 +3708,917 @@ Documento pericial emitido con rigor académico y validez para evaluación de gr
         }
 
         
-        // =================================================================
-        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 8 (TALLER ALMACÉN TÉCNICO)
+                // =================================================================
+        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 8 (TALLER ALMACÉN V2)
         // =================================================================
         const almacenState = {
-            civil: 'std',
+            civil: 'reforz',
             techo: 'alum',
-            hvac: 'tri',
+            hvac: 'tri_inv',
             energy: 'r3',
-            phases: { A1: 1, A2: 1, A3: 2, A4: 2, A5: 3 }
+            phases: { A1: 1, A2: 2, A3: 2, A4: 3, A5: 3, A6: 4, A7: 5 }
         };
 
         function selectAlmacenCivil(opt) {
             almacenState.civil = opt;
-            document.querySelectorAll('#cardA1_std, #cardA1_fast').forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+            document.querySelectorAll('#cardA1_min, #cardA1_std, #cardA1_reforz, #cardA1_doble')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardA1_' + opt);
-            if (sel) sel.classList.add('selected', 'opt-blue');
+            if (sel) sel.classList.add('selected', opt === 'reforz' ? 'opt-emerald' : 'opt-blue');
             runAlmacenSimulation();
         }
 
         function selectAlmacenTecho(opt) {
             almacenState.techo = opt;
-            document.querySelectorAll('#cardA2_black, #cardA2_alum').forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+            document.querySelectorAll('#cardA2_black, #cardA2_white, #cardA2_alum, #cardA2_pir')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardA2_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'alum' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'alum' ? 'opt-emerald' : 'opt-blue');
             runAlmacenSimulation();
         }
 
         function selectAlmacenHvac(opt) {
             almacenState.hvac = opt;
-            document.querySelectorAll('#cardA3_mono, #cardA3_tri').forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+            document.querySelectorAll('#cardA3_mono8, #cardA3_mono4, #cardA3_tri_onoff, #cardA3_tri_inv')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardA3_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'tri' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'tri_inv' ? 'opt-emerald' : 'opt-blue');
             runAlmacenSimulation();
         }
 
         function selectAlmacenEnergy(opt) {
             almacenState.energy = opt;
-            document.querySelectorAll('#cardA4_r1, #cardA4_r2, #cardA4_r3, #cardA4_r4').forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
+            document.querySelectorAll('#cardA4_r1, #cardA4_r2, #cardA4_r3, #cardA4_r4')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardA4_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'r3' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'r3' ? 'opt-emerald' : 'opt-blue');
             runAlmacenSimulation();
         }
 
-        function updateAlmacenPhase(task, phase) {
-            almacenState.phases[task] = parseInt(phase, 10);
-            runAlmacenSimulation();
-        }
-
-        function applyOptimalAlmacenSchedule() {
-            selectAlmacenCivil('fast');
-            selectAlmacenTecho('alum');
-            selectAlmacenHvac('tri');
-            selectAlmacenEnergy('r3');
-            almacenState.phases = { A1: 1, A2: 1, A3: 2, A4: 2, A5: 3 };
-            document.getElementById('phase_A1').value = '1';
-            document.getElementById('phase_A2').value = '1';
-            document.getElementById('phase_A3').value = '2';
-            document.getElementById('phase_A4').value = '2';
-            document.getElementById('phase_A5').value = '3';
-            runAlmacenSimulation();
-        }
-
-        function resetAlmacenSchedule() {
-            selectAlmacenCivil('std');
-            selectAlmacenTecho('alum');
-            selectAlmacenHvac('tri');
-            selectAlmacenEnergy('r3');
-            almacenState.phases = { A1: 1, A2: 1, A3: 2, A4: 2, A5: 3 };
-            document.getElementById('phase_A1').value = '1';
-            document.getElementById('phase_A2').value = '1';
-            document.getElementById('phase_A3').value = '2';
-            document.getElementById('phase_A4').value = '2';
-            document.getElementById('phase_A5').value = '3';
+        function setAlmacenPhase(actId, phaseNum) {
+            almacenState.phases[actId] = parseInt(phaseNum);
             runAlmacenSimulation();
         }
 
         function runAlmacenSimulation() {
-            // Obtener atributos de tarjetas
-            const taskData = {
-                A1: almacenState.civil === 'fast' ? { name: "Adecuación Rápida Losa & Racks", days: 8, workers: 8, cost: 9800 } : { name: "Adecuación Estándar Losa & Racks", days: 12, workers: 6, cost: 8500 },
-                A2: almacenState.techo === 'alum' ? { name: "Cubierta Manto Aluminizado Aislada", days: 7, workers: 4, cost: 5600 } : { name: "Cubierta Manto Negro Tradicional", days: 5, workers: 4, cost: 3200 },
-                A3: almacenState.hvac === 'tri' ? { name: "Montaje HVAC Trifásico Inverter", days: 8, workers: 5, cost: 10600 } : { name: "Montaje HVAC Monofásico On/Off", days: 6, workers: 4, cost: 8000 },
-                A4: {
-                    r1: { name: "Solar Básico 10 kWp (3 Bat. LiFePO4 = 15 kWh)", days: 5, workers: 4, cost: 9500, kwh: 12 },
-                    r2: { name: "Motogenerador Diésel 25 kVA (Sin Baterías)", days: 6, workers: 4, cost: 11000, kwh: 32 },
-                    r3: { name: "Híbrido Solar Óptimo 20 kWp (8 Bat. LiFePO4 = 40 kWh)", days: 8, workers: 5, cost: 16800, kwh: 32 },
-                    r4: { name: "Macro-Banco Solar 35 kWp (18 Bat. LiFePO4 = 90 kWh)", days: 12, workers: 6, cost: 31500, kwh: 72 }
-                }[almacenState.energy],
-                A5: { name: "Comisionamiento Térmico & CDE IoT", days: 4, workers: 3, cost: 1200 }
+            // Calibración paramétrica de decisiones
+            const civilMap = {
+                min: { name: 'Cuadrilla Mínima', days: 16, cost: 5200, workers: 4 },
+                std: { name: 'Cuadrilla Estándar', days: 12, cost: 7000, workers: 6 },
+                reforz: { name: 'Cuadrilla Reforzada', days: 8, cost: 8200, workers: 8 },
+                doble: { name: 'Doble Cuadrilla Masiva', days: 5, cost: 12500, workers: 12 }
+            };
+            const techoMap = {
+                black: { name: 'Manto Asfáltico Negro Tradicional', days: 8, cost: 2800, workers: 4, thermalKW: 16.5, temp: 82 },
+                white: { name: 'Pintura Elastomérica Blanca', days: 6, cost: 3800, workers: 4, thermalKW: 13.5, temp: 64 },
+                alum: { name: 'Manto Aluminizado + Lana de Roca 50mm', days: 6, cost: 4800, workers: 4, thermalKW: 8.0, temp: 54 },
+                pir: { name: 'Sándwich Termoacústico PIR 80mm', days: 5, cost: 11500, workers: 4, thermalKW: 6.5, temp: 42 }
+            };
+            const hvacMap = {
+                mono8: { name: 'Monofásico On/Off (#8 AWG)', days: 5, cost: 6800, workers: 3, desbal: 25.55, vdrop: 3.8, powerKW: 14.8, cenOk: false },
+                mono4: { name: 'Monofásico (#4 AWG Sobredim.)', days: 5, cost: 8400, workers: 3, desbal: 25.55, vdrop: 1.9, powerKW: 12.2, cenOk: false },
+                tri_onoff: { name: 'Trifásico On/Off 208V', days: 5, cost: 7800, workers: 3, desbal: 0.0, vdrop: 0.9, powerKW: 11.5, cenOk: true },
+                tri_inv: { name: 'Trifásico Inverter VFD 208V CEN 200', days: 5, cost: 9200, workers: 3, desbal: 0.0, vdrop: 0.4, powerKW: 8.0, cenOk: true }
+            };
+            const energyMap = {
+                r1: { name: 'Solar Básico 10 kWp + 15 kWh Litio', days: 6, cost: 8500, workers: 4, kwh: 15 },
+                r2: { name: 'Planta Diésel Insonorizada 25 kVA', days: 4, cost: 9800, workers: 4, kwh: 999 },
+                r3: { name: 'Híbrido Solar Óptimo 20 kWp + 40 kWh Litio', days: 8, cost: 14500, workers: 4, kwh: 40 },
+                r4: { name: 'Macro-Banco Solar 35 kWp + 90 kWh LiFePO4', days: 12, cost: 28000, workers: 6, kwh: 90 }
             };
 
-            // Renderizar pool de tarjetas
-            const poolEl = document.getElementById('almacenCardsPool');
-            if (poolEl) {
-                poolEl.innerHTML = Object.keys(taskData).map(k => `
-                    <div class="cpm-card-pill">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <strong style="color:var(--navy-primary); font-size:12px;">[${k}] ${taskData[k].name}</strong>
-                            <span class="badge" style="background:#e0f2fe; color:#0369a1; padding:2px 6px;">Fase ${almacenState.phases[k]}</span>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-light); margin-top:4px;">
-                            <span>⏱️ ${taskData[k].days} días</span>
-                            <span>👷 ${taskData[k].workers} pers.</span>
-                            <span>💵 $${taskData[k].cost.toLocaleString('es-VE')}</span>
-                        </div>
-                    </div>
-                `).join('');
+            const selCiv = civilMap[almacenState.civil] || civilMap.reforz;
+            const selTec = techoMap[almacenState.techo] || techoMap.alum;
+            const selHva = hvacMap[almacenState.hvac] || hvacMap.tri_inv;
+            const selEne = energyMap[almacenState.energy] || energyMap.r3;
+
+            // Potencia activa requerida (kW) según envolvente + clima
+            let actualPowerKW = selHva.powerKW;
+            if (selTec.thermalKW > 10) actualPowerKW += (selTec.thermalKW - 8.0) * 0.4;
+
+            // Autonomía en horas
+            let backupHours = 0;
+            if (almacenState.energy === 'r2') {
+                backupHours = 12.0; // Diésel con tanque lleno
+            } else {
+                const usableKWh = selEne.kwh * 0.8; // 80% DoD
+                backupHours = +(usableKWh / actualPowerKW).toFixed(1);
             }
 
-            // Calcular fases CPM
-            const phaseTasks = { 1: [], 2: [], 3: [], 4: [] };
-            Object.keys(taskData).forEach(k => {
-                const ph = almacenState.phases[k] || 1;
-                if (!phaseTasks[ph]) phaseTasks[ph] = [];
-                phaseTasks[ph].push({ key: k, ...taskData[k] });
-            });
+            // Las 7 Actividades de Almacén
+            const activities = [
+                { id: 'A1', title: 'Obras Civiles y Montaje Racks', days: selCiv.days, cost: selCiv.cost, workers: selCiv.workers },
+                { id: 'A2', title: 'Impermeabilización y Cubierta Térmica', days: selTec.days, cost: selTec.cost, workers: selTec.workers },
+                { id: 'A3', title: 'Bandejas, Conduit y Acometida CEN 200', days: 6, cost: 2800, workers: 3 },
+                { id: 'A4', title: 'Montaje Evaporadoras/Condensadoras HVAC', days: selHva.days, cost: selHva.cost, workers: selHva.workers },
+                { id: 'A5', title: 'Instalación Estructura y Arreglo Solar', days: selEne.days, cost: selEne.cost, workers: selEne.workers },
+                { id: 'A6', title: 'Interconexión Inversores, Baterías & Tablero', days: 4, cost: 1900, workers: 3 },
+                { id: 'A7', title: 'Comisionamiento, Balanceo NEMA & Pruebas', days: 3, cost: 1400, workers: 2 }
+            ];
 
-            let totalDays = 0;
-            let peakWorkers = 0;
-            const phaseViewerEl = document.getElementById('almacenPhaseViewer');
-            let viewerHtml = '';
-
-            for (let p = 1; p <= 4; p++) {
-                const tasks = phaseTasks[p] || [];
-                const pDays = tasks.reduce((max, t) => Math.max(max, t.days), 0);
-                const pWorkers = tasks.reduce((sum, t) => sum + t.workers, 0);
-                totalDays += pDays;
-                if (pWorkers > peakWorkers) peakWorkers = pWorkers;
-
-                viewerHtml += `
-                    <div class="cpm-phase-col">
-                        <div class="cpm-col-header">
-                            <span>Fase ${p}</span>
-                            <span style="font-family:var(--font-mono); color:${pWorkers > 14 ? '#dc2626' : '#047857'}; font-weight:800;">
-                                ${pDays}d · ${pWorkers}p
-                            </span>
-                        </div>
-                        ${tasks.length === 0 ? '<div style="font-size:11px; color:#94a3b8; text-align:center; padding:20px 0;">(Sin tareas)</div>' : tasks.map(t => `
-                            <div class="cpm-task-item">
-                                <strong>[${t.key}] ${t.name}</strong>
-                                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#475569; margin-top:2px;">
-                                    <span>⏱️ ${t.days}d</span>
-                                    <span>👷 ${t.workers}p</span>
+            // Renderizar pool de 7 tarjetas
+            const poolEl = document.getElementById('almacenTasksPool');
+            if (poolEl) {
+                poolEl.innerHTML = activities.map(act => {
+                    const currentPhase = almacenState.phases[act.id] || 1;
+                    return `
+                        <div class="exec-card-item">
+                            <div class="exec-card-header">
+                                <span class="exec-card-code">${act.id}</span>
+                                <span class="exec-card-title">${act.title}</span>
+                            </div>
+                            <div class="exec-card-badges">
+                                <span class="exec-badge-pill">⏱️ ${act.days}d</span>
+                                <span class="exec-badge-pill">👥 ${act.workers}p</span>
+                                <span class="exec-badge-pill">💵 $${act.cost.toLocaleString('en-US')}</span>
+                            </div>
+                            <div class="exec-phase-selector">
+                                <span class="exec-phase-label">Asignar Fase:</span>
+                                <div class="phase-btn-group">
+                                    ${[1, 2, 3, 4, 5].map(p => `
+                                        <button type="button" class="phase-btn ${p === currentPhase ? 'active' : ''}" onclick="setAlmacenPhase('${act.id}', ${p})">${p}</button>
+                                    `).join('')}
                                 </div>
                             </div>
-                        `).join('')}
-                    </div>
-                `;
-            }
-            if (phaseViewerEl) phaseViewerEl.innerHTML = viewerHtml;
-
-            // Calcular Presupuesto CAPEX
-            const totalCapex = Object.keys(taskData).reduce((sum, k) => sum + taskData[k].cost, 0);
-
-            // Calcular demanda térmica y autonomía en corte
-            // Si manto negro: +35% calor.
-            // Si mono: base 15.2 kW (negro) o 11.2 kW (alum).
-            // Si tri: base 10.8 kW (negro) o 8.0 kW (alum).
-            let avgKw = 8.0;
-            if (almacenState.techo === 'black') {
-                avgKw = almacenState.hvac === 'mono' ? 15.2 : 10.8;
-            } else {
-                avgKw = almacenState.hvac === 'mono' ? 11.2 : 8.0;
+                        </div>
+                    `;
+                }).join('');
             }
 
-            const usefulKwh = taskData.A4.kwh;
-            let autonomyHours = Math.round((usefulKwh / avgKw) * 10) / 10;
-            if (almacenState.energy === 'r2') autonomyHours = 4.0; // Diésel corre continuo si hay gasoil
+            // Cálculo secuencial de Fases y Ruta Crítica
+            const phaseSummary = {
+                1: { title: 'Fase 1: Preparación & Civil', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                2: { title: 'Fase 2: Envolvente & Ductería', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                3: { title: 'Fase 3: Electromecánica & HVAC', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                4: { title: 'Fase 4: Energía & Respaldo', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                5: { title: 'Fase 5: Pruebas & Cierre CDE', days: 0, workers: 0, tasks: [], start: 0, finish: 0 }
+            };
 
-            // Actualizar KPIs Almacén
-            const daysWeeks = (totalDays / 7).toFixed(1);
-            document.getElementById('tel_alm_days').innerText = `${totalDays} Días`;
-            const daysPill = document.getElementById('tel_alm_days_pill');
-            if (totalDays <= 42) {
-                daysPill.className = 'tel-kpi-status status-ok';
-                daysPill.innerText = `${daysWeeks} Sem. (Cumple ≤ 42d)`;
-            } else {
-                daysPill.className = 'tel-kpi-status status-danger';
-                daysPill.innerText = `${daysWeeks} Sem. (Excede 42d)`;
+            activities.forEach(act => {
+                const p = almacenState.phases[act.id] || 1;
+                phaseSummary[p].tasks.push(act);
+                if (act.days > phaseSummary[p].days) phaseSummary[p].days = act.days;
+                phaseSummary[p].workers += act.workers;
+            });
+
+            let currentTimelineDay = 0;
+            let totalProjectDays = 0;
+            for (let p = 1; p <= 5; p++) {
+                phaseSummary[p].start = currentTimelineDay;
+                phaseSummary[p].finish = currentTimelineDay + phaseSummary[p].days;
+                currentTimelineDay = phaseSummary[p].finish;
+            }
+            totalProjectDays = currentTimelineDay;
+
+            // Calcular Ruta Crítica por tarea
+            activities.forEach(act => {
+                const p = almacenState.phases[act.id] || 1;
+                act.start = phaseSummary[p].start;
+                act.finish = act.start + act.days;
+                act.isCritical = (act.days === phaseSummary[p].days);
+            });
+
+            // Costo total programado
+            const totalScheduledCost = activities.reduce((acc, a) => acc + a.cost, 0);
+
+            // Renderizar resumen de Fases
+            const summaryEl = document.getElementById('almacenPhasesSummary');
+            if (summaryEl) {
+                summaryEl.innerHTML = Object.keys(phaseSummary).map(pKey => {
+                    const p = phaseSummary[pKey];
+                    return `
+                        <div class="phase-col-card">
+                            <div class="phase-col-title">
+                                <span>Fase ${pKey}</span>
+                                <span style="font-size:11px;color:#0284c7;font-family:var(--font-mono);">${p.days}d</span>
+                            </div>
+                            <div class="phase-col-meta">
+                                ⏱️ Días ${p.start + 1}-${p.finish} &middot; 👥 ${p.workers} trab.
+                            </div>
+                            <div class="phase-col-tasks">
+                                ${p.tasks.length === 0 ? '<span style="font-size:10.5px;color:#94a3b8;">Sin actividades</span>' : 
+                                    p.tasks.map(t => `
+                                        <div class="task-micro-tag ${t.isCritical ? 'critical' : ''}">
+                                            <span>${t.id} (${t.days}d)</span>
+                                            <span>${t.isCritical ? '⚡ RC' : ''}</span>
+                                        </div>
+                                    `).join('')
+                                }
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             }
 
-            document.getElementById('tel_alm_workers').innerText = `${peakWorkers} Pers.`;
-            const workersPill = document.getElementById('tel_alm_workers_pill');
-            if (peakWorkers <= 14) {
-                workersPill.className = 'tel-kpi-status status-ok';
-                workersPill.innerText = `Pico Seguro (≤ 14 Máx.)`;
-            } else {
-                workersPill.className = 'tel-kpi-status status-danger';
-                workersPill.innerText = `Sobresaturado (> 14)`;
+            // Actualizar Telemetría KPIs
+            const powEl = document.getElementById('telAlmacenPower');
+            const powSt = document.getElementById('telAlmacenPowerStatus');
+            if (powEl && powSt) {
+                powEl.textContent = actualPowerKW.toFixed(1) + ' kW';
+                if (actualPowerKW <= 8.5) {
+                    powSt.className = 'tel-kpi-status status-ok';
+                    powSt.textContent = 'Eficiente';
+                } else if (actualPowerKW <= 12.0) {
+                    powSt.className = 'tel-kpi-status status-warn';
+                    powSt.textContent = 'Moderado';
+                } else {
+                    powSt.className = 'tel-kpi-status status-danger';
+                    powSt.textContent = 'Sobrecarga Térmica';
+                }
             }
 
-            document.getElementById('tel_alm_cost').innerText = `$${totalCapex.toLocaleString('es-VE')} USD`;
-            const costPill = document.getElementById('tel_alm_cost_pill');
-            if (totalCapex <= 46000) {
-                costPill.className = 'tel-kpi-status status-ok';
-                costPill.innerText = `Bajo Techo ($46k)`;
-            } else {
-                costPill.className = 'tel-kpi-status status-danger';
-                costPill.innerText = `Excedido (>$46k)`;
+            const desEl = document.getElementById('telAlmacenDesbalance');
+            const desSt = document.getElementById('telAlmacenDesbalanceStatus');
+            if (desEl && desSt) {
+                desEl.textContent = selHva.desbal.toFixed(1) + '%';
+                if (selHva.desbal <= 2.0) {
+                    desSt.className = 'tel-kpi-status status-ok';
+                    desSt.textContent = 'CUMPLE CEN 200';
+                } else {
+                    desSt.className = 'tel-kpi-status status-danger';
+                    desSt.textContent = 'VIOLA CEN 200';
+                }
             }
 
-            document.getElementById('tel_alm_autonomy').innerText = `${autonomyHours.toFixed(1)} Horas`;
-            const autoPill = document.getElementById('tel_alm_autonomy_pill');
-            if (autonomyHours >= 4.0) {
-                autoPill.className = 'tel-kpi-status status-ok';
-                autoPill.innerText = `Cubre Corte (≥ 4.0h)`;
-            } else {
-                autoPill.className = 'tel-kpi-status status-danger';
-                autoPill.innerText = `Insuficiente (< 4.0h)`;
+            const bakEl = document.getElementById('telAlmacenBackup');
+            const bakSt = document.getElementById('telAlmacenBackupStatus');
+            if (bakEl && bakSt) {
+                bakEl.textContent = backupHours.toFixed(1) + ' Horas';
+                if (backupHours >= 4.0) {
+                    bakSt.className = 'tel-kpi-status status-ok';
+                    bakSt.textContent = '≥ 4.0h Cumple';
+                } else {
+                    bakSt.className = 'tel-kpi-status status-danger';
+                    bakSt.textContent = '< 4.0h Falla';
+                }
             }
 
-            // Dictamen Narrativo Almacén
-            const overallBadge = document.getElementById('almacenOverallBadge');
-            const narrativeEl = document.getElementById('tel_alm_narrative');
-            const allOk = totalDays <= 42 && peakWorkers <= 14 && totalCapex <= 46000 && autonomyHours >= 4.0;
-
-            if (allOk) {
-                overallBadge.className = 'tel-kpi-status status-ok';
-                overallBadge.innerText = '🟢 CONFIGURACIÓN CONFORME';
-                narrativeEl.innerHTML = `<strong>💡 Diagnóstico de Éxito del Taller:</strong> La combinación de <strong>Manto Aluminizado</strong> (rechaza 70% calor) y <strong>HVAC Trifásico Inverter</strong> reduce la carga térmica a 8.0 kW. El modelo <strong>R3 (8 baterías LiFePO4 de 5 kWh = 40 kWh)</strong> cubre con holgura las 4 horas de corte ($8\text{ kW} \times 4\text{h} = 32\text{ kWh utiles}$). La asignación en paralelo de cubierta y muelles finaliza en <strong>${totalDays} días</strong> con un pico de <strong>${peakWorkers} trabajadores</strong> y costo de <strong>$${totalCapex.toLocaleString('es-VE')} USD</strong>, respetando todas las restricciones.`;
-            } else {
-                overallBadge.className = 'tel-kpi-status status-danger';
-                overallBadge.innerText = '🔴 AJUSTE TÉCNICO REQUERIDO';
-                let issues = [];
-                if (totalDays > 42) issues.push(`el cronograma de ${totalDays} días excede el plazo límite de 42 días`);
-                if (peakWorkers > 14) issues.push(`el pico de ${peakWorkers} trabajadores supera la capacidad de 14 en nave`);
-                if (totalCapex > 46000) issues.push(`el presupuesto de $${totalCapex.toLocaleString('es-VE')} excede el techo de $46.000`);
-                if (autonomyHours < 4.0) issues.push(`la autonomía eléctrica de ${autonomyHours}h no alcanza las 4 horas de apagón requeridas (riesgo de pérdida térmica del lote)`);
-                narrativeEl.innerHTML = `<strong>⚠️ Desviaciones Detectadas:</strong> Atención: ${issues.join('; ')}. Se sugiere revisar la selección de manto de cubierta, la tecnología del aire acondicionado o reorganizar las fases para acoplar en paralelo sin sobrepasar el personal.`;
+            const cstEl = document.getElementById('telAlmacenCost');
+            const cstSt = document.getElementById('telAlmacenCostStatus');
+            if (cstEl && cstSt) {
+                cstEl.textContent = '$' + totalScheduledCost.toLocaleString('en-US');
+                if (totalScheduledCost <= 46000) {
+                    cstSt.className = 'tel-kpi-status status-ok';
+                    cstSt.textContent = 'Bajo Techo $46k';
+                } else {
+                    cstSt.className = 'tel-kpi-status status-danger';
+                    cstSt.textContent = 'Excede Techo $46k';
+                }
             }
+
+            const dayEl = document.getElementById('telAlmacenDays');
+            const daySt = document.getElementById('telAlmacenDaysStatus');
+            if (dayEl && daySt) {
+                dayEl.textContent = totalProjectDays + ' Días';
+                if (totalProjectDays <= 30) {
+                    daySt.className = 'tel-kpi-status status-ok';
+                    daySt.textContent = '≤ 30d Cumple';
+                } else {
+                    daySt.className = 'tel-kpi-status status-danger';
+                    daySt.textContent = '> 30d Atrasado';
+                }
+            }
+
+            // Renderizar Gantt 4D en SVG
+            renderGanttChartSvg('ganttSvgAlmacenContainer', activities, 35, 30);
+
+            // Renderizar Flujo de Caja 5D y Curva S en SVG (Semanas 1 a 5)
+            const weeklyCosts = calculateWeeklyCashflow(activities, 5, 7);
+            renderSCurveSvg('scurveSvgAlmacenContainer', weeklyCosts, 46000, 5, totalScheduledCost, 'Almacen');
         }
 
         // =================================================================
-        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 9 (EVALUACIÓN TELECOM)
+        // ESTADO Y LÓGICA INTERACTIVA: MÓDULO 9 (EVALUACIÓN TELECOM V2)
         // =================================================================
         const radioState = {
-            via: 'light',
-            caseta: 'alum',
-            torre: 'winch',
-            hvac: 'tri',
-            energy: 'e3',
-            phases: { T1: 1, T2: 2, T3: 3, T4: 4, T5: 3, T6: 5 },
-            evaluated: false
+            vialidad: 'lastrado',
+            shelter: 'pir',
+            torre: 'autosop',
+            clima: 'mochila',
+            energy: 'solar_opt',
+            phases: { T1: 1, T2: 2, T3: 3, T4: 3, T5: 4, T6: 4, T7: 5 }
         };
 
-        function selectRadioVia(opt) {
-            radioState.via = opt;
-            document.querySelectorAll('#cardT1_rust, #cardT1_light, #cardT1_heavy').forEach(c => c.classList.remove('selected', 'opt-emerald', 'opt-blue'));
+        function selectRadioVialidad(opt) {
+            radioState.vialidad = opt;
+            document.querySelectorAll('#cardT1_manual, #cardT1_patrol, #cardT1_lastrado, #cardT1_pavimento')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardT1_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'light' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'lastrado' ? 'opt-emerald' : 'opt-blue');
             runRadioSimulation();
         }
 
-        function selectRadioCaseta(opt) {
-            radioState.caseta = opt;
-            document.querySelectorAll('#cardT2_black, #cardT2_alum').forEach(c => c.classList.remove('selected', 'opt-emerald', 'opt-blue'));
+        function selectRadioShelter(opt) {
+            radioState.shelter = opt;
+            document.querySelectorAll('#cardT2_black, #cardT2_white, #cardT2_pir, #cardT2_bunker')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardT2_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'alum' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'pir' ? 'opt-emerald' : 'opt-blue');
             runRadioSimulation();
         }
 
         function selectRadioTorre(opt) {
             radioState.torre = opt;
-            document.querySelectorAll('#cardT3_manual, #cardT3_winch, #cardT3_double').forEach(c => c.classList.remove('selected', 'opt-emerald', 'opt-blue'));
+            document.querySelectorAll('#cardT3_used, #cardT3_arriostrada, #cardT3_autosop, #cardT3_grua')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardT3_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'winch' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'autosop' ? 'opt-emerald' : 'opt-blue');
             runRadioSimulation();
         }
 
-        function selectRadioHvac(opt) {
-            radioState.hvac = opt;
-            document.querySelectorAll('#cardT4_mono, #cardT4_tri').forEach(c => c.classList.remove('selected', 'opt-emerald', 'opt-blue'));
+        function selectRadioClima(opt) {
+            radioState.clima = opt;
+            document.querySelectorAll('#cardT4_mono, #cardT4_inv_mono, #cardT4_mochila, #cardT4_chiller')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardT4_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'tri' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'mochila' ? 'opt-emerald' : 'opt-blue');
             runRadioSimulation();
         }
 
         function selectRadioEnergy(opt) {
             radioState.energy = opt;
-            document.querySelectorAll('#cardT5_e1, #cardT5_e2, #cardT5_e3, #cardT5_e4').forEach(c => c.classList.remove('selected', 'opt-emerald', 'opt-blue'));
+            document.querySelectorAll('#cardT5_diesel, #cardT5_solar_basic, #cardT5_solar_opt, #cardT5_solar_macro')
+                .forEach(c => c.classList.remove('selected', 'opt-blue', 'opt-emerald'));
             const sel = document.getElementById('cardT5_' + opt);
-            if (sel) sel.classList.add('selected', opt === 'e3' ? 'opt-emerald' : 'selected');
+            if (sel) sel.classList.add('selected', opt === 'solar_opt' ? 'opt-emerald' : 'opt-blue');
             runRadioSimulation();
         }
 
-        function updateRadioPhase(task, phase) {
-            radioState.phases[task] = parseInt(phase, 10);
+        function setRadioPhase(actId, phaseNum) {
+            radioState.phases[actId] = parseInt(phaseNum);
             runRadioSimulation();
-        }
-
-        function applyOptimalRadioSchedule() {
-            selectRadioVia('light');
-            selectRadioCaseta('alum');
-            selectRadioTorre('winch');
-            selectRadioHvac('tri');
-            selectRadioEnergy('e3');
-            radioState.phases = { T1: 1, T2: 2, T3: 3, T4: 4, T5: 3, T6: 5 };
-            document.getElementById('phase_T1').value = '1';
-            document.getElementById('phase_T2').value = '2';
-            document.getElementById('phase_T3').value = '3';
-            document.getElementById('phase_T4').value = '4';
-            document.getElementById('phase_T5').value = '3';
-            document.getElementById('phase_T6').value = '5';
-            runRadioSimulation();
-        }
-
-        function resetRadioSchedule() {
-            selectRadioVia('rust');
-            selectRadioCaseta('black');
-            selectRadioTorre('manual');
-            selectRadioHvac('mono');
-            selectRadioEnergy('e2');
-            radioState.phases = { T1: 1, T2: 2, T3: 3, T4: 4, T5: 3, T6: 5 };
-            document.getElementById('phase_T1').value = '1';
-            document.getElementById('phase_T2').value = '2';
-            document.getElementById('phase_T3').value = '3';
-            document.getElementById('phase_T4').value = '4';
-            document.getElementById('phase_T5').value = '3';
-            document.getElementById('phase_T6').value = '5';
-            reopenRadioEvaluation();
-            runRadioSimulation();
-        }
-
-        function reopenRadioEvaluation() {
-            radioState.evaluated = false;
-            const evalCard = document.getElementById('evalVerdictCard');
-            if (evalCard) evalCard.classList.remove('active');
         }
 
         function runRadioSimulation() {
-            const taskData = {
-                T1: {
-                    rust: { name: "Acarreo Rústico 4x4 (Retraso +8d)", days: 0, penalty: 8, workers: 4, cost: 2000 },
-                    light: { name: "Vialidad Liviana & Cunetas", days: 10, penalty: 0, workers: 6, cost: 7200 },
-                    heavy: { name: "Maquinaria Pesada Integral", days: 18, penalty: 0, workers: 8, cost: 18500 }
-                }[radioState.via],
-                T2: radioState.caseta === 'alum' ? { name: "Fundación & Caseta Manto Aluminizado Aislada", days: 12, penalty: 0, workers: 6, cost: 13000 } : { name: "Fundación & Caseta Manto Negro Tradicional", days: 12, penalty: 0, workers: 6, cost: 10500 },
-                T3: {
-                    manual: { name: "Izaje Manual Torre 42m (Pluma)", days: 20, penalty: 0, workers: 4, cost: 10800 },
-                    winch: { name: "Izaje Mecanizado Torre 42m (Winche)", days: 12, penalty: 0, workers: 6, cost: 13500 },
-                    double: { name: "Izaje Doble Cuadrilla Masiva", days: 9, penalty: 0, workers: 10, cost: 17900 }
-                }[radioState.torre],
-                T4: radioState.hvac === 'tri' ? { name: "Climatización Inverter Trifásica 208V", days: 7, penalty: 0, workers: 4, cost: 8400 } : { name: "Climatización Monofásica On/Off 220V", days: 6, penalty: 0, workers: 4, cost: 5800 },
-                T5: {
-                    e1: { name: "E1: Motogenerador Diésel 15 kVA (OPEX Alto)", days: 6, penalty: 0, workers: 4, cost: 8500, kwh: 35, opex: 16800 },
-                    e2: { name: "E2: Solar Básico 6 kWp (4 Bat. LiFePO4 = 20 kWh)", days: 7, penalty: 0, workers: 4, cost: 11200, kwh: 16, opex: 1200 },
-                    e3: { name: "E3: Híbrido Solar 12 kWp (7 Bat. LiFePO4 = 35 kWh)", days: 10, penalty: 0, workers: 5, cost: 18200, kwh: 28, opex: 1100 },
-                    e4: { name: "E4: Macro-Banco 22 kWp (14 Bat. LiFePO4 = 70 kWh)", days: 14, penalty: 0, workers: 6, cost: 31000, kwh: 56, opex: 900 }
-                }[radioState.energy],
-                T6: { name: "Comisionamiento RF & Integración Enlace", days: 4, penalty: 0, workers: 3, cost: 2500 }
+            // Mapeo paramétrico
+            const viaMap = {
+                manual: { name: 'Mantenimiento Manual & Relleno', days: 14, cost: 4000, workers: 4 },
+                patrol: { name: 'Patrol & Cunetas en Tierra', days: 10, cost: 6800, workers: 4 },
+                lastrado: { name: 'Escarificado, Lastrado & Cunetas Concreto', days: 8, cost: 9800, workers: 4 },
+                pavimento: { name: 'Pavimento Rígido Concreto 15cm', days: 22, cost: 24000, workers: 8 }
+            };
+            const sheMap = {
+                black: { name: 'Caseta Bloque + Manto Negro', days: 12, cost: 5200, workers: 4, thermalKW: 3.5 },
+                white: { name: 'Caseta Bloque + Pintura Térmica', days: 10, cost: 6500, workers: 4, thermalKW: 2.0 },
+                pir: { name: 'Shelter Modular PIR + Aluminizado', days: 6, cost: 8600, workers: 4, thermalKW: 0.45 },
+                bunker: { name: 'Búnker Concreto Antivandálico', days: 20, cost: 17000, workers: 8, thermalKW: 1.2 }
+            };
+            const torMap = {
+                used: { name: 'Torre Usada Reacondicionada', days: 24, cost: 12500, workers: 2 },
+                arriostrada: { name: 'Torre Arriostrada (Tirantes)', days: 18, cost: 14500, workers: 4 },
+                autosop: { name: 'Torre Autosoportada 45m', days: 14, cost: 16500, workers: 4 },
+                grua: { name: 'Doble Cuadrilla + Grúa 70T', days: 7, cost: 26000, workers: 8 }
+            };
+            const cliMap = {
+                mono: { name: 'Split Monofásico Convencional', days: 4, cost: 2500, workers: 2, powerKW: 0.8, desbal: 25.55, redOk: false },
+                inv_mono: { name: 'Split Dual Inverter 1F', days: 4, cost: 3400, workers: 2, powerKW: 0.6, desbal: 25.55, redOk: false },
+                mochila: { name: 'Mochila Dual 3F Inverter N+1', days: 4, cost: 5200, workers: 2, powerKW: 0.45, desbal: 0.0, redOk: true },
+                chiller: { name: 'Chiller de Precisión Líquido', days: 6, cost: 13500, workers: 3, powerKW: 1.5, desbal: 0.0, redOk: true }
+            };
+            const eneMap = {
+                diesel: { name: 'Motogenerador Diésel 15 kVA', days: 6, cost: 7800, workers: 4, kwh: 999, isDiesel: true },
+                solar_basic: { name: 'Solar 12 kWp + 4 Baterías (20 kWh)', days: 8, cost: 12500, workers: 4, kwh: 20, isDiesel: false },
+                solar_opt: { name: 'Híbrido Solar 18 kWp + 7 LiFePO4 (35 kWh)', days: 10, cost: 17900, workers: 4, kwh: 35, isDiesel: false },
+                solar_macro: { name: 'Micro-Red Solar 30 kWp + 14 LiFePO4 (70 kWh)', days: 14, cost: 34000, workers: 6, kwh: 70, isDiesel: false }
             };
 
-            // Renderizar pool de tarjetas Telecom
-            const poolEl = document.getElementById('radioCardsPool');
-            if (poolEl) {
-                poolEl.innerHTML = Object.keys(taskData).map(k => `
-                    <div class="cpm-card-pill">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <strong style="color:var(--navy-primary); font-size:12px;">[${k}] ${taskData[k].name}</strong>
-                            <span class="badge" style="background:#e0f2fe; color:#0369a1; padding:2px 6px;">Fase ${radioState.phases[k]}</span>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-light); margin-top:4px;">
-                            <span>⏱️ ${taskData[k].days}d ${taskData[k].penalty ? '(+' + taskData[k].penalty + 'd retraso)' : ''}</span>
-                            <span>👷 ${taskData[k].workers}p</span>
-                            <span>💵 $${taskData[k].cost.toLocaleString('es-VE')}</span>
-                        </div>
-                    </div>
-                `).join('');
+            const selVia = viaMap[radioState.vialidad] || viaMap.lastrado;
+            const selShe = sheMap[radioState.shelter] || sheMap.pir;
+            const selTor = torMap[radioState.torre] || torMap.autosop;
+            const selCli = cliMap[radioState.clima] || cliMap.mochila;
+            const selEne = eneMap[radioState.energy] || eneMap.solar_opt;
+
+            // Demanda total de la radiobase (3.0 kW RF base + Climatizador + Térmica)
+            let totalRadioLoadKW = 3.0 + selCli.powerKW;
+            if (radioState.shelter === 'black') totalRadioLoadKW += 1.8;
+            else if (radioState.shelter === 'white') totalRadioLoadKW += 0.8;
+
+            // Autonomía nocturna
+            let backupHours = 0;
+            if (selEne.isDiesel) {
+                backupHours = 14.0;
+            } else {
+                const usableKWh = selEne.kwh * 0.8; // 80% DoD
+                backupHours = +(usableKWh / totalRadioLoadKW).toFixed(1);
             }
 
-            // Calcular Fases CPM Telecom
-            const phaseTasks = { 1: [], 2: [], 3: [], 4: [], 5: [] };
-            Object.keys(taskData).forEach(k => {
-                const ph = radioState.phases[k] || 1;
-                if (!phaseTasks[ph]) phaseTasks[ph] = [];
-                phaseTasks[ph].push({ key: k, ...taskData[k] });
-            });
+            // 7 Actividades Telecom
+            const activities = [
+                { id: 'T1', title: 'Escarificado & Vialidad de Cumbre', days: selVia.days, cost: selVia.cost, workers: selVia.workers },
+                { id: 'T2', title: 'Losa Fundación & Montaje Shelter', days: selShe.days, cost: selShe.cost, workers: selShe.workers },
+                { id: 'T3', title: 'Izaje & Verticalidad Torre 45m', days: selTor.days, cost: selTor.cost, workers: selTor.workers },
+                { id: 'T4', title: 'Montaje & Sellado Clima Mochila', days: selCli.days, cost: selCli.cost, workers: selCli.workers },
+                { id: 'T5', title: 'Arreglo Fotovoltaico & Generación', days: selEne.days, cost: selEne.cost, workers: selEne.workers },
+                { id: 'T6', title: 'Tendido Guías de Onda & Baterías', days: 5, cost: 2400, workers: 3 },
+                { id: 'T7', title: 'Comisionamiento RF & Pruebas 8h', days: 4, cost: 1600, workers: 2 }
+            ];
 
-            let totalDays = taskData.T1.penalty || 0;
-            let peakWorkers = 0;
-            const phaseViewerEl = document.getElementById('radioPhaseViewer');
-            let viewerHtml = '';
-
-            for (let p = 1; p <= 5; p++) {
-                const tasks = phaseTasks[p] || [];
-                const pDays = tasks.reduce((max, t) => Math.max(max, t.days), 0);
-                const pWorkers = tasks.reduce((sum, t) => sum + t.workers, 0);
-                totalDays += pDays;
-                if (pWorkers > peakWorkers) peakWorkers = pWorkers;
-
-                viewerHtml += `
-                    <div class="cpm-phase-col">
-                        <div class="cpm-col-header">
-                            <span>Fase ${p}</span>
-                            <span style="font-family:var(--font-mono); color:${pWorkers > 12 ? '#dc2626' : '#047857'}; font-weight:800;">
-                                ${pDays}d · ${pWorkers}p
-                            </span>
-                        </div>
-                        ${tasks.length === 0 ? '<div style="font-size:11px; color:#94a3b8; text-align:center; padding:20px 0;">(Sin tareas)</div>' : tasks.map(t => `
-                            <div class="cpm-task-item">
-                                <strong>[${t.key}] ${t.name}</strong>
-                                <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#475569; margin-top:2px;">
-                                    <span>⏱️ ${t.days}d</span>
-                                    <span>👷 ${t.workers}p</span>
+            // Renderizar pool Telecom
+            const poolEl = document.getElementById('radioTasksPool');
+            if (poolEl) {
+                poolEl.innerHTML = activities.map(act => {
+                    const currentPhase = radioState.phases[act.id] || 1;
+                    return `
+                        <div class="exec-card-item">
+                            <div class="exec-card-header">
+                                <span class="exec-card-code">${act.id}</span>
+                                <span class="exec-card-title">${act.title}</span>
+                            </div>
+                            <div class="exec-card-badges">
+                                <span class="exec-badge-pill">⏱️ ${act.days}d</span>
+                                <span class="exec-badge-pill">👥 ${act.workers}p</span>
+                                <span class="exec-badge-pill">💵 $${act.cost.toLocaleString('en-US')}</span>
+                            </div>
+                            <div class="exec-phase-selector">
+                                <span class="exec-phase-label">Asignar Fase:</span>
+                                <div class="phase-btn-group">
+                                    ${[1, 2, 3, 4, 5].map(p => `
+                                        <button type="button" class="phase-btn ${p === currentPhase ? 'active' : ''}" onclick="setRadioPhase('${act.id}', ${p})">${p}</button>
+                                    `).join('')}
                                 </div>
                             </div>
-                        `).join('')}
-                    </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Fases y cálculo 4D
+            const phaseSummary = {
+                1: { title: 'Fase 1: Acceso & Vialidad', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                2: { title: 'Fase 2: Obras Civiles & Shelter', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                3: { title: 'Fase 3: Torre & Climatización', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                4: { title: 'Fase 4: Energía & Respaldo', days: 0, workers: 0, tasks: [], start: 0, finish: 0 },
+                5: { title: 'Fase 5: Comisionamiento RF & CDE', days: 0, workers: 0, tasks: [], start: 0, finish: 0 }
+            };
+
+            let peakCampWorkers = 0;
+            activities.forEach(act => {
+                const p = radioState.phases[act.id] || 1;
+                phaseSummary[p].tasks.push(act);
+                if (act.days > phaseSummary[p].days) phaseSummary[p].days = act.days;
+                phaseSummary[p].workers += act.workers;
+            });
+
+            let currentTimelineDay = 0;
+            for (let p = 1; p <= 5; p++) {
+                phaseSummary[p].start = currentTimelineDay;
+                phaseSummary[p].finish = currentTimelineDay + phaseSummary[p].days;
+                currentTimelineDay = phaseSummary[p].finish;
+                if (phaseSummary[p].workers > peakCampWorkers) {
+                    peakCampWorkers = phaseSummary[p].workers;
+                }
+            }
+            const totalProjectDays = currentTimelineDay;
+
+            activities.forEach(act => {
+                const p = radioState.phases[act.id] || 1;
+                act.start = phaseSummary[p].start;
+                act.finish = act.start + act.days;
+                act.isCritical = (act.days === phaseSummary[p].days);
+            });
+
+            const totalScheduledCost = activities.reduce((acc, a) => acc + a.cost, 0);
+
+            // Renderizar resumen Fases Telecom
+            const summaryEl = document.getElementById('radioPhasesSummary');
+            if (summaryEl) {
+                summaryEl.innerHTML = Object.keys(phaseSummary).map(pKey => {
+                    const p = phaseSummary[pKey];
+                    const crewAlert = p.workers > 12;
+                    return `
+                        <div class="phase-col-card" style="${crewAlert ? 'border-color:#ef4444;background:#fff5f5;' : ''}">
+                            <div class="phase-col-title">
+                                <span>Fase ${pKey}</span>
+                                <span style="font-size:11px;color:#0284c7;font-family:var(--font-mono);">${p.days}d</span>
+                            </div>
+                            <div class="phase-col-meta" style="${crewAlert ? 'color:#b91c1c;font-weight:700;' : ''}">
+                                ⏱️ Días ${p.start + 1}-${p.finish} &middot; 👥 ${p.workers} trab. ${crewAlert ? '⚠️ >12' : ''}
+                            </div>
+                            <div class="phase-col-tasks">
+                                ${p.tasks.length === 0 ? '<span style="font-size:10.5px;color:#94a3b8;">Sin actividades</span>' : 
+                                    p.tasks.map(t => `
+                                        <div class="task-micro-tag ${t.isCritical ? 'critical' : ''}">
+                                            <span>${t.id} (${t.days}d)</span>
+                                            <span>${t.isCritical ? '⚡ RC' : ''}</span>
+                                        </div>
+                                    `).join('')
+                                }
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Actualizar Telemetría Telecom
+            const bakEl = document.getElementById('telRadioBackup');
+            const bakSt = document.getElementById('telRadioBackupStatus');
+            if (bakEl && bakSt) {
+                bakEl.textContent = backupHours.toFixed(1) + ' Horas';
+                if (backupHours >= 8.0) {
+                    bakSt.className = 'tel-kpi-status status-ok';
+                    bakSt.textContent = '≥ 8.0h Cumple';
+                } else {
+                    bakSt.className = 'tel-kpi-status status-danger';
+                    bakSt.textContent = '< 8.0h Falla';
+                }
+            }
+
+            const wrkEl = document.getElementById('telRadioWorkers');
+            const wrkSt = document.getElementById('telRadioWorkersStatus');
+            if (wrkEl && wrkSt) {
+                wrkEl.textContent = peakCampWorkers + ' Personas';
+                if (peakCampWorkers <= 12) {
+                    wrkSt.className = 'tel-kpi-status status-ok';
+                    wrkSt.textContent = '≤ 12 pers. Cumple';
+                } else {
+                    wrkSt.className = 'tel-kpi-status status-danger';
+                    wrkSt.textContent = 'Excede Campamento!';
+                }
+            }
+
+            const desEl = document.getElementById('telRadioDesbalance');
+            const desSt = document.getElementById('telRadioDesbalanceStatus');
+            if (desEl && desSt) {
+                desEl.textContent = selCli.desbal.toFixed(1) + '%';
+                if (selCli.desbal <= 2.0) {
+                    desSt.className = 'tel-kpi-status status-ok';
+                    desSt.textContent = '0% CEN 200';
+                } else {
+                    desSt.className = 'tel-kpi-status status-danger';
+                    desSt.textContent = 'Desbalance Severo';
+                }
+            }
+
+            const cstEl = document.getElementById('telRadioCost');
+            const cstSt = document.getElementById('telRadioCostStatus');
+            if (cstEl && cstSt) {
+                cstEl.textContent = '$' + totalScheduledCost.toLocaleString('en-US');
+                if (totalScheduledCost <= 65000) {
+                    cstSt.className = 'tel-kpi-status status-ok';
+                    cstSt.textContent = 'Bajo Techo $65k';
+                } else {
+                    cstSt.className = 'tel-kpi-status status-danger';
+                    cstSt.textContent = 'Excede Techo $65k';
+                }
+            }
+
+            const dayEl = document.getElementById('telRadioDays');
+            const daySt = document.getElementById('telRadioDaysStatus');
+            if (dayEl && daySt) {
+                dayEl.textContent = totalProjectDays + ' Días';
+                if (totalProjectDays <= 56) {
+                    daySt.className = 'tel-kpi-status status-ok';
+                    daySt.textContent = '≤ 56d (8 sem)';
+                } else {
+                    daySt.className = 'tel-kpi-status status-danger';
+                    daySt.textContent = '> 56d Lluvias!';
+                }
+            }
+
+            // Renderizar Gantt 4D en SVG (60 días max, 56d deadline)
+            renderGanttChartSvg('ganttSvgRadioContainer', activities, 60, 56);
+
+            // Renderizar Flujo de Caja 5D y Curva S en SVG (Semanas 1 a 8)
+            const weeklyCosts = calculateWeeklyCashflow(activities, 8, 7);
+            renderSCurveSvg('scurveSvgRadioContainer', weeklyCosts, 65000, 8, totalScheduledCost, 'Radio');
+        }
+
+        // =================================================================
+        // MOTOR DE RENDERIZADO SVG: DIAGRAMA DE GANTT 4D
+        // =================================================================
+        function renderGanttChartSvg(containerId, activities, maxDays, deadlineDay) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const width = 880;
+            const rowHeight = 30;
+            const topMargin = 40;
+            const leftMargin = 180;
+            const chartWidth = width - leftMargin - 40;
+            const height = topMargin + activities.length * rowHeight + 35;
+            const pxPerDay = chartWidth / maxDays;
+
+            let gridSvg = '';
+            for (let d = 0; d <= maxDays; d += 5) {
+                const x = leftMargin + d * pxPerDay;
+                gridSvg += `
+                    <line x1="${x}" y1="${topMargin - 15}" x2="${x}" y2="${height - 25}" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                    <text x="${x}" y="${topMargin - 20}" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="middle">D${d}</text>
                 `;
             }
-            if (phaseViewerEl) phaseViewerEl.innerHTML = viewerHtml;
 
-            // Calcular Presupuesto CAPEX
-            const totalCapex = Object.keys(taskData).reduce((sum, k) => sum + taskData[k].cost, 0);
+            // Línea de deadline contractual
+            const deadX = leftMargin + deadlineDay * pxPerDay;
+            const deadlineSvg = `
+                <line x1="${deadX}" y1="${topMargin - 15}" x2="${deadX}" y2="${height - 20}" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" />
+                <rect x="${deadX - 45}" y="${height - 20}" width="90" height="16" rx="4" fill="#ef4444" />
+                <text x="${deadX}" y="${height - 8}" fill="#ffffff" font-size="9.5" font-weight="bold" font-family="sans-serif" text-anchor="middle">Límite: ${deadlineDay}d</text>
+            `;
 
-            // Calcular Demanda Eléctrica de la Estación (RF 2.0 kW fijos + Climatización del Shelter)
-            // Si caseta manto negro: +3.5 kW de calor (mono = 4.5 kW clima, tri = 2.5 kW clima)
-            // Si caseta aluminizada: clima mono = 2.8 kW, clima tri = 1.5 kW
-            let totalKw = 3.5;
-            if (radioState.caseta === 'black') {
-                totalKw = radioState.hvac === 'mono' ? 6.5 : 4.5;
-            } else {
-                totalKw = radioState.hvac === 'mono' ? 4.8 : 3.5;
+            // Filas de tareas
+            let rowsSvg = '';
+            activities.forEach((act, idx) => {
+                const y = topMargin + idx * rowHeight;
+                const barX = leftMargin + act.start * pxPerDay;
+                const barW = Math.max(act.days * pxPerDay, 6);
+                const isCrit = act.isCritical;
+
+                const fillColor = isCrit ? 'url(#critGrad)' : 'url(#barGrad)';
+                const strokeColor = isCrit ? '#f59e0b' : '#38bdf8';
+
+                rowsSvg += `
+                    <!-- Fila ${act.id} -->
+                    <text x="${leftMargin - 10}" y="${y + 16}" fill="#e2e8f0" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="end">
+                        ${act.id}: ${act.title.length > 20 ? act.title.substring(0, 19) + '…' : act.title}
+                    </text>
+                    <rect x="${barX}" y="${y + 4}" width="${barW}" height="18" rx="5" fill="${fillColor}" stroke="${strokeColor}" stroke-width="${isCrit ? 1.5 : 1}" />
+                    <text x="${barX + 6}" y="${y + 17}" fill="${isCrit ? '#ffffff' : '#082f49'}" font-size="9.5" font-weight="800" font-family="monospace">
+                        ${act.days}d (${act.workers}p) ${isCrit ? '⚡ RC' : ''}
+                    </text>
+                `;
+            });
+
+            container.innerHTML = `
+                <svg viewBox="0 0 ${width} ${height}" class="gantt-svg">
+                    <defs>
+                        <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#38bdf8" />
+                            <stop offset="100%" stop-color="#0284c7" />
+                        </linearGradient>
+                        <linearGradient id="critGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#f59e0b" />
+                            <stop offset="100%" stop-color="#b45309" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="${width}" height="${height}" fill="#0f172a" rx="10" />
+                    ${gridSvg}
+                    ${rowsSvg}
+                    ${deadlineSvg}
+                </svg>
+            `;
+        }
+
+        // =================================================================
+        // MOTOR DE RENDERIZADO SVG: DIMENSIÓN 5D Y CURVA S
+        // =================================================================
+        function calculateWeeklyCashflow(activities, totalWeeks, daysPerWeek) {
+            const weekly = new Array(totalWeeks).fill(0);
+            activities.forEach(act => {
+                const dailyCost = act.cost / act.days;
+                for (let d = 0; d < act.days; d++) {
+                    const currentDay = act.start + d;
+                    const weekIdx = Math.min(Math.floor(currentDay / daysPerWeek), totalWeeks - 1);
+                    weekly[weekIdx] += dailyCost;
+                }
+            });
+            return weekly.map(w => Math.round(w));
+        }
+
+        function renderSCurveSvg(containerId, weeklyCosts, budgetCeiling, totalWeeks, totalCost, prefix) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const width = 880;
+            const height = 260;
+            const topMargin = 30;
+            const bottomMargin = 40;
+            const leftMargin = 70;
+            const chartWidth = width - leftMargin - 40;
+            const chartHeight = height - topMargin - bottomMargin;
+
+            // Escala Y (máximo hasta 1.15 del techo presupuestario)
+            const maxY = budgetCeiling * 1.15;
+            const pxPerDollar = chartHeight / maxY;
+            const pxPerWeek = chartWidth / totalWeeks;
+
+            // Acumulados
+            const cumulative = [];
+            let runningSum = 0;
+            weeklyCosts.forEach(c => {
+                runningSum += c;
+                cumulative.push(runningSum);
+            });
+
+            // Grid y Ejes
+            let gridSvg = '';
+            for (let val = 0; val <= maxY; val += (budgetCeiling / 4)) {
+                const y = topMargin + chartHeight - val * pxPerDollar;
+                gridSvg += `
+                    <line x1="${leftMargin}" y1="${y}" x2="${width - 40}" y2="${y}" stroke="#e2e8f0" stroke-width="1" />
+                    <text x="${leftMargin - 8}" y="${y + 4}" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">
+                        $${Math.round(val / 1000)}k
+                    </text>
+                `;
             }
 
-            const usefulKwh = taskData.T5.kwh;
-            let autonomyHours = Math.round((usefulKwh / totalKw) * 10) / 10;
-            if (radioState.energy === 'e1') autonomyHours = 8.0; // Diésel corre continuo si hay combustible en sitio
+            // Techo presupuestario (Línea roja discontinua)
+            const ceilingY = topMargin + chartHeight - budgetCeiling * pxPerDollar;
+            const ceilingSvg = `
+                <line x1="${leftMargin}" y1="${ceilingY}" x2="${width - 40}" y2="${ceilingY}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4" />
+                <text x="${width - 45}" y="${ceilingY - 5}" fill="#ef4444" font-size="10" font-weight="bold" font-family="sans-serif" text-anchor="end">
+                    Techo Presupuestario: $${budgetCeiling.toLocaleString('en-US')} USD
+                </text>
+            `;
 
-            // Actualizar KPIs de Telemetría Telecom
-            const daysWeeks = (totalDays / 7).toFixed(1);
-            document.getElementById('tel_rad_days').innerText = `${totalDays} Días`;
-            const daysPill = document.getElementById('tel_rad_days_pill');
-            if (totalDays <= 56) {
-                daysPill.className = 'tel-kpi-status status-ok';
-                daysPill.innerText = `${daysWeeks} Sem. (≤ 8 Sem.)`;
-            } else {
-                daysPill.className = 'tel-kpi-status status-danger';
-                daysPill.innerText = `${daysWeeks} Sem. (Excede 8 Sem.)`;
+            // Barras semanales de desembolso (CapEx Periódico)
+            let barsSvg = '';
+            weeklyCosts.forEach((cost, idx) => {
+                const barH = cost * pxPerDollar;
+                const barW = Math.min(pxPerWeek * 0.45, 42);
+                const x = leftMargin + idx * pxPerWeek + (pxPerWeek / 2) - (barW / 2);
+                const y = topMargin + chartHeight - barH;
+
+                barsSvg += `
+                    <rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="4" fill="#93c5fd" opacity="0.85" />
+                    <text x="${x + barW / 2}" y="${y - 4}" fill="#0369a1" font-size="9" font-weight="bold" font-family="monospace" text-anchor="middle">
+                        $${Math.round(cost / 1000)}k
+                    </text>
+                    <text x="${x + barW / 2}" y="${height - 20}" fill="#475569" font-size="10" font-weight="700" font-family="sans-serif" text-anchor="middle">
+                        Sem ${idx + 1}
+                    </text>
+                `;
+            });
+
+            // Curva S Acumulada
+            let pathD = `M ${leftMargin} ${topMargin + chartHeight}`;
+            let areaD = `M ${leftMargin} ${topMargin + chartHeight}`;
+            let dotsSvg = '';
+
+            cumulative.forEach((cum, idx) => {
+                const x = leftMargin + (idx + 1) * pxPerWeek - (pxPerWeek * 0.25);
+                const y = topMargin + chartHeight - cum * pxPerDollar;
+                pathD += ` L ${x} ${y}`;
+                areaD += ` L ${x} ${y}`;
+
+                const overCeiling = cum > budgetCeiling;
+                dotsSvg += `
+                    <circle cx="${x}" cy="${y}" r="4.5" fill="${overCeiling ? '#ef4444' : '#059669'}" stroke="#ffffff" stroke-width="1.5" />
+                    <text x="${x}" y="${y - 8}" fill="${overCeiling ? '#b91c1c' : '#065f46'}" font-size="9.5" font-weight="800" font-family="monospace" text-anchor="middle">
+                        $${Math.round(cum / 1000)}k
+                    </text>
+                `;
+            });
+
+            areaD += ` L ${leftMargin + cumulative.length * pxPerWeek - (pxPerWeek * 0.25)} ${topMargin + chartHeight} Z`;
+
+            container.innerHTML = `
+                <svg viewBox="0 0 ${width} ${height}" class="scurve-svg">
+                    <defs>
+                        <linearGradient id="scurveAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.25" />
+                            <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="${width}" height="${height}" fill="#f8fafc" rx="10" />
+                    ${gridSvg}
+                    ${barsSvg}
+                    <path d="${areaD}" fill="url(#scurveAreaGrad)" />
+                    <path d="${pathD}" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    ${dotsSvg}
+                    ${ceilingSvg}
+                </svg>
+            `;
+
+            // Actualizar tarjetas de KPI financiero
+            const totEl = document.getElementById(`cf${prefix}Total`);
+            const avgEl = document.getElementById(`cf${prefix}Avg`);
+            const peakEl = document.getElementById(`cf${prefix}Peak`);
+            const conEl = document.getElementById(`cf${prefix}Contingency`);
+
+            if (totEl) totEl.textContent = '$' + totalCost.toLocaleString('en-US') + ' USD';
+            if (avgEl) avgEl.textContent = '$' + Math.round(totalCost / totalWeeks).toLocaleString('en-US') + ' /sem';
+            if (peakEl) {
+                const maxWeek = Math.max(...weeklyCosts);
+                peakEl.textContent = '$' + maxWeek.toLocaleString('en-US') + ' USD';
             }
-
-            document.getElementById('tel_rad_workers').innerText = `${peakWorkers} Pers.`;
-            const workersPill = document.getElementById('tel_rad_workers_pill');
-            if (peakWorkers <= 12) {
-                workersPill.className = 'tel-kpi-status status-ok';
-                workersPill.innerText = `Campamento (≤ 12)`;
-            } else {
-                workersPill.className = 'tel-kpi-status status-danger';
-                workersPill.innerText = `Saturado (> 12)`;
-            }
-
-            document.getElementById('tel_rad_cost').innerText = `$${totalCapex.toLocaleString('es-VE')} USD`;
-            const costPill = document.getElementById('tel_rad_cost_pill');
-            if (totalCapex <= 65000) {
-                costPill.className = 'tel-kpi-status status-ok';
-                costPill.innerText = `Bajo Techo ($65k)`;
-            } else {
-                costPill.className = 'tel-kpi-status status-danger';
-                costPill.innerText = `Excedido (>$65k)`;
-            }
-
-            document.getElementById('tel_rad_autonomy').innerText = `${autonomyHours.toFixed(1)} Horas`;
-            const autoPill = document.getElementById('tel_rad_autonomy_pill');
-            if (autonomyHours >= 8.0) {
-                autoPill.className = 'tel-kpi-status status-ok';
-                autoPill.innerText = `Cumple SLA (≥ 8h)`;
-            } else {
-                autoPill.className = 'tel-kpi-status status-danger';
-                autoPill.innerText = `Falla Enlace (< 8h)`;
-            }
-
-            const overallBadge = document.getElementById('radioOverallBadge');
-            const allOk = totalDays <= 56 && peakWorkers <= 12 && totalCapex <= 65000 && autonomyHours >= 8.0 && radioState.energy !== 'e1';
-            if (allOk) {
-                overallBadge.className = 'tel-kpi-status status-ok';
-                overallBadge.innerText = '🟢 PARÁMETROS ÓPTIMOS';
-            } else {
-                overallBadge.className = 'tel-kpi-status status-warn';
-                overallBadge.innerText = '🟡 EN REVISIÓN / RIESGO';
+            if (conEl) {
+                const contingency = budgetCeiling - totalCost;
+                if (contingency >= 0) {
+                    conEl.style.color = '#059669';
+                    conEl.textContent = '+$' + contingency.toLocaleString('en-US') + ' USD';
+                } else {
+                    conEl.style.color = '#ef4444';
+                    conEl.textContent = '-$' + Math.abs(contingency).toLocaleString('en-US') + ' USD';
+                }
             }
         }
 
-        function submitRadioEvaluation() {
-            radioState.evaluated = true;
-            runRadioSimulation();
+        // =================================================================
+        // MOTOR DE EVALUACIÓN VIGESIMAL (0-20 PTS) - TELECOM
+        // =================================================================
+        function reopenRadioEvaluation() {
+            const verdictCard = document.getElementById('radioVerdictCard');
+            if (verdictCard) verdictCard.classList.remove('active');
+            window.scrollTo({ top: document.getElementById('moduleSection-9').offsetTop - 60, behavior: 'smooth' });
+        }
 
-            // Calcular evaluación detallada (sobre 20 puntos)
-            const cpmDays = parseInt(document.getElementById('tel_rad_days').innerText, 10);
-            const peakWorkers = parseInt(document.getElementById('tel_rad_workers').innerText, 10);
-            const capexNum = parseInt(document.getElementById('tel_rad_cost').innerText.replace(/[^0-9]/g, ''), 10);
-            const autonomy = parseFloat(document.getElementById('tel_rad_autonomy').innerText);
-
-            const critPlazo = cpmDays <= 56;
-            const critPersonal = peakWorkers <= 12;
-            const critCapex = capexNum <= 65000;
-            const critAutonomia = autonomy >= 8.0;
-            const critNormativa = radioState.hvac === 'tri' && radioState.energy !== 'e1';
-
-            let score = 0;
-            if (critPlazo) score += 4;
-            if (critPersonal) score += 4;
-            if (critCapex) score += 4;
-            if (critAutonomia) score += 4;
-            if (critNormativa) score += 4;
-
-            const verdictCard = document.getElementById('evalVerdictCard');
+        function evaluateRadioPlan() {
+            const verdictCard = document.getElementById('radioVerdictCard');
+            if (!verdictCard) return;
             verdictCard.classList.add('active');
 
-            const scoreNumEl = document.getElementById('evalScoreNumber');
-            const scorePctEl = document.getElementById('evalScorePct');
-            const verdictTitleEl = document.getElementById('evalVerdictTitle');
+            // Criterios de auditoría
+            const viaMap = { manual: 4000, patrol: 6800, lastrado: 9800, pavimento: 24000 };
+            const sheMap = { black: 5200, white: 6500, pir: 8600, bunker: 17000 };
+            const torMap = { used: 12500, arriostrada: 14500, autosop: 16500, grua: 26000 };
+            const cliMap = { mono: 2500, inv_mono: 3400, mochila: 5200, chiller: 13500 };
+            const eneMap = { diesel: 7800, solar_basic: 12500, solar_opt: 17900, solar_macro: 34000 };
 
-            scoreNumEl.innerText = `${score} / 20`;
-            scorePctEl.innerText = `${(score / 20) * 100}% Calificación Vigesimal`;
+            const totalCost = (viaMap[radioState.vialidad] || 0) +
+                              (sheMap[radioState.shelter] || 0) +
+                              (torMap[radioState.torre] || 0) +
+                              (cliMap[radioState.clima] || 0) +
+                              (eneMap[radioState.energy] || 0) + 2400 + 1600;
 
-            if (score >= 18) {
-                verdictCard.style.background = '#f0fdf4';
-                verdictCard.style.border = '2px solid #86efac';
-                scoreNumEl.style.color = '#047857';
-                verdictTitleEl.innerText = '🎉 ¡PLAN MAESTRO APROBADO CON EXCELENCIA!';
-                verdictTitleEl.style.color = '#065f46';
-            } else if (score >= 12) {
-                verdictCard.style.background = '#fffbeb';
-                verdictCard.style.border = '2px solid #fde68a';
-                scoreNumEl.style.color = '#d97706';
-                verdictTitleEl.innerText = '⚠️ PLAN APROBADO CON OBSERVACIONES CRÍTICAS';
-                verdictTitleEl.style.color = '#92400e';
+            const cpmDays = parseInt(document.getElementById('telRadioDays')?.textContent || '42');
+            const peakWorkers = parseInt(document.getElementById('telRadioWorkers')?.textContent || '7');
+            const backupHours = parseFloat(document.getElementById('telRadioBackup')?.textContent || '8.1');
+
+            const isBudgetOk = (totalCost <= 65000);
+            const isTimeOk = (cpmDays <= 56);
+            const isCampOk = (peakWorkers <= 12);
+            const isBackupOk = (backupHours >= 8.0);
+            const isCenOk = (radioState.clima === 'mochila' || radioState.clima === 'chiller');
+            const isGreenOk = (radioState.energy !== 'diesel');
+
+            let score = 0;
+            if (isBudgetOk) score += 3.5;
+            if (isTimeOk) score += 3.5;
+            if (isCampOk) score += 3.0;
+            if (isBackupOk) score += 3.5;
+            if (isCenOk) score += 3.5;
+            if (isGreenOk) score += 3.0;
+
+            score = Math.round(score);
+
+            const scoreNum = document.getElementById('evalScoreNum');
+            const scoreLbl = document.getElementById('evalScoreLabel');
+            scoreNum.textContent = `${score} / 20`;
+
+            if (score >= 19) {
+                scoreNum.style.color = '#059669';
+                scoreLbl.style.color = '#065f46';
+                scoreLbl.textContent = 'EXCELENCIA ACADÉMICA Y GERENCIAL (Aprobado con Mención de Honor)';
+            } else if (score >= 14) {
+                scoreNum.style.color = '#d97706';
+                scoreLbl.style.color = '#92400e';
+                scoreLbl.textContent = 'APROBADO SATISFACTORIAMENTE (Con Observaciones Periciales)';
             } else {
-                verdictCard.style.background = '#fef2f2';
-                verdictCard.style.border = '2px solid #fca5a5';
-                scoreNumEl.style.color = '#dc2626';
-                verdictTitleEl.innerText = '🚫 PLAN MAESTRO RECHAZADO EN AUDITORÍA';
-                verdictTitleEl.style.color = '#991b1b';
+                scoreNum.style.color = '#dc2626';
+                scoreLbl.style.color = '#991b1b';
+                scoreLbl.textContent = 'DICTAMEN NO CONFORME (Requiere Reingeniería de Proyecto)';
             }
 
-            // Checklist de criterios
-            const critListEl = document.getElementById('evalCriteriaList');
-            critListEl.innerHTML = `
-                <div class="crit-item ${critPlazo ? 'crit-ok' : 'crit-fail'}">
-                    <span>${critPlazo ? '✅' : '❌'}</span>
-                    <span>1. Plazo Total: ${cpmDays}d (&le; 56d Límite de Lluvias)</span>
+            // Lista de criterios
+            const critList = document.getElementById('evalCriteriaList');
+            critList.innerHTML = `
+                <div class="crit-item ${isBudgetOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isBudgetOk ? '✔' : '✖'}</span> Techo CapEx ($${totalCost.toLocaleString('en-US')} / $65.000 USD)
                 </div>
-                <div class="crit-item ${critPersonal ? 'crit-ok' : 'crit-fail'}">
-                    <span>${critPersonal ? '✅' : '❌'}</span>
-                    <span>2. Personal Campamento: ${peakWorkers}p (&le; 12p Capacidad)</span>
+                <div class="crit-item ${isTimeOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isTimeOk ? '✔' : '✖'}</span> Plazo Contractual (${cpmDays} / 56 Días)
                 </div>
-                <div class="crit-item ${critCapex ? 'crit-ok' : 'crit-fail'}">
-                    <span>${critCapex ? '✅' : '❌'}</span>
-                    <span>3. Presupuesto CAPEX: $${capexNum.toLocaleString('es-VE')} (&le; $65k)</span>
+                <div class="crit-item ${isCampOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isCampOk ? '✔' : '✖'}</span> Límite Campamento (${peakWorkers} / 12 Personas)
                 </div>
-                <div class="crit-item ${critAutonomia ? 'crit-ok' : 'crit-fail'}">
-                    <span>${critAutonomia ? '✅' : '❌'}</span>
-                    <span>4. Continuidad en Apagón: ${autonomy.toFixed(1)}h (&ge; 8.0h SLA)</span>
+                <div class="crit-item ${isBackupOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isBackupOk ? '✔' : '✖'}</span> Respaldo Nocturno (${backupHours}h / 8.0h Mín.)
                 </div>
-                <div class="crit-item ${critNormativa ? 'crit-ok' : 'crit-fail'}">
-                    <span>${critNormativa ? '✅' : '❌'}</span>
-                    <span>5. Normativa CEN 200 &amp; OPEX &le; $3.500/año</span>
+                <div class="crit-item ${isCenOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isCenOk ? '✔' : '✖'}</span> Código CEN 200 (Trifásico 208V / 0% Desbal.)
+                </div>
+                <div class="crit-item ${isGreenOk ? 'crit-ok' : 'crit-fail'}">
+                    <span>${isGreenOk ? '✔' : '✖'}</span> Sostenibilidad 7D (Cero Diésel en Cumbre)
                 </div>
             `;
 
-            // Tabla Comparativa contra Cátedra
-            const compBody = document.getElementById('evalComparisonBody');
-            compBody.innerHTML = `
-                <tr>
-                    <td><strong>Vialidad de Acceso (1D)</strong></td>
-                    <td>${radioState.via === 'light' ? '✅ Vialidad Liviana &amp; Cunetas (10d · $7.2k)' : (radioState.via === 'rust' ? '❌ Rústicos 4x4 (+8d retraso acumulado)' : '⚠️ Maquinaria Pesada (18d · $18.5k excede costo)')}</td>
-                    <td><strong>Vialidad Liviana (10 días)</strong>: Desbloquea el paso vehicular sin consumir excesivo plazo ni presupuesto.</td>
-                </tr>
-                <tr>
-                    <td><strong>Envolvente del Shelter (Unidad 3)</strong></td>
-                    <td>${radioState.caseta === 'alum' ? '✅ Manto Aluminizado Reflectivo (54°C en techo)' : '❌ Manto Negro Tradicional (82°C en techo · +3.5 kW calor)'}</td>
-                    <td><strong>Manto Aluminizado + Paneles Aislados</strong>: Reduce la carga térmica a 1.5 kW, permitiendo que 7 baterías de litio basten para 8 horas.</td>
-                </tr>
-                <tr>
-                    <td><strong>Izaje Estructural Torre (3D/4D)</strong></td>
-                    <td>${radioState.torre === 'winch' ? '✅ Winche Motorizado (12d · 6 torristas)' : (radioState.torre === 'manual' ? '⚠️ Izaje Manual Lento (20d al filo de lluvias)' : '❌ Doble Cuadrilla (10p satura campamento)')}</td>
-                    <td><strong>Winche Motorizado (12 días, 6 pers.)</strong>: Deja cupo en campamento (6 + 5 = 11 &le; 12) para montar el patio solar en paralelo.</td>
-                </tr>
-                <tr>
-                    <td><strong>Climatización &amp; Acometida (Unidad 4)</strong></td>
-                    <td>${radioState.hvac === 'tri' ? '✅ Inverter Trifásico 208V (&Delta;V &lt; 2% · 0% Desbalance)' : '❌ Monofásico On/Off (&Delta;V = 3.8% viola CEN 200 · 25% Desbalance)'}</td>
-                    <td><strong>Inverter Trifásico 208V</strong>: Cumple el Código CEN 200 a 65m y mantiene la demanda total (RF + Clima) en solo 3.5 kW.</td>
-                </tr>
-                <tr>
-                    <td><strong>Respaldo Cortes 8h (Unidad 4)</strong></td>
-                    <td>${radioState.energy === 'e3' ? '✅ Híbrido Solar 12 kWp + 7 Bat. (35 kWh)' : (radioState.energy === 'e1' ? '❌ Diésel 15 kVA (OPEX destructivo $16.8k/año)' : (radioState.energy === 'e2' ? '❌ Solar 6 kWp (Se apaga a la hora 4.5)' : '❌ Macro-Banco (Dispara CAPEX a $72k+)'))}</td>
-                    <td><strong>Híbrido Solar E3 (12 kWp + 7 Bat. LiFePO4 de 5 kWh)</strong>: Entrega 28 kWh útiles, cubriendo exactamente las 8 horas de corte ($3.5 \times 8 = 28\text{ kWh}$).</td>
-                </tr>
-            `;
-
-            // Retroalimentación Técnica
+            // Retroalimentación
             const fbBox = document.getElementById('evalFeedbackBox');
             let fbHtml = '';
             if (score === 20) {
-                fbHtml = `<strong>🏆 Dictamen de la Cátedra (Ing. Héctor Mota Zorrilla):</strong> Su planificación gerencial es impecable. Demostró la interconexión dimensional completa: el <strong>Manto Asfáltico Aluminizado</strong> en la cubierta redujo drásticamente la radiación solar incidente, lo que sumado a la alta eficiencia del <strong>Inverter Trifásico (CEN 200)</strong> abatió la potencia total a solo 3.5 kW. Esto hizo posible que el banco híbrido solar de <strong>7 baterías LiFePO4 (35 kWh nominales, 28 kWh útiles)</strong> soportara las 8 horas continuas de apagón sin romper el techo presupuestario de $65.000. Además, el paralelismo seguro entre torristas y cuadrilla solar acortó la Ruta Crítica a 45 días sin rebasar los 12 trabajadores en campamento.`;
+                fbHtml = `<strong>🏆 Dictamen Pericial de la Cátedra (Ing. Héctor Mota Zorrilla):</strong><br>
+                Su solución de ingeniería y gerencia demuestra el dominio holístico de la Metodología BIM y la Planificación 4D/5D. La selección del <strong>Shelter Modular PIR con cubierta aluminizada</strong> redujo la carga térmica parásita a solo 0.45 kW, lo que sumado a la unidad <strong>Mochila Dual Trifásica Inverter N+1 (CEN 200)</strong> mantuvo la demanda total en 3.45 kW. Con ello, el banco de <strong>7 baterías LiFePO4 de 35 kWh (28 kWh útiles)</strong> soporta con exactitud matemática las 8.1 horas de corte nocturno sin emitir ni un gramo de CO2 ni depender de la peligrosa logística de diésel. Además, la programación secuencial de la torre autosoportada y el arreglo solar respetó el límite estricto de 12 camas en campamento culminando en 42 días (con 14 días de holgura antes de las lluvias) e invirtiendo $62.000 USD con una reserva de contingencia de $3.000 USD.`;
             } else {
-                fbHtml = `<strong>🔍 Análisis de Fallas y Recomendaciones Periciales:</strong><br>`;
-                if (radioState.caseta === 'black') {
-                    fbHtml += `&bull; <strong>Falla en Envolvente Térmica (Unidad 3):</strong> Al seleccionar Manto Asfáltico Negro tradicional, el techo absorbió el 92% de la radiación alcanzando 82°C. Esto inyectó 3.5 kW de calor parásito al shelter, elevando el consumo y provocando que las baterías se agoten antes de las 8 horas.<br>`;
+                fbHtml = `<strong>🔍 Diagnóstico Forense y Recomendaciones de Reingeniería:</strong><br>`;
+                if (!isBudgetOk) {
+                    fbHtml += `&bull; <strong>Quiebre Financiero (Dimensión 5D):</strong> El presupuesto de $${totalCost.toLocaleString('en-US')} excede el techo contractual de $65.000 USD. Revise opciones sobredimensionadas como el pavimento rígido o el macro-banco solar.<br>`;
                 }
-                if (radioState.hvac === 'mono') {
-                    fbHtml += `&bull; <strong>Infracción Eléctrica (Unidad 4 - CEN 200):</strong> El equipo Monofásico generó una caída de tensión del 3.8% en 65m de acometida (violando el límite normativo de 3.0%) y un desbalance de fases del 25.55% que dispara las protecciones del inversor.<br>`;
+                if (!isTimeOk) {
+                    fbHtml += `&bull; <strong>Riesgo Crítico de Incomunicación (Dimensión 4D):</strong> La duración de ${cpmDays} días supera las 8 semanas (56 días). Las lluvias torrenciales iniciarán dejando la obra a medio construir.<br>`;
                 }
-                if (radioState.energy === 'e1') {
-                    fbHtml += `&bull; <strong>Inviabilidad en Ciclo de Vida (6D/7D):</strong> El motogenerador diésel pareció económico en CAPEX, pero el flete continuo de combustible por vialidad crítica cuesta $16.800 USD/año, destruyendo la viabilidad financiera y dejando la antena incomunicada en temporada de lluvias.<br>`;
+                if (!isCampOk) {
+                    fbHtml += `&bull; <strong>Infracción de Seguridad y Campamento:</strong> El pico de ${peakWorkers} trabajadores simultáneos rebasa la capacidad de 12 camas en cumbre. Separe actividades a fases distintas para reducir la congestión en sitio.<br>`;
                 }
-                if (cpmDays > 56) {
-                    fbHtml += `&bull; <strong>Falla de Planificación 4D:</strong> El plazo de ${cpmDays} días excede las 8 semanas. Al iniciar las lluvias, el camino se tornará intransitable impidiendo culminar la obra.<br>`;
+                if (!isBackupOk) {
+                    fbHtml += `&bull; <strong>Colapso de Continuidad de Red:</strong> La autonomía nocturna de ${backupHours}h no alcanza las 8 horas contratadas. La antena se apagará de madrugada interrumpiendo el servicio de emergencia.<br>`;
                 }
-                if (peakWorkers > 12) {
-                    fbHtml += `&bull; <strong>Violación de Capacidad Logística (3D/4D):</strong> El pico de ${peakWorkers} trabajadores supera la capacidad de 12 camas/seguridad del campamento en sitio remoto.<br>`;
+                if (!isCenOk) {
+                    fbHtml += `&bull; <strong>Infracción Eléctrica (CEN 200):</strong> El climatizador monofásico induce desbalance severo en la acometida trifásica de 65m y carece de redundancia N+1 ante avería.<br>`;
                 }
-                fbHtml += `<br><em>Pulse en "Modificar Decisiones y Reintentar Simulación" para ajustar su estrategia hasta alcanzar los 20 puntos.</em>`;
+                if (!isGreenOk) {
+                    fbHtml += `&bull; <strong>Inviabilidad en Ciclo de Vida (7D):</strong> El generador diésel tiene un costo de acarreo de combustible de $16.800 USD/año que arruina el OPEX de la operadora y contamina la cumbre.<br>`;
+                }
+                fbHtml += `<br><em>Pulse en "Modificar Decisiones y Reintentar Simulación" para ajustar su estrategia hasta obtener los 20 puntos de grado.</em>`;
             }
             fbBox.innerHTML = fbHtml;
             verdictCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
